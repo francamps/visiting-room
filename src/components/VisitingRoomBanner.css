@@ -1,0 +1,57 @@
+.header-content {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-options {
+  flex-direction: row;
+  display: flex;
+  width: 360px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.header-options.in-grid {
+  flex-direction: column;
+}
+
+.header-options.in-grid .header-option {
+  text-align: left;
+}
+
+.header-options.in-grid .search {
+  margin: 20px 0;
+}
+
+.header-options.in-grid .everyone {
+  margin: 20px 0;
+}
+
+.header-option {
+  font-family: "GTEesti";
+  font-size: var(--font-small);
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+
+CARET ANIMATIONS
+
+**/
+
+@keyframes bouncingLoader {
+  from {
+    transform: translate3d(0);
+  }
+  to {
+    transform: translate3d(0, -0.5rem, 0);
+  }
+}
+
+.animate {
+  animation: bouncingLoader 0.8s infinite alternate;
+}

@@ -1,0 +1,8 @@
+.view {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.view.active {
+  opacity: 1;
+}

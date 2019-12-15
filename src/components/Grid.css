@@ -1,0 +1,57 @@
+.grid-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.grid-cell .cell-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.grid-cell .cell-hover-layer {
+  background-color: none;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 1.2s, background-color 1.2s;
+}
+
+.grid-cell .cell-hover-quote,
+.grid-cell .cell-hover-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  transition: opacity 1s 1s;
+  cursor: pointer;
+}
+
+.grid-cell .cell-hover-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+
+  padding: 80px;
+  font-size: var(--font-subtitle);
+  text-align: left;
+  font-family: "GTSpectra";
+}
+
+.grid-cell.hovered .cell-hover-layer {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: backdrop-filter 1.2s, background-color 1.2s;
+}
+
+.grid-cell.hovered .cell-hover-quote {
+  opacity: 1;
+}
+
+.grid-cell.hovered .cell-hover-quote .quote {
+}

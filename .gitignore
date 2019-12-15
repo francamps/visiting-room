@@ -67,3 +67,8 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Images and temp files
+src/fonts/
+src/images/TEMP/
+

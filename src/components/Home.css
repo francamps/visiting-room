@@ -1,0 +1,67 @@
+.home {
+  background: black;
+}
+.home .landing {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../images/TEMP/animationBg.jpg");
+  background-size: cover;
+  position: relative;
+  box-sizing: border-box;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+
+  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s; /* Firefox < 16 */
+  -ms-animation: fadein 4s; /* Internet Explorer */
+  -o-animation: fadein 4s; /* Opera < 12.1 */
+  animation: fadein 4s;
+}
+
+.home .landing .subtitle {
+  width: 60%;
+  font-family: "GTSpectra";
+  font-weight: 500;
+  font-size: var(--font-subtitle);
+}
+
+.home .landing .title {
+  width: 100%;
+  font-family: "GTSpectra";
+  font-weight: 900;
+  font-size: var(--font-title);
+}
+
+.home .landing .play {
+  position: absolute;
+  top: calc(50% - 45px);
+  left: calc(50% - 45px);
+}
+
+.button {
+  margin: 40px 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: "GTSpectra";
+  background-color: black;
+  /*border: 1px solid #ffffff;*/
+  font-size: var(--font-subtitle);
+  cursor: pointer;
+  transition: background-color 0.4s, letter-spacing 1.2s;
+}
+
+.button:hover {
+  background-color: #141414;
+  letter-spacing: 0.02em;
+  transition: background-color 0.4s, letter-spacing 1.2s;
+}
+
+.footer {
+  height: 300px;
+  background: #141414;
+}

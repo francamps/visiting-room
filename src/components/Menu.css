@@ -1,0 +1,40 @@
+.menu {
+  position: fixed;
+  z-index: 10;
+  color: white;
+  top: 20px;
+  left: 20px;
+  padding: 2px 5px;
+  background-color: #141414;
+  transition: background-color 0.4s;
+}
+
+.menu:hover {
+  background-color: #181818;
+  transition: background-color 0.4s;
+}
+
+.menu-options p {
+  font-family: "GTSpectra";
+  text-align: left;
+  font-size: var(--font-large);
+  line-height: 1em;
+  cursor: pointer;
+  margin: 0;
+  letter-spacing: normal;
+  transition: letter-spacing 1s;
+  padding: 24px;
+  color: white;
+  opacity: 0.8;
+  transition: letter-spacing 1s, opacity 0.4s;
+}
+
+.menu-options p:hover {
+  opacity: 1;
+  letter-spacing: 0.02em;
+  transition: letter-spacing 1s, opacity 0.4s;
+}
+
+.menu .home-title {
+  font-size: 1.1em;
+}

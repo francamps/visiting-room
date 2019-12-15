@@ -1,0 +1,25 @@
+{
+  "title": "About the Louisiana Lifers Project",
+  "content": [
+    {
+      "element": "paragraph",
+      "content": "The Louisiana Lifers Project sparked from a series of conversations between Marcus Kondkar, a sociology professor at Loyola University New Orleans, Calvin Duncan, an expert on post- conviction relief who was wrongfully convicted and incarcerated for over 28 years before winning his freedom in 2010, and Sophie Cull, criminal justice coordinator for Vital Projects Fund, a foundation focusing on human rights and criminal justice reform advocacy. Even though Louisiana has the highest percentage of prisoners serving life without parole in the country, the people serving those sentences are largely invisible. This project is about making those people, along with their stories, visible. It centers on a compilation of life-history interviews filmed at the Louisiana State Penitentiary – Angola, a former slave plantation, and the largest maximum security prison farm in the U.S."
+    },
+    {
+      "element": "paragraph",
+      "content": "Between 2017 and 2019, 150 men sat with Marcus Kondkar in one-to-one meetings and shared their testimony, talked about their childhoods, their loved ones, their regrets, their time in prison, the changes they’ve gone through, and their hopes for the future. They also talked about coping with the promise of a death-in-prison sentence, regardless of whether they change, age out, or find a way to redeem themselves. All the men in the project were convicted of a homicide-related crime that occurred before they turned 25, most before turning 21, and have served over 20, 30, even 40-plus years of their sentences. All have changed over the years. Many have devoted their lives to helping others in the prison community, whether through mentoring, tutoring, vocational training, and reentry preparation for short-term prisoners, or end-of-life care for the growing number of men dying in hospice (over half of the nearly 5,000 people with life sentences in Louisiana are over 50)."
+    },
+    {
+      "element": "paragraph",
+      "content": "The interviews are archived, but you can visit with them and watch their short profiles in the Visiting Room. You will also find information on the history of life sentences in the state, clemency, and sentencing reform advocacy."
+    },
+    {
+      "element": "sectionTitle",
+      "content": "The Project Team"
+    },
+    {
+      "element": "paragraph",
+      "content": "The Louisiana Lifers Project is funded by Vital Projects Fund. The project team includes Marcus Kondkar, Marcus Chapa-Wilson, Katie Mitchell, Luca Cappelli, Annie Nisenson, Franc Camps- Febrer, Sophie Cull, Bidish Sarma, and Molly Crabapple. The project has also benefited from significant support from Loyola University New Orleans where the website lives. And of course, none of this would be possible without the generosity of the men featured in the project, and support at the highest levels of the Louisiana Department of Public Safety and Corrections. (The idea would be to have links to short bios for each member of the team). )"
+    }
+  ]
+}
