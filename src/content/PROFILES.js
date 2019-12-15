@@ -44,7 +44,7 @@ export const PROFILES = [
   {
     quote: `It’s a conversation I avoid. Even with people that I see every day I’ve never even had that conversation. It makes me feel like less of a human.`,
     name: "Daryl",
-    imagePath: "DARYL.png",
+    imagePath: "DARYL.jpg",
     imageHeadshotPath: "jeffrey_nelson.jpg",
   },
   {
@@ -70,8 +70,8 @@ export const PROFILES = [
   },
   {
     quote: `It’s a conversation I avoid. Even with people that I see every day I’ve never even had that conversation. It makes me feel like less of a human.`,
-    name: "Patick",
-    imagePath: "PATRICK.png",
+    name: "Patrick",
+    imagePath: "PATRICK.jpg",
     imageHeadshotPath: "jeffrey_nelson.jpg",
   },
   {

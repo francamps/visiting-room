@@ -12,6 +12,7 @@ import imageSrc2 from "../images/TEMP/WALTER.jpg"
 import oldImage from "../images/TEMP/arthur_carter.jpg"
 
 import "./Video.css"
+import VideoPlayer from "./VideoPlayer"
 
 const Video = ({ name, profileId, setView }) => {
   const [isViewed, setViewed] = useState(false)
@@ -20,7 +21,12 @@ const Video = ({ name, profileId, setView }) => {
 
   return (
     <div className="video-wrap">
-      <div
+      <VideoPlayer
+        videoSrcURL="https://vimeo.com/379573945"
+        videoTitle="Kantau"
+      />
+      {
+        null /*<div
         className="video"
         style={{
           background: `url(${source}) center center`,
@@ -75,7 +81,8 @@ const Video = ({ name, profileId, setView }) => {
             </div>
           </div>
         )}
-      </div>
+            </div>*/
+      }
 
       <div
         style={{

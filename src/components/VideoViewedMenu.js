@@ -1,4 +1,5 @@
 import React from "react"
+import { navigate } from "gatsby"
 
 import "./VideoViewedMenu.css"
 import TimeSlider from "./TimeSlider"
@@ -24,7 +25,9 @@ const VideoViewedMenu = ({ onClickReplay, onClickNext }) => {
               background: `url(${imageSrc}) center center`,
               backgroundSize: "cover",
             }}
-            onClick={onClickNext}
+            onClick={() => {
+              navigate("/visiting-room/")
+            }}
           >
             <p className="upper-label">Up next:</p>
             <h3 className="actual-label">Walter Goodwin</h3>

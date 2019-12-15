@@ -5,33 +5,7 @@ import { animated, useSpring } from "react-spring"
 import "./Grid.css"
 
 import { PROFILES } from "../content/profiles"
-import image0 from "../images/TEMP/ARTHUR.jpg"
-import image1 from "../images/TEMP/WALTER.jpg"
-import image2 from "../images/TEMP/JEFFREY.png"
-import image3 from "../images/TEMP/JARRED.jpg"
-import image4 from "../images/TEMP/ARCHIE.jpg"
-import image5 from "../images/TEMP/DARNELL.jpg"
-import image6 from "../images/TEMP/DARYL.jpg"
-import image7 from "../images/TEMP/KAUNTAU.jpg"
-import image8 from "../images/TEMP/KENNETH.jpg"
-import image9 from "../images/TEMP/TERRENCE.jpg"
-import image10 from "../images/TEMP/PATRICK.jpg"
-import image11 from "../images/TEMP/ANTHONY.jpg"
-
-const images = [
-  image0,
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-  image11,
-]
+import GridImage from "./GridImage"
 
 const Grid = () => {
   const [isHover, setHover] = useState(null)
@@ -74,13 +48,9 @@ const Grid = () => {
               navigate(`/visiting-room/${"arthur-carter"}`)
             }}
           >
-            <div
-              className="cell-background"
-              style={{
-                background: `url(${images[idx]}) center center`,
-                backgroundSize: "cover",
-              }}
-            ></div>
+            <div className="cell-background">
+              <GridImage path={profile.imagePath} />
+            </div>
             <div className="cell-hover-layer"></div>
             <div className="cell-hover-quote">
               <p className="quote">{profile.quote}</p>
