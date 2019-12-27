@@ -1,24 +1,55 @@
-.timeline-wrap .step {
+article {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 60px;
   min-height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  position: relative;
 }
 
-.timeline-wrap .step:first-child {
-  margin-top: 200px;
+.timeline-title,
+.timeline-wrap {
+  position: relative;
+}
+
+.timeline-title {
+  text-align: center;
+  text-transform: none;
+  min-height: 100vh;
+  width: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-title .background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: url("../images/TEMP/angolabg.jpg");
+  background-size: cover;
+  filter: brightness(50%);
+}
+
+.timeline-title h2 {
+  position: absolute;
+  font-family: GTSpectra;
+  font-size: var(--font-large);
+  text-transform: none;
+  color: white;
 }
 
 .timeline-wrap {
   display: flex;
-  position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   flex-direction: row;
   overflow: hidden;
-  /*background: url("../assets/background2.jpg");*/
   background-color: white;
   transition: background-color 0.4s;
 
@@ -35,17 +66,26 @@
   transition: background-color 0.4s;
 }
 
+.timeline-wrap .step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+  min-height: 100vh;
+}
+
+.timeline-wrap .step:first-child {
+  margin-top: 200px;
+}
+
 .timeline-wrap.invert .copy-selector .copy {
   color: black;
   transition: color 0.4s;
 }
 
-.timeline-wrap .timeline-figure {
-  padding-left: 20%;
-}
-
-.timeline-wrap .timeline-figure.figure-single {
-  padding-left: 0;
+.timeline-wrap .timeline-copy {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .timeline-wrap .timeline-copy .step .year-label,
@@ -56,7 +96,7 @@
 }
 
 .timeline-wrap .timeline-copy .step h3.year-label {
-  font-family: Courier;
+  font-family: "GTEesti";
   font-weight: lighter;
   font-size: var(--font-small);
 }
@@ -113,38 +153,6 @@
   color: black;
 }
 
-.timeline-title {
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  height: 100vh;
-  width: 100%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.timeline-title .background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: url("../images/TEMP/angolabg.jpg");
-  background-size: cover;
-  filter: brightness(50%);
-}
-
-.timeline-title h2 {
-  position: absolute;
-  font-family: GTSpectra;
-  font-size: var(--font-large);
-  text-transform: none;
-  color: white;
-}
-
 .timeline-figure + .timeline-copy {
   padding-left: 0%;
 }
@@ -194,31 +202,26 @@
   background-position: center;
   filter: grayscale(1);
   height: 100vh;
+  position: sticky;
+  top: 0;
 }
 
 .timeline-figure {
-  height: 100vh;
+  height: 200vh;
   width: 500px;
   margin: 0 auto;
   top: 0;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.timeline-figure.figure-single {
-  height: auto;
-  display: inline-block;
-}
-
-.timeline-figure.figure-flex {
-  flex: 1;
-}
-
 .timeline-figure figure {
-  width: 800px;
+  width: 500px;
   margin: 0 auto;
+  margin-top: 40px;
+  position: sticky;
+  top: 0;
 }
 
 .timeline-figure figure img {
@@ -227,6 +230,8 @@
 
 .timeline-figure figure .chart-wrap {
   margin: 100px 0;
+  width: 800px;
+  margin-left: -150px;
 }
 
 .timeline-figure figure .chart-wrap .title {
@@ -239,9 +244,8 @@
   width: 510px;
 }
 
-.timeline-figure.figure-single figure {
-  width: 100%;
-  margin: 40px 0;
+.timeline-figure .figure-wide {
+  width: 800px;
 }
 
 .timeline-figure .caption {

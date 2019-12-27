@@ -1,0 +1,10 @@
+.modal {
+  width: 600px;
+  height: auto;
+  padding: 20px 0 0 0;
+  border-bottom: 4px solid var(--clr-primary);
+  color: var(--clr-black);
+
+  font-family: "GTEesti";
+  font-size: var(--font-normal);
+}

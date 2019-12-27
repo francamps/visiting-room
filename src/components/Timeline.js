@@ -12,8 +12,6 @@ import TimelineModal from "./TimelineModal"
 
 import { TIMELINE } from "../content/timeline"
 
-const SINGLE_COL = true
-
 function isElementInViewport(attribute) {
   const el = document.querySelector(`[data-step="${attribute}"] p`)
   if (!el) return null
@@ -71,44 +69,33 @@ const Timeline = () => {
 
   return (
     <>
-      <Menu />
-      <article className="two-cols">
+      <Menu theme="light" />
+      <article>
         <div className="timeline-title">
           <div className="background" />
           <h2>The history of life without parole in Louisiana</h2>
         </div>
         <div className={`timeline-wrap ${invertColor ? "invert" : ""}`}>
-          {!SINGLE_COL && (
-            <div
-              className={`timeline-figure ${
-                !!TIMELINE[step].image ? "figure-flex" : ""
-              }`}
-            >
-              <TimelineFigure
-                step={step}
-                progress={progress}
-                caption={TIMELINE[step].caption}
-                setFigureActive={setFigureActive}
-              />
-            </div>
-          )}
           <div
             className="timeline-copy copy-selector"
             style={{
-              height: "100vh",
               flex: !!TIMELINE[step].paragraph,
               transition: "flex 0.4s",
             }}
           >
             <div className="copy" style={{ flex: 1 }}>
-              <TimelineLede />
+              <TimelineLede setModal={setModal} />
 
               {TIMELINE.slice(1).map((timelineStep, i) => {
                 if (!timelineStep.paragraphs) return null
 
                 return (
                   <>
-                    {i === 1 && <div className="map-figure" />}
+                    {i === 1 && (
+                      <div style={{ height: "300vh" }}>
+                        <div className="map-figure" />
+                      </div>
+                    )}
                     <div className="step" data-step={`step-${i + 1}`}>
                       <h3 className="year-label">{timelineStep.year}</h3>
                       <h2>{timelineStep.title}</h2>
@@ -118,20 +105,19 @@ const Timeline = () => {
                           setModal={setModal}
                         />
                       </div>
-                      {SINGLE_COL && (
-                        <div
-                          className={`timeline-figure figure-single ${
-                            !!TIMELINE[step].image ? "figure-flex" : ""
-                          }`}
-                        >
-                          <TimelineFigure
-                            step={i /* step */}
-                            progress={progress}
-                            caption={TIMELINE[step].caption}
-                            setFigureActive={setFigureActive}
-                          />
-                        </div>
-                      )}
+                      <div
+                        className={`timeline-figure ${
+                          !!TIMELINE[step].image ? "figure-flex" : ""
+                        }
+                        ${step === 4 || step === 3 ? "figure-wide" : ""}`}
+                      >
+                        <TimelineFigure
+                          step={i /* step */}
+                          progress={progress}
+                          caption={TIMELINE[step].caption}
+                          setFigureActive={setFigureActive}
+                        />
+                      </div>
                     </div>
                   </>
                 )

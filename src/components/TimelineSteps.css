@@ -3,12 +3,19 @@
   flex-direction: column;
   align-items: flex-end;
   position: fixed;
-  right: 20px;
+  right: 0;
   top: 0;
   background: none;
-  width: calc(100% - 50px);
   height: 70px;
   z-index: 11;
+}
+
+.timeline-steps .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  margin: 2px 5px;
+  border: 2px solid var(--clr-dark-bg);
 }
 
 .timeline-steps {
@@ -17,11 +24,11 @@
 
 .timeline-step {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
   text-align: right;
-  width: 200px;
-  padding: 18px;
+  width: 250px;
+  padding: 5px;
   justify-content: flex-end;
   font-weight: 100;
   color: var(--clr-light-grey);
@@ -32,9 +39,13 @@
 
 .timeline-step.active {
   font-size: var(--font-normal);
-  color: white;
+  color: var(--clr-dark-bg);
   font-weight: 900;
   transition: font-weight 0.4s, flex 0.4s, font-size 0.4s;
+}
+
+.timeline-step.active .dot {
+  border: 4px solid var(--clr-primary);
 }
 
 .timeline-step:hover {
@@ -50,4 +61,11 @@
 
 .timeline-steps .actual-label {
   font-family: "GTSpectra";
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.timeline-step.active .actual-label {
+  opacity: 1;
+  transition: opacity 0.4s;
 }

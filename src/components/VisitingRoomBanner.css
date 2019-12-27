@@ -37,6 +37,16 @@
   flex-direction: column;
 }
 
+.who-header {
+  font-family: "GTSpectra";
+  transition: font-size 1.2s;
+  font-size: 36px;
+}
+
+.who-header-grid {
+  fontsize: 24px;
+}
+
 /**
 
 CARET ANIMATIONS

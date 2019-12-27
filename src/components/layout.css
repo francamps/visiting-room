@@ -1,40 +1,73 @@
 :root {
+  --font-xxsmall: 0.6em;
   --font-xsmall: 0.7em;
   --font-small: 0.8em;
   --font-normal: 1.1em;
-  --font-copy: 1.5em;
-  --font-subtitle: 1.5em;
+  --font-copy: 1.25em;
+  --font-subtitle: 1.2em;
   --font-large: 2.5em;
-  --font-title: 6em;
+  --font-title: 4.5em;
+
+  --copy-line-height: 1.7em;
 
   /* Colors */
-  --clr-primary: #f7b500;
+  --clr-primary: rgb(216, 216, 192);
+  /*--clr-primary: thistle;
+  216,192,216*/
+  --clr-white: #ffffff;
+  --clr-black: #000000 /*#080000*/;
   --clr-dark-bg: #141414;
   --clr-mid-grey: #444444;
   --clr-light-grey: #a8a0a0;
+
+  /* Spacing */
+  --space-around-med: 40px;
 }
 
 @font-face {
   font-family: "GTSpectra";
-  src: url("../fonts/spectra_regular.otf") format("opentype");
+  src: url("../fonts/GT-Pressura-Pro-Trial-Light.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "GTSpectra-italic";
+  src: url("../fonts/GT-Pressura-Pro-Trial-Light-Italic.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "GTSpectra";
+  src: url("../fonts/GT-Pressura-Pro-Trial-Regular.otf") format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "GTSpectra-italic";
+  src: url("../fonts/GT-Pressura-Pro-Trial-Regular-Italic.otf")
+    format("opentype");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "GTSpectra";
-  src: url("../fonts/spectra_bold.otf") format("opentype");
+  src: url("../fonts/GT-Pressura-Pro-Trial-Bold.otf") format("opentype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "GTSpectra";
-  src: url("../fonts/spectra_super.otf") format("opentype");
-  font-weight: 900;
+  font-family: "GTEesti";
+  src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Light.otf") format("opentype");
 }
 
 @font-face {
   font-family: "GTEesti";
-  src: url("../fonts/eesti_regular.otf") format("opentype");
+  src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GTAmericaMono";
+  src: url("../fonts/GT-America-Mono-Trial-Light.otf") format("opentype");
 }
 
 body {
@@ -46,8 +79,8 @@ body {
 }
 
 ::selection {
-  background: #9a14cc;
-  color: white;
+  background: var(--clr-primary);
+  color: var(--clr-black);
 }
 
 #root {
@@ -78,7 +111,7 @@ h1 {
 
 h2 {
   font-family: "GTSpectra";
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 }
 
@@ -123,6 +156,7 @@ COPY
 
 .copy-wrap .copy {
   font-family: "GTSpectra";
+  font-weight: 300;
   font-size: var(--font-copy);
   text-align: left;
   color: white;
@@ -136,16 +170,16 @@ COPY
 
 .copy .lede-initial {
   font-size: var(--font-title);
-  font-weight: 900;
+  font-weight: 700;
   margin-right: 16px;
 }
 
 .copy .lede-content {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .copy p {
-  line-height: 1.5em;
+  line-height: var(--copy-line-height);
 }
 
 /**

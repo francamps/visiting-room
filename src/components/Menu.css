@@ -1,17 +1,55 @@
 .menu {
   position: fixed;
-  z-index: 10;
-  color: white;
-  top: 20px;
-  left: 20px;
-  padding: 2px 5px;
-  background-color: #141414;
-  transition: background-color 0.4s;
+  width: 0px;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 12;
+  cursor: pointer;
+  color: var(-clr-white);
+  /*background-color: var(--clr-black);*/
+  transition: background-color 0.4s, opacity 0.4s;
+  opacity: 0.4;
 }
 
 .menu:hover {
-  background-color: #181818;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.menu.menu-light {
+  background-color: var(--clr-black);
+  color: var(--clr-black);
+}
+
+.menu:hover {
+  background-color: var(--clr-dark-bg);
   transition: background-color 0.4s;
+}
+
+.menu-options {
+  cursor: pointer;
+  width: 400px;
+  height: 100vh;
+  left: -400px;
+  position: fixed;
+  display: flex;
+  padding-left: 20px;
+  z-index: 11;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s, left 0.4s;
+}
+
+.menu-options.open {
+  left: 50px;
+  opacity: 1;
 }
 
 .menu-options p {
@@ -24,17 +62,44 @@
   letter-spacing: normal;
   transition: letter-spacing 1s;
   padding: 24px;
-  color: white;
+  color: var(--clr-white);
   opacity: 0.8;
   transition: letter-spacing 1s, opacity 0.4s;
 }
 
+.menu-options.menu-light p {
+  color: var(--clr-black);
+}
+
 .menu-options p:hover {
   opacity: 1;
+  color: var(--clr-primary);
   letter-spacing: 0.02em;
   transition: letter-spacing 1s, opacity 0.4s;
 }
 
 .menu .home-title {
+  display: inline-block;
+  width: 200px;
+  background: none;
+  z-index: 12;
   font-size: 1.1em;
+  margin: 0 0 10px 20px;
+}
+
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  backdrop-filter: blur(0);
+  z-index: -1;
+  transition: backdrop-filter 0.4s, z-index 0.5s step-end;
+}
+
+.menu-backdrop.menu-backdrop-on {
+  backdrop-filter: blur(50px);
+  z-index: 10;
+  transition: backdrop-filter 0.4s;
 }

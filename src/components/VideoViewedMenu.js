@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 
 import "./VideoViewedMenu.css"
 import TimeSlider from "./TimeSlider"
-import imageSrc from "../images/TEMP/WALTER.jpg"
+import imageSrc from "../images/TEMP/profile_pics/Walter_Goodwin.jpg"
 
 const VideoViewedMenu = ({ onClickReplay, onClickNext }) => {
   return (

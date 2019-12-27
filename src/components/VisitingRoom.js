@@ -21,6 +21,9 @@ const VisitingRoom = ({ pageContext = { profileId: null } }) => {
         left: 0,
         right: 0,
       }}
+      onScroll={() => {
+        if (!isGrid) setGrid(true)
+      }}
     >
       <Menu isExpanded={false} />
       {isGrid && <Grid />}

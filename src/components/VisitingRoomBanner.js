@@ -31,14 +31,13 @@ const VisitingRoomBanner = ({ isGrid, setGrid }) => {
           padding: "50px 20px",
           transition: "align-items 1.2s, width 1.2s, height 1.2s",
         }}
+        onScroll={() => {
+          console.log("lol")
+          if (!isGrid) setGrid(true)
+        }}
       >
         <div
-          className="who-header"
-          style={{
-            fontFamily: "GTSpectra",
-            fontSize: isGrid ? "24px" : "36px",
-            transition: "font-size 1.2s",
-          }}
+          className={`who-header ${isGrid ? "who-header-grid" : ""}`}
           onClick={() => setGrid(false)}
         >
           Who did you come to visit?

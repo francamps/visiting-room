@@ -2,24 +2,28 @@ import React from "react"
 import { Link, navigate } from "gatsby"
 
 import Play from "./Play"
+import HomeVideo from "./HomeVideo"
 import "./Home.css"
 
 const Home = () => {
   return (
     <div className="home">
       <div className="landing">
-        <div className="subtitle">
-          An archive and visiting room of the 527 men who are serving life
-          without parole at Louisiana State Penitentiary - Angola.
+        <HomeVideo />
+        <div className="text-on-landing" style={{ position: "absolute" }}>
+          <div className="title">The Visiting Room</div>
+          <div className="subtitle">
+            An archive and visiting room of the 527 men who are serving life
+            without parole at Louisiana State Penitentiary - Angola.
+          </div>
+          <Play
+            size="huge"
+            onClick={() => {
+              navigate("/visiting-room")
+              //setView(3);
+            }}
+          />
         </div>
-        <div className="title">The Visiting Room</div>
-        <Play
-          size="huge"
-          onClick={() => {
-            navigate("/visiting-room")
-            //setView(3);
-          }}
-        />
       </div>
       <section className="copy-wrap">
         <article className="copy">
@@ -81,7 +85,9 @@ const Home = () => {
               navigate("/visiting-room")
             }}
           >
-            Go to the Visiting Room >
+            <div class="link-wrap">
+              <span className="hover-link">Go to the Visiting Room ></span>
+            </div>
           </div>
         </Link>
         <Link to="/timeline">
@@ -91,12 +97,25 @@ const Home = () => {
               navigate("/timeline")
             }}
           >
-            Learn the history of Life Without Parole sentencing
+            <div class="link-wrap">
+              <span className="hover-link">
+                Learn the history of Life Without Parole sentencing
+              </span>
+            </div>
           </div>
         </Link>
       </section>
 
-      <section className="footer"></section>
+      <section className="footer">
+        <ul>
+          <li>
+            <h5>Produced with the support of:</h5>
+          </li>
+          <li>Vital Projects Fund</li>
+          <li>Loyola University at New Orleans</li>
+          <li>NEW INC</li>
+        </ul>
+      </section>
     </div>
   )
 }

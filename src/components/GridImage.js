@@ -33,7 +33,13 @@ const GridImage = props => (
       }
 
       //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
-      return <Img alt={props.alt} fluid={image.node.childImageSharp.fluid} />
+      return (
+        <Img
+          alt={props.alt}
+          fluid={image.node.childImageSharp.fluid}
+          style={{ height: "100%" }}
+        />
+      )
     }}
   />
 )

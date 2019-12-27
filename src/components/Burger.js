@@ -9,8 +9,8 @@ const Burger = ({ isBurgerOpen, setBurgerOpen }) => (
       setBurgerOpen(!isBurgerOpen)
     }}
     style={{
-      marginLeft: "23px",
-      top: "-120px",
+      marginLeft: "20px",
+      top: "-60px",
     }}
   >
     <div className="burger-inner"></div>

@@ -48,13 +48,13 @@
   transition-duration: 0.15s;
   transition-property: transform;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--clr-white);
 }
 
 .burger.is-active .burger-inner,
 .burger.is-active .burger-inner:before,
 .burger.is-active .burger-inner:after {
-  background-color: #fff;
+  background-color: var(--clr-white);
 }
 
 .burger.is-active .burger-inner {
@@ -74,4 +74,16 @@
   transition: bottom 75ms ease,
     transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
   transform: rotate(-90deg);
+}
+
+.menu-light .burger .burger-inner,
+.menu-light .burger .burger-inner:after,
+.menu-light .burger .burger-inner:before {
+  background-color: var(--clr-black);
+}
+
+.menu-light .burger.is-active .burger-inner,
+.menu-light .burger.is-active .burger-inner:before,
+.menu-light .burger.is-active .burger-inner:after {
+  background-color: var(--clr-black);
 }

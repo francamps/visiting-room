@@ -4,7 +4,7 @@ import { animated, useSpring } from "react-spring"
 
 import "./Grid.css"
 
-import { PROFILES } from "../content/profiles"
+import { profiles } from "../content/profiles_all"
 import GridImage from "./GridImage"
 
 const Grid = () => {
@@ -24,8 +24,8 @@ const Grid = () => {
       style={{
         ...fadeInProps,
         position: "absolute",
-        width: "calc(100% - 60px)",
-        left: "60px",
+        width: "100%",
+        left: "0px",
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
         gridGap: 0,
@@ -34,7 +34,7 @@ const Grid = () => {
         boxSizing: "border-box",
       }}
     >
-      {PROFILES.map((profile, idx) => {
+      {profiles.map((profile, idx) => {
         return (
           <div
             className={`grid-cell ${idx === isHover ? "hovered" : ""}`}
@@ -56,18 +56,9 @@ const Grid = () => {
               <p className="quote">{profile.quote}</p>
             </div>
             <h3
+              className="name-tag"
               style={{
-                fontFamily: "GTSpectra",
                 letterSpacing: idx === isHover ? "0.03em" : "normal",
-                transition: "letter-spacing 2s",
-                paddingLeft: "20px",
-                borderLeft: "1px solid white",
-                boxSizing: "border-box",
-                marginLeft: "20px",
-                textAlign: "left",
-                width: "calc(100% - 40px)",
-                position: "absolute",
-                alignSelf: "flex-start",
               }}
             >
               {profile.name}
@@ -75,6 +66,15 @@ const Grid = () => {
           </div>
         )
       })}
+      {
+        null /*<div style={{ width: "100%" }}>
+        <h2>
+          There are close to 5000 people serving life without parole in
+          Louisiana. These are only some of the stories.
+        </h2>
+        <h2>Learn more at...</h2>
+    </div>*/
+      }
     </animated.div>
   )
 }

@@ -72,7 +72,7 @@ const ChartA = () => {
       .attr("cx", d => xScale(d.year))
       .attr("cy", d => yScale(d.d))
       .attr("r", 4)
-      .style("fill", "black")
+      .style("fill", "white")
       .style("stroke", "var(--clr-primary")
       .style("stroke-width", 2)
 
@@ -82,13 +82,13 @@ const ChartA = () => {
       .join("text")
       .attr("class", "value")
       .attr("x", d => xScale(d.year))
-      .attr("y", d => yScale(d.d) - 20)
+      .attr("y", d => yScale(d.d) - 15)
       .text(d => d.d)
-      .style("fill", "white")
+      .style("fill", "black")
       .style("text-anchor", "middle")
       .style("font-family", "GTEesti")
       .style("font-weight", "100")
-      .style("font-size", "var(--font-small)")
+      .style("font-size", "var(--font-xsmall)")
 
     svg
       .selectAll("text.year")
@@ -97,13 +97,13 @@ const ChartA = () => {
       .attr("class", "year")
       .join("text")
       .attr("x", d => xScale(d.year))
-      .attr("y", d => HEIGHT - 10)
+      .attr("y", d => HEIGHT - 5)
       .text(d => d.year)
-      .style("fill", "white")
+      .style("fill", "black")
       .style("text-anchor", "middle")
       .style("font-family", "GTEesti")
       .style("font-weight", "100")
-      .style("font-size", "var(--font-small)")
+      .style("font-size", "var(--font-xsmall)")
 
     svg
       .selectAll("line")

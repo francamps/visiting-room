@@ -6,8 +6,8 @@ import VideoViewedMenu from "./VideoViewedMenu"
 import CrossClose from "./CrossClose"
 import Circles from "./charts/Circles"
 
-import imageSrc from "../images/TEMP/ARTHUR.jpg"
-import imageSrc2 from "../images/TEMP/WALTER.jpg"
+import imageSrc from "../images/TEMP/profile_pics/Arthur_Carter.jpg"
+import imageSrc2 from "../images/TEMP/profile_pics/Walter_Goodwin.jpg"
 
 import oldImage from "../images/TEMP/arthur_carter.jpg"
 

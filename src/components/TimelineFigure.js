@@ -18,18 +18,18 @@ const TimelineFigure = ({ step = 1, caption, setFigureActive }) => {
     <figure className={`stickness ${step === 4 ? "static" : ""}`}>
       {step === 3 && (
         <div className="chart-wrap">
+          <ChartA />
           <h4 className="title">
             People serving life without parole in Louisiana
           </h4>
-          <ChartA />
         </div>
       )}
       {step === 4 && (
         <div className="chart-wrap">
+          <ChartB />
           <h4 className="title">
             State prison commutations in Louisiana by Governor
           </h4>
-          <ChartB />
         </div>
       )}
       {step !== 3 && images[step] && (

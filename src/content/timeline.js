@@ -1,7 +1,7 @@
 export const TIMELINE = [
   {
     year: "Late 1800s",
-    title: "Late 1800s",
+    title: "The origins of parole eligibility",
     paragraphs: [
       {
         element: "p",

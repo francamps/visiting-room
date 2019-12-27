@@ -4,14 +4,15 @@
 .home .landing {
   width: 100%;
   height: 100vh;
-  background-image: url("../images/TEMP/animationBg.jpg");
+  /*background-image: url("../images/TEMP/animationBg.jpg");*/
+  background: none;
   background-size: cover;
   position: relative;
   box-sizing: border-box;
-  padding: 60px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: left;
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
@@ -21,29 +22,35 @@
   animation: fadein 4s;
 }
 
-.home .landing .subtitle {
-  width: 60%;
-  font-family: "GTSpectra";
-  font-weight: 500;
-  font-size: var(--font-subtitle);
+.home .landing .text-on-landing {
+  right: var(--space-around-med);
+  left: var(--space-around-med);
 }
 
-.home .landing .title {
+.home .landing .text-on-landing .subtitle {
+  width: 60%;
+  font-family: "GTSpectra-italic";
+  font-weight: 300;
+  font-size: var(--font-subtitle);
+  line-height: 1.4em;
+}
+
+.home .landing .text-on-landing .title {
   width: 100%;
   font-family: "GTSpectra";
-  font-weight: 900;
+  font-weight: 700;
   font-size: var(--font-title);
 }
 
 .home .landing .play {
   position: absolute;
   top: calc(50% - 45px);
-  left: calc(50% - 45px);
+  right: 0;
 }
 
 .button {
-  margin: 40px 0;
-  height: 40px;
+  margin: 20px 0;
+  height: 60px;
   line-height: 40px;
   padding: 10px 20px;
   text-align: center;
@@ -61,7 +68,66 @@
   transition: background-color 0.4s, letter-spacing 1.2s;
 }
 
+.link-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 0 45px;
+}
+
+.hover-link {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.hover-link:before,
+.hover-link:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 0px;
+  height: 5px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 0;
+  background-color: var(--clr-primary);
+}
+
+.button:hover .hover-link:before,
+.button:hover .hover-link:after {
+  width: 50%;
+  opacity: 1;
+}
+
+.hover-link:before {
+  left: 50%;
+}
+.hover-link:after {
+  right: 50%;
+}
+
 .footer {
-  height: 300px;
-  background: #141414;
+  width: calc(100% - 80px);
+  height: 120px;
+  background: var(--clr-black);
+  margin: 0 var(--space-around-med);
+  font-family: GTSpectra;
+  font-weight: light;
+  color: var(--clr-light-grey);
+  border-top: 1px solid var(--clr-primary);
+}
+
+.footer ul {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer ul li {
+  list-style: none;
 }
