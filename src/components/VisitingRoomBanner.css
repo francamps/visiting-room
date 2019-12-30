@@ -1,3 +1,35 @@
+.visting-room-banner {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 50px 20px;
+  transition: align-items 1.2s, width 1.2s, height 1.2s;
+}
+
+.visting-room-banner.in-grid {
+  height: 120px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.who-header {
+  font-family: "GTSpectra";
+  transition: font-size 1.2s;
+  font-size: 36px;
+}
+
+.in-grid .who-header {
+  font-weight: 300;
+  font-size: 20px;
+  min-width: 240px;
+}
+
 .header-content {
   display: flex;
   flex-direction: column;
@@ -10,23 +42,51 @@
   flex-direction: row;
   display: flex;
   width: 360px;
+  align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
 
-.header-options.in-grid {
-  flex-direction: column;
+.header-options .header-option {
+  margin-left: 40px;
 }
 
-.header-options.in-grid .header-option {
+.header-options .header-option.search {
+  margin: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.in-grid .header-content,
+.in-grid .header-content .header-options {
+  width: 100%;
+  flex-direction: row;
+}
+
+.in-grid .header-options {
+  justify-content: flex-end;
+}
+
+.in-grid .header-options .header-option {
   text-align: left;
 }
 
-.header-options.in-grid .search {
+.in-grid .header-options .search {
   margin: 20px 0;
+  flex-direction: row;
 }
 
-.header-options.in-grid .everyone {
+.in-grid .header-options .search-input {
+  font-family: "GTSpectra-italic";
+  color: var(--clr-mid-grey);
+  margin-left: 10px;
+  width: 200px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--clr-primary);
+}
+
+.in-grid .header-options .everyone {
   margin: 20px 0;
 }
 
@@ -35,16 +95,6 @@
   font-size: var(--font-small);
   display: flex;
   flex-direction: column;
-}
-
-.who-header {
-  font-family: "GTSpectra";
-  transition: font-size 1.2s;
-  font-size: 36px;
-}
-
-.who-header-grid {
-  fontsize: 24px;
 }
 
 /**

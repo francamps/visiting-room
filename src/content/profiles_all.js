@@ -1,8 +1,8 @@
 export const profiles = [
   {
     quote: "",
-    name: "Theotric Givenss",
-    imagePath: "profile_pics/Theotric_Givenss.jpg",
+    name: "Thetoric Givens",
+    imagePath: "profile_pics/Thetoric_Givens.jpg",
   },
   {
     quote: "",
@@ -95,7 +95,7 @@ export const profiles = [
   {
     quote: "",
     name: "Jeffrey Hilburn",
-    imagePath: "profile_pics/Jeffrey_Hilburn.jpg",
+    imagePath: "profile_pics/Jeff_Hillburn.jpg",
   },
   {
     quote: "",
@@ -145,7 +145,7 @@ export const profiles = [
   {
     quote: "",
     name: "Donahue Smith",
-    imagePath: "profile_pics/Donahue_Smith.jpg",
+    imagePath: "profile_pics/Donohue_Smith.jpg",
   },
   {
     quote: "",
@@ -175,7 +175,7 @@ export const profiles = [
   {
     quote: "",
     name: "Jeffrey Nelson",
-    imagePath: "profile_pics/Jeffrey_Nelson.jpg",
+    imagePath: "profile_pics/Jeffrey_Nelson.png",
   },
   {
     quote: "",

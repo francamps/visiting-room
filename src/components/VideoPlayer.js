@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import ReactPlayer from "react-player"
-import { useStaticQuery, graphql, navigate } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Play from "./Play"
@@ -14,7 +14,7 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
 
   const data = useStaticQuery(graphql`
     query MyQuery {
-      file(relativePath: { eq: "TEMP/KAUNTAU.jpg" }) {
+      file(relativePath: { eq: "TEMP/profile_pics/Kauntau_Reeder.jpg" }) {
         childImageSharp {
           # Specify the image processing specifications right in the query.
           fluid(maxWidth: 2000) {

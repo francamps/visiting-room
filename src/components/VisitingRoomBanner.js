@@ -17,65 +17,45 @@ const VisitingRoomBanner = ({ isGrid, setGrid }) => {
   return (
     <>
       <animated.div
-        className=""
+        className={`visting-room-banner ${isGrid ? "in-grid" : ""}`}
         style={{
           ...props,
-          position: "fixed",
-          display: "flex",
-          alignItems: "center",
           justifyContent: !isGrid ? "center" : "start",
-          flexDirection: "column",
-          width: "100%",
-          height: isGrid ? "340px" : "100%",
-          boxSizing: "border-box",
-          padding: "50px 20px",
-          transition: "align-items 1.2s, width 1.2s, height 1.2s",
-        }}
-        onScroll={() => {
-          console.log("lol")
-          if (!isGrid) setGrid(true)
         }}
       >
-        <div
-          className={`who-header ${isGrid ? "who-header-grid" : ""}`}
-          onClick={() => setGrid(false)}
-        >
+        <div className="who-header" onClick={() => setGrid(false)}>
           Who did you come to visit?
         </div>
-        <div className="header-content" style={{}}>
+        <div
+          className="header-content"
+          onWheel={() => {
+            console.log("lol")
+            if (!isGrid) setGrid(true)
+          }}
+        >
           <div
-            className={`header-options ${isGrid ? "in-grid" : ""}`}
+            className="header-options"
             style={{
               paddingBottom: !isGrid ? "8px" : "0",
               paddingTop: !isGrid ? "8px" : "0",
               borderBottom: !isGrid ? "1px solid #444444" : "none",
             }}
           >
-            <div
-              className="header-option search"
-              style={{
-                flexDirection: isGrid ? "row" : "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {isGrid && <p>Search</p>}
+            <div className="header-option search">
               <IconSearch />
-              {() => {
-                if (!isGrid) return null
-
-                return (
-                  <div
-                    style={{
-                      width: "100px",
-                      height: "14px",
-                      marginLeft: "4px",
-                      borderBottom: "1px solid #888888",
-                    }}
-                  ></div>
-                )
-              }}
+              {isGrid && <p className="search-input">Search</p>}
             </div>
+
+            {isGrid && (
+              <div className="header-option">
+                <p className="search-input">Filter by parrish</p>
+              </div>
+            )}
+            {isGrid && (
+              <div className="header-option">
+                <p className="search-input">Filter by age</p>
+              </div>
+            )}
             {!isGrid && (
               <div
                 className="header-option"

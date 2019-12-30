@@ -12,6 +12,7 @@ const TimelineSteps = ({ step, onGoToStep }) => {
           return (
             <div
               className={`timeline-step ${+step === idx ? "active" : ""}`}
+              key={`step-${idx}`}
               onClick={() => {
                 onGoToStep(idx)
               }}
@@ -22,7 +23,9 @@ const TimelineSteps = ({ step, onGoToStep }) => {
                   {stepObj.title || stepObj.year}
                 </div>
               </div>
-              <div className="dot"></div>
+              <div className="dot-wrap">
+                <div className="dot"></div>
+              </div>
             </div>
           )
         })}

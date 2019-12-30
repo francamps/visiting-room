@@ -3,12 +3,16 @@ import React from "react"
 const Paragraphs = ({ paragraphs, setModal }) => {
   return (
     <div className="paragraph-wrap">
-      {paragraphs.map(paragraph => {
+      {paragraphs.map((paragraph, idx) => {
         if (paragraph.element === "p") {
-          return <div className="paragraph">{paragraph.content}</div>
+          return (
+            <div key={`paragraph-${idx}`} className="paragraph">
+              {paragraph.content}
+            </div>
+          )
         } else if (paragraph.element === "f") {
           return (
-            <div className="footnote-trigger-wrap">
+            <div key={`paragraph-${idx}`} className="footnote-trigger-wrap">
               <div
                 className="footnote-trigger"
                 onClick={() => setModal(paragraph.content)}
@@ -18,9 +22,13 @@ const Paragraphs = ({ paragraphs, setModal }) => {
             </div>
           )
         } else if (paragraph.element === "q") {
-          return <div className="quote">{paragraph.content}</div>
+          return (
+            <div key={`paragraph-${idx}`} className="quote">
+              {paragraph.content}
+            </div>
+          )
         } else if (paragraph.element === "br") {
-          return <p />
+          return <p key={`paragraph-${idx}`} />
         }
         return null
       })}

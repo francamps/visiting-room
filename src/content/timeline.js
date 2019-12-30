@@ -85,14 +85,6 @@ lifers convicted of certain drug distributions crimes.`,
         element: "f",
         content: `Floyd Webb, “Legal Spectrum: The Laws of Life,” The Angolite, May/June 1988, p. 60.`,
       },
-      {
-        element: "q",
-        content: `In 1973, the legislature
-                changed the minimum term for a second-degree murder life
-                sentence to 20 years. Two years later, it increased the
-                minimum to 40 years before parole. In 1977,
-                it removed it entirely.`,
-      },
       { element: "br" },
 
       {
@@ -117,9 +109,11 @@ norm was well-established.`,
       },
       {
         element: "q",
-        content: `In 1979, the state revoked parole eligibility for
-all lifers thereafter convicted of first-degree and
-second-degree murders.`,
+        content: `In 1973, the legislature
+                changed the minimum term for a second-degree murder life
+                sentence to 20 years. Two years later, it increased the
+                minimum to 40 years before parole. In 1977,
+                it removed it entirely.`,
       },
       { element: "br" },
 

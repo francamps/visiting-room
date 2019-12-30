@@ -8,7 +8,7 @@ import "./Menu.css"
 const Menu = ({ theme, isExpanded = false }) => {
   const [isBurgerOpen, setBurgerOpen] = useState(false)
   return (
-    <>
+    <div>
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
         <h2 className="home-title" onClick={() => navigate("/")}>
           The Visiting Room
@@ -54,7 +54,7 @@ const Menu = ({ theme, isExpanded = false }) => {
           Archive
         </p>
       </div>
-    </>
+    </div>
   )
 }
 

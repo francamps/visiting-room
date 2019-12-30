@@ -2,9 +2,11 @@ article {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-y: auto;
-  scroll-behavior: smooth;
   position: relative;
+}
+
+article.timeline {
+  background: var(--clr-white);
 }
 
 .timeline-title,
@@ -16,7 +18,6 @@ article {
   text-align: center;
   text-transform: none;
   min-height: 100vh;
-  width: 100%;
   left: 0;
   right: 0;
   display: flex;
@@ -39,19 +40,20 @@ article {
   position: absolute;
   font-family: GTSpectra;
   font-size: var(--font-large);
-  text-transform: none;
   color: white;
+  text-transform: none;
+  text-shadow: 3px 3px var(--clr-black);
 }
 
 .timeline-wrap {
   display: flex;
   width: 100%;
-  min-height: 100vh;
   margin: 0 auto;
   flex-direction: row;
   overflow: hidden;
   background-color: white;
   transition: background-color 0.4s;
+  scroll-behavior: smooth;
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 4s; /* Firefox < 16 */
@@ -69,39 +71,55 @@ article {
 .timeline-wrap .step {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 300vh;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 60px;
-  min-height: 100vh;
+  align-items: center;
+  justify-self: flex-start;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 }
 
-.timeline-wrap .step:first-child {
-  margin-top: 200px;
+.step-columns {
+  width: 640px;
+  column-count: 2;
+  justify-self: flex-start;
 }
 
-.timeline-wrap.invert .copy-selector .copy {
+.timeline .step:first-child {
+  /*margin-top: 200px;*/
+}
+
+.timeline.invert .timeline-copy .copy {
   color: black;
   transition: color 0.4s;
 }
 
-.timeline-wrap .timeline-copy {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+.timeline .timeline-copy .copy {
+  font-weight: 300;
 }
 
-.timeline-wrap .timeline-copy .step .year-label,
-.timeline-wrap .timeline-copy .step h2 {
+.timeline .timeline-copy .step .year-label,
+.timeline .timeline-copy .step h2 {
   width: 640px;
   margin: 0 auto;
   margin-bottom: 20px;
 }
 
-.timeline-wrap .timeline-copy .step h3.year-label {
+.timeline .timeline-copy .step h3.year-label {
   font-family: "GTEesti";
   font-weight: lighter;
   font-size: var(--font-small);
 }
 
-.timeline-wrap .timeline-copy .lede {
+.timeline .timeline-copy .lede {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -109,36 +127,34 @@ article {
   margin: 0 auto;
 }
 
-.timeline-wrap .lede-initial {
+.timeline .lede-initial {
   display: inline-block;
   line-height: 110px;
 }
 
-.timeline-wrap .timeline-copy .paragraph-wrap {
+.timeline .timeline-copy .paragraph-wrap {
   display: block;
   margin: 0 auto;
-  width: 640px;
+  /*width: 640px;*/
 }
 
-.timeline-wrap .timeline-copy .paragraph {
+.timeline .timeline-copy .paragraph {
   display: inline;
   padding: 0;
-  max-width: 640px;
+  /*max-width: 640px;*/
   margin: 0 auto;
   line-height: 1.5em;
 }
 
-.timeline-wrap .timeline-copy .lede .lede-content .paragraph-wrap {
+.timeline .timeline-copy .lede .lede-content .paragraph-wrap {
   width: 100%;
 }
 
-.timeline-wrap .timeline-copy.copy-selector {
+.timeline .timeline-copy {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
   padding-top: 0;
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
@@ -148,7 +164,7 @@ article {
   animation: fadein 4s;
 
   font-family: "GTSpectra";
-  font-size: var(--font-copy);
+  font-size: var(--font-normal);
   text-align: justify;
   color: black;
 }
@@ -157,7 +173,7 @@ article {
   padding-left: 0%;
 }
 
-.timeline-wrap .quote {
+.timeline .quote {
   max-width: 1024px;
   margin: 0 auto;
   font-size: 1.3em;
@@ -166,12 +182,12 @@ article {
   margin: 2em 0;
 }
 
-.timeline-wrap .footnote-trigger-wrap {
+.timeline .footnote-trigger-wrap {
   display: inline-block;
   height: 20px;
 }
 
-.timeline-wrap .footnote-trigger {
+.timeline .footnote-trigger {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -186,7 +202,7 @@ article {
   transition: background-color 0.4s, color 0.4s;
 }
 
-.timeline-wrap .footnote-trigger:hover {
+.timeline .footnote-trigger:hover {
   color: black;
   transition: background-color 0.4s, color 0.4s;
 }
@@ -237,7 +253,7 @@ article {
 .timeline-figure figure .chart-wrap .title {
   font-family: "GTEesti";
   font-weight: 100;
-  font-size: 0.7em;
+  font-size: var(--font-small);
 }
 
 .timeline-figure figure.static {
@@ -249,7 +265,7 @@ article {
 }
 
 .timeline-figure .caption {
-  color: white;
+  color: var(--clr-black);
   font-size: var(--font-small);
   margin: 0;
 }

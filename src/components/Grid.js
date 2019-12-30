@@ -11,10 +11,10 @@ const Grid = () => {
   const [isHover, setHover] = useState(null)
   const fadeInProps = useSpring({
     config: { duration: 2000 },
-    to: { opacity: 1, filter: "blur(0)" },
+    to: { opacity: 1 /*, filter: "blur(0)"*/ },
     from: {
       opacity: 0,
-      filter: "blur(1.5rem)",
+      //filter: "blur(1.5rem)",
     },
   })
 
@@ -23,15 +23,6 @@ const Grid = () => {
       className="grid"
       style={{
         ...fadeInProps,
-        position: "absolute",
-        width: "100%",
-        left: "0px",
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        gridGap: 0,
-        gridAutoRows: "428px",
-        padding: "160px 0",
-        boxSizing: "border-box",
       }}
     >
       {profiles.map((profile, idx) => {
