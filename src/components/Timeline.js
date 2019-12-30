@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 
 import "./Timeline.css"
 
@@ -30,15 +30,31 @@ function onVisibilityChange(attribute, callback) {
 
 const IS_DYNAMIC = false
 
-const TONES = Array(TIMELINE.length).fill(Math.floor(205 + Math.random() * 50))
+const TONES = Array(TIMELINE.length)
+  .fill(0)
+  .map(d => Math.floor(225 + Math.random() * 30))
 
 const Timeline = () => {
   const [isFigureActive, setFigureActive] = useState(null)
   const [step, setStep] = useState(0)
+  const timelineRef = useRef()
   const [progress, setProgress] = useState(0)
   const [modalContent, setModal] = useState(false)
+  const [invertColor, setInvert] = useState(true)
+
+  function toggleColor() {
+    if (timelineRef.current.getBoundingClientRect().top < -440) {
+      setInvert(false)
+    } else {
+      setInvert(true)
+    }
+  }
 
   useEffect(() => {
+    document.addEventListener("wheel", () => {
+      toggleColor()
+    })
+
     TIMELINE.forEach((_, index) => {
       document.addEventListener("wheel", () => {
         onVisibilityChange(`step-${index}`, function() {
@@ -61,7 +77,7 @@ const Timeline = () => {
   return (
     <>
       <Menu theme="light" />
-      <article className="timeline">
+      <article className="timeline" ref={timelineRef}>
         <div className="timeline-title">
           <div className="background" />
           <h2>The history of life without parole in Louisiana</h2>
@@ -101,21 +117,30 @@ const Timeline = () => {
                       />
                     </div>
                   </div>
-                  <div style={{ width: "640px", height: "200vh" }}></div>
                   {TIMELINE[step].image && (
-                    <div
-                      className={`timeline-figure ${
-                        !!TIMELINE[step].image ? "figure-flex" : ""
-                      }
+                    <>
+                      <div style={{ width: "640px", height: "100vh" }}></div>
+                      <div
+                        className={`timeline-figure ${
+                          !!TIMELINE[step].image ? "figure-flex" : ""
+                        }
                         ${step === 4 || step === 3 ? "figure-wide" : ""}`}
-                    >
-                      <TimelineFigure
-                        step={i /* step */}
-                        progress={progress}
-                        caption={TIMELINE[step].caption}
-                        setFigureActive={setFigureActive}
-                      />
-                    </div>
+                        style={{
+                          backgroundColor: `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
+                        }}
+                      >
+                        <TimelineFigure
+                          step={i /* step */}
+                          progress={progress}
+                          caption={TIMELINE[step].caption}
+                          setFigureActive={setFigureActive}
+                        />
+                      </div>
+                      <div style={{ width: "640px", height: "100vh" }}></div>
+                    </>
+                  )}
+                  {!TIMELINE[step].image && (
+                    <div style={{ width: "640px", height: "300vh" }}></div>
                   )}
                 </div>
               )
@@ -132,7 +157,9 @@ const Timeline = () => {
 
         <TimelineSteps
           step={step}
+          invertColor={invertColor}
           onGoToStep={d => {
+            setStep(d)
             goToStep(d)
           }}
         />

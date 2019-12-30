@@ -58,7 +58,7 @@ const ChartB = () => {
             { year: d.yearF, value: d.value },
           ])
           .attr("class", `year-${d.yearF}`)
-          .attr("fill", "var(--clr-primary)")
+          .attr("fill", "var(--clr-chart)")
           .attr("fill-opacity", 0.2)
           .attr("stroke", "none")
           .attr("opacity", 0.5)
@@ -68,7 +68,7 @@ const ChartB = () => {
       .attr("x2", d => xScale(d.yearF))
       .attr("y1", d => yScale(0))
       .attr("y2", d => yScale(d.value))
-      .style("stroke", "var(--clr-primary")
+      .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
 
     svg
@@ -80,7 +80,7 @@ const ChartB = () => {
       .attr("x2", d => xScale(d.yearF))
       .attr("y1", d => yScale(d.value))
       .attr("y2", HEIGHT - m.b)
-      .style("stroke", "var(--clr-primary")
+      .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
       .style("stroke-dasharray", "2px 5px")
       .style("opacity", 0.5)
@@ -92,7 +92,7 @@ const ChartB = () => {
       .attr("r", 4)
       .style("fill", "white")
       .style("fill-opacity", 1)
-      .style("stroke", "var(--clr-primary")
+      .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
 
     svg

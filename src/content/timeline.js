@@ -282,14 +282,4 @@ or more dramatic legislative reform.`,
     ],
     image: "image5.png",
   },
-  {
-    year: null,
-    paragraphs: [],
-    image: "image6.png",
-  },
-  {
-    year: null,
-    paragraphs: [],
-    image: "image7.png",
-  },
 ]

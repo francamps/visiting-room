@@ -4,9 +4,9 @@ import "./TimelineSteps.css"
 
 import { TIMELINE } from "../content/timeline"
 
-const TimelineSteps = ({ step, onGoToStep }) => {
+const TimelineSteps = ({ step, invertColor, onGoToStep }) => {
   return (
-    <div className="timeline-steps">
+    <div className={`timeline-steps ${invertColor ? "invert" : ""}`}>
       <div className="timeline-steps-labels">
         {TIMELINE.map((stepObj, idx) => {
           return (

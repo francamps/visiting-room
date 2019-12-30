@@ -11,9 +11,9 @@
   --copy-line-height: 1.7em;
 
   /* Colors */
-  --clr-primary: rgb(216, 216, 192);
-  /*--clr-primary: thistle;
-  216,192,216*/
+  --clr-primary: rgb(229, 143, 28);
+  --clr-secondary: rgb(216, 216, 192);
+  --clr-chart: var(--clr-primary);
   --clr-white: #ffffff;
   --clr-black: #000000 /*#080000*/;
   --clr-dark-bg: #141414;
@@ -80,7 +80,7 @@ body {
 
 ::selection {
   background: var(--clr-primary);
-  color: var(--clr-black);
+  color: var(--clr-white);
 }
 
 #root {

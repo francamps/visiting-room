@@ -52,7 +52,7 @@ const ChartA = () => {
     svg
       .append("path")
       .datum(data)
-      .attr("fill", "var(--clr-primary)")
+      .attr("fill", "var(--clr-chart)")
       .attr("fill-opacity", 0.2)
       .attr("stroke", "none")
       .attr("opacity", 0.5)
@@ -62,7 +62,7 @@ const ChartA = () => {
       .append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "var(--clr-primary)")
+      .attr("stroke", "var(--clr-chart)")
       .attr("stroke-width", 1.5)
       .attr("opacity", 0.5)
       .attr("d", pathLine)
@@ -73,7 +73,7 @@ const ChartA = () => {
       .attr("cy", d => yScale(d.d))
       .attr("r", 4)
       .style("fill", "white")
-      .style("stroke", "var(--clr-primary")
+      .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
 
     svg
@@ -113,7 +113,7 @@ const ChartA = () => {
       .attr("x2", d => xScale(d.year))
       .attr("y1", d => yScale(d.d) + 2)
       .attr("y2", d => HEIGHT - m.b)
-      .style("stroke", "var(--clr-primary")
+      .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
       .style("stroke-dasharray", "2px 5px")
       .style("opacity", 0.5)

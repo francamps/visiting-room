@@ -73,7 +73,7 @@ article.timeline {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 300vh;
+  height: 400vh;
 }
 
 .step-content {
@@ -223,9 +223,10 @@ article.timeline {
 }
 
 .timeline-figure {
-  height: 200vh;
-  width: 500px;
+  height: 100vh;
+  width: 100%;
   margin: 0 auto;
+  position: sticky;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -235,9 +236,6 @@ article.timeline {
 .timeline-figure figure {
   width: 500px;
   margin: 0 auto;
-  margin-top: 40px;
-  position: sticky;
-  top: 0;
 }
 
 .timeline-figure figure img {
