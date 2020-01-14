@@ -27,32 +27,46 @@ const Menu = ({ theme, isExpanded = false }) => {
         }`}
       >
         <Link to="/">
-          <p>Home</p>
+          <div className="menu-option-wrap">
+            <p className="hover-link">Home</p>
+          </div>
         </Link>
         <Link to="/visiting-room">
-          <p>The Visiting Room</p>
+          <div className="menu-option-wrap">
+            <p className="hover-link">The Visiting Room</p>
+          </div>
         </Link>
-        <p
-          onClick={() => {
-            navigate("/timeline")
-          }}
-        >
-          History
-        </p>
-        <p
-          onClick={() => {
-            navigate("/about")
-          }}
-        >
-          About The Project
-        </p>
-        <p
-          onClick={() => {
-            navigate("/about")
-          }}
-        >
-          Archive
-        </p>
+
+        <div className="menu-option-wrap">
+          <p
+            className="hover-link"
+            onClick={() => {
+              navigate("/timeline")
+            }}
+          >
+            History
+          </p>
+        </div>
+        <div className="menu-option-wrap">
+          <p
+            className="hover-link"
+            onClick={() => {
+              navigate("/about")
+            }}
+          >
+            About The Project
+          </p>
+        </div>
+        <div className="menu-option-wrap">
+          <p
+            className="hover-link"
+            onClick={() => {
+              navigate("/about")
+            }}
+          >
+            Archive
+          </p>
+        </div>
       </div>
     </div>
   )

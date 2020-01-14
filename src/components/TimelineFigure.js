@@ -16,7 +16,7 @@ const images = [null, image1, image2, null, null, null, image4, null, image6]
 const TimelineFigure = ({ step = 1, caption, setFigureActive }) => {
   return (
     <figure className={`stickness ${step === 4 ? "static" : ""}`}>
-      {step === 3 && (
+      {step === 2 && (
         <div className="chart-wrap">
           <ChartA />
           <h4 className="title">
@@ -24,7 +24,7 @@ const TimelineFigure = ({ step = 1, caption, setFigureActive }) => {
           </h4>
         </div>
       )}
-      {step === 4 && (
+      {step === 3 && (
         <div className="chart-wrap">
           <ChartB />
           <h4 className="title">

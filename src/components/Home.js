@@ -97,7 +97,7 @@ const Home = () => {
               navigate("/timeline")
             }}
           >
-            <div class="link-wrap">
+            <div className="link-wrap">
               <span className="hover-link">
                 Learn the history of Life Without Parole sentencing
               </span>

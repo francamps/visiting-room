@@ -52,20 +52,18 @@ article.timeline {
   flex-direction: row;
   overflow: hidden;
   background-color: white;
-  transition: background-color 0.4s;
   scroll-behavior: smooth;
 
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s; /* Firefox < 16 */
-  -ms-animation: fadein 4s; /* Internet Explorer */
-  -o-animation: fadein 4s; /* Opera < 12.1 */
-  animation: fadein 4s;
+  /* -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+  /* -moz-animation: fadein 4s; /* Firefox < 16 */
+  /* -ms-animation: fadein 4s; /* Internet Explorer */
+  /* -o-animation: fadein 4s; /* Opera < 12.1 */
+  /* animation: fadein 4s; */
 }
 
 .timeline-wrap.invert {
   background-image: none;
   background-color: black;
-  transition: background-color 0.4s;
 }
 
 .timeline-wrap .step {
@@ -157,11 +155,11 @@ article.timeline {
   width: 100%;
   padding-top: 0;
 
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s; /* Firefox < 16 */
-  -ms-animation: fadein 4s; /* Internet Explorer */
-  -o-animation: fadein 4s; /* Opera < 12.1 */
-  animation: fadein 4s;
+  /* -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+  /* -moz-animation: fadein 4s; /* Firefox < 16 */
+  /* -ms-animation: fadein 4s; /* Internet Explorer */
+  /* -o-animation: fadein 4s; /* Opera < 12.1 */
+  /* animation: fadein 4s; */
 
   font-family: "GTSpectra";
   font-size: var(--font-normal);

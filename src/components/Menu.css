@@ -60,11 +60,11 @@
   cursor: pointer;
   margin: 0;
   letter-spacing: normal;
-  transition: letter-spacing 1s;
-  padding: 24px;
+  padding: 6px 0;
+  margin: 10px 0;
   color: var(--clr-white);
   opacity: 0.8;
-  transition: letter-spacing 1s, opacity 0.4s;
+  transition: letter-spacing 0.4s, opacity 0.4s, color 0.4s;
 }
 
 .menu-options.menu-light p {
@@ -75,7 +75,7 @@
   opacity: 1;
   color: var(--clr-primary);
   letter-spacing: 0.02em;
-  transition: letter-spacing 1s, opacity 0.4s;
+  transition: letter-spacing 0.4s, opacity 0.4s, color 0.4s;
 }
 
 .menu .home-title {
@@ -102,4 +102,47 @@
   backdrop-filter: blur(50px);
   z-index: 10;
   transition: backdrop-filter 0.4s;
+}
+
+/*
+MENU LINKS
+*/
+
+.menu-option-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 0 15px;
+}
+
+.hover-link {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.hover-link:before,
+.hover-link:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 0px;
+  height: 5px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 0;
+  background-color: var(--clr-primary);
+}
+
+.menu-option-wrap:hover .hover-link:before,
+.menu-option-wrap:hover .hover-link:after {
+  width: 50%;
+  opacity: 1;
+}
+
+.hover-link:before {
+  left: 50%;
+}
+.hover-link:after {
+  right: 50%;
 }

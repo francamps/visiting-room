@@ -7,7 +7,7 @@ import Play from "./Play"
 import Caret from "./Caret"
 import IconSearch from "./Symbols/Search"
 
-const VisitingRoomBanner = ({ isGrid, setGrid }) => {
+const VisitingRoomBanner = ({ showGrid, setGrid }) => {
   const props = useSpring({
     config: { duration: 1200, mass: 5, tension: 350, friction: 40 },
     to: { opacity: 1, marginTop: "0" },
@@ -17,53 +17,44 @@ const VisitingRoomBanner = ({ isGrid, setGrid }) => {
   return (
     <>
       <animated.div
-        className={`visting-room-banner ${isGrid ? "in-grid" : ""}`}
-        style={{
-          ...props,
-          justifyContent: !isGrid ? "center" : "start",
-        }}
+        className={`visting-room-banner ${showGrid ? "in-grid" : ""}`}
+        style={props}
       >
         <div className="who-header" onClick={() => setGrid(false)}>
-          Who did you come to visit?
+          {showGrid ? (
+            <p>Who would you like to talk to?</p>
+          ) : (
+            <>
+              <p>There are 5000 serving life without parole in Louisiana.</p>
+              <p>Here are some of their stories.</p>
+            </>
+          )}
         </div>
         <div
           className="header-content"
           onWheel={() => {
-            console.log("lol")
-            if (!isGrid) setGrid(true)
+            if (!showGrid) setGrid(true)
           }}
         >
-          <div
-            className="header-options"
-            style={{
-              paddingBottom: !isGrid ? "8px" : "0",
-              paddingTop: !isGrid ? "8px" : "0",
-              borderBottom: !isGrid ? "1px solid #444444" : "none",
-            }}
-          >
+          <div className="header-options">
             <div className="header-option search">
               <IconSearch />
-              {isGrid && <p className="search-input">Search</p>}
+              {showGrid && <p className="search-input">Search</p>}
             </div>
 
-            {isGrid && (
+            {showGrid && (
               <div className="header-option">
                 <p className="search-input">Filter by parrish</p>
               </div>
             )}
-            {isGrid && (
+            {showGrid && (
               <div className="header-option">
                 <p className="search-input">Filter by age</p>
               </div>
             )}
-            {!isGrid && (
+            {!showGrid && (
               <div
                 className="header-option"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: isGrid ? "start" : "center",
-                }}
                 onClick={() => {
                   setGrid(true)
                 }}
@@ -72,14 +63,8 @@ const VisitingRoomBanner = ({ isGrid, setGrid }) => {
                 <Caret direction="down" animate={true} />
               </div>
             )}
-            {!isGrid && (
-              <div
-                className="header-option everyone"
-                style={{
-                  flexDirection: isGrid ? "row" : "column",
-                  alignItems: "center",
-                }}
-              >
+            {!showGrid && (
+              <div className="header-option everyone">
                 <div>
                   <div
                     style={{
@@ -92,10 +77,10 @@ const VisitingRoomBanner = ({ isGrid, setGrid }) => {
                   <div
                     style={{
                       paddingLeft: "8px",
-                      display: isGrid ? "inline" : "block",
+                      display: showGrid ? "inline" : "block",
                     }}
                   >
-                    <Play size={isGrid ? "small" : "normal"} />
+                    <Play size={showGrid ? "small" : "normal"} />
                   </div>
                 </div>
               </div>

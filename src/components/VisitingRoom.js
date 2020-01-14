@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import Menu from "./Menu"
 import VisitingRoomBanner from "./VisitingRoomBanner"
@@ -8,26 +8,28 @@ import Video from "./Video"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ pageContext = { profileId: null } }) => {
-  const [isGrid, setGrid] = useState(false)
+  const [isGrid, setGrid] = useState(true)
   const { profileId } = pageContext
+
+  const [showGrid, setShowGrid] = useState(false)
+  useEffect(() => {
+    let timer1 = setTimeout(() => setShowGrid(true), 3000)
+
+    return () => {
+      clearTimeout(timer1)
+    }
+  }, [])
 
   return (
     <div
-      className={`visiting-room-wrap container ${isGrid ? "uncovered" : ""}`}
-      style={{
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-      }}
+      className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
       onScroll={() => {
         if (!isGrid) setGrid(true)
       }}
     >
       <Menu isExpanded={false} />
-      {isGrid && <Grid />}
-      <VisitingRoomBanner isGrid={isGrid} setGrid={setGrid} />
+      {showGrid && <Grid />}
+      <VisitingRoomBanner showGrid={showGrid} />
       {profileId && (
         <Video profileId={"arthur_carter"} name={"Arthur Carter"} />
       )}

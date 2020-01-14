@@ -177,7 +177,7 @@ population approaches 5,000.`,
       },
       {
         element: "p",
-        content: `Racial disparities infect
+        content: `Racial disparities define
 the system: the percentage of those serving LWOP
 sentences who are African-American is around 73 percent.`,
       },
