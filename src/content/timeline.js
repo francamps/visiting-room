@@ -265,19 +265,16 @@ already served over 25 years. `,
         element: "f",
         content: `This cartoon comes from the December 1989 Angolite article titled “Longtermers, Revisited,” p.20.`,
       },
-
-      {
-        element: "q",
-        content: `Today, Louisiana has nearly 5,000 people serving
-life-without-parole sentences. Fifteen percent of the
-state’s prison population is serving life without
-parole. `,
-      },
       {
         element: "p",
         content: `The only path to release
 for these lifers is through gubernatorial commutations
 or more dramatic legislative reform.`,
+      },
+      {
+        element: "q",
+        content: `Today, Louisiana has nearly 5,000 people serving
+life-without-parole sentences. `,
       },
     ],
     image: "image5.png",

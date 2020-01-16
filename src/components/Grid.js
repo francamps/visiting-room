@@ -44,7 +44,7 @@ const Grid = () => {
             </div>
             <div className="cell-hover-layer"></div>
             <div className="cell-hover-quote">
-              <p className="quote">{profile.quote}</p>
+              <p className="quote">{`"${profile.quote}"`}</p>
             </div>
             <h3
               className="name-tag"

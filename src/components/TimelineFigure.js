@@ -1,4 +1,6 @@
 import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import image1 from "../images/TEMP/timeline/image1.png"
 import image2 from "../images/TEMP/timeline/image2.png"
@@ -11,45 +13,84 @@ import image6 from "../images/TEMP/timeline/image6.png"
 import ChartA from "./charts/ChartA"
 import ChartB from "./charts/ChartB"
 
-const images = [null, image1, image2, null, null, null, image4, null, image6]
+//const images = [null, image1, image2, null, null, null, image4, null, image6]
+const images = [
+  null,
+  "timeline/image1.png",
+  "timeline/image2.png",
+  null,
+  null,
+  null,
+  "timeline/image4.png",
+  null,
+  "timeline/image6.png",
+]
 
-const TimelineFigure = ({ step = 1, caption, setFigureActive }) => {
-  return (
-    <figure className={`stickness ${step === 4 ? "static" : ""}`}>
-      {step === 2 && (
-        <div className="chart-wrap">
-          <ChartA />
-          <h4 className="title">
-            People serving life without parole in Louisiana
-          </h4>
-        </div>
-      )}
-      {step === 3 && (
-        <div className="chart-wrap">
-          <ChartB />
-          <h4 className="title">
-            State prison commutations in Louisiana by Governor
-          </h4>
-        </div>
-      )}
-      {step !== 3 && images[step] && (
-        <>
-          <img
-            src={images[step]}
-            alt="Angolite article The Forgotten men"
-            style={{
-              width: "100%",
-              right: 0,
-            }}
-            onClick={() => {
-              setFigureActive(images[step])
-            }}
-          />
-          {caption && <p className="caption">{caption}</p>}
-        </>
-      )}
-    </figure>
-  )
-}
+const TimelineFigure = ({ step = 1, caption, setFigureActive }) => (
+  <StaticQuery
+    query={graphql`
+      query {
+        images: allFile {
+          edges {
+            node {
+              relativePath
+              name
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      const image = data.images.edges.find(n => {
+        return n.node.relativePath.includes(images[step])
+      })
+
+      console.log(image, images[step])
+
+      if (!image) {
+        return null
+      }
+
+      return (
+        <figure className={`stickness ${step === 4 ? "static" : ""}`}>
+          {step === 2 && (
+            <div className="chart-wrap">
+              <ChartA />
+              <h4 className="title">
+                People serving life without parole in Louisiana
+              </h4>
+            </div>
+          )}
+          {step === 3 && (
+            <div className="chart-wrap">
+              <ChartB />
+              <h4 className="title">
+                State prison commutations in Louisiana by Governor
+              </h4>
+            </div>
+          )}
+          {step !== 3 && images[step] && (
+            <>
+              <Img
+                alt={"TODO: NEEDS AN ALT"}
+                fluid={image.node.childImageSharp.fluid}
+                style={{ height: "100%", width: "100%" }}
+                onClick={() => {
+                  setFigureActive(images[step])
+                }}
+              />
+              {caption && <p className="caption">{caption}</p>}
+            </>
+          )}
+        </figure>
+      )
+    }}
+  />
+)
 
 export default TimelineFigure

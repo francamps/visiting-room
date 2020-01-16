@@ -35,12 +35,12 @@
 
 .in-grid .who-header {
   font-weight: 300;
-  font-size: 20px;
-  min-width: 300px;
+  min-width: 440px;
 }
 
 .in-grid .who-header p {
   text-align: left;
+  font-size: 24px;
 }
 
 .header-content {
@@ -61,7 +61,6 @@
 
   padding-bottom: 8px;
   padding-top: 8px;
-  border-bottom: 1px solid #444444;
 }
 
 .header-options .header-option {

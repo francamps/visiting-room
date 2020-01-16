@@ -5,7 +5,7 @@ import Paragraphs from "./Paragraphs"
 import { TIMELINE } from "../content/timeline"
 
 const TimelineLede = ({ setModal }) => (
-  <div className="step" data-step={`step-0`}>
+  <div className="timeline-step" data-step={`step-0`}>
     <div className="step-content">
       <h3 className="year-label">{TIMELINE[0].year}</h3>
       <h2>{TIMELINE[0].title}</h2>

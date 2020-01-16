@@ -31,8 +31,6 @@ article.timeline {
   bottom: 0;
   right: 0;
   left: 0;
-  background: url("../images/TEMP/angolabg.jpg");
-  background-size: cover;
   filter: brightness(50%);
 }
 
@@ -66,7 +64,7 @@ article.timeline {
   background-color: black;
 }
 
-.timeline-wrap .step {
+.timeline-wrap .timeline-step {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -88,11 +86,8 @@ article.timeline {
 .step-columns {
   width: 640px;
   column-count: 2;
+  column-gap: 2em;
   justify-self: flex-start;
-}
-
-.timeline .step:first-child {
-  /*margin-top: 200px;*/
 }
 
 .timeline.invert .timeline-copy .copy {
@@ -104,14 +99,15 @@ article.timeline {
   font-weight: 300;
 }
 
-.timeline .timeline-copy .step .year-label,
-.timeline .timeline-copy .step h2 {
+.timeline .timeline-copy .timeline-step .year-label,
+.timeline .timeline-copy .timeline-step h2 {
   width: 640px;
   margin: 0 auto;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.timeline .timeline-copy .step h3.year-label {
+.timeline .timeline-copy .timeline-step h3.year-label {
   font-family: "GTEesti";
   font-weight: lighter;
   font-size: var(--font-small);
@@ -176,8 +172,10 @@ article.timeline {
   margin: 0 auto;
   font-size: 1.3em;
   line-height: 1.5em;
-  text-align: center;
+  text-align: right;
   margin: 2em 0;
+  margin-right: -50px;
+  padding-left: 50px;
 }
 
 .timeline .footnote-trigger-wrap {

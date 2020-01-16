@@ -11,7 +11,7 @@ const TimelineSteps = ({ step, invertColor, onGoToStep }) => {
         {TIMELINE.map((stepObj, idx) => {
           return (
             <div
-              className={`timeline-step ${+step === idx ? "active" : ""}`}
+              className={`timeline-step-toc ${+step === idx ? "active" : ""}`}
               key={`step-${idx}`}
               onClick={() => {
                 onGoToStep(idx)

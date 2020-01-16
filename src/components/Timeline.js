@@ -9,6 +9,7 @@ import TimelineSteps from "./TimelineSteps"
 import TimelineLede from "./TimelineLede"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
+import TimelineTitle from "./TimelineTitle"
 
 import { TIMELINE } from "../content/timeline"
 
@@ -59,7 +60,7 @@ const Timeline = () => {
       document.addEventListener("wheel", () => {
         onVisibilityChange(`step-${index}`, function() {
           setStep(index)
-          if (IS_DYNAMIC) setProgress(null /* TODO: calculate progress */)
+          //if (IS_DYNAMIC) setProgress(null)
         })()
       })
     })
@@ -78,10 +79,7 @@ const Timeline = () => {
     <>
       <Menu theme="light" />
       <article className="timeline" ref={timelineRef}>
-        <div className="timeline-title">
-          <div className="background" />
-          <h2>The history of life without parole in Louisiana</h2>
-        </div>
+        <TimelineTitle />
         <div
           className="timeline-copy"
           style={{
@@ -101,9 +99,10 @@ const Timeline = () => {
               return (
                 <div
                   key={`timeline-step-${i + 1}`}
-                  className="step"
+                  className="timeline-step"
                   data-step={`step-${i + 1}`}
                   style={{
+                    transform: "translate3d(0,0,0)",
                     backgroundColor: `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
                   }}
                 >
@@ -130,7 +129,7 @@ const Timeline = () => {
                         }}
                       >
                         <TimelineFigure
-                          step={i /* step */}
+                          step={i}
                           progress={progress}
                           caption={TIMELINE[step].caption}
                           setFigureActive={setFigureActive}

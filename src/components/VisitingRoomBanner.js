@@ -25,7 +25,9 @@ const VisitingRoomBanner = ({ showGrid, setGrid }) => {
             <p>Who would you like to talk to?</p>
           ) : (
             <>
-              <p>There are 5000 serving life without parole in Louisiana.</p>
+              <p>
+                Louisiana has nearly 5,000 people serving life without parole.
+              </p>
               <p>Here are some of their stories.</p>
             </>
           )}
@@ -37,10 +39,12 @@ const VisitingRoomBanner = ({ showGrid, setGrid }) => {
           }}
         >
           <div className="header-options">
-            <div className="header-option search">
-              <IconSearch />
-              {showGrid && <p className="search-input">Search</p>}
-            </div>
+            {showGrid && (
+              <div className="header-option search">
+                <IconSearch />
+                <p className="search-input">Search</p>
+              </div>
+            )}
 
             {showGrid && (
               <div className="header-option">

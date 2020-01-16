@@ -1,4 +1,4 @@
-.timeline-steps {
+.timeline-step-tocs {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -11,7 +11,7 @@
   z-index: 11;
 }
 
-.timeline-step {
+.timeline-step-toc {
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -29,31 +29,31 @@
   cursor: pointer;
 }
 
-.invert .timeline-step {
+.invert .timeline-step-toc {
   color: var(--clr-white);
 }
 
-.timeline-step.active {
+.timeline-step-toc.active {
   font-size: var(--font-normal);
   color: var(--clr-dark-bg);
   font-weight: 900;
   transition: font-weight 0.4s, flex 0.4s, font-size 0.4s, color 0.4s;
 }
 
-.invert .timeline-step,
-.invert .timeline-step.active {
+.invert .timeline-step-toc,
+.invert .timeline-step-toc.active {
   color: var(--clr-white);
   transition: color 0.4s;
 }
 
-.timeline-step .dot-wrap {
+.timeline-step-toc .dot-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.timeline-step .dot {
+.timeline-step-toc .dot {
   width: 3px;
   height: 3px;
   border-radius: 10px;
@@ -61,28 +61,28 @@
   border: 2px solid var(--clr-dark-bg);
 }
 
-.invert .timeline-step .dot {
+.invert .timeline-step-toc .dot {
   border: 2px solid var(--clr-light-grey);
 }
 
-.timeline-step.active .dot {
+.timeline-step-toc.active .dot {
   margin: 6px;
   border: 2px solid var(--clr-primary);
 }
 
-.timeline-step:hover {
+.timeline-step-toc:hover {
   background-color: rgba(0, 0, 0, 0.2);
   transition: background-color 0.4s;
 }
 
-.timeline-steps .upper-label {
+.timeline-step-tocs .upper-label {
   text-align: right;
   font-size: var(--font-xsmall);
   font-family: "GTSpectra";
   font-weight: 300;
 }
 
-.timeline-steps .actual-label {
+.timeline-step-tocs .actual-label {
   font-family: "GTSpectra";
   font-weight: 500;
   font-size: var(--font-small);
@@ -92,7 +92,7 @@
   transition: opacity 0.4s, height 0.4s;
 }
 
-.timeline-step.active .actual-label {
+.timeline-step-toc.active .actual-label {
   opacity: 1;
   height: auto;
   transition: opacity 0.4s, height 0.4s;
