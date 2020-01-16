@@ -1,4 +1,4 @@
-.timeline-step-tocs {
+.timeline-steps {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -75,14 +75,14 @@
   transition: background-color 0.4s;
 }
 
-.timeline-step-tocs .upper-label {
+.timeline-step-toc .upper-label {
   text-align: right;
   font-size: var(--font-xsmall);
   font-family: "GTSpectra";
   font-weight: 300;
 }
 
-.timeline-step-tocs .actual-label {
+.timeline-step-toc .actual-label {
   font-family: "GTSpectra";
   font-weight: 500;
   font-size: var(--font-small);
