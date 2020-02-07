@@ -229,6 +229,10 @@ article.timeline {
   justify-content: center;
 }
 
+.timeline-figure.long {
+  height: 200vh;
+}
+
 .timeline-figure figure {
   width: 500px;
   margin: 0 auto;

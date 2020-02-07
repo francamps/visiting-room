@@ -11,6 +11,8 @@ import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
 import TimelineTitle from "./TimelineTitle"
 
+import TimelineAngolite from "./TimelineAngolite"
+
 import { TIMELINE } from "../content/timeline"
 
 function isElementInViewport(attribute) {
@@ -42,9 +44,13 @@ const Timeline = () => {
   const [progress, setProgress] = useState(0)
   const [modalContent, setModal] = useState(false)
   const [invertColor, setInvert] = useState(true)
+  const [isAngolite, setAngolite] = useState(false)
 
   function toggleColor() {
-    if (timelineRef.current.getBoundingClientRect().top < -440) {
+    if (
+      timelineRef.current &&
+      timelineRef.current.getBoundingClientRect().top < -440
+    ) {
       setInvert(false)
     } else {
       setInvert(true)
@@ -52,9 +58,7 @@ const Timeline = () => {
   }
 
   useEffect(() => {
-    document.addEventListener("wheel", () => {
-      toggleColor()
-    })
+    document.addEventListener("wheel", toggleColor)
 
     TIMELINE.forEach((_, index) => {
       document.addEventListener("wheel", () => {
@@ -64,7 +68,14 @@ const Timeline = () => {
         })()
       })
     })
+
+    return function removeWheelToggle() {
+      document.removeEventListener("wheel", toggleColor)
+    }
   }, [])
+
+  // TODO: Disable the wheel on
+  //useEffect(() => {}, [isAngolite])
 
   const goToStep = step => {
     const el = document.querySelector(`[data-step="step-${step}"]`)
@@ -95,6 +106,7 @@ const Timeline = () => {
             </div>
             {TIMELINE.slice(1).map((timelineStep, i) => {
               if (!timelineStep.paragraphs) return null
+              const hasImage = timelineStep.image
 
               return (
                 <div
@@ -116,35 +128,66 @@ const Timeline = () => {
                       />
                     </div>
                   </div>
-                  {TIMELINE[step].image && (
+                  {timelineStep.image && (
                     <>
                       <div style={{ width: "640px", height: "100vh" }}></div>
                       <div
                         className={`timeline-figure ${
-                          !!TIMELINE[step].image ? "figure-flex" : ""
+                          !!hasImage ? "figure-flex" : ""
                         }
-                        ${step === 4 || step === 3 ? "figure-wide" : ""}`}
+                        ${i === 4 || i === 3 ? "figure-wide long" : ""}`}
                         style={{
-                          backgroundColor: `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
+                          backgroundColor:
+                            i === TIMELINE.slice(1).length - 1
+                              ? "white"
+                              : `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
                         }}
                       >
                         <TimelineFigure
                           step={i}
                           progress={progress}
-                          caption={TIMELINE[step].caption}
+                          caption={timelineStep.caption}
                           setFigureActive={setFigureActive}
                         />
+                        {i === 1 && (
+                          <div
+                            className="button"
+                            style={{
+                              width: "240px",
+                              height: "20px",
+                              lineHeight: "20px",
+                              color: "black",
+                              margin: "0 auto",
+                              marginTop: "20px",
+                              fontSize: "var(--font-small)",
+                              background: "rgba(0,0,0,0.2)",
+                              borderRadius: "4px",
+                            }}
+                            onClick={() => {
+                              setAngolite(true)
+                            }}
+                          >
+                            See the history of The Angolite >
+                          </div>
+                        )}
                       </div>
-                      <div style={{ width: "640px", height: "100vh" }}></div>
+                      <div style={{ width: "640px", height: "100vh" }} />
                     </>
                   )}
-                  {!TIMELINE[step].image && (
+                  {!timelineStep.image && (
                     <div style={{ width: "640px", height: "300vh" }}></div>
                   )}
                 </div>
               )
             })}
           </div>
+          {isAngolite && (
+            <TimelineAngolite
+              onClose={() => {
+                setAngolite(false)
+              }}
+            />
+          )}
         </div>
 
         {isFigureActive && (

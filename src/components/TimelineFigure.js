@@ -16,14 +16,12 @@ import ChartB from "./charts/ChartB"
 //const images = [null, image1, image2, null, null, null, image4, null, image6]
 const images = [
   null,
-  "timeline/image1.png",
-  "timeline/image2.png",
+  "timeline/signed_pardon_focus.png",
+  "timeline/laws_of_life_focus.png",
   null,
+  "timeline/calvin.png",
+  "timeline/placeholder.jpg",
   null,
-  null,
-  "timeline/image4.png",
-  null,
-  "timeline/image6.png",
 ]
 
 const TimelineFigure = ({ step = 1, caption, setFigureActive }) => (
@@ -50,9 +48,7 @@ const TimelineFigure = ({ step = 1, caption, setFigureActive }) => (
         return n.node.relativePath.includes(images[step])
       })
 
-      console.log(image, images[step])
-
-      if (!image) {
+      if (!image && step !== 2 && step !== 3) {
         return null
       }
 
@@ -75,17 +71,17 @@ const TimelineFigure = ({ step = 1, caption, setFigureActive }) => (
             </div>
           )}
           {step !== 3 && images[step] && (
-            <>
+            <div
+              onClick={() => {
+                setFigureActive(images[step])
+              }}
+            >
               <Img
                 alt={"TODO: NEEDS AN ALT"}
                 fluid={image.node.childImageSharp.fluid}
-                style={{ height: "100%", width: "100%" }}
-                onClick={() => {
-                  setFigureActive(images[step])
-                }}
               />
               {caption && <p className="caption">{caption}</p>}
-            </>
+            </div>
           )}
         </figure>
       )

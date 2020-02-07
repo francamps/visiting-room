@@ -29,7 +29,6 @@ const TimelineFigureFocus = ({ image, setFigureActive }) => {
     >
       <CrossClose
         onClick={() => {
-          console.log("this")
           setFigureActive(null)
         }}
       />

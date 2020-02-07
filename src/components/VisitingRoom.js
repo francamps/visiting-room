@@ -8,10 +8,9 @@ import Video from "./Video"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ pageContext = { profileId: null } }) => {
-  const [isGrid, setGrid] = useState(true)
   const { profileId } = pageContext
-
   const [showGrid, setShowGrid] = useState(false)
+
   useEffect(() => {
     let timer1 = setTimeout(() => setShowGrid(true), 3000)
 
@@ -24,12 +23,12 @@ const VisitingRoom = ({ pageContext = { profileId: null } }) => {
     <div
       className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
       onScroll={() => {
-        if (!isGrid) setGrid(true)
+        if (!showGrid) setShowGrid(true)
       }}
     >
       <Menu isExpanded={false} />
       {showGrid && <Grid />}
-      <VisitingRoomBanner showGrid={showGrid} />
+      <VisitingRoomBanner showGrid={showGrid} setShowGrid={setShowGrid} />
       {profileId && (
         <Video profileId={"arthur_carter"} name={"Arthur Carter"} />
       )}

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `The Visiting Room`,
@@ -32,5 +36,23 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: `${process.env.PRISMIC_REPOSITORY_NAME}`, // (REQUIRED, replace with your own)
+        accessToken: `${process.env.PRISMIC_ACCESS_TOKEN}`, // (optional API access token)
+        path: "/preview", // (optional preview path. Default: /preview)
+        previews: false, // (optional, activated Previews. Default: false)
+        pages: [
+          //          {
+          //            // (optional, builds pages dynamically)
+          //            type: "Article", // TypeName from prismic
+          //            match: "/article/:uid", // Pages will be generated under this pattern
+          //            path: "/article", // Placeholder page for unpublished documents
+          //            component: require.resolve("./src/templates/article.js"),
+          //          },
+        ],
+      },
+    },
   ],
 }

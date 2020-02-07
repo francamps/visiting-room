@@ -24,8 +24,8 @@
   background-color: #d0d0d0;
 }
 .close:before {
-  transform: rotate(45deg);
+  transform: rotate(45deg) translate(-10px, -10px);
 }
 .close:after {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) translate(10px, -10px);
 }

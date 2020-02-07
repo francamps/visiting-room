@@ -7,7 +7,7 @@ import Play from "./Play"
 import Caret from "./Caret"
 import IconSearch from "./Symbols/Search"
 
-const VisitingRoomBanner = ({ showGrid, setGrid }) => {
+const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
   const props = useSpring({
     config: { duration: 1200, mass: 5, tension: 350, friction: 40 },
     to: { opacity: 1, marginTop: "0" },
@@ -20,7 +20,7 @@ const VisitingRoomBanner = ({ showGrid, setGrid }) => {
         className={`visting-room-banner ${showGrid ? "in-grid" : ""}`}
         style={props}
       >
-        <div className="who-header" onClick={() => setGrid(false)}>
+        <div className="who-header" onClick={() => setShowGrid(false)}>
           {showGrid ? (
             <p>Who would you like to talk to?</p>
           ) : (
@@ -35,7 +35,7 @@ const VisitingRoomBanner = ({ showGrid, setGrid }) => {
         <div
           className="header-content"
           onWheel={() => {
-            if (!showGrid) setGrid(true)
+            if (!showGrid) setShowGrid(true)
           }}
         >
           <div className="header-options">
@@ -60,7 +60,7 @@ const VisitingRoomBanner = ({ showGrid, setGrid }) => {
               <div
                 className="header-option"
                 onClick={() => {
-                  setGrid(true)
+                  setShowGrid(true)
                 }}
               >
                 <p>Scroll</p>

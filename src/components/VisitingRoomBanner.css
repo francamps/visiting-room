@@ -12,7 +12,8 @@
 }
 
 .visting-room-banner.in-grid {
-  height: 120px;
+  height: 60px;
+  padding: 40px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -41,6 +42,9 @@
 .in-grid .who-header p {
   text-align: left;
   font-size: 24px;
+
+  padding: 0;
+  margin: 0;
 }
 
 .header-content {
@@ -68,8 +72,8 @@
 }
 
 .header-options .header-option.search {
-  margin: 20px 0;
-  flex-direction: column;
+  margin: 0px 0;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -91,14 +95,10 @@
   text-align: left;
 }
 
-.in-grid .header-options .search {
-  margin: 20px 0;
-  flex-direction: row;
-}
-
 .in-grid .header-options .search-input {
   font-family: "GTSpectra-italic";
   color: var(--clr-mid-grey);
+  margin: 0;
   margin-left: 10px;
   width: 200px;
   padding-bottom: 4px;

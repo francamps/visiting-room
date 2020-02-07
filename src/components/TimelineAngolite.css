@@ -1,0 +1,55 @@
+.horizontal-timeline {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 12;
+
+  background: black;
+  color: white;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+
+  /*transition: transform 0.4s;*/
+}
+
+.h-steps-wrapper {
+  height: 100%;
+  width: 400%;
+  display: inline-block;
+  transition: margin-left 0.4s;
+}
+
+.h-steps-wrapper.h-step-0 {
+  margin-left: 0;
+}
+.h-steps-wrapper.h-step-1 {
+  margin-left: -100%;
+}
+.h-steps-wrapper.h-step-2 {
+  margin-left: -200%;
+}
+.h-steps-wrapper.h-step-3 {
+  margin-left: -300%;
+}
+
+.h-steps-wrapper .h-step {
+  height: 100vh;
+  width: 98vw;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.h-steps-wrapper .h-step .h-step-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 150px;
+  align-items: center;
+}

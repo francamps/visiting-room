@@ -1,11 +1,33 @@
 import React, { useState } from "react"
-import { navigate } from "gatsby"
+import { navigate, StaticQuery, graphql } from "gatsby"
 import { animated, useSpring } from "react-spring"
 
 import "./Grid.css"
 
 import { profiles } from "../content/profiles_all"
 import GridImage from "./GridImage"
+
+export const query = graphql`
+  {
+    prismic {
+      allProfiles {
+        edges {
+          node {
+            first_name
+            date_of_birth
+            last_name
+            full_name
+            imagepath
+            quote
+            profile_picture
+          }
+        }
+      }
+    }
+  }
+`
+
+const USE_PRISMIC = true
 
 const Grid = () => {
   const [isHover, setHover] = useState(null)
@@ -19,54 +41,71 @@ const Grid = () => {
   })
 
   return (
-    <animated.div
-      className="grid"
-      style={{
-        ...fadeInProps,
-      }}
-    >
-      {profiles.map((profile, idx) => {
+    <StaticQuery
+      query={query}
+      render={data => {
+        const allProfiles =
+          USE_PRISMIC && data ? data.prismic.allProfiles.edges : profiles
+
         return (
-          <div
-            className={`grid-cell ${idx === isHover ? "hovered" : ""}`}
-            onMouseEnter={() => {
-              setHover(idx)
-            }}
-            onMouseLeave={() => {
-              setHover(null)
-            }}
-            onClick={() => {
-              navigate(`/visiting-room/${"arthur-carter"}`)
+          <animated.div
+            className="grid"
+            style={{
+              ...fadeInProps,
             }}
           >
-            <div className="cell-background">
-              <GridImage path={profile.imagePath} />
-            </div>
-            <div className="cell-hover-layer"></div>
-            <div className="cell-hover-quote">
-              <p className="quote">{`"${profile.quote}"`}</p>
-            </div>
-            <h3
-              className="name-tag"
-              style={{
-                letterSpacing: idx === isHover ? "0.03em" : "normal",
-              }}
-            >
-              {profile.name}
-            </h3>
-          </div>
+            {allProfiles.map((node, idx) => {
+              const profile = USE_PRISMIC ? node.node : node
+              const profile_picture = USE_PRISMIC
+                ? profile.imagepath[0].text
+                : profile.imagePath
+              const quote =
+                USE_PRISMIC && profile.quote
+                  ? profile.quote[0].text
+                  : profile.quote
+              const fullName = USE_PRISMIC
+                ? profile.full_name[0].text
+                : profile.name
+
+              return (
+                <div
+                  className={`grid-cell ${idx === isHover ? "hovered" : ""}`}
+                  onMouseEnter={() => {
+                    setHover(idx)
+                  }}
+                  onMouseLeave={() => {
+                    setHover(null)
+                  }}
+                  onClick={() => {
+                    navigate(`/visiting-room/${"arthur-carter"}`)
+                  }}
+                >
+                  {profile_picture && (
+                    <div className="cell-background">
+                      <GridImage path={profile_picture} />
+                    </div>
+                  )}
+                  <div className="cell-hover-layer"></div>
+                  {quote && (
+                    <div className="cell-hover-quote">
+                      <p className="quote">{quote}</p>
+                    </div>
+                  )}
+                  <h3
+                    className="name-tag"
+                    style={{
+                      letterSpacing: idx === isHover ? "0.03em" : "normal",
+                    }}
+                  >
+                    {fullName}
+                  </h3>
+                </div>
+              )
+            })}
+          </animated.div>
         )
-      })}
-      {
-        null /*<div style={{ width: "100%" }}>
-        <h2>
-          There are close to 5000 people serving life without parole in
-          Louisiana. These are only some of the stories.
-        </h2>
-        <h2>Learn more at...</h2>
-    </div>*/
-      }
-    </animated.div>
+      }}
+    />
   )
 }
 

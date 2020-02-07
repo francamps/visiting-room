@@ -36,7 +36,7 @@ export const TIMELINE = [
           for release once they served 10 years and 6 months.
           Lifers were generally the most trusted and
           rehabilitated class in the prison, they were released in
-          almost all cases.`,
+          almost all commutations.`,
       },
       {
         element: "f",
@@ -277,6 +277,7 @@ or more dramatic legislative reform.`,
 life-without-parole sentences. `,
       },
     ],
-    image: "image5.png",
+    image: "placeholder.jpg",
+    caption: "This is a placeholder",
   },
 ]
