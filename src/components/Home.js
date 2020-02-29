@@ -2,6 +2,7 @@ import React from "react"
 import { Link, navigate } from "gatsby"
 
 import Play from "./Play"
+import GridButton from "./GridButton"
 import HomeVideo from "./HomeVideo"
 import "./Home.css"
 
@@ -16,66 +17,44 @@ const Home = () => {
             An archive and visiting room of the 527 men who are serving life
             without parole at Louisiana State Penitentiary - Angola.
           </div>
-          <Play
-            size="huge"
-            onClick={() => {
-              navigate("/visiting-room")
-              //setView(3);
-            }}
-          />
+          <div className="buttons">
+            <div
+              className="button"
+              onClick={() => {
+                navigate("/visiting-room")
+              }}
+            >
+              <Play useCircle={false} />
+              <h3>Play</h3>
+            </div>
+
+            <div
+              className="button"
+              onClick={() => {
+                navigate("/visiting-room")
+              }}
+            >
+              <GridButton useCircle={false} />
+              <h3>Visting room</h3>
+            </div>
+          </div>
         </div>
       </div>
       <section className="copy-wrap">
         <article className="copy">
           <div className="lede">
-            <div className="lede-initial">T</div>
+            <div className="lede-initial">L</div>
             <p className="lede-content">
-              his an introduction text. It has a fixed size, and a custom line
-              height, so you can experiment with it. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
+              ouisiana has the highest percentage of prisoners serving life
+              without parole in the country, the people serving those sentences
+              are largely invisible. This project is about making those people,
+              along with their stories, visible.
             </p>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            dapibus vulputate diam eu pretium. Mauris elit orci, ultricies id
-            fermentum vel, porta et eros. Vestibulum condimentum lectus in
-            convallis feugiat. Sed vulputate fringilla felis. Aliquam ut arcu et
-            dui feugiat scelerisque eu quis diam. Mauris placerat congue dui sit
-            amet blandit. Phasellus condimentum libero vel velit auctor, sit
-            amet tincidunt velit varius.
-          </p>
-
-          <p>
-            Mauris lacinia porta faucibus. Fusce eu est ac eros vulputate mollis
-            in ac felis. Aenean commodo scelerisque mi sed imperdiet. Donec at
-            hendrerit nisi, eget vestibulum nisi. Sed sit amet magna luctus,
-            facilisis erat quis, sagittis ligula. Aenean dignissim velit quis
-            leo consequat ultricies. Proin quis pretium justo. Vestibulum at
-            eros nisl. Fusce lobortis erat ante, eu cursus sapien molestie at.
-            Pellentesque placerat ante diam, et euismod lacus dictum vel.
-            Phasellus vitae sollicitudin mi.
-          </p>
-
-          <p>
-            Mauris lacinia porta faucibus. Fusce eu est ac eros vulputate mollis
-            in ac felis. Aenean commodo scelerisque mi sed imperdiet. Donec at
-            hendrerit nisi, eget vestibulum nisi. Sed sit amet magna luctus,
-            facilisis erat quis, sagittis ligula. Aenean dignissim velit quis
-            leo consequat ultricies. Proin quis pretium justo. Vestibulum at
-            eros nisl. Fusce lobortis erat ante, eu cursus sapien molestie at.
-            Pellentesque placerat ante diam, et euismod lacus dictum vel.
-            Phasellus vitae sollicitudin mi.
-          </p>
-
-          <p>
-            Mauris lacinia porta faucibus. Fusce eu est ac eros vulputate mollis
-            in ac felis. Aenean commodo scelerisque mi sed imperdiet. Donec at
-            hendrerit nisi, eget vestibulum nisi. Sed sit amet magna luctus,
-            facilisis erat quis, sagittis ligula. Aenean dignissim velit quis
-            leo consequat ultricies. Proin quis pretium justo. Vestibulum at
-            eros nisl. Fusce lobortis erat ante, eu cursus sapien molestie at.
-            Pellentesque placerat ante diam, et euismod lacus dictum vel.
-            Phasellus vitae sollicitudin mi.
+            It centers on a compilation of life-history interviews filmed at the
+            Louisiana State Penitentiary – Angola, a former slave plantation,
+            and the largest maximum security prison farm in the U.S.
           </p>
         </article>
         <Link to="/visiting-room">
@@ -104,17 +83,31 @@ const Home = () => {
             </div>
           </div>
         </Link>
+
+        <Link to="/about">
+          <div
+            className="button go-to-vr"
+            onClick={() => {
+              navigate("/about")
+            }}
+          >
+            <div className="link-wrap">
+              <span className="hover-link">About the project</span>
+            </div>
+          </div>
+        </Link>
       </section>
 
       <section className="footer">
-        <ul>
-          <li>
-            <h5>Produced with the support of:</h5>
-          </li>
-          <li>Vital Projects Fund</li>
-          <li>Loyola University at New Orleans</li>
-          <li>NEW INC</li>
-        </ul>
+        <div className="footer-wrapper">
+          <h5>Produced with the support of</h5>
+
+          <ul>
+            <li>Vital Projects Fund</li>
+            <li>Loyola University at New Orleans</li>
+            <li>NEW INC</li>
+          </ul>
+        </div>
       </section>
     </div>
   )

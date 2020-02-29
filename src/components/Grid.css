@@ -27,6 +27,16 @@
   overflow: hidden;
 }
 
+.grid-cell .gridimage-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  /* TEMPORARY UNTIL COLOR CORRECTION */
+  filter: brightness(0.7) contrast(2);
+}
+
 .grid-cell .cell-hover-layer {
   background-color: none;
   backdrop-filter: blur(0px);
@@ -52,9 +62,9 @@
   opacity: 0;
   transition: opacity 1.2s;
   padding: 80px;
+  font-family: "Playfair Display", serif;
   font-size: var(--font-subtitle);
   text-align: left;
-  font-family: "GTSpectra";
 
   -webkit-animation: fadeout 4s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeout 4s; /* Firefox < 16 */
@@ -70,7 +80,7 @@
 }
 
 .grid-cell h3 {
-  font-family: GTSpectra;
+  font-family: GTPressura;
   font-weight: 500;
   transition: letter-spacing 2s;
   padding-left: 20px;

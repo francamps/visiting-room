@@ -1,12 +1,12 @@
 .horizontal-timeline {
   position: fixed;
-  top: 0;
-  bottom: 0;
+  top: 60px;
+  bottom: 60px;
   right: 0;
   left: 0;
   z-index: 12;
 
-  background: black;
+  background: rgba(0, 0, 0, 0.9);
   color: white;
 
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */

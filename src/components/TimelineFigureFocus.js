@@ -24,7 +24,7 @@ const TimelineFigureFocus = ({ image, setFigureActive }) => {
         top: 0,
         bottom: 0,
         zIndex: 12,
-        backgroundColor: "var(--clr-dark-bg)",
+        background: "var(--clr-mid-grey)",
       }}
     >
       <CrossClose
@@ -37,12 +37,16 @@ const TimelineFigureFocus = ({ image, setFigureActive }) => {
         style={{
           display: "flex",
           flexDirection: "row",
+          justifyContent: "center",
           padding: "80px",
           boxSizing: "border-box",
         }}
       >
-        <div className="info" style={{ width: "120px", textAlign: "right" }}>
-          <h3>This image is this and that</h3>
+        <div
+          className="info"
+          style={{ width: "120px", textAlign: "right", paddingRight: "20px" }}
+        >
+          <h3 style={{ marginTop: 0 }}>This image is this and that</h3>
           <p>And here is an explanation of the image</p>
         </div>
         <div
@@ -54,7 +58,7 @@ const TimelineFigureFocus = ({ image, setFigureActive }) => {
           <img
             src={image4}
             alt="Angolite article The Forgotten men"
-            style={{ width: "90%" }}
+            style={{ width: "70%" }}
           />
         </div>
       </div>

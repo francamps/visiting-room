@@ -36,11 +36,10 @@ article.timeline {
 
 .timeline-title h2 {
   position: absolute;
-  font-family: GTSpectra;
+  font-family: GTPressura;
   font-size: var(--font-large);
   color: white;
   text-transform: none;
-  text-shadow: 3px 3px var(--clr-black);
 }
 
 .timeline-wrap {
@@ -157,7 +156,7 @@ article.timeline {
   /* -o-animation: fadein 4s; /* Opera < 12.1 */
   /* animation: fadein 4s; */
 
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   font-size: var(--font-normal);
   text-align: justify;
   color: black;
@@ -168,6 +167,7 @@ article.timeline {
 }
 
 .timeline .quote {
+  font-family: "Playfair Display", serif;
   max-width: 1024px;
   margin: 0 auto;
   font-size: 1.3em;
@@ -206,16 +206,6 @@ article.timeline {
 .stickyness {
   position: sticky;
   position: -webkit-sticky;
-}
-
-.map-figure {
-  background-image: url("../images/TEMP/timeline/map.png");
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(1);
-  height: 100vh;
-  position: sticky;
-  top: 0;
 }
 
 .timeline-figure {

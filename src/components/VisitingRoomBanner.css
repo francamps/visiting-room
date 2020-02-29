@@ -22,7 +22,7 @@
 }
 
 .who-header p {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   transition: font-size 1.2s;
   font-size: 36px;
   text-align: center;
@@ -96,7 +96,7 @@
 }
 
 .in-grid .header-options .search-input {
-  font-family: "GTSpectra-italic";
+  font-family: "GTPressura-italic";
   color: var(--clr-mid-grey);
   margin: 0;
   margin-left: 10px;

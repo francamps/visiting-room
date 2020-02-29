@@ -100,10 +100,6 @@ const Timeline = () => {
         >
           <div className="copy" style={{ flex: 1 }}>
             <TimelineLede setModal={setModal} />
-            <div style={{ height: "300vh" }}>
-              <div className="map-figure" />
-              <div style={{ height: "200vh" }}></div>
-            </div>
             {TIMELINE.slice(1).map((timelineStep, i) => {
               if (!timelineStep.paragraphs) return null
               const hasImage = timelineStep.image

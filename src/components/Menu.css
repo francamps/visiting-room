@@ -53,7 +53,7 @@
 }
 
 .menu-options p {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   text-align: left;
   font-size: var(--font-large);
   line-height: 1em;
@@ -79,12 +79,18 @@
 }
 
 .menu .home-title {
+  font-family: "GTPressura";
   display: inline-block;
   width: 200px;
   background: none;
   z-index: 12;
-  font-size: 1.1em;
+  font-size: 1.5em;
   margin: 0 0 10px 20px;
+  text-transform: uppercase;
+}
+
+.menu .home-title .first-char {
+  font-size: 1.2em;
 }
 
 .menu-backdrop {

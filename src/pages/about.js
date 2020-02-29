@@ -1,10 +1,11 @@
 import React from "react"
+import { RichText } from "prismic-reactjs"
 
 import Menu from "../components/Menu"
 
-import content from "../content/about.json"
-
 import { StaticQuery, graphql } from "gatsby"
+
+import Map from "../images/TEMP/timeline/map.png"
 
 export const query = graphql`
   {
@@ -24,7 +25,7 @@ export const query = graphql`
 const About = () => {
   return (
     <StaticQuery
-      query={query}
+      query={`${query}`}
       render={data => {
         const title = data
           ? data.prismic.allAbouts.edges[0].node.about_this_project[0].text
@@ -38,21 +39,18 @@ const About = () => {
             <Menu />
             <div className="copy-wrap">
               <article className="copy" style={{ padding: "100px 0" }}>
-                <h2>{title}</h2>
-                {content.map(paragraph => {
-                  if (paragraph.type === "paragraph") {
-                    return (
-                      <p dangerouslySetInnerHTML={{ __html: paragraph.text }} />
-                    )
-                  } else if (paragraph.type === "heading2") {
-                    return (
-                      <h2
-                        dangerouslySetInnerHTML={{ __html: paragraph.text }}
-                      />
-                    )
-                  }
-                  return null
-                })}
+                <h2 style={{ marginLeft: "-200px", width: "200%" }}>{title}</h2>
+                <RichText render={content} />
+                <div
+                  className="map-figure"
+                  style={{
+                    height: "400px",
+                    backgroundImage: `url(${Map})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "grayscale(1)",
+                  }}
+                />
               </article>
             </div>
           </>

@@ -11,7 +11,8 @@
   --copy-line-height: 1.7em;
 
   /* Colors */
-  --clr-primary: rgb(229, 143, 28);
+  /*--clr-primary: rgb(229, 143, 28);*/
+  --clr-primary: rgb(255, 87, 8);
   --clr-secondary: rgb(216, 216, 192);
   --clr-chart: var(--clr-primary);
   --clr-white: #ffffff;
@@ -21,36 +22,38 @@
   --clr-light-grey: #a8a0a0;
 
   /* Spacing */
-  --space-around-med: 40px;
+  --space-around-med: 80px;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
+
 @font-face {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Light.otf") format("opentype");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: "GTSpectra-italic";
+  font-family: "GTPressura-italic";
   src: url("../fonts/GT-Pressura-Pro-Trial-Light-Italic.otf") format("opentype");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Regular.otf") format("opentype");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "GTSpectra-italic";
+  font-family: "GTPressura-italic";
   src: url("../fonts/GT-Pressura-Pro-Trial-Regular-Italic.otf")
     format("opentype");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Bold.otf") format("opentype");
   font-weight: 700;
 }
@@ -97,8 +100,13 @@ body {
   text-align: center;
 }
 
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+}
+
 h1 {
-  font-family: "GTSpectra";
   font-weight: bold;
   color: white;
   font-size: 2rem;
@@ -110,13 +118,9 @@ h1 {
 }
 
 h2 {
-  font-family: "GTSpectra";
+  font-size: var(--font-large);
   font-weight: normal;
   margin: 0;
-}
-
-h3 {
-  font-family: "GTSpectra";
 }
 
 a {
@@ -155,7 +159,7 @@ COPY
 }
 
 .copy-wrap .copy {
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   font-weight: 300;
   font-size: var(--font-copy);
   text-align: left;
@@ -169,9 +173,11 @@ COPY
 }
 
 .copy .lede-initial {
+  font-family: "Playfair Display", serif;
   font-size: var(--font-title);
   font-weight: 700;
   margin-right: 16px;
+  align-self: flex-start;
 }
 
 .copy .lede-content {

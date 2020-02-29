@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import ReactPlayer from "react-player"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Play from "./Play"
@@ -11,8 +11,9 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [isEnded, setEnded] = useState(false)
+  const [progress, setProgress] = useState(0)
 
-  const data = useStaticQuery(graphql`
+  const query = graphql`
     query MyQuery {
       file(relativePath: { eq: "TEMP/profile_pics/Kauntau_Reeder.jpg" }) {
         childImageSharp {
@@ -23,7 +24,7 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
         }
       }
     }
-  `)
+  `
 
   return (
     <div
@@ -34,39 +35,77 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
         position: "relative",
       }}
     >
-      {isPlaying ? (
-        <ReactPlayer
-          ref={playerRef}
-          url={videoSrcURL}
-          className="react-player"
-          playing={isPlaying}
-          width="100%"
-          height="100%"
-          controls={false /* THIS DOESN'T WORK IN VIMEO */}
-          onPause={() => {
-            setPause(true)
-          }}
-          onEnded={() => {
-            setEnded(true)
+      {true ? (
+        <>
+          <Play />
+          <ReactPlayer
+            ref={playerRef}
+            url={videoSrcURL}
+            className="react-player"
+            playing={isPlaying}
+            width="100%"
+            height="100%"
+            onPause={() => {
+              setPause(true)
+            }}
+            onEnded={() => {
+              setEnded(true)
+            }}
+            onProgress={({ played }) => {
+              setProgress(played)
+            }}
+          />
+          <div
+            className="progress-bar"
+            style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
+          >
+            <div
+              style={{
+                width: "100%",
+                height: "10px",
+                background: "white",
+                position: "absolute",
+              }}
+            />
+            <div
+              style={{
+                width: `${progress * 100}%`,
+                height: "10px",
+                background: "var(--clr-primary",
+                position: "absolute",
+                transition: "width 1s linear",
+              }}
+            />
+          </div>
+        </>
+      ) : (
+        <StaticQuery
+          query={query}
+          render={data => {
+            console.log(data)
+            const image = data.file ? data.file.childImageSharp.fluid : null
+            if (image === null) return null
+
+            return (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Img
+                  alt={props.alt}
+                  fadeIn="true"
+                  fluid={image}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            )
           }}
         />
-      ) : (
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Img
-            alt={props.alt}
-            fadeIn="true"
-            fluid={data.file.childImageSharp.fluid}
-            style={{ width: "100%" }}
-          />
-        </div>
       )}
       {isEnded && (
         <VideoViewedMenu

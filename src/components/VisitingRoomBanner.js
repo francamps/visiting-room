@@ -6,6 +6,7 @@ import { animated, useSpring } from "react-spring"
 import Play from "./Play"
 import Caret from "./Caret"
 import IconSearch from "./Symbols/Search"
+import Loading from "./Loading"
 
 const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
   const props = useSpring({
@@ -56,7 +57,9 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
                 <p className="search-input">Filter by age</p>
               </div>
             )}
-            {!showGrid && (
+            {!showGrid && <Loading />}
+            {
+              null /*!showGrid && (
               <div
                 className="header-option"
                 onClick={() => {
@@ -66,8 +69,10 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
                 <p>Scroll</p>
                 <Caret direction="down" animate={true} />
               </div>
-            )}
-            {!showGrid && (
+            )*/
+            }
+            {
+              null /*!showGrid && (
               <div className="header-option everyone">
                 <div>
                   <div
@@ -88,7 +93,8 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
                   </div>
                 </div>
               </div>
-            )}
+                  )*/
+            }
           </div>
         </div>
       </animated.div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const Play = ({ size, onClick }) => {
+const Play = ({ size, onClick, useCircle = true }) => {
   const [isHover, setHover] = useState(false)
   if (size === "small") {
     return (
@@ -71,7 +71,9 @@ const Play = ({ size, onClick }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <circle cx={10} cy={10} stroke="#ffffff" fill={"none"} r={9} />
+      {useCircle && (
+        <circle cx={10} cy={10} stroke="#ffffff" fill={"none"} r={9} />
+      )}
       <polygon
         strokeLinejoin="round"
         fillRule="evenodd"

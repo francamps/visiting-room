@@ -7,10 +7,19 @@ import "./Grid.css"
 import { profiles } from "../content/profiles_all"
 import GridImage from "./GridImage"
 
-export const query = graphql`
+import video from "../images/ArthurCarter_8s.mp4"
+import "./HomeVideo.css"
+
+const query = graphql`
   {
     prismic {
-      allProfiles {
+      allProfiles(after: "YXJyYXljb25uZWN0aW9uOjE5") {
+        pageInfo {
+          hasPreviousPage
+          hasNextPage
+          startCursor
+          endCursor
+        }
         edges {
           node {
             first_name
@@ -20,6 +29,20 @@ export const query = graphql`
             imagepath
             quote
             profile_picture
+          }
+          cursor
+        }
+      }
+    }
+    images: allFile {
+      edges {
+        node {
+          relativePath
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
           }
         }
       }
@@ -31,6 +54,9 @@ const USE_PRISMIC = true
 
 const Grid = () => {
   const [isHover, setHover] = useState(null)
+  const [isDoneFetching, setIsDoneFetching] = useState(false)
+  const [cursor, setCursor] = useState(null)
+
   const fadeInProps = useSpring({
     config: { duration: 2000 },
     to: { opacity: 1 /*, filter: "blur(0)"*/ },
@@ -42,10 +68,23 @@ const Grid = () => {
 
   return (
     <StaticQuery
-      query={query}
+      query={`${query}`}
+      variables={
+        cursor
+          ? {
+              after: cursor,
+            }
+          : {}
+      }
       render={data => {
         const allProfiles =
           USE_PRISMIC && data ? data.prismic.allProfiles.edges : profiles
+
+        const imageData = data.images
+
+        setCursor(data.prismic.allProfiles.pageInfo.endCursor)
+        if (!data.prismic.allProfiles.pageInfo.hasNextPage)
+          setIsDoneFetching(true)
 
         return (
           <animated.div
@@ -67,6 +106,10 @@ const Grid = () => {
                 ? profile.full_name[0].text
                 : profile.name
 
+              const image = imageData.edges.find(n => {
+                return n.node.relativePath.includes(profile_picture)
+              })
+
               return (
                 <div
                   className={`grid-cell ${idx === isHover ? "hovered" : ""}`}
@@ -82,13 +125,29 @@ const Grid = () => {
                 >
                   {profile_picture && (
                     <div className="cell-background">
-                      <GridImage path={profile_picture} />
+                      {idx === isHover && (
+                        <div className="gridimage-bg">
+                          <video
+                            loop
+                            muted
+                            autoPlay
+                            poster={profile_picture}
+                            className="fullscreen-bg__video"
+                          >
+                            {null /*<source src={video} type="video/webm">*/}
+                            <source src={video} type="video/mp4" />
+                            {null /*<source src={video} type="video/ogg">*/}
+                          </video>
+                        </div>
+                      )}
+
+                      {idx !== isHover && <GridImage image={image} />}
                     </div>
                   )}
                   <div className="cell-hover-layer"></div>
                   {quote && (
                     <div className="cell-hover-quote">
-                      <p className="quote">{quote}</p>
+                      <p className="quote">"{quote}"</p>
                     </div>
                   )}
                   <h3
@@ -102,6 +161,7 @@ const Grid = () => {
                 </div>
               )
             })}
+            }
           </animated.div>
         )
       }}

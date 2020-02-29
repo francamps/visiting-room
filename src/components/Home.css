@@ -28,24 +28,23 @@
 }
 
 .home .landing .text-on-landing .subtitle {
-  width: 60%;
-  font-family: "GTSpectra-italic";
+  width: 80%;
+  max-width: 1200px;
+  font-family: "Playfair Display", serif;
   font-weight: 300;
-  font-size: var(--font-subtitle);
+  font-size: 2em;
   line-height: 1.4em;
 }
 
 .home .landing .text-on-landing .title {
   width: 100%;
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   font-weight: 700;
   font-size: var(--font-title);
 }
 
-.home .landing .play {
-  position: absolute;
-  top: calc(50% - 45px);
-  right: 0;
+.home article.copy {
+  min-height: 0;
 }
 
 .button {
@@ -54,7 +53,7 @@
   line-height: 40px;
   padding: 10px 20px;
   text-align: center;
-  font-family: "GTSpectra";
+  font-family: "GTPressura";
   background-color: black;
   /*border: 1px solid #ffffff;*/
   font-size: var(--font-subtitle);
@@ -68,11 +67,44 @@
   transition: background-color 0.4s, letter-spacing 1.2s;
 }
 
+.home .landing .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.home .landing .buttons .button {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  height: 40px;
+  margin-right: 80px;
+  background: none;
+  border: 1px solid white;
+  transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
+}
+
+.home .landing .buttons .button:hover {
+  border: 1px solid var(--clr-primary);
+  transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
+}
+
+.home .landing .buttons .button h3 {
+  font-family: "GTPressura", sans-serif;
+  display: inline;
+  padding-left: 20px;
+}
+
+.home .copy-wrap .button {
+  margin: 0;
+}
+
 .link-wrap {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin: 0 0 45px;
+  justify-content: center;
+  margin: 0 0 25px;
 }
 
 .hover-link {
@@ -111,11 +143,16 @@
   width: calc(100% - 80px);
   height: 120px;
   background: var(--clr-black);
-  margin: 0 var(--space-around-med);
-  font-family: GTSpectra;
+  margin: 0 auto;
+  font-family: GTPressura;
   font-weight: light;
   color: var(--clr-light-grey);
   border-top: 1px solid var(--clr-primary);
+}
+
+.footer-wrapper {
+  width: 640px;
+  margin: 0 auto;
 }
 
 .footer ul {
@@ -130,4 +167,6 @@
 
 .footer ul li {
   list-style: none;
+  text-transform: uppercase;
+  text-align: center;
 }

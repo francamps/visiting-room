@@ -17,7 +17,6 @@ const HomeVideo = () => {
         <source src={video} type="video/mp4" />
         {null /*<source src={video} type="video/ogg">*/}
       </video>
-      <div className="fullscreen-bg__blur" />
     </div>
   )
 }
