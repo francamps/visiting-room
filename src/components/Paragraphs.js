@@ -17,7 +17,13 @@ const Paragraphs = ({ paragraphs, setModal }) => {
                 className="footnote-trigger"
                 onClick={() => setModal(paragraph.content)}
               >
-                *
+                {paragraph.trigger ? (
+                  <div className="link-wrap">
+                    <span className="hover-link">{paragraph.trigger}</span>
+                  </div>
+                ) : (
+                  "*"
+                )}
               </div>
             </div>
           )

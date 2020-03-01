@@ -118,7 +118,11 @@ const Timeline = () => {
                   <div className="step-content">
                     <h3 className="year-label">{timelineStep.year}</h3>
                     <h2>{timelineStep.title}</h2>
-                    <div className={`step-${i + 1} step-columns`}>
+                    <div
+                      className={`step-${i + 1} ${
+                        i === 1 ? "step-two-columns" : "step-columns"
+                      }`}
+                    >
                       <Paragraphs
                         paragraphs={timelineStep.paragraphs}
                         setModal={setModal}
@@ -127,7 +131,7 @@ const Timeline = () => {
                   </div>
                   {timelineStep.image && (
                     <>
-                      <div style={{ width: "640px", height: "100vh" }}></div>
+                      <div style={{ width: "800px", height: "100vh" }}></div>
                       <div
                         className={`timeline-figure ${
                           !!hasImage ? "figure-flex" : ""
@@ -202,22 +206,19 @@ const Timeline = () => {
             goToStep(d)
           }}
         />
-        {step < TIMELINE.length && (
-          <div
-            className="scroll"
-            onClick={() => {
-              setStep(step + 1)
-              goToStep(step + 1)
-            }}
-          >
-            <p>Scroll</p>
-            <Caret
-              direction="down"
-              animate={true}
-              color={invertColor ? "white" : "black"}
-            />
-          </div>
-        )}
+        <div
+          className="scroll"
+          onClick={() => {
+            setStep(step + 1)
+            goToStep(step + 1)
+          }}
+        >
+          <Caret
+            direction="down"
+            animate={true}
+            color={invertColor ? "white" : "black"}
+          />
+        </div>
 
         {modalContent && (
           <TimelineModal setModal={setModal} content={modalContent} />

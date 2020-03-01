@@ -70,11 +70,6 @@
   border: 2px solid var(--clr-primary);
 }
 
-.timeline-step-toc:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: background-color 0.4s;
-}
-
 .timeline-step-toc .upper-label {
   text-align: right;
   font-size: var(--font-xsmall);
@@ -85,9 +80,9 @@
 .timeline-step-toc .actual-label {
   font-family: "GTPressura";
   font-weight: 500;
-  font-size: var(--font-small);
-  opacity: 0;
-  height: 0;
+  font-size: var(--font-xsmall);
+  opacity: 1;
+  height: auto;
   overflow: hidden;
   transition: opacity 0.4s, height 0.4s;
 }

@@ -22,7 +22,7 @@ const Video = ({ name, profileId, setView }) => {
   return (
     <div className="video-wrap">
       <VideoPlayer
-        videoSrcURL="https://vimeo.com/379573945"
+        videoSrcURL="https://vimeo.com/394804722"
         videoTitle="Kantau"
       />
       <div

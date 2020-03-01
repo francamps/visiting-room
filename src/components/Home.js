@@ -4,6 +4,10 @@ import { Link, navigate } from "gatsby"
 import Play from "./Play"
 import GridButton from "./GridButton"
 import HomeVideo from "./HomeVideo"
+import HomeCarousel from "./HomeCarousel"
+
+import image from "../images/TEMP/animationBg.jpg"
+
 import "./Home.css"
 
 const Home = () => {
@@ -40,62 +44,126 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <section className="copy-wrap">
+      <section className="highlight-wrap">
         <article className="copy">
           <div className="lede">
-            <div className="lede-initial">L</div>
+            {null /*<div className="lede-initial">L</div>*/}
             <p className="lede-content">
-              ouisiana has the highest percentage of prisoners serving life
-              without parole in the country, the people serving those sentences
-              are largely invisible. This project is about making those people,
-              along with their stories, visible.
+              Louisiana has the highest percentage of prisoners serving life
+              without parole in the country. People serving those sentences are
+              largely invisible.
             </p>
           </div>
           <p>
-            It centers on a compilation of life-history interviews filmed at the
-            Louisiana State Penitentiary – Angola, a former slave plantation,
-            and the largest maximum security prison farm in the U.S.
+            This series of life-history interviews was filmed at the Louisiana
+            State Penitentiary, Angola —a former slave plantation—, and the
+            largest maximum security prison farm in the U.S.
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            This project is about making those people, along with their stories,
+            visible.
           </p>
         </article>
+      </section>
+      <section>
+        <div
+          style={{
+            height: "70vh",
+            minHeight: "400px",
+            maxHeight: "600px",
+            background: "var(--clr-dark-bg)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%",
+            padding: "0px 20px",
+            overflow: "scroll",
+          }}
+        >
+          <HomeCarousel />
+        </div>
         <Link to="/visiting-room">
           <div
-            className="button go-to-vr"
+            className="button"
             onClick={() => {
               navigate("/visiting-room")
             }}
           >
             <div class="link-wrap">
-              <span className="hover-link">Go to the Visiting Room ></span>
+              <span className="hover-link">Go to the Visiting Room</span>
             </div>
           </div>
         </Link>
-        <Link to="/timeline">
+        <div
+          style={{
+            height: "50vh",
+            minHeight: "500px",
+            background: "var(--clr-black)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            marginTop: "40px",
+          }}
+        >
           <div
-            className="button go-to-vr"
-            onClick={() => {
-              navigate("/timeline")
+            style={{
+              width: "100%",
+              height: "480px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "relative",
             }}
           >
-            <div className="link-wrap">
-              <span className="hover-link">
-                Learn the history of Life Without Parole sentencing
-              </span>
-            </div>
+            <img
+              width={"640px"}
+              height={"480px"}
+              src={image}
+              style={{ position: "absolute" }}
+            />
+            <Play />
           </div>
-        </Link>
+          <Link to="/timeline">
+            <div
+              className="button"
+              onClick={() => {
+                navigate("/timeline")
+              }}
+            >
+              <div className="link-wrap">
+                <span className="hover-link">
+                  Learn the history of Life Without Parole sentencing
+                </span>
+              </div>
+            </div>
+          </Link>
+        </div>
 
-        <Link to="/about">
-          <div
-            className="button go-to-vr"
-            onClick={() => {
-              navigate("/about")
-            }}
-          >
-            <div className="link-wrap">
-              <span className="hover-link">About the project</span>
+        <div
+          style={{
+            height: "200px",
+            background: "var(--clr-dark-bg)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Link to="/about">
+            <div
+              className="button"
+              onClick={() => {
+                navigate("/about")
+              }}
+            >
+              <div className="link-wrap">
+                <span className="hover-link">About the project</span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </section>
 
       <section className="footer">

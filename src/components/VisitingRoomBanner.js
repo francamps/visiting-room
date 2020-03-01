@@ -19,9 +19,7 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
         style={props}
       >
         <div className="who-header" onClick={() => setShowGrid(false)}>
-          {showGrid ? (
-            <p>Who would you like to talk to?</p>
-          ) : (
+          {!showGrid && (
             <>
               <p>
                 Louisiana has nearly 5,000 people serving life without parole.

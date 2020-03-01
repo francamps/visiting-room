@@ -12,6 +12,8 @@ const data = [
   { year: 1995, d: 2595 },
   { year: 2000, d: 3150 },
   { year: 2005, d: 4034 },
+  { year: 2015, d: 4850 },
+  { year: 2020, d: 4693 },
 ]
 
 // Margin
@@ -26,11 +28,11 @@ const HEIGHT = 500
 const WIDTH = 800
 
 const xScale = scaleTime()
-  .domain([1970, 2005])
+  .domain([1970, 2020])
   .range([m.l, WIDTH - m.r])
 
 const yScale = scaleLinear()
-  .domain([0, 4500])
+  .domain([0, 5000])
   .range([HEIGHT - m.t, m.b])
 
 const ChartA = () => {

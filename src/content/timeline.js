@@ -5,10 +5,11 @@ export const TIMELINE = [
     paragraphs: [
       {
         element: "p",
-        content: `In the late 1800s, individuals who were sentenced to life in Louisiana were eligible for release after serving a minimum of 15 years. This was a common practice at the time: states like Mississippi and Michigan had similar sentencing schemes. In Louisiana, the convict-leasing system worked people so hard that most lifers, nearly all of whom were black, died before they had served even six years.`,
+        content: `In the late 1800s, individuals who were sentenced to life in Louisiana were eligible for release after serving a minimum of 15 years. This was a common practice at the time: states like Mississippi and Michigan had similar sentencing schemes. In Louisiana, the convict-leasing system worked people so hard that most lifers, nearly all of whom were black, died before they had served even `,
       },
       {
         element: "f",
+        trigger: "six years.",
         content: `Shane Bauer, "The Origins of Prison Slavery", Slate, Oct. 2, 2018, https://slate.com/news-and-politics/2018/10/origin-prison-slavery-shane-bauer-american-prison-excerpt.html.`,
       },
     ],
@@ -22,10 +23,11 @@ export const TIMELINE = [
         element: "p",
         content: `In 1926, the legislature reduced the minimum sentence
           for lifers to 10 years and 6 months. This became known
-          as the 10/6 law.`,
+          as `,
       },
       {
         element: "f",
+        trigger: "the 10/6 law.",
         content: `Act 311 of 1926. See **Author, "The Forgotten Men", The Angolite, May 1980, p. 36.`,
       },
       {
@@ -36,10 +38,11 @@ export const TIMELINE = [
           for release once they served 10 years and 6 months.
           Lifers were generally the most trusted and
           rehabilitated class in the prison, they were released in
-          almost all commutations.`,
+          `,
       },
       {
         element: "f",
+        trigger: "almost all commutations.",
         content: `See "The Forgotten Men", The Angolite, May 1980, p. 36-41, 46-48.`,
       },
     ],
@@ -55,10 +58,11 @@ export const TIMELINE = [
 sentence for armed robbery to 99 years. This led to an
 imbalance in Louisiana’s sentencing scheme, since the
 penalty for armed robbery was now harsher than what many
-people served under the 10/6 provision for murder.`,
+people served under the `,
       },
       {
         element: "f",
+        trigger: "10/6 provision for murder.",
         content: `"Life: No Rhyme, No Reason", The Angolite, September/October 1982, p. 32`,
       },
       { element: "br" },
@@ -79,10 +83,11 @@ changed the minimum term for a second-degree murder life
 sentence to 20 years. Two years later, it increased the
 minimum to 40 years before parole eligibility. In 1977,
 the legislature removed the possibility of parole for
-lifers convicted of certain drug distributions crimes.`,
+lifers convicted of certain `,
       },
       {
         element: "f",
+        trigger: "drug distribution crimes.",
         content: `Floyd Webb, “Legal Spectrum: The Laws of Life,” The Angolite, May/June 1988, p. 60.`,
       },
       { element: "br" },
@@ -90,21 +95,22 @@ lifers convicted of certain drug distributions crimes.`,
       {
         element: "p",
         content: `Then, in 1979, the state revoked parole eligibility for
-all lifers thereafter convicted of first-degree and
-second-degree murders`,
+all lifers thereafter convicted of `,
       },
       {
         element: "f",
+        trigger: "first-degree and second-degree murders",
         content: `The law itself can be seen in State v. Cooper, 382 So. 2d 963, 964 (La. 1980) at footnote 1.`,
       },
       {
         element: "p",
         content: `and took away the 10-6 law for
 those who had been sentenced at a time when the 10-6
-norm was well-established.`,
+norm was `,
       },
       {
         element: "f",
+        trigger: "well-established.",
         content: `La. R.S. 15:571.7 was repealed by Act 490 of 1979. See State v. Dunn, 408 So. 2d 1319, 1322 (La. 1982).`,
       },
       {
@@ -133,57 +139,66 @@ was born.`,
     paragraphs: [
       {
         element: "p",
-        content: `In February of 1981, there were approximately 900 lifers
-in Louisiana.`,
+        content: `In February of 1981, there were approximately`,
       },
       {
         element: "f",
+        trigger: "900 lifers in Louisiana.",
         content: `News Briefs, The Angolite, March/April 1981, p. 9. `,
       },
       {
         element: "p",
-        content: `By 1988, that number doubled—nearly 1,800
-lifers were incarcerated in the state.`,
+        content: ` By 1988, that number doubled—nearly 1,800
+lifers were `,
       },
       {
         element: "f",
+        trigger: "incarcerated in the state.",
         content: `Ron Wikberg, “The Longtermers,” The Angolite, May/June 1988, p. 34.`,
       },
       { element: "br" },
       {
         element: "p",
-        content: `In 1994, there
-were roughly 2,400 lifers`,
+        content: `In 1994, there were `,
       },
       {
         element: "f",
+        trigger: "roughly 2,400 lifers",
         content: `Douglas Dennis, “Inside Angola,” The Angolite, January/February 1994, p. 9.`,
       },
-      { element: "p", content: ` and 3,000 in 1999.` },
+      { element: "p", content: ` and ` },
       {
         element: "f",
+        trigger: "3,000 in 1999.",
         content: `**author, “Inside Angola,” September/October 1999, p. 10.`,
       },
       {
         element: "p",
-        content: `The
-massive growth of the lifer population during that
+        content: ` The massive growth of the lifer population during that
 period has continued unabated. Today in Louisiana, that
-population approaches 5,000.`,
+population `,
       },
       {
         element: "f",
-        content: `Elizabeth Johnson, “Life in Louisiana: People aging in prison seek a second chance,” Southern Poverty Law Center, March 5, 2018 (referring to the 4,900 people serving LWOP in Louisiana), https://www.splcenter.org/news/2018/03/05/life-louisiana-people-aging-prison-seek-second-chance. `,
+        trigger: "approaches 5,000.",
+        content: `Elizabeth Johnson, "Life in Louisiana: People aging in prison seek a second chance",
+         Southern Poverty Law Center, March 5, 2018 (referring to the 4,900 people 
+          serving LWOP in Louisiana), https://www.splcenter.org/news/2018/03/05/life-louisiana-people-aging-prison-seek-second-chance. `,
       },
       {
         element: "p",
-        content: `Racial disparities define
+        content: ` Racial disparities define
 the system: the percentage of those serving LWOP
-sentences who are African-American is around 73 percent.`,
+sentences who are African-American is `,
       },
       {
         element: "f",
-        content: `See “Throwing Away the Key” report by The Sentencing Project, Oct. 2010; see also Table E of the “Life Goes On” report by the Sentencing Project, Dec. 2013. This holds true historically: in 1982, the Angolite reported that 75% of the lifer population in Louisiana was black. See,  “Life: No Rhyme, No Reason,” Angolite, September/October 1982, p. 32`,
+        trigger: "around 73 percent.",
+        content: `See “Throwing Away the Key” report by The Sentencing Project, 
+        Oct. 2010; see also Table E of the “Life Goes On” report by the Sentencing Project, 
+        Dec. 2013. This holds true historically: in 1982, the Angolite reported that 75% 
+        of the lifer population in Louisiana was black. See,  
+        "Life: No Rhyme, No Reason," Angolite, September/October 1982, p. 32`,
       },
     ],
     image: "image2.png",
@@ -215,10 +230,11 @@ complained that they were overrun with petitions filed
 by prisoners. In the 1990’s, the Louisiana legislature
 amended the laws that govern inmates’ access to
 post-conviction review of their criminal convictions and
-sentences, imposing new time limitations. `,
+sentences, `,
       },
       {
         element: "f",
+        trigger: "imposing new time limitations.",
         content: `See, e.g., Louisiana Acts 1990, No. 1023 § 1; Michael Glover, “The Legal Spectrum,” The Angolite, March/April 1991, p.52-53.`,
       },
       { element: "br" },
@@ -249,20 +265,21 @@ courts.`,
         element: "p",
         content: `Today, Louisiana has nearly 5,000 people serving
 life-without-parole sentences. Fifteen percent of the
-state’s prison population is serving life without
-parole. `,
+state’s prison population is serving `,
       },
       {
         element: "f",
+        trigger: "life without parole.",
         content: `Louisiana Department of Corrections, February 2020.`,
       },
       {
         element: "p",
         content: `Currently around 45% of those serving LWOP have
-already served over 25 years. `,
+already served `,
       },
       {
         element: "f",
+        trigger: "over 25 years.",
         content: `This cartoon comes from the December 1989 Angolite article titled “Longtermers, Revisited,” p.20.`,
       },
       {

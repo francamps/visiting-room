@@ -83,8 +83,15 @@ article.timeline {
 
 .step-columns {
   width: 640px;
-  column-count: 2;
+  column-count: 1;
   column-gap: 2em;
+  justify-self: flex-start;
+}
+
+.step-two-columns {
+  width: 1024px;
+  column-count: 2;
+  column-gap: 4em;
   justify-self: flex-start;
 }
 
@@ -105,14 +112,10 @@ article.timeline {
   flex-direction: column;
 }
 
-.timeline .scroll p,
 .timeline .scroll .caret {
   width: 100%;
   font-family: "GTPressura";
-}
-
-.timeline.invert .scroll p {
-  color: white;
+  text-align: center;
 }
 
 .timeline .timeline-copy .copy {
@@ -124,13 +127,14 @@ article.timeline {
   width: 640px;
   margin: 0 auto;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .timeline .timeline-copy .timeline-step h3.year-label {
   font-family: "GTEesti";
   font-weight: lighter;
-  font-size: var(--font-small);
+  font-size: var(--font-normal);
+  margin-bottom: 10px;
 }
 
 .timeline .timeline-copy .lede {
@@ -176,11 +180,13 @@ article.timeline {
   /* -ms-animation: fadein 4s; /* Internet Explorer */
   /* -o-animation: fadein 4s; /* Opera < 12.1 */
   /* animation: fadein 4s; */
-
-  font-family: "GTPressura";
-  font-size: var(--font-normal);
   text-align: justify;
   color: black;
+}
+
+.timeline .timeline-copy .copy .paragraph {
+  font-family: "GTPressura";
+  font-size: var(--font-normal);
 }
 
 .timeline-figure + .timeline-copy {
@@ -206,23 +212,55 @@ article.timeline {
 
 .timeline .footnote-trigger {
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 20px;
-  background-color: none;
-  color: var(--clr-primary);
-  margin: 0 10px 4px 0;
-  box-sizing: border-box;
-  padding: 0px 3px 0 0;
-  line-height: 14px;
-  cursor: pointer;
-  transition: background-color 0.4s, color 0.4s;
 }
 
-.timeline .footnote-trigger:hover {
-  color: black;
-  transition: background-color 0.4s, color 0.4s;
+/** FOOTER TRIGGERS **/
+
+.timeline .link-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 25px;
+  color: var(--clr-black);
 }
+
+.timeline .hover-link {
+  font-family: "GTPressura";
+  font-size: var(--font-normal);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  cursor: pointer;
+}
+
+.timeline .hover-link:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 30px;
+  height: 5px;
+  margin: 2px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-primary);
+}
+
+.timeline .footnote-trigger:hover .hover-link {
+  color: var(--clr-primary);
+}
+
+.timeline .footnote-trigger:hover .hover-link:after {
+  width: 100%;
+  opacity: 1;
+}
+
+.timeline .hover-link:after {
+  right: 0%;
+}
+/** END OF FOOTER TRIGGERS **/
 
 .stickyness {
   position: sticky;
@@ -246,6 +284,7 @@ article.timeline {
 
 .timeline-figure figure {
   width: 500px;
+  max-width: calc(100% - 80px);
   margin: 0 auto;
 }
 
@@ -265,13 +304,13 @@ article.timeline {
   font-size: var(--font-small);
 }
 
-.timeline-figure figure.static {
+/*.timeline-figure figure.static {
   width: 510px;
 }
 
 .timeline-figure .figure-wide {
   width: 800px;
-}
+}*/
 
 .timeline-figure .caption {
   color: var(--clr-black);

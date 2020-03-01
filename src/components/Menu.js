@@ -10,12 +10,12 @@ const Menu = ({ theme, isExpanded = false }) => {
   return (
     <div>
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
+        <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
         <h2 className="home-title" onClick={() => navigate("/")}>
           <span className="first-char">T</span>he{" "}
           <span className="first-char">V</span>isiting{" "}
           <span className="first-char">R</span>oom
         </h2>
-        <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
       </div>
       <div
         className={`menu-backdrop ${isBurgerOpen ? "menu-backdrop-on" : ""}`}

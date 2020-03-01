@@ -7,13 +7,12 @@ import "./Grid.css"
 import { profiles } from "../content/profiles_all"
 import GridImage from "./GridImage"
 
-import video from "../images/ArthurCarter_8s.mp4"
 import "./HomeVideo.css"
 
 const query = graphql`
   {
     prismic {
-      allProfiles(after: "YXJyYXljb25uZWN0aW9uOjE5") {
+      allProfiles(after: "YXJyYXljb25uZWN0aW9uOjEx") {
         pageInfo {
           hasPreviousPage
           hasNextPage
@@ -41,7 +40,7 @@ const query = graphql`
           name
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid_tracedSVG
+              ...GatsbyImageSharpFluid_noBase64
             }
           }
         }
@@ -69,13 +68,6 @@ const Grid = () => {
   return (
     <StaticQuery
       query={`${query}`}
-      variables={
-        cursor
-          ? {
-              after: cursor,
-            }
-          : {}
-      }
       render={data => {
         const allProfiles =
           USE_PRISMIC && data ? data.prismic.allProfiles.edges : profiles
@@ -124,25 +116,11 @@ const Grid = () => {
                   }}
                 >
                   {profile_picture && (
-                    <div className="cell-background">
-                      {idx === isHover && (
-                        <div className="gridimage-bg">
-                          <video
-                            loop
-                            muted
-                            autoPlay
-                            poster={profile_picture}
-                            className="fullscreen-bg__video"
-                          >
-                            {null /*<source src={video} type="video/webm">*/}
-                            <source src={video} type="video/mp4" />
-                            {null /*<source src={video} type="video/ogg">*/}
-                          </video>
-                        </div>
-                      )}
-
-                      {idx !== isHover && <GridImage image={image} />}
-                    </div>
+                    <GridImage
+                      image={image}
+                      isHover={idx === isHover}
+                      profile_picture={profile_picture}
+                    />
                   )}
                   <div className="cell-hover-layer"></div>
                   {quote && (
@@ -161,7 +139,6 @@ const Grid = () => {
                 </div>
               )
             })}
-            }
           </animated.div>
         )
       }}
