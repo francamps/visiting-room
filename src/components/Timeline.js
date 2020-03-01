@@ -12,6 +12,7 @@ import TimelineModal from "./TimelineModal"
 import TimelineTitle from "./TimelineTitle"
 
 import TimelineAngolite from "./TimelineAngolite"
+import Caret from "./Caret"
 
 import { TIMELINE } from "../content/timeline"
 
@@ -31,7 +32,7 @@ function onVisibilityChange(attribute, callback) {
   }
 }
 
-const IS_DYNAMIC = false
+//const IS_DYNAMIC = false
 
 const TONES = Array(TIMELINE.length)
   .fill(0)
@@ -201,6 +202,23 @@ const Timeline = () => {
             goToStep(d)
           }}
         />
+        {step < TIMELINE.length && (
+          <div
+            className="scroll"
+            onClick={() => {
+              setStep(step + 1)
+              goToStep(step + 1)
+            }}
+          >
+            <p>Scroll</p>
+            <Caret
+              direction="down"
+              animate={true}
+              color={invertColor ? "white" : "black"}
+            />
+          </div>
+        )}
+
         {modalContent && (
           <TimelineModal setModal={setModal} content={modalContent} />
         )}

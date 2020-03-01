@@ -36,7 +36,6 @@ article.timeline {
 
 .timeline-title h2 {
   position: absolute;
-  font-family: GTPressura;
   font-size: var(--font-large);
   color: white;
   text-transform: none;
@@ -60,7 +59,7 @@ article.timeline {
 
 .timeline-wrap.invert {
   background-image: none;
-  background-color: black;
+  background-color: var(--clr-dark-bg);
 }
 
 .timeline-wrap .timeline-step {
@@ -92,6 +91,28 @@ article.timeline {
 .timeline.invert .timeline-copy .copy {
   color: black;
   transition: color 0.4s;
+}
+
+.timeline .scroll {
+  position: fixed;
+  width: 60px;
+  left: calc(50% - 30px);
+  bottom: 20px;
+  color: var(--clr-dark-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.timeline .scroll p,
+.timeline .scroll .caret {
+  width: 100%;
+  font-family: "GTPressura";
+}
+
+.timeline.invert .scroll p {
+  color: white;
 }
 
 .timeline .timeline-copy .copy {

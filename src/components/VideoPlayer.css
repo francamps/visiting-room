@@ -1,0 +1,75 @@
+.video-wrap .video {
+  margin-left: 0px;
+  width: 100%;
+  position: relative;
+}
+
+.video-wrap .controls {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.video-wrap .controls .play-pause-stop {
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  cursor: pointer;
+  margin-bottom: -8px;
+}
+
+.pause {
+  width: 12px;
+  height: 12px;
+  bottom: -8px;
+  left: 30px;
+  display: flex;
+}
+
+.pause-tick {
+  width: 4px;
+  height: 12px;
+  margin-right: 2px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.play-wrap {
+  bottom: -8px;
+  height: 12px;
+}
+
+.video .controls .play-pause-stop:hover .pause-tick {
+  background: var(--clr-white);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: -20px;
+  left: 80px;
+  right: 80px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+}
+
+.progress-bar-played {
+  height: 6px;
+  background: var(--clr-primary);
+  position: absolute;
+  transition: width 1s linear;
+}
+
+.progress-seconds {
+  position: absolute;
+  left: calc(100% - 70px);
+  bottom: -10px;
+  font-family: GTEesti;
+  text-align: left;
+}

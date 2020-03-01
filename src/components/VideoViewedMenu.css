@@ -44,7 +44,7 @@
 }
 
 .up-next-left {
-  background: black;
+  background: var(--clr-dark-bg);
   display: flex;
   flex-direction: column;
   justify-content: space-around;

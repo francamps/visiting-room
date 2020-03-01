@@ -1,5 +1,5 @@
 .home {
-  background: black;
+  background: var(--clr-dark-bg);
 }
 .home .landing {
   width: 100%;
@@ -54,7 +54,7 @@
   padding: 10px 20px;
   text-align: center;
   font-family: "GTPressura";
-  background-color: black;
+  background-color: var(--clr-dark-bg);
   /*border: 1px solid #ffffff;*/
   font-size: var(--font-subtitle);
   cursor: pointer;

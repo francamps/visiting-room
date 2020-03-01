@@ -2,9 +2,6 @@ import React from "react"
 import "./VisitingRoomBanner.css"
 import { animated, useSpring } from "react-spring"
 
-//import BulletScroll from "./BulletScroll"
-import Play from "./Play"
-import Caret from "./Caret"
 import IconSearch from "./Symbols/Search"
 import Loading from "./Loading"
 
@@ -58,43 +55,6 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
               </div>
             )}
             {!showGrid && <Loading />}
-            {
-              null /*!showGrid && (
-              <div
-                className="header-option"
-                onClick={() => {
-                  setShowGrid(true)
-                }}
-              >
-                <p>Scroll</p>
-                <Caret direction="down" animate={true} />
-              </div>
-            )*/
-            }
-            {
-              null /*!showGrid && (
-              <div className="header-option everyone">
-                <div>
-                  <div
-                    style={{
-                      padding: "10px",
-                      display: "inline-block",
-                    }}
-                  >
-                    All
-                  </div>
-                  <div
-                    style={{
-                      paddingLeft: "8px",
-                      display: showGrid ? "inline" : "block",
-                    }}
-                  >
-                    <Play size={showGrid ? "small" : "normal"} />
-                  </div>
-                </div>
-              </div>
-                  )*/
-            }
           </div>
         </div>
       </animated.div>

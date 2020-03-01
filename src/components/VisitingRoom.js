@@ -26,7 +26,7 @@ const VisitingRoom = ({ pageContext = { profileId: null } }) => {
         if (!showGrid) setShowGrid(true)
       }}
     >
-      <Menu isExpanded={false} />
+      {!profileId && <Menu isExpanded={false} />}
       {showGrid && <Grid />}
       <VisitingRoomBanner showGrid={showGrid} setShowGrid={setShowGrid} />
       {profileId && (

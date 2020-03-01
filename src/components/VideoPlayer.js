@@ -6,12 +6,23 @@ import Img from "gatsby-image"
 import Play from "./Play"
 import VideoViewedMenu from "./VideoViewedMenu"
 
+import "./VideoPlayer.css"
+
+const getStringTime = seconds => {
+  return `${`${Math.floor(seconds / 60)}`.padStart(2, "0")}:${`${Math.floor(
+    seconds % 60
+  )}`.padStart(2, "0")}s`
+}
+
 const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
   const playerRef = useRef()
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [isEnded, setEnded] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [progressSeconds, setProgressSeconds] = useState(0)
+
+  const barRef = useRef()
 
   const query = graphql`
     query MyQuery {
@@ -26,23 +37,27 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
     }
   `
 
+  const onSeek = e => {
+    const widthOfBar = barRef.current.getBoundingClientRect().width
+    const leftOfBar = barRef.current.getBoundingClientRect().left
+
+    const fraction = (e.clientX - leftOfBar) / widthOfBar
+    const duration = playerRef.current.duration
+
+    setProgress(fraction)
+    setProgressSeconds(fraction * duration)
+    playerRef.current.seekTo(fraction)
+  }
+
   return (
-    <div
-      className="video"
-      style={{
-        marginLeft: "60px",
-        width: "calc(100% - 60px)",
-        position: "relative",
-      }}
-    >
-      {true ? (
-        <>
-          <Play />
+    <>
+      <div className="video">
+        {isPlaying ? (
           <ReactPlayer
             ref={playerRef}
             url={videoSrcURL}
             className="react-player"
-            playing={isPlaying}
+            playing={isPlaying && !isPaused}
             width="100%"
             height="100%"
             onPause={() => {
@@ -51,86 +66,103 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
             onEnded={() => {
               setEnded(true)
             }}
-            onProgress={({ played }) => {
+            onProgress={({ played, playedSeconds }) => {
               setProgress(played)
+              setProgressSeconds(playedSeconds)
             }}
           />
-          <div
-            className="progress-bar"
-            style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
-          >
-            <div
-              style={{
-                width: "100%",
-                height: "10px",
-                background: "white",
-                position: "absolute",
-              }}
-            />
-            <div
-              style={{
-                width: `${progress * 100}%`,
-                height: "10px",
-                background: "var(--clr-primary",
-                position: "absolute",
-                transition: "width 1s linear",
+        ) : (
+          <StaticQuery
+            query={query}
+            render={data => {
+              const image = data.file ? data.file.childImageSharp.fluid : null
+              if (image === null) return null
+
+              return (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Img
+                    alt={props.alt}
+                    fadeIn="true"
+                    fluid={image}
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              )
+            }}
+          />
+        )}
+        {isEnded && (
+          <VideoViewedMenu
+            onClickReplay={() => {
+              playerRef.current.seekTo(0)
+              setEnded(false)
+              setPause(false)
+              setPlaying(true)
+            }}
+            onClickNext={() => {
+              // Do Something
+            }}
+          />
+        )}
+        {(!isPlaying || (isPlaying && isPaused)) && (
+          <div style={{ position: "absolute" }}>
+            <Play
+              size="huge"
+              onClick={() => {
+                setPause(false)
+                setPlaying(true)
               }}
             />
           </div>
-        </>
-      ) : (
-        <StaticQuery
-          query={query}
-          render={data => {
-            console.log(data)
-            const image = data.file ? data.file.childImageSharp.fluid : null
-            if (image === null) return null
-
-            return (
+        )}
+      </div>
+      {isPlaying && (
+        <div className="controls">
+          <div className="play-pause-stop">
+            {isPlaying && !isPaused ? (
               <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "absolute",
-                  display: "flex",
-                  justifyContent: "center",
+                className="pause"
+                onClick={() => {
+                  setPause(true)
                 }}
               >
-                <Img
-                  alt={props.alt}
-                  fadeIn="true"
-                  fluid={image}
-                  style={{ width: "100%" }}
+                <div className="pause-tick" />
+                <div className="pause-tick" />
+              </div>
+            ) : (
+              <div className="play-wrap">
+                <Play
+                  onClick={() => {
+                    setPause(false)
+                    setPlaying(true)
+                  }}
                 />
               </div>
-            )
-          }}
-        />
-      )}
-      {isEnded && (
-        <VideoViewedMenu
-          onClickReplay={() => {
-            playerRef.current.seekTo(0)
-            setEnded(false)
-            setPause(false)
-            setPlaying(true)
-          }}
-          onClickNext={() => {
-            // Do Something
-          }}
-        />
-      )}
-      {(!isPlaying || (isPlaying && isPaused)) && (
-        <div style={{ position: "absolute" }}>
-          <Play
-            size="huge"
-            onClick={() => {
-              setPlaying(true)
-            }}
-          />
+            )}
+          </div>
+          <div className="progress-bar" ref={barRef} onClick={onSeek}>
+            <div className="progress-bar-bg" />
+            <div
+              className="progress-bar-played"
+              style={{
+                width: `${progress * 100}%`,
+              }}
+            />
+          </div>
+          <div className="progress-seconds">
+            <span>{getStringTime(progressSeconds)}</span>
+          </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
 export default VideoPlayer

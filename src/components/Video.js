@@ -25,65 +25,6 @@ const Video = ({ name, profileId, setView }) => {
         videoSrcURL="https://vimeo.com/379573945"
         videoTitle="Kantau"
       />
-      {
-        null /*<div
-        className="video"
-        style={{
-          background: `url(${source}) center center`,
-          backgroundSize: "cover",
-        }}
-        onClick={() => {
-          setShowInfo(true)
-        }}
-      >
-        {isViewed ? (
-          <VideoViewedMenu
-            onClickReplay={() => {
-              setViewed(false)
-            }}
-            onClickNext={() => {
-              setSource(imageSrc2)
-              setViewed(false)
-            }}
-          />
-        ) : (
-          <Play
-            size="huge"
-            onClick={() => {
-              setViewed(true)
-            }}
-          />
-        )}
-        {showInfo && !isViewed && (
-          <div className="video-info-wrap">
-            <div className="video-info">
-              <h3>{name}</h3>
-              alt={name}
-              src={oldImage}
-              width="150px" onClick=
-              {() => {
-                setViewed(true)
-                setShowInfo(false)
-              }}
-              />
-              <div className="" style={{ display: "flex", marginTop: "16px" }}>
-                <div className="" style={{}}>
-                  <p className="upper-label" style={{ marginTop: "0" }}>
-                    Age at sentence
-                  </p>
-                  <p className="actual-label">22</p>
-
-                  <p className="upper-label">Current age</p>
-                  <p className="actual-label">54</p>
-                </div>
-                <Circles />
-              </div>
-            </div>
-          </div>
-        )}
-            </div>*/
-      }
-
       <div
         style={{
           position: "fixed",
