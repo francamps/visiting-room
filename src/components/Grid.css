@@ -9,6 +9,7 @@
   padding: 80px 0;
   box-sizing: border-box;
   transform: translate3d(0, 0, 0);
+  background: var(--clr-black);
 }
 
 .grid-cell {

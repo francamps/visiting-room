@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { navigate, StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import { animated, useSpring } from "react-spring"
 
 import "./Grid.css"
@@ -52,18 +52,13 @@ const query = graphql`
 const USE_PRISMIC = true
 
 const Grid = () => {
-  const [isHover, setHover] = useState(null)
-  const [isDoneFetching, setIsDoneFetching] = useState(false)
-  const [cursor, setCursor] = useState(null)
-
-  const fadeInProps = useSpring({
+  /*const fadeInProps = useSpring({
     config: { duration: 2000 },
-    to: { opacity: 1 /*, filter: "blur(0)"*/ },
+    to: { opacity: 1 },
     from: {
       opacity: 0,
-      //filter: "blur(1.5rem)",
     },
-  })
+  })*/
 
   return (
     <StaticQuery
@@ -74,16 +69,14 @@ const Grid = () => {
 
         const imageData = data.images
 
-        setCursor(data.prismic.allProfiles.pageInfo.endCursor)
-        if (!data.prismic.allProfiles.pageInfo.hasNextPage)
-          setIsDoneFetching(true)
-
         return (
           <animated.div
             className="grid"
-            style={{
-              ...fadeInProps,
-            }}
+            style={
+              {
+                //...fadeInProps,
+              }
+            }
           >
             {allProfiles.map((node, idx) => {
               const profile = USE_PRISMIC ? node.node : node
@@ -103,40 +96,12 @@ const Grid = () => {
               })
 
               return (
-                <div
-                  className={`grid-cell ${idx === isHover ? "hovered" : ""}`}
-                  onMouseEnter={() => {
-                    setHover(idx)
-                  }}
-                  onMouseLeave={() => {
-                    setHover(null)
-                  }}
-                  onClick={() => {
-                    navigate(`/visiting-room/${"arthur-carter"}`)
-                  }}
-                >
-                  {profile_picture && (
-                    <GridImage
-                      image={image}
-                      isHover={idx === isHover}
-                      profile_picture={profile_picture}
-                    />
-                  )}
-                  <div className="cell-hover-layer"></div>
-                  {quote && (
-                    <div className="cell-hover-quote">
-                      <p className="quote">"{quote}"</p>
-                    </div>
-                  )}
-                  <h3
-                    className="name-tag"
-                    style={{
-                      letterSpacing: idx === isHover ? "0.03em" : "normal",
-                    }}
-                  >
-                    {fullName}
-                  </h3>
-                </div>
+                <GridImage
+                  image={image}
+                  fullName={fullName}
+                  quote={quote}
+                  profile_picture={profile_picture}
+                />
               )
             })}
           </animated.div>
