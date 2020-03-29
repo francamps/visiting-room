@@ -16,7 +16,7 @@ export const TIMELINE = [
     image: null,
   },
   {
-    year: "1926",
+    year: "1920s",
     title: "A shorter minimum",
     paragraphs: [
       {
@@ -49,7 +49,7 @@ export const TIMELINE = [
     image: null,
   },
   {
-    year: "Late 1960s - 1970s",
+    year: "1970s",
     title: "Increasing restrictions",
     paragraphs: [
       {
@@ -134,12 +134,12 @@ was born.`,
     caption: `This image comes from the May 1980 Angolite article titled "The Forgotten Men" p. 47.`,
   },
   {
-    year: "1981 (I)",
+    year: "1980s",
     title: "Increasing prison population",
     paragraphs: [
       {
         element: "p",
-        content: `In February of 1981, there were approximately`,
+        content: `In February of 1981, there were approximately `,
       },
       {
         element: "f",
@@ -205,7 +205,7 @@ sentences who are African-American is `,
     caption: `Floyd Webb, “Legal Spectrum: The Laws of Life,” The Angolite, May/June 1988, p. 59.`,
   },
   {
-    year: "1981 (II)",
+    year: "1980s (II)",
     title: "Diminishing commutations",
     paragraphs: [
       {

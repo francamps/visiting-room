@@ -20,6 +20,7 @@
     "gatsby-source-prismic-graphql": "^3.4.0-beta.1",
     "gatsby-transformer-sharp": "^2.3.9",
     "intersection-observer": "^0.7.0",
+    "lodash": "^4.17.15",
     "prismic-javascript": "^2.1.5",
     "prismic-reactjs": "^1.2.0",
     "prop-types": "^15.7.2",
@@ -27,7 +28,8 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-player": "^1.14.2",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "react-tabs": "^3.1.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

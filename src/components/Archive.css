@@ -1,0 +1,85 @@
+.archive {
+  padding: 40px 0;
+  background-image: url("../images/TEMP/background.png");
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.archive h2 {
+  padding: 20px 40px;
+}
+
+.archive table {
+  width: 100%;
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "GTPressura";
+}
+
+.archive table tr {
+  height: 40px;
+  line-height: 40px;
+  background-color: rgba(var(--clr-white-rgb), 0);
+  transition: background-color 0.4s, height 1s;
+  cursor: pointer;
+}
+
+.archive table tr:hover {
+  background-color: rgba(var(--clr-white-rgb), 0.1);
+  transition: background-color 0.4s;
+}
+
+.archive table tbody {
+  flex: 1;
+}
+
+.archive table thead tr {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid var(--clr-white);
+  border-bottom: 1px solid var(--clr-white);
+}
+
+.archive table thead tr th {
+  flex: 1;
+  text-align: left;
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+.archive table tbody {
+  overflow: auto;
+}
+
+.archive table tbody tr {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--clr-white);
+}
+
+.archive table tbody tr {
+  height: 40px;
+  background-color: none;
+  transition: background-color 1s, height 1s;
+}
+
+.archive table tbody tr.open {
+  height: 200px;
+  background-color: rgba(0, 0, 0, 1);
+  transition: background-color 1s, height 1s;
+}
+
+.archive table tbody tr td {
+  flex: 1;
+  padding: 0 20px;
+  border-right: 1px solid var(--clr-white);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -19,9 +19,11 @@ const TimelineSteps = ({ step, invertColor, onGoToStep }) => {
             >
               <div className="labels">
                 <div className="upper-label">{stepObj.year}</div>
-                <div className="actual-label">
+                {
+                  null /*<div className="actual-label">
                   {stepObj.title || stepObj.year}
-                </div>
+            </div>*/
+                }
               </div>
               <div className="dot-wrap">
                 <div className="dot"></div>

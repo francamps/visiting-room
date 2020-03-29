@@ -69,35 +69,6 @@ const Home = () => {
         <div
           style={{
             height: "70vh",
-            minHeight: "400px",
-            maxHeight: "600px",
-            background: "var(--clr-dark-bg)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "100%",
-            padding: "0px 20px",
-            overflow: "scroll",
-          }}
-        >
-          <HomeCarousel />
-        </div>
-        <Link to="/visiting-room">
-          <div
-            className="button"
-            onClick={() => {
-              navigate("/visiting-room")
-            }}
-          >
-            <div class="link-wrap">
-              <span className="hover-link">Go to the Visiting Room</span>
-            </div>
-          </div>
-        </Link>
-        <div
-          style={{
-            height: "50vh",
             minHeight: "500px",
             background: "var(--clr-black)",
             display: "flex",
@@ -115,6 +86,8 @@ const Home = () => {
               justifyContent: "center",
               alignItems: "center",
               position: "relative",
+              padding: "20px",
+              boxSizing: "border-box",
             }}
           >
             <img
@@ -140,6 +113,37 @@ const Home = () => {
             </div>
           </Link>
         </div>
+
+        <div
+          style={{
+            height: "70vh",
+            minHeight: "400px",
+            maxHeight: "600px",
+            background: "var(--clr-dark-bg)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "100%",
+            padding: "0px 20px",
+            overflow: "scroll",
+            boxSizing: "border-box",
+          }}
+        >
+          <HomeCarousel />
+        </div>
+        <Link to="/visiting-room">
+          <div
+            className="button"
+            onClick={() => {
+              navigate("/visiting-room")
+            }}
+          >
+            <div class="link-wrap">
+              <span className="hover-link">Go to the Visiting Room</span>
+            </div>
+          </div>
+        </Link>
 
         <div
           style={{

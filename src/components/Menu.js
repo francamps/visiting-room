@@ -28,11 +28,6 @@ const Menu = ({ theme, isExpanded = false }) => {
           theme === "light" ? "menu-light" : ""
         }`}
       >
-        <Link to="/">
-          <div className="menu-option-wrap">
-            <p className="hover-link">Home</p>
-          </div>
-        </Link>
         <Link to="/visiting-room">
           <div className="menu-option-wrap">
             <p className="hover-link">The Visiting Room</p>
@@ -53,10 +48,10 @@ const Menu = ({ theme, isExpanded = false }) => {
           <p
             className="hover-link"
             onClick={() => {
-              navigate("/about")
+              navigate("/archive")
             }}
           >
-            About The Project
+            Archive
           </p>
         </div>
         <div className="menu-option-wrap">
@@ -66,7 +61,7 @@ const Menu = ({ theme, isExpanded = false }) => {
               navigate("/about")
             }}
           >
-            Archive
+            About The Project
           </p>
         </div>
       </div>

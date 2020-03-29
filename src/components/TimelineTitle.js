@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import TimelineLede from "./TimelineLede"
 
 const TimelineTitle = props => (
   <StaticQuery
@@ -32,15 +33,20 @@ const TimelineTitle = props => (
 
       //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
       return (
-        <div className="timeline-title">
-          <div className="background">
-            <Img
-              alt={props.alt}
-              fluid={image.node.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
+        <div className="timeline-title timeline-copy">
+          <div className="timeline-step" style={{ height: "100vh" }}>
+            <div className="background">
+              <Img
+                alt={props.alt}
+                fluid={image.node.childImageSharp.fluid}
+                style={{ height: "100%" }}
+              />
+            </div>
+            {null /*<h2>The history of life without parole in Louisiana</h2>*/}
+            <div className="copy">
+              <TimelineLede />
+            </div>
           </div>
-          <h2>The history of life without parole in Louisiana</h2>
         </div>
       )
     }}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react"
-
+import { debounce } from "lodash"
 import "./Timeline.css"
 
 import Menu from "./Menu"
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
 import TimelineSteps from "./TimelineSteps"
-import TimelineLede from "./TimelineLede"
+//import TimelineLede from "./TimelineLede"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
 import TimelineTitle from "./TimelineTitle"
@@ -44,34 +44,52 @@ const Timeline = () => {
   const timelineRef = useRef()
   const [progress, setProgress] = useState(0)
   const [modalContent, setModal] = useState(false)
-  const [invertColor, setInvert] = useState(true)
+  const [invertColor, setInvert] = useState(false)
   const [isAngolite, setAngolite] = useState(false)
 
   function toggleColor() {
-    if (
-      timelineRef.current &&
-      timelineRef.current.getBoundingClientRect().top < -440
-    ) {
-      setInvert(false)
-    } else {
-      setInvert(true)
-    }
+    debounce(() => {
+      if (
+        timelineRef.current &&
+        timelineRef.current.getBoundingClientRect().top < -440
+      ) {
+        setInvert(false)
+      } else {
+        setInvert(true)
+      }
+    }, 100)
+  }
+
+  function setStepOnVisibility() {
+    TIMELINE.forEach((_, index) => {
+      onVisibilityChange(`step-${index}`, function() {
+        setStep(index)
+      })()
+    })
+  }
+
+  function goToNextStep() {
+    setStep(step + 1)
+    goToStep(step + 1)
+  }
+
+  function goToPrevStep() {
+    setStep(step - 1)
+    goToStep(step - 1)
   }
 
   useEffect(() => {
-    document.addEventListener("wheel", toggleColor)
-
-    TIMELINE.forEach((_, index) => {
-      document.addEventListener("wheel", () => {
-        onVisibilityChange(`step-${index}`, function() {
-          setStep(index)
-          //if (IS_DYNAMIC) setProgress(null)
-        })()
-      })
+    window.addEventListener("keyup", e => {
+      if (e.code === "ArrowDown") {
+        goToNextStep()
+      } else if (e.code === "ArrowUp") {
+        goToPrevStep()
+      }
     })
+    document.addEventListener("wheel", setStepOnVisibility)
 
     return function removeWheelToggle() {
-      document.removeEventListener("wheel", toggleColor)
+      document.removeEventListener("wheel", setStepOnVisibility)
     }
   }, [])
 
@@ -100,7 +118,6 @@ const Timeline = () => {
           }}
         >
           <div className="copy" style={{ flex: 1 }}>
-            <TimelineLede setModal={setModal} />
             {TIMELINE.slice(1).map((timelineStep, i) => {
               if (!timelineStep.paragraphs) return null
               const hasImage = timelineStep.image

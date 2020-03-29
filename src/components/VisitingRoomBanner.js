@@ -2,7 +2,7 @@ import React from "react"
 import "./VisitingRoomBanner.css"
 import { animated, useSpring } from "react-spring"
 
-import IconSearch from "./Symbols/Search"
+import FilterAndSearch from "./FilterAndSearch"
 import Loading from "./Loading"
 
 const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
@@ -34,26 +34,8 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
             if (!showGrid) setShowGrid(true)
           }}
         >
-          <div className="header-options">
-            {showGrid && (
-              <div className="header-option search">
-                <IconSearch />
-                <p className="search-input">Search</p>
-              </div>
-            )}
-
-            {showGrid && (
-              <div className="header-option">
-                <p className="search-input">Filter by parrish</p>
-              </div>
-            )}
-            {showGrid && (
-              <div className="header-option">
-                <p className="search-input">Filter by age</p>
-              </div>
-            )}
-            {!showGrid && <Loading />}
-          </div>
+          {showGrid && <FilterAndSearch />}
+          {!showGrid && <Loading />}
         </div>
       </animated.div>
     </>
