@@ -12,7 +12,7 @@
 }
 
 .visting-room-banner.in-grid {
-  height: 60px;
+  height: auto;
   padding: 40px;
   flex-direction: row;
   align-items: center;
@@ -22,9 +22,9 @@
 }
 
 .who-header p {
-  font-family: "GTPressura";
+  font-family: "Playfair Display", serif;
   transition: font-size 1.2s;
-  font-size: 36px;
+  font-size: var(--font-large);
   text-align: center;
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
@@ -51,6 +51,7 @@
   display: flex;
   flex-direction: column;
   width: 360px;
+  height: 120px;
   justify-content: space-between;
   align-items: center;
 }

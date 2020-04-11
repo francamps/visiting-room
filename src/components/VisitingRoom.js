@@ -10,6 +10,7 @@ import "./VisitingRoom.css"
 const VisitingRoom = ({ pageContext = { profileId: null } }) => {
   const { profileId } = pageContext
   const [showGrid, setShowGrid] = useState(false)
+  const [search, setSearch] = useState(null)
 
   useEffect(() => {
     let timer1 = setTimeout(() => setShowGrid(true), 3000)
@@ -27,8 +28,8 @@ const VisitingRoom = ({ pageContext = { profileId: null } }) => {
       }}
     >
       {!profileId && <Menu isExpanded={false} />}
-      {showGrid && <Grid />}
-      <VisitingRoomBanner showGrid={showGrid} setShowGrid={setShowGrid} />
+      {showGrid && <Grid searchTerm={search} />}
+      <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
       {profileId && (
         <Video profileId={"arthur_carter"} name={"Arthur Carter"} />
       )}

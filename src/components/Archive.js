@@ -3,16 +3,9 @@ import React, { useState } from "react"
 import Menu from "./Menu"
 import FilterAndSearch from "./FilterAndSearch"
 import { archive } from "../content/archive"
+import sortProfiles from "../utils/sortProfiles"
 
 import "./Archive.css"
-
-const sortArchive = (data, sortType, sortAsc) => {
-  data.sort((a, b) => {
-    if (a[sortType] > b[sortType]) return sortAsc ? 1 : -1
-    if (a[sortType] < b[sortType]) return sortAsc ? -1 : 1
-  })
-  return data
-}
 
 const columns = [
   "Full Name",
@@ -24,7 +17,7 @@ const columns = [
 const Archive = () => {
   const [openProfile, setOpenProfile] = useState(null)
 
-  const [search, setSearch] = useState(null)
+  const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[0])
 
@@ -57,10 +50,10 @@ const Archive = () => {
             </tr>
           </thead>
           <tbody>
-            {sortArchive(archive.slice(0), sortType, sortAsc)
+            {sortProfiles(archive.slice(0), sortType, sortAsc)
               .filter(profile => {
-                if (search === null) return true
-                if (profile["Full Name"].indexOf(search) > -1) return true
+                if (searchTerm === null || searchTerm === "") return true
+                if (profile["Full Name"].indexOf(searchTerm) > -1) return true
               })
               .map((profile, idx) => {
                 return (

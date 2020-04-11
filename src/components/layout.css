@@ -1,12 +1,13 @@
 :root {
-  --font-xxsmall: 0.6em;
-  --font-xsmall: 0.7em;
-  --font-small: 0.8em;
-  --font-normal: 1.1em;
-  --font-copy: 1.25em;
-  --font-subtitle: 1.2em;
-  --font-large: 2.5em;
-  --font-title: 4.5em;
+  --font-xxsmall: 0.6rem;
+  --font-xsmall: 0.7rem;
+  --font-small: 0.8rem;
+  --font-normal: 1.1rem;
+  --font-copy: 1.35rem;
+  --font-copy-timeline: 1.5rem;
+  --font-subtitle: 1.2rem;
+  --font-large: 2.5rem;
+  --font-title: 4.5rem;
 
   --copy-line-height: 1.7em;
 
@@ -17,13 +18,17 @@
   --clr-chart: var(--clr-primary);
   --clr-white: #ffffff;
   --clr-white-rgb: 255, 255, 255;
+  --clr-off-white: #f7f5f0;
   --clr-black: #000000 /*#080000*/;
   --clr-dark-bg: #141414;
   --clr-mid-grey: #444444;
   --clr-light-grey: #a8a0a0;
 
   /* Spacing */
-  --space-around-med: 80px;
+  --space-around-small: 30px;
+  --space-around-med: 40px;
+  --space-around-lg: 60px;
+  --space-around-xl: 80px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
@@ -80,6 +85,16 @@ body {
   height: 100vh;
   background: var(--clr-dark-bg);
   color: white;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 ::selection {
@@ -164,7 +179,6 @@ COPY
   font-weight: 300;
   font-size: var(--font-copy);
   text-align: left;
-  color: white;
 }
 
 .copy .lede {

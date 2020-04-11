@@ -122,3 +122,17 @@
     font-size: 1.5em;
   }
 }
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-cell .cell-hover-quote {
+    padding: 40px;
+  }
+
+  .grid-cell .cell-hover-quote .quote {
+    font-size: 1.1em;
+  }
+}

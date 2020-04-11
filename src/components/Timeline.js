@@ -6,37 +6,62 @@ import Menu from "./Menu"
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
 import TimelineSteps from "./TimelineSteps"
-//import TimelineLede from "./TimelineLede"
+// import TimelineLede from "./TimelineLede"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
-import TimelineTitle from "./TimelineTitle"
+// import TimelineTitle from "./TimelineTitle"
 
 import TimelineAngolite from "./TimelineAngolite"
 import Caret from "./Caret"
 
 import { TIMELINE } from "../content/timeline"
 
-function isElementInViewport(attribute) {
+/*function isElementInViewport(attribute) {
   const el = document.querySelector(`[data-step="${attribute}"]`)
   if (!el) return null
   const rect = el.getBoundingClientRect()
 
   return rect.top >= -window.innerHeight && rect.top < 0
-}
+}*/
 
-function onVisibilityChange(attribute, callback) {
+/*function onVisibilityChange(attribute, callback) {
   return function() {
     if (isElementInViewport(attribute) && typeof callback === "function") {
       callback()
     }
   }
-}
+}*/
 
 //const IS_DYNAMIC = false
 
-const TONES = Array(TIMELINE.length)
-  .fill(0)
-  .map(d => Math.floor(225 + Math.random() * 30))
+function useKey(key) {
+  // Keep track of key state
+  const [pressed, setPressed] = useState(false)
+
+  // Does an event match the key we're watching?
+  const match = event => key.toLowerCase() == event.key.toLowerCase()
+
+  // Event handlers
+  const onDown = event => {
+    if (match(event)) setPressed(true)
+  }
+
+  const onUp = event => {
+    if (match(event)) setPressed(false)
+  }
+
+  // Bind and unbind events
+  useEffect(() => {
+    window.addEventListener("keydown", onDown)
+    window.addEventListener("keyup", onUp)
+    return () => {
+      window.removeEventListener("keydown", onDown)
+      window.removeEventListener("keyup", onUp)
+    }
+  }, [key])
+
+  return pressed
+}
 
 const Timeline = () => {
   const [isFigureActive, setFigureActive] = useState(null)
@@ -44,169 +69,101 @@ const Timeline = () => {
   const timelineRef = useRef()
   const [progress, setProgress] = useState(0)
   const [modalContent, setModal] = useState(false)
-  const [invertColor, setInvert] = useState(false)
   const [isAngolite, setAngolite] = useState(false)
 
-  function toggleColor() {
-    debounce(() => {
-      if (
-        timelineRef.current &&
-        timelineRef.current.getBoundingClientRect().top < -440
-      ) {
-        setInvert(false)
-      } else {
-        setInvert(true)
-      }
-    }, 100)
-  }
-
-  function setStepOnVisibility() {
+  /*function setStepOnVisibility() {
     TIMELINE.forEach((_, index) => {
       onVisibilityChange(`step-${index}`, function() {
         setStep(index)
       })()
     })
-  }
+  }*/
 
-  function goToNextStep() {
-    setStep(step + 1)
-    goToStep(step + 1)
-  }
-
-  function goToPrevStep() {
-    setStep(step - 1)
-    goToStep(step - 1)
+  const keyToStep = e => {
+    console.log(step)
+    if (e.code === "ArrowDown") {
+      if (step < TIMELINE.length - 1) setStep(step + 1)
+    } else if (e.code === "ArrowUp") {
+      if (step > 0) setStep(step - 1)
+    }
   }
 
   useEffect(() => {
-    window.addEventListener("keyup", e => {
-      if (e.code === "ArrowDown") {
-        goToNextStep()
-      } else if (e.code === "ArrowUp") {
-        goToPrevStep()
-      }
-    })
-    document.addEventListener("wheel", setStepOnVisibility)
-
-    return function removeWheelToggle() {
-      document.removeEventListener("wheel", setStepOnVisibility)
+    window.addEventListener("keyup", keyToStep)
+    return () => {
+      window.removeEventListener("keyup", keyToStep)
     }
-  }, [])
+  }, [keyToStep])
 
   // TODO: Disable the wheel on
   //useEffect(() => {}, [isAngolite])
 
-  const goToStep = step => {
+  useEffect(() => {
     const el = document.querySelector(`[data-step="step-${step}"]`)
     if (el) {
       el.scrollIntoView({
         behavior: "smooth",
       })
     }
-  }
+  }, [step])
+
+  const isLastStep = step < TIMELINE.length - 1
 
   return (
     <>
       <Menu theme="light" />
       <article className="timeline" ref={timelineRef}>
-        <TimelineTitle />
-        <div
-          className="timeline-copy"
-          style={{
-            flex: !!TIMELINE[step].paragraph,
-            transition: "flex 0.4s",
-          }}
-        >
-          <div className="copy" style={{ flex: 1 }}>
-            {TIMELINE.slice(1).map((timelineStep, i) => {
-              if (!timelineStep.paragraphs) return null
-              const hasImage = timelineStep.image
+        {null /*<TimelineTitle setModal={setModal} />*/}
+        {TIMELINE.map((timelineStep, i) => {
+          if (!timelineStep.paragraphs) return null
+          const hasImage = timelineStep.images.length
 
-              return (
-                <div
-                  key={`timeline-step-${i + 1}`}
-                  className="timeline-step"
-                  data-step={`step-${i + 1}`}
-                  style={{
-                    transform: "translate3d(0,0,0)",
-                    backgroundColor: `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
-                  }}
-                >
-                  <div className="step-content">
-                    <h3 className="year-label">{timelineStep.year}</h3>
-                    <h2>{timelineStep.title}</h2>
-                    <div
-                      className={`step-${i + 1} ${
-                        i === 1 ? "step-two-columns" : "step-columns"
-                      }`}
-                    >
-                      <Paragraphs
-                        paragraphs={timelineStep.paragraphs}
-                        setModal={setModal}
-                      />
+          return (
+            <>
+              <div className="timeline-step-pad" data-step={`step-${i}`} />
+              <div className="timeline-step-wrap">
+                {step === i && (
+                  <div key={`timeline-step-${i}`} className="timeline-step">
+                    <div className="step-content">
+                      <h3 className="year-label">{timelineStep.year}</h3>
+                      <h2>{timelineStep.title}</h2>
+                      <div className={`step-${i} step-columns`}>
+                        <Paragraphs
+                          paragraphs={timelineStep.paragraphs}
+                          setModal={setModal}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  {timelineStep.image && (
-                    <>
-                      <div style={{ width: "800px", height: "100vh" }}></div>
-                      <div
-                        className={`timeline-figure ${
-                          !!hasImage ? "figure-flex" : ""
-                        }
-                        ${i === 4 || i === 3 ? "figure-wide long" : ""}`}
-                        style={{
-                          backgroundColor:
-                            i === TIMELINE.slice(1).length - 1
-                              ? "white"
-                              : `rgb(${TONES[i]}, ${TONES[i]}, ${TONES[i]})`,
-                        }}
-                      >
+                    {hasImage && (
+                      <>
+                        <div style={{ width: "800px", height: "100vh" }}></div>
                         <TimelineFigure
                           step={i}
                           progress={progress}
                           caption={timelineStep.caption}
+                          images={timelineStep.images}
                           setFigureActive={setFigureActive}
+                          setAngolite={setAngolite}
                         />
-                        {i === 1 && (
-                          <div
-                            className="button"
-                            style={{
-                              width: "240px",
-                              height: "20px",
-                              lineHeight: "20px",
-                              color: "black",
-                              margin: "0 auto",
-                              marginTop: "20px",
-                              fontSize: "var(--font-small)",
-                              background: "rgba(0,0,0,0.2)",
-                              borderRadius: "4px",
-                            }}
-                            onClick={() => {
-                              setAngolite(true)
-                            }}
-                          >
-                            See the history of The Angolite >
-                          </div>
-                        )}
-                      </div>
-                      <div style={{ width: "640px", height: "100vh" }} />
-                    </>
-                  )}
-                  {!timelineStep.image && (
-                    <div style={{ width: "640px", height: "300vh" }}></div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-          {isAngolite && (
-            <TimelineAngolite
-              onClose={() => {
-                setAngolite(false)
-              }}
-            />
-          )}
-        </div>
+                        <div style={{ width: "640px", height: "100vh" }} />
+                      </>
+                    )}
+                    {!hasImage && (
+                      <div style={{ width: "640px", height: "300vh" }}></div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </>
+          )
+        })}
+        {isAngolite && (
+          <TimelineAngolite
+            onClose={() => {
+              setAngolite(false)
+            }}
+          />
+        )}
 
         {isFigureActive && (
           <TimelineFigureFocus
@@ -217,25 +174,20 @@ const Timeline = () => {
 
         <TimelineSteps
           step={step}
-          invertColor={invertColor}
-          onGoToStep={d => {
-            setStep(d)
-            goToStep(d)
+          onGoToStep={s => {
+            setStep(s)
           }}
         />
-        <div
-          className="scroll"
-          onClick={() => {
-            setStep(step + 1)
-            goToStep(step + 1)
-          }}
-        >
-          <Caret
-            direction="down"
-            animate={true}
-            color={invertColor ? "white" : "black"}
-          />
-        </div>
+        {isLastStep && (
+          <div
+            className="scroll"
+            onClick={() => {
+              setStep(step + 1)
+            }}
+          >
+            <Caret animate={true} color={"black"} />
+          </div>
+        )}
 
         {modalContent && (
           <TimelineModal setModal={setModal} content={modalContent} />

@@ -78,7 +78,7 @@
 .archive table tbody tr td {
   flex: 1;
   padding: 0 20px;
-  border-right: 1px solid var(--clr-white);
+  border-right: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

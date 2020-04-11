@@ -5,7 +5,7 @@ import { animated, useSpring } from "react-spring"
 import FilterAndSearch from "./FilterAndSearch"
 import Loading from "./Loading"
 
-const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
+const VisitingRoomBanner = ({ showGrid, onSearchTyping }) => {
   const props = useSpring({
     config: { duration: 1200, mass: 5, tension: 350, friction: 40 },
     to: { opacity: 1, marginTop: "0" },
@@ -18,7 +18,7 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
         className={`visting-room-banner ${showGrid ? "in-grid" : ""}`}
         style={props}
       >
-        <div className="who-header" onClick={() => setShowGrid(false)}>
+        <div className="who-header">
           {!showGrid && (
             <>
               <p>
@@ -28,13 +28,8 @@ const VisitingRoomBanner = ({ showGrid, setShowGrid }) => {
             </>
           )}
         </div>
-        <div
-          className="header-content"
-          onWheel={() => {
-            if (!showGrid) setShowGrid(true)
-          }}
-        >
-          {showGrid && <FilterAndSearch />}
+        <div className="header-content">
+          {showGrid && <FilterAndSearch onSearchTyping={onSearchTyping} />}
           {!showGrid && <Loading />}
         </div>
       </animated.div>

@@ -1,3 +1,27 @@
+.carousel {
+  height: 70vh;
+  min-height: 400px;
+  max-height: 600px;
+  background: var(--clr-dark-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 20px;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.carousel-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 200vw;
+  height: 80%;
+}
+
 .carousel-cell {
   display: flex;
   justify-content: center;
@@ -110,5 +134,16 @@
 
   .carousel-cell .cell-hover-quote .quote {
     font-size: 1.2em;
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 800vw;
+    height: 80%;
   }
 }

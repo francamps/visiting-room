@@ -1,0 +1,12 @@
+.about .copy-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0;
+  width: 640px;
+}
+
+@media (max-width: 767px) {
+  .about .copy-wrap {
+    width: 80%;
+  }
+}

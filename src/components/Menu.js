@@ -38,7 +38,7 @@ const Menu = ({ theme, isExpanded = false }) => {
           <p
             className="hover-link"
             onClick={() => {
-              navigate("/timeline")
+              navigate("/history")
             }}
           >
             History

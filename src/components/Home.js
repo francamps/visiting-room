@@ -41,6 +41,15 @@ const Home = () => {
               <GridButton useCircle={false} />
               <h3>Visting room</h3>
             </div>
+
+            <div
+              className="button"
+              onClick={() => {
+                navigate("/history")
+              }}
+            >
+              <h3>History</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -66,30 +75,8 @@ const Home = () => {
         </article>
       </section>
       <section>
-        <div
-          style={{
-            height: "70vh",
-            minHeight: "500px",
-            background: "var(--clr-black)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            marginTop: "40px",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              height: "480px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "relative",
-              padding: "20px",
-              boxSizing: "border-box",
-            }}
-          >
+        <div className="animation">
+          <div className="video-wrap">
             <img
               width={"640px"}
               height={"480px"}
@@ -98,11 +85,11 @@ const Home = () => {
             />
             <Play />
           </div>
-          <Link to="/timeline">
+          <Link to="/history">
             <div
               className="button"
               onClick={() => {
-                navigate("/timeline")
+                navigate("/history")
               }}
             >
               <div className="link-wrap">
@@ -114,24 +101,7 @@ const Home = () => {
           </Link>
         </div>
 
-        <div
-          style={{
-            height: "70vh",
-            minHeight: "400px",
-            maxHeight: "600px",
-            background: "var(--clr-dark-bg)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "100%",
-            padding: "0px 20px",
-            overflow: "scroll",
-            boxSizing: "border-box",
-          }}
-        >
-          <HomeCarousel />
-        </div>
+        <HomeCarousel />
         <Link to="/visiting-room">
           <div
             className="button"
@@ -145,16 +115,7 @@ const Home = () => {
           </div>
         </Link>
 
-        <div
-          style={{
-            height: "200px",
-            background: "var(--clr-dark-bg)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <div style={{}}>
           <Link to="/about">
             <div
               className="button"

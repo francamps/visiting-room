@@ -8,6 +8,8 @@ import "react-tabs/style/react-tabs.css"
 import Menu from "../components/Menu"
 import Map from "../images/TEMP/timeline/map.png"
 
+import "../components/About.css"
+
 export const query = graphql`
   {
     prismic {
@@ -47,10 +49,9 @@ const About = () => {
         const terms = data
           ? data.prismic.allGlossary_terms.edges[0].node.term
           : []
-        console.log(data)
 
         return (
-          <>
+          <section className="about">
             <Menu />
             <div className="copy-wrap" style={{ padding: "100px 0" }}>
               <h2
@@ -104,11 +105,11 @@ const About = () => {
                   </div>
                 </div>
               </Link>
-              <Link to="/timeline">
+              <Link to="/history">
                 <div
                   className="button"
                   onClick={() => {
-                    navigate("/timeline")
+                    navigate("/history")
                   }}
                 >
                   <div className="link-wrap">
@@ -119,7 +120,7 @@ const About = () => {
                 </div>
               </Link>
             </div>
-          </>
+          </section>
         )
       }}
     />

@@ -121,7 +121,12 @@ const ChartA = () => {
       .style("opacity", 0.5)
   }, [])
 
-  return <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
+  return (
+    <div className="chart-wrap">
+      <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
+      <h4 className="title">People serving life without parole in Louisiana</h4>
+    </div>
+  )
 }
 
 export default ChartA

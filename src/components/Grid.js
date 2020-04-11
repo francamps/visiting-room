@@ -1,13 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { animated, useSpring } from "react-spring"
-
-import "./Grid.css"
+import { animated } from "react-spring"
 
 import { profiles } from "../content/profiles_all"
 import GridImage from "./GridImage"
 
+import "./Grid.css"
 import "./HomeVideo.css"
+
+const USE_PRISMIC = true
 
 const query = graphql`
   {
@@ -49,17 +50,7 @@ const query = graphql`
   }
 `
 
-const USE_PRISMIC = true
-
-const Grid = () => {
-  /*const fadeInProps = useSpring({
-    config: { duration: 2000 },
-    to: { opacity: 1 },
-    from: {
-      opacity: 0,
-    },
-  })*/
-
+const Grid = ({ searchTerm }) => {
   return (
     <StaticQuery
       query={`${query}`}
@@ -70,40 +61,43 @@ const Grid = () => {
         const imageData = data.images
 
         return (
-          <animated.div
-            className="grid"
-            style={
-              {
-                //...fadeInProps,
-              }
-            }
-          >
-            {allProfiles.map((node, idx) => {
-              const profile = USE_PRISMIC ? node.node : node
-              const profile_picture = USE_PRISMIC
-                ? profile.imagepath[0].text
-                : profile.imagePath
-              const quote =
-                USE_PRISMIC && profile.quote
-                  ? profile.quote[0].text
-                  : profile.quote
-              const fullName = USE_PRISMIC
-                ? profile.full_name[0].text
-                : profile.name
-
-              const image = imageData.edges.find(n => {
-                return n.node.relativePath.includes(profile_picture)
+          <animated.div className="grid">
+            {allProfiles
+              .filter(node => {
+                const profile = USE_PRISMIC ? node.node : node
+                if (searchTerm === null || searchTerm === "") return true
+                if (
+                  profile.full_name &&
+                  profile.full_name[0].text.indexOf(searchTerm) > -1
+                )
+                  return true
               })
+              .map((node, idx) => {
+                const profile = USE_PRISMIC ? node.node : node
+                const profile_picture = USE_PRISMIC
+                  ? profile.imagepath[0].text
+                  : profile.imagePath
+                const quote =
+                  USE_PRISMIC && profile.quote
+                    ? profile.quote[0].text
+                    : profile.quote
+                const fullName = USE_PRISMIC
+                  ? profile.full_name[0].text
+                  : profile.name
 
-              return (
-                <GridImage
-                  image={image}
-                  fullName={fullName}
-                  quote={quote}
-                  profile_picture={profile_picture}
-                />
-              )
-            })}
+                const image = imageData.edges.find(n => {
+                  return n.node.relativePath.includes(profile_picture)
+                })
+
+                return (
+                  <GridImage
+                    image={image}
+                    fullName={fullName}
+                    quote={quote}
+                    profile_picture={profile_picture}
+                  />
+                )
+              })}
           </animated.div>
         )
       }}

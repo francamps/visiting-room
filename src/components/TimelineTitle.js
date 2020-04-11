@@ -42,9 +42,8 @@ const TimelineTitle = props => (
                 style={{ height: "100%" }}
               />
             </div>
-            {null /*<h2>The history of life without parole in Louisiana</h2>*/}
             <div className="copy">
-              <TimelineLede />
+              <TimelineLede setModal={props.setModal} />
             </div>
           </div>
         </div>

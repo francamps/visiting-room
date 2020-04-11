@@ -1,0 +1,55 @@
+.timeline-figure {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--clr-off-white);
+}
+
+.timeline-figure.long {
+  height: 200vh;
+}
+
+.timeline-figure figure {
+  width: 500px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+.timeline-figure figure img {
+  box-shadow: 4px 4px 10px #c4c4c4;
+}
+
+.timeline-figure figure .chart-wrap {
+  margin: 100px 0;
+  width: 800px;
+  margin-left: -150px;
+}
+
+.timeline-figure figure .chart-wrap .title {
+  font-family: "GTEesti";
+  font-weight: 100;
+  font-size: var(--font-small);
+}
+
+.timeline-figure .caption {
+  color: var(--clr-black);
+  font-size: var(--font-small);
+  margin: 0;
+}
+
+.timeline-figure .button {
+  width: 240px;
+  height: 20px;
+  line-height: 20px;
+  color: black;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: var(--font-small);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
