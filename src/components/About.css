@@ -5,8 +5,45 @@
   width: 640px;
 }
 
+.about .copy-wrap .title {
+  margin-left: -200px;
+  width: 200%;
+  margin-bottom: 40px;
+}
+
+/** REACT TABS
+TODO: PUT IT IN ITS OWN FILE
+*/
+
+.react-tabs__tab {
+  font-family: GTPressura;
+  font-size: var(--font-copy);
+  color: var(--clr-white);
+  border-left: 1px solid var(--clr-primary);
+}
+
+.react-tabs__tab:first-child {
+}
+
+.react-tabs__tab-list .react-tabs__tab--selected {
+  background: var(--clr-dark-bg) !important;
+  color: var(--clr-primary);
+  border: none;
+  border-left: 1px solid var(--clr-primary);
+}
+
+.react-tabs .react-tabs__tab-list {
+  border-bottom: none;
+}
+
 @media (max-width: 767px) {
   .about .copy-wrap {
     width: 80%;
+  }
+
+  .about .copy-wrap .title {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 40px;
   }
 }

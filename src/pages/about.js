@@ -54,15 +54,7 @@ const About = () => {
           <section className="about">
             <Menu />
             <div className="copy-wrap" style={{ padding: "100px 0" }}>
-              <h2
-                style={{
-                  marginLeft: "-200px",
-                  width: "200%",
-                  marginBottom: "40px",
-                }}
-              >
-                {title}
-              </h2>
+              <h2 className="title">{title}</h2>
               <Tabs>
                 <TabList>
                   <Tab>The project</Tab>

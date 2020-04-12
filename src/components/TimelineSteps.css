@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: flex-end;
   position: fixed;
+  top: 60px;
   right: 15px;
   background: none;
   height: 70px;
@@ -13,29 +14,8 @@
 
 @media (max-width: 767px) {
   .timeline-steps {
+    right: 0px;
   }
-}
-
-.timeline-steps-0 {
-  top: 90px;
-}
-.timeline-steps-1 {
-  top: 75px;
-}
-.timeline-steps-2 {
-  top: 60px;
-}
-.timeline-steps-3 {
-  top: 45px;
-}
-.timeline-steps-4 {
-  top: 30px;
-}
-.timeline-steps-5 {
-  top: 15px;
-}
-.timeline-steps-6 {
-  top: 0px;
 }
 
 .timeline-step-toc {
@@ -82,7 +62,7 @@
 .timeline-step-toc.active .dot {
   width: 6px;
   height: 6px;
-  margin: 6px 4px;
+  margin: 6px 3px;
   border: 4px solid var(--clr-primary);
   transition: border 0.4s;
 }

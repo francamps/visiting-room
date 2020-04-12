@@ -77,12 +77,7 @@ const Home = () => {
       <section>
         <div className="animation">
           <div className="video-wrap">
-            <img
-              width={"640px"}
-              height={"480px"}
-              src={image}
-              style={{ position: "absolute" }}
-            />
+            <div className="video-placeholder" />
             <Play />
           </div>
           <Link to="/history">
@@ -109,13 +104,13 @@ const Home = () => {
               navigate("/visiting-room")
             }}
           >
-            <div class="link-wrap">
+            <div className="link-wrap">
               <span className="hover-link">Go to the Visiting Room</span>
             </div>
           </div>
         </Link>
 
-        <div style={{}}>
+        <div className="about-button">
           <Link to="/about">
             <div
               className="button"
@@ -131,7 +126,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="footer">
+      <footer>
         <div className="footer-wrapper">
           <h5>Produced with the support of</h5>
 
@@ -141,7 +136,7 @@ const Home = () => {
             <li>NEW INC</li>
           </ul>
         </div>
-      </section>
+      </footer>
     </div>
   )
 }

@@ -423,27 +423,3 @@ FADE IN ANIMATIONS
     transform: translate(0, 0);
   }
 }
-
-/** REACT TABS
-TODO: PUT IT IN ITS OWN FILE
-*/
-
-.react-tabs__tab {
-  font-family: GTPressura;
-  font-size: var(--font-copy);
-  color: var(--clr-white);
-}
-
-.react-tabs__tab:first-child {
-  padding-left: 0;
-}
-
-.react-tabs__tab-list .react-tabs__tab--selected {
-  background: var(--clr-dark-bg) !important;
-  color: var(--clr-primary);
-  border: none;
-}
-
-.react-tabs .react-tabs__tab-list {
-  border-bottom: none;
-}

@@ -185,8 +185,8 @@
 
 /** END OF HIGHLIGHT COPY **/
 
-.footer {
-  width: calc(100% - 80px);
+footer {
+  width: 100%;
   height: 120px;
   background: var(--clr-black);
   margin: 0 auto;
@@ -201,7 +201,7 @@
   margin: 0 auto;
 }
 
-.footer ul {
+footer ul {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -211,7 +211,7 @@
   align-items: center;
 }
 
-.footer ul li {
+footer ul li {
   list-style: none;
   text-transform: uppercase;
   text-align: center;
@@ -222,6 +222,7 @@
   TODO: LIKELY TEMPORARY
 **/
 section .animation {
+  width: 100%;
   height: 70vh;
   min-height: 500px;
   background: var(--clr-black);
@@ -241,6 +242,16 @@ section .animation .video-wrap {
   position: relative;
   padding: 20px;
   box-sizing: border-box;
+  background: none;
+}
+
+section .animation .video-wrap .video-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../images/TEMP/animationBg.jpg");
+  filter: brightness(50);
 }
 
 section .about-button {
@@ -276,5 +287,24 @@ section .about-button {
 
   .highlight-wrap {
     width: calc(100% - var(--space-around-med));
+  }
+
+  section .animation {
+    width: 100%;
+  }
+
+  footer {
+    margin: 0;
+    width: 100%;
+  }
+
+  .footer-wrapper {
+    width: 100%;
+  }
+
+  footer ul {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }

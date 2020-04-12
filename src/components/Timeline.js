@@ -80,7 +80,6 @@ const Timeline = () => {
   }*/
 
   const keyToStep = e => {
-    console.log(step)
     if (e.code === "ArrowDown") {
       if (step < TIMELINE.length - 1) setStep(step + 1)
     } else if (e.code === "ArrowUp") {

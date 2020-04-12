@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 
 import Menu from "./Menu"
+import IconSearch from "./Symbols/Search"
 import FilterAndSearch from "./FilterAndSearch"
 import { archive } from "../content/archive"
 import sortProfiles from "../utils/sortProfiles"
+import { animated, useSpring } from "react-spring"
 
 import "./Archive.css"
 
@@ -16,19 +18,44 @@ const columns = [
 
 const Archive = () => {
   const [openProfile, setOpenProfile] = useState(null)
+  const [openSearch, setOpenSearch] = useState(false)
 
   const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[0])
-
+  const props = useSpring({
+    config: { duration: 1200, mass: 5, tension: 350, friction: 40 },
+    to: { opacity: 1, marginTop: "0" },
+    from: { opacity: 0, marginTop: "60px" },
+  })
   return (
     <>
       <Menu isExpanded={false} />
       <div className="archive">
         <h2>Archive</h2>
-        <div className="header-content">
-          <FilterAndSearch onSearchTyping={setSearch} />
+        <div className={`header-content ${openSearch ? "open" : ""} `}>
+          {!openSearch && (
+            <div
+              className="search-trigger"
+              onClick={() => {
+                setOpenSearch(true)
+              }}
+            >
+              <IconSearch />
+            </div>
+          )}
+          {openSearch && (
+            <div style={props}>
+              <FilterAndSearch onSearchTyping={setSearch} />
+            </div>
+          )}
         </div>
+        {openSearch && (
+          <div
+            className="header-backdrop"
+            onClick={() => setOpenSearch(false)}
+          ></div>
+        )}
         <table>
           <thead>
             <tr>

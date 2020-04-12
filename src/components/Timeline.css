@@ -122,7 +122,6 @@ TIMELINE TEXT STUFF
 .step-content .paragraph-wrap {
   display: block;
   margin: 0 auto;
-  /*width: 640px;*/
 }
 
 .step-content .paragraph {
@@ -130,7 +129,6 @@ TIMELINE TEXT STUFF
   padding: 0;
   margin: 0 auto;
 
-  /*font-family: "GTPressura";*/
   font-family: "Playfair Display", serif;
   line-height: 1.35em;
   font-size: var(--font-copy-timeline);
@@ -253,6 +251,10 @@ TIMELINE TITLE
 
   .step-content {
     width: 80%;
+  }
+
+  .step-content .paragraph {
+    font-size: var(--font-copy);
   }
 
   .step-columns {

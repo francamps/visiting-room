@@ -34,6 +34,7 @@
   font-family: "GTEesti";
   font-weight: 100;
   font-size: var(--font-small);
+  color: var(--clr-black);
 }
 
 .timeline-figure .caption {
@@ -52,4 +53,12 @@
   font-size: var(--font-small);
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .timeline-figure figure .chart-wrap {
+    margin: 40px 0;
+    width: 100%;
+    margin-left: 0px;
+  }
 }

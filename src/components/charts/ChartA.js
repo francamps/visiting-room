@@ -27,20 +27,23 @@ const m = {
 const HEIGHT = 500
 const WIDTH = 800
 
-const xScale = scaleTime()
-  .domain([1970, 2020])
-  .range([m.l, WIDTH - m.r])
-
-const yScale = scaleLinear()
-  .domain([0, 5000])
-  .range([HEIGHT - m.t, m.b])
-
 const ChartA = () => {
   const svgRef = useRef()
+  const canvasRef = useRef()
 
   useEffect(() => {
+    const w = canvasRef.current.getBoundingClientRect().width
+    const h = (w * HEIGHT) / WIDTH
     const svg = select(svgRef.current)
     const points = svg.selectAll("circle").data(data)
+
+    const xScale = scaleTime()
+      .domain([1970, 2020])
+      .range([m.l, w - m.r])
+
+    const yScale = scaleLinear()
+      .domain([0, 5000])
+      .range([h - m.t, m.b])
 
     const path = area()
       .x(d => xScale(d.year))
@@ -99,7 +102,7 @@ const ChartA = () => {
       .attr("class", "year")
       .join("text")
       .attr("x", d => xScale(d.year))
-      .attr("y", d => HEIGHT - 5)
+      .attr("y", d => h - 5)
       .text(d => d.year)
       .style("fill", "black")
       .style("text-anchor", "middle")
@@ -114,15 +117,17 @@ const ChartA = () => {
       .attr("x1", d => xScale(d.year))
       .attr("x2", d => xScale(d.year))
       .attr("y1", d => yScale(d.d) + 2)
-      .attr("y2", d => HEIGHT - m.b)
+      .attr("y2", d => h - m.b)
       .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
       .style("stroke-dasharray", "2px 5px")
       .style("opacity", 0.5)
+
+    svg.attr("width", w).attr("height", h)
   }, [])
 
   return (
-    <div className="chart-wrap">
+    <div className="chart-wrap" ref={canvasRef}>
       <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
       <h4 className="title">People serving life without parole in Louisiana</h4>
     </div>

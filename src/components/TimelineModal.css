@@ -8,3 +8,9 @@
   font-family: "GTEesti";
   font-size: var(--font-normal);
 }
+
+@media (max-width: 867px) {
+  .modal {
+    width: 80%;
+  }
+}

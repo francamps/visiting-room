@@ -10,7 +10,46 @@
 }
 
 .archive h2 {
-  padding: 20px 40px;
+  padding: 20px 50px;
+}
+
+.archive .header-content .search-trigger {
+  width: 100%;
+  margin-top: -60px;
+  padding-right: 20px;
+  text-align: right;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .archive .header-content.open {
+    margin-top: -60px;
+    height: 30px;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .archive h2 {
+    padding: 20px 20px;
+  }
+
+  .archive .header-content.open {
+    position: absolute;
+    background-color: var(--clr-black);
+  }
+
+  .archive .header-content .header-options {
+    opacity: 0;
+  }
+
+  .archive .header-content.open .header-options {
+    padding: 20px;
+    opacity: 1;
+    transition-delay: 0.4s;
+    transition-property: opacity;
+    transition-duration: 0.4s;
+  }
 }
 
 .archive table {

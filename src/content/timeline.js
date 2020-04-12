@@ -134,7 +134,7 @@ period has continued unabated.`,
         element: "p",
         content: `In the 1990s, as mass incarceration took hold in the U.S., 
         courts and lawmakers sought to stymie prisoners’ access to the courts 
-        by imposing procedural barriers and strict time limitations.`,
+        by imposing procedural barriers and strict time limitations. `,
       },
       {
         element: "p",

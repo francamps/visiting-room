@@ -27,6 +27,9 @@ const Menu = ({ theme, isExpanded = false }) => {
         className={`menu-options ${isBurgerOpen ? "open" : ""} ${
           theme === "light" ? "menu-light" : ""
         }`}
+        onClick={() => {
+          setBurgerOpen(false)
+        }}
       >
         <Link to="/visiting-room">
           <div className="menu-option-wrap">

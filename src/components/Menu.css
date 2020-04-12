@@ -145,3 +145,13 @@ MENU LINKS
 .hover-link:after {
   right: 50%;
 }
+
+@media (max-width: 767px) {
+  .menu .home-title {
+    font-size: 1.5em;
+  }
+
+  .menu-options.open {
+    left: 20px;
+  }
+}

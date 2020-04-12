@@ -40,20 +40,23 @@ const m = {
 const HEIGHT = 500
 const WIDTH = 800
 
-const xScale = scaleTime()
-  .domain([1972, 2020])
-  .range([m.l, WIDTH - m.r])
-
-const yScale = scaleLinear()
-  .domain([0, 5000])
-  .range([HEIGHT - m.t, m.b])
-
 const ChartB = () => {
   const svgRef = useRef()
+  const canvasRef = useRef()
 
   useEffect(() => {
+    const w = canvasRef.current.getBoundingClientRect().width
+    const h = (w * HEIGHT) / WIDTH
     const svg = select(svgRef.current)
     const points = svg.selectAll("circle").data(data)
+
+    const xScale = scaleTime()
+      .domain([1972, 2020])
+      .range([m.l, w - m.r])
+
+    const yScale = scaleLinear()
+      .domain([0, 5000])
+      .range([h - m.t, m.b])
 
     const pathLineFill = area()
       .x(d => xScale(d.yearF))
@@ -146,7 +149,7 @@ const ChartB = () => {
       .attr("x1", d => xScale(d.yearF))
       .attr("x2", d => xScale(d.yearF))
       .attr("y1", d => yScale(d.value))
-      .attr("y2", HEIGHT - m.b)
+      .attr("y2", h - m.b)
       .style("stroke", "var(--clr-chart)")
       .style("stroke-width", 2)
       .style("stroke-dasharray", "2px 5px")
@@ -198,17 +201,19 @@ const ChartB = () => {
       .attr("class", "year")
       .join("text")
       .attr("x", d => xScale(d.year0))
-      .attr("y", HEIGHT)
+      .attr("y", h)
       .text(d => d.year0)
       .style("fill", "black")
       .style("text-anchor", "middle")
       .style("font-family", "GTEesti")
       .style("font-weight", "100")
       .style("font-size", "var(--font-xsmall)")
+
+    svg.attr("width", w).attr("height", h)
   }, [])
 
   return (
-    <div className="chart-wrap">
+    <div className="chart-wrap" ref={canvasRef}>
       <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
       <h4 className="title">People serving life without parole in Louisiana</h4>
     </div>
