@@ -46,18 +46,18 @@
 }
 
 .menu-options p {
-  font-family: "GTPressura";
-  text-align: left;
-  font-size: var(--font-large);
-  line-height: 1em;
-  cursor: pointer;
-  margin: 0;
-  letter-spacing: normal;
   padding: 6px 0;
   margin: 10px 0;
+
+  font-family: "GTPressura";
+  font-size: var(--font-large);
+  font-weight: 300;
+  text-align: left;
   color: var(--clr-white);
-  opacity: 0.8;
-  transition: letter-spacing 0.4s, opacity 0.4s, color 0.4s;
+  letter-spacing: normal;
+  line-height: 1em;
+  cursor: pointer;
+  transition: letter-spacing 0.4s, color 0.4s;
 }
 
 .menu-options.menu-light p {
@@ -65,10 +65,9 @@
 }
 
 .menu-options p:hover {
-  opacity: 1;
   color: var(--clr-primary);
   letter-spacing: 0.02em;
-  transition: letter-spacing 0.4s, opacity 0.4s, color 0.4s;
+  transition: letter-spacing 0.4s, color 0.4s;
 }
 
 .menu .home-title {

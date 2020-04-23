@@ -33,7 +33,7 @@ const Menu = ({ theme, isExpanded = false }) => {
       >
         <Link to="/visiting-room">
           <div className="menu-option-wrap">
-            <p className="hover-link">The Visiting Room</p>
+            <p className="hover-link">THE VISITING ROOM</p>
           </div>
         </Link>
 
@@ -44,7 +44,7 @@ const Menu = ({ theme, isExpanded = false }) => {
               navigate("/history")
             }}
           >
-            History
+            HISTORY
           </p>
         </div>
         <div className="menu-option-wrap">
@@ -54,7 +54,7 @@ const Menu = ({ theme, isExpanded = false }) => {
               navigate("/archive")
             }}
           >
-            Archive
+            ARCHIVE
           </p>
         </div>
         <div className="menu-option-wrap">
@@ -64,7 +64,7 @@ const Menu = ({ theme, isExpanded = false }) => {
               navigate("/about")
             }}
           >
-            About The Project
+            ABOUT THE PROJECT
           </p>
         </div>
       </div>

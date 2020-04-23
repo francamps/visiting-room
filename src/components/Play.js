@@ -27,6 +27,48 @@ const Play = ({ size, onClick, useCircle = true }) => {
     )
   }
 
+  if (size === "large") {
+    return (
+      <svg
+        className="play"
+        width="60px"
+        height="60px"
+        viewBox="0 0 60 60"
+        style={{
+          pointerEvents: "all",
+        }}
+        onClick={onClick}
+        onMouseOver={() => setHover(true)}
+        onFocus={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onBlur={() => setHover(false)}
+      >
+        <circle
+          cx={30}
+          cy={30}
+          stroke="#ffffff"
+          fill={"none"}
+          r={28}
+          strokeWidth={2}
+        />
+        <polygon
+          strokeLinejoin="round"
+          fillRule="evenodd"
+          fill="#ffffff"
+          stroke="#ffffff"
+          strokeWidth={2}
+          points="22.2 12 0 24 0 0"
+          style={{
+            transform: "translate(21px, 18px)",
+            opacity: isHover ? 1 : 0.6,
+            transition: "opacity 0.4s",
+            cursor: "pointer",
+          }}
+        ></polygon>
+      </svg>
+    )
+  }
+
   if (size === "huge") {
     return (
       <svg

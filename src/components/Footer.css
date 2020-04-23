@@ -1,0 +1,65 @@
+footer {
+  width: 100%;
+  height: 340px;
+  margin: 0 auto;
+
+  background: var(--clr-off-white);
+  font-family: "GTPressura";
+  color: var(--clr-black);
+}
+
+.footer-wrapper {
+  width: 640px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul {
+  height: 80px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer ul li {
+  list-style: none;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 40px;
+  border-right: 2px solid var(--clr-primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+footer ul.socials li {
+  padding: 0 20px;
+}
+
+footer ul li:last-child {
+  border: 0;
+}
+
+@media (max-width: 767px) {
+  footer {
+    margin: 0;
+    width: 100%;
+  }
+
+  .footer-wrapper {
+    width: 100%;
+  }
+
+  footer ul {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
