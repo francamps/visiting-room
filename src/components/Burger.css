@@ -51,6 +51,12 @@
   background-color: var(--clr-white);
 }
 
+.burger:hover .burger-inner,
+.burger:hover .burger-inner:before,
+.burger:hover .burger-inner:after {
+  background-color: var(--clr-primary);
+}
+
 .burger.is-active .burger-inner,
 .burger.is-active .burger-inner:before,
 .burger.is-active .burger-inner:after {

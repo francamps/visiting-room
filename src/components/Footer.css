@@ -4,12 +4,12 @@ footer {
   margin: 0 auto;
 
   background: var(--clr-off-white);
-  font-family: "GTPressura";
+  font-family: "Playfair Display";
   color: var(--clr-black);
 }
 
 .footer-wrapper {
-  width: 640px;
+  width: 700px;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -30,7 +30,6 @@ footer ul {
 
 footer ul li {
   list-style: none;
-  text-transform: uppercase;
   text-align: center;
   padding: 0 40px;
   border-right: 2px solid var(--clr-primary);
@@ -40,6 +39,7 @@ footer ul li {
 }
 
 footer ul.socials li {
+  font-size: var(--font-small);
   padding: 0 20px;
 }
 

@@ -1,22 +1,26 @@
+/** TIMELINE STUFF **/
+
 .timeline {
   height: 100vh;
   position: relative;
-  background: var(--clr-off-white);
+  background: var(--clr-black);
   overflow: hidden;
 }
 
-.timeline-step-pad {
-  width: 100%;
-  height: 60px;
+.timeline-frame {
+  border-radius: 4px;
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  right: 60px;
+  left: 60px;
+  padding: 0px;
+  background-color: var(--clr-off-white);
 }
 
 .timeline-step-wrap {
-  height: calc(100vh - 120px);
-  width: calc(100% - 120px);
-  box-sizing: border-box;
-  margin: 0 60px 60px;
-  border: 2px solid var(--clr-primary);
-  border-radius: 4px;
+  height: 100%;
   overflow: auto;
 }
 
@@ -25,9 +29,71 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 400vh;
+  /*height: 400vh;*/
   transform: translate3d(0, 0, 0);
-  background-color: var(--clr-off-white);
+}
+
+.step-content-snap {
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  z-index: -1;
+  scrollbar-width: 5px;
+  scrollbar-color: var(--clr-primary) var(--clr-black);
+
+  -webkit-animation: fadeindown 4s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeindown 4s linear 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeindown 4s linear 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadeindown 4s linear 1.2s forwards; /* Opera < 12.1 */
+  animation: fadeindown 4s linear 1.2s forwards;
+}
+
+/**
+!!!!!! TODO !!!!!
+THIS IS NOT STANDARD
+REPLACE WITH A SCROLLBAR STYLING LIBRARY
+**/
+.step-content-snap::-webkit-scrollbar {
+  width: 11px;
+}
+.step-content-snap::-webkit-scrollbar-track {
+  background: var(--clr-black);
+}
+.step-content-snap::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: 6px;
+  border: 3px solid var(--clr-black);
+}
+/**
+^^^^^
+!!!!!! TODO !!!!!
+THIS IS NOT STANDARD
+REPLACE WITH A SCROLLBAR STYLING LIBRARY
+**/
+
+.step-content-snap .child {
+  scroll-snap-align: start;
+  height: 100%;
+}
+
+.step-content-static {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  justify-self: flex-start;
+  align-self: flex-start;
+  height: calc(100vh - 120px);
+  padding: var(--space-around-lg);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  color: var(--clr-black);
 
   -webkit-animation: fadeindown 4s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeindown 4s; /* Firefox < 16 */
@@ -36,57 +102,31 @@
   animation: fadeindown 4s;
 }
 
-.step-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-self: flex-start;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 0;
+.step-content-static .year-label,
+.step-content-static h2 {
+  width: 100%;
+  text-align: left;
 }
 
-.step-columns {
-  width: 640px;
+.step-content-static h2 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: "GTPressura", sans-serif;
+}
+
+.step-content-static h3.year-label {
+  font-family: "GTPressura";
+  font-weight: 300;
+  font-size: var(--font-large);
+  margin: 0;
+  color: var(--clr-black);
+}
+
+.step-content-static .step-columns {
+  max-width: 800px;
   column-count: 1;
   column-gap: 2em;
   justify-self: flex-start;
-}
-
-.timeline .scroll {
-  position: fixed;
-  width: 60px;
-  left: calc(50% - 30px);
-  bottom: 20px;
-  color: var(--clr-dark-bg);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.timeline .scroll .caret {
-  width: 100%;
-  font-family: "GTPressura";
-  text-align: center;
-}
-
-.timeline-step .year-label,
-.timeline-step h2 {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  text-align: left;
-  color: var(--clr-black);
-}
-
-.timeline-step h3.year-label {
-  font-family: "GTEesti";
-  font-weight: lighter;
-  font-size: var(--font-normal);
-  margin-bottom: 10px;
-  color: var(--clr-black);
 }
 
 /**
@@ -106,37 +146,22 @@ TIMELINE TEXT STUFF
   font-weight: 300;
 }
 
-.step-content .lede {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 640px;
-  margin: 0 auto;
-}
-
-.step-content .lede-initial {
-  display: inline-block;
-  line-height: 110px;
-}
-
-.step-content .paragraph-wrap {
+.step-content-static .paragraph-wrap {
   display: block;
   margin: 0 auto;
 }
 
-.step-content .paragraph {
+.step-content-static .paragraph {
   display: inline;
   padding: 0;
   margin: 0 auto;
 
-  font-family: "Playfair Display", serif;
-  line-height: 1.35em;
+  font-family: "GTPressura";
   font-size: var(--font-copy-timeline);
-  color: var(--clr-black);
-}
+  line-height: var(--copy-line-height);
+  font-weight: 300;
 
-.step-content .lede .lede-content .paragraph-wrap {
-  width: 100%;
+  color: var(--clr-black);
 }
 
 .timeline-figure + .timeline-copy {
@@ -164,8 +189,11 @@ TIMELINE TEXT STUFF
 }
 
 .timeline .hover-link {
-  font-family: "Playfair Display", serif;
+  font-family: "GTPressura";
   font-size: var(--font-copy-timeline);
+  line-height: var(--copy-line-height);
+  font-weight: 300;
+
   transition: all 0.2s ease-in-out;
   position: relative;
   transition: all 0.2s ease-in-out;
@@ -176,9 +204,9 @@ TIMELINE TEXT STUFF
 .timeline .hover-link:after {
   content: "";
   position: absolute;
-  bottom: -5px;
+  bottom: 0px;
   width: 30px;
-  height: 5px;
+  height: 3px;
   margin: 2px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
@@ -200,61 +228,58 @@ TIMELINE TEXT STUFF
 }
 /** END OF FOOTER TRIGGERS **/
 
-.stickyness {
-  position: sticky;
-  position: -webkit-sticky;
-}
+/** CARET SCROLL **/
 
-/**
-
-TIMELINE TITLE 
-
-**/
-
-.timeline-title {
-  position: relative;
-}
-
-.timeline-title {
-  text-align: center;
-  text-transform: none;
-  min-height: 100vh;
-  left: 0;
-  right: 0;
+.timeline .scroll {
+  position: fixed;
+  width: 60px;
+  left: calc(50% - 30px);
+  bottom: 20px;
+  color: var(--clr-dark-bg);
+  cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-.timeline-title .background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  filter: brightness(50%);
-}
-
-.timeline-title h2 {
-  position: absolute;
-  font-size: var(--font-large);
-  color: var(--clr-black);
-  text-transform: none;
+.timeline .scroll .caret {
+  width: 100%;
+  font-family: "GTPressura";
+  text-align: center;
 }
 
 @media (max-width: 767px) {
+  .timeline-frame {
+    border-radius: 4px;
+    top: 60px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
   .timeline-step-wrap {
     height: calc(100vh - 120px);
     width: calc(100% - 60px);
     margin: 0 30px 60px;
   }
 
-  .step-content {
-    width: 80%;
+  .step-content-static {
+    width: 100%;
+    padding: 20px 0 0 0;
   }
 
-  .step-content .paragraph {
+  .step-content-static .paragraph {
     font-size: var(--font-copy);
+    line-height: var(--font-copy);
+  }
+
+  .timeline .hover-link {
+    font-size: var(--font-copy);
+    line-height: var(--font-copy);
+  }
+
+  .step-content-snap .timeline-figure {
+    padding-left: 60px;
   }
 
   .step-columns {

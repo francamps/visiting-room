@@ -48,22 +48,3 @@
     margin: 0 40px;
   }
 }
-
-/**
-
-CARET ANIMATIONS
-
-**/
-
-@keyframes bouncingLoader {
-  from {
-    transform: translate3d(0);
-  }
-  to {
-    transform: translate3d(0, -0.5rem, 0);
-  }
-}
-
-.animate {
-  animation: bouncingLoader 0.8s infinite alternate;
-}

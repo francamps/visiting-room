@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import video from "../images/ArthurCarter_8s.mp4"
+import video from "../images/ArthurCarter_8s_mute.mp4"
 
 import "./GridImage.css"
 

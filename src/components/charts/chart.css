@@ -1,0 +1,95 @@
+path.lifers {
+  fill: var(--clr-primary);
+  fill-opacity: 0.2;
+  stroke: none;
+  opacity: 0.5;
+}
+
+path.lifers-line {
+  fill: none;
+  stroke: var(--clr-chart);
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+
+path.pops {
+  fill: var(--clr-primary);
+  fill-opacity: 0.2;
+  stroke: none;
+  opacity: 0.5;
+}
+
+path.pops-line {
+  fill: none;
+  stroke: var(--clr-chart);
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+
+circle.lifers-point {
+  fill: white;
+  stroke: var(--clr-chart);
+  stroke-width: 2;
+}
+
+circle.coms {
+  fill: white;
+  fill-opacity: 1;
+  stroke: var(--clr-chart);
+  stroke-width: 2;
+}
+
+text.text-value {
+  fill: black;
+  text-anchor: middle;
+  font-family: "GTPressura";
+  font-weight: 100;
+  font-size: var(--font-xsmall);
+}
+
+text.text-coms-value {
+  fill: black;
+  text-anchor: middle;
+  font-family: "GTPressura";
+  font-weight: 700;
+  font-size: var(--font-xsmall);
+}
+
+text.year {
+  fill: black;
+  text-anchor: middle;
+  font-family: "GTPressura";
+  font-weight: 100;
+  font-size: var(--font-xsmall);
+}
+
+text.yearComs {
+  fill: black;
+  text-anchor: middle;
+  font-family: "GTPressura";
+  font-weight: 100;
+  font-size: var(--font-xsmall);
+}
+
+line.long-ticks {
+  stroke: var(--clr-chart);
+  stroke-width: 2;
+  stroke-dasharray: 2px 5px;
+  opacity: 0.5;
+}
+
+line.line-coms {
+  stroke: var(--clr-chart);
+  stroke-width: 2;
+  stroke-dasharray: 2px 5px;
+  opacity: 0.5;
+}
+
+text.labelComs {
+  fill: black;
+  text-anchor: end;
+  font-family: "GTPressura";
+  font-weight: 100;
+  opacity: 0.75;
+  font-size: var(--font-xsmall);
+}

@@ -32,23 +32,34 @@ const Home = () => {
             </span>
           </div>
           <div className="buttons">
-            <div
-              className="button"
-              onClick={() => {
-                navigate("/visiting-room")
-              }}
-            >
-              <h3>Enter the Visting Room</h3>
-            </div>
-
-            <div
-              className="button"
-              onClick={() => {
-                navigate("/history")
-              }}
-            >
-              <h3>Explore the History</h3>
-            </div>
+            <Link to="/visiting-room">
+              <div
+                className="button"
+                onClick={() => {
+                  navigate("/visiting-room")
+                }}
+              >
+                <div className="link-wrap">
+                  <span className="hover-link">
+                    <h3>Enter the Visting Room</h3>
+                  </span>
+                </div>
+              </div>
+            </Link>
+            <Link to="/history">
+              <div
+                className="button"
+                onClick={() => {
+                  navigate("/history")
+                }}
+              >
+                <div className="link-wrap">
+                  <span className="hover-link">
+                    <h3>Explore the History</h3>
+                  </span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

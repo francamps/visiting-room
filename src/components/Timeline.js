@@ -6,10 +6,8 @@ import Menu from "./Menu"
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
 import TimelineSteps from "./TimelineSteps"
-// import TimelineLede from "./TimelineLede"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
-// import TimelineTitle from "./TimelineTitle"
 
 import TimelineAngolite from "./TimelineAngolite"
 import Caret from "./Caret"
@@ -108,61 +106,84 @@ const Timeline = () => {
 
   const isLastStep = step < TIMELINE.length - 1
 
+  const timelineStep = TIMELINE[step]
+  const hasImage = timelineStep.images.length
+
   return (
     <>
-      <Menu theme="light" />
+      <Menu />
       <article className="timeline" ref={timelineRef}>
         {null /*<TimelineTitle setModal={setModal} />*/}
-        {TIMELINE.map((timelineStep, i) => {
-          if (!timelineStep.paragraphs) return null
-          const hasImage = timelineStep.images.length
-
-          return (
+        <div className="timeline-frame">
+          {timelineStep.paragraphs && (
             <>
-              <div className="timeline-step-pad" data-step={`step-${i}`} />
-              <div className="timeline-step-wrap">
-                {step === i && (
-                  <div key={`timeline-step-${i}`} className="timeline-step">
-                    <div className="step-content">
-                      <h3 className="year-label">{timelineStep.year}</h3>
+              <div className="timeline-step-wrap" data-step={`step-${step}`}>
+                <div
+                  key={`timeline-step-${step}`}
+                  className="timeline-step"
+                  style={{ position: "relative" }}
+                >
+                  <div className="step-content-static">
+                    <h3 className="year-label">{timelineStep.year}</h3>
+                    <div className="step-copy">
                       <h2>{timelineStep.title}</h2>
-                      <div className={`step-${i} step-columns`}>
+                      <div className={`step-${step} step-columns`}>
                         <Paragraphs
                           paragraphs={timelineStep.paragraphs}
                           setModal={setModal}
                         />
                       </div>
                     </div>
-                    {hasImage && (
-                      <>
-                        <div style={{ width: "800px", height: "100vh" }}></div>
-                        <TimelineFigure
-                          step={i}
-                          progress={progress}
-                          caption={timelineStep.caption}
-                          images={timelineStep.images}
-                          setFigureActive={setFigureActive}
-                          setAngolite={setAngolite}
-                        />
-                        <div style={{ width: "640px", height: "100vh" }} />
-                      </>
-                    )}
-                    {!hasImage && (
-                      <div style={{ width: "640px", height: "300vh" }}></div>
-                    )}
                   </div>
-                )}
+                  {hasImage && (
+                    <div className="step-content-snap">
+                      <TimelineFigure
+                        step={step}
+                        progress={progress}
+                        caption={timelineStep.caption}
+                        images={timelineStep.images}
+                        imageStyle={timelineStep.imageStyle}
+                        setFigureActive={setFigureActive}
+                        setAngolite={setAngolite}
+                      />
+                    </div>
+                  )}
+                  {
+                    null /*hasImage && (
+                        <>
+                          <div
+                            style={{ width: "800px", height: "100vh" }}
+                          ></div>
+                          <TimelineFigure
+                            step={i}
+                            progress={progress}
+                            caption={timelineStep.caption}
+                            images={timelineStep.images}
+                            setFigureActive={setFigureActive}
+                            setAngolite={setAngolite}
+                          />
+                          <div style={{ width: "640px", height: "100vh" }} />
+                        </>
+                      )}
+                      {!hasImage && (
+                        <div style={{ width: "640px", height: "300vh" }}></div>
+                      )*/
+                  }
+                </div>
               </div>
             </>
-          )
-        })}
-        {isAngolite && (
+          )}
+        </div>
+
+        {
+          null /*isAngolite && (
           <TimelineAngolite
             onClose={() => {
               setAngolite(false)
             }}
           />
-        )}
+          )*/
+        }
 
         {isFigureActive && (
           <TimelineFigureFocus
@@ -184,7 +205,7 @@ const Timeline = () => {
               setStep(step + 1)
             }}
           >
-            <Caret animate={true} color={"black"} />
+            <Caret animate={true} color={"var(--clr-primary)"} />
           </div>
         )}
 

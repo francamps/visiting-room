@@ -68,11 +68,11 @@
   min-height: 0;
 }
 
-.button {
+.home .landing .buttons .button {
   margin: 0;
   height: 60px;
   line-height: 40px;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   font-family: "GTPressura";
   font-size: var(--font-subtitle);
@@ -91,7 +91,11 @@
   justify-content: flex-start;
 }
 
-.home .landing .buttons .button {
+.home .landing .buttons .button:first-child {
+  padding-left: 0;
+}
+
+/*.home .landing .buttons .button {
   display: flex;
   align-items: center;
   height: 40px;
@@ -106,7 +110,7 @@
   color: var(--clr-primary);
   border-bottom: 2px solid var(--clr-primary);
   transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
-}
+}*/
 
 .home .landing .buttons .button h3 {
   font-family: "Playfair Display", sans-serif;
@@ -131,31 +135,33 @@
   position: relative;
 }
 
-.home .hover-link:before,
 .home .hover-link:after {
   content: "";
   position: absolute;
-  bottom: -10px;
-  width: 0px;
-  height: 5px;
+  bottom: -5px;
+  width: 60px;
+  height: 2px;
   margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
-  opacity: 0;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.home .button:hover .hover-link {
+  color: var(--clr-primary);
+  letter-spacing: 0.02em;
+  transition: letter-spacing 1.2s, color 0.4s;
+}
+
+.home .button:hover .hover-link:after {
+  width: 100%;
+  opacity: 1;
   background-color: var(--clr-primary);
 }
 
-.home .button:hover .hover-link:before,
-.home .button:hover .hover-link:after {
-  width: 50%;
-  opacity: 1;
-}
-
-.home .hover-link:before {
-  left: 50%;
-}
 .home .hover-link:after {
-  right: 50%;
+  right: 0%;
 }
 
 /** HIGHLIGHT COPY **/

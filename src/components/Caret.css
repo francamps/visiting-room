@@ -1,0 +1,13 @@
+.animate {
+  animation: bouncingLoader 0.8s infinite alternate;
+}
+
+svg polygon {
+  opacity: 0.7;
+  transition: opacity 0.4s;
+}
+
+svg:hover polygon {
+  opacity: 1;
+  transition: opacity 0.4s;
+}

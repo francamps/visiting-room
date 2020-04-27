@@ -57,7 +57,7 @@ const ChartA = () => {
     svg
       .append("path")
       .datum(data)
-      .attr("fill", "var(--clr-chart)")
+      .style("fill", "var(--clr-primary)")
       .attr("fill-opacity", 0.2)
       .attr("stroke", "none")
       .attr("opacity", 0.5)
