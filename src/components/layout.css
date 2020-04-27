@@ -25,6 +25,7 @@
   --clr-light-grey: #a8a0a0;
 
   /* Spacing */
+  --space-around-xsmall: 20px;
   --space-around-small: 30px;
   --space-around-med: 40px;
   --space-around-lg: 60px;

@@ -28,6 +28,7 @@
   .fullscreen-bg__video {
     width: 300%;
     left: -100%;
+    height: calc(100% + 75px);
   }
 }
 

@@ -95,23 +95,6 @@
   padding-left: 0;
 }
 
-/*.home .landing .buttons .button {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  margin: 20px 80px 0 0;
-  background: none;
-  border-bottom: 1px solid white;
-  padding: 0;
-  transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
-}
-
-.home .landing .buttons .button:hover {
-  color: var(--clr-primary);
-  border-bottom: 2px solid var(--clr-primary);
-  transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
-}*/
-
 .home .landing .buttons .button h3 {
   font-family: "Playfair Display", sans-serif;
   display: inline;
@@ -220,17 +203,17 @@ section .about-button {
 /* IPAD */
 @media (max-width: 1024px) {
   .home .landing .text-on-landing {
-    right: var(--space-around-med);
-    left: var(--space-around-med);
+    right: var(--space-around-small);
+    left: var(--space-around-small);
     padding-bottom: var(--space-around-xl);
   }
 }
 
 @media (max-width: 767px) {
   .home .landing .text-on-landing {
-    right: var(--space-around-med);
-    left: var(--space-around-med);
-    padding-bottom: var(--space-around-xl);
+    right: var(--space-around-xsmall);
+    left: var(--space-around-xsmall);
+    padding-bottom: var(--space-around-med);
   }
 
   .home .landing .text-on-landing .title {
@@ -238,16 +221,19 @@ section .about-button {
   }
 
   .home .landing .text-on-landing .subtitle {
-    font-size: 1rem;
     width: 100%;
+    flex-direction: row;
   }
 
   .home .landing .text-on-landing .subtitle .play {
-    margin-right: 5px;
+    flex: 1;
+    margin-right: 10px;
   }
 
   .home .landing .text-on-landing .subtitle span {
-    font-size: 2rem;
+    flex: 7;
+    font-size: 1.6rem;
+    text-align: left;
   }
 
   .home .landing .buttons {
@@ -258,14 +244,20 @@ section .about-button {
   .home .landing .buttons .button {
     display: flex;
     align-items: center;
-    height: 40px;
+    justify-content: center;
+    height: 30px;
     margin: 20px 0px 0 0;
+    padding: 0;
     background: none;
-    border-bottom: 1px solid white;
     transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
   }
 
   .highlight-wrap {
     width: calc(100% - var(--space-around-med));
+  }
+
+  .highlight-wrap .copy {
+    width: 100%;
+    margin: 0 auto;
   }
 }
