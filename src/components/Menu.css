@@ -1,6 +1,5 @@
 .menu {
   position: fixed;
-  width: 240px;
   left: 0;
   top: 20px;
   padding: 0;
@@ -44,7 +43,7 @@
   opacity: 1;
 }
 
-.menu-options p {
+.menu-options a {
   padding: 6px 0;
   margin: 10px 0;
 
@@ -59,29 +58,24 @@
   transition: letter-spacing 1.2s, color 1.2s;
 }
 
-.menu-options.menu-light p {
+.menu-options.menu-light a {
   color: var(--clr-black);
 }
 
-.menu-options p:hover {
+.menu-options a:hover {
   color: var(--clr-primary);
   letter-spacing: 0.02em;
   transition: letter-spacing 1.2s, color 1.2s;
 }
 
 .menu .home-title {
-  font-family: "GTPressura";
+  font-family: "EB Garamond";
   display: inline-block;
-  width: 200px;
+  width: 300px;
   background: none;
   z-index: 12;
-  font-size: 1.2em;
-  margin: 0 0 10px 0px;
-  text-transform: uppercase;
-}
-
-.menu .home-title .first-char {
-  font-size: 1.2em;
+  font-size: var(--font-copy-timeline);
+  margin: -3px 0 10px 0px;
 }
 
 .menu-backdrop {
@@ -99,6 +93,22 @@
   backdrop-filter: blur(50px);
   z-index: 10;
   transition: backdrop-filter 0.4s;
+}
+
+.menu-backdrop.menu-backdrop-on {
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: background-color 0.4s;
+}
+
+/* if backdrop support: very transparent and blurred */
+@supports (
+  (-webkit-backdrop-filter: blur(50px)) or (backdrop-filter: blur(50px))
+) {
+  .menu-backdrop.menu-backdrop-on {
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+  }
 }
 
 /*
@@ -121,13 +131,13 @@ MENU LINKS
   content: "";
   position: absolute;
   bottom: -10px;
-  width: 0px;
-  height: 5px;
+  width: 60px;
+  height: 2px;
   margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
-  opacity: 0;
-  background-color: var(--clr-primary);
+  opacity: 1;
+  background-color: var(--clr-white);
 }
 
 .menu-option-wrap:hover .hover-link:after {

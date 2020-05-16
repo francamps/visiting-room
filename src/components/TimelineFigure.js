@@ -6,8 +6,6 @@ import ChartC from "./charts/ChartC"
 
 import "./TimelineFigure.css"
 
-const USE_PRISMIC = false
-
 const TimelineFigure = ({
   step = 1,
   caption,
@@ -41,7 +39,7 @@ const TimelineFigure = ({
             if (imageName.indexOf("chart") > -1) {
               return (
                 <>
-                  <section className="child timeline-figure">
+                  <section className="child timeline-figure medium">
                     <figure>
                       <ChartC />
                     </figure>
@@ -59,20 +57,21 @@ const TimelineFigure = ({
                 <section
                   className={`child timeline-figure
                   ${imageStyle === "long" ? "long" : ""}
+                  ${imageStyle === "medium" ? "medium" : ""}
                 `}
                 >
                   <figure>
-                    <div
+                    <Img
+                      alt={"TODO: NEEDS AN ALT"}
+                      fluid={image.node.childImageSharp.fluid}
+                      imgStyle={{
+                        objectFit: "contain",
+                      }}
                       onClick={() => {
                         setFigureActive(image)
                       }}
-                    >
-                      <Img
-                        alt={"TODO: NEEDS AN ALT"}
-                        fluid={image.node.childImageSharp.fluid}
-                      />
-                      {caption && <p className="caption">{caption}</p>}
-                    </div>
+                    />
+                    {caption && <p className="caption">{caption}</p>}
                   </figure>
                   {
                     null /*step === 'WHAT' && (

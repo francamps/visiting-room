@@ -4,12 +4,15 @@
   top: 0;
   bottom: 0;
   position: absolute;
+  height: 100vh;
+
   background: var(--clr-dark-bg);
 }
 
 .video {
   width: 100%;
   height: calc(100% - 160px);
+
   position: absolute;
   left: 0;
   top: 80px;

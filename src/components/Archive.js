@@ -5,7 +5,7 @@ import IconSearch from "./Symbols/Search"
 import FilterAndSearch from "./FilterAndSearch"
 import { archive } from "../content/archive"
 import sortProfiles from "../utils/sortProfiles"
-import { animated, useSpring } from "react-spring"
+import { useSpring } from "react-spring"
 
 import "./Archive.css"
 
@@ -28,6 +28,7 @@ const Archive = () => {
     to: { opacity: 1, marginTop: "0" },
     from: { opacity: 0, marginTop: "60px" },
   })
+
   return (
     <>
       <Menu isExpanded={false} />
@@ -81,6 +82,7 @@ const Archive = () => {
               .filter(profile => {
                 if (searchTerm === null || searchTerm === "") return true
                 if (profile["Full Name"].indexOf(searchTerm) > -1) return true
+                return false
               })
               .map((profile, idx) => {
                 return (

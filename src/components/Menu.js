@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
+import Play from "./Play"
 
 import "./Menu.css"
 
@@ -12,9 +13,7 @@ const Menu = ({ theme, isExpanded = false }) => {
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
         <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
         <h2 className="home-title" onClick={() => navigate("/")}>
-          <span className="first-char">T</span>he{" "}
-          <span className="first-char">V</span>isiting{" "}
-          <span className="first-char">R</span>oom
+          The Visiting Room
         </h2>
       </div>
       <div
@@ -31,41 +30,40 @@ const Menu = ({ theme, isExpanded = false }) => {
           setBurgerOpen(false)
         }}
       >
-        <Link to="/visiting-room">
-          <div className="menu-option-wrap">
-            <p className="hover-link">THE VISITING ROOM</p>
-          </div>
-        </Link>
+        <div className="menu-option-wrap">
+          <Link to="/visiting-room" className="hover-link">
+            THE VISITING ROOM
+          </Link>
+        </div>
 
         <div className="menu-option-wrap">
-          <p
-            className="hover-link"
-            onClick={() => {
-              navigate("/history")
-            }}
-          >
+          <Link to="/history" className="hover-link">
             HISTORY
-          </p>
+          </Link>
         </div>
         <div className="menu-option-wrap">
-          <p
-            className="hover-link"
-            onClick={() => {
-              navigate("/archive")
-            }}
-          >
+          <Link to="/archive" className="hover-link">
             ARCHIVE
-          </p>
+          </Link>
         </div>
         <div className="menu-option-wrap">
-          <p
+          <Link to="/about" className="hover-link">
+            ABOUT THE PROJECT
+          </Link>
+        </div>
+        <div className="menu-option-wrap">
+          <Link
+            to="/visiting-room"
             className="hover-link"
-            onClick={() => {
-              navigate("/about")
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
             }}
           >
-            ABOUT THE PROJECT
-          </p>
+            <Play size="large" />
+            <span style={{ marginLeft: "12px" }}>LWOP AT ANGOLA</span>
+          </Link>
         </div>
       </div>
     </div>

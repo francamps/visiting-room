@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react"
-import { debounce } from "lodash"
 import "./Timeline.css"
 
 import Menu from "./Menu"
@@ -9,7 +8,7 @@ import TimelineSteps from "./TimelineSteps"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
 
-import TimelineAngolite from "./TimelineAngolite"
+//import TimelineAngolite from "./TimelineAngolite"
 import Caret from "./Caret"
 
 import { TIMELINE } from "../content/timeline"
@@ -32,12 +31,12 @@ import { TIMELINE } from "../content/timeline"
 
 //const IS_DYNAMIC = false
 
-function useKey(key) {
+/*function useKey(key) {
   // Keep track of key state
   const [pressed, setPressed] = useState(false)
 
   // Does an event match the key we're watching?
-  const match = event => key.toLowerCase() == event.key.toLowerCase()
+  const match = event => key.toLowerCase() === event.key.toLowerCase()
 
   // Event handlers
   const onDown = event => {
@@ -59,7 +58,7 @@ function useKey(key) {
   }, [key])
 
   return pressed
-}
+}*/
 
 const Timeline = () => {
   const [isFigureActive, setFigureActive] = useState(null)
@@ -113,7 +112,6 @@ const Timeline = () => {
     <>
       <Menu />
       <article className="timeline" ref={timelineRef}>
-        {null /*<TimelineTitle setModal={setModal} />*/}
         <div className="timeline-frame">
           {timelineStep.paragraphs && (
             <>

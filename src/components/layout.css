@@ -49,6 +49,7 @@ Use a scrollbar library, this is not standardized
 }
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
 
 @font-face {
   font-family: "GTPressura";
@@ -57,9 +58,10 @@ Use a scrollbar library, this is not standardized
 }
 
 @font-face {
-  font-family: "GTPressura-italic";
+  font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Light-Italic.otf") format("opentype");
   font-weight: 300;
+  font-style: italic;
 }
 
 @font-face {
@@ -130,7 +132,6 @@ html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 
 h1,
@@ -200,20 +201,6 @@ COPY
   font-weight: 300;
   font-size: var(--font-copy);
   text-align: left;
-}
-
-.copy .lede {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.copy .lede-initial {
-  font-family: "Playfair Display", serif;
-  font-size: var(--font-title);
-  font-weight: 700;
-  margin-right: 16px;
-  align-self: flex-start;
 }
 
 .copy .lede-content {

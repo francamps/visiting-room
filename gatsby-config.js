@@ -43,15 +43,7 @@ module.exports = {
         accessToken: `${process.env.PRISMIC_ACCESS_TOKEN}`, // (optional API access token)
         path: "/preview", // (optional preview path. Default: /preview)
         previews: false, // (optional, activated Previews. Default: false)
-        pages: [
-          //          {
-          //            // (optional, builds pages dynamically)
-          //            type: "Article", // TypeName from prismic
-          //            match: "/article/:uid", // Pages will be generated under this pattern
-          //            path: "/article", // Placeholder page for unpublished documents
-          //            component: require.resolve("./src/templates/article.js"),
-          //          },
-        ],
+        pages: [],
       },
     },
   ],

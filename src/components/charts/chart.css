@@ -26,32 +26,28 @@ path.pops-line {
   opacity: 0.5;
 }
 
-circle.lifers-point {
-  fill: white;
-  stroke: var(--clr-chart);
-  stroke-width: 2;
-}
-
+circle.pops-point,
+circle.lifers-point,
 circle.coms {
   fill: white;
-  fill-opacity: 1;
   stroke: var(--clr-chart);
   stroke-width: 2;
 }
 
-text.text-value {
+text.text-value,
+text.text-pops-value {
   fill: black;
-  text-anchor: middle;
+  text-anchor: end;
   font-family: "GTPressura";
-  font-weight: 100;
+  font-weight: 300;
   font-size: var(--font-xsmall);
 }
 
 text.text-coms-value {
   fill: black;
-  text-anchor: middle;
+  text-anchor: end;
   font-family: "GTPressura";
-  font-weight: 700;
+  font-weight: 300;
   font-size: var(--font-xsmall);
 }
 
@@ -59,16 +55,25 @@ text.year {
   fill: black;
   text-anchor: middle;
   font-family: "GTPressura";
-  font-weight: 100;
+  font-weight: 300;
   font-size: var(--font-xsmall);
 }
 
 text.yearComs {
   fill: black;
-  text-anchor: middle;
+  text-anchor: end;
   font-family: "GTPressura";
-  font-weight: 100;
+  font-weight: 300;
   font-size: var(--font-xsmall);
+}
+
+text.legend-label {
+  fill: black;
+  text-anchor: end;
+  font-family: "GTPressura";
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: var(--font-small);
 }
 
 line.long-ticks {
@@ -89,7 +94,7 @@ text.labelComs {
   fill: black;
   text-anchor: end;
   font-family: "GTPressura";
-  font-weight: 100;
+  font-weight: 300;
   opacity: 0.75;
   font-size: var(--font-xsmall);
 }

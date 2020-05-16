@@ -1,10 +1,11 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 import { StaticQuery, graphql } from "gatsby"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
+import Layout from "../components/layout"
 import Menu from "../components/Menu"
 import Map from "../images/TEMP/timeline/map.png"
 
@@ -36,86 +37,79 @@ export const query = graphql`
 
 const About = () => {
   return (
-    <StaticQuery
-      query={`${query}`}
-      render={data => {
-        const title = data
-          ? data.prismic.allAbouts.edges[0].node.about_this_project[0].text
-          : ""
-        const content = data
-          ? data.prismic.allAbouts.edges[0].node.about_content
-          : []
+    <Layout>
+      <StaticQuery
+        query={`${query}`}
+        render={data => {
+          const title = data
+            ? data.prismic.allAbouts.edges[0].node.about_this_project[0].text
+            : ""
+          const content = data
+            ? data.prismic.allAbouts.edges[0].node.about_content
+            : []
 
-        const terms = data
-          ? data.prismic.allGlossary_terms.edges[0].node.term
-          : []
+          const terms = data
+            ? data.prismic.allGlossary_terms.edges[0].node.term
+            : []
 
-        return (
-          <section className="about">
-            <Menu />
-            <div className="copy-wrap" style={{ padding: "100px 0" }}>
-              <h2 className="title">{title}</h2>
-              <Tabs>
-                <TabList>
-                  <Tab>The project</Tab>
-                  <Tab>Glossary</Tab>
-                </TabList>
+          return (
+            <section className="about">
+              <Menu />
+              <div className="copy-wrap" style={{ padding: "100px 0" }}>
+                <h2 className="title">{title}</h2>
+                <Tabs>
+                  <TabList>
+                    <Tab>The project</Tab>
+                    <Tab>Glossary</Tab>
+                    <Tab>Credits</Tab>
+                    <Tab>FAQ</Tab>
+                  </TabList>
 
-                <TabPanel>
-                  <article className="copy" style={{ padding: "40px 0" }}>
-                    <RichText render={content} />
-                    <div
-                      className="map-figure"
-                      style={{
-                        height: "400px",
-                        backgroundImage: `url(${Map})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        filter: "grayscale(1)",
-                      }}
-                    />
-                  </article>
-                </TabPanel>
-                <TabPanel>
-                  <article className="copy" style={{ padding: "40px 0" }}>
-                    {terms.map(term => {
-                      return <RichText render={term.term1} />
-                    })}
-                  </article>
-                </TabPanel>
-              </Tabs>
+                  <TabPanel>
+                    <article className="copy" style={{ padding: "40px 0" }}>
+                      <RichText render={content} />
+                      <div
+                        className="map-figure"
+                        style={{
+                          height: "400px",
+                          backgroundImage: `url(${Map})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          filter: "grayscale(2)",
+                        }}
+                      />
+                    </article>
+                  </TabPanel>
+                  <TabPanel>
+                    <article className="copy" style={{ padding: "40px 0" }}>
+                      {terms.map(term => {
+                        return <RichText render={term.term1} />
+                      })}
+                    </article>
+                  </TabPanel>
+                  <TabPanel>
+                    <article className="copy">
+                      <p>Something else something else something else</p>
+                    </article>
+                  </TabPanel>
+                </Tabs>
 
-              <Link to="/visiting-room">
-                <div
-                  className="button"
-                  onClick={() => {
-                    navigate("/visiting-room")
-                  }}
-                >
-                  <div class="link-wrap">
-                    <span className="hover-link">Go to the Visiting Room</span>
-                  </div>
+                <div className="link-wrap">
+                  <Link to="/visiting-room" className="hover-link">
+                    Go to the Visiting Room
+                  </Link>
                 </div>
-              </Link>
-              <Link to="/history">
-                <div
-                  className="button"
-                  onClick={() => {
-                    navigate("/history")
-                  }}
-                >
-                  <div className="link-wrap">
-                    <span className="hover-link">
-                      Learn the history of Life Without Parole sentencing
-                    </span>
-                  </div>
+                <div className="link-wrap">
+                  <Link to="/history" className="hover-link">
+                    Learn the history of Life Without Parole sentencing
+                  </Link>
                 </div>
-              </Link>
-            </div>
-          </section>
-        )
-      }}
-    />
+              </div>
+            </section>
+          )
+        }}
+      />
+    </Layout>
   )
 }
 

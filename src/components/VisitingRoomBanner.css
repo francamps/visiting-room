@@ -22,7 +22,7 @@
 }
 
 .who-header p {
-  font-family: "Playfair Display", serif;
+  font-family: "EB Garamond", serif;
   transition: font-size 1.2s;
   font-size: var(--font-copy-timeline);
   text-align: center;

@@ -6,9 +6,11 @@
 }
 
 .about .copy-wrap .title {
-  margin-left: -200px;
-  width: 200%;
+  width: 100%;
   margin-bottom: 40px;
+  font-family: "EB Garamond";
+  font-size: 4.5rem;
+  font-weight: 700;
 }
 
 /** REACT TABS
@@ -16,24 +18,96 @@ TODO: PUT IT IN ITS OWN FILE
 */
 
 .react-tabs__tab {
-  font-family: GTPressura;
+  font-family: "GTPressura";
   font-size: var(--font-copy);
+  font-weight: 300;
+  text-transform: uppercase;
   color: var(--clr-white);
-  border-left: 1px solid var(--clr-primary);
+  transition: all 0.75s ease-in-out;
+  position: relative;
 }
 
-.react-tabs__tab:first-child {
+.react-tabs__tab:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 30px;
+  height: 2px;
+  margin: 5px 10px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.react-tabs__tab:hover {
+  color: var(--clr-primary);
+}
+
+.react-tabs__tab:hover:after {
+  width: calc(100% - 20px);
+  opacity: 1;
+  background-color: var(--clr-primary);
 }
 
 .react-tabs__tab-list .react-tabs__tab--selected {
   background: var(--clr-dark-bg) !important;
   color: var(--clr-primary);
   border: none;
-  border-left: 1px solid var(--clr-primary);
+}
+
+.react-tabs__tab--selected:after {
+  width: calc(100% - 20px);
+  opacity: 1;
+  background-color: var(--clr-primary);
 }
 
 .react-tabs .react-tabs__tab-list {
   border-bottom: none;
+}
+
+/**
+HOVER LINKS
+**/
+
+.link-wrap {
+  position: relative;
+}
+
+.about .link-wrap .hover-link {
+  width: auto;
+  font-family: "GTPressura";
+  font-size: var(--font-copy);
+  line-height: calc(2 * var(--font-copy));
+  font-weight: 300;
+  text-transform: uppercase;
+  transition: all 0.75s ease-in-out;
+  position: relative;
+}
+
+.about .link-wrap .hover-link:hover {
+  color: var(--clr-primary);
+}
+
+.about .link-wrap .hover-link:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 0%;
+  width: 60px;
+  height: 2px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.about .link-wrap .hover-link:hover:after {
+  width: 100%;
+  opacity: 1;
+  background-color: var(--clr-primary);
 }
 
 @media (max-width: 767px) {

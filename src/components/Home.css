@@ -32,7 +32,7 @@
 .home .landing .text-on-landing .subtitle {
   width: 100%;
   max-width: 1200px;
-  font-family: "Playfair Display", serif;
+  font-family: "GTPressura", serif;
   font-weight: 300;
   font-size: 2rem;
   line-height: 2.4rem;
@@ -59,8 +59,8 @@
 
 .home .landing .text-on-landing .title {
   width: 100%;
-  font-family: "GTPressura";
-  font-weight: 700;
+  font-family: "EB Garamond";
+  font-weight: 300;
   font-size: var(--font-title);
 }
 
@@ -96,7 +96,7 @@
 }
 
 .home .landing .buttons .button h3 {
-  font-family: "Playfair Display", sans-serif;
+  font-family: "GTPressura", serif;
   display: inline;
   font-weight: 300;
 }
@@ -113,12 +113,12 @@
   margin: 0 0 10px;
 }
 
-.home .hover-link {
+.home .text-on-landing .buttons .hover-link {
   transition: all 0.2s ease-in-out;
   position: relative;
 }
 
-.home .hover-link:after {
+.home .text-on-landing .buttons .hover-link:after {
   content: "";
   position: absolute;
   bottom: -5px;

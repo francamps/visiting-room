@@ -2,11 +2,6 @@ import React from "react"
 
 import "./Social.css"
 
-const iconData = {
-  twitter: "https://www.twitter.com/something",
-  instagram: "https://www.instagram.com/something",
-}
-
 const Social = ({ social }) => {
   if (social === "twitter") {
     return (

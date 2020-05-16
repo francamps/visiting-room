@@ -3,7 +3,6 @@ import { Link, navigate } from "gatsby"
 
 import Play from "./Play"
 import Menu from "./Menu"
-import GridButton from "./GridButton"
 import HomeVideo from "./HomeVideo"
 import Footer from "./Footer"
 
@@ -16,7 +15,7 @@ const Home = () => {
       <div className="landing">
         <HomeVideo />
         <div className="text-on-landing">
-          <div className="title">THE VISITING ROOM</div>
+          <div className="title">The Visiting Room</div>
           <div
             className="subtitle"
             style={{
@@ -77,59 +76,6 @@ const Home = () => {
           </p>
         </article>
       </section>
-      {
-        null /*<section>
-        <div className="animation">
-          <div className="video-wrap">
-            <div className="video-placeholder" />
-            <Play />
-            </div>
-        </div>
-        <Link to="/history">
-          <div
-            className="button"
-            onClick={() => {
-              navigate("/history")
-            }}
-          >
-            <div className="link-wrap">
-              <span className="hover-link">
-                Learn the history of Life Without Parole sentencing
-              </span>
-            </div>
-          </div>
-        </Link>
-        <HomeCarousel />
-        <Link to="/visiting-room">
-          <div
-            className="button"
-            onClick={() => {
-              navigate("/visiting-room")
-            }}
-          >
-            <div className="link-wrap">
-              <span className="hover-link">Go to the Visiting Room</span>
-            </div>
-          </div>
-        </Link>
-
-        <div className="about-button">
-          <Link to="/about">
-            <div
-              className="button"
-              onClick={() => {
-                navigate("/about")
-              }}
-            >
-              <div className="link-wrap">
-                <span className="hover-link">About the project</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>*/
-      }
-
       <Footer />
     </div>
   )

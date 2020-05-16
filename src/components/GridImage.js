@@ -5,7 +5,7 @@ import video from "../images/ArthurCarter_8s_mute.mp4"
 
 import "./GridImage.css"
 
-const GridImage = ({ image, profile_picture, quote, fullName, alt }) => {
+const GridImage = ({ image, profile_picture, quote, fullName, setProfile }) => {
   const [isHover, setHover] = useState(false)
 
   if (!image) {
@@ -22,7 +22,9 @@ const GridImage = ({ image, profile_picture, quote, fullName, alt }) => {
         setHover(false)
       }}
       onClick={() => {
-        navigate(`/visiting-room/${"arthur-carter"}`)
+        const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+        setProfile(profileUri)
+        navigate(`/visiting-room/?profile=${profileUri}`)
       }}
     >
       {profile_picture && (

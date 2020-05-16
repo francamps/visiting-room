@@ -109,23 +109,23 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .step-content-static h2 {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: 20px;
-  font-family: "GTPressura", sans-serif;
+  font-family: "EB Garamond", serif;
 }
 
 .step-content-static h3.year-label {
   font-family: "GTPressura";
   font-weight: 300;
-  font-size: var(--font-large);
+  font-size: var(--font-copy-timeline);
   margin: 0;
   color: var(--clr-black);
+  border-left: 2px solid var(--clr-black);
+  padding-left: 10px;
 }
 
 .step-content-static .step-columns {
-  max-width: 800px;
-  column-count: 1;
-  column-gap: 2em;
+  max-width: 640px;
   justify-self: flex-start;
 }
 
@@ -246,6 +246,18 @@ TIMELINE TEXT STUFF
   width: 100%;
   font-family: "GTPressura";
   text-align: center;
+}
+
+@media (max-width: 1824px) {
+  .step-content-static .paragraph {
+    font-size: var(--font-copy);
+    line-height: calc(1.5 * var(--font-copy));
+  }
+
+  .timeline .hover-link {
+    font-size: var(--font-copy);
+    line-height: calc(1.5 * var(--font-copy));
+  }
 }
 
 @media (max-width: 767px) {

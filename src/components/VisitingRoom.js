@@ -7,8 +7,9 @@ import Video from "./Video"
 
 import "./VisitingRoom.css"
 
-const VisitingRoom = ({ pageContext = { profileId: null } }) => {
-  const { profileId } = pageContext
+const VisitingRoom = ({ loading, profiles, images }) => {
+  const params = new URLSearchParams(window.location.search)
+  const [profileId, setProfile] = useState(params.get("profile"))
   const [showGrid, setShowGrid] = useState(false)
   const [search, setSearch] = useState(null)
 
@@ -23,16 +24,20 @@ const VisitingRoom = ({ pageContext = { profileId: null } }) => {
   return (
     <div
       className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
-      onScroll={() => {
-        if (!showGrid) setShowGrid(true)
-      }}
     >
       {!profileId && <Menu isExpanded={false} />}
-      {showGrid && <Grid searchTerm={search} />}
-      <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
-      {profileId && (
-        <Video profileId={"arthur_carter"} name={"Arthur Carter"} />
+      {!loading && showGrid && !profileId && (
+        <Grid
+          searchTerm={search}
+          profiles={profiles}
+          images={images}
+          setProfile={setProfile}
+        />
       )}
+      {!profileId && (
+        <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
+      )}
+      {profileId && <Video profileId={profileId} name={"Arthur Carter"} />}
     </div>
   )
 }

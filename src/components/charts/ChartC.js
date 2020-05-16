@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { scaleLinear, scaleTime } from "d3-scale"
 import { select } from "d3-selection"
 import { line, area } from "d3-shape"
+import { curveMonotoneX } from "d3-shape"
 import "d3-transition"
 
 import "./chart.css"
@@ -66,9 +67,15 @@ const ChartC = () => {
     const w = canvasRef.current.getBoundingClientRect().width
     const h = (w * HEIGHT) / WIDTH
     const svg = select(svgRef.current)
-    const pointsLifers = svg.selectAll("circle.lifers-point").data(dataLifers)
-    const pointsPops = svg.selectAll("circle.pops-point").data(dataLifers)
-    const pointsComs = svg.selectAll("circle.coms").data(dataComs)
+    const pointsLifers = svg
+      .selectAll("circle.lifers-point")
+      .data([dataLifers[dataLifers.length - 1]])
+    const pointsPops = svg
+      .selectAll("circle.pops-point")
+      .data([dataPops[dataPops.length - 1]])
+    const pointsComs = svg
+      .selectAll("circle.coms")
+      .data([dataComs[dataComs.length - 1]])
 
     const xScale = scaleTime()
       .domain([1970, 2020])
@@ -78,16 +85,18 @@ const ChartC = () => {
 
     const yScale = scaleLinear()
       .domain([0, maxY])
-      .range([h - m.t, m.b])
+      .range([h - m.b, m.t])
 
     /** PRISON POPULATION & LIFERS */
 
     const path = area()
+      .curve(curveMonotoneX)
       .x(d => xScale(d.yearF))
       .y1(d => yScale(d.value))
       .y0(yScale(0))
 
     const pathLine = line()
+      .curve(curveMonotoneX)
       .x(d => xScale(d.yearF))
       .y(d => yScale(d.value))
 
@@ -98,6 +107,7 @@ const ChartC = () => {
       .attr("class", "pops")
       .transition()
       .attr("d", path)
+      .style("opacity", step > 1 ? 0.5 : 0.1)
 
     svg
       .selectAll("path.pops-line")
@@ -106,14 +116,36 @@ const ChartC = () => {
       .attr("class", "pops-line")
       .transition()
       .attr("d", pathLine)
+      .style("opacity", step > 1 ? 1 : 0.1)
 
     pointsPops
       .join("circle")
       .attr("class", "pops-point")
-      .attr("r", 4)
+      .attr("r", 2)
       .attr("cx", d => xScale(d.yearF))
       .transition()
       .attr("cy", d => yScale(d.value))
+
+    svg
+      .selectAll("text.text-value-pops-label")
+      .data([dataPops[dataPops.length - 1]])
+      .join("text")
+      .attr("class", "text-value-pops-label legend-label")
+      .style("text-anchor", "end")
+      .text(d => "Total prison population")
+      .attr("x", d => xScale.range()[1])
+      .transition()
+      .attr("y", d => yScale(d.value) + 15)
+
+    svg
+      .selectAll("text.text-pops-value")
+      .data([dataPops[dataPops.length - 1]])
+      .join("text")
+      .attr("class", "text-pops-value")
+      .text(d => d.value)
+      .attr("x", d => xScale(d.yearF))
+      .transition()
+      .attr("y", d => yScale(d.value) + 30)
 
     svg
       .selectAll("path.lifers")
@@ -122,7 +154,7 @@ const ChartC = () => {
       .attr("class", "lifers")
       .transition()
       .attr("d", path)
-
+      .style("opacity", step ? 0.5 : 0.1)
     svg
       .selectAll("path.lifers-line")
       .data([dataLifers])
@@ -130,44 +162,36 @@ const ChartC = () => {
       .attr("class", "lifers-line")
       .transition()
       .attr("d", pathLine)
+      .style("opacity", step ? 1 : 0.1)
 
     pointsLifers
       .join("circle")
       .attr("class", "lifers-point")
-      .attr("r", 4)
       .attr("cx", d => xScale(d.yearF))
       .transition()
+      .attr("r", 2)
       .attr("cy", d => yScale(d.value))
 
     svg
       .selectAll("text.text-value")
-      .data(dataLifers)
+      .data([dataLifers[dataLifers.length - 1]])
       .join("text")
       .attr("class", "text-value")
-      .attr("x", d => xScale(d.yearF))
-      .attr("y", d => yScale(d.value) - 15)
       .text(d => d.value)
-
-    svg
-      .selectAll("text.year")
-      .data(dataLifers)
-      .join("text")
-      .attr("class", "year")
-      .join("text")
       .attr("x", d => xScale(d.yearF))
-      .attr("y", d => h - 5)
-      .text(d => d.yearF)
+      .transition()
+      .attr("y", d => yScale(d.value) - 15)
 
     svg
-      .selectAll("line")
-      .data(dataLifers)
-      .join("line")
-      .attr("class", "long-ticks")
-      .attr("x1", d => xScale(d.yearF))
-      .attr("x2", d => xScale(d.yearF))
-      .attr("y2", d => h - m.b)
+      .selectAll("text.text-value-label")
+      .data([dataLifers[dataLifers.length - 1]])
+      .join("text")
+      .attr("class", "text-value-label legend-label")
+      .style("text-anchor", "end")
+      .text(d => "Lifers population")
+      .attr("x", d => xScale(d.yearF))
       .transition()
-      .attr("y1", d => yScale(d.value) + 2)
+      .attr("y", d => yScale(d.value) - 35)
 
     /** COMMUTATIONS */
 
@@ -188,25 +212,15 @@ const ChartC = () => {
       .attr("class", d => `coms year-${d[1].year}`)
       .attr("fill", "var(--clr-chart)")
       .attr("fill-opacity", 0.7)
-      .attr("stroke", "none")
-      .attr("d", pathComs)
-
-    svg
-      .selectAll("line.line-coms")
-      .data(dataComs)
-      .join("line")
-      .attr("class", "line-coms")
-      .attr("x1", d => xScale(d.yearF))
-      .attr("x2", d => xScale(d.yearF))
-      .attr("y2", h - m.b)
+      .attr("stroke", "var(--clr-chart)")
       .transition()
-      .attr("y1", d => yScale(d.value))
+      .attr("d", pathComs)
 
     pointsComs
       .join("circle")
       .attr("class", "coms")
       .attr("cx", d => xScale(d.yearF))
-      .attr("r", 1)
+      .attr("r", 2)
       .transition()
       .attr("cy", d => yScale(d.value))
 
@@ -216,17 +230,18 @@ const ChartC = () => {
       .join("text")
       .attr("class", "labelComs")
       .attr("x", d => xScale(d.yearF))
-      .attr("y", d => yScale(d.value) - 28)
-      .text(d => d.label)
+      .text(d => `${d.label}: ${d.value}`)
+      .transition()
+      .attr("y", d => (!step ? yScale(d.value) - 20 : h - 15))
 
-    svg
+    /*svg
       .selectAll("text.text-coms-value")
       .data(dataComs)
       .join("text")
       .attr("class", "text-coms-value")
       .attr("x", d => xScale(d.yearF))
-      .attr("y", d => yScale(d.value) - 10)
-      .text(d => d.value)
+      .attr("y", d => h - 10)
+      .text(d => d.value)*/
 
     svg
       .selectAll("text.yearComs")
@@ -234,9 +249,21 @@ const ChartC = () => {
       .join("text")
       .attr("class", "yearComs")
       .join("text")
-      .attr("x", d => xScale(d.year0))
-      .attr("y", h)
-      .text(d => d.year0)
+      .attr("x", d => xScale(d.yearF))
+      .text(d => `${d.year0} - ${d.yearF}`)
+      .transition()
+      .attr("y", d => (!step ? yScale(d.value) - 5 : h))
+
+    svg
+      .selectAll("text.text-coms-label")
+      .data([dataComs[dataComs.length - 1]])
+      .join("text")
+      .attr("class", "text-coms-label legend-label")
+      .style("text-anchor", "end")
+      .text(d => "Commutations")
+      .attr("x", d => xScale(d.yearF))
+      .transition()
+      .attr("y", d => (!step ? yScale(d.value) - 40 : yScale(d.value) - 15))
 
     svg.attr("width", w).attr("height", h)
   }, [step])
@@ -244,8 +271,11 @@ const ChartC = () => {
   return (
     <div className="chart-wrap" ref={canvasRef}>
       <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
-      <h4 className="title">
-        People serving life without parole in Louisiana
+      <h4
+        className="title"
+        style={{ textAlign: "right", paddingRight: "20px" }}
+      >
+        Commutations vs prison population
         <button
           onClick={() => {
             setStep(step < 2 ? step + 1 : 0)
