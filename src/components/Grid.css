@@ -16,10 +16,6 @@
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .grid-cell .cell-hover-quote .quote {
-    font-size: 1.5em;
-  }
 }
 
 @media (max-width: 767px) {
@@ -32,6 +28,6 @@
   }
 
   .grid-cell .cell-hover-quote .quote {
-    font-size: 1.1em;
+    font-size: 1.1rem;
   }
 }

@@ -8,7 +8,9 @@ import Video from "./Video"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ loading, profiles, images }) => {
-  const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
   const [profileId, setProfile] = useState(params.get("profile"))
   const [showGrid, setShowGrid] = useState(false)
   const [search, setSearch] = useState(null)

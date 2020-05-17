@@ -6,28 +6,9 @@ import GridCell from "./GridCell"
 import "./Grid.css"
 import "./HomeVideo.css"
 
+import getProfileProps from "../utils/getProfileProps"
+
 const USE_PRISMIC = true
-
-const getProps = (node, imageData, USE_PRISMIC) => {
-  const profile = USE_PRISMIC ? node.node : node
-  const profile_picture = USE_PRISMIC
-    ? profile.imagepath[0].text
-    : profile.imagePath
-  const quote =
-    USE_PRISMIC && profile.quote ? profile.quote[0].text : profile.quote
-  const fullName = USE_PRISMIC ? profile.full_name[0].text : profile.name
-
-  const image = imageData.edges.find(n => {
-    return n.node.relativePath.includes(profile_picture)
-  })
-
-  return {
-    quote,
-    fullName,
-    image,
-    profile_picture,
-  }
-}
 
 const Grid = ({ searchTerm, profiles, images, setProfile }) => {
   return (
@@ -44,7 +25,7 @@ const Grid = ({ searchTerm, profiles, images, setProfile }) => {
           return false
         })
         .map((node, idx) => {
-          const { image, fullName, quote, profile_picture } = getProps(
+          const { image, fullName, quote, profile_picture } = getProfileProps(
             node,
             images,
             USE_PRISMIC

@@ -23,6 +23,7 @@
     "gatsby-transformer-sharp": "^2.3.9",
     "intersection-observer": "^0.7.0",
     "lodash": "^4.17.15",
+    "moment": "^2.25.3",
     "prismic-javascript": "^2.1.5",
     "prismic-reactjs": "^1.2.0",
     "prop-types": "^15.7.2",

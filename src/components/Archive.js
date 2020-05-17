@@ -1,22 +1,29 @@
 import React, { useState } from "react"
+import Img from "gatsby-image"
+import { useSpring } from "react-spring"
 
 import Menu from "./Menu"
 import IconSearch from "./Symbols/Search"
 import FilterAndSearch from "./FilterAndSearch"
 import { archive } from "../content/archive"
+
 import sortProfiles from "../utils/sortProfiles"
-import { useSpring } from "react-spring"
+import getProfileProps from "../utils/getProfileProps"
 
 import "./Archive.css"
 
 const columns = [
+  "Picture",
   "Full Name",
   "Offense date",
   "Age at offense",
+  "Current age",
   "Time served at interview",
 ]
 
-const Archive = () => {
+const USE_PRISMIC = true
+
+const Archive = ({ profiles, images }) => {
   const [openProfile, setOpenProfile] = useState(null)
   const [openSearch, setOpenSearch] = useState(false)
 
@@ -30,7 +37,7 @@ const Archive = () => {
   })
 
   return (
-    <>
+    <div className="archive-wrap">
       <Menu isExpanded={false} />
       <div className="archive">
         <h2>Archive</h2>
@@ -78,23 +85,46 @@ const Archive = () => {
             </tr>
           </thead>
           <tbody>
-            {sortProfiles(archive.slice(0), sortType, sortAsc)
+            {sortProfiles(profiles.slice(0), sortType, sortAsc)
               .filter(profile => {
                 if (searchTerm === null || searchTerm === "") return true
                 if (profile["Full Name"].indexOf(searchTerm) > -1) return true
                 return false
               })
               .map((profile, idx) => {
+                const {
+                  image,
+                  fullName,
+                  date_of_birth,
+                  date_of_offense,
+                  age_at_offense,
+                  current_age,
+                } = getProfileProps(profile, images, USE_PRISMIC)
+
                 return (
                   <tr
                     onClick={() => {
                       setOpenProfile(openProfile === idx ? null : idx)
                     }}
-                    className={`${openProfile === idx ? "open" : ""}`}
+                    className={`${openProfile !== "yo" ? "open" : ""}`}
                   >
-                    <td>{profile["Full Name"]}</td>
-                    <td>{profile["Offense date"]}</td>
-                    <td>{profile["Age at offense"]}</td>
+                    <td>
+                      {image && image.node && (
+                        <Img
+                          alt={"TODO: NEEDS AN ALT"}
+                          fluid={image.node.childImageSharp.fluid}
+                          imgStyle={{
+                            objectFit: "cover",
+                            visibility: "visible",
+                            //openProfile === idx ? "visible" : "hidden",
+                          }}
+                        />
+                      )}
+                    </td>
+                    <td>{fullName}</td>
+                    <td>{date_of_offense}</td>
+                    <td>{age_at_offense}</td>
+                    <td>{current_age}</td>
                     <td>{profile["Time served at interview"]}</td>
                   </tr>
                 )
@@ -102,7 +132,7 @@ const Archive = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -64,21 +64,21 @@
 
   opacity: 0;
   transition: opacity 1.2s;
-
-  -webkit-animation: fadeoutup 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeoutup 4s; /* Firefox < 16 */
-  -ms-animation: fadeoutup 4s; /* Internet Explorer */
-  -o-animation: fadeoutup 4s; /* Opera < 12.1 */
-  animation: fadeoutup 4s;
 }
 
 .grid-cell .cell-hover-quote .quote {
   padding-left: 20px;
 
   font-family: "EB Garamond", serif;
-  font-size: 1.1em;
+  font-size: 1.3rem;
   font-style: italic;
   font-weight: 300;
+}
+
+@media (min-width: 1800px) {
+  .grid-cell .cell-hover-quote .quote {
+    font-size: 1.5rem;
+  }
 }
 
 .grid-cell .cell-hover-quote .name {

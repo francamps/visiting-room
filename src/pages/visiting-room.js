@@ -7,10 +7,7 @@ import Layout from "../components/Layout"
 
 import VisitingRoom from "../components/VisitingRoom"
 
-const profileReducer = (state, action) => {
-  const newState = [...state]
-  return newState.concat(action)
-}
+import profileReducer from "../utils/profileReducer"
 
 const VisitingRoomPage = props => {
   const [hasNext, setHasNext] = useState(
@@ -47,7 +44,11 @@ const VisitingRoomPage = props => {
 
   return (
     <Layout>
-      <VisitingRoom loading={hasNext} profiles={profiles} images={images} />
+      <VisitingRoom
+        loading={hasNext}
+        profiles={profiles.map(p => p.node)}
+        images={images}
+      />
     </Layout>
   )
 }

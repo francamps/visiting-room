@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-const Play = ({ size, onClick, useCircle = true }) => {
-  const [isHover, setHover] = useState(false)
+const Play = ({ size, onClick, useCircle = true, doHover }) => {
+  const [isHover, setHover] = useState(doHover)
   if (size === "small") {
     return (
       <svg
@@ -132,6 +132,10 @@ const Play = ({ size, onClick, useCircle = true }) => {
         fill={"none"}
         r={10}
         strokeWidth={2}
+        style={{
+          opacity: isHover ? 1 : 0.8,
+          transition: "opacity 0.4s",
+        }}
       />
       <polygon
         strokeLinejoin="round"
@@ -141,7 +145,7 @@ const Play = ({ size, onClick, useCircle = true }) => {
         opacity="0.7"
         points="16 12 8 16 8 8"
         style={{
-          opacity: isHover ? 1 : 0.6,
+          opacity: isHover ? 1 : 0.8,
           transition: "opacity 0.4s",
         }}
       ></polygon>
