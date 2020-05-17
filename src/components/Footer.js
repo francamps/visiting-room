@@ -12,7 +12,6 @@ const Footer = () => {
         <ul className="partners">
           <li>Vital Projects Fund</li>
           <li>Loyola University at New Orleans</li>
-          <li>NEW INC</li>
         </ul>
 
         <ul className="socials">

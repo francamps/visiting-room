@@ -1,0 +1,194 @@
+.grid-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.grid-cell .cell-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.grid-cell .cell-background .gatsby-image-wrapper {
+  height: 100%;
+}
+
+.grid-cell .cell-background .gatsby-image-wrapper img {
+  filter: brightness(1) saturate(60%);
+  transition: filter 1.2s;
+}
+
+.grid-cell.hovered .cell-background .gatsby-image-wrapper img {
+  filter: brightness(1) saturate(100%);
+  transition: filter 1.2s;
+}
+
+.grid-cell .gridimage-video {
+  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s; /* Firefox < 16 */
+  -ms-animation: fadein 4s; /* Internet Explorer */
+  -o-animation: fadein 4s; /* Opera < 12.1 */
+  animation: fadein 4s;
+}
+
+.grid-cell .cell-hover-layer {
+  background-color: none;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 1.2s, background-color 1.2s;
+}
+
+.grid-cell .cell-hover-quote,
+.grid-cell .cell-hover-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  transition: opacity 1s 1s;
+  cursor: pointer;
+}
+
+.grid-cell .cell-hover-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 1.2s;
+
+  -webkit-animation: fadeoutup 4s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeoutup 4s; /* Firefox < 16 */
+  -ms-animation: fadeoutup 4s; /* Internet Explorer */
+  -o-animation: fadeoutup 4s; /* Opera < 12.1 */
+  animation: fadeoutup 4s;
+}
+
+.grid-cell .cell-hover-quote .quote {
+  padding-left: 20px;
+
+  font-family: "EB Garamond", serif;
+  font-size: 1.1em;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.grid-cell .cell-hover-quote .name {
+  font-family: "EB Garamond", serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  opacity: 0;
+}
+
+.grid-cell h3 {
+  position: absolute;
+  align-self: flex-start;
+  width: calc(100% - 40px);
+  padding-left: 20px;
+  border-left: 1px solid white;
+  box-sizing: border-box;
+  margin-left: 0px;
+
+  font-family: "GTPressura";
+  font-weight: 500;
+  text-align: left;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  transition: letter-spacing 2s;
+}
+
+.grid-cell.hovered .name-tag {
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+
+.grid-cell.hovered .cell-hover-layer {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: backdrop-filter 1.2s, background-color 1.2s;
+  transition-delay: 0.4s;
+}
+
+.grid-cell.hovered .cell-hover-quote {
+  opacity: 1;
+}
+
+.grid-cell.hovered .cell-hover-quote .name {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 2.4s;
+  transition-delay: 1.2s;
+}
+
+.grid-cell .cell-hover-quote .quote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.grid-cell .cell-hover-quote .word-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.grid-cell.hovered .cell-hover-quote .quote .word {
+  opacity: 0;
+
+  -webkit-animation: fadeindownscale 2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeindownscale 2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeindownscale 2s forwards; /* Internet Explorer */
+  -o-animation: fadeindownscale 2s forwards; /* Opera < 12.1 */
+  animation: fadeindownscale 2s forwards;
+}
+
+/* UNDERLINE */
+
+.cell-hover-quote .quote:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  width: 0px;
+  right: 0px;
+  height: 3px;
+  margin: 2px 0 0;
+  transition-duration: 2.6s;
+  transition-delay: 0.8s;
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+  background-color: var(--clr-primary);
+}
+
+.grid-cell.hovered .cell-hover-quote .quote:after {
+  width: 60%;
+  right: 20%;
+  opacity: 1;
+
+  transition-duration: 2.6s;
+  transition-delay: 0.8s;
+  transition-timing-function: ease-in-out;
+}
+
+/* ANIMATION */
+
+@keyframes fadeindownscale {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0.3px);
+  }
+}

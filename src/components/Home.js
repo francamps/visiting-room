@@ -24,11 +24,7 @@ const Home = () => {
               alignItems: "center",
             }}
           >
-            <Play size="large" />
-            <span>
-              Serving Life Without Parole at Louisiana State Penitentiary -
-              Angola.
-            </span>
+            <span>Serving Life Without Parole at Angola</span>
           </div>
           <div className="buttons">
             <Link to="/visiting-room">
@@ -39,8 +35,9 @@ const Home = () => {
                 }}
               >
                 <div className="link-wrap">
-                  <span className="hover-link">
-                    <h3>Enter the Visting Room</h3>
+                  <Play />
+                  <span className="hover-link" style={{ marginLeft: "8px" }}>
+                    <h3>What is Life Without Parole</h3>
                   </span>
                 </div>
               </div>
@@ -65,14 +62,15 @@ const Home = () => {
       <section className="highlight-wrap">
         <article className="copy">
           <p>
-            The Visiting Room is a series of life-history interviews, filmed at
-            the Louisiana State Penitentiary, Angola —a former slave
-            plantation—, and the largest maximum security prison farm in the
-            U.S.
+            The Visiting Room is a series of life-history interviews with people
+            serving life without the possibility of parole, a sentence to die in
+            prison that is being served by more than fifty thousand Americans
+            today.
           </p>
           <p style={{ marginBottom: 0 }}>
-            This project is about making people serving life without parole
-            sentences, along with their stories, visible.
+            All interviews were filmed at the Louisiana State Penitentiary,
+            Angola. Per capita, more people serve this sentence in Louisiana
+            than any other place in the world.
           </p>
         </article>
       </section>

@@ -1,7 +1,7 @@
 import React from "react"
 import { animated } from "react-spring"
 
-import GridImage from "./GridImage"
+import GridCell from "./GridCell"
 
 import "./Grid.css"
 import "./HomeVideo.css"
@@ -51,7 +51,7 @@ const Grid = ({ searchTerm, profiles, images, setProfile }) => {
           )
 
           return (
-            <GridImage
+            <GridCell
               image={image}
               fullName={fullName}
               quote={quote}

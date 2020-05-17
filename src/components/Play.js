@@ -15,6 +15,14 @@ const Play = ({ size, onClick, useCircle = true }) => {
         onMouseLeave={() => setHover(false)}
         onBlur={() => setHover(false)}
       >
+        <circle
+          cx={5}
+          cy={5}
+          stroke="#ffffff"
+          fill={"none"}
+          r={4}
+          strokeWidth={2}
+        />
         <polygon
           strokeLinejoin="round"
           fillRule="evenodd"
@@ -107,9 +115,9 @@ const Play = ({ size, onClick, useCircle = true }) => {
   return (
     <svg
       className="play"
-      width="12px"
-      height="12px"
-      viewBox="0 0 12 12"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
       style={{
         pointerEvents: "all",
       }}
@@ -117,13 +125,21 @@ const Play = ({ size, onClick, useCircle = true }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
+      <circle
+        cx={12}
+        cy={12}
+        stroke="#ffffff"
+        fill={"none"}
+        r={10}
+        strokeWidth={2}
+      />
       <polygon
         strokeLinejoin="round"
         fillRule="evenodd"
         fill="#ffffff"
         stroke="#ffffff"
         opacity="0.7"
-        points="12 6 0 12 0 0"
+        points="16 12 8 16 8 8"
         style={{
           opacity: isHover ? 1 : 0.6,
           transition: "opacity 0.4s",
