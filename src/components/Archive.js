@@ -4,6 +4,7 @@ import { useSpring } from "react-spring"
 
 import Menu from "./Menu"
 import IconSearch from "./Symbols/Search"
+import Play from "./Play"
 import FilterAndSearch from "./FilterAndSearch"
 import { archive } from "../content/archive"
 
@@ -13,12 +14,11 @@ import getProfileProps from "../utils/getProfileProps"
 import "./Archive.css"
 
 const columns = [
-  "Picture",
-  "Full Name",
-  "Offense date",
-  "Age at offense",
-  "Current age",
-  "Time served at interview",
+  { key: "picture", label: "Picture" },
+  { key: "full_name", label: "Full Name" },
+  { key: "current_age", label: "Current age" },
+  { key: "age_at_offense", label: "Age at offense" },
+  { key: "offense_date", label: "Offense date" },
 ]
 
 const USE_PRISMIC = true
@@ -29,7 +29,7 @@ const Archive = ({ profiles, images }) => {
 
   const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
-  const [sortType, setSortedType] = useState(columns[0])
+  const [sortType, setSortedType] = useState(columns[1])
   const props = useSpring({
     config: { duration: 1200, mass: 5, tension: 350, friction: 40 },
     to: { opacity: 1, marginTop: "0" },
@@ -69,19 +69,27 @@ const Archive = ({ profiles, images }) => {
             <tr>
               {columns.map(column => (
                 <th
-                  key={`header-${column.replace(/ /g, "_")}`}
+                  key={`header-${column.key}`}
                   onClick={() => {
                     setOpenProfile(null)
-                    if (sortType === column) {
+                    if (sortType.key === column.key) {
                       setSortedAsc(!sortAsc)
                     } else {
                       setSortedType(column)
                     }
                   }}
                 >
-                  {column}
+                  {column.label}
                 </th>
               ))}
+              <th
+                className="play"
+                style={{
+                  flex: "none",
+                  width: "100px",
+                  padding: "0 30px 0 20px",
+                }}
+              />
             </tr>
           </thead>
           <tbody>
@@ -106,9 +114,9 @@ const Archive = ({ profiles, images }) => {
                     onClick={() => {
                       setOpenProfile(openProfile === idx ? null : idx)
                     }}
-                    className={`${openProfile !== "yo" ? "open" : ""}`}
+                    className="open"
                   >
-                    <td>
+                    <td style={{ display: "block" }}>
                       {image && image.node && (
                         <Img
                           alt={"TODO: NEEDS AN ALT"}
@@ -122,10 +130,15 @@ const Archive = ({ profiles, images }) => {
                       )}
                     </td>
                     <td>{fullName}</td>
-                    <td>{date_of_offense}</td>
-                    <td>{age_at_offense}</td>
                     <td>{current_age}</td>
-                    <td>{profile["Time served at interview"]}</td>
+                    <td>{age_at_offense}</td>
+                    <td>{date_of_offense}</td>
+                    <td
+                      className="play"
+                      style={{ flex: "none", width: "100px" }}
+                    >
+                      <Play size="large" />
+                    </td>
                   </tr>
                 )
               })}

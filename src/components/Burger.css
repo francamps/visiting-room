@@ -54,7 +54,12 @@
 .burger:hover .burger-inner,
 .burger:hover .burger-inner:before,
 .burger:hover .burger-inner:after {
-  background-color: var(--clr-primary);
+  /*background-color: var(--clr-primary);*/
+  -webkit-animation: rotatingBackgroundColor 20s;
+  -moz-animation: rotatingBackgroundColor 20s;
+  -ms-animation: rotatingBackgroundColor 20s;
+  -o-animation: rotatingBackgroundColor 20s;
+  animation: rotatingBackgroundColor 20s;
 }
 
 .burger.is-active .burger-inner,

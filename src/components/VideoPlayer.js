@@ -19,14 +19,16 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [isEnded, setEnded] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [progressSeconds, setProgressSeconds] = useState(0)
+  const [progress, setProgress] = useState({
+    progress: 0,
+    progressSeconds: 0,
+  })
 
   const barRef = useRef()
 
   const query = graphql`
     query MyQuery {
-      file(relativePath: { eq: "TEMP/profile_pics/Kauntau_Reeder.jpg" }) {
+      file(relativePath: { eq: "profile_pics/Kauntau_Reeder.jpg" }) {
         childImageSharp {
           # Specify the image processing specifications right in the query.
           fluid(maxWidth: 2000) {
@@ -44,10 +46,13 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
     const fraction = (e.clientX - leftOfBar) / widthOfBar
     const duration = playerRef.current.duration
 
-    setProgress(fraction)
-    setProgressSeconds(fraction * duration)
+    setProgress({ progress: fraction, progressSeconds: fraction * duration })
     playerRef.current.seekTo(fraction)
   }
+
+  const showEndCard = playerRef.current
+    ? playerRef.current.getDuration() - progress.progressSeconds < 15
+    : false
 
   return (
     <>
@@ -67,8 +72,7 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
               setEnded(true)
             }}
             onProgress={({ played, playedSeconds }) => {
-              setProgress(played)
-              setProgressSeconds(playedSeconds)
+              setProgress({ progress: played, progressSeconds: playedSeconds })
             }}
           />
         ) : (
@@ -99,7 +103,18 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
             }}
           />
         )}
-        {isEnded && (
+        {(!isPlaying || (isPlaying && isPaused)) && (
+          <div style={{ position: "absolute" }}>
+            <Play
+              size="huge"
+              onClick={() => {
+                setPause(false)
+                setPlaying(true)
+              }}
+            />
+          </div>
+        )}
+        {showEndCard && (
           <VideoViewedMenu
             onClickReplay={() => {
               playerRef.current.seekTo(0)
@@ -111,17 +126,6 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
               // Do Something
             }}
           />
-        )}
-        {(!isPlaying || (isPlaying && isPaused)) && (
-          <div style={{ position: "absolute" }}>
-            <Play
-              size="huge"
-              onClick={() => {
-                setPause(false)
-                setPlaying(true)
-              }}
-            />
-          </div>
         )}
       </div>
       {isPlaying && (
@@ -153,12 +157,12 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
             <div
               className="progress-bar-played"
               style={{
-                width: `${progress * 100}%`,
+                width: `${progress.progress * 100}%`,
               }}
             />
           </div>
           <div className="progress-seconds">
-            <span>{getStringTime(progressSeconds)}</span>
+            <span>{getStringTime(progress.progressSeconds)}</span>
           </div>
         </div>
       )}

@@ -15,7 +15,10 @@ const Paragraphs = ({ paragraphs, setModal }) => {
             <div key={`paragraph-${idx}`} className="footnote-trigger-wrap">
               <div
                 className="footnote-trigger"
-                onClick={() => setModal(paragraph.content)}
+                onClick={e => {
+                  e.stopPropagation()
+                  setModal(paragraph.content)
+                }}
               >
                 {paragraph.trigger ? (
                   <div className="link-wrap">
@@ -35,6 +38,12 @@ const Paragraphs = ({ paragraphs, setModal }) => {
           )
         } else if (paragraph.element === "br") {
           return <p key={`paragraph-${idx}`} />
+        } else if (paragraph.element === "ref") {
+          return (
+            <div key={`paragraph-${idx}`} className="paragraph">
+              <li>{paragraph.content}</li>
+            </div>
+          )
         }
         return null
       })}

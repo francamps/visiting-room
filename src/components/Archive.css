@@ -8,8 +8,6 @@
 
 .archive {
   padding: 40px 0;
-  /*background-image: url("../images/TEMP/background.png");
-  background-size: cover;*/
   top: 0;
   bottom: 0;
   left: 0;
@@ -31,9 +29,12 @@
 
 @media (min-width: 768px) {
   .archive .header-content.open {
-    margin-top: -60px;
+    position: absolute;
     height: 30px;
+    margin-top: -60px;
     margin-bottom: 36px;
+    padding: 20px;
+    z-index: 2;
   }
 }
 
@@ -143,12 +144,14 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table tbody tr.open {
-  height: 120px;
+  height: 160px;
   background-color: rgba(0, 0, 0, 1);
   transition: background-color 1s, height 1s;
 }
 
 .archive table tbody tr td {
+  align-items: center;
+  display: flex;
   flex: 1;
   padding: 0 20px;
   border-right: 0;
@@ -159,4 +162,8 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 
 .archive table tbody tr td .gatsby-image-wrapper {
   height: 100%;
+}
+
+.archive table tbody tr td .gatsby-image-wrapper img {
+  filter: brightness(0.9) contrast(120%) saturate(100%);
 }

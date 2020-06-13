@@ -1,9 +1,17 @@
 import React from "react"
 import Img from "gatsby-image"
 
-const GridCellBackground = ({ image }) => {
+const GridCellBackground = ({ isHover, image }) => {
   return (
-    <div className="cell-background">
+    <div
+      className="cell-background"
+      style={{
+        opacity: isHover ? 0 : 1,
+        transitionProperty: "opacity",
+        transitionDelay: "0.4s",
+        transitionDuration: "8s",
+      }}
+    >
       <Img
         alt={"TODO: NEEDS AN ALT"}
         fluid={image.node.childImageSharp.fluid}

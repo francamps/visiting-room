@@ -1,14 +1,42 @@
 .timeline-steps {
+  position: absolute;
+  top: 60px;
+  right: calc(50% - 350px);
+  height: 70px;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: flex-end;
-  position: fixed;
-  top: 60px;
-  right: 15px;
   background: none;
-  height: 70px;
   z-index: 11;
+}
+
+.timeline-steps.timeline-steps-0 {
+  top: 60px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-1 {
+  top: 40px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-2 {
+  top: 20px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-3 {
+  top: 0px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-4 {
+  top: -20px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-5 {
+  top: -40px;
+  transition: top 0.4s;
+}
+.timeline-steps.timeline-steps-6 {
+  top: -60px;
   transition: top 0.4s;
 }
 
@@ -42,7 +70,7 @@
   height: 4px;
   border-radius: 10px;
   margin: 6px;
-  background: var(--clr-off-white);
+  background: var(--clr-black);
 }
 
 .timeline-step-toc.active .dot {
@@ -55,6 +83,7 @@
 
 @media (max-width: 767px) {
   .timeline-steps {
+    position: fixed;
     right: 0px;
   }
 

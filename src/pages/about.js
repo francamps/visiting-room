@@ -5,9 +5,9 @@ import { StaticQuery, graphql } from "gatsby"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Menu from "../components/Menu"
-import Map from "../images/TEMP/timeline/map.png"
+import Map from "../components/charts/Map"
 
 import "../components/About.css"
 
@@ -28,6 +28,13 @@ export const query = graphql`
             term {
               term1
             }
+          }
+        }
+      }
+      allFaqs {
+        edges {
+          node {
+            faq
           }
         }
       }
@@ -52,6 +59,8 @@ const About = () => {
             ? data.prismic.allGlossary_terms.edges[0].node.term
             : []
 
+          const faqs = data ? data.prismic.allFaqs.edges[0].node.faq : []
+
           return (
             <section className="about">
               <Menu />
@@ -60,24 +69,34 @@ const About = () => {
                 <Tabs>
                   <TabList>
                     <Tab>The project</Tab>
-                    <Tab>Glossary</Tab>
-                    <Tab>Credits</Tab>
                     <Tab>FAQ</Tab>
+                    <Tab>Glossary</Tab>
                   </TabList>
 
                   <TabPanel>
                     <article className="copy" style={{ padding: "40px 0" }}>
                       <RichText render={content} />
-                      <div
+                      {
+                        null /*<div
                         className="map-figure"
-                        style={{
+                        ref={mapRef}
+                        /*style={{
                           height: "400px",
                           backgroundImage: `url(${Map})`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           filter: "grayscale(2)",
                         }}
-                      />
+                      />*/
+                      }
+                      <div className="map" style={{ height: "500px" }}>
+                        <Map style={{ width: "100%", height: "100%" }} />
+                      </div>
+                    </article>
+                  </TabPanel>
+                  <TabPanel>
+                    <article className="copy" style={{ padding: "40px 0" }}>
+                      <RichText render={faqs} />
                     </article>
                   </TabPanel>
                   <TabPanel>
@@ -85,11 +104,6 @@ const About = () => {
                       {terms.map(term => {
                         return <RichText render={term.term1} />
                       })}
-                    </article>
-                  </TabPanel>
-                  <TabPanel>
-                    <article className="copy">
-                      <p>Something else something else something else</p>
                     </article>
                   </TabPanel>
                 </Tabs>

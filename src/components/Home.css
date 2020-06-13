@@ -4,7 +4,6 @@
 .home .landing {
   width: 100%;
   height: 100vh;
-  /*background-image: url("../images/TEMP/animationBg.jpg");*/
   background: none;
   background-size: cover;
   position: relative;
@@ -233,7 +232,7 @@ section .about-button {
   .home .landing .text-on-landing .subtitle span {
     flex: 7;
     font-size: 1.6rem;
-    text-align: left;
+    text-align: center;
   }
 
   .home .landing .buttons {
@@ -254,6 +253,7 @@ section .about-button {
 
   .highlight-wrap {
     width: calc(100% - var(--space-around-med));
+    margin: 0 auto;
   }
 
   .highlight-wrap .copy {

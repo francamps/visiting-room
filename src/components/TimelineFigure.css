@@ -7,8 +7,6 @@
   justify-content: center;
   background-color: var(--clr-off-white);
   box-sizing: border-box;
-  /*padding-left: 300px;*/
-  padding-bottom: 300px;
   right: var(--space-around-lg);
 }
 
@@ -21,42 +19,17 @@
 }
 
 .timeline-figure figure {
-  position: absolute;
   right: 0;
-  width: auto;
-  width: 600px;
-  max-height: 500px;
-  max-width: 500px;
-}
-
-.timeline-figure.long figure {
-  max-width: 1200px;
-  width: 1200px;
-}
-
-.timeline-figure.medium figure {
-  max-width: 800px;
-  width: 800px;
-}
-
-.timeline-figure figure .chart-wrap {
-  margin: 100px 0;
-  width: 800px;
-  margin-right: var(--space-around-lg);
-  position: sticky;
-}
-
-@media (max-width: 1824px) {
-  .timeline-figure figure .chart-wrap {
-    margin: 0 auto;
-    width: 800px;
-  }
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .timeline-figure figure .chart-wrap .title {
-  font-family: "GTEesti";
-  font-weight: 100;
+  font-family: "GTPressura";
+  font-weight: 700;
   font-size: var(--font-small);
+  text-align: right;
   color: var(--clr-black);
 }
 
@@ -85,5 +58,20 @@
     margin: 40px 0;
     width: 100%;
     margin-left: 0px;
+  }
+
+  .timeline-figure figure,
+  .timeline-figure.medium figure {
+    position: inherit;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .step-content-figure .timeline-figure {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -27,19 +27,22 @@ const VisitingRoom = ({ loading, profiles, images }) => {
     <div
       className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
     >
-      {!profileId && <Menu isExpanded={false} />}
-      {!loading && showGrid && !profileId && (
-        <Grid
-          searchTerm={search}
-          profiles={profiles}
-          images={images}
-          setProfile={setProfile}
-        />
+      {!profileId ? (
+        <>
+          <Menu isExpanded={false} />
+          {!loading && showGrid && (
+            <Grid
+              searchTerm={search}
+              profiles={profiles}
+              images={images}
+              setProfile={setProfile}
+            />
+          )}
+          <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
+        </>
+      ) : (
+        <Video profileId={profileId} name={"Arthur Carter"} />
       )}
-      {!profileId && (
-        <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
-      )}
-      {profileId && <Video profileId={profileId} name={"Arthur Carter"} />}
     </div>
   )
 }

@@ -1,16 +1,7 @@
 import React /*, { useState }*/ from "react"
 import { navigate } from "gatsby"
 
-//import Play from "./Play"
-//import VideoViewedMenu from "./VideoViewedMenu"
 import CrossClose from "./CrossClose"
-//import Circles from "./charts/Circles"
-
-//import imageSrc from "../images/TEMP/profile_pics/Arthur_Carter.jpg"
-//import imageSrc2 from "../images/TEMP/profile_pics/Walter_Goodwin.jpg"
-
-//import oldImage from "../images/TEMP/arthur_carter.jpg"
-
 import "./Video.css"
 import VideoPlayer from "./VideoPlayer"
 

@@ -19,6 +19,7 @@
   --clr-white: #ffffff;
   --clr-white-rgb: 255, 255, 255;
   --clr-off-white: #f7f5f0;
+  --clr-off-white-rgb: 247, 245, 240;
   --clr-black: #110808 /*#080000*/;
   --clr-dark-bg: #110808;
   --clr-mid-grey: #444444;
@@ -30,6 +31,18 @@
   --space-around-med: 40px;
   --space-around-lg: 60px;
   --space-around-xl: 80px;
+
+  /* PROFILE COLORS */
+  --clr-0: rgb(188, 199, 192);
+  --clr-1: rgb(234, 231, 150);
+  --clr-2: rgb(182, 203, 175);
+  --clr-3: rgb(210, 151, 134);
+  --clr-4: rgb(240, 253, 0);
+  --clr-5: rgb(221, 46, 29);
+  --clr-6: rgb(56, 118, 141);
+  --clr-7: rgb(62, 209, 221);
+  --clr-8: rgb(210, 182, 205);
+  --clr-9: rgb(166, 178, 177);
 }
 
 /**
@@ -40,12 +53,17 @@ Use a scrollbar library, this is not standardized
   width: 11px;
 }
 :root::-webkit-scrollbar-track {
-  background: var(--clr-black);
+  background-color: var(--clr-black);
 }
 :root::-webkit-scrollbar-thumb {
-  background-color: var(--clr-primary);
+  /*background-color: var(--clr-primary);*/
   border-radius: 6px;
   border: 3px solid var(--clr-black);
+  -webkit-animation: rotatingBackgroundColor 20s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: rotatingBackgroundColor 20s; /* Firefox < 16 */
+  -ms-animation: rotatingBackgroundColor 20s; /* Internet Explorer */
+  -o-animation: rotatingBackgroundColor 20s; /* Opera < 12.1 */
+  animation: rotatingBackgroundColor 20s;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
@@ -439,5 +457,71 @@ FADE IN ANIMATIONS
   }
   to {
     transform: translate3d(0, -0.5rem, 0);
+  }
+}
+
+@keyframes rotatingBackgroundColor {
+  0% {
+    background-color: var(--clr-0);
+  }
+  10% {
+    background-color: var(--clr-1);
+  }
+  20% {
+    background-color: var(--clr-2);
+  }
+  30% {
+    background-color: var(--clr-3);
+  }
+  40% {
+    background-color: var(--clr-4);
+  }
+  50% {
+    background-color: var(--clr-5);
+  }
+  60% {
+    background-color: var(--clr-6);
+  }
+  70% {
+    background-color: var(--clr-7);
+  }
+  80% {
+    background-color: var(--clr-8);
+  }
+  90% {
+    background-color: var(--clr-9);
+  }
+}
+
+@keyframes rotatingColor {
+  0% {
+    color: var(--clr-0);
+  }
+  10% {
+    color: var(--clr-1);
+  }
+  20% {
+    color: var(--clr-2);
+  }
+  30% {
+    color: var(--clr-3);
+  }
+  40% {
+    color: var(--clr-4);
+  }
+  50% {
+    color: var(--clr-5);
+  }
+  60% {
+    color: var(--clr-6);
+  }
+  70% {
+    color: var(--clr-7);
+  }
+  80% {
+    color: var(--clr-8);
+  }
+  90% {
+    color: var(--clr-9);
   }
 }

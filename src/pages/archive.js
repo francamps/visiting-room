@@ -1,50 +1,62 @@
 import React, { useEffect, useState, useReducer } from "react"
 import { get as getValue } from "lodash"
 import { graphql } from "gatsby"
-import { getCursorFromDocumentIndex } from "gatsby-source-prismic-graphql"
 
 import Archive from "../components/Archive"
 import Layout from "../components/Layout"
 
 import profileReducer from "../utils/profileReducer"
+import initProfiles from "../utils/initProfiles"
 
 const ArchivePage = props => {
-  const [hasNext, setHasNext] = useState(
-    getValue(props, "data.prismic.allProfiles.pageInfo.hasNextPage")
-  )
-  const [cursor, setCursor] = useState(
-    getValue(props, "data.prismic.allProfiles.pageInfo.endCursor", "")
-  )
+  const [fetchProps, setFetchProps] = useState({
+    hasNext: getValue(props, "data.prismic.allProfiles.pageInfo.hasNextPage"),
+    cursor: getValue(props, "data.prismic.allProfiles.pageInfo.endCursor", ""),
+  })
 
+  const firstProfiles = {}
+  getValue(props, "data.prismic.allProfiles.edges", []).forEach(({ node }) => {
+    const name = getValue(node, "full_name[0].text")
+    if (name) firstProfiles[name] = node
+  })
   const [profiles, dispatch] = useReducer(
     profileReducer,
-    getValue(props, "data.prismic.allProfiles.edges", [])
+    firstProfiles,
+    initProfiles
   )
 
   const images = getValue(props, "data.images", [])
 
   useEffect(() => {
-    // TODO: Apply this pagination only on demand
-    if (hasNext) {
-      props.prismic
-        .load({
-          variables: { after: cursor },
-        })
-        .then(res => {
-          setHasNext(res.data.allProfiles.pageInfo.hasNextPage)
+    if (fetchProps.hasNext) {
+      setTimeout(() => {
+        props.prismic
+          .load({
+            variables: { after: fetchProps.cursor },
+          })
+          .then(res => {
+            setFetchProps({
+              hasNext: res.data.allProfiles.pageInfo.hasNextPage,
+              cursor: res.data.allProfiles.pageInfo.endCursor,
+            })
 
-          const cursor = getCursorFromDocumentIndex(profiles.length)
-          setCursor(cursor)
-
-          const newProfiles = res.data.allProfiles.edges
-          dispatch(newProfiles)
-        })
+            const newProfilesDict = {}
+            res.data.allProfiles.edges.forEach(({ node }) => {
+              const name = getValue(node, "full_name[0].text")
+              if (name) newProfilesDict[name] = node
+            })
+            dispatch(newProfilesDict)
+          })
+      }, 200)
     }
-  }, [cursor, hasNext])
+  }, [fetchProps.cursor, fetchProps.hasNext])
 
   return (
     <Layout>
-      <Archive profiles={profiles.map(p => p.node)} images={images} />
+      <Archive
+        profiles={Object.values(profiles).filter(p => p.show_in_archive)}
+        images={images}
+      />
     </Layout>
   )
 }
@@ -69,6 +81,7 @@ export const query = graphql`
             quote
             profile_picture
             date_of_offense
+            show_in_archive
           }
           cursor
         }

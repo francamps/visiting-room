@@ -1,78 +1,9 @@
-.backdrop {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  transition: backdrop-filter 0.4s, background-color 0.4s;
-}
-
-.menu-up-next {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  width: 400px;
-  height: 300px;
-}
-
-.up-next-left,
-.up-next-right {
-  position: relative;
-  overflow: hidden;
-  font-family: "GTPressura";
-  cursor: pointer;
-}
-
-.up-next-left .hover,
-.up-next-right .hover {
-  position: absolute;
+.final-card {
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  transition: opacity 0.4s;
-}
 
-.up-next-left:hover .hover {
-  opacity: 0.1;
-  transition: opacity 0.4s;
-}
-
-.up-next-right:hover .hover {
-  opacity: 0.1;
-  transition: opacity 0.4s;
-}
-
-.up-next-left {
-  background: var(--clr-dark-bg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.up-next-right {
-  flex: 1;
-  text-align: left;
-}
-
-.up-next-right .thumbnail {
-  position: absolute;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  background-size: cover;
-}
-
-.upper-label {
-  margin: 0;
-  font-size: var(--font-small);
-}
-
-.actual-label {
-  margin: 0;
+  -webkit-animation: fadein 4s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s linear 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 4s linear 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadein 4s linear 1.2s forwards; /* Opera < 12.1 */
+  animation: fadein 4s linear 1.2s forwards;
 }

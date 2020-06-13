@@ -3,37 +3,35 @@ import { navigate } from "gatsby"
 
 import "./VideoViewedMenu.css"
 import TimeSlider from "./TimeSlider"
-import imageSrc from "../images/TEMP/profile_pics/Walter_Goodwin.jpg"
 
-const VideoViewedMenu = ({ onClickReplay, onClickNext }) => {
+const VideoViewedMenu = ({ profile }) => {
   return (
     <>
-      <div className="backdrop"></div>
-      <div className="menu-up-next">
-        <div
-          className="up-next-left options"
-          style={{ flex: "1" }}
-          onClick={onClickReplay}
-        >
-          <div className="">REPLAY</div>
-          <div className="hover"></div>
-        </div>
-        <div className="up-next-right">
-          <div
-            className="thumbnail"
-            style={{
-              background: `url(${imageSrc}) center center`,
-              backgroundSize: "cover",
-            }}
-            onClick={() => {
-              navigate("/visiting-room/")
-            }}
-          >
-            <p className="upper-label">Up next:</p>
-            <h3 className="actual-label">Walter Goodwin</h3>
-            <TimeSlider />
+      <div
+        className="final-card options"
+        style={{
+          position: "absolute",
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "EB Garamond",
+          fontSize: "3rem",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+        }}
+      >
+        <div>
+          <div className="" style={{ color: "rgb(234, 231, 150)" }}>
+            David Chenevert
           </div>
-          <div className="hover"></div>
+          <div className="" style={{ color: "var(--clr-off-white)" }}>
+            21 years old at the time of the offence
+          </div>
+          <div className="" style={{ color: "var(--clr-off-white)" }}>
+            39 years in prision at the time of the interview
+          </div>
         </div>
       </div>
     </>

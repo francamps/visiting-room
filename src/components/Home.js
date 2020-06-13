@@ -1,21 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, navigate } from "gatsby"
 
 import Play from "./Play"
 import Menu from "./Menu"
 import HomeVideo from "./HomeVideo"
 import Footer from "./Footer"
+import VisitingRoom from "../components/VisitingRoom"
 
 import "./Home.css"
 
-const Home = () => {
-  return (
+const Home = ({ loading, profiles, images }) => {
+  const [isVisitingRoom, setVisitingRoom] = useState(false)
+
+  return !isVisitingRoom ? (
     <div className="home">
       <Menu isExpanded={false} />
       <div className="landing">
         <HomeVideo />
         <div className="text-on-landing">
-          <div className="title">The Visiting Room</div>
+          <div
+            className="title"
+            onClick={() => {
+              setVisitingRoom(true)
+            }}
+          >
+            The Visiting Room
+          </div>
           <div
             className="subtitle"
             style={{
@@ -76,6 +86,14 @@ const Home = () => {
       </section>
       <Footer />
     </div>
+  ) : (
+    <VisitingRoom
+      loading={loading}
+      profiles={Object.values(profiles).filter(
+        p => p.show_profile_in_visiting_room
+      )}
+      images={images}
+    />
   )
 }
 

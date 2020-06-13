@@ -1,8 +1,10 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import Media from "react-media"
 
 import ChartC from "./charts/ChartC"
+import Map from "./charts/Map"
 
 import "./TimelineFigure.css"
 
@@ -44,9 +46,29 @@ const TimelineFigure = ({
                       <ChartC />
                     </figure>
                   </section>
-                  <section className="child"></section>
-                  <section className="child"></section>
                 </>
+              )
+            } else if (imageName === "Map") {
+              console.log(imageName)
+
+              return (
+                <section className="child timeline-figure">
+                  <figure>
+                    <Media
+                      queries={{
+                        small: "(max-width: 760px)",
+                        large: "(min-width: 761px)",
+                      }}
+                    >
+                      {matches => (
+                        <>
+                          {matches.small && <Map style={{ height: "250px" }} />}
+                          {matches.large && <Map style={{ height: "500px" }} />}
+                        </>
+                      )}
+                    </Media>
+                  </figure>
+                </section>
               )
             } else {
               const image = data.images.edges.find(n => {
@@ -54,12 +76,7 @@ const TimelineFigure = ({
               })
 
               return (
-                <section
-                  className={`child timeline-figure
-                  ${imageStyle === "long" ? "long" : ""}
-                  ${imageStyle === "medium" ? "medium" : ""}
-                `}
-                >
+                <section className="child timeline-figure">
                   <figure>
                     <Img
                       alt={"TODO: NEEDS AN ALT"}

@@ -21,7 +21,6 @@
 
 .timeline-step-wrap {
   height: 100%;
-  overflow: auto;
 }
 
 .timeline-step {
@@ -29,18 +28,27 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /*height: 400vh;*/
   transform: translate3d(0, 0, 0);
 }
 
-.step-content-snap {
-  scroll-snap-type: y mandatory;
-  height: 100%;
+.step-title {
+  width: 100%;
+}
+
+.step-content {
+  overflow: auto;
+
+  -webkit-animation: fadeindown 4s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeindown 4s; /* Firefox < 16 */
+  -ms-animation: fadeindown 4s; /* Internet Explorer */
+  -o-animation: fadeindown 4s; /* Opera < 12.1 */
+  animation: fadeindown 4s;
+}
+
+.step-content-figure {
+  position: relative;
   width: 100%;
   box-sizing: border-box;
-  overflow-y: scroll;
-  position: absolute;
-  top: 0;
   opacity: 0;
   z-index: -1;
   scrollbar-width: 5px;
@@ -53,79 +61,66 @@
   animation: fadeindown 4s linear 1.2s forwards;
 }
 
-/**
-!!!!!! TODO !!!!!
-THIS IS NOT STANDARD
-REPLACE WITH A SCROLLBAR STYLING LIBRARY
-**/
-.step-content-snap::-webkit-scrollbar {
-  width: 11px;
-}
-.step-content-snap::-webkit-scrollbar-track {
-  background: var(--clr-black);
-}
-.step-content-snap::-webkit-scrollbar-thumb {
-  background-color: var(--clr-primary);
-  border-radius: 6px;
-  border: 3px solid var(--clr-black);
-}
-/**
-^^^^^
-!!!!!! TODO !!!!!
-THIS IS NOT STANDARD
-REPLACE WITH A SCROLLBAR STYLING LIBRARY
-**/
-
-.step-content-snap .child {
-  scroll-snap-align: start;
+.step-content-figure .child {
   height: 100%;
 }
 
-.step-content-static {
+.step-content-text {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   justify-self: flex-start;
   align-self: flex-start;
   height: calc(100vh - 120px);
   padding: var(--space-around-lg);
-  box-sizing: border-box;
-  position: sticky;
-  top: 0;
+  margin: 0 auto;
+  max-width: 640px;
   color: var(--clr-black);
-
-  -webkit-animation: fadeindown 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeindown 4s; /* Firefox < 16 */
-  -ms-animation: fadeindown 4s; /* Internet Explorer */
-  -o-animation: fadeindown 4s; /* Opera < 12.1 */
-  animation: fadeindown 4s;
 }
 
-.step-content-static .year-label,
-.step-content-static h2 {
+/**
+!!!! TODO !!!!
+Use a scrollbar library, this is not standardized
+**/
+.step-content-text::-webkit-scrollbar {
+  width: 11px;
+}
+.step-content-text::-webkit-scrollbar-track {
+  background: var(--clr-black);
+}
+.step-content-text::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: 6px;
+  border: 3px solid var(--clr-black);
+}
+
+.step-content-text h2 {
   width: 100%;
   text-align: left;
 }
 
-.step-content-static h2 {
+.step-content-text h2 {
   /*text-transform: uppercase;*/
   margin-bottom: 20px;
   font-family: "EB Garamond", serif;
 }
 
-.step-content-static h3.year-label {
+h3.year-label {
+  width: 100%;
+  margin: 0px 0 5px;
+  border-bottom: 1px solid var(--clr-black);
+  padding-left: 0px;
+  padding-bottom: 10px;
+  text-align: right;
   font-family: "GTPressura";
   font-weight: 300;
   font-size: var(--font-copy-timeline);
-  margin: 0;
   color: var(--clr-black);
-  border-left: 2px solid var(--clr-black);
-  padding-left: 10px;
 }
 
-.step-content-static .step-columns {
-  max-width: 640px;
+.step-content-text .step-columns {
+  box-sizing: border-box;
+  padding: 0 10px;
   justify-self: flex-start;
 }
 
@@ -146,12 +141,12 @@ TIMELINE TEXT STUFF
   font-weight: 300;
 }
 
-.step-content-static .paragraph-wrap {
+.step-content-text .paragraph-wrap {
   display: block;
   margin: 0 auto;
 }
 
-.step-content-static .paragraph {
+.step-content-text .paragraph {
   display: inline;
   padding: 0;
   margin: 0 auto;
@@ -249,7 +244,7 @@ TIMELINE TEXT STUFF
 }
 
 @media (max-width: 1824px) {
-  .step-content-static .paragraph {
+  .step-content-text .paragraph {
     font-size: var(--font-copy);
     line-height: calc(1.5 * var(--font-copy));
   }
@@ -271,31 +266,59 @@ TIMELINE TEXT STUFF
 
   .timeline-step-wrap {
     height: calc(100vh - 120px);
-    width: calc(100% - 60px);
-    margin: 0 30px 60px;
-  }
-
-  .step-content-static {
     width: 100%;
-    padding: 20px 0 0 0;
+    margin: 0 0px 60px;
   }
 
-  .step-content-static .paragraph {
-    font-size: var(--font-copy);
-    line-height: var(--font-copy);
+  .timeline-step {
+    position: relative;
+    height: 100%;
+    padding: 0 10px;
+  }
+
+  .step-content-text {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    padding: 20px 0 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: rgba(var(--clr-off-white-rgb), 0);
+  }
+
+  .step-content-text.open {
+    background-color: rgba(var(--clr-off-white-rgb), 0.8);
+    transition: height 0.4s, background-color 0.4s;
+  }
+
+  .step-content-text:not(.open) .step-copy h2 {
+    background-color: rgba(var(--clr-off-white-rgb), 1);
+  }
+
+  .step-content-text .step-copy {
+    height: auto;
+    transition: height 0.4s, background-color 0.4s;
+  }
+
+  .step-content-text .paragraph {
+    font-size: calc(var(--font-copy) * 1.2);
+    line-height: calc(var(--font-copy) * 1.5);
   }
 
   .timeline .hover-link {
-    font-size: var(--font-copy);
-    line-height: var(--font-copy);
+    font-size: calc(var(--font-copy) * 1.2);
+    line-height: calc(var(--font-copy) * 1.5);
   }
 
-  .step-content-snap .timeline-figure {
+  .step-content-figure .timeline-figure {
     padding-left: 60px;
   }
 
   .step-columns {
     width: 100%;
+    height: auto;
+    overflow: auto;
   }
 
   .timeline .hover-link:after {

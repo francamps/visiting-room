@@ -12,7 +12,7 @@ const Social = ({ social }) => {
           width="63px"
           height="62px"
           viewBox="89 89 63 62"
-          enable-background="new 89 89 63 62"
+          enableBackground="new 89 89 63 62"
         >
           <path
             d="M119.88,89.91c-16.552,0-29.97,13.418-29.97,29.97s13.418,29.97,29.97,29.97s29.97-13.418,29.97-29.97
@@ -37,7 +37,7 @@ const Social = ({ social }) => {
           width="61px"
           height="60px"
           viewBox="0 0 61 60"
-          enable-background="new 0 0 61 60"
+          enableBackground="new 0 0 61 60"
         >
           <g>
             <path

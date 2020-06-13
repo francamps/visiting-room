@@ -1,13 +1,37 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
 
-import video from "../images/ArthurCarter_8s_mute.mp4"
-
+import ReactPlayer from "react-player"
 import GridCellBackground from "./GridCellBackground"
 
 import "./GridCell.css"
+import Play from "./Play"
 
-const GridCell = ({ image, profile_picture, quote, fullName, setProfile }) => {
+const videos = [
+  "https://vimeo.com/422151517",
+  "https://vimeo.com/422151534",
+  "https://vimeo.com/422151556",
+  "https://vimeo.com/422151586",
+  "https://vimeo.com/422151798",
+]
+
+const getColor = hex => {
+  switch (hex) {
+    case "#f8ed65":
+      return "clr-1"
+    default:
+      return ""
+  }
+}
+
+const GridCell = ({
+  image,
+  profile_picture,
+  quote,
+  fullName,
+  setProfile,
+  color,
+}) => {
   const [isHover, setHover] = useState(false)
 
   if (!image) {
@@ -29,39 +53,32 @@ const GridCell = ({ image, profile_picture, quote, fullName, setProfile }) => {
         navigate(`/visiting-room/?profile=${profileUri}`)
       }}
     >
-      {profile_picture && <GridCellBackground image={image} />}
-      {false && (
-        <div
-          className="gridimage-video"
-          style={{
-            opacity: isHover ? 1 : 0,
-            transitionProperty: "opacity",
-            transitionDelay: "0.4s",
-            transitionDuration: "2s",
-          }}
-        >
-          <video
-            loop
+      {isHover && (
+        <div className="gridimage-video visible">
+          <ReactPlayer
+            url={`${[videos[Math.floor(Math.random() * videos.length)]]}`}
+            className="react-player"
+            playing={true}
+            width="130%"
+            height="130%"
             muted
-            autoPlay
-            poster={profile_picture}
-            className="fullscreen-bg__video"
-          >
-            {null /*<source src={video} type="video/webm">*/}
-            <source src={video} type="video/mp4" />
-            {null /*<source src={video} type="video/ogg">*/}
-          </video>
+            loop
+          />
         </div>
+      )}
+
+      {profile_picture && (
+        <GridCellBackground isHover={isHover} image={image} />
       )}
       <div className="cell-hover-layer"></div>
       {quote && (
         <div className="cell-hover-quote">
-          <p className="quote">
+          <div className={`quote ${getColor(color)}`}>
             <div className="word-wrapper">
               <div className="word">"</div>
             </div>
-            {quote.split(" ").map(word => (
-              <div className="word-wrapper">
+            {quote.split(" ").map((word, i) => (
+              <div className="word-wrapper" key={`word-${i}`}>
                 <div
                   className="word"
                   style={{
@@ -76,8 +93,9 @@ const GridCell = ({ image, profile_picture, quote, fullName, setProfile }) => {
             <div className="word-wrapper">
               <div className="word">"</div>
             </div>
-          </p>
+          </div>
           <p className="name">{fullName}</p>
+          <Play />
         </div>
       )}
       <h3 className="name-tag">{fullName}</h3>

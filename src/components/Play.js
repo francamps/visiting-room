@@ -39,9 +39,9 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
     return (
       <svg
         className="play"
-        width="60px"
-        height="60px"
-        viewBox="0 0 60 60"
+        width="45px"
+        height="45px"
+        viewBox="0 0 45 45"
         style={{
           pointerEvents: "all",
         }}
@@ -52,11 +52,11 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
         onBlur={() => setHover(false)}
       >
         <circle
-          cx={30}
-          cy={30}
+          cx={22.5}
+          cy={22}
           stroke="#ffffff"
           fill={"none"}
-          r={28}
+          r={21}
           strokeWidth={2}
         />
         <polygon
@@ -65,9 +65,9 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
           fill="#ffffff"
           stroke="#ffffff"
           strokeWidth={2}
-          points="22.2 12 0 24 0 0"
+          points="17 9 0 18 0 0"
           style={{
-            transform: "translate(21px, 18px)",
+            transform: "translate(15px, 13.5px)",
             opacity: isHover ? 1 : 0.6,
             transition: "opacity 0.4s",
             cursor: "pointer",

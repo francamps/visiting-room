@@ -63,9 +63,15 @@
 }
 
 .menu-options a:hover {
-  color: var(--clr-primary);
+  /*color: var(--clr-primary);*/
   letter-spacing: 0.02em;
   transition: letter-spacing 1.2s, color 1.2s;
+
+  -webkit-animation: rotatingColor 20s ease infinite;
+  -moz-animation: rotatingColor 20s ease infinite;
+  -ms-animation: rotatingColor 20s ease infinite;
+  -o-animation: rotatingColor 20s ease infinite;
+  animation: rotatingColor 20s ease infinite;
 }
 
 .menu .home-title {
@@ -143,7 +149,12 @@ MENU LINKS
 .menu-option-wrap:hover .hover-link:after {
   width: 100%;
   opacity: 1;
-  background-color: var(--clr-primary);
+  /*background-color: var(--clr-primary);*/
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
 }
 
 .hover-link:after {

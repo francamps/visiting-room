@@ -1,6 +1,5 @@
 const profileReducer = (state, action) => {
-  const newState = [...state]
-  return newState.concat(action)
+  return { ...state, ...action }
 }
 
 export default profileReducer

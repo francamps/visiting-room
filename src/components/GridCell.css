@@ -29,11 +29,25 @@
 }
 
 .grid-cell .gridimage-video {
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s; /* Firefox < 16 */
-  -ms-animation: fadein 4s; /* Internet Explorer */
-  -o-animation: fadein 4s; /* Opera < 12.1 */
-  animation: fadein 4s;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  filter: brightness(0.8) contrast(120%) saturate(100%);
+}
+
+.grid-cell .gridimage-video.visible {
+  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 4s forwards; /* Internet Explorer */
+  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
+  animation: fadein 4s forwards;
+}
+
+.grid-cell .gridimage-video .react-player {
+  margin-top: -10%;
+  margin-left: -10%;
 }
 
 .grid-cell .cell-hover-layer {
@@ -168,6 +182,10 @@
   transition-timing-function: ease-in-out;
   opacity: 1;
   background-color: var(--clr-primary);
+}
+
+.cell-hover-quote .quote.clr-1:after {
+  background-color: var(--clr-1);
 }
 
 .grid-cell.hovered .cell-hover-quote .quote:after {

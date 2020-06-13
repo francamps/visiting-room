@@ -2,7 +2,7 @@ import React from "react"
 import { useSpring, animated } from "react-spring"
 
 import CrossClose from "./CrossClose"
-import image4 from "../images/TEMP/timeline/image4.jpg"
+import image4 from "../images/timeline/image4.jpg"
 
 const TimelineFigureFocus = ({ image, setFigureActive }) => {
   const fadeInProps = useSpring({

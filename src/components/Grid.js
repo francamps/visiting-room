@@ -25,19 +25,23 @@ const Grid = ({ searchTerm, profiles, images, setProfile }) => {
           return false
         })
         .map((node, idx) => {
-          const { image, fullName, quote, profile_picture } = getProfileProps(
-            node,
-            images,
-            USE_PRISMIC
-          )
+          const {
+            image,
+            fullName,
+            quote,
+            profile_picture,
+            color,
+          } = getProfileProps(node, images, USE_PRISMIC)
 
           return (
             <GridCell
+              key={fullName.replace(/ /g, "_")}
               image={image}
               fullName={fullName}
               quote={quote}
               profile_picture={profile_picture}
               setProfile={setProfile}
+              color={color}
             />
           )
         })}
