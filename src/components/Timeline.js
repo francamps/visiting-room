@@ -8,7 +8,6 @@ import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
 
 //import TimelineAngolite from "./TimelineAngolite"
-import Caret from "./Caret"
 
 import { TIMELINE } from "../content/timeline"
 
@@ -56,13 +55,13 @@ const Timeline = () => {
     }
   }, [step])
 
-  const isLastStep = step < TIMELINE.length - 1
+  const isLastStep = step >= TIMELINE.length - 1
 
   const timelineStep = TIMELINE[step]
 
   return (
     <>
-      <Menu />
+      <Menu theme="light" />
       <article className="timeline" ref={timelineRef}>
         <div className="timeline-frame">
           {timelineStep.paragraphs && (
@@ -73,20 +72,26 @@ const Timeline = () => {
                   className="timeline-step"
                   style={{ position: "relative" }}
                 >
+                  <div className="step-title">
+                    <h3 className="year-label">{timelineStep.year}</h3>
+                    <h2>{timelineStep.title}</h2>
+                  </div>
                   <TimelineStepCopy
                     step={step}
                     timelineStep={timelineStep}
                     setModal={setModal}
                     setFigureActive={setFigureActive}
-                  />
-                  <TimelineSteps
-                    step={step}
-                    onGoToStep={s => {
-                      setStep(s)
-                    }}
+                    isLastStep={isLastStep}
+                    setStep={setStep}
                   />
                 </div>
               </div>
+              <TimelineSteps
+                step={step}
+                onGoToStep={s => {
+                  setStep(s)
+                }}
+              />
             </>
           )}
         </div>
@@ -106,17 +111,6 @@ const Timeline = () => {
             setFigureActive={setFigureActive}
             image={TIMELINE[step].image}
           />
-        )}
-
-        {isLastStep && (
-          <div
-            className="scroll"
-            onClick={() => {
-              setStep(step + 1)
-            }}
-          >
-            <Caret animate={true} color={"var(--clr-primary)"} />
-          </div>
         )}
 
         {modalContent && (

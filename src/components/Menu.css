@@ -59,7 +59,7 @@
 }
 
 .menu-options.menu-light a {
-  color: var(--clr-black);
+  color: var(--clr-off-black);
 }
 
 .menu-options a:hover {
@@ -82,6 +82,12 @@
   z-index: 12;
   font-size: var(--font-copy-timeline);
   margin: -3px 0 10px 0px;
+  transition: color 0.4s;
+}
+
+.menu .home-title.open {
+  color: var(--clr-off-white);
+  transition: color 0.4s;
 }
 
 .menu-backdrop {
@@ -162,8 +168,14 @@ MENU LINKS
 }
 
 @media (max-width: 767px) {
+  .menu {
+    top: 10px;
+  }
+
   .menu .home-title {
     font-size: 1.5em;
+    margin: 0;
+    margin-left: -9px;
   }
 
   .menu-options.open {

@@ -9,7 +9,12 @@ export const TIMELINE = [
           The use of life without parole developed differently 
           in each state according to a confluence of local factors, 
           state politics, and national trends (with the exception of Alaska, 
-          which has never adopted the sentence). 
+          which has never adopted the sentence).`,
+      },
+      { element: "br" },
+      {
+        element: "p",
+        content: `
           By way of example, here is a summary of the origins of life 
           without parole in Louisiana, compiled in large part 
           from the meticulously researched, contemporaneous accounts 

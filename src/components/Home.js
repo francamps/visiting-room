@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, navigate } from "gatsby"
 
 import Play from "./Play"
@@ -10,18 +10,31 @@ import VisitingRoom from "../components/VisitingRoom"
 import "./Home.css"
 
 const Home = ({ loading, profiles, images }) => {
+  const [fadeoutLanding, setFadeOutLanding] = useState(false)
   const [isVisitingRoom, setVisitingRoom] = useState(false)
 
+  useEffect(() => {
+    if (fadeoutLanding) {
+      let timer1 = setTimeout(() => {
+        setVisitingRoom(true)
+        setFadeOutLanding(false)
+      }, 1200)
+
+      return () => {
+        clearTimeout(timer1)
+      }
+    }
+  }, [fadeoutLanding])
+
   return !isVisitingRoom ? (
-    <div className="home">
-      <Menu isExpanded={false} />
+    <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
       <div className="landing">
         <HomeVideo />
         <div className="text-on-landing">
           <div
             className="title"
             onClick={() => {
-              setVisitingRoom(true)
+              setFadeOutLanding(true)
             }}
           >
             The Visiting Room
@@ -32,6 +45,9 @@ const Home = ({ loading, profiles, images }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+            }}
+            onClick={() => {
+              setFadeOutLanding(true)
             }}
           >
             <span>Serving Life Without Parole at Angola</span>

@@ -12,7 +12,10 @@ const Menu = ({ theme, isExpanded = false }) => {
     <div>
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
         <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
-        <h2 className="home-title" onClick={() => navigate("/")}>
+        <h2
+          className={`home-title ${isBurgerOpen ? "open" : ""}`}
+          onClick={() => navigate("/")}
+        >
           The Visiting Room
         </h2>
       </div>

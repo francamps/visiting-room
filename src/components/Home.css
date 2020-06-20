@@ -13,12 +13,21 @@
   flex-direction: column;
   justify-content: flex-end;
   text-align: left;
+  background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 4s; /* Firefox < 16 */
   -ms-animation: fadein 4s; /* Internet Explorer */
   -o-animation: fadein 4s; /* Opera < 12.1 */
   animation: fadein 4s;
+}
+
+.home.fadeout {
+  -webkit-animation: fadeout 1.2s forwards;
+  -moz-animation: fadeout 1.2s forwards;
+  -ms-animation: fadeout 1.2s forwards;
+  -o-animation: fadeout 1.2s forwards;
+  animation: fadeout 1.2s forwards;
 }
 
 .home .landing .text-on-landing {

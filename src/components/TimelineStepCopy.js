@@ -2,23 +2,22 @@ import React from "react"
 
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
+import Caret from "./Caret"
 
 const TimelineStepCopy = ({
   timelineStep,
   step,
+  setStep,
   setModal,
   setFigureActive,
   setAngolite,
+  isLastStep,
 }) => {
   const hasImage = timelineStep.images.length
   const imagePlacement = timelineStep.imagePlacement
 
   return (
     <div className="step-content-text">
-      <div className="step-title">
-        <h3 className="year-label">{timelineStep.year}</h3>
-        <h2>{timelineStep.title}</h2>
-      </div>
       <div className="step-content">
         {imagePlacement && imagePlacement === "top" && (
           <div className="step-content-figure">
@@ -48,6 +47,16 @@ const TimelineStepCopy = ({
               setFigureActive={setFigureActive}
               setAngolite={setAngolite}
             />
+          </div>
+        )}
+        {!isLastStep && (
+          <div
+            className="scroll"
+            onClick={() => {
+              setStep(step + 1)
+            }}
+          >
+            <Caret animate={true} color={"var(--clr-primary)"} />
           </div>
         )}
       </div>
