@@ -1,5 +1,4 @@
 import React from "react"
-import { animated } from "react-spring"
 
 import GridCell from "./GridCell"
 
@@ -12,7 +11,7 @@ const USE_PRISMIC = true
 
 const Grid = ({ searchTerm, profiles, images, setProfile }) => {
   return (
-    <animated.div className="grid">
+    <div className="grid">
       {profiles
         .filter(node => {
           const profile = USE_PRISMIC ? node.node : node
@@ -45,7 +44,7 @@ const Grid = ({ searchTerm, profiles, images, setProfile }) => {
             />
           )
         })}
-    </animated.div>
+    </div>
   )
 }
 

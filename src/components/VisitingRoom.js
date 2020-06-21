@@ -12,16 +12,31 @@ const VisitingRoom = ({ loading, profiles, images }) => {
     typeof window !== "undefined" ? window.location.search : ""
   )
   const [profileId, setProfile] = useState(params.get("profile"))
-  const [showGrid, setShowGrid] = useState(false)
   const [search, setSearch] = useState(null)
 
+  const [fadeout, setFadeOut] = useState(false)
+  const [showGrid, setShowGrid] = useState(false)
+
   useEffect(() => {
-    let timer1 = setTimeout(() => setShowGrid(true), 3000)
+    let timer1 = setTimeout(() => setFadeOut(true), 3000)
 
     return () => {
       clearTimeout(timer1)
     }
   }, [])
+
+  useEffect(() => {
+    if (fadeout) {
+      let timer2 = setTimeout(() => {
+        setShowGrid(true)
+        setFadeOut(false)
+      }, 1200)
+
+      return () => {
+        clearTimeout(timer2)
+      }
+    }
+  }, [fadeout])
 
   return (
     <div
@@ -38,7 +53,11 @@ const VisitingRoom = ({ loading, profiles, images }) => {
               setProfile={setProfile}
             />
           )}
-          <VisitingRoomBanner showGrid={showGrid} onSearchTyping={setSearch} />
+          <VisitingRoomBanner
+            fadeout={fadeout}
+            showGrid={showGrid}
+            onSearchTyping={setSearch}
+          />
         </>
       ) : (
         <Video profileId={profileId} name={"Arthur Carter"} />

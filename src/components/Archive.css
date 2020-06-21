@@ -15,7 +15,7 @@
   position: fixed;
 }
 
-.archive h2 {
+.archive .header {
   padding: 20px 60px;
 }
 

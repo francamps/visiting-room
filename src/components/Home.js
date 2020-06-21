@@ -5,6 +5,7 @@ import Play from "./Play"
 import Menu from "./Menu"
 import HomeVideo from "./HomeVideo"
 import Footer from "./Footer"
+import Socials from "./Socials"
 import VisitingRoom from "../components/VisitingRoom"
 
 import "./Home.css"
@@ -28,6 +29,7 @@ const Home = ({ loading, profiles, images }) => {
 
   return !isVisitingRoom ? (
     <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
+      <Menu isExpanded={false} hideTitle />
       <div className="landing">
         <HomeVideo />
         <div className="text-on-landing">
@@ -43,14 +45,21 @@ const Home = ({ loading, profiles, images }) => {
             className="subtitle"
             style={{
               display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
+              flexDirection: "column",
             }}
             onClick={() => {
               setFadeOutLanding(true)
             }}
           >
-            <span>Serving Life Without Parole at Angola</span>
+            <p style={{ margin: "5px 0" }}>
+              The Visiting Room is a series of life-history interviews with
+              individuals who are serving "life without parole", a sentence to
+              remain in prison until death.
+            </p>
+            <p>
+              The interviews were filmed at the Louisiana State Penitentiary,
+              Angola.
+            </p>
           </div>
           <div className="buttons">
             <Link to="/visiting-room">
@@ -84,23 +93,21 @@ const Home = ({ loading, profiles, images }) => {
             </Link>
           </div>
         </div>
+        <Footer />
+        <Socials />
       </div>
-      <section className="highlight-wrap">
+      {
+        null /*<section className="highlight-wrap">
         <article className="copy">
-          <p>
-            The Visiting Room is a series of life-history interviews with people
-            serving life without the possibility of parole, a sentence to die in
-            prison that is being served by more than fifty thousand Americans
-            today.
-          </p>
           <p style={{ marginBottom: 0 }}>
-            All interviews were filmed at the Louisiana State Penitentiary,
-            Angola. Per capita, more people serve this sentence in Louisiana
-            than any other place in the world.
+            The Visiting Room is a series of life-history interviews with
+            individuals who are serving "life without parole", a sentence to
+            remain in prison until death. The interviews were filmed at the
+            Louisiana State Penitentiary, Angola.
           </p>
         </article>
-      </section>
-      <Footer />
+      </section>*/
+      }
     </div>
   ) : (
     <VisitingRoom

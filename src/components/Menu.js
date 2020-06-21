@@ -6,18 +6,21 @@ import Play from "./Play"
 
 import "./Menu.css"
 
-const Menu = ({ theme, isExpanded = false }) => {
+const Menu = ({ theme, isExpanded = false, hideTitle }) => {
   const [isBurgerOpen, setBurgerOpen] = useState(false)
   return (
     <div>
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
         <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
-        <h2
-          className={`home-title ${isBurgerOpen ? "open" : ""}`}
-          onClick={() => navigate("/")}
-        >
-          The Visiting Room
-        </h2>
+        {isBurgerOpen ||
+          (!hideTitle && (
+            <h2
+              className={`home-title ${isBurgerOpen ? "open" : ""}`}
+              onClick={() => navigate("/")}
+            >
+              The Visiting Room
+            </h2>
+          ))}
       </div>
       <div
         className={`menu-backdrop ${isBurgerOpen ? "menu-backdrop-on" : ""}`}
@@ -35,23 +38,23 @@ const Menu = ({ theme, isExpanded = false }) => {
       >
         <div className="menu-option-wrap">
           <Link to="/visiting-room" className="hover-link">
-            THE VISITING ROOM
+            The Visiting Room
           </Link>
         </div>
 
         <div className="menu-option-wrap">
           <Link to="/history" className="hover-link">
-            HISTORY
+            History
           </Link>
         </div>
         <div className="menu-option-wrap">
           <Link to="/archive" className="hover-link">
-            ARCHIVE
+            Archive
           </Link>
         </div>
         <div className="menu-option-wrap">
           <Link to="/about" className="hover-link">
-            ABOUT THE PROJECT
+            About the project
           </Link>
         </div>
         <div className="menu-option-wrap">
@@ -65,7 +68,7 @@ const Menu = ({ theme, isExpanded = false }) => {
             }}
           >
             <Play size="large" />
-            <span style={{ marginLeft: "12px" }}>LWOP AT ANGOLA</span>
+            <span style={{ marginLeft: "12px" }}>LWOP at Angola</span>
           </Link>
         </div>
       </div>

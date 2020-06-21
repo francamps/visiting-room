@@ -111,11 +111,11 @@
   box-sizing: border-box;
   margin-left: 0px;
 
-  font-family: "GTPressura";
+  font-family: "EB Garamond";
   font-weight: 500;
   text-align: left;
   letter-spacing: normal;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   transition: letter-spacing 2s;
 }
 

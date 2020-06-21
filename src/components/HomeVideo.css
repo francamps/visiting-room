@@ -9,6 +9,16 @@
   overflow: hidden;
 }
 
+.fullscreen-bg.ready .fullscreen-bg__video {
+  opacity: 0;
+
+  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 4s forwards; /* Internet Explorer */
+  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
+  animation: fadein 4s forwards;
+}
+
 .fullscreen-bg__video {
   position: absolute;
   top: 0;
@@ -20,8 +30,10 @@
 
 @media (min-aspect-ratio: 16/9) {
   .fullscreen-bg__video {
-    height: 300%;
-    top: -100%;
+    width: 300% !important;
+    left: -100%;
+    height: calc(100% + 150px) !important;
+    top: -60px;
   }
 }
 

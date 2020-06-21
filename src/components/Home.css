@@ -42,7 +42,7 @@
   max-width: 1200px;
   font-family: "GTPressura", serif;
   font-weight: 300;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 2.4rem;
 }
 
@@ -221,16 +221,20 @@ section .about-button {
   .home .landing .text-on-landing {
     right: var(--space-around-xsmall);
     left: var(--space-around-xsmall);
-    padding-bottom: var(--space-around-med);
+    padding-bottom: var(--space-around-small);
   }
 
   .home .landing .text-on-landing .title {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   .home .landing .text-on-landing .subtitle {
     width: 100%;
     flex-direction: row;
+    margin-bottom: 10px;
   }
 
   .home .landing .text-on-landing .subtitle .play {
@@ -254,10 +258,14 @@ section .about-button {
     align-items: center;
     justify-content: center;
     height: 30px;
-    margin: 20px 0px 0 0;
+    margin: 10px 0px 0 0;
     padding: 0;
     background: none;
     transition: background-color 0.4s, letter-spacing 1.2s, border 0.4s;
+  }
+
+  .home .text-on-landing .buttons .hover-link:after {
+    bottom: 5px;
   }
 
   .highlight-wrap {

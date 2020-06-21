@@ -10,6 +10,13 @@
   box-sizing: border-box;
   transform: translate3d(0, 0, 0);
   background: var(--clr-black);
+  opacity: 0;
+
+  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 4s forwards; /* Internet Explorer */
+  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
+  animation: fadein 4s forwards;
 }
 
 @media (min-width: 1800px) {

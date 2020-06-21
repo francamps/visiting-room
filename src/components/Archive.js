@@ -40,7 +40,17 @@ const Archive = ({ profiles, images }) => {
     <div className="archive-wrap">
       <Menu isExpanded={false} />
       <div className="archive">
-        <h2>Archive</h2>
+        <div className="header">
+          <h2>Archive</h2>
+          <p>
+            This collection includes interviews with 110 people who are serving
+            life without the possibility of parole at the Louisiana State
+            Penitentiary, Angola. The interviews were conducted by Professor
+            Marcus Kondkar of Loyola University New Orleans in 2017 and 2018.
+            For more information about the project, see our About page.
+          </p>
+        </div>
+
         <div className={`header-content ${openSearch ? "open" : ""} `}>
           {!openSearch && (
             <div
