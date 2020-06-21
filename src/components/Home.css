@@ -33,17 +33,20 @@
 .home .landing .text-on-landing {
   position: absolute;
   right: var(--space-around-xl);
-  left: calc(2 * var(--space-around-xl));
-  padding-bottom: calc(2 * var(--space-around-xl));
+  left: calc(2 * var(--space-around-med));
+  padding-bottom: calc(2 * var(--space-around-med));
 }
 
 .home .landing .text-on-landing .subtitle {
   width: 100%;
-  max-width: 1200px;
-  font-family: "GTPressura", serif;
-  font-weight: 300;
-  font-size: 1.5rem;
+  max-width: 800px;
   line-height: 2.4rem;
+}
+
+.home .landing .text-on-landing .subtitle {
+  font-family: "EB Garamond", serif;
+  font-weight: 300;
+  font-size: 1.3rem;
 }
 
 .home .landing .text-on-landing .subtitle:hover {
@@ -80,7 +83,7 @@
   margin: 0;
   height: 60px;
   line-height: 40px;
-  padding: 20px 20px;
+  padding: 0px 20px;
   text-align: center;
   font-family: "GTPressura";
   font-size: var(--font-subtitle);
@@ -198,13 +201,13 @@ section .about-button {
 
 @media (max-width: 1824px) {
   .home .landing .text-on-landing .title {
-    font-size: 6.5rem;
+    font-size: var(--font-title);
   }
 
   .home .landing .text-on-landing {
     right: var(--space-around-xl);
-    left: var(--space-around-xl);
-    padding-bottom: var(--space-around-xl);
+    left: var(--space-around-med);
+    padding-bottom: var(--space-around-med);
   }
 }
 
@@ -233,6 +236,7 @@ section .about-button {
 
   .home .landing .text-on-landing .subtitle {
     width: 100%;
+    max-width: 640px;
     flex-direction: row;
     margin-bottom: 10px;
   }
