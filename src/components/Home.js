@@ -5,14 +5,18 @@ import Play from "./Play"
 import Menu from "./Menu"
 import HomeVideo from "./HomeVideo"
 import Footer from "./Footer"
-import Socials from "./Socials"
 import VisitingRoom from "../components/VisitingRoom"
 
 import "./Home.css"
 
 const Home = ({ loading, profiles, images }) => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
   const [fadeoutLanding, setFadeOutLanding] = useState(false)
-  const [isVisitingRoom, setVisitingRoom] = useState(false)
+  const [isVisitingRoom, setVisitingRoom] = useState(
+    params.get("visiting") || false
+  )
 
   useEffect(() => {
     if (fadeoutLanding) {
@@ -66,7 +70,7 @@ const Home = ({ loading, profiles, images }) => {
               <div
                 className="button"
                 onClick={() => {
-                  navigate("/visiting-room")
+                  params.set("visiting", true)
                 }}
               >
                 <div className="link-wrap">
@@ -94,7 +98,6 @@ const Home = ({ loading, profiles, images }) => {
           </div>
         </div>
         <Footer />
-        <Socials />
       </div>
       {
         null /*<section className="highlight-wrap">

@@ -40,13 +40,13 @@
 .home .landing .text-on-landing .subtitle {
   width: 100%;
   max-width: 800px;
-  line-height: 2.4rem;
+  line-height: 2rem;
 }
 
 .home .landing .text-on-landing .subtitle {
   font-family: "EB Garamond", serif;
   font-weight: 300;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .home .landing .text-on-landing .subtitle:hover {

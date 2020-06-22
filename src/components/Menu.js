@@ -3,10 +3,14 @@ import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
 import Play from "./Play"
+import Socials from "./Socials"
 
 import "./Menu.css"
 
 const Menu = ({ theme, isExpanded = false, hideTitle }) => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
   const [isBurgerOpen, setBurgerOpen] = useState(false)
   return (
     <div>
@@ -37,9 +41,14 @@ const Menu = ({ theme, isExpanded = false, hideTitle }) => {
         }}
       >
         <div className="menu-option-wrap">
-          <Link to="/visiting-room" className="hover-link">
+          <a
+            onClick={() => {
+              navigate("/?visiting=true")
+            }}
+            className="hover-link"
+          >
             The Visiting Room
-          </Link>
+          </a>
         </div>
 
         <div className="menu-option-wrap">
@@ -70,6 +79,7 @@ const Menu = ({ theme, isExpanded = false, hideTitle }) => {
             <Play size="large" />
             <span style={{ marginLeft: "12px" }}>LWOP at Angola</span>
           </Link>
+          <Socials />
         </div>
       </div>
     </div>

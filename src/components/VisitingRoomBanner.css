@@ -18,7 +18,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
   justify-content: start;
 }
 

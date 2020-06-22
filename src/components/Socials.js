@@ -6,7 +6,7 @@ const Socials = () => (
   <div
     className="socials"
     style={{
-      position: "fixed",
+      position: "absolute",
       top: 20,
       right: 20,
       display: "flex",
