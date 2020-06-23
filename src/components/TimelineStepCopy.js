@@ -53,7 +53,7 @@ const TimelineStepCopy = ({
           <div
             className="scroll"
             onClick={() => {
-              setStep(step + 1)
+              setStep(+step + 1)
             }}
           >
             <Caret animate={true} color={"var(--clr-primary)"} />

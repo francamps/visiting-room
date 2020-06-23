@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-wrapper">
-        <h4>Produced with the support of:</h4>
+        <h4>With the support of:</h4>
         <ul className="partners">
           <li>Vital Projects Fund</li>
-          <li>Loyola University at New Orleans</li>
+          <li>Loyola University</li>
         </ul>
       </div>
     </footer>

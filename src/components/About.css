@@ -9,8 +9,8 @@
   width: 100%;
   margin-bottom: 40px;
   font-family: "EB Garamond";
-  font-size: 4.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: normal;
 }
 
 /** REACT TABS
@@ -52,7 +52,7 @@ TODO: PUT IT IN ITS OWN FILE
 }
 
 .react-tabs__tab-list .react-tabs__tab--selected {
-  background: var(--clr-dark-bg) !important;
+  background: none !important;
   color: var(--clr-primary);
   border: none;
 }

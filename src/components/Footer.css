@@ -1,10 +1,12 @@
 footer {
   position: absolute;
   width: 100%;
-  bottom: var(--space-around-xsmall);
+  right: var(--space-around-med);
+  bottom: var(--space-around-med);
   margin: 0 auto;
   font-family: "EB Garamond";
   color: var(--clr-off-white);
+  opacity: 0.7;
 }
 
 .footer-wrapper {
@@ -18,13 +20,13 @@ footer {
 }
 
 footer h4 {
-  margin: 5px 20px;
+  margin: 0px;
   font-weight: normal;
   display: inline-block;
 }
 
 footer ul {
-  height: 30px;
+  height: 20px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -45,6 +47,7 @@ footer ul li {
 
 footer ul li:last-child {
   border: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 767px) {

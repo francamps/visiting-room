@@ -23,7 +23,7 @@ const Video = ({ name, profileId, setView }) => {
           right: 20,
         }}
         onClick={() => {
-          navigate("/visiting-room")
+          navigate("/?visiting=true")
         }}
       >
         <CrossClose />

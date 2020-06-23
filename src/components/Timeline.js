@@ -12,8 +12,12 @@ import TimelineStepCopy from "./TimelineStepCopy"
 import { TIMELINE } from "../content/timeline"
 
 const Timeline = () => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
+
   const [isFigureActive, setFigureActive] = useState(null)
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(params.get("chapter") || 0)
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
   const [isAngolite, setAngolite] = useState(false)
@@ -26,6 +30,11 @@ const Timeline = () => {
   }
   const handleTouchEnd = () => {
     console.log("handleTouchEnd")
+  }
+
+  const updateParams = step => {
+    params.set("chapter", step)
+    window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
   }
 
   const keyToStep = e => {
@@ -82,7 +91,10 @@ const Timeline = () => {
                     setModal={setModal}
                     setFigureActive={setFigureActive}
                     isLastStep={isLastStep}
-                    setStep={setStep}
+                    setStep={step => {
+                      updateParams(+step)
+                      setStep(+step)
+                    }}
                   />
                 </div>
               </div>

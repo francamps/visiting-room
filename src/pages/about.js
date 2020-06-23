@@ -76,19 +76,6 @@ const About = () => {
                   <TabPanel>
                     <article className="copy" style={{ padding: "40px 0" }}>
                       <RichText render={content} />
-                      {
-                        null /*<div
-                        className="map-figure"
-                        ref={mapRef}
-                        /*style={{
-                          height: "400px",
-                          backgroundImage: `url(${Map})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          filter: "grayscale(2)",
-                        }}
-                      />*/
-                      }
                       <div className="map" style={{ height: "500px" }}>
                         <Map style={{ width: "100%", height: "100%" }} />
                       </div>

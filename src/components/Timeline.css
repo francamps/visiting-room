@@ -72,6 +72,7 @@
   overflow: auto;
   padding: 0 20px 20px;
   max-width: 620px;
+  opacity: 0;
 
   -webkit-animation: fadeindown 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeindown 2s linear 1.2s forwards; /* Firefox < 16 */

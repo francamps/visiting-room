@@ -202,9 +202,9 @@ export const TIMELINE = [
         `,
       },
     ],
-    images: ["image4.jpg"],
+    images: ["clinton-signing-bill.jpg"],
     imagePlacement: "top",
-    caption: `"Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.27. Calvin Duncan, a former lifer and Inmate Counsel Substitute at Angola, is pictured.`,
+    caption: `...`,
   },
   {
     year: "Today",
