@@ -66,46 +66,53 @@ const Timeline = () => {
 
   const isLastStep = step >= TIMELINE.length - 1
 
-  const timelineStep = TIMELINE[step]
+  //const timelineStep = TIMELINE[step]
 
   return (
     <>
       <Menu theme="light" />
       <article className="timeline" ref={timelineRef}>
         <div className="timeline-frame">
-          {timelineStep.paragraphs && (
-            <>
-              <div className="timeline-step-wrap" data-step={`step-${step}`}>
-                <div
-                  key={`timeline-step-${step}`}
-                  className="timeline-step"
-                  style={{ position: "relative" }}
-                >
-                  <div className="step-title">
-                    <h3 className="year-label">{timelineStep.year}</h3>
-                    <h2>{timelineStep.title}</h2>
+          {TIMELINE.map(timelineStep => {
+            return (
+              timelineStep.paragraphs && (
+                <>
+                  <div
+                    className="timeline-step-wrap"
+                    data-step={`step-${step}`}
+                  >
+                    <div
+                      key={`timeline-step-${step}`}
+                      className="timeline-step"
+                      style={{ position: "relative" }}
+                    >
+                      <div className="step-title">
+                        <h3 className="year-label">{timelineStep.year}</h3>
+                        <h2>{timelineStep.title}</h2>
+                      </div>
+                      <TimelineStepCopy
+                        step={step}
+                        timelineStep={timelineStep}
+                        setModal={setModal}
+                        setFigureActive={setFigureActive}
+                        isLastStep={isLastStep}
+                        setStep={step => {
+                          updateParams(+step)
+                          setStep(+step)
+                        }}
+                      />
+                    </div>
                   </div>
-                  <TimelineStepCopy
-                    step={step}
-                    timelineStep={timelineStep}
-                    setModal={setModal}
-                    setFigureActive={setFigureActive}
-                    isLastStep={isLastStep}
-                    setStep={step => {
-                      updateParams(+step)
-                      setStep(+step)
-                    }}
-                  />
-                </div>
-              </div>
-              <TimelineSteps
-                step={step}
-                onGoToStep={s => {
-                  setStep(s)
-                }}
-              />
-            </>
-          )}
+                </>
+              )
+            )
+          })}
+          <TimelineSteps
+            step={step}
+            onGoToStep={s => {
+              setStep(s)
+            }}
+          />
         </div>
 
         {

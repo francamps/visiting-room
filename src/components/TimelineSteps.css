@@ -1,5 +1,5 @@
 .timeline-steps {
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: calc(50% - 350px);
   height: 70px;

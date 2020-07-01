@@ -26,7 +26,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   }
   date_of_birth = date_of_birth.isValid() ? date_of_birth.format() : "unknown"
   date_of_offense = date_of_offense.isValid()
-    ? date_of_offense.format("ll")
+    ? date_of_offense.format("YYYY")
     : "unknown"
   const current_age = moment().diff(date_of_birth, "years")
 

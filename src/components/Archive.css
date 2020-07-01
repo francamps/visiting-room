@@ -123,7 +123,15 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   flex: 1;
   text-align: left;
   text-transform: uppercase;
-  padding-left: 20px;
+  padding: 0 20px 0 10px;
+}
+
+.archive table thead tr th span {
+  height: 12px;
+  line-height: 12px;
+  text-transform: none;
+  font-weight: normal;
+  font-size: var(--font-xsmall);
 }
 
 .archive table tbody {
@@ -153,7 +161,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   align-items: center;
   display: flex;
   flex: 1;
-  padding: 0 20px;
+  padding: 0 20px 0 0;
   border-right: 0;
   text-overflow: ellipsis;
   overflow: hidden;

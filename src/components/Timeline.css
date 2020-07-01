@@ -10,7 +10,7 @@
 
 .timeline-frame {
   border-radius: 4px;
-  overflow: hidden;
+  overflow: auto;
   position: absolute;
   top: 60px;
   bottom: 0px;
