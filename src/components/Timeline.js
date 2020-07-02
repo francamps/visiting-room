@@ -76,34 +76,28 @@ const Timeline = () => {
           {TIMELINE.map(timelineStep => {
             return (
               timelineStep.paragraphs && (
-                <>
-                  <div
-                    className="timeline-step-wrap"
-                    data-step={`step-${step}`}
-                  >
-                    <div
-                      key={`timeline-step-${step}`}
-                      className="timeline-step"
-                      style={{ position: "relative" }}
-                    >
-                      <div className="step-title">
-                        <h3 className="year-label">{timelineStep.year}</h3>
-                        <h2>{timelineStep.title}</h2>
-                      </div>
-                      <TimelineStepCopy
-                        step={step}
-                        timelineStep={timelineStep}
-                        setModal={setModal}
-                        setFigureActive={setFigureActive}
-                        isLastStep={isLastStep}
-                        setStep={step => {
-                          updateParams(+step)
-                          setStep(+step)
-                        }}
-                      />
-                    </div>
+                <div
+                  key={`timeline-step-${step}`}
+                  className="timeline-step"
+                  data-step={`step-${step}`}
+                  style={{ position: "relative" }}
+                >
+                  <div className="step-title">
+                    <h3 className="year-label">{timelineStep.year}</h3>
+                    <h2>{timelineStep.title}</h2>
                   </div>
-                </>
+                  <TimelineStepCopy
+                    step={step}
+                    timelineStep={timelineStep}
+                    setModal={setModal}
+                    setFigureActive={setFigureActive}
+                    isLastStep={isLastStep}
+                    setStep={step => {
+                      updateParams(+step)
+                      setStep(+step)
+                    }}
+                  />
+                </div>
               )
             )
           })}

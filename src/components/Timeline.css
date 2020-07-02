@@ -5,22 +5,17 @@
   position: relative;
   /*background: var(--clr-off-white);*/
   background: linear-gradient(330deg, var(--clr-9), var(--clr-off-white));
-  overflow: hidden;
 }
 
 .timeline-frame {
   border-radius: 4px;
   overflow: auto;
   position: absolute;
-  top: 60px;
+  top: 0px;
   bottom: 0px;
-  right: 10px;
-  left: 10px;
+  right: 0px;
+  left: 0px;
   padding: 0px;
-}
-
-.timeline-step-wrap {
-  height: 100%;
 }
 
 .timeline-step {
@@ -28,83 +23,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  min-height: 100%;
+  margin-bottom: 170px;
   transform: translate3d(0, 0, 0);
 }
 
-.step-content-figure {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  opacity: 0;
-  z-index: -1;
-  scrollbar-width: 5px;
-  scrollbar-color: var(--clr-primary) var(--clr-black);
-
-  -webkit-animation: fadeindown 2s linear 0.6s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeindown 2s linear 0.6s forwards; /* Firefox < 16 */
-  -ms-animation: fadeindown 2s linear 0.6s forwards; /* Internet Explorer */
-  -o-animation: fadeindown 2s linear 0.6s forwards; /* Opera < 12.1 */
-  animation: fadeindown 2s linear 0.6s forwards;
-}
-
-.step-content-figure .child {
-  height: 100%;
-}
-
-.step-content-text {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: calc(100vh - 170px);
-  box-sizing: border-box;
-  padding-bottom: var(--space-around-lg);
-  margin: 0 auto;
-  justify-self: flex-start;
-  align-self: flex-start;
-  color: var(--clr-black);
-  overflow: auto;
-}
-
-.step-content {
-  position: absolute;
-  overflow: auto;
-  padding: 0 20px 20px;
-  max-width: 620px;
-  opacity: 0;
-
-  -webkit-animation: fadeindown 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeindown 2s linear 1.2s forwards; /* Firefox < 16 */
-  -ms-animation: fadeindown 2s linear 1.2s forwards; /* Internet Explorer */
-  -o-animation: fadeindown 2s linear 1.2s forwards; /* Opera < 12.1 */
-  animation: fadeindown 2s linear 1.2s forwards;
-}
-/**
-!!!! TODO !!!!
-Use a scrollbar library, this is not standardized
-**/
-.step-content-text::-webkit-scrollbar {
-  width: 5px;
-}
-.step-content-text::-webkit-scrollbar-track {
-  background: none;
-}
-.step-content-text::-webkit-scrollbar-thumb {
-  background-color: var(--clr-primary);
-  border-radius: 6px;
-  border: none;
-}
-/**
-!!!! TODO !!!!
-Use a scrollbar library, this is not standardized
-**/
-
 .step-title {
+  position: sticky;
+  top: 40px;
   width: 100%;
+  height: 170px;
   max-width: 640px;
   margin: 0 auto;
   opacity: 0;
+  z-index: 2;
 
   -webkit-animation: fadeindown 2s linear 0s forwards; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeindown 2s linear 0s forwards; /* Firefox < 16 */
@@ -133,14 +65,68 @@ Use a scrollbar library, this is not standardized
   color: var(--clr-black);
 }
 
-.step-content-text .step-columns {
+.step-content {
+  position: relative;
+  overflow: auto;
+  padding: 0px 20px 20px;
+  max-width: 620px;
+  opacity: 0;
+
+  -webkit-animation: fadeindown 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeindown 2s linear 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeindown 2s linear 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadeindown 2s linear 1.2s forwards; /* Opera < 12.1 */
+  animation: fadeindown 2s linear 1.2s forwards;
+}
+
+.step-content-figure {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  z-index: -1;
+  scrollbar-width: 5px;
+  scrollbar-color: var(--clr-primary) var(--clr-black);
+
+  -webkit-animation: fadeindown 2s linear 0.6s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeindown 2s linear 0.6s forwards; /* Firefox < 16 */
+  -ms-animation: fadeindown 2s linear 0.6s forwards; /* Internet Explorer */
+  -o-animation: fadeindown 2s linear 0.6s forwards; /* Opera < 12.1 */
+  animation: fadeindown 2s linear 0.6s forwards;
+}
+
+.step-content-figure .child {
+  height: 100%;
+}
+
+/**
+!!!! TODO !!!!
+Use a scrollbar library, this is not standardized
+**/
+.step-content::-webkit-scrollbar {
+  width: 5px;
+}
+.step-content::-webkit-scrollbar-track {
+  background: none;
+}
+.step-content::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: 6px;
+  border: none;
+}
+/**
+!!!! TODO !!!!
+Use a scrollbar library, this is not standardized
+**/
+
+.step-content .step-columns {
   box-sizing: border-box;
   padding: 0;
   padding-bottom: 20px;
   justify-self: flex-start;
 }
 
-.step-content-text .step-columns:not(:first-child) {
+.step-content .step-columns:not(:first-child) {
   padding-top: 20px;
 }
 
@@ -161,12 +147,12 @@ TIMELINE TEXT STUFF
   font-weight: 300;
 }
 
-.step-content-text .paragraph-wrap {
+.step-content .paragraph-wrap {
   display: block;
   margin: 0 auto;
 }
 
-.step-content-text .paragraph {
+.step-content .paragraph {
   display: inline;
   padding: 0;
   margin: 0 auto;
@@ -262,7 +248,7 @@ TIMELINE TEXT STUFF
 }
 
 @media (max-width: 1824px) {
-  .step-content-text .paragraph {
+  .step-content .paragraph {
     font-size: var(--font-copy);
     line-height: calc(1.5 * var(--font-copy));
   }
@@ -282,12 +268,6 @@ TIMELINE TEXT STUFF
     bottom: 0px;
   }
 
-  .timeline-step-wrap {
-    height: calc(100vh - 60px);
-    width: 100%;
-    margin: 0 0px 60px;
-  }
-
   .timeline-step {
     position: relative;
     height: 100%;
@@ -300,7 +280,7 @@ TIMELINE TEXT STUFF
     right: 0;
   }
 
-  .step-content-text {
+  .step-content {
     width: 100%;
     height: calc(100vh - 20px);
     padding: 0;
@@ -310,26 +290,26 @@ TIMELINE TEXT STUFF
     background-color: rgba(var(--clr-off-white-rgb), 0);
   }
 
-  .step-content-text.open {
+  .step-content.open {
     background-color: rgba(var(--clr-off-white-rgb), 0.8);
     transition: height 0.4s, background-color 0.4s;
   }
 
-  .step-content-text:not(.open) .step-copy h2 {
+  .step-content:not(.open) .step-copy h2 {
     background-color: rgba(var(--clr-off-white-rgb), 1);
   }
 
-  .step-content-text .step-copy {
+  .step-content .step-copy {
     height: auto;
     transition: height 0.4s, background-color 0.4s;
   }
 
-  .step-content-text .paragraph {
+  .step-content .paragraph {
     font-size: calc(var(--font-copy) * 1.2);
     line-height: calc(var(--font-copy) * 1.5);
   }
 
-  .step-content-text .paragraph li {
+  .step-content .paragraph li {
     word-break: break-all;
   }
 
