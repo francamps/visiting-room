@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { RichText } from "prismic-reactjs"
 import { Link } from "gatsby"
 import { StaticQuery, graphql } from "gatsby"
@@ -10,6 +10,7 @@ import Menu from "../components/Menu"
 import Map from "../components/charts/Map"
 
 import "../components/About.css"
+import { update } from "lodash"
 
 export const query = graphql`
   {
@@ -35,6 +36,7 @@ export const query = graphql`
         edges {
           node {
             faq
+            faq_title
           }
         }
       }
@@ -43,6 +45,16 @@ export const query = graphql`
 `
 
 const About = () => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
+  const [faqNumber, setFaqNumber] = useState(params.get("faq") || 0)
+
+  const updateParams = (param, faqNumber) => {
+    params.set(param, faqNumber)
+    window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
+  }
+
   return (
     <Layout>
       <StaticQuery
@@ -59,14 +71,19 @@ const About = () => {
             ? data.prismic.allGlossary_terms.edges[0].node.term
             : []
 
-          const faqs = data ? data.prismic.allFaqs.edges[0].node.faq : []
+          const faqs = data ? data.prismic.allFaqs.edges : []
 
           return (
             <section className="about">
               <Menu />
               <div className="copy-wrap" style={{ padding: "100px 0" }}>
                 <h2 className="title">{title}</h2>
-                <Tabs>
+                <Tabs
+                  defaultIndex={params.get("tab") || 0}
+                  onSelect={idx => {
+                    updateParams("tab", idx)
+                  }}
+                >
                   <TabList>
                     <Tab>The project</Tab>
                     <Tab>FAQ</Tab>
@@ -83,7 +100,37 @@ const About = () => {
                   </TabPanel>
                   <TabPanel>
                     <article className="copy" style={{ padding: "40px 0" }}>
-                      <RichText render={faqs} />
+                      {faqs.map(({ node }, idx) => {
+                        const { faq, faq_title } = node
+
+                        return (
+                          <div
+                            className={`faq ${
+                              idx === +faqNumber ? "faq-active" : ""
+                            }`}
+                            id={`faq-${idx}`}
+                            onClick={() => {
+                              updateParams("faq", idx === faqNumber ? -1 : idx)
+                              setFaqNumber(idx === faqNumber ? -1 : idx)
+                              setTimeout(
+                                document
+                                  .querySelector(`#faq-${idx}`)
+                                  .scrollIntoView({
+                                    block: "start",
+                                    inline: "nearest",
+                                    behavior: "smooth",
+                                  }),
+                                1200
+                              )
+                            }}
+                          >
+                            <h3>{faq_title[0].text}</h3>
+                            <div className="faq-content">
+                              <RichText render={faq} />
+                            </div>
+                          </div>
+                        )
+                      })}
                     </article>
                   </TabPanel>
                   <TabPanel>

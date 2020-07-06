@@ -13,6 +13,26 @@
   font-weight: normal;
 }
 
+.copy .faq {
+  cursor: pointer;
+  border-bottom: 1px solid var(--clr-off-white);
+}
+
+.copy .faq .faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.2s ease-in-out;
+}
+
+.copy .faq .faq-content li {
+  line-height: var(--copy-line-height);
+}
+
+.copy .faq.faq-active .faq-content {
+  max-height: 1200px;
+  transition: max-height 1.2s ease-in-out;
+}
+
 /** REACT TABS
 TODO: PUT IT IN ITS OWN FILE
 */
