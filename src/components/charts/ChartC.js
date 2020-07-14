@@ -75,7 +75,7 @@ const ChartC = () => {
     const w = canvasRef.current.getBoundingClientRect().width
     const h = (w * HEIGHT) / WIDTH
     const svg = select(svgRef.current)
-    console.log(w)
+
     const pointsLifers = svg
       .selectAll("circle.lifers-point")
       .data([dataLifers[dataLifers.length - 1]])

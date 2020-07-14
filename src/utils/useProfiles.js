@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react"
+import { useState, useReducer, useEffect } from "react"
 import { get as getValue } from "lodash"
 
 import profileReducer from "./profileReducer"

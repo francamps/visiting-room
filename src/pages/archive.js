@@ -6,7 +6,6 @@ import Archive from "../components/Archive"
 import Layout from "../components/Layout"
 
 import profileReducer from "../utils/profileReducer"
-import initProfiles from "../utils/initProfiles"
 
 const ArchivePage = props => {
   const [fetchProps, setFetchProps] = useState({
@@ -19,11 +18,7 @@ const ArchivePage = props => {
     const name = getValue(node, "full_name[0].text")
     if (name) firstProfiles[name] = node
   })
-  const [profiles, dispatch] = useReducer(
-    profileReducer,
-    firstProfiles,
-    initProfiles
-  )
+  const [profiles, dispatch] = useReducer(profileReducer, firstProfiles)
 
   const images = getValue(props, "data.images", [])
 
@@ -49,7 +44,7 @@ const ArchivePage = props => {
           })
       }, 200)
     }
-  }, [fetchProps.cursor, fetchProps.hasNext])
+  }, [fetchProps.cursor, fetchProps.hasNext, props.prismic])
 
   return (
     <Layout>
@@ -82,6 +77,7 @@ export const query = graphql`
             profile_picture
             date_of_offense
             show_in_archive
+            deceased_date
           }
           cursor
         }

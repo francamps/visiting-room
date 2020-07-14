@@ -17,6 +17,10 @@
 
 .archive .header {
   padding: 20px 60px;
+  font-size: var(--font-copy);
+  line-height: var(--font-copy-timeline);
+  font-weight: 300;
+  max-width: 640px;
 }
 
 .archive .header-content .search-trigger {

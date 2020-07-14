@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef, useCallback } from "react"
+
 import "./Timeline.css"
 
 import Menu from "./Menu"
@@ -6,12 +7,11 @@ import TimelineSteps from "./TimelineSteps"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
-
-//import TimelineAngolite from "./TimelineAngolite"
+import TimelineBanner from "./TimelineBanner"
 
 import { TIMELINE } from "../content/timeline"
 
-const Timeline = () => {
+const Timeline = props => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
@@ -20,30 +20,48 @@ const Timeline = () => {
   const [step, setStep] = useState(params.get("chapter") || 0)
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
-  const [isAngolite, setAngolite] = useState(false)
 
-  const handleTouchStart = () => {
-    console.log("handleTouchStart")
-  }
-  const handleTouchMove = () => {
-    console.log("handleTouchMove")
-  }
-  const handleTouchEnd = () => {
-    console.log("handleTouchEnd")
-  }
+  const [fadeout, setFadeOut] = useState(false)
+  const [showTimeline, setShowTimeline] = useState(false)
+
+  useEffect(() => {
+    let timer1 = setTimeout(() => setFadeOut(true), 60000)
+
+    return () => {
+      clearTimeout(timer1)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (fadeout) {
+      let timer2 = setTimeout(() => {
+        setShowTimeline(true)
+        setFadeOut(false)
+      }, 1200)
+
+      return () => {
+        clearTimeout(timer2)
+      }
+    }
+  }, [fadeout])
 
   const updateParams = step => {
     params.set("chapter", step)
     window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
   }
 
-  const keyToStep = e => {
-    if (e.code === "ArrowDown") {
-      if (step < TIMELINE.length - 1) setStep(step + 1)
-    } else if (e.code === "ArrowUp") {
-      if (step > 0) setStep(step - 1)
-    }
-  }
+  const keyToStep = useCallback(
+    e => {
+      if (e.code === "ArrowDown") {
+        if (step < TIMELINE.length - 1) setStep(step + 1)
+      } else if (e.code === "ArrowUp") {
+        if (step > 0) setStep(step - 1)
+      }
+    },
+    [step]
+  )
+
+  useEffect(() => {})
 
   useEffect(() => {
     window.addEventListener("keyup", keyToStep)
@@ -51,9 +69,6 @@ const Timeline = () => {
       window.removeEventListener("keyup", keyToStep)
     }
   }, [keyToStep])
-
-  // TODO: Disable the wheel on
-  //useEffect(() => {}, [isAngolite])
 
   useEffect(() => {
     const el = document.querySelector(`[data-step="step-${step}"]`)
@@ -66,28 +81,25 @@ const Timeline = () => {
 
   const isLastStep = step >= TIMELINE.length - 1
 
-  //const timelineStep = TIMELINE[step]
-
   return (
     <>
-      <Menu theme="light" />
-      <article className="timeline" ref={timelineRef}>
-        <div className="timeline-frame">
-          {TIMELINE.map(timelineStep => {
-            return (
-              timelineStep.paragraphs && (
-                <div
-                  key={`timeline-step-${step}`}
-                  className="timeline-step"
-                  data-step={`step-${step}`}
-                  style={{ position: "relative" }}
-                >
-                  <div className="step-title">
-                    <h3 className="year-label">{timelineStep.year}</h3>
-                    <h2>{timelineStep.title}</h2>
-                  </div>
+      {!showTimeline && (
+        <TimelineBanner
+          fadeout={fadeout}
+          onClose={() => {
+            setFadeOut(true)
+          }}
+        />
+      )}
+      <>
+        <Menu theme="light" />
+        <article className="timeline" ref={timelineRef}>
+          <div className="timeline-frame">
+            {TIMELINE.map((timelineStep, stepIdx) => {
+              return (
+                timelineStep.paragraphs && (
                   <TimelineStepCopy
-                    step={step}
+                    step={stepIdx}
                     timelineStep={timelineStep}
                     setModal={setModal}
                     setFigureActive={setFigureActive}
@@ -97,39 +109,29 @@ const Timeline = () => {
                       setStep(+step)
                     }}
                   />
-                </div>
+                )
               )
-            )
-          })}
-          <TimelineSteps
-            step={step}
-            onGoToStep={s => {
-              setStep(s)
-            }}
-          />
-        </div>
+            })}
+            <TimelineSteps
+              step={step}
+              onGoToStep={s => {
+                setStep(s)
+              }}
+            />
+          </div>
 
-        {
-          null /*isAngolite && (
-          <TimelineAngolite
-            onClose={() => {
-              setAngolite(false)
-            }}
-          />
-          )*/
-        }
+          {isFigureActive && (
+            <TimelineFigureFocus
+              setFigureActive={setFigureActive}
+              image={TIMELINE[step].image}
+            />
+          )}
 
-        {isFigureActive && (
-          <TimelineFigureFocus
-            setFigureActive={setFigureActive}
-            image={TIMELINE[step].image}
-          />
-        )}
-
-        {modalContent && (
-          <TimelineModal setModal={setModal} content={modalContent} />
-        )}
-      </article>
+          {modalContent && (
+            <TimelineModal setModal={setModal} content={modalContent} />
+          )}
+        </article>
+      </>
     </>
   )
 }

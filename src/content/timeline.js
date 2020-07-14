@@ -1,38 +1,11 @@
 export const TIMELINE = [
   {
-    year: "",
-    title: "",
-    paragraphs: [
-      {
-        element: "p",
-        content: `
-          The use of life without parole developed differently 
-          in each state according to a confluence of local factors, 
-          state politics, and national trends (with the exception of Alaska, 
-          which has never adopted the sentence).`,
-      },
-      { element: "br" },
-      {
-        element: "p",
-        content: `
-          By way of example, here is a summary of the origins of life 
-          without parole in Louisiana, compiled in large part 
-          from the meticulously researched, contemporaneous accounts 
-          of writers at Angola’s prison newspaper, The Angolite.
-        `,
-      },
-    ],
-    images: [],
-    imageStyle: "medium",
-    imagePlacement: "top",
-  },
-  {
     year: "Late 1800s",
     title: "A Fifteen Year Minimum",
     paragraphs: [
       {
         element: "p",
-        content: `Under Louisiana’s brutal `,
+        content: `Under Louisiana's brutal `,
       },
       {
         element: "f",
@@ -45,7 +18,15 @@ export const TIMELINE = [
           in the 1800s, individuals who were sentenced 
           to life in prison were confined at Angola, a former plantation 
           in central Louisiana, and worked to death without any 
-          opportunity for release. In response to growing unrest 
+          opportunity for release.`,
+      },
+      {
+        element: "ref",
+        trigger: "1",
+      },
+      {
+        element: "p",
+        content: `In response to growing unrest 
           over the treatment of convicts under lease, 
           the majority of whom were Black, lawmakers eventually created a
         `,
@@ -54,6 +35,10 @@ export const TIMELINE = [
         element: "f",
         trigger: "pardon board",
         content: "...",
+      },
+      {
+        element: "ref",
+        trigger: "2",
       },
       {
         element: "p",
@@ -69,12 +54,24 @@ export const TIMELINE = [
       },
       {
         element: "p",
-        content: ` after serving fifteen years. Angola was repurposed 
+        content: ` after serving fifteen years.`,
+      },
+      {
+        element: "ref",
+        trigger: "3",
+      },
+      {
+        element: "p",
+        content: `Angola was repurposed 
           as the Louisiana State Penitentiary in 1901, 
-          but many lifers continued to succumb to its cruel 
+          but many lifers continued to perish to its cruel 
           and desperate conditions before they had served 
           enough time to seek clemency.
-        `,
+          `,
+      },
+      {
+        element: "ref",
+        trigger: "4",
       },
     ],
     images: ["Map"],
@@ -83,28 +80,57 @@ export const TIMELINE = [
   },
   {
     year: "1920s",
-    title: "Ten-Six: A shorter minimum",
+    title: "Ten Years and Six Months",
     paragraphs: [
       {
         element: "p",
-        content: `In 1926, at a time when the State was trying 
-          to scale back the costs of running Angola, Louisiana lawmakers 
-          passed a statute reducing the time that lifers had to serve 
-          before being considered for a commutation of sentence 
-          from fifteen years to ten years and six months.4`,
+        content: `In 1926, at a time when the State was trying to 
+          scale back the costs of running Angola, Louisiana lawmakers 
+          reduced the time that lifers had to serve before being 
+          considered for a commutation of sentence from 
+          fifteen years to ten years and six months.`,
+      },
+      {
+        element: "ref",
+        trigger: "5",
       },
       { element: "br" },
       {
         element: "p",
-        content: `This became known as the 10/6 law.5 
-          The prison warden forwarded a lifer’s clemency recommendation 
-          to the pardon board, who reviewed it and sent it 
-          to the governor for his signature. For the next fifty years, 
-          Louisiana released an estimated 90-95% of its lifers, 
-          never keeping more than a couple hundred in the prison system 
-          at any one time.6 States like Texas, Mississippi, 
+        content: `This became known as the 10/6 law.`,
+      },
+      {
+        element: "ref",
+        trigger: "6",
+      },
+      {
+        element: "p",
+        content: `The prison warden would forward a lifer’s clemency 
+        recommendation to the pardon board, who reviewed it and sent it 
+        to the governor for his signature. For the next fifty years, 
+        Louisiana released an estimated 95-99% of its lifers.`,
+      },
+      {
+        element: "ref",
+        trigger: "7",
+      },
+      {
+        element: "p",
+        content: `It was very unusual for anyone to serve the entirety of a life sentence.`,
+      },
+      {
+        element: "ref",
+        trigger: "8",
+      },
+      {
+        element: "p",
+        content: `States like Texas, Mississippi, 
           Kentucky and North Carolina, as well as the federal system, 
-          similarly released prisoners with life sentences after ten or fifteen years.7`,
+          similarly released prisoners with life sentences after ten or fifteen years.`,
+      },
+      {
+        element: "ref",
+        trigger: "9",
       },
     ],
     images: ["application_crop.png"],
@@ -113,7 +139,7 @@ export const TIMELINE = [
   },
   {
     year: "1970s",
-    title: "Toughening laws and tightening restrictions",
+    title: "Toughening Laws and Tightening Restrictions",
     paragraphs: [
       {
         element: "p",
@@ -129,21 +155,50 @@ export const TIMELINE = [
         element: "p",
         content: `. People on death row in Louisiana were resentenced to life. 
           Not wanting persons formerly sentenced to death to be considered for release 
-          - many of whom had already served more than 10 years and six months 
-          - Louisiana abandoned the 10/6 law.8 Lifers could still seek a 
+          Louisiana abandoned the 10/6 law.`,
+      },
+      {
+        element: "ref",
+        trigger: "10",
+      },
+      {
+        element: "p",
+        content: `Lifers could still seek a 
           commutation of sentence by applying directly to the pardon board, 
           but changes to the composition and rules of the board throughout 
           the 1970s made the chances of receiving a commutation 
-          far less certain than it had been under 10/6.9 
-        `,
+          far less certain than it had been under 10/6.`,
       },
+      {
+        element: "ref",
+        trigger: "11",
+      },
+      ,
       { element: "br" },
 
       {
         element: "p",
+        content: `Individuals who were preparing to go home under the 10/6 law 
+          were now faced with spending the rest of their lives in prison.`,
+      },
+      { element: "br" },
+      {
+        element: "p",
         content: `Meanwhile, the legislature increased the number of offenses 
-          punishable by life in prison from two to seven.10 
-          In a culture that increasingly favored harsh sentencing 
+          punishable by life in prison from `,
+      },
+      {
+        element: "f",
+        trigger: "two to seven",
+        content: "...",
+      },
+      {
+        element: "ref",
+        trigger: "12",
+      },
+      {
+        element: "p",
+        content: `. In a culture that increasingly favored harsh sentencing 
           of prisoners, life now truly meant life.`,
       },
     ],
@@ -153,24 +208,48 @@ export const TIMELINE = [
   },
   {
     year: "1980s",
-    title: "A surging lifer population",
+    title: "A Surging Lifer Population",
     paragraphs: [
       {
         element: "p",
-        content: `Following the demise of the 10/6 law, tightening rules 
-          at the pardon board, and the expansion of crimes punishable 
-          by life in prison, the lifer population in Louisiana grew rapidly. 
-          In 1972 there were 193 lifers in the state.11 
-          By 1980, that number had jumped to 800, and by 1989 there were almost 2,000.12 
-          At the same time, the politics of crime began infecting governors’ 
-          willingness to grant commutations of sentence.13`,
+        content: `Following the demise of the 10/6 law, new restrictions 
+        at the pardon board, and the expansion of crimes punishable by life in prison, 
+        the lifer population in Louisiana grew rapidly. Up until that point, 
+        Louisiana had never incarcerated more than a couple hundred 
+        lifers at any given time; in 1972, there were 193 lifers in the whole state.`,
+      },
+      {
+        element: "ref",
+        trigger: "13",
+      },
+      {
+        element: "p",
+        content: `By 1980, however, that number had jumped to 800, and by 1989, there were almost 2,000.`,
+      },
+      {
+        element: "ref",
+        trigger: "14",
+      },
+      {
+        element: "p",
+        content: ` Louisiana governors were not immune to the "tough on crime" politics 
+          that had led to stiffer sentences at the legislature, 
+          and their willingness to grant commutations evaporated.`,
+      },
+      {
+        element: "ref",
+        trigger: "15",
       },
       { element: "br" },
       {
         element: "p",
-        content: `Many other states were also expanding their use of life 
-          without parole during this period. Between 1992 and 2016, 
+        content: `Many other states were expanding their use of life 
+          without parole during this period as well. Between 1992 and 2016, 
           the number of life without parole sentences more than quadrupled nationwide.`,
+      },
+      {
+        element: "ref",
+        trigger: "16",
       },
     ],
     images: ["chartC"],
@@ -179,27 +258,30 @@ export const TIMELINE = [
   },
   {
     year: "1990’s",
-    title: "Limiting access to the courts",
+    title: "Limiting Access to the Courts",
     paragraphs: [
       {
         element: "p",
-        content: `In the 1990s, as incarceration rates skyrocketed, 
-          courts and lawmakers limited the ability of defendants to appeal 
-          their convictions and sentences. In Louisiana, requests for 
-          postconviction review in state courts now needed to be filed 
-          within a strict period of time – after which the right to further 
-          appeal would be lost – while the powers of federal courts to 
-          review state convictions were severely limited.15 
-          Without a right to a lawyer in postconviction, these laws 
-          made it nearly impossible for lifers to correct injustices 
-          or obtain lesser sentences through the courts.16`,
+        content: `In the 1990s, as incarceration rates skyrocketed, courts 
+        and lawmakers limited the ability of defendants to appeal their convictions 
+        and sentences. In Louisiana, requests for postconviction review 
+        in state courts now needed to be filed within a strict period of time 
+        – after which the right to further appeals would be lost. 
+        The powers of federal courts to review state convictions were also severely limited.`,
+      },
+      {
+        element: "ref",
+        trigger: "17",
       },
       {
         element: "p",
-        content: `Louisiana limited opportunities to challenge criminal convictions 
-        and sentences while the federal government curtailed the power of 
-        federal courts to correct constitutional violations in state cases. 
-        `,
+        content: `Without a right to a lawyer in postconviction, these laws 
+          made it nearly impossible for lifers to correct injustices 
+          or obtain lesser sentences through the courts.`,
+      },
+      {
+        element: "ref",
+        trigger: "18",
       },
     ],
     images: ["clinton-signing-bill.jpg"],
@@ -208,14 +290,21 @@ export const TIMELINE = [
   },
   {
     year: "Today",
-    title: "Life means life",
+    title: "Life Means Life",
     paragraphs: [
       {
         element: "p",
-        content: `Today, nearly 5,000 people are serving life without 
-          parole sentences in Louisiana – the largest share of any state 
-          prison population and the highest number per capita of 
-          any place in the world. Nearly three quarters of this aging population is `,
+        content: `More than 50,000 people are currently serving life without parole 
+          nationwide. One tenth of these are in Louisiana – the highest 
+          number per capita of any place in the world.`,
+      },
+      {
+        element: "ref",
+        trigger: "19",
+      },
+      {
+        element: "p",
+        content: ` Nearly three quarters of this aging population is `,
       },
       {
         element: "f",
@@ -223,18 +312,14 @@ export const TIMELINE = [
         content: "...",
       },
       {
-        element: "p",
-        content: ` In the absence of legislative reform, the only path 
-          to release for these men and women is through 
-          a commutation of sentence from the governor. `,
-      },
-      {
         element: "br",
       },
       {
         element: "p",
-        content: ` Prior to 1972, Louisiana governors commuted more than 
-          90% of lifers’ sentences. Today, that number has dropped to less than 1%. `,
+        content: `In the absence of legislative reform, the only hope for 
+        these men and women is a commutation from the governor. 
+        Prior to 1972, Louisiana governors commuted upwards of 95% of lifers' 
+        sentences. Today, that number has dropped to less than 1%.`,
       },
     ],
     images: ["placeholder.jpg"],
@@ -247,36 +332,80 @@ export const TIMELINE = [
     title: "More information",
     paragraphs: [
       {
-        element: "ref",
-        content: `Shane Bauer, "The Origins of Prison Slavery", Slate, Oct. 2, 2018, https://slate.com/news-and-politics/2018/10/origin-prison-slavery-shane-bauer-american-prison-excerpt.html.`,
+        element: "li",
+        content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 44-53.`,
       },
       {
-        element: "ref",
-        content: `Act 311 of 1926. See **Author, "The Forgotten Men", The Angolite, May 1980, p. 36.`,
+        element: "li",
+        content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 53-55.`,
       },
       {
-        element: "ref",
-        content: `"The Forgotten Men", The Angolite, May 1980, p. 36-41, 46-48.`,
+        element: "li",
+        content: `An earlier act, passed in 1886, gave first offenders serving life sentences an opportunity to apply for a commutation after serving fifteen years. Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 54.`,
       },
       {
-        element: "ref",
-        content: `News Briefs, The Angolite, March/April 1981, p. 9. `,
+        element: "li",
+        content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 88-90, 103.`,
       },
       {
-        element: "ref",
-        content: `Ron Wikberg, "The Longtermers," The Angolite, May/June 1988, p. 34.`,
+        element: "li",
+        content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, Ch. 5; "The Forgotten Men," The Angolite, May-June 1980, p. 36.`,
       },
       {
-        element: "ref",
-        content: `Floyd Webb, “Legal Spectrum: The Laws of Life,” The Angolite, May/June 1988, p. 59.`,
+        element: "li",
+        content: `Act 311 of 1926, taken from "The Forgotten Men," The Angolite, May-June 1980, p. 36.`,
       },
       {
-        element: "ref",
-        content: `"Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.27. Calvin Duncan, a former lifer and Inmate Counsel Substitute at Angola, is pictured.`,
+        element: "li",
+        content: `"The Forgotten Men," The Angolite, May-June 1980, p. 46-48, 55.`,
       },
       {
-        element: "ref",
-        content: `Ashley Nellis, Ph.D., "Still Life: America’s Increasing Use of Life and Long-Term Sentences," The Sentencing Project, May 3, 2017, https://www.sentencingproject.org/publications/still-life-americas-increasing-use-life-long-term-sentences/.`,
+        element: "li",
+        content: `"The Forgotten Men," The Angolite, May-June 1980, p. 43, 46, 55; "The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
+      },
+      {
+        element: "li",
+        content: `"No Way Out? Life Sentences and the Politics of Penal Reform," in Charles Ogletree and Austin Sarat, eds., Life Without Parole: America’s New Death Penalty? (New York: NYU Press, 2012): 227-81. `,
+      },
+      {
+        element: "li",
+        content: `"The Forgotten Men," The Angolite, May-June 1980, p. 48, 52-55.`,
+      },
+      {
+        element: "li",
+        content: `"The Forgotten Men," The Angolite, May-June 1980, p. 41, 43, 48, 54-55.`,
+      },
+      {
+        element: "li",
+        content: `"The Meaning of Life," The Angolite, June/July 1995, p. 20.`,
+      },
+      {
+        element: "li",
+        content: `"The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
+      },
+      {
+        element: "li",
+        content: `"The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
+      },
+      {
+        element: "li",
+        content: `Burk Foster, "When Mercy Seasons Justice," The Angolite, November/December, 1995, p. 24-25.`,
+      },
+      {
+        element: "li",
+        content: `Ashley Nellis, Ph.D., "Still Life: America’s Increasing Use of Life and Long-Term Sentences," The Sentencing Project, May 3, 2017, https://www.sentencingproject.org/publications/still-life-americas-increasing-use-life-long-term-sentences/`,
+      },
+      {
+        element: "li",
+        content: `Lane Nelson and Wilbert Rideau, "Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.26-29.`,
+      },
+      {
+        element: "li",
+        content: `Lane Nelson and Wilbert Rideau, "Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.29.`,
+      },
+      {
+        element: "li",
+        content: `Ashley Nellis, Ph.D., "Still Life: America’s Increasing Use of Life and Long-Term Sentences," The Sentencing Project, May 3, 2017, https://www.sentencingproject.org/publications/still-life-americas-increasing-use-life-long-term-sentences/`,
       },
     ],
     images: [],

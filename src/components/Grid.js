@@ -9,7 +9,7 @@ import getProfileProps from "../utils/getProfileProps"
 
 const USE_PRISMIC = true
 
-const Grid = ({ searchTerm, profiles, images, setProfile }) => {
+const Grid = ({ searchTerm, profiles = [], images, setProfile }) => {
   return (
     <div className="grid">
       {profiles

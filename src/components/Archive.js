@@ -7,7 +7,7 @@ import IconSearch from "./Symbols/Search"
 import Play from "./Play"
 import FilterAndSearch from "./FilterAndSearch"
 import Years from "./charts/Years"
-import { archive } from "../content/archive"
+//import { archive } from "../content/archive"
 
 import sortProfiles from "../utils/sortProfiles"
 import getProfileProps from "../utils/getProfileProps"
@@ -19,7 +19,7 @@ const columns = [
   { key: "full_name", label: "Full Name" },
   { key: "age_at_offense", label: "Age" },
   //{ key: "current_age", label: "Current age" },
-  { key: "offense_date", label: "Incarceration date" },
+  { key: "offense_date", label: "Year Incarcerated" },
 ]
 
 const USE_PRISMIC = true
@@ -132,13 +132,11 @@ const Archive = ({ profiles, images }) => {
                 const {
                   image,
                   fullName,
-                  date_of_birth,
                   date_of_offense,
                   age_at_offense,
                   current_age,
+                  deceased_date,
                 } = getProfileProps(profile, images, USE_PRISMIC)
-
-                const years = new Array(current_age)
 
                 return (
                   <tr
@@ -172,7 +170,32 @@ const Archive = ({ profiles, images }) => {
                       <Years
                         incarcerated={age_at_offense}
                         current={current_age}
+                        deceased_date={deceased_date}
                       />
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: "var(--font-xsmall)",
+                          height: "20px",
+                        }}
+                      >
+                        Years incarcerated:
+                        <span
+                          style={{
+                            color: "var(--clr-primary)",
+                            whiteSpace: "pre",
+                          }}
+                        >{` ${current_age - age_at_offense}`}</span>
+                      </p>
+                      {deceased_date && (
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: "var(--font-xsmall)",
+                            height: "20px",
+                          }}
+                        >{`Deceased on ${deceased_date}`}</p>
+                      )}
                     </td>
                     {null /*<td>{current_age}</td>*/}
                     <td>{date_of_offense}</td>

@@ -46,5 +46,6 @@ module.exports = {
         pages: [],
       },
     },
+    //`gatsby-plugin-transition-link`,
   ],
 }

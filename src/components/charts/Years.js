@@ -1,6 +1,6 @@
 import React from "react"
 
-const Years = ({ incarcerated, current }) => {
+const Years = ({ incarcerated, current, deceased_date }) => {
   const years = new Array(120).fill(0)
 
   return (
@@ -19,7 +19,12 @@ const Years = ({ incarcerated, current }) => {
             r="2"
             fill={i < +incarcerated ? "white" : "var(--clr-primary)"}
             style={{
-              opacity: i < current ? 1 : -0.6 + (120 - i) / (120 - current),
+              opacity:
+                i > current && deceased_date
+                  ? 0
+                  : i < current
+                  ? 1
+                  : -0.6 + (120 - i) / (120 - current),
             }}
           />
         )

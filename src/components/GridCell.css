@@ -188,6 +188,118 @@
   background-color: var(--clr-1);
 }
 
+.cell-hover-quote .quote.clr-e9e695:after {
+  background-color: var(--clr-e9e695);
+}
+.cell-hover-quote .quote.clr-b5cbae:after {
+  background-color: var(--clr-b5cbae);
+}
+.cell-hover-quote .quote.clr-d29786:after {
+  background-color: var(--clr-d29786);
+}
+.cell-hover-quote .quote.clr-edae00:after {
+  background-color: var(--clr-edae00);
+}
+.cell-hover-quote .quote.clr-38768d:after {
+  background-color: var(--clr-38768d);
+}
+.cell-hover-quote .quote.clr-8b91cc:after {
+  background-color: var(--clr-8b91cc);
+}
+.cell-hover-quote .quote.clr-d2b6cc:after {
+  background-color: var(--clr-d2b6cc);
+}
+.cell-hover-quote .quote.clr-476d95:after {
+  background-color: var(--clr-476d95);
+}
+.cell-hover-quote .quote.clr-e0bb40:after {
+  background-color: var(--clr-e0bb40);
+}
+.cell-hover-quote .quote.clr-556437:after {
+  background-color: var(--clr-556437);
+}
+.cell-hover-quote .quote.clr-f4ee7f:after {
+  background-color: var(--clr-f4ee7f);
+}
+.cell-hover-quote .quote.clr-32546c:after {
+  background-color: var(--clr-32546c);
+}
+.cell-hover-quote .quote.clr-7b8d59:after {
+  background-color: var(--clr-7b8d59);
+}
+.cell-hover-quote .quote.clr-006080:after {
+  background-color: var(--clr-006080);
+}
+.cell-hover-quote .quote.clr-775641:after {
+  background-color: var(--clr-775641);
+}
+.cell-hover-quote .quote.clr-dd9161:after {
+  background-color: var(--clr-dd9161);
+}
+.cell-hover-quote .quote.clr-a08783:after {
+  background-color: var(--clr-a08783);
+}
+.cell-hover-quote .quote.clr-c8b278:after {
+  background-color: var(--clr-c8b278);
+}
+.cell-hover-quote .quote.clr-9ea7c1:after {
+  background-color: var(--clr-9ea7c1);
+}
+.cell-hover-quote .quote.clr-fca480:after {
+  background-color: var(--clr-fca480);
+}
+.cell-hover-quote .quote.clr-cb9500:after {
+  background-color: var(--clr-cb9500);
+}
+.cell-hover-quote .quote.clr-529a74:after {
+  background-color: var(--clr-529a74);
+}
+.cell-hover-quote .quote.clr-66855c:after {
+  background-color: var(--clr-66855c);
+}
+.cell-hover-quote .quote.clr-bcdbaf:after {
+  background-color: var(--clr-bcdbaf);
+}
+.cell-hover-quote .quote.clr-8a665d:after {
+  background-color: var(--clr-8a665d);
+}
+.cell-hover-quote .quote.clr-c07157:after {
+  background-color: var(--clr-c07157);
+}
+.cell-hover-quote .quote.clr-f5bbb9:after {
+  background-color: var(--clr-f5bbb9);
+}
+.cell-hover-quote .quote.clr-cbbf8f:after {
+  background-color: var(--clr-cbbf8f);
+}
+.cell-hover-quote .quote.clr-54648c:after {
+  background-color: var(--clr-54648c);
+}
+.cell-hover-quote .quote.clr-8d5764:after {
+  background-color: var(--clr-8d5764);
+}
+.cell-hover-quote .quote.clr-ecb651:after {
+  background-color: var(--clr-ecb651);
+}
+.cell-hover-quote .quote.clr-79965e:after {
+  background-color: var(--clr-79965e);
+}
+.cell-hover-quote .quote.clr-add0d6:after {
+  background-color: var(--clr-add0d6);
+}
+.cell-hover-quote .quote.clr-ad8d87:after {
+  background-color: var(--clr-ad8d87);
+}
+.cell-hover-quote .quote.clr-ac4f30:after {
+  background-color: var(--clr-ac4f30);
+}
+.cell-hover-quote .quote.clr-ecb372:after {
+  background-color: var(--clr-ecb372);
+}
+.cell-hover-quote .quote.clr-dbcda0:after {
+  background-color: var(--clr-dbcda0);
+}
+
 .grid-cell.hovered .cell-hover-quote .quote:after {
   width: 60%;
   right: 20%;

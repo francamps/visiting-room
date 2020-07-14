@@ -1,6 +1,6 @@
 .timeline-steps {
   position: fixed;
-  top: 60px;
+  top: calc(50% - 60px);
   right: calc(50% - 350px);
   height: 70px;
   display: flex;
@@ -11,7 +11,7 @@
   z-index: 11;
 }
 
-.timeline-steps.timeline-steps-0 {
+/*.timeline-steps.timeline-steps-0 {
   top: 60px;
   transition: top 0.4s;
 }
@@ -38,7 +38,7 @@
 .timeline-steps.timeline-steps-6 {
   top: -60px;
   transition: top 0.4s;
-}
+}*/
 
 .timeline-step-toc {
   display: flex;
@@ -78,7 +78,7 @@
   height: 10px;
   margin: 6px 3px;
   background: var(--clr-primary);
-  transition: width 0.4s, height 0.4s, margin 0.4s;
+  transition: width 1.2s, height 1.2s, margin 1.2s;
 }
 
 @media (max-width: 767px) {

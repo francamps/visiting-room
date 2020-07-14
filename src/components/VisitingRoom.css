@@ -1,21 +1,3 @@
-.container::before {
-  background-image: url("../images/TEMP/background.png");
-  background-size: cover;
-  opacity: 1;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.container.uncovered::before {
-  opacity: 0;
-  transition: opacity 1.2s;
-}
-
 .visiting-room-wrap {
   position: absolute;
   top: 0;

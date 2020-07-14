@@ -18,7 +18,6 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
   const playerRef = useRef()
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
-  const [isEnded, setEnded] = useState(false)
   const [progress, setProgress] = useState({
     progress: 0,
     progressSeconds: 0,
@@ -69,7 +68,8 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
               setPause(true)
             }}
             onEnded={() => {
-              setEnded(true)
+              // Do something
+              //setEnded(true)
             }}
             onProgress={({ played, playedSeconds }) => {
               setProgress({ progress: played, progressSeconds: playedSeconds })
@@ -118,7 +118,6 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
           <VideoViewedMenu
             onClickReplay={() => {
               playerRef.current.seekTo(0)
-              setEnded(false)
               setPause(false)
               setPlaying(true)
             }}

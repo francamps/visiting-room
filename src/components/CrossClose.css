@@ -1,7 +1,5 @@
 .close {
-  position: absolute;
-  right: 0px;
-  top: 0px;
+  position: relative;
   width: 32px;
   height: 32px;
   opacity: 0.3;
@@ -23,6 +21,12 @@
   width: 2px;
   background-color: #d0d0d0;
 }
+
+.close.primary:before,
+.close.primary:after {
+  background-color: var(--clr-primary);
+}
+
 .close:before {
   transform: rotate(45deg) translate(-10px, -10px);
 }

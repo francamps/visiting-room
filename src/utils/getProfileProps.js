@@ -21,6 +21,8 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   let date_of_offense = moment(profile.date_of_offense)
   let age_at_offense = "unknown"
 
+  let deceased_date = getValue(profile, "deceased_date")
+
   if (date_of_birth.isValid() && date_of_offense.isValid()) {
     age_at_offense = date_of_offense.diff(date_of_birth, "years")
   }
@@ -42,6 +44,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     age_at_offense,
     current_age,
     color,
+    deceased_date,
   }
 }
 

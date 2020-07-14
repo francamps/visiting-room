@@ -10,7 +10,6 @@ import Menu from "../components/Menu"
 import Map from "../components/charts/Map"
 
 import "../components/About.css"
-import { update } from "lodash"
 
 export const query = graphql`
   {

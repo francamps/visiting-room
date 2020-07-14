@@ -49,10 +49,11 @@ const TimelineFigure = ({
                 </>
               )
             } else if (imageName === "Map") {
-              console.log(imageName)
-
               return (
-                <section className="child timeline-figure">
+                <section
+                  key={`figure-${step}`}
+                  className="child timeline-figure"
+                >
                   <figure>
                     <Media
                       queries={{

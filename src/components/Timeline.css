@@ -3,8 +3,22 @@
 .timeline {
   height: 100vh;
   position: relative;
-  /*background: var(--clr-off-white);*/
+  opacity: 0;
   background: linear-gradient(330deg, var(--clr-9), var(--clr-off-white));
+
+  -webkit-animation: fadein 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s linear 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 2s linear 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadein 2s linear 1.2s forwards; /* Opera < 12.1 */
+  animation: fadein 2s linear 1.2s forwards;
+}
+
+.timeline.fadeout {
+  -webkit-animation: fadeout 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 2s linear 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeout 2s linear 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadeout 2s linear 1.2s forwards; /* Opera < 12.1 */
+  animation: fadeout 2s linear 1.2s forwards;
 }
 
 .timeline-frame {
@@ -145,19 +159,6 @@ TIMELINE TEXT STUFF
   margin: 0 auto;
 }
 
-.step-content .paragraph {
-  display: inline;
-  padding: 0;
-  margin: 0 auto;
-
-  font-family: "GTPressura";
-  font-size: var(--font-copy-timeline);
-  line-height: var(--copy-line-height);
-  font-weight: 300;
-
-  color: var(--clr-black);
-}
-
 .timeline-figure + .timeline-copy {
   padding-left: 0%;
 }
@@ -241,11 +242,6 @@ TIMELINE TEXT STUFF
 }
 
 @media (max-width: 1824px) {
-  .step-content .paragraph {
-    font-size: var(--font-copy);
-    line-height: calc(1.5 * var(--font-copy));
-  }
-
   .timeline .hover-link {
     font-size: var(--font-copy);
     line-height: calc(1.5 * var(--font-copy));
@@ -263,7 +259,6 @@ TIMELINE TEXT STUFF
 
   .timeline-step {
     position: relative;
-    height: 100%;
     padding: 0 10px;
   }
 
@@ -275,7 +270,6 @@ TIMELINE TEXT STUFF
 
   .step-content {
     width: 100%;
-    height: calc(100vh - 20px);
     padding: 0;
     box-sizing: border-box;
     margin: 0 auto;
@@ -295,15 +289,6 @@ TIMELINE TEXT STUFF
   .step-content .step-copy {
     height: auto;
     transition: height 0.4s, background-color 0.4s;
-  }
-
-  .step-content .paragraph {
-    font-size: calc(var(--font-copy) * 1.2);
-    line-height: calc(var(--font-copy) * 1.5);
-  }
-
-  .step-content .paragraph li {
-    word-break: break-all;
   }
 
   .timeline .hover-link {

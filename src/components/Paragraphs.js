@@ -1,5 +1,7 @@
 import React from "react"
 
+import "./Paragraphs.css"
+
 const Paragraphs = ({ paragraphs, setModal }) => {
   return (
     <div className="paragraph-wrap">
@@ -30,18 +32,21 @@ const Paragraphs = ({ paragraphs, setModal }) => {
               </div>
             </div>
           )
-        } else if (paragraph.element === "q") {
+        } else if (paragraph.element === "ref") {
           return (
-            <div key={`paragraph-${idx}`} className="quote">
-              {paragraph.content}
+            <div key={`paragraph-${idx}`} className="paragraph ref" style={{}}>
+              <span style={{ position: "absolute" }}>{paragraph.trigger}</span>
             </div>
           )
         } else if (paragraph.element === "br") {
           return <p key={`paragraph-${idx}`} />
-        } else if (paragraph.element === "ref") {
+        } else if (paragraph.element === "li") {
           return (
-            <div key={`paragraph-${idx}`} className="paragraph">
-              <li>{paragraph.content}</li>
+            <div key={`paragraph-${idx}`} className="paragraph reference">
+              <li>
+                <b>{`${idx + 1}.`}</b>
+                {` ${paragraph.content}`}
+              </li>
             </div>
           )
         }

@@ -9,6 +9,8 @@
   --font-large: 2.5rem;
   --font-title: 5.5rem;
 
+  --font-size-h3: var(--font-large);
+
   --copy-line-height: 1.7em;
 
   /* Colors */
@@ -44,6 +46,44 @@
   --clr-7: rgb(62, 209, 221);
   --clr-8: rgb(210, 182, 205);
   --clr-9: rgb(166, 178, 177);
+
+  --clr-e9e695: #e9e695;
+  --clr-b5cbae: #b5cbae;
+  --clr-d29786: #d29786;
+  --clr-edae00: #edae00;
+  --clr-38768d: #38768d;
+  --clr-8b91cc: #8b91cc;
+  --clr-d2b6cc: #d2b6cc;
+  --clr-476d95: #476d95;
+  --clr-e0bb40: #e0bb40;
+  --clr-556437: #556437;
+  --clr-f4ee7f: #f4ee7f;
+  --clr-32546c: #32546c;
+  --clr-7b8d59: #7b8d59;
+  --clr-006080: #006080;
+  --clr-775641: #775641;
+  --clr-dd9161: #dd9161;
+  --clr-a08783: #a08783;
+  --clr-c8b278: #c8b278;
+  --clr-9ea7c1: #9ea7c1;
+  --clr-fca480: #fca480;
+  --clr-cb9500: #cb9500;
+  --clr-529a74: #529a74;
+  --clr-66855c: #66855c;
+  --clr-bcdbaf: #bcdbaf;
+  --clr-8a665d: #8a665d;
+  --clr-c07157: #c07157;
+  --clr-f5bbb9: #f5bbb9;
+  --clr-cbbf8f: #cbbf8f;
+  --clr-54648c: #54648c;
+  --clr-8d5764: #8d5764;
+  --clr-ecb651: #ecb651;
+  --clr-79965e: #79965e;
+  --clr-add0d6: #add0d6;
+  --clr-ad8d87: #ad8d87;
+  --clr-ac4f30: #ac4f30;
+  --clr-ecb372: #ecb372;
+  --clr-dbcda0: #dbcda0;
 }
 
 /**

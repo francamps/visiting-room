@@ -1,8 +1,6 @@
 import React from "react"
-import { navigate } from "gatsby"
 
 import "./VideoViewedMenu.css"
-import TimeSlider from "./TimeSlider"
 
 const VideoViewedMenu = ({ profile }) => {
   return (

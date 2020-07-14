@@ -16,11 +16,8 @@ const videos = [
 ]
 
 const getColor = hex => {
-  switch (hex) {
-    case "#f8ed65":
-      return "clr-1"
-    default:
-      return ""
+  if (hex.slice(0, 1) === "#") {
+    return `clr-${hex.slice(1)}`
   }
 }
 

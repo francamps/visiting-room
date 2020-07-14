@@ -45,7 +45,7 @@ const VisitingRoom = ({ loading, profiles, images }) => {
       {!profileId ? (
         <>
           <Menu isExpanded={false} />
-          {!loading && showGrid && (
+          {!loading && (
             <Grid
               searchTerm={search}
               profiles={profiles}
