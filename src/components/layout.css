@@ -14,8 +14,8 @@
   --copy-line-height: 1.7em;
 
   /* Colors */
-  /*--clr-primary: rgb(229, 143, 28);*/
-  --clr-primary: rgb(255, 87, 8);
+  /* --clr-primary: rgb(255, 87, 8); */
+  --clr-primary: var(--clr-edae00);
   --clr-secondary: rgb(29, 11, 65);
   --clr-chart: var(--clr-primary);
   --clr-white: #ffffff;

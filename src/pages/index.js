@@ -5,7 +5,7 @@ import Home from "../components/Home"
 
 import useProfiles from "../utils/useProfiles"
 
-const IndexPage = props => {
+const IndexPage = (props) => {
   const { fetchProps: loading, profiles, images } = useProfiles(props)
 
   return (

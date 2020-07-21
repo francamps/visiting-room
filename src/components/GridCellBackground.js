@@ -1,12 +1,12 @@
 import React from "react"
 import Img from "gatsby-image"
 
-const GridCellBackground = ({ isHover, image }) => {
+const GridCellBackground = ({ isHover, image, opacityOnHover }) => {
   return (
     <div
       className="cell-background"
       style={{
-        opacity: isHover ? 0 : 1,
+        opacity: isHover ? opacityOnHover || 0 : 1,
         transitionProperty: "opacity",
         transitionDelay: "0.4s",
         transitionDuration: "8s",

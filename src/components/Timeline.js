@@ -99,6 +99,7 @@ const Timeline = props => {
               return (
                 timelineStep.paragraphs && (
                   <TimelineStepCopy
+                    key={stepIdx}
                     step={stepIdx}
                     timelineStep={timelineStep}
                     setModal={setModal}

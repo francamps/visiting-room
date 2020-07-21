@@ -14,9 +14,10 @@ const Years = ({ incarcerated, current, deceased_date }) => {
 
         return (
           <circle
+            key={`year-${i}`}
             cx={`${x}px`}
             cy={`${y}px`}
-            r="2"
+            r={2}
             fill={i < +incarcerated ? "white" : "var(--clr-primary)"}
             style={{
               opacity:
@@ -33,7 +34,11 @@ const Years = ({ incarcerated, current, deceased_date }) => {
         x={Math.floor(incarcerated / 5) * 6 + 3 + 3}
         y={10}
         fill="var(--clr-off-white)"
-        style={{ fontSize: "var(--font-xsmall)", textAnchor: "end" }}
+        style={{
+          fontSize: "var(--font-xsmall)",
+          textAnchor: "end",
+          fontFamily: "GTPressura",
+        }}
       >
         {incarcerated}
       </text>
@@ -41,7 +46,11 @@ const Years = ({ incarcerated, current, deceased_date }) => {
         x={Math.floor(current / 5) * 6 + 3 + 3}
         y={10}
         fill="var(--clr-primary)"
-        style={{ fontSize: "var(--font-xsmall)", textAnchor: "end" }}
+        style={{
+          fontSize: "var(--font-xsmall)",
+          textAnchor: "end",
+          fontFamily: "GTPressura",
+        }}
       >
         {current}
       </text>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
@@ -7,11 +7,22 @@ import Socials from "./Socials"
 
 import "./Menu.css"
 
-const Menu = ({ theme, isExpanded = false, hideTitle }) => {
+const Menu = ({
+  theme,
+  isMenuExpanded = false,
+  setMenuExpanded,
+  hideTitle,
+}) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
   const [isBurgerOpen, setBurgerOpen] = useState(false)
+
+  useEffect(() => {
+    console.log("updating to", isMenuExpanded)
+    setBurgerOpen(isMenuExpanded)
+  }, [isMenuExpanded])
+
   return (
     <div>
       <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
@@ -76,7 +87,7 @@ const Menu = ({ theme, isExpanded = false, hideTitle }) => {
               alignItems: "center",
             }}
           >
-            <Play size="large" />
+            <Play />
             <span style={{ marginLeft: "12px" }}>LWOP at Angola</span>
           </Link>
           <Socials />

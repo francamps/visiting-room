@@ -15,6 +15,7 @@ const Home = ({ loading, profiles, images }) => {
   const [isVisitingRoom, setVisitingRoom] = useState(
     params.get("visiting") || false
   )
+  const [isMenuExpanded, setMenuExpanded] = useState(false)
 
   useEffect(() => {
     if (fadeoutLanding) {
@@ -34,14 +35,19 @@ const Home = ({ loading, profiles, images }) => {
     }
   }, [fadeoutLanding, params])
 
+  console.log("yo", isMenuExpanded)
+
   return (
     <>
-      <Menu isExpanded={false} hideTitle />
+      <Menu isMenuExpanded={isMenuExpanded} hideTitle />
       {!isVisitingRoom ? (
         <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
           <div className="landing">
             <HomeVideo />
-            <HomeTextOnLanding setFadeOutLanding={setFadeOutLanding} />
+            <HomeTextOnLanding
+              setFadeOutLanding={setFadeOutLanding}
+              setMenuExpanded={setMenuExpanded}
+            />
           </div>
         </div>
       ) : (

@@ -1,9 +1,54 @@
+.text-on-landing {
+  position: absolute;
+  right: var(--space-around-xl);
+  left: calc(2 * var(--space-around-med));
+  padding-bottom: calc(2 * var(--space-around-med));
+}
+
+.text-on-landing .subtitle {
+  position: fixed;
+  bottom: var(--space-around-med);
+  right: var(--space-around-med);
+  width: 100%;
+  max-width: 240px;
+
+  line-height: 1.5rem;
+  text-align: right;
+  font-family: "EB Garamond", serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.text-on-landing .title {
+  width: 100%;
+  font-family: "EB Garamond";
+  font-weight: 300;
+  font-size: var(--font-title);
+  cursor: pointer;
+}
+
+.text-on-landing .title .primary-action {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.4s, transform 0.6s;
+}
+
+.text-on-landing .title:hover .primary-action {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 0.4s, transform 0.6s;
+}
+
 .text-on-landing .primary-action h2 {
   font-family: GTPressura;
   font-weight: 500;
   font-size: 1.5rem;
   margin-bottom: 10px;
   margin-left: 15px;
+}
+
+.text-on-landing .primary-action h2:hover {
+  color: var(--clr-primary);
 }
 
 .text-on-landing .primary-action h2 .icon {
@@ -24,4 +69,98 @@
 
 .text-on-landing .buttons {
   margin-left: 15px;
+}
+
+@media (max-width: 1824px) {
+  .text-on-landing .title {
+    font-size: var(--font-title);
+  }
+
+  .text-on-landing {
+    right: var(--space-around-xl);
+    left: var(--space-around-med);
+    padding-bottom: var(--space-around-med);
+  }
+}
+
+/* IPAD */
+@media (max-width: 1024px) {
+  .text-on-landing {
+    right: var(--space-around-small);
+    left: var(--space-around-small);
+    padding-bottom: var(--space-around-xl);
+  }
+
+  .text-on-landing .title .primary-action {
+    height: 0;
+    overflow: hidden;
+    transition: height 2s;
+
+    -webkit-animation: fadeout 4s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout 4s; /* Firefox < 16 */
+    -ms-animation: fadeout 4s; /* Internet Explorer */
+    -o-animation: fadeout 4s; /* Opera < 12.1 */
+    animation: fadeout 4s;
+  }
+
+  .text-on-landing .title .primary-action.active {
+    height: 140px;
+    transition: height 2s;
+
+    -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 4s; /* Firefox < 16 */
+    -ms-animation: fadein 4s; /* Internet Explorer */
+    -o-animation: fadein 4s; /* Opera < 12.1 */
+    animation: fadein 4s;
+  }
+
+  .text-on-landing .title .primary-action h2 {
+    margin: 0;
+  }
+
+  .text-on-landing .title .primary-action a:first-child {
+    margin-top: 10px;
+  }
+
+  .text-on-landing .primary-action h2 .icon {
+    margin-left: 0px;
+  }
+  .text-on-landing .primary-action h2 .icon .burger {
+    margin-left: 8px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .text-on-landing {
+    right: var(--space-around-xsmall);
+    left: var(--space-around-xsmall);
+    padding-bottom: var(--space-around-small);
+  }
+
+  .text-on-landing .title {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+  }
+
+  .text-on-landing .subtitle {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: var(--font-copy);
+    font-weight: normal;
+    text-align: center;
+    right: auto;
+    bottom: auto;
+  }
+
+  .text-on-landing .subtitle.hidden {
+    -webkit-animation: fadeout 4s forwards;
+    -moz-animation: fadeout 4s forwards;
+    -ms-animation: fadeout 4s forwards;
+    -o-animation: fadeout 4s forwards;
+    animation: fadeout 4s forwards;
+  }
 }

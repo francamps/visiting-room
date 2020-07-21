@@ -2,122 +2,54 @@ import React, { useState } from "react"
 
 const Play = ({ size, onClick, useCircle = true, doHover }) => {
   const [isHover, setHover] = useState(doHover)
+  let viewBox = "0 0 24 24"
+  let width = "24px"
+  let height = "24px"
+  let cx = 12
+  let cy = 12
+  let r = 10
+  let points = "16 12 9 16 9 8"
+  let transform = "none"
+
   if (size === "small") {
-    return (
-      <svg
-        className="play"
-        width="9px"
-        height="10px"
-        viewBox="0 0 9 10"
-        onClick={onClick}
-        onMouseOver={() => setHover(true)}
-        onFocus={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onBlur={() => setHover(false)}
-      >
-        <circle
-          cx={5}
-          cy={5}
-          stroke="#ffffff"
-          fill={"none"}
-          r={4}
-          strokeWidth={2}
-        />
-        <polygon
-          strokeLinejoin="round"
-          fillRule="evenodd"
-          fill="#ffffff"
-          stroke="#ffffff"
-          opacity="0.7"
-          points="7.38461538 4 0 8 0 0"
-        ></polygon>
-      </svg>
-    )
+    viewBox = "0 0 9 10"
+    width = "9px"
+    height = "10px"
+    cx = 5
+    cy = 5
+    r = 4
+    points = "7.38461538 4 0 8 0 0"
+    transform = "none"
   }
 
   if (size === "large") {
-    return (
-      <svg
-        className="play"
-        width="45px"
-        height="45px"
-        viewBox="0 0 45 45"
-        style={{
-          pointerEvents: "all",
-        }}
-        onClick={onClick}
-        onMouseOver={() => setHover(true)}
-        onFocus={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onBlur={() => setHover(false)}
-      >
-        <circle
-          cx={22.5}
-          cy={22}
-          stroke="#ffffff"
-          fill={"none"}
-          r={21}
-          strokeWidth={2}
-        />
-        <polygon
-          strokeLinejoin="round"
-          fillRule="evenodd"
-          fill="#ffffff"
-          stroke="#ffffff"
-          strokeWidth={2}
-          points="17 9 0 18 0 0"
-          style={{
-            transform: "translate(15px, 13.5px)",
-            opacity: isHover ? 1 : 0.6,
-            transition: "opacity 0.4s",
-            cursor: "pointer",
-          }}
-        ></polygon>
-      </svg>
-    )
+    viewBox = "0 0 45 45"
+    width = "45px"
+    height = "45px"
+    cx = 22.5
+    cy = 22
+    r = 21
+    points = "17 9 0 18 0 0"
+    transform = "translate(15px, 13.5px)"
   }
 
   if (size === "huge") {
-    return (
-      <svg
-        className="play"
-        width="90px"
-        height="90px"
-        viewBox="0 0 90 90"
-        style={{
-          pointerEvents: "all",
-        }}
-        onClick={onClick}
-        onMouseOver={() => setHover(true)}
-        onFocus={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onBlur={() => setHover(false)}
-      >
-        <circle cx={45} cy={45} stroke="#ffffff" fill={"none"} r={44} />
-        <polygon
-          strokeLinejoin="round"
-          fillRule="evenodd"
-          fill="#ffffff"
-          stroke="#ffffff"
-          strokeWidth={2}
-          points="33.3 18 0 36 0 0"
-          style={{
-            transform: "translate(32px, 27px)",
-            opacity: isHover ? 1 : 0.6,
-            transition: "opacity 0.4s",
-            cursor: "pointer",
-          }}
-        ></polygon>
-      </svg>
-    )
+    viewBox = "0 0 90 90"
+    width = "90px"
+    height = "90px"
+    cx = 45
+    cy = 45
+    r = 44
+    points = "33.3 18 0 36 0 0"
+    transform = "translate(32px, 27px)"
   }
 
   return (
     <svg
       className="play"
-      width="24px"
-      height="24px"
-      viewBox="0 0 24 24"
+      width={width}
+      height={height}
+      viewBox={viewBox}
       style={{
         pointerEvents: "all",
       }}
@@ -126,11 +58,11 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
       onMouseLeave={() => setHover(false)}
     >
       <circle
-        cx={12}
-        cy={12}
+        cx={cx}
+        cy={cy}
         stroke="#ffffff"
         fill={"none"}
-        r={10}
+        r={r}
         strokeWidth={2}
         style={{
           opacity: isHover ? 1 : 0.8,
@@ -143,10 +75,12 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
         fill="#ffffff"
         stroke="#ffffff"
         opacity="0.7"
-        points="16 12 8 16 8 8"
+        points={points}
         style={{
+          transform,
           opacity: isHover ? 1 : 0.8,
           transition: "opacity 0.4s",
+          cursor: "pointer",
         }}
       ></polygon>
     </svg>

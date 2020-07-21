@@ -40,13 +40,14 @@ const TimelineFigure = ({
           {images.map(imageName => {
             if (imageName.indexOf("chart") > -1) {
               return (
-                <>
-                  <section className="child timeline-figure medium">
-                    <figure>
-                      <ChartC />
-                    </figure>
-                  </section>
-                </>
+                <section
+                  key={`figure-${step}`}
+                  className="child timeline-figure medium"
+                >
+                  <figure>
+                    <ChartC />
+                  </figure>
+                </section>
               )
             } else if (imageName === "Map") {
               return (
@@ -77,7 +78,10 @@ const TimelineFigure = ({
               })
 
               return (
-                <section className="child timeline-figure">
+                <section
+                  key={`figure-${step}`}
+                  className="child timeline-figure"
+                >
                   <figure>
                     <Img
                       alt={"TODO: NEEDS AN ALT"}

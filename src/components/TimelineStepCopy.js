@@ -1,9 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
+import TimelineStepTitle from "./TimelineStepTitle"
 import Caret from "./Caret"
+
+const THRESHOLD = 0.25
 
 const TimelineStepCopy = ({
   timelineStep,
@@ -15,11 +18,15 @@ const TimelineStepCopy = ({
   isLastStep,
 }) => {
   const imagePlacement = timelineStep.imagePlacement
-  const [ref, inView, entry] = useInView({ threshold: 0.25 })
+  const [ref, inView, entry] = useInView({ threshold: 0.7 })
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
     if (inView) {
       setStep(+step)
+      setActive(true)
+    } else {
+      setActive(false)
     }
     return
   }, [inView])
@@ -32,10 +39,11 @@ const TimelineStepCopy = ({
       style={{ position: "relative" }}
       ref={ref}
     >
-      <div className="step-title">
-        <h3 className="year-label">{timelineStep.year}</h3>
-        <h2>{timelineStep.title}</h2>
-      </div>
+      <TimelineStepTitle
+        title={timelineStep.title}
+        year={timelineStep.year}
+        active={active}
+      />
       <div className="step-content">
         {imagePlacement && imagePlacement === "top" && (
           <div className="step-content-figure">
