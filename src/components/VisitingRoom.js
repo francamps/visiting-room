@@ -4,6 +4,7 @@ import Menu from "./Menu"
 import VisitingRoomBanner from "./VisitingRoomBanner"
 import Grid from "./Grid"
 import Video from "./Video"
+import VisitingRoomIntro from "./VisitingRoomIntro"
 
 import "./VisitingRoom.css"
 
@@ -16,6 +17,11 @@ const VisitingRoom = ({ loading, profiles, images }) => {
 
   const [fadeout, setFadeOut] = useState(false)
   const [showGrid, setShowGrid] = useState(false)
+
+  // TODO: Save in localStore once viewed, and pull from there
+  const [showIntro, setShowIntro] = useState(
+    window.localStorage.showIntro === "false" ? false : true
+  )
 
   useEffect(() => {
     let timer1 = setTimeout(() => setFadeOut(true), 3000)
@@ -62,6 +68,7 @@ const VisitingRoom = ({ loading, profiles, images }) => {
       ) : (
         <Video profileId={profileId} name={"Arthur Carter"} />
       )}
+      {showIntro && <VisitingRoomIntro setShowIntro={setShowIntro} />}
     </div>
   )
 }
