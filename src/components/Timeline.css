@@ -135,7 +135,7 @@ Use a scrollbar library, this is not standardized
 
 .step-content .step-columns {
   box-sizing: border-box;
-  padding: 0;
+  padding: 0 10px;
   padding-bottom: 20px;
   justify-self: flex-start;
 }
@@ -259,14 +259,14 @@ TIMELINE TEXT STUFF
   .timeline-frame {
     border-radius: 4px;
     top: 60px;
-    left: 10px;
-    right: 10px;
+    left: 0px;
+    right: 0px;
     bottom: 0px;
   }
 
   .timeline-step {
     position: relative;
-    padding: 0 10px;
+    padding: 0 0px;
   }
 
   .step-content {

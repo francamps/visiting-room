@@ -4,6 +4,8 @@ import { useSpring } from "react-spring"
 import IconSearch from "./Symbols/Search"
 import FilterAndSearch from "./FilterAndSearch"
 
+import "./ArchiveHeader.css"
+
 const ArchiveHeader = ({
   columns,
   isShrunkHeader,
@@ -13,6 +15,7 @@ const ArchiveHeader = ({
   setSortedAsc,
   setSortedType,
   setSearch,
+  setView,
   shrunk,
   sortAsc,
   sortType,
@@ -30,12 +33,34 @@ const ArchiveHeader = ({
         <p>
           This collection includes full-length interviews with 110 people who
           are serving life without the possibility of parole at the Louisiana
-          State Penitentiary, Angola. The interviews were conducted by Professor
-          Marcus Kondkar of Loyola University New Orleans in 2017 and 2018. For
-          more information about the project, see our About page.
+          State Penitentiary, Angola.
         </p>
+
+        <p>
+          The interviews were conducted by Professor Marcus Kondkar of Loyola
+          University New Orleans in 2017 and 2018.
+        </p>
+
+        <p>The best place to start is by visiting the Visiting Room.</p>
+        <p>For more information about the project, see our About page.</p>
       </div>
-      <div className={`header-content ${openSearch ? "open" : ""} `}>
+      <div className={`header-controls ${openSearch ? "open" : ""} `}>
+        <div className="view-options">
+          <p
+            onClick={() => {
+              setView("table")
+            }}
+          >
+            View table
+          </p>
+          <p
+            onClick={() => {
+              setView("grid")
+            }}
+          >
+            View grid
+          </p>
+        </div>
         <div className="sorting-options">
           <p>Sort by:</p>
           <p

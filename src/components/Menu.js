@@ -61,7 +61,22 @@ const Menu = ({
             The Visiting Room
           </a>
         </div>
-
+        <div className="menu-option-wrap">
+          <Link
+            to="/visiting-room"
+            className="hover-link"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Play />
+            <span style={{ marginLeft: "12px" }}>
+              Introduction: Life at Angola
+            </span>
+          </Link>
+        </div>
         <div className="menu-option-wrap">
           <Link to="/history" className="hover-link">
             History
@@ -77,21 +92,8 @@ const Menu = ({
             About the project
           </Link>
         </div>
-        <div className="menu-option-wrap">
-          <Link
-            to="/visiting-room"
-            className="hover-link"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Play />
-            <span style={{ marginLeft: "12px" }}>LWOP at Angola</span>
-          </Link>
-          <Socials />
-        </div>
+
+        <Socials />
       </div>
     </div>
   )

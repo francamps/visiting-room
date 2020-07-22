@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import Menu from "./Menu"
 import ArchiveGrid from "./ArchiveGrid"
 import ArchiveHeader from "./ArchiveHeader"
+import ArchiveTable from "./ArchiveTable"
 
 import "./Archive.css"
 
@@ -20,7 +21,7 @@ const Archive = ({ profiles, images }) => {
   const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
-
+  const [view, setView] = useState("grid")
   const [isShrunkHeader, setShrunkHeader] = useState(false)
 
   return (
@@ -38,6 +39,7 @@ const Archive = ({ profiles, images }) => {
           setSearch={setSearch}
           sortAsc={sortAsc}
           sortType={sortType}
+          setView={setView}
         />
 
         {openSearch && (
@@ -46,16 +48,31 @@ const Archive = ({ profiles, images }) => {
             onClick={() => setOpenSearch(false)}
           ></div>
         )}
-        <ArchiveGrid
-          profiles={profiles}
-          images={images}
-          sortAsc={sortAsc}
-          sortType={sortType}
-          searchTerm={searchTerm}
-          openProfile={openProfile}
-          setOpenProfile={setOpenProfile}
-          setShrunkHeader={setShrunkHeader}
-        />
+        {!view ||
+          (view === "grid" && (
+            <ArchiveGrid
+              profiles={profiles}
+              images={images}
+              sortAsc={sortAsc}
+              sortType={sortType}
+              searchTerm={searchTerm}
+              openProfile={openProfile}
+              setOpenProfile={setOpenProfile}
+              setShrunkHeader={setShrunkHeader}
+            />
+          ))}
+        {view === "table" && (
+          <ArchiveTable
+            profiles={profiles}
+            images={images}
+            sortAsc={sortAsc}
+            sortType={sortType}
+            searchTerm={searchTerm}
+            openProfile={openProfile}
+            setOpenProfile={setOpenProfile}
+            setShrunkHeader={setShrunkHeader}
+          />
+        )}
       </div>
     </div>
   )

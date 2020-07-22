@@ -95,18 +95,6 @@ const TimelineFigure = ({
                     />
                     {caption && <p className="caption">{caption}</p>}
                   </figure>
-                  {
-                    null /*step === 'WHAT' && (
-                    <div
-                      className="button"
-                      onClick={() => {
-                        setAngolite(true)
-                      }}
-                    >
-                      See the history of The Angolite >
-                    </div>
-                    )*/
-                  }
                 </section>
               )
             }
