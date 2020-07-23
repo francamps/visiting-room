@@ -20,8 +20,10 @@ const VisitingRoom = ({ loading, profiles, images }) => {
 
   // TODO: Save in localStore once viewed, and pull from there
   const [showIntro, setShowIntro] = useState(
-    window.localStorage.showIntro === "false" ? false : true
+    window.localStorage.getItem("showIntro") === "false" ? false : true
   )
+
+  console.log(window.localStorage.getItem("showIntro"))
 
   useEffect(() => {
     let timer1 = setTimeout(() => setFadeOut(true), 3000)

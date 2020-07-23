@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import { navigate } from "gatsby"
 import Menu from "./Menu"
 import HomeVideo from "./HomeVideo"
 import HomeTextOnLanding from "./HomeTextOnLanding"
@@ -12,6 +12,7 @@ const Home = ({ loading, profiles, images }) => {
     typeof window !== "undefined" ? window.location.search : ""
   )
   const [fadeoutLanding, setFadeOutLanding] = useState(false)
+  const [fadeoutMenu, setVisibleMenu] = useState(false)
   const [isVisitingRoom, setVisitingRoom] = useState(
     params.get("visiting") || false
   )
@@ -35,30 +36,40 @@ const Home = ({ loading, profiles, images }) => {
     }
   }, [fadeoutLanding, params])
 
-  console.log("yo", isMenuExpanded)
+  useEffect(() => {
+    if (!fadeoutMenu) {
+      let timerMenu = setTimeout(() => {
+        setVisibleMenu(true)
+      }, 6000)
+
+      return () => {
+        clearTimeout(timerMenu)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    let timerGoOff = setTimeout(() => {
+      navigate("/visiting-room")
+    }, 300000)
+
+    return () => {
+      clearTimeout(timerGoOff)
+    }
+  }, [])
 
   return (
     <>
-      <Menu isMenuExpanded={isMenuExpanded} hideTitle />
-      {!isVisitingRoom ? (
-        <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
-          <div className="landing">
-            <HomeVideo />
-            <HomeTextOnLanding
-              setFadeOutLanding={setFadeOutLanding}
-              setMenuExpanded={setMenuExpanded}
-            />
-          </div>
+      {fadeoutMenu && <Menu fadein isMenuExpanded={isMenuExpanded} hideTitle />}
+      <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
+        <div className="landing">
+          <HomeVideo />
+          <HomeTextOnLanding
+            setFadeOutLanding={setFadeOutLanding}
+            setMenuExpanded={setMenuExpanded}
+          />
         </div>
-      ) : (
-        <VisitingRoom
-          loading={loading}
-          profiles={Object.values(profiles).filter(
-            p => p.show_profile_in_visiting_room
-          )}
-          images={images}
-        />
-      )}
+      </div>
     </>
   )
 }

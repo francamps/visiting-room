@@ -61,6 +61,9 @@ const VisitingRoomintro = ({ setShowIntro }) => {
             }}
             onEnded={() => {
               // Do something
+              console.log(window.localStorage.getItem("showIntro"))
+              window.localStorage.setItem("showIntro", "false")
+              console.log(window.localStorage.getItem("showIntro"))
               setShowIntro(false)
             }}
             onProgress={({ played, playedSeconds }) => {
@@ -73,6 +76,7 @@ const VisitingRoomintro = ({ setShowIntro }) => {
             <Play
               size="huge"
               onClick={() => {
+                window.localStorage.setItem("showIntro", "false")
                 setPause(false)
                 setPlaying(true)
               }}

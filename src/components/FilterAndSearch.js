@@ -24,20 +24,8 @@ const FilterAndSearch = ({ onSearchTyping }) => {
           </label>
         </span>
       </div>
-      <div className="header-option">
-        <span className="input">
-          <input
-            className="input__field"
-            type="text"
-            id="input-parrish"
-            placeholder="Ex: New Orleans"
-          />
-          <label className="input__label" for="input-parrish">
-            <span className="input__label-content">Filter by parrish</span>
-          </label>
-        </span>
-      </div>
-      <div className="header-option">
+      {
+        null /*<div className="header-option">
         <span className="input">
           <input
             className="input__field"
@@ -49,7 +37,8 @@ const FilterAndSearch = ({ onSearchTyping }) => {
             <span className="input__label-content">Filter by age</span>
           </label>
         </span>
-      </div>
+      </div>*/
+      }
     </div>
   )
 }

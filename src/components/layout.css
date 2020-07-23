@@ -6,10 +6,11 @@
   --font-copy: 1.35rem;
   --font-copy-timeline: 1.5rem;
   --font-subtitle: 1.2rem;
-  --font-large: 2.5rem;
-  --font-title: 5.5rem;
+  --font-large: 2rem;
+  --font-xlarge: 2.5rem;
+  --font-title: 7rem;
 
-  --font-size-h3: var(--font-large);
+  --font-size-h3: var(--font-xlarge);
 
   --copy-line-height: 1.7em;
 
@@ -162,7 +163,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
-  color: white;
+  color: var(--clr-off-white);
 }
 
 html {
@@ -204,14 +205,10 @@ h1 {
   color: white;
   font-size: 2rem;
   text-transform: uppercase;
-  position: fixed;
-  text-align: center;
-  left: calc(50% - 180px);
-  z-index: 10;
 }
 
 h2 {
-  font-size: var(--font-large);
+  font-size: var(--font-xlarge);
   font-weight: normal;
   margin: 0;
 }
@@ -569,4 +566,12 @@ FADE IN ANIMATIONS
   90% {
     color: var(--clr-9);
   }
+}
+
+.fadein {
+  -webkit-animation: fadein 4s forwards;
+  -moz-animation: fadein 4s forwards;
+  -ms-animation: fadein 4s forwards;
+  -o-animation: fadein 4s forwards;
+  animation: fadein 4s forwards;
 }

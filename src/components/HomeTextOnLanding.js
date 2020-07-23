@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
 import "./HomeTextOnLanding.css"
@@ -8,68 +8,64 @@ import Burger from "./Burger"
 
 const HomeTextOnLanding = ({ setFadeOutLanding, setMenuExpanded }) => {
   const [isActionsOpen, setActionsOpen] = useState(false)
+  const [showMoreMenu, setVisibleMenu] = useState(false)
 
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
 
-  return (
-    <div className="text-on-landing">
-      <div
-        className="title"
-        onClick={() => {
-          setActionsOpen(true)
-        }}
-      >
-        The Visiting Room
-        <div
-          className={`primary-action ${isActionsOpen ? "active" : ""}`}
-          style={{ display: "inline-block" }}
-        >
-          <Link
-            to="/"
-            onClick={() => {
-              setFadeOutLanding(true)
-              params.set("visiting", true)
-            }}
-          >
-            <h2>
-              Enter
-              <div className="icon">
-                <EnterIcon />
-              </div>
-            </h2>
-          </Link>
-          <Link
-            to="/"
-            onClick={() => {
-              setFadeOutLanding(true)
-              params.set("visiting", true)
-            }}
-          >
-            <h2>
-              Entry with introduction
-              <div className="icon">
-                <span style={{ marginRight: "16px" }}>
-                  <Play />
-                </span>
-                <EnterIcon />
-              </div>
-            </h2>
-          </Link>
+  useEffect(() => {
+    if (!isActionsOpen) {
+      let timerActions = setTimeout(() => {
+        setActionsOpen(true)
+      }, 4000)
 
-          <h2
-            onClick={() => {
-              console.log("yo")
-              setMenuExpanded(true)
-            }}
-          >
-            Explore the site
+      return () => {
+        clearTimeout(timerActions)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!showMoreMenu && isActionsOpen) {
+      let timerMenu = setTimeout(() => {
+        setVisibleMenu(true)
+      }, 4000)
+
+      return () => {
+        clearTimeout(timerMenu)
+      }
+    }
+  }, [isActionsOpen])
+
+  return (
+    <div
+      className={`text-on-landing ${isActionsOpen ? "active" : ""}`}
+      onClick={() => {
+        setActionsOpen(true)
+      }}
+    >
+      <div className="title">
+        <h1>The Visiting Room</h1>
+      </div>
+      <div className="actions">
+        <Link to="/visiting-room">
+          <button>
+            Enter
             <div className="icon">
-              <Burger />
+              <EnterIcon />
             </div>
-          </h2>
-        </div>
+          </button>
+        </Link>
+
+        {showMoreMenu && (
+          <ul className="fadein">
+            Explore the site
+            <li>History</li>
+            <li>Full Archive</li>
+            <li>About the project</li>
+          </ul>
+        )}
       </div>
       <div
         className={`subtitle ${isActionsOpen ? "hidden" : ""}`}

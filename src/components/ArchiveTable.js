@@ -163,8 +163,8 @@ const ArchiveTable = ({
                   )}
                 </td>
                 <td>{current_age}</td>
-                <td>{date_of_offense}</td>
                 <td>{age_at_offense}</td>
+                <td>{date_of_offense}</td>
                 <td className="play" style={{ flex: "none", width: "30px" }}>
                   <Play size="medium" />
                 </td>

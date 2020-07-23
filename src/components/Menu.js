@@ -9,6 +9,7 @@ import "./Menu.css"
 
 const Menu = ({
   theme,
+  fadein,
   isMenuExpanded = false,
   setMenuExpanded,
   hideTitle,
@@ -19,13 +20,17 @@ const Menu = ({
   const [isBurgerOpen, setBurgerOpen] = useState(false)
 
   useEffect(() => {
-    console.log("updating to", isMenuExpanded)
     setBurgerOpen(isMenuExpanded)
   }, [isMenuExpanded])
 
   return (
     <div>
-      <div className={`menu ${theme === "light" ? "menu-light" : ""}`}>
+      <div
+        className={`menu
+          ${theme === "light" ? "menu-light" : ""}
+          ${fadein ? "fadein" : ""}
+        `}
+      >
         <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
         {isBurgerOpen ||
           (!hideTitle && (
@@ -54,7 +59,7 @@ const Menu = ({
         <div className="menu-option-wrap">
           <a
             onClick={() => {
-              navigate("/?visiting=true")
+              navigate("/visiting-room")
             }}
             className="hover-link"
           >
@@ -69,6 +74,10 @@ const Menu = ({
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              marginLeft: "var(--space-around-xsmall)",
+            }}
+            onClick={() => {
+              window.localStorage.setItem("showIntro", "true")
             }}
           >
             <Play />
@@ -84,7 +93,7 @@ const Menu = ({
         </div>
         <div className="menu-option-wrap">
           <Link to="/archive" className="hover-link">
-            Archive
+            Full Archive
           </Link>
         </div>
         <div className="menu-option-wrap">
@@ -93,7 +102,7 @@ const Menu = ({
           </Link>
         </div>
 
-        <Socials />
+        {null /*<Socials />*/}
       </div>
     </div>
   )

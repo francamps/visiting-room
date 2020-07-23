@@ -34,31 +34,3 @@
   letter-spacing: 0.02em;
   transition: letter-spacing 1.2s;
 }
-
-.home .copy-wrap .button {
-  margin: 0;
-}
-
-.home .link-wrap {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 10px;
-}
-
-.home .button:hover .hover-link {
-  color: var(--clr-primary);
-  letter-spacing: 0.02em;
-  transition: letter-spacing 1.2s, color 0.4s;
-}
-
-.home .button:hover .hover-link:after {
-  width: 100%;
-  opacity: 1;
-  background-color: var(--clr-primary);
-}
-
-.home .hover-link:after {
-  right: 0%;
-}

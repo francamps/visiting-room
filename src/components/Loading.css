@@ -33,6 +33,7 @@
 .loader:after {
   left: 1em;
 }
+
 @-webkit-keyframes load1 {
   0%,
   80%,
@@ -45,6 +46,7 @@
     height: 3em;
   }
 }
+
 @keyframes load1 {
   0%,
   80%,
