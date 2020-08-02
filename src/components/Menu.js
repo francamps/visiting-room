@@ -77,7 +77,8 @@ const Menu = ({
               marginLeft: "var(--space-around-xsmall)",
             }}
             onClick={() => {
-              window.localStorage.setItem("showIntro", "true")
+              if (typeof window !== "undefined")
+                window.localStorage.setItem("showIntro", "true")
             }}
           >
             <Play />

@@ -18,6 +18,7 @@ const ArchiveGridCell = ({
 
   const {
     image,
+    oldImage,
     fullName,
     date_of_offense,
     age_at_offense,
@@ -39,18 +40,11 @@ const ArchiveGridCell = ({
         setOpenProfile(openProfile === profileIdx ? null : profileIdx)
       }}
     >
-      <GridCellBackground image={image} />
+      <GridCellBackground image={image} oldImage={oldImage} isHover={isHover} />
       <div className="cell-hover-layer">
         <div className="name">{fullName}</div>
         <div className="bottom">
           <div>
-            {isHover && (
-              <Years
-                incarcerated={age_at_offense}
-                current={current_age}
-                deceased_date={deceased_date}
-              />
-            )}
             <p>
               Incarcerated since
               <span

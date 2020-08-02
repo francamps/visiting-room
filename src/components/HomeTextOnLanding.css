@@ -16,7 +16,7 @@
 
 .text-on-landing .title {
   width: 100%;
-  height: 110px;
+  height: 90px;
   cursor: pointer;
   display: flex;
 }
@@ -64,6 +64,7 @@
   margin: 40px 0;
   padding: 0;
   color: var(--clr-off-white);
+  cursor: pointer;
   background: none;
   border: none;
   outline: none;
@@ -112,6 +113,7 @@
   right: var(--space-around-med);
   width: 100%;
   max-width: 240px;
+  box-sizing: border-box;
 
   line-height: 1.5rem;
   text-align: right;
@@ -240,7 +242,7 @@
     max-width: 640px;
     max-height: 110px;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     font-size: var(--font-copy);
     font-weight: normal;
     text-align: center;

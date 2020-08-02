@@ -14,15 +14,63 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.video-container {
+  position: absolute;
+  width: 640px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+.video-skip {
+  position: absolute;
+  bottom: 100px;
+  cursor: pointer;
+}
+
+.video-skip p {
+  color: var(--clr-off-white);
+  transition: color 0.4s;
+}
+
+.video-skip:hover p {
+  color: var(--clr-primary);
+  transition: color 0.4s;
 }
 
 .intro {
   position: absolute;
-  width: 640px;
-  height: 480px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 640px;
+  height: 480px;
+}
+
+@media (max-width: 767px) {
+  .video-container {
+    position: absolute;
+    width: 100%;
+    height: 280px;
+  }
+
+  .video-skip {
+    position: absolute;
+    bottom: 100px;
+    cursor: pointer;
+  }
+
+  .intro {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 280px;
+  }
 }

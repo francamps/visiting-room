@@ -85,7 +85,7 @@
 .menu .home-title {
   font-family: "EB Garamond";
   display: inline-block;
-  width: 300px;
+  width: 200px;
   background: none;
   z-index: 12;
   font-size: var(--font-copy-timeline);
@@ -178,7 +178,7 @@ MENU LINKS
 
 @media (max-width: 767px) {
   .menu {
-    top: 14px;
+    top: 21px;
   }
 
   .menu .home-title {

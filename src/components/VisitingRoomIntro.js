@@ -43,85 +43,97 @@ const VisitingRoomintro = ({ setShowIntro }) => {
         className="vr-intro-background"
         onClick={() => {
           // TODO: Catch if outside of video
-          console.log("yo")
           setShowIntro(false)
         }}
       ></div>
-      <div className="intro">
-        {isPlaying && (
-          <ReactPlayer
-            ref={playerRef}
-            url={videoSrcURL}
-            className="react-player"
-            playing={isPlaying && !isPaused}
-            width="100%"
-            height="100%"
-            onPause={() => {
-              setPause(true)
-            }}
-            onEnded={() => {
-              // Do something
-              console.log(window.localStorage.getItem("showIntro"))
-              window.localStorage.setItem("showIntro", "false")
-              console.log(window.localStorage.getItem("showIntro"))
-              setShowIntro(false)
-            }}
-            onProgress={({ played, playedSeconds }) => {
-              setProgress({ progress: played, progressSeconds: playedSeconds })
-            }}
-          />
-        )}
-        {(!isPlaying || (isPlaying && isPaused)) && (
-          <div style={{ position: "absolute" }}>
-            <Play
-              size="huge"
-              onClick={() => {
-                window.localStorage.setItem("showIntro", "false")
-                setPause(false)
-                setPlaying(true)
+      <div className="video-container">
+        <div className="intro">
+          {isPlaying && (
+            <ReactPlayer
+              ref={playerRef}
+              url={videoSrcURL}
+              className="react-player"
+              playing={isPlaying && !isPaused}
+              width="100%"
+              height="100%"
+              onPause={() => {
+                setPause(true)
+              }}
+              onEnded={() => {
+                // Do something
+                if (typeof window !== "undefined")
+                  window.localStorage.setItem("showIntro", "false")
+                setShowIntro(false)
+              }}
+              onProgress={({ played, playedSeconds }) => {
+                setProgress({
+                  progress: played,
+                  progressSeconds: playedSeconds,
+                })
               }}
             />
+          )}
+          {(!isPlaying || (isPlaying && isPaused)) && (
+            <div style={{ position: "absolute" }}>
+              <Play
+                size="huge"
+                onClick={() => {
+                  if (typeof window !== "undefined")
+                    window.localStorage.setItem("showIntro", "false")
+                  setPause(false)
+                  setPlaying(true)
+                }}
+              />
+            </div>
+          )}
+        </div>
+        {isPlaying && (
+          <div className="controls">
+            <div className="play-pause-stop">
+              {isPlaying && !isPaused ? (
+                <div
+                  className="pause"
+                  onClick={() => {
+                    setPause(true)
+                  }}
+                >
+                  <div className="pause-tick" />
+                  <div className="pause-tick" />
+                </div>
+              ) : (
+                <div className="play-wrap">
+                  <Play
+                    onClick={() => {
+                      setPause(false)
+                      setPlaying(true)
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="progress-bar" ref={barRef} onClick={onSeek}>
+              <div className="progress-bar-bg" />
+              <div
+                className="progress-bar-played"
+                style={{
+                  width: `${progress.progress * 100}%`,
+                }}
+              />
+            </div>
+            <div className="progress-seconds">
+              <span>{getStringTime(progress.progressSeconds)}</span>
+            </div>
           </div>
         )}
       </div>
-      {isPlaying && (
-        <div className="controls">
-          <div className="play-pause-stop">
-            {isPlaying && !isPaused ? (
-              <div
-                className="pause"
-                onClick={() => {
-                  setPause(true)
-                }}
-              >
-                <div className="pause-tick" />
-                <div className="pause-tick" />
-              </div>
-            ) : (
-              <div className="play-wrap">
-                <Play
-                  onClick={() => {
-                    setPause(false)
-                    setPlaying(true)
-                  }}
-                />
-              </div>
-            )}
-          </div>
-          <div className="progress-bar" ref={barRef} onClick={onSeek}>
-            <div className="progress-bar-bg" />
-            <div
-              className="progress-bar-played"
-              style={{
-                width: `${progress.progress * 100}%`,
-              }}
-            />
-          </div>
-          <div className="progress-seconds">
-            <span>{getStringTime(progress.progressSeconds)}</span>
-          </div>
-        </div>
-      )}
+      <div
+        className="video-skip"
+        onClick={() => {
+          setShowIntro(false)
+        }}
+      >
+        <p>Skip introduction > </p>
+      </div>
     </div>
   )
 }

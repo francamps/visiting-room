@@ -1,6 +1,6 @@
 import React from "react"
 
-const EnterIcon = () => (
+const EnterIcon = ({ isHover }) => (
   <svg width="27px" height="27px" viewBox="0 0 27 27">
     <g
       id="Typography---UI-Comp"
@@ -14,7 +14,7 @@ const EnterIcon = () => (
       <g
         id="Notes-Copy"
         transform="translate(-343.000000, -680.000000)"
-        stroke="var(--clr-off-white)"
+        stroke={!isHover ? "var(--clr-off-white)" : "var(--clr-primary)"}
         stroke-width="2"
       >
         <g id="Group" transform="translate(344.000000, 681.000000)">

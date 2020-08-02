@@ -16,6 +16,12 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
       n.node.relativePath === `profile_pics/${fullName.replace(/ /g, "_")}.jpg`
     )
   })
+  const oldImage = imageData.edges.find(n => {
+    return (
+      n.node.relativePath ===
+      `profile_pics/old_pics/${fullName.replace(/ /g, "_")}.jpg`
+    )
+  })
 
   let date_of_birth = moment(getValue(profile, "date_of_birth[0].text"))
   let date_of_offense = moment(profile.date_of_offense)
@@ -38,6 +44,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     quote,
     fullName,
     image,
+    oldImage,
     profile_picture,
     date_of_birth,
     date_of_offense,

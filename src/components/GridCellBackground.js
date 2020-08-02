@@ -1,17 +1,11 @@
 import React from "react"
 import Img from "gatsby-image"
 
-const GridCellBackground = ({ isHover, image, opacityOnHover }) => {
+const GridCellBackground = ({ isHover, image, oldImage, opacityOnHover }) => {
+  console.log(isHover)
+
   return (
-    <div
-      className="cell-background"
-      style={{
-        opacity: isHover ? opacityOnHover || 0 : 1,
-        transitionProperty: "opacity",
-        transitionDelay: "0.4s",
-        transitionDuration: "8s",
-      }}
-    >
+    <div className={`cell-background ${isHover ? "hovered" : ""}`}>
       <Img
         alt={"TODO: NEEDS AN ALT"}
         fluid={image.node.childImageSharp.fluid}
@@ -19,6 +13,15 @@ const GridCellBackground = ({ isHover, image, opacityOnHover }) => {
           objectFit: "cover",
         }}
       />
+      {oldImage && (
+        <Img
+          alt={"TODO: NEEDS AN ALT"}
+          fluid={oldImage.node.childImageSharp.fluid}
+          imgStyle={{
+            objectFit: "cover",
+          }}
+        />
+      )}
     </div>
   )
 }

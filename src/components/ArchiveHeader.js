@@ -15,6 +15,7 @@ const ArchiveHeader = ({
   setSortedAsc,
   setSortedType,
   setSearch,
+  setShowArchive,
   setView,
   shrunk,
   sortAsc,
@@ -45,6 +46,16 @@ const ArchiveHeader = ({
         <p>For more information about the project, see our About page.</p>
       </div>
       <div className={`header-controls ${openSearch ? "open" : ""} `}>
+        <div className="info-options">
+          <p
+            onClick={() => {
+              window.localStorage.getItem("showArchive", "false")
+              setShowArchive(false)
+            }}
+          >
+            About the archive
+          </p>
+        </div>
         <div className="view-options">
           <p
             onClick={() => {

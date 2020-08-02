@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: flex-end;
   text-align: left;
+  overflow: hidden;
   background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
 
   -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
@@ -22,12 +23,22 @@
   animation: fadein 4s;
 }
 
-.home.fadeout {
-  -webkit-animation: fadeout 1.2s forwards;
-  -moz-animation: fadeout 1.2s forwards;
-  -ms-animation: fadeout 1.2s forwards;
-  -o-animation: fadeout 1.2s forwards;
-  animation: fadeout 1.2s forwards;
+.tap-hint {
+  position: fixed;
+  top: 30px;
+  margin: 0;
+  text-align: center;
+  color: var(--clr-off-white);
+  opacity: 0.5;
+  font-size: var(--font-xsmall);
+  z-index: 13;
+  left: calc(50% - 60px);
+}
+
+@media (max-width: 767px) {
+  .tap-hint {
+    left: calc(50% - 35px);
+  }
 }
 
 .button:hover {

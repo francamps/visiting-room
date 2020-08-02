@@ -8,7 +8,7 @@
   --font-subtitle: 1.2rem;
   --font-large: 2rem;
   --font-xlarge: 2.5rem;
-  --font-title: 7rem;
+  --font-title: 6rem;
 
   --font-size-h3: var(--font-xlarge);
 
@@ -574,4 +574,20 @@ FADE IN ANIMATIONS
   -ms-animation: fadein 4s forwards;
   -o-animation: fadein 4s forwards;
   animation: fadein 4s forwards;
+}
+
+.fadeout {
+  -webkit-animation: fadeout 1.2s forwards;
+  -moz-animation: fadeout 1.2s forwards;
+  -ms-animation: fadeout 1.2s forwards;
+  -o-animation: fadeout 1.2s forwards;
+  animation: fadeout 1.2s forwards;
+}
+
+.fadeinout {
+  -webkit-animation: fadein 4s alternate;
+  -moz-animation: fadein 4s alternate;
+  -ms-animation: fadein 4s alternate;
+  -o-animation: fadein 4s alternate;
+  animation: fadein 4s alternate;
 }

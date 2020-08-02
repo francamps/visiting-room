@@ -6,19 +6,31 @@ import EnterIcon from "./Symbols/EnterIcon"
 import Play from "./Play"
 import Burger from "./Burger"
 
-const HomeTextOnLanding = ({ setFadeOutLanding, setMenuExpanded }) => {
+const HomeTextOnLanding = ({
+  setFadeOutLanding,
+  setMenuExpanded,
+  isMenuExpanded,
+}) => {
   const [isActionsOpen, setActionsOpen] = useState(false)
   const [showMoreMenu, setVisibleMenu] = useState(false)
+  const [isHover, setHover] = useState(false)
 
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
 
   useEffect(() => {
+    if (!isActionsOpen && isMenuExpanded) {
+      setActionsOpen(true)
+    }
+  }, [isMenuExpanded])
+
+  useEffect(() => {
     if (!isActionsOpen) {
       let timerActions = setTimeout(() => {
         setActionsOpen(true)
-      }, 4000)
+        setMenuExpanded(true)
+      }, 10000)
 
       return () => {
         clearTimeout(timerActions)
@@ -50,10 +62,17 @@ const HomeTextOnLanding = ({ setFadeOutLanding, setMenuExpanded }) => {
       </div>
       <div className="actions">
         <Link to="/visiting-room">
-          <button>
-            Enter
+          <button
+            onMouseEnter={() => {
+              setHover(true)
+            }}
+            onMouseLeave={() => {
+              setHover(false)
+            }}
+          >
+            Enter the visiting room
             <div className="icon">
-              <EnterIcon />
+              <EnterIcon isHover={isHover} />
             </div>
           </button>
         </Link>

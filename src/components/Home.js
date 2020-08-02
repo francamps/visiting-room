@@ -13,34 +13,14 @@ const Home = ({ loading, profiles, images }) => {
   )
   const [fadeoutLanding, setFadeOutLanding] = useState(false)
   const [fadeoutMenu, setVisibleMenu] = useState(false)
-  const [isVisitingRoom, setVisitingRoom] = useState(
-    params.get("visiting") || false
-  )
+
   const [isMenuExpanded, setMenuExpanded] = useState(false)
-
-  useEffect(() => {
-    if (fadeoutLanding) {
-      let timer1 = setTimeout(() => {
-        window.history.replaceState(
-          {},
-          "",
-          `${window.location.pathname}?${params}`
-        )
-        setVisitingRoom(true)
-        setFadeOutLanding(false)
-      }, 1200)
-
-      return () => {
-        clearTimeout(timer1)
-      }
-    }
-  }, [fadeoutLanding, params])
 
   useEffect(() => {
     if (!fadeoutMenu) {
       let timerMenu = setTimeout(() => {
         setVisibleMenu(true)
-      }, 6000)
+      }, 12000)
 
       return () => {
         clearTimeout(timerMenu)
@@ -60,12 +40,23 @@ const Home = ({ loading, profiles, images }) => {
 
   return (
     <>
-      {fadeoutMenu && <Menu fadein isMenuExpanded={isMenuExpanded} hideTitle />}
+      {fadeoutMenu && <Menu fadein hideTitle />}
+      <p className={`tap-hint ${isMenuExpanded ? "fadeout" : ""}`} style={{}}>
+        Tap anywhere to start
+      </p>
       <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
-        <div className="landing">
+        <div
+          className="landing"
+          onClick={() => {
+            if (!isMenuExpanded) {
+              setMenuExpanded(true)
+            }
+          }}
+        >
           <HomeVideo />
           <HomeTextOnLanding
             setFadeOutLanding={setFadeOutLanding}
+            isMenuExpanded={isMenuExpanded}
             setMenuExpanded={setMenuExpanded}
           />
         </div>
