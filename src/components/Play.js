@@ -1,6 +1,12 @@
 import React, { useState } from "react"
 
-const Play = ({ size, onClick, useCircle = true, doHover }) => {
+const Play = ({
+  size,
+  onClick,
+  useCircle = true,
+  doHover,
+  color = "#ffffff",
+}) => {
   const [isHover, setHover] = useState(doHover)
   let viewBox = "0 0 24 24"
   let width = "24px"
@@ -60,7 +66,7 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
       <circle
         cx={cx}
         cy={cy}
-        stroke="#ffffff"
+        stroke={color}
         fill={"none"}
         r={r}
         strokeWidth={2}
@@ -72,8 +78,8 @@ const Play = ({ size, onClick, useCircle = true, doHover }) => {
       <polygon
         strokeLinejoin="round"
         fillRule="evenodd"
-        fill="#ffffff"
-        stroke="#ffffff"
+        fill={color}
+        stroke={color}
         opacity="0.7"
         points={points}
         style={{

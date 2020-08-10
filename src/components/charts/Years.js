@@ -1,6 +1,6 @@
 import React from "react"
 
-const Years = ({ incarcerated, current, deceased_date }) => {
+const Years = ({ color, incarcerated, current, deceased_date }) => {
   const years = new Array(120).fill(0)
 
   return (
@@ -18,7 +18,7 @@ const Years = ({ incarcerated, current, deceased_date }) => {
             cx={`${x}px`}
             cy={`${y}px`}
             r={2}
-            fill={i < +incarcerated ? "white" : "var(--clr-primary)"}
+            fill={i < +incarcerated ? color : "var(--clr-primary)"}
             style={{
               opacity:
                 i > current && deceased_date
@@ -33,7 +33,7 @@ const Years = ({ incarcerated, current, deceased_date }) => {
       <text
         x={Math.floor(incarcerated / 5) * 6 + 3 + 3}
         y={10}
-        fill="var(--clr-off-white)"
+        fill={color}
         style={{
           fontSize: "var(--font-xsmall)",
           textAnchor: "end",

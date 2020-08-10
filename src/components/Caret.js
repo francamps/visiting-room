@@ -2,7 +2,18 @@ import React from "react"
 
 import "./Caret.css"
 
-const Caret = ({ direction = "down", color = "#ffffff ", animate }) => (
+const Caret = ({ onClick, primary }) => {
+  return (
+    <button
+      className={`caret ${primary && "primary"}`}
+      onClick={onClick}
+    ></button>
+  )
+}
+
+export default Caret
+
+/*const Caret = ({ direction = "down", color = "#ffffff ", animate }) => (
   <svg
     width="18px"
     height="20px"
@@ -22,4 +33,4 @@ const Caret = ({ direction = "down", color = "#ffffff ", animate }) => (
   </svg>
 )
 
-export default Caret
+export default Caret*/

@@ -322,9 +322,9 @@ export const TIMELINE = [
         sentences. Today, that number has dropped to less than 1%.`,
       },
     ],
-    images: ["placeholder.jpg"],
+    images: ["faces.png"],
     imagePlacement: "bottom",
-    caption: "This is a placeholder",
+    caption: "",
   },
 
   {

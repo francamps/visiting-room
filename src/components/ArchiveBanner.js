@@ -1,15 +1,15 @@
 import React from "react"
 import "./ArchiveBanner.css"
 
-import CrossClose from "./CrossClose"
+import Caret from "./Caret"
 
 const ArchiveBanner = ({ showGrid, fadeout, onClose }) => {
   return (
     <>
-      <div className={`archive-banner ${fadeout ? "fadeout" : ""}`}>
+      <div className={`archive-banner fadein ${fadeout ? "fadeout" : ""}`}>
         {!showGrid && (
           <div className="archive-entry-text">
-            <h2 className="fadein">Archive</h2>
+            <h2 className="fadein">Full Archive</h2>
             <p className="fadein">
               This collection includes full-length interviews with 110 people
               who are serving life without the possibility of parole at the
@@ -35,7 +35,7 @@ const ArchiveBanner = ({ showGrid, fadeout, onClose }) => {
                 justifyContent: "center",
               }}
             >
-              <CrossClose onClick={onClose} primary />
+              <Caret onClick={onClose} primary />
             </div>
           </div>
         )}

@@ -1,8 +1,7 @@
 import React from "react"
 import "./TimelineBanner.css"
 
-import CrossClose from "./CrossClose"
-//import Loading from "./Loading"
+import Caret from "./Caret"
 
 const TimelineBanner = ({ showGrid, fadeout, onClose }) => {
   return (
@@ -38,7 +37,7 @@ const TimelineBanner = ({ showGrid, fadeout, onClose }) => {
                 justifyContent: "center",
               }}
             >
-              <CrossClose onClick={onClose} primary />
+              <Caret onClick={onClose} primary />
             </div>
           </div>
         )}

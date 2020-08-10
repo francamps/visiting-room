@@ -42,7 +42,7 @@ const ArchivePage = props => {
             })
             dispatch(newProfilesDict)
           })
-      }, 200)
+      }, 50)
     }
   }, [fetchProps.cursor, fetchProps.hasNext, props.prismic])
 
@@ -50,6 +50,7 @@ const ArchivePage = props => {
     <Layout>
       <Archive
         profiles={Object.values(profiles).filter(p => p.show_in_archive)}
+        loading={fetchProps.hasNext}
         images={images}
       />
     </Layout>

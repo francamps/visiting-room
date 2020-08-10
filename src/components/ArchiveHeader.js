@@ -30,22 +30,7 @@ const ArchiveHeader = ({
   return (
     <div className={`header ${isShrunkHeader ? "shrunk" : ""}`}>
       <div className="header-intro">
-        <h2>Archive</h2>
-        <p>
-          This collection includes full-length interviews with 110 people who
-          are serving life without the possibility of parole at the Louisiana
-          State Penitentiary, Angola.
-        </p>
-
-        <p>
-          The interviews were conducted by Professor Marcus Kondkar of Loyola
-          University New Orleans in 2017 and 2018.
-        </p>
-
-        <p>The best place to start is by visiting the Visiting Room.</p>
-        <p>For more information about the project, see our About page.</p>
-      </div>
-      <div className={`header-controls ${openSearch ? "open" : ""} `}>
+        <h2>Full Archive</h2>
         <div className="info-options">
           <p
             onClick={() => {
@@ -56,6 +41,8 @@ const ArchiveHeader = ({
             About the archive
           </p>
         </div>
+      </div>
+      <div className={`header-controls ${openSearch ? "open" : ""} `}>
         <div className="view-options">
           <p
             onClick={() => {

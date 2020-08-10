@@ -3,7 +3,6 @@ import getValue from "lodash/get"
 //import { useInView } from "react-intersection-observer"
 
 const TimelineStepTitle = ({ title, year, active }) => {
-  console.log(year, active)
   return (
     <div
       className="step-title"

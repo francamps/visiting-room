@@ -49,6 +49,8 @@ const About = () => {
   )
   const [faqNumber, setFaqNumber] = useState(params.get("faq") || 0)
 
+  console.log("hello")
+
   const updateParams = (param, faqNumber) => {
     params.set(param, faqNumber)
     window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
@@ -143,12 +145,12 @@ const About = () => {
 
                 <div className="link-wrap">
                   <Link to="/visiting-room" className="hover-link">
-                    Go to the Visiting Room
+                    Enter the Visiting Room
                   </Link>
                 </div>
                 <div className="link-wrap">
                   <Link to="/history" className="hover-link">
-                    Learn the history of Life Without Parole sentencing
+                    Learn the history of life without parole
                   </Link>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import Img from "gatsby-image"
 
 import Years from "./charts/years"
@@ -11,8 +11,8 @@ import useDocumentScroll from "../utils/useDocumentScroll"
 import "./ArchiveTable.css"
 
 const columns = [
-  { key: "picture", label: "" },
   { key: "full_name", label: "Full Name" },
+  { key: "picture", label: "" },
   { key: "years", label: "" },
   { key: "current_age", label: "Current Age" },
   { key: "age_at_offense", label: "Age at offense" },
@@ -34,6 +34,7 @@ const ArchiveTable = ({
   setShrunkHeader,
 }) => {
   const ref = useRef()
+  const [hoveredRow, setHover] = useState(null)
 
   useDocumentScroll(
     ref.current,
@@ -63,7 +64,6 @@ const ArchiveTable = ({
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    paddingLeft: "10px",
                     justifyContent: "center",
                   }}
                 >
@@ -97,6 +97,8 @@ const ArchiveTable = ({
           .map((profile, profileIdx) => {
             const {
               image,
+              oldImage,
+
               fullName,
               date_of_offense,
               age_at_offense,
@@ -106,24 +108,49 @@ const ArchiveTable = ({
 
             return (
               <tr
+                onMouseEnter={() => {
+                  setHover(profileIdx)
+                }}
+                onMouseLeave={() => {
+                  setHover(null)
+                }}
                 onClick={() => {
                   setOpenProfile(openProfile === profileIdx ? null : profileIdx)
                 }}
-                className="open"
+                className={`open ${hoveredRow === profileIdx ? "hovered" : ""}`}
               >
-                <td style={{ display: "block" }}>
-                  {image && image.node && (
-                    <Img
-                      alt={"TODO: NEEDS AN ALT"}
-                      fluid={image.node.childImageSharp.fluid}
-                      imgStyle={{
-                        objectFit: "cover",
-                        visibility: "visible",
-                      }}
-                    />
-                  )}
-                </td>
+                {" "}
                 <td>{fullName}</td>
+                <td style={{ display: "block" }}>
+                  <div
+                    style={{
+                      position: "relative",
+                      padding: "10px 0",
+                      height: "100%",
+                    }}
+                  >
+                    {image && image.node && (
+                      <Img
+                        alt={"TODO: NEEDS AN ALT"}
+                        fluid={image.node.childImageSharp.fluid}
+                        imgStyle={{
+                          objectFit: "cover",
+                          visibility: "visible",
+                        }}
+                      />
+                    )}
+                    {oldImage && oldImage.node && (
+                      <Img
+                        alt={"TODO: NEEDS AN ALT"}
+                        fluid={oldImage.node.childImageSharp.fluid}
+                        imgStyle={{
+                          objectFit: "cover",
+                          visibility: "visible",
+                        }}
+                      />
+                    )}
+                  </div>
+                </td>
                 <td
                   style={{
                     display: "flex",
@@ -133,6 +160,7 @@ const ArchiveTable = ({
                   }}
                 >
                   <Years
+                    color={"black"}
                     incarcerated={age_at_offense}
                     current={current_age}
                     deceased_date={deceased_date}
@@ -166,7 +194,7 @@ const ArchiveTable = ({
                 <td>{age_at_offense}</td>
                 <td>{date_of_offense}</td>
                 <td className="play" style={{ flex: "none", width: "30px" }}>
-                  <Play size="medium" />
+                  <Play size="medium" color={"black"} />
                 </td>
               </tr>
             )

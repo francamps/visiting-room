@@ -5,6 +5,7 @@ import ArchiveGrid from "./ArchiveGrid"
 import ArchiveHeader from "./ArchiveHeader"
 import ArchiveTable from "./ArchiveTable"
 import ArchiveBanner from "./ArchiveBanner"
+import Loading from "./Loading"
 
 import "./Archive.css"
 
@@ -15,7 +16,7 @@ const columns = [
   { key: "offense_date", label: "Year Incarcerated" },
 ]
 
-const Archive = ({ profiles, images }) => {
+const Archive = ({ profiles, loading, images }) => {
   const [openProfile, setOpenProfile] = useState(null)
   const [openSearch, setOpenSearch] = useState(false)
   const [showArchive, setShowArchive] = useState(
@@ -83,8 +84,9 @@ const Archive = ({ profiles, images }) => {
             onClick={() => setOpenSearch(false)}
           ></div>
         )}
+        {loading && <Loading />}
         {!view ||
-          (view === "grid" && (
+          (view === "grid" && !loading && (
             <ArchiveGrid
               profiles={profiles}
               images={images}
@@ -96,7 +98,7 @@ const Archive = ({ profiles, images }) => {
               setShrunkHeader={setShrunkHeader}
             />
           ))}
-        {view === "table" && (
+        {view === "table" && !loading && (
           <ArchiveTable
             profiles={profiles}
             images={images}

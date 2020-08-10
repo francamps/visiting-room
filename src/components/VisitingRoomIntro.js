@@ -13,7 +13,7 @@ const getStringTime = seconds => {
 }
 
 const VisitingRoomintro = ({ setShowIntro }) => {
-  const videoSrcURL = "https://www.youtube.com/embed/iXI1QJRqPD8"
+  const videoSrcURL = "https://vimeo.com/444511449"
   const videoTitle = "Introduction: Life at Angola"
 
   const playerRef = useRef()

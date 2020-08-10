@@ -1,4 +1,4 @@
-.animate {
+/*.animate {
   animation: bouncingLoader 0.8s infinite alternate;
 }
 
@@ -10,4 +10,40 @@ svg polygon {
 svg:hover polygon {
   opacity: 1;
   transition: opacity 0.4s;
+}*/
+
+.caret {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  opacity: 0.3;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.caret:hover {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.caret:before,
+.caret:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 16px;
+  width: 2px;
+  background-color: #d0d0d0;
+}
+
+.caret.primary:before,
+.caret.primary:after {
+  background-color: var(--clr-primary);
+}
+
+.caret:before {
+  transform: rotate(35deg) translate(0px, -8px);
+}
+.caret:after {
+  transform: rotate(-35deg) translate(0px, -8px);
 }

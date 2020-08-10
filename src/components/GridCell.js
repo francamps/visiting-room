@@ -95,7 +95,7 @@ const GridCell = ({
           <Play />
         </div>
       )}
-      <h3 className="name-tag">{fullName}</h3>
+      {null /*<h3 className="name-tag">{fullName}</h3>*/}
     </div>
   )
 }

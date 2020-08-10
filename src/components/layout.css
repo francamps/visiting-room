@@ -153,11 +153,6 @@ Use a scrollbar library, this is not standardized
   src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Regular.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "GTAmericaMono";
-  src: url("../fonts/GT-America-Mono-Trial-Light.otf") format("opentype");
-}
-
 body {
   margin: 0;
   width: 100%;

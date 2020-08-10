@@ -71,18 +71,25 @@ const HomeTextOnLanding = ({
             }}
           >
             Enter the visiting room
-            <div className="icon">
+            {
+              null /*<div className="icon">
               <EnterIcon isHover={isHover} />
-            </div>
+          </div>*/
+            }
           </button>
         </Link>
 
         {showMoreMenu && (
           <ul className="fadein">
-            Explore the site
-            <li>History</li>
-            <li>Full Archive</li>
-            <li>About the project</li>
+            <li>
+              <Link to="/history">History</Link>
+            </li>
+            <li>
+              <Link to="/archive">Full Archive</Link>
+            </li>
+            <li>
+              <Link to="/about">About the project</Link>
+            </li>
           </ul>
         )}
       </div>
