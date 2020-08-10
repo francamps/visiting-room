@@ -6,7 +6,29 @@ const Paragraphs = ({ paragraphs, setModal }) => {
   return (
     <div className="paragraph-wrap">
       {paragraphs.map((paragraph, idx) => {
-        if (paragraph.element === "p") {
+        if (paragraph.element === "h2") {
+          return (
+            <div className="fadein">
+              <h2
+                key={`paragraph-${idx}`}
+                style={{ color: "black", textAlign: "center" }}
+              >
+                {paragraph.content}
+              </h2>
+              <div
+                key={`paragraph-${idx}`}
+                className="paragraph"
+                style={{
+                  color: "black",
+                  textAlign: "center",
+                  marginTop: "20px",
+                }}
+              >
+                <p>{paragraph.subcontent}</p>
+              </div>
+            </div>
+          )
+        } else if (paragraph.element === "p") {
           return (
             <div key={`paragraph-${idx}`} className="paragraph">
               {paragraph.content}

@@ -1,11 +1,11 @@
 .timeline-steps {
   position: fixed;
-  top: calc(50% - 60px);
-  right: calc(50% - 350px);
+  left: calc(50% - 200px);
+  bottom: 30px;
   height: 70px;
   display: flex;
   flex: 1;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
   background: none;
   z-index: 11;
@@ -77,7 +77,7 @@
   width: 10px;
   height: 10px;
   margin: 6px 3px;
-  background: var(--clr-primary);
+  background: var(--clr-black);
   transition: width 1.2s, height 1.2s, margin 1.2s;
 }
 

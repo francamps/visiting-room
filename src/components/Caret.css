@@ -41,6 +41,11 @@ svg:hover polygon {
   background-color: var(--clr-primary);
 }
 
+.caret.black:before,
+.caret.black:after {
+  background-color: var(--clr-black);
+}
+
 .caret:before {
   transform: rotate(35deg) translate(0px, -8px);
 }

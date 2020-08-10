@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useInView } from "react-intersection-observer"
+//import { useInView } from "react-intersection-observer"
 
 import Paragraphs from "./Paragraphs"
 import TimelineFigure from "./TimelineFigure"
@@ -9,19 +9,20 @@ import Caret from "./Caret"
 const THRESHOLD = 0.25
 
 const TimelineStepCopy = ({
-  timelineStep,
-  step,
+  section,
   setStep,
   setModal,
   setFigureActive,
   setAngolite,
+  step,
+  timelineStep,
   isLastStep,
 }) => {
   const imagePlacement = timelineStep.imagePlacement
-  const [ref, inView, entry] = useInView({ threshold: 0.7 })
+  //const [ref, inView, entry] = useInView({ threshold: 0.7 })
   const [active, setActive] = useState(false)
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (inView) {
       setStep(+step)
       setActive(true)
@@ -29,7 +30,9 @@ const TimelineStepCopy = ({
       setActive(false)
     }
     return
-  }, [inView])
+  }, [inView])*/
+
+  console.log(section)
 
   return (
     <div
@@ -37,41 +40,23 @@ const TimelineStepCopy = ({
       className="timeline-step"
       data-step={`step-${step}`}
       style={{ position: "relative" }}
-      ref={ref}
+      ref={null /*ref*/}
     >
-      <TimelineStepTitle
-        title={timelineStep.title}
-        year={timelineStep.year}
-        active={active}
-      />
+      {section.title && (
+        <TimelineStepTitle
+          title={section.title}
+          year={section.year}
+          active={active}
+        />
+      )}
       <div className="step-content">
-        {imagePlacement && imagePlacement === "top" && (
-          <div className="step-content-figure">
-            <TimelineFigure
-              step={step}
-              caption={timelineStep.caption}
-              images={timelineStep.images}
-              imageStyle={timelineStep.imageStyle}
-              setFigureActive={setFigureActive}
-              setAngolite={setAngolite}
-            />
-          </div>
-        )}
-        <div className={`step-${step} step-columns`}>
-          <Paragraphs
-            paragraphs={timelineStep.paragraphs}
-            setModal={setModal}
-          />
-        </div>
-        {imagePlacement && imagePlacement === "bottom" && (
-          <div className="step-content-figure">
-            <TimelineFigure
-              step={step}
-              caption={timelineStep.caption}
-              images={timelineStep.images}
-              imageStyle={timelineStep.imageStyle}
-              setFigureActive={setFigureActive}
-              setAngolite={setAngolite}
+        {!section.title && section.paragraphs && (
+          <div className={`step-${step} step-columns`}>
+            <Paragraphs
+              paragraphs={
+                section ? section.paragraphs : timelineStep.paragraphs
+              }
+              setModal={setModal}
             />
           </div>
         )}

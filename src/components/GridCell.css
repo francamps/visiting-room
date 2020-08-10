@@ -126,8 +126,8 @@
 }
 
 .grid-cell.hovered .cell-hover-layer {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0px);
   transition: backdrop-filter 1.2s, background-color 1.2s;
   transition-delay: 0.4s;
 }
@@ -150,6 +150,7 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  margin-bottom: var(--space-around-med);
 }
 
 .grid-cell .cell-hover-quote .word-wrapper {

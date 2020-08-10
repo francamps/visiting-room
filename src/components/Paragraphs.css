@@ -17,13 +17,14 @@
   font-family: "GTPressura";
   font-size: var(--font-small);
   position: relative;
-  width: 20px;
-  height: 28px;
+  width: 12px;
+  height: 20px;
   padding-left: 2px;
+  transform: translate(0px, -10px);
 }
 
 .step-content .paragraph.reference {
-  font-size: var(--font-copy);
+  font-size: var(--font-small);
   list-style: none;
 }
 
@@ -42,5 +43,16 @@
 
   .step-content .paragraph li {
     word-break: break-all;
+  }
+
+  .timeline .hover-link {
+    font-family: "GTPressura";
+    font-size: var(--font-copy);
+    line-height: var(--copy-copy);
+  }
+
+  .step-content .paragraph.ref {
+    width: 10px;
+    height: 12px;
   }
 }

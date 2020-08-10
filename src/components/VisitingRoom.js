@@ -18,13 +18,17 @@ const VisitingRoom = ({ loading, profiles, images }) => {
   const [fadeout, setFadeOut] = useState(false)
   const [showGrid, setShowGrid] = useState(false)
 
-  // TODO: Save in localStore once viewed, and pull from there
   const [showIntro, setShowIntro] = useState(
     typeof window !== "undefined" &&
       window.localStorage.getItem("showIntro") === "false"
       ? false
       : true
   )
+
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      window.localStorage.setItem("showIntro", showIntro)
+  }, [showIntro])
 
   useEffect(() => {
     let timer1 = setTimeout(() => setFadeOut(true), 3000)
@@ -46,6 +50,10 @@ const VisitingRoom = ({ loading, profiles, images }) => {
       }
     }
   }, [fadeout])
+
+  const profile = profiles.find(
+    p => p.full_name[0].text.toLowerCase().replace(/ /g, "_") === profileId
+  )
 
   return (
     <div
@@ -69,7 +77,10 @@ const VisitingRoom = ({ loading, profiles, images }) => {
           />
         </>
       ) : (
-        <Video profileId={profileId} name={"Arthur Carter"} />
+        <Video
+          profileId={profileId}
+          name={profile && profile.full_name && profile.full_name[0].text}
+        />
       )}
       {showIntro && <VisitingRoomIntro setShowIntro={setShowIntro} />}
     </div>

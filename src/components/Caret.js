@@ -2,10 +2,10 @@ import React from "react"
 
 import "./Caret.css"
 
-const Caret = ({ onClick, primary }) => {
+const Caret = ({ onClick, primary, black }) => {
   return (
     <button
-      className={`caret ${primary && "primary"}`}
+      className={`caret ${primary && "primary"} ${black && "black"}`}
       onClick={onClick}
     ></button>
   )

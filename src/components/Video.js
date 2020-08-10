@@ -5,17 +5,18 @@ import CrossClose from "./CrossClose"
 import "./Video.css"
 import VideoPlayer from "./VideoPlayer"
 
+import { videos } from "../content/videoRegistry"
+
 const Video = ({ name, profileId, setView }) => {
   //const [isViewed, setViewed] = useState(false)
   //const [source, setSource] = useState(imageSrc)
   //const [showInfo, setShowInfo] = useState(false)
 
+  console.log(videos, name, videos[name])
+
   return (
     <div className="video-wrap">
-      <VideoPlayer
-        videoSrcURL="https://vimeo.com/394804722"
-        videoTitle="Kantau"
-      />
+      <VideoPlayer videoSrcURL={videos[name]} videoTitle="" />
       <div
         style={{
           position: "fixed",
@@ -23,7 +24,7 @@ const Video = ({ name, profileId, setView }) => {
           right: 20,
         }}
         onClick={() => {
-          navigate("/?visiting=true")
+          navigate("/visiting-room")
         }}
       >
         <CrossClose />

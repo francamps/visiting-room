@@ -28,7 +28,6 @@
 
 .timeline-frame {
   border-radius: 4px;
-  overflow: auto;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -42,8 +41,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100%;
-  margin-bottom: 170px;
+  max-height: 100%;
+  /* margin-bottom: 170px; */
   transform: translate3d(0, 0, 0);
 }
 
@@ -83,7 +82,7 @@
   position: relative;
   overflow: auto;
   padding: 0px 20px 20px;
-  max-width: 620px;
+  width: 480px;
   opacity: 0;
 
   -webkit-animation: fadeindown 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
@@ -258,16 +257,16 @@ TIMELINE TEXT STUFF
 @media (max-width: 767px) {
   .timeline-frame {
     border-radius: 4px;
-    top: 60px;
+    top: 0px;
     left: 0px;
     right: 0px;
     bottom: 0px;
   }
 
-  .timeline-step {
+  /*.timeline-step {
     position: relative;
     padding: 0 0px;
-  }
+  }*/
 
   .step-content {
     padding: 0;
@@ -277,7 +276,7 @@ TIMELINE TEXT STUFF
 
   .step-content {
     width: 100%;
-    padding: 0;
+    padding: 0 20px;
     box-sizing: border-box;
     margin: 0 auto;
     overflow: auto;
@@ -317,4 +316,30 @@ TIMELINE TEXT STUFF
     bottom: -3px;
     height: 3px;
   }
+}
+
+/**
+
+FULLPAGE
+
+**/
+
+.fp-controlArrow.fp-prev {
+  visibility: hidden;
+  left: 15px !important;
+  width: 0 !important;
+  border-width: 18.5px 16px 18.5px 0 !important;
+  border-color: transparent #fff transparent transparent !important;
+}
+
+.fp-controlArrow.fp-next {
+  visibility: hidden;
+  right: 15px !important;
+  width: 0 !important;
+  border-width: 18.5px 0 18.5px 16px !important;
+  border-color: transparent transparent transparent #fff !important;
+}
+
+#fp-nav.fp-left {
+  left: 0 !important;
 }

@@ -1,13 +1,15 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
-
 import ReactPlayer from "react-player"
-import GridCellBackground from "./GridCellBackground"
 
-import "./GridCell.css"
+import GridCellBackground from "./GridCellBackground"
 import Play from "./Play"
 
-const videos = [
+import "./GridCell.css"
+
+import { videos } from "../content/videoRegistry"
+
+const videosBackground = [
   "https://vimeo.com/422151517",
   "https://vimeo.com/422151534",
   "https://vimeo.com/422151556",
@@ -47,13 +49,17 @@ const GridCell = ({
       onClick={() => {
         const profileUri = fullName.toLowerCase().replace(/ /g, "_")
         setProfile(profileUri)
-        navigate(`/visiting-room/?profile=${profileUri}`)
+        videos[fullName] && navigate(`/visiting-room/?profile=${profileUri}`)
       }}
     >
       {isHover && (
         <div className="gridimage-video visible">
           <ReactPlayer
-            url={`${[videos[Math.floor(Math.random() * videos.length)]]}`}
+            url={`${[
+              videosBackground[
+                Math.floor(Math.random() * videosBackground.length)
+              ],
+            ]}`}
             className="react-player"
             playing={true}
             width="130%"
@@ -91,11 +97,14 @@ const GridCell = ({
               <div className="word">"</div>
             </div>
           </div>
-          <p className="name">{fullName}</p>
-          <Play />
+          {videos[fullName] ? (
+            <Play />
+          ) : (
+            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
+          )}
         </div>
       )}
-      {null /*<h3 className="name-tag">{fullName}</h3>*/}
+      <h3 className="name-tag">{fullName}</h3>
     </div>
   )
 }
