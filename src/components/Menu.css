@@ -1,30 +1,27 @@
 .menu {
-  position: fixed;
-  left: 0;
-  top: 20px;
   padding: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   z-index: 12;
   cursor: pointer;
   color: var(-clr-white);
   opacity: 0.7;
-  transition: background-color 1.2s, opacity 1.2s;
+  transition: background-color 0.4s, opacity 0.4s;
 }
 
 .menu.fadein {
-  -webkit-animation: fadein 1.2s forwards;
-  -moz-animation: fadein 1.2s forwards;
-  -ms-animation: fadein 1.2s forwards;
-  -o-animation: fadein 1.2s forwards;
-  animation: fadein 1.2s forwards;
+  -webkit-animation: fadein 0.4s forwards;
+  -moz-animation: fadein 0.4s forwards;
+  -ms-animation: fadein 0.4s forwards;
+  -o-animation: fadein 0.4s forwards;
+  animation: fadein 0.4s forwards;
 }
 
 .menu:hover {
   opacity: 1;
-  transition: opacity 1.2s;
+  transition: opacity 0.4s;
 }
 
 .menu.menu-light {
@@ -32,22 +29,21 @@
 }
 
 .menu-options {
-  cursor: pointer;
-  width: 550px;
+  width: 100%;
   height: 100vh;
-  left: -550px;
   position: fixed;
+  top: 0;
   display: flex;
-  padding-left: 20px;
   z-index: 11;
   flex-direction: column;
   justify-content: center;
   opacity: 0;
-  transition: opacity 1.2s, left 1.2s;
+  transition: opacity 0.4s, left 0.4s;
+  cursor: pointer;
 }
 
 .menu-options.open {
-  left: 50px;
+  left: 0;
   opacity: 1;
 }
 
@@ -63,7 +59,7 @@
   letter-spacing: normal;
   line-height: 1em;
   cursor: pointer;
-  transition: letter-spacing 1.2s, color 1.2s;
+  transition: letter-spacing 0.4s, color 0.4s;
 }
 
 .menu-options.menu-light a {
@@ -73,7 +69,7 @@
 .menu-options a:hover {
   /*color: var(--clr-primary);*/
   letter-spacing: 0.02em;
-  transition: letter-spacing 1.2s, color 1.2s;
+  transition: letter-spacing 0.4s, color 0.4s;
 
   -webkit-animation: rotatingColor 20s ease infinite;
   -moz-animation: rotatingColor 20s ease infinite;
@@ -82,43 +78,28 @@
   animation: rotatingColor 20s ease infinite;
 }
 
-.menu .home-title {
-  font-family: "EB Garamond";
-  display: inline-block;
-  width: 200px;
-  background: none;
-  z-index: 12;
-  font-size: var(--font-copy-timeline);
-  margin: -3px 0 10px 0px;
-  transition: color 0.4s;
-}
-
-.menu .home-title.open {
-  color: var(--clr-off-white);
-  transition: color 0.4s;
-}
-
 .menu-backdrop {
   position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
   left: 0;
+  bottom: 100%;
   backdrop-filter: blur(0);
   z-index: -1;
-  transition: backdrop-filter 1.2s, z-index 0.5s step-end, background-color 1.2s;
+  transition: backdrop-filter 0.4s, z-index 0.5s step-end, background-color 0.4s,
+    bottom 0.01s ease 2s;
 }
 
 .menu-backdrop.menu-backdrop-on {
-  /*backdrop-filter: blur(50px);*/
+  bottom: 0;
   backdrop-filter: blur(0px);
   z-index: 10;
-  transition: backdrop-filter 1.2s;
+  transition: backdrop-filter 0.4s;
 }
 
 .menu-backdrop.menu-backdrop-on {
   background-color: rgba(0, 0, 0, 0.9);
-  transition: background-color 1.2s;
+  transition: background-color 0.4s;
 }
 
 /* if backdrop support: very transparent and blurred */
@@ -140,12 +121,20 @@ MENU LINKS
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  justify-content: center;
   margin: 0 0 15px;
 }
 
 .menu-option-wrap .hover-link {
   transition: all 0.2s ease-in-out;
   position: relative;
+}
+
+.menu-option-wrap .hover-link-intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: var(--space-around-xsmall);
 }
 
 .menu-option-wrap .hover-link:after {
@@ -181,15 +170,12 @@ MENU LINKS
     top: 21px;
   }
 
-  .menu .home-title {
-    font-size: 1.5em;
-    margin: 0;
-    margin-left: -9px;
+  .menu-options {
+    left: 100%;
   }
 
   .menu-options.open {
-    left: 20px;
-    width: calc(100% - 40px);
+    width: 100%;
   }
 
   .menu-options a {

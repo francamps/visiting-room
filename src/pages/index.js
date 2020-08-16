@@ -1,11 +1,11 @@
 import React from "react"
 
 import Layout from "../components/Layout"
-import Home from "../components/Home"
+import Home from "../components/Home/Home"
 
 import useProfiles from "../utils/useProfiles"
 
-const IndexPage = (props) => {
+const IndexPage = props => {
   const { fetchProps: loading, profiles, images } = useProfiles(props)
 
   return (

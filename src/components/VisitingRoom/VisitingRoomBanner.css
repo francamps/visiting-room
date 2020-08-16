@@ -1,0 +1,55 @@
+.visting-room-banner {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 50px 20px;
+  transition: align-items 1.2s, width 1.2s, height 1.2s;
+  background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
+}
+
+.visting-room-banner.in-grid {
+  height: auto;
+  padding: 35px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
+  justify-content: start;
+}
+
+.visiting-room-entry-text p {
+  font-family: "EB Garamond", serif;
+  transition: font-size 1.2s;
+  font-size: var(--font-copy-timeline);
+  text-align: center;
+
+  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
+  -ms-animation: fadein 4s forwards; /* Internet Explorer */
+  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
+  animation: fadein 4s forwards;
+}
+
+.fadeout .visiting-room-entry-text p {
+  font-family: "EB Garamond", serif;
+  transition: font-size 1.2s;
+  font-size: var(--font-copy-timeline);
+  text-align: center;
+
+  -webkit-animation: fadeout 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 1.2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeout 1.2s forwards; /* Internet Explorer */
+  -o-animation: fadeout 1.2s forwards; /* Opera < 12.1 */
+  animation: fadeout 1.2s forwards;
+}
+
+@media (max-width: 767px) {
+  .visiting-room-entry-text {
+    margin: 0 40px;
+  }
+}

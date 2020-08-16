@@ -1,0 +1,75 @@
+.actions .view-options p,
+.actions .sorting-options p {
+  width: 60px;
+  margin: 0;
+  cursor: pointer;
+  font-size: var(--font-small);
+  transition: color 0.4s;
+  text-align: center;
+}
+
+.actions .view-options {
+  width: 60px;
+  height: 20px;
+}
+
+.actions .search-trigger {
+  width: 30px;
+}
+
+.actions .view-options p:hover,
+.actions .sorting-options p:hover {
+  color: var(--clr-primary);
+  transition: color 0.4s;
+}
+
+.actions .sorting-options {
+  width: 50px;
+}
+
+.actions .sorting-options .surface {
+  height: 20px;
+  overflow: hidden;
+}
+
+.actions .sorting-options.open .surface {
+  overflow: visible;
+}
+
+.actions .sorting-options .options-menu {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  height: 0;
+  right: 0;
+}
+
+.actions .sorting-options .options-menu p {
+  height: 24px;
+  width: 120px;
+  padding: 10px 0 10px 10px;
+  border-bottom: 1px solid rgba(var(--clr-white-rgb), 0.2);
+  text-align: left;
+  background-color: var(--clr-black);
+}
+
+.actions .sorting-options.open .options-menu {
+  visibility: visible;
+  height: inherit;
+}
+
+.actions p.active {
+  font-weight: 700;
+}
+
+.actions .search-trigger {
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .archive.view-options {
+    display: none;
+  }
+}

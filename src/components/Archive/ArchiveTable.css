@@ -1,0 +1,170 @@
+.archive table {
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  box-sizing: border-box;
+  height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "GTPressura";
+  border-left: 1px solid var(--clr-off-white);
+  border-right: 1px solid var(--clr-off-white);
+}
+
+.archive table tr {
+  height: 40px;
+  line-height: 40px;
+  background-color: rgba(var(--clr-black-rgb), 0);
+  transition: background-color 0.4s, height 1s;
+  cursor: pointer;
+}
+
+.archive table tr:hover {
+  background-color: rgba(var(--clr-black-rgb), 0.1);
+  transition: background-color 0.4s;
+}
+
+.archive table tbody {
+  flex: 1;
+  scrollbar-width: 5px;
+  scrollbar-color: var(--clr-primary) var(--clr-white);
+}
+
+/**
+!!!!!! TODO !!!!!
+THIS IS NOT STANDARD
+REPLACE WITH A SCROLLBAR STYLING LIBRARY
+**/
+.archive table tbody::-webkit-scrollbar {
+  width: 11px;
+}
+.archive table tbody::-webkit-scrollbar-track {
+  background: var(--clr-black);
+}
+.archive table tbody::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: 6px;
+  border: 3px solid var(--clr-white);
+}
+/**
+^^^^^
+!!!!!! TODO !!!!!
+THIS IS NOT STANDARD
+REPLACE WITH A SCROLLBAR STYLING LIBRARY
+**/
+
+.archive table thead tr {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid var(--clr-white);
+  border-bottom: 1px solid var(--clr-white);
+}
+
+.archive table thead tr th {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 0 20px 0 20px;
+  background-color: rgba(var(--clr-black-rgb, 1));
+  color: var(--clr-white);
+}
+
+.archive table thead th.play {
+  flex: none;
+  width: 50px;
+  padding: 0 30px 0 20px;
+}
+
+.archive table thead tr th span {
+  height: 12px;
+  line-height: 12px;
+  text-transform: none;
+  font-weight: normal;
+  font-size: var(--font-xsmall);
+}
+
+.archive table tbody {
+  overflow: auto;
+  height: 100%;
+}
+
+.archive table tbody tr {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--clr-white);
+}
+
+.archive table tbody tr {
+  height: 40px;
+  background-color: none;
+  transition: background-color 1s, height 1s;
+}
+
+.archive table tbody tr.open {
+  height: 100px;
+  background-color: rgba(var(--clr-black-rgb), 1);
+  transition: background-color 1s, height 1s;
+}
+
+.archive table tbody tr.hovered {
+  background-color: rgba(var(--clr-black-rgb), 1);
+  transition: background-color 1s;
+}
+
+.archive table tbody tr td {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--clr-white);
+  text-overflow: ellipsis;
+  color: var(--clr-white);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.archive table tbody tr td.play {
+  flex: none;
+  width: 60px;
+}
+
+.archive table tbody tr td.play p {
+  white-space: normal;
+  margin: 0;
+  line-height: 1rem;
+}
+
+.archive table tbody tr td .gatsby-image-wrapper {
+  position: absolute !important;
+  top: 10px !important;
+  bottom: 10px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 100%;
+}
+
+.archive table tbody tr td .gatsby-image-wrapper img {
+  filter: brightness(0.9) contrast(120%) saturate(100%);
+}
+
+.archive table tbody tr td .gatsby-image-wrapper {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.archive table tbody tr td .gatsby-image-wrapper:first-child {
+  opacity: 1;
+}
+
+.archive table tbody tr.hovered .gatsby-image-wrapper:last-child {
+  -webkit-animation: fadein 2s alternate infinite ease-in-out;
+  -moz-animation: fadein 2s alternate infinite ease-in-out;
+  -ms-animation: fadein 2s alternate infinite ease-in-out;
+  -o-animation: fadein 2s alternate infinite ease-in-out;
+  animation: fadein 2s alternate infinite ease-in-out;
+}

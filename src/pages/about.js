@@ -6,7 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
 import Layout from "../components/Layout"
-import Menu from "../components/Menu"
+import Header from "../components/Header"
 import Map from "../components/charts/Map"
 
 import "../components/About.css"
@@ -76,7 +76,7 @@ const About = () => {
 
           return (
             <section className="about">
-              <Menu />
+              <Header />
               <div className="copy-wrap" style={{ padding: "100px 0" }}>
                 <h2 className="title">{title}</h2>
                 <Tabs

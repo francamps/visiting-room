@@ -12,7 +12,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
   // Create a page for each person.
   createPage({
     path: `/visiting-room/:profileId`,
-    component: path.resolve("./src/components/VisitingRoom.js"),
+    component: path.resolve("./src/components/VisitingRoom/VisitingRoom.js"),
   })
 }
 

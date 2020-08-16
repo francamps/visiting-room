@@ -3,7 +3,6 @@ import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
 import Play from "./Play"
-import Socials from "./Socials"
 
 import "./Menu.css"
 
@@ -14,9 +13,6 @@ const Menu = ({
   setMenuExpanded,
   hideTitle,
 }) => {
-  const params = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  )
   const [isBurgerOpen, setBurgerOpen] = useState(false)
 
   useEffect(() => {
@@ -24,7 +20,7 @@ const Menu = ({
   }, [isMenuExpanded])
 
   return (
-    <div>
+    <div style={{ width: "20px", marginLeft: "20px" }}>
       <div
         className={`menu
           ${theme === "light" ? "menu-light" : ""}
@@ -32,15 +28,6 @@ const Menu = ({
         `}
       >
         <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
-        {isBurgerOpen ||
-          (!hideTitle && (
-            <h2
-              className={`home-title ${isBurgerOpen ? "open" : ""}`}
-              onClick={() => navigate("/")}
-            >
-              The Visiting Room
-            </h2>
-          ))}
       </div>
       <div
         className={`menu-backdrop ${isBurgerOpen ? "menu-backdrop-on" : ""}`}
@@ -69,13 +56,7 @@ const Menu = ({
         <div className="menu-option-wrap">
           <Link
             to="/visiting-room"
-            className="hover-link"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              marginLeft: "var(--space-around-xsmall)",
-            }}
+            className="hover-link hover-link-intro"
             onClick={() => {
               if (typeof window !== "undefined")
                 window.localStorage.setItem("showIntro", "true")
@@ -102,8 +83,6 @@ const Menu = ({
             About the project
           </Link>
         </div>
-
-        {null /*<Socials />*/}
       </div>
     </div>
   )

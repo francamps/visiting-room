@@ -10,7 +10,6 @@ const Burger = ({ isBurgerOpen, setBurgerOpen }) => (
     }}
     style={{
       height: "25px",
-      marginLeft: "20px",
     }}
   >
     <div className="burger-inner"></div>

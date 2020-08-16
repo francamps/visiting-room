@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from "react"
 import { get as getValue } from "lodash"
 import { graphql } from "gatsby"
 
-import Archive from "../components/Archive"
+import Archive from "../components/Archive/Archive"
 import Layout from "../components/Layout"
 
 import profileReducer from "../utils/profileReducer"

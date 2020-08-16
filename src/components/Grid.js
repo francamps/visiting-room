@@ -3,7 +3,6 @@ import React from "react"
 import GridCell from "./GridCell"
 
 import "./Grid.css"
-import "./HomeVideo.css"
 
 import getProfileProps from "../utils/getProfileProps"
 import { videos } from "../content/videoRegistry"
