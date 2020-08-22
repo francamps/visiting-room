@@ -18,7 +18,6 @@
   top: 20px;
   font-family: "EB Garamond";
   display: inline-block;
-  width: 200px;
   background: none;
   z-index: 12;
   margin: -3px 0 10px 0px;
@@ -107,6 +106,32 @@
 
 /* */
 
+.home-title-wrap .home-title:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 4px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 1.2s;
+  opacity: 1;
+  background-color: var(--clr-white);
+  right: 0%;
+}
+
+.home-title-wrap:hover .home-title:after {
+  width: 100%;
+  opacity: 1;
+  height: 4px;
+  /*background-color: var(--clr-primary);*/
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+}
+
 @media (max-width: 767px) {
   .header .home-title {
     font-size: 1.5em;
@@ -117,7 +142,7 @@
     line-height: 1em;
   }
 
-  .header .actions {
+  .archive-wrap .header .actions {
     display: grid;
     top: 20px;
     grid-template-columns: 60px 30px;

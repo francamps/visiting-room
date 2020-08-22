@@ -26,6 +26,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
                   : i < current
                   ? 1
                   : -0.6 + (120 - i) / (120 - current),
+              transition: `opacity 4s`,
             }}
           />
         )

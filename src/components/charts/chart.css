@@ -61,7 +61,7 @@ text.year {
 
 text.yearComs {
   fill: black;
-  text-anchor: end;
+  text-anchor: middle;
   font-family: "GTPressura";
   font-weight: 300;
   font-size: var(--font-xsmall);
@@ -90,9 +90,10 @@ line.line-coms {
   opacity: 0.5;
 }
 
-text.labelComs {
+text.labelComsName,
+text.labelComsValue {
   fill: black;
-  text-anchor: end;
+  text-anchor: middle;
   font-family: "GTPressura";
   font-weight: 300;
   opacity: 0.75;

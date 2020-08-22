@@ -35,8 +35,28 @@
   height: 6px;
   top: 0;
   box-sizing: border-box;
-  background: var(--clr-primary);
+  /*background: var(--clr-primary);*/
   transition: width 1s linear;
+}
+
+.progress-bar-label {
+  background: rgba(var(--clr-white-rgb), 0.5);
+  height: 20px;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  position: absolute;
+  top: -22px;
+  color: var(--clr-white);
+  font-family: GTEesti;
+  text-align: center;
+  font-size: var(--font-small);
+  opacity: 0;
+  transition: opacity 0.4s, left 0.4s;
+}
+
+.video-wrap .controls .progress-bar:hover .progress-bar-label {
+  opacity: 1;
+  transition: opacity 0.4s, left 0.4s;
 }
 
 .video-wrap .controls .actions {
@@ -78,7 +98,7 @@
   background: rgba(255, 255, 255, 0.7);
 }
 
-.play-wrap {
+.action-wrap {
   margin-bottom: 3px;
   margin-left: -10px;
   height: 12px;

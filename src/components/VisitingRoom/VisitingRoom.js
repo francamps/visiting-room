@@ -82,6 +82,7 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
         <Video
           profileId={profileId}
           name={profile && profile.full_name && profile.full_name[0].text}
+          color={profile && profile.color}
           onClose={() => setProfile(null)}
         />
       )}

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
+import { useMediaQuery } from "react-responsive"
 
 import Years from "../charts/years"
-import Play from "../Play"
+import Play from "../Symbols/Play"
 
 import getProfileProps from "../../utils/getProfileProps"
 
@@ -10,25 +11,163 @@ import { videos } from "../../content/archiveRegistry"
 
 import "./ArchiveTable.css"
 
-const columns = [
+const columnsDesktop = [
   { key: "full_name", label: "Full Name" },
   { key: "picture", label: "" },
   { key: "years", label: "" },
   { key: "current_age", label: "Current Age" },
   { key: "age_at_offense", label: "Age at offense" },
   { key: "offense_date", label: "Year Incarcerated" },
+  { key: "video", label: "" },
+]
+
+const columnsMobile = [
+  { key: "full_name", label: "Name" },
+  { key: "information", label: "" },
+  { key: "video", label: "" },
 ]
 
 const USE_PRISMIC = true
 
 const ArchiveTable = ({ profiles, images, setProfile }) => {
   const [hoveredRow, setHover] = useState(null)
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+
+  if (isTabletOrMobile) {
+    return (
+      <table className="isCompact">
+        <thead>
+          <tr>
+            {columnsMobile.map(column => (
+              <th key={`header-${column.key}`}>{column.label}</th>
+            ))}
+            <th className="play" />
+          </tr>
+        </thead>
+        <tbody>
+          {profiles.map((profile, profileIdx) => {
+            const {
+              image,
+              oldImage,
+              fullName,
+              date_of_offense,
+              age_at_offense,
+              current_age,
+              deceased_date,
+            } = getProfileProps(profile, images, USE_PRISMIC)
+
+            return (
+              <tr
+                key={`archive-table-row-${profileIdx}`}
+                onMouseEnter={() => {
+                  setHover(profileIdx)
+                }}
+                onMouseLeave={() => {
+                  setHover(null)
+                }}
+                className={`open ${
+                  hoveredRow === profileIdx ? "hovered" : ""
+                } isCompact`}
+              >
+                <td style={{ display: "block" }}>
+                  <p>{fullName}</p>
+                  <div
+                    style={{
+                      position: "relative",
+                      height: "100%",
+                    }}
+                  >
+                    {image && image.node && (
+                      <Img
+                        alt={"TODO: NEEDS AN ALT"}
+                        fluid={image.node.childImageSharp.fluid}
+                        imgStyle={{
+                          objectFit: "cover",
+                          visibility: "visible",
+                        }}
+                      />
+                    )}
+                    {oldImage && oldImage.node && (
+                      <Img
+                        alt={"TODO: NEEDS AN ALT"}
+                        fluid={oldImage.node.childImageSharp.fluid}
+                        imgStyle={{
+                          objectFit: "cover",
+                          visibility: "visible",
+                        }}
+                      />
+                    )}
+                  </div>
+                </td>
+                <td>
+                  {hoveredRow === profileIdx && (
+                    <Years
+                      color={"white"}
+                      incarcerated={age_at_offense}
+                      current={current_age}
+                      deceased_date={deceased_date}
+                    />
+                  )}
+
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "var(--font-xsmall)",
+                      height: "20px",
+                    }}
+                  >
+                    Years incarcerated:
+                    <span
+                      style={{
+                        color: "var(--clr-primary)",
+                        whiteSpace: "pre",
+                      }}
+                    >{` ${current_age - age_at_offense}`}</span>
+                  </p>
+                  {deceased_date && (
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: "var(--font-xsmall)",
+                        height: "20px",
+                      }}
+                    >{`Deceased on ${deceased_date}`}</p>
+                  )}
+                  <p>{`Current age: ${current_age}`}</p>
+                  <p>{`Age at offense: ${age_at_offense}`}</p>
+                  <p>{`Year of incarceration: ${date_of_offense}`}</p>
+                </td>
+                {videos[fullName] ? (
+                  <td className="play">
+                    <Play
+                      size="medium"
+                      color={"white"}
+                      onClick={() => {
+                        const profileUri = fullName
+                          .toLowerCase()
+                          .replace(/ /g, "_")
+                        setProfile(profileUri)
+                      }}
+                    />
+                  </td>
+                ) : (
+                  <td className="play">
+                    <p>N/A</p>
+                  </td>
+                )}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    )
+  }
 
   return (
     <table>
       <thead>
         <tr>
-          {columns.map(column => (
+          {columnsDesktop.map(column => (
             <th key={`header-${column.key}`}>
               {column.label}
               {column.key === "years" ? (
@@ -80,7 +219,6 @@ const ArchiveTable = ({ profiles, images, setProfile }) => {
                 <div
                   style={{
                     position: "relative",
-                    padding: "10px 0",
                     height: "100%",
                   }}
                 >
@@ -148,7 +286,7 @@ const ArchiveTable = ({ profiles, images, setProfile }) => {
                 <td className="play">
                   <Play
                     size="medium"
-                    color={"black"}
+                    color={"white"}
                     onClick={() => {
                       const profileUri = fullName
                         .toLowerCase()

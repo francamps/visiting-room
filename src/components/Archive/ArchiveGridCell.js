@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
 
-import Play from "../Play"
+import Play from "../Symbols/Play"
 import GridCellBackground from "../GridCellBackground"
 import getProfileProps from "../../utils/getProfileProps"
 

@@ -36,6 +36,7 @@ const TimelineStepCopy = ({
         {!section.title && section.paragraphs && (
           <div className={`step-${step} step-columns`}>
             <Paragraphs
+              step={step}
               paragraphs={
                 section ? section.paragraphs : timelineStep.paragraphs
               }

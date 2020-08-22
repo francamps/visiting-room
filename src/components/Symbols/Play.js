@@ -1,12 +1,6 @@
 import React, { useState } from "react"
 
-const Play = ({
-  size,
-  onClick,
-  useCircle = true,
-  doHover,
-  color = "#ffffff",
-}) => {
+const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
   const [isHover, setHover] = useState(doHover)
   let viewBox = "0 0 24 24"
   let width = "24px"

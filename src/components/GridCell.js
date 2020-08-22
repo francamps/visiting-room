@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
 import ReactPlayer from "react-player"
+import { useInView } from "react-intersection-observer"
+import { useMediaQuery } from "react-responsive"
 
 import GridCellBackground from "./GridCellBackground"
-import Play from "./Play"
+import Play from "./Symbols/Play"
 
 import "./GridCell.css"
 
@@ -32,6 +34,11 @@ const GridCell = ({
   color,
 }) => {
   const [isHover, setHover] = useState(false)
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0.5,
+  })
 
   if (!image) {
     return null
@@ -39,7 +46,10 @@ const GridCell = ({
 
   return (
     <div
-      className={`grid-cell ${isHover ? "hovered" : ""}`}
+      className={`grid-cell ${
+        isHover || (isTabletOrMobile && inView) ? "hovered" : ""
+      }`}
+      ref={ref}
       onMouseEnter={() => {
         setHover(true)
       }}

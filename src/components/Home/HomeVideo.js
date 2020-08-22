@@ -35,11 +35,14 @@ const HomeVideo = ({ setMenuExpanded }) => {
         className="react-player fullscreen-bg__video"
         playing={true}
         controls={false}
+        muted={true}
         config={{
           vimeo: {
-            iframeParams: { fullscreen: 0 },
-            autoplay: true,
-            playsinline: true,
+            playerOptions: {
+              playsinline: 1,
+              muted: 1,
+              autoplay: 1,
+            },
           },
         }}
         onReady={() => {

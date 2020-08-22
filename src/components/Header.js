@@ -9,8 +9,10 @@ const Header = ({ title, hideTitle, subtitle, actions, theme }) => {
   return (
     <div className={`header ${theme}`}>
       {!hideTitle && (
-        <div className="home-title">
-          <h2 onClick={() => navigate("/")}>The Visiting Room</h2>
+        <div className="home-title-wrap">
+          <div className="home-title">
+            <h2 onClick={() => navigate("/")}>The Visiting Room</h2>
+          </div>
         </div>
       )}
 

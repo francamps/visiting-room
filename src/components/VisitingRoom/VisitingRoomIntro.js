@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react"
 import ReactPlayer from "react-player"
 
-import Play from "../Play"
+import Play from "../Symbols/Play"
+import Pause from "../Symbols/Pause"
+import Loading from "../Loading"
 
 import "./VisitingRoomIntro.css"
 
@@ -16,6 +18,7 @@ const getStringTime = seconds => {
 
 const VisitingRoomintro = ({ setShowIntro }) => {
   const playerRef = useRef()
+  const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [progress, setProgress] = useState({
@@ -48,29 +51,58 @@ const VisitingRoomintro = ({ setShowIntro }) => {
       <div className="video-container">
         <div className="intro">
           {isPlaying && (
-            <ReactPlayer
-              ref={playerRef}
-              url={videoSrcURL}
-              className="react-player"
-              playing={isPlaying && !isPaused}
-              width="100%"
-              height="100%"
-              onPause={() => {
-                setPause(true)
-              }}
-              onEnded={() => {
-                // Do something
-                if (typeof window !== "undefined")
-                  window.localStorage.setItem("showIntro", "false")
-                setShowIntro(false)
-              }}
-              onProgress={({ played, playedSeconds }) => {
-                setProgress({
-                  progress: played,
-                  progressSeconds: playedSeconds,
-                })
-              }}
-            />
+            <>
+              <ReactPlayer
+                ref={playerRef}
+                url={videoSrcURL}
+                className="react-player"
+                playing={isPlaying && !isPaused}
+                width="100%"
+                height="100%"
+                onReady={() => {
+                  setLoading(false)
+                  setPlaying(true)
+                }}
+                onPause={() => {
+                  setPause(true)
+                }}
+                onEnded={() => {
+                  // Do something
+                  if (typeof window !== "undefined")
+                    window.localStorage.setItem("showIntro", "false")
+                  setShowIntro(false)
+                }}
+                onProgress={({ played, playedSeconds }) => {
+                  setProgress({
+                    progress: played,
+                    progressSeconds: playedSeconds,
+                  })
+                }}
+                config={{
+                  vimeo: {
+                    playerOptions: {
+                      playsinline: 1,
+                    },
+                  },
+                }}
+              />
+              {isPlaying && isLoading && (
+                <div
+                  style={{
+                    position: "fixed",
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Loading />
+                </div>
+              )}
+            </>
           )}
           {(!isPlaying || (isPlaying && isPaused)) && (
             <div style={{ position: "absolute" }}>
@@ -88,28 +120,6 @@ const VisitingRoomintro = ({ setShowIntro }) => {
         </div>
         {isPlaying && (
           <div className="controls">
-            <div className="play-pause-stop">
-              {isPlaying && !isPaused ? (
-                <div
-                  className="pause"
-                  onClick={() => {
-                    setPause(true)
-                  }}
-                >
-                  <div className="pause-tick" />
-                  <div className="pause-tick" />
-                </div>
-              ) : (
-                <div className="play-wrap">
-                  <Play
-                    onClick={() => {
-                      setPause(false)
-                      setPlaying(true)
-                    }}
-                  />
-                </div>
-              )}
-            </div>
             <div className="progress-bar" ref={barRef} onClick={onSeek}>
               <div className="progress-bar-bg" />
               <div
@@ -119,20 +129,49 @@ const VisitingRoomintro = ({ setShowIntro }) => {
                 }}
               />
             </div>
-            <div className="progress-seconds">
-              <span>{getStringTime(progress.progressSeconds)}</span>
+
+            <div className="actions">
+              <div className="play-pause-stop">
+                {isPlaying && !isPaused ? (
+                  <Pause
+                    useCircle={false}
+                    onClick={() => {
+                      setPause(true)
+                    }}
+                  />
+                ) : (
+                  <div className="play-wrap">
+                    <Play
+                      useCircle={false}
+                      onClick={() => {
+                        setPause(false)
+                        setPlaying(true)
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+              <div
+                className="video-skip"
+                onClick={() => {
+                  console.log("clicking skip")
+                  setShowIntro(false)
+                }}
+              >
+                <p>Skip introduction > </p>
+              </div>
+              {playerRef && playerRef.current && (
+                <div className="progress-seconds">
+                  <span>{`${getStringTime(
+                    progress.progressSeconds
+                  )} / ${getStringTime(
+                    playerRef.current.getDuration()
+                  )}`}</span>
+                </div>
+              )}
             </div>
           </div>
         )}
-      </div>
-      <div
-        className="video-skip"
-        onClick={() => {
-          console.log("clicking skip")
-          setShowIntro(false)
-        }}
-      >
-        <p>Skip introduction > </p>
       </div>
     </div>
   )

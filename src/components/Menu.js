@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
-import Play from "./Play"
+import Play from "./Symbols/Play"
 
 import "./Menu.css"
 
@@ -38,7 +38,7 @@ const Menu = ({
       <div
         className={`menu-options ${isBurgerOpen ? "open" : ""} ${
           theme === "light" ? "menu-light" : ""
-        }`}
+        } ${isBurgerOpen ? "fadein" : ""}`}
         onClick={() => {
           setBurgerOpen(false)
         }}

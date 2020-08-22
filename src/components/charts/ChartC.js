@@ -257,16 +257,28 @@ const ChartC = () => {
       .attr("cy", d => yScale(d.value))
 
     svg
-      .selectAll("text.labelComs")
+      .selectAll("text.labelComsName")
       .data(dataComs)
       .join("text")
-      .attr("class", "labelComs")
-      .attr("x", d => xScale(d.yearF))
-      .text(d => `${d.label}: ${d.value}`)
+      .attr("class", "labelComsName")
+      .attr("x", d => xScale(d.year0) + (xScale(d.yearF) - xScale(d.year0)) / 2)
+      .text(d => `${d.label}`)
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
-      .attr("y", d => (!step ? yScale(d.value) - 20 : h - 15))
+      .attr("y", d => (!step ? yScale(d.value) - 10 : h - 20))
+
+    svg
+      .selectAll("text.labelComsValue")
+      .data(dataComs)
+      .join("text")
+      .attr("class", "labelComsValue")
+      .attr("x", d => xScale(d.year0) + (xScale(d.yearF) - xScale(d.year0)) / 2)
+      .text(d => `${d.value}`)
+      .transition()
+      .ease(easeCircleInOut)
+      .duration(TRANSITION_DURATION)
+      .attr("y", d => (!step ? yScale(d.value) - 0 : h - 10))
 
     svg
       .selectAll("text.yearComs")
@@ -275,11 +287,12 @@ const ChartC = () => {
       .attr("class", "yearComs")
       .join("text")
       .attr("x", d => xScale(d.yearF))
-      .text(d => `${d.year0} - ${d.yearF}`)
+      .text(d => `${d.yearF}`)
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
-      .attr("y", d => (!step ? yScale(d.value) - 5 : h))
+      //.attr("y", d => (!step ? yScale(d.value) - 5 : h))
+      .attr("y", d => (!step ? h - 20 : h))
 
     svg
       .selectAll("text.text-coms-label")

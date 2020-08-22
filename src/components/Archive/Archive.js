@@ -28,9 +28,9 @@ const Archive = ({ profiles = [], loading, images }) => {
   const [showArchive, setShowArchive] = useState(
     // TODO: Save in localStore once viewed, and pull from there
     typeof window !== "undefined" &&
-      window.localStorage.getItem("showArchive") === "false"
-      ? false
-      : true
+      window.localStorage.getItem("showArchive") === "true"
+      ? true
+      : false
   )
   const [fadeout, setFadeOut] = useState(false)
 
@@ -62,10 +62,6 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
-  useEffect(() => {
-    window.localStorage.getItem("showArchive", "true")
-  }, [])
-
   const profile =
     profiles &&
     profiles.find(
@@ -81,7 +77,7 @@ const Archive = ({ profiles = [], loading, images }) => {
             subtitle={
               <p
                 onClick={() => {
-                  window.localStorage.getItem("showArchive", "false")
+                  window.localStorage.setItem("showArchive", "false")
                   setShowArchive(false)
                 }}
               >
@@ -109,6 +105,7 @@ const Archive = ({ profiles = [], loading, images }) => {
                 onClose={() => {
                   setFadeOut(true)
                 }}
+                setShowArchive={setShowArchive}
               />
             )}
 

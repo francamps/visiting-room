@@ -60,8 +60,6 @@ const Timeline = props => {
 
   const isLastStep = step >= TIMELINE.length - 1
 
-  console.log(step)
-
   return (
     <>
       <>
@@ -79,6 +77,7 @@ const Timeline = props => {
               scrollOverflow={true}
               scrollHorizontally={true}
               scrollHorizontallyKey={"C81D3510-6BB54357-AE889018-E89FDF65"}
+              loopHorizontal={false}
               anchors={TIMELINE.map(t => t.title.replace(/ /g, "_"))}
               sectionSelector={SECTION_SEL}
               afterSlideLoad={() => {

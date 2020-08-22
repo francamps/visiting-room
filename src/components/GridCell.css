@@ -161,11 +161,11 @@
 .grid-cell.hovered .cell-hover-quote .quote .word {
   opacity: 0;
 
-  -webkit-animation: fadeindownscale 2s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeindownscale 2s forwards; /* Firefox < 16 */
-  -ms-animation: fadeindownscale 2s forwards; /* Internet Explorer */
-  -o-animation: fadeindownscale 2s forwards; /* Opera < 12.1 */
-  animation: fadeindownscale 2s forwards;
+  -webkit-animation: fadeinblur 2s forwards; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeinblur 2s forwards; /* Firefox < 16 */
+  -ms-animation: fadeinblur 2s forwards; /* Internet Explorer */
+  -o-animation: fadeinblur 2s forwards; /* Opera < 12.1 */
+  animation: fadeinblur 2s forwards;
 }
 
 /* UNDERLINE */
@@ -313,7 +313,7 @@
 
 /* ANIMATION */
 
-@keyframes fadeindownscale {
+@keyframes fadeinblur {
   from {
     opacity: 0;
     filter: blur(2px);

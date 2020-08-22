@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import isNull from "lodash/isNull"
 
-import Play from "../Play"
+import Play from "../Symbols/Play"
+import Pause from "../Symbols/Pause"
 import Loading from "../Loading"
 import VideoViewedMenu from "./VideoViewedMenu"
 
@@ -15,7 +17,7 @@ const getStringTime = seconds => {
   )}`.padStart(2, "0")}s`
 }
 
-const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
+const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color }) => {
   const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
@@ -24,6 +26,7 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
     progress: 0,
     progressSeconds: 0,
   })
+  const [progressLabel, setProgressLabel] = useState(null)
 
   const [showControls, setShowControls] = useState(true)
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
@@ -34,9 +37,7 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
     let timer
     if (countDownToHideControls === 5000) {
       setShowControls(true)
-      console.log("setting true")
       let timer = setTimeout(() => {
-        console.log("setting false")
         setCountDownToHideControls(null)
         setShowControls(false)
       }, countDownToHideControls)
@@ -47,27 +48,68 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
     }
   }, [countDownToHideControls, showControls])
 
-  const onSeek = e => {
+  const getProgressFromMouse = e => {
     const widthOfBar = barRef.current.getBoundingClientRect().width
     const leftOfBar = barRef.current.getBoundingClientRect().left
 
     const fraction = (e.clientX - leftOfBar) / widthOfBar
-    const duration = playerRef.current.duration
+    const duration = playerRef.current.getDuration()
 
-    setProgress({ progress: fraction, progressSeconds: fraction * duration })
-    playerRef.current.seekTo(fraction)
+    console.log(fraction, duration)
+
+    return { progress: fraction, progressSeconds: fraction * duration }
+  }
+
+  const onSeek = e => {
+    setPause(true)
+    const progressMouse = getProgressFromMouse(e)
+    setProgress(progressMouse)
+    playerRef.current.seekTo(progressMouse.progress)
   }
 
   const showEndCard = playerRef.current
     ? playerRef.current.getDuration() - progress.progressSeconds < 15
     : false
 
+  const getBarWidth = () => {
+    if (!barRef || !barRef.current) return 0
+
+    const widthOfBar = barRef.current.getBoundingClientRect().width
+    return `${widthOfBar * progress.progress}px`
+  }
+
+  const getLabelPositiong = () => {
+    if (!barRef || !barRef.current) return 0
+
+    const widthOfBar = barRef.current.getBoundingClientRect().width
+    const leftOfBar = barRef.current.getBoundingClientRect().left
+
+    const labelPosition = isNull(progressLabel)
+      ? 0
+      : widthOfBar * progressLabel.progress
+
+    if (isNull(progressLabel)) {
+      return widthOfBar * progress.progress > widthOfBar + leftOfBar - 45
+        ? `${widthOfBar + leftOfBar - 45}px`
+        : getBarWidth()
+    }
+
+    return labelPosition > widthOfBar + leftOfBar - 45
+      ? `${widthOfBar + leftOfBar}px`
+      : `${labelPosition}px`
+  }
+
   return (
     <>
       <div
         className="video"
+        onClick={() => {
+          if (isPlaying && isPaused) {
+            setPlaying(true)
+            setPause(false)
+          }
+        }}
         onMouseMove={() => {
-          console.log("hello?")
           if (isPlaying) setCountDownToHideControls(5000)
         }}
         onMouseLeave={() => {
@@ -85,6 +127,17 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
               height="100%"
               onReady={() => {
                 setLoading(false)
+                if (autoplay) setPlaying(true)
+              }}
+              onSeek={seconds => {
+                const duration = playerRef.current.getDuration()
+
+                setProgress({
+                  progress: seconds / duration,
+                  progressSeconds: seconds,
+                })
+                setPause(false)
+                setPlaying(true)
               }}
               onPause={() => {
                 setPause(true)
@@ -94,10 +147,19 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
                 //setEnded(true)
               }}
               onProgress={({ played, playedSeconds }) => {
-                setProgress({
-                  progress: played,
-                  progressSeconds: playedSeconds,
-                })
+                if (!isPaused) {
+                  setProgress({
+                    progress: played,
+                    progressSeconds: playedSeconds,
+                  })
+                }
+              }}
+              config={{
+                vimeo: {
+                  playerOptions: {
+                    playsinline: 1,
+                  },
+                },
               }}
             />
             {isPlaying && isLoading && (
@@ -108,6 +170,9 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
                   right: 0,
                   bottom: 0,
                   top: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Loading />
@@ -160,31 +225,52 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
           />
         )}
       </div>
-      {((isPlaying && showControls) || !isPlaying) && (
+      {true && (
         <div className="controls">
-          <div className="progress-bar" ref={barRef} onClick={onSeek}>
-            <div className="progress-bar-bg" />
+          <div className="progress-bar" onClick={onSeek}>
+            <div
+              className="progress-bar-bg"
+              ref={barRef}
+              onMouseMove={e => {
+                const progressMouse = getProgressFromMouse(e)
+                setProgressLabel(progressMouse)
+              }}
+              onMouseOut={() => {
+                setProgressLabel(null)
+              }}
+            />
             <div
               className="progress-bar-played"
               style={{
-                width: `${progress.progress * 100}%`,
+                width: getBarWidth(),
+                background: color || "var(--clr-primary)",
               }}
             />
+            <div
+              className="progress-bar-label"
+              style={{
+                left: getLabelPositiong(),
+              }}
+            >
+              {!isNull(progressLabel)
+                ? getStringTime(progressLabel.progressSeconds)
+                : progress.progressSeconds
+                ? getStringTime(progress.progressSeconds)
+                : "_:_"}
+            </div>
           </div>
           <div className="actions">
             <div className="play-pause-stop">
               {isPlaying && !isPaused ? (
-                <div
-                  className="pause"
-                  onClick={() => {
-                    setPause(true)
-                  }}
-                >
-                  <div className="pause-tick" />
-                  <div className="pause-tick" />
+                <div className="action-wrap">
+                  <Pause
+                    onClick={() => {
+                      setPause(true)
+                    }}
+                  />
                 </div>
               ) : (
-                <div className="play-wrap">
+                <div className="action-wrap">
                   <Play
                     onClick={() => {
                       setPause(false)
@@ -196,9 +282,11 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, ...props }) => {
             </div>
             {playerRef && playerRef.current && (
               <div className="progress-seconds">
-                <span>{`${getStringTime(
+                <span>{`${
                   progress.progressSeconds
-                )} / ${getStringTime(playerRef.current.getDuration())}`}</span>
+                    ? getStringTime(progress.progressSeconds)
+                    : "_:_"
+                } / ${getStringTime(playerRef.current.getDuration())}`}</span>
               </div>
             )}
           </div>

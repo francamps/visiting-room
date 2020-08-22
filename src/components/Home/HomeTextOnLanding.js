@@ -27,7 +27,7 @@ const HomeTextOnLanding = ({
       let timerActions = setTimeout(() => {
         setActionsOpen(true)
         setMenuExpanded(true)
-      }, 100000)
+      }, 10000)
 
       return () => {
         clearTimeout(timerActions)
@@ -51,7 +51,6 @@ const HomeTextOnLanding = ({
     <div
       className={`text-on-landing ${isActionsOpen ? "active" : ""}`}
       onClick={() => {
-        console.log("yo")
         setActionsOpen(true)
       }}
     >

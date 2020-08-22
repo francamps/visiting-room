@@ -6,7 +6,6 @@
   font-family: "GTPressura";
   font-size: var(--font-copy-timeline);
   line-height: var(--copy-line-height);
-  font-weight: 300;
 
   color: var(--clr-black);
 }
@@ -30,8 +29,9 @@
 
 @media (max-width: 1824px) {
   .step-content .paragraph {
-    font-size: var(--font-copy);
-    line-height: calc(1.5 * var(--font-copy));
+    font-size: var(--font-copy-timeline);
+    line-height: calc(1.6 * var(--font-copy-timeline));
+    font-weight: normal;
   }
 }
 
@@ -43,12 +43,6 @@
 
   .step-content .paragraph li {
     word-break: break-all;
-  }
-
-  .timeline .hover-link {
-    font-family: "GTPressura";
-    font-size: var(--font-copy);
-    line-height: var(--copy-copy);
   }
 
   .step-content .paragraph.ref {

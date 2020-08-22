@@ -84,6 +84,7 @@
   padding: 0px 20px 20px;
   width: 480px;
   opacity: 0;
+  overflow: visible;
 
   -webkit-animation: fadeindown 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeindown 2s linear 1.2s forwards; /* Firefox < 16 */
@@ -94,7 +95,9 @@
 
 .step-content-figure {
   position: relative;
-  width: 100%;
+  width: 200%;
+  max-width: 1024px;
+  margin-left: -50%;
   box-sizing: border-box;
   opacity: 0;
   z-index: -1;
@@ -193,7 +196,6 @@ TIMELINE TEXT STUFF
   font-family: "GTPressura";
   font-size: var(--font-copy-timeline);
   line-height: var(--copy-line-height);
-  font-weight: 300;
 
   transition: all 0.2s ease-in-out;
   position: relative;
@@ -263,20 +265,21 @@ TIMELINE TEXT STUFF
     bottom: 0px;
   }
 
-  /*.timeline-step {
-    position: relative;
-    padding: 0 0px;
-  }*/
+  .timeline .hover-link {
+    font-family: "GTPressura";
+  }
+
+  .step-title {
+    padding: 0 25px;
+    box-sizing: border-box;
+  }
 
   .step-content {
     padding: 0;
     left: 0;
     right: 0;
-  }
-
-  .step-content {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 25px;
     box-sizing: border-box;
     margin: 0 auto;
     overflow: auto;
@@ -292,7 +295,7 @@ TIMELINE TEXT STUFF
     background-color: rgba(var(--clr-off-white-rgb), 1);
   }
 
-  .step-content .step-copy {
+  .step-content .step-content .step-copy {
     height: auto;
     transition: height 0.4s, background-color 0.4s;
   }
@@ -300,6 +303,11 @@ TIMELINE TEXT STUFF
   .timeline .hover-link {
     font-size: calc(var(--font-copy) * 1.2);
     line-height: calc(var(--font-copy) * 1.5);
+  }
+
+  .step-content-figure {
+    width: 100%;
+    margin-left: 0%;
   }
 
   .step-content-figure .timeline-figure {
@@ -342,4 +350,14 @@ FULLPAGE
 
 #fp-nav.fp-left {
   left: 0 !important;
+}
+
+#fp-nav ul li:hover a.active span,
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li:hover a.active span,
+.fp-slidesNav ul li a.active span {
+  height: 8px !important;
+  width: 8px !important;
+  margin: -4px 0 0 -4px !important;
+  border-radius: 100% !important;
 }

@@ -2,21 +2,17 @@ import React from "react"
 
 import "./Paragraphs.css"
 
-const Paragraphs = ({ paragraphs, setModal }) => {
+const Paragraphs = ({ paragraphs, setModal, step }) => {
   return (
     <div className="paragraph-wrap">
       {paragraphs.map((paragraph, idx) => {
         if (paragraph.element === "h2") {
           return (
-            <div className="fadein">
-              <h2
-                key={`paragraph-${idx}`}
-                style={{ color: "black", textAlign: "center" }}
-              >
+            <div className="fadein" key={`paragraph-${idx}-${step && step}`}>
+              <h2 style={{ color: "black", textAlign: "center" }}>
                 {paragraph.content}
               </h2>
               <div
-                key={`paragraph-${idx}`}
                 className="paragraph"
                 style={{
                   color: "black",
@@ -30,13 +26,16 @@ const Paragraphs = ({ paragraphs, setModal }) => {
           )
         } else if (paragraph.element === "p") {
           return (
-            <div key={`paragraph-${idx}`} className="paragraph">
+            <div key={`paragraph-${idx}-${step && step}`} className="paragraph">
               {paragraph.content}
             </div>
           )
         } else if (paragraph.element === "f") {
           return (
-            <div key={`paragraph-${idx}`} className="footnote-trigger-wrap">
+            <div
+              key={`paragraph-${idx}-${step && step}`}
+              className="footnote-trigger-wrap"
+            >
               <div
                 className="footnote-trigger"
                 onClick={e => {
@@ -56,15 +55,22 @@ const Paragraphs = ({ paragraphs, setModal }) => {
           )
         } else if (paragraph.element === "ref") {
           return (
-            <div key={`paragraph-${idx}`} className="paragraph ref" style={{}}>
+            <div
+              key={`paragraph-${idx}-${step && step}`}
+              className="paragraph ref"
+              style={{}}
+            >
               <span style={{ position: "absolute" }}>{paragraph.trigger}</span>
             </div>
           )
         } else if (paragraph.element === "br") {
-          return <p key={`paragraph-${idx}`} />
+          return <p key={`paragraph-${idx}-${step && step}`} />
         } else if (paragraph.element === "li") {
           return (
-            <div key={`paragraph-${idx}`} className="paragraph reference">
+            <div
+              key={`paragraph-${idx}-${step && step}`}
+              className="paragraph reference"
+            >
               <li>
                 <b>{`${idx + 1}.`}</b>
                 {` ${paragraph.content}`}
