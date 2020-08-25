@@ -1,0 +1,36 @@
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer .link-wrap a {
+  font-family: "EB Garamond";
+  width: auto;
+  font-size: var(--font-copy);
+  line-height: calc(2 * var(--font-copy));
+  font-weight: 300;
+  text-transform: none;
+  transition: all 0.75s ease-in-out;
+  position: relative;
+}
+
+.about .link-wrap .hover-link:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0%;
+  width: 60px;
+  height: 2px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.about .link-wrap .hover-link:hover:after {
+  width: 100%;
+  opacity: 1;
+  background-color: var(--clr-primary);
+}

@@ -43,6 +43,7 @@ const Home = () => {
         <div
           className="landing"
           onClick={() => {
+            console.log("this is happening")
             if (!isMenuExpanded) {
               setMenuExpanded(true)
             }

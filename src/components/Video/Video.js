@@ -17,6 +17,7 @@ const Video = ({ name, color, onClose, profileId, setView, isArchive }) => {
         videoTitle={name}
         autoplay
         color={color}
+        onClose={onClose}
       />
       <div
         style={{

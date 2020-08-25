@@ -237,31 +237,6 @@ COPY
   align-items: center;
 }
 
-.copy-wrap {
-  display: flex;
-  flex-direction: column;
-  padding: 60px 0;
-  width: 640px;
-  margin: 0 auto;
-
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s; /* Firefox < 16 */
-  -ms-animation: fadein 4s; /* Internet Explorer */
-  -o-animation: fadein 4s; /* Opera < 12.1 */
-  animation: fadein 4s;
-}
-
-.copy-wrap .copy {
-  font-family: "GTPressura";
-  font-weight: 300;
-  font-size: var(--font-copy);
-  text-align: left;
-}
-
-.copy .lede-content {
-  font-weight: 700;
-}
-
 .copy p {
   line-height: var(--copy-line-height);
 }

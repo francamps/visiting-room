@@ -1,0 +1,117 @@
+.about {
+  padding: 60px 0;
+}
+
+.about .copy-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0;
+  width: 640px;
+  margin: 0 auto;
+
+  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 4s; /* Firefox < 16 */
+  -ms-animation: fadein 4s; /* Internet Explorer */
+  -o-animation: fadein 4s; /* Opera < 12.1 */
+  animation: fadein 4s;
+}
+
+.about .copy-wrap .copy {
+  font-family: "GTPressura";
+  font-weight: 300;
+  font-size: var(--font-copy);
+  text-align: left;
+}
+
+.about .title {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  font-family: "EB Garamond";
+  font-size: 3.5rem;
+  font-weight: normal;
+}
+
+/** REACT TABS
+TODO: PUT IT IN ITS OWN FILE
+*/
+
+.react-tabs .react-tabs__tab-list {
+  width: 100%;
+  border-bottom: none;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.react-tabs__tab {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0px;
+  margin-right: 20px;
+  font-family: "GTPressura";
+  font-size: var(--font-copy);
+  font-weight: 300;
+  color: var(--clr-white);
+  transition: all 0.75s ease-in-out;
+  letter-spacing: normal;
+  transition: letter-spacing 0.4s;
+}
+
+.react-tabs__tab:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  width: 0px;
+  height: 4px;
+  margin: 5px 0px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.react-tabs__tab:hover {
+  letter-spacing: 0.02em;
+  transition: letter-spacing 0.4s;
+}
+
+.react-tabs__tab:hover:after {
+  width: 100%;
+  opacity: 1;
+
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+}
+
+.react-tabs__tab-list .react-tabs__tab--selected {
+  background: none !important;
+  border: none;
+}
+
+.react-tabs__tab--selected:after {
+  width: calc(100% - 20px);
+  opacity: 1;
+
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+}
+
+@media (max-width: 767px) {
+  .about .copy-wrap {
+    width: 80%;
+  }
+
+  .about .copy-wrap .title {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}

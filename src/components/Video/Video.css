@@ -6,10 +6,10 @@
   position: absolute;
   height: 100vh;
 
-  background: var(--clr-dark-bg);
+  background: var(--clr-black);
 }
 
-.video {
+.video-wrap .video {
   width: 100%;
   height: calc(100% - 160px);
 
@@ -25,6 +25,11 @@
   -ms-animation: fadein 4s; /* Internet Explorer */
   -o-animation: fadein 4s; /* Opera < 12.1 */
   animation: fadein 4s;
+}
+
+.video-wrap .video.video-fullscreen {
+  top: 0;
+  height: 100%;
 }
 
 .video-info-wrap {
@@ -62,4 +67,18 @@
   font-size: var(--font-subtitle);
   margin: 0 0 0 10px;
   line-height: 1em;
+}
+
+@media (max-width: 767px) {
+  .video-wrap .video {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
