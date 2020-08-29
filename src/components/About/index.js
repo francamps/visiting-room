@@ -6,9 +6,12 @@ import "react-tabs/style/react-tabs.css"
 import Header from "../Header"
 import Map from "../charts/Map"
 import Footer from "./Footer"
+import Paragraphs from "../Paragraphs"
 import FAQs from "./FAQs.js"
 
 import "./About.css"
+
+import { REFERENCES } from "../../content/references"
 
 const About = ({ content, faqs, terms, title }) => {
   const params = new URLSearchParams(
@@ -40,28 +43,35 @@ const About = ({ content, faqs, terms, title }) => {
             <Tab>Learn more</Tab>
           </TabList>
 
-          <div className="copy-wrap" style={{ padding: "100px 0" }}>
+          <div className="copy-wrap">
             <TabPanel>
-              <article className="copy" style={{ padding: "40px 0" }}>
+              <article className="copy">
                 <RichText render={content} />
                 <div className="map" style={{ height: "500px" }}>
                   <Map style={{ width: "100%", height: "100%" }} />
                 </div>
               </article>
             </TabPanel>
-            <TabPanel>The Angolite</TabPanel>
+            <TabPanel>
+              <h3>The Angolite</h3>
+            </TabPanel>
             <TabPanel>
               <FAQs faqs={faqs} params={params} updateParams={updateParams} />
             </TabPanel>
             <TabPanel>
-              <article className="copy" style={{ padding: "40px 0" }}>
+              <article className="copy">
                 {terms.map(term => {
                   return <RichText render={term.term1} />
                 })}
               </article>
             </TabPanel>
             <TabPanel>Team</TabPanel>
-            <TabPanel>Resources</TabPanel>
+            <TabPanel>
+              <>
+                <h2>Resources</h2>
+                <Paragraphs paragraphs={REFERENCES} />
+              </>
+            </TabPanel>
           </div>
         </Tabs>
 

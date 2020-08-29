@@ -63,14 +63,12 @@ const Menu = ({
             }}
           >
             <Play />
-            <span style={{ marginLeft: "12px" }}>
-              Introduction: Life at Angola
-            </span>
+            <span style={{ marginLeft: "12px" }}>Foreword</span>
           </Link>
         </div>
         <div className="menu-option-wrap">
           <Link to="/history" className="hover-link">
-            History
+            History of Life Without Parole
           </Link>
         </div>
         <div className="menu-option-wrap">
@@ -80,7 +78,7 @@ const Menu = ({
         </div>
         <div className="menu-option-wrap">
           <Link to="/about" className="hover-link">
-            About the project
+            About
           </Link>
         </div>
       </div>

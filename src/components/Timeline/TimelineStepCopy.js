@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useInView } from "react-intersection-observer"
 
 import TimelineStepTitle from "./TimelineStepTitle"
 import Paragraphs from "../Paragraphs"
@@ -18,12 +19,20 @@ const TimelineStepCopy = ({
   const imagePlacement = timelineStep.imagePlacement
   const [active, setActive] = useState(false)
 
+  const [ref, inView, entry] = useInView({
+    /* Optional options */
+    threshold: 0.5,
+  })
+
   return (
     <div
       key={`timeline-step-${step}`}
-      className="timeline-step"
+      className={`timeline-step timeline-step-${step} ${
+        inView && section.title ? "in-view" : ""
+      }`}
       data-step={`step-${step}`}
       style={{ position: "relative" }}
+      ref={ref}
     >
       {section.title && (
         <TimelineStepTitle

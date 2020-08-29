@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { navigate } from "gatsby"
 
 import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
@@ -7,6 +8,7 @@ import Video from "../Video/Video"
 import VisitingRoomIntro from "./VisitingRoomIntro"
 
 import "./VisitingRoom.css"
+import { isNull } from "lodash"
 
 const VisitingRoom = ({ loading, profiles = [], images }) => {
   const params = new URLSearchParams(
@@ -51,6 +53,17 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
     }
   }, [fadeout])
 
+  useEffect(() => {
+    if (isNull(profileId)) {
+      params.delete("profile")
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${params}`
+      )
+    }
+  }, [profileId])
+
   const profile =
     profiles &&
     profiles.find(
@@ -83,7 +96,9 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
           profileId={profileId}
           name={profile && profile.full_name && profile.full_name[0].text}
           color={profile && profile.color}
-          onClose={() => setProfile(null)}
+          onClose={() => {
+            setProfile(null)
+          }}
         />
       )}
       {showIntro && <VisitingRoomIntro setShowIntro={setShowIntro} />}

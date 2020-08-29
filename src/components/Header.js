@@ -1,17 +1,28 @@
 import React from "react"
 import { navigate } from "gatsby"
+import { useMediaQuery } from "react-responsive"
 
 import Menu from "./Menu"
 
 import "./Header.css"
 
-const Header = ({ title, hideTitle, subtitle, actions, theme }) => {
+const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+
   return (
-    <div className={`header ${theme}`}>
+    <div className={`header ${theme} ${classes}`}>
       {!hideTitle && (
         <div className="home-title-wrap">
           <div className="home-title">
-            <h2 onClick={() => navigate("/")}>The Visiting Room</h2>
+            {isTabletOrMobile ? (
+              <>
+                <h2>The</h2>
+                <h2>Visiting Room</h2>
+                <h2>Project</h2>
+              </>
+            ) : (
+              <h2 onClick={() => navigate("/")}>The Visiting Room Project</h2>
+            )}
           </div>
         </div>
       )}

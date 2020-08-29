@@ -30,7 +30,7 @@
 }
 
 .text-on-landing .actions {
-  font-family: GTPressura;
+  font-family: Muli, Helvetica Neue, Arial, sans-serif;
   font-weight: 500;
   color: var(--clr-off-white);
   overflow: hidden;

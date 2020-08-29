@@ -110,8 +110,12 @@ Use a scrollbar library, this is not standardized
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
 @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
 
-@font-face {
+/* THIS ONE IS PRETTY GOOD */
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+/*@font-face {
   font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Light.otf") format("opentype");
   font-weight: 300;
@@ -141,7 +145,7 @@ Use a scrollbar library, this is not standardized
   font-family: "GTPressura";
   src: url("../fonts/GT-Pressura-Pro-Trial-Bold.otf") format("opentype");
   font-weight: 700;
-}
+}*/
 
 @font-face {
   font-family: "GTEesti";
@@ -218,7 +222,7 @@ a {
 }
 
 p {
-  font-family: "GTPressura";
+  font-family: Muli, Helvetica Neue, Arial, sans-serif;
 }
 
 /**
@@ -503,6 +507,9 @@ FADE IN ANIMATIONS
   90% {
     background-color: var(--clr-9);
   }
+  100% {
+    background-color: var(--clr-0);
+  }
 }
 
 @keyframes rotatingColor {
@@ -535,6 +542,9 @@ FADE IN ANIMATIONS
   }
   90% {
     color: var(--clr-9);
+  }
+  100% {
+    color: var(--clr-0);
   }
 }
 

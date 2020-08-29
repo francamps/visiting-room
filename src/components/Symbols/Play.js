@@ -65,7 +65,7 @@ const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
         r={r}
         strokeWidth={2}
         style={{
-          opacity: isHover ? 1 : 0.8,
+          opacity: isHover ? 1 : 0.9,
           transition: "opacity 0.4s",
         }}
       />
@@ -74,11 +74,10 @@ const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
         fillRule="evenodd"
         fill={color}
         stroke={color}
-        opacity="0.7"
         points={points}
         style={{
           transform,
-          opacity: isHover ? 1 : 0.8,
+          opacity: isHover ? 1 : 0.9,
           transition: "opacity 0.4s",
           cursor: "pointer",
         }}

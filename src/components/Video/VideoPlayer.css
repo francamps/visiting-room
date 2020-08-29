@@ -138,17 +138,8 @@ CONTROLS
   bottom: 12px;
   left: 50px;
   background: none;
-  border: 1px dashed white;
-  border-radius: 3px;
+  border: none;
   cursor: pointer;
-  transition: border 0.4s;
-}
-
-.fullscreen-action:hover {
-  width: 18px;
-  height: 18px;
-  border: 2px dashed white;
-  transition: border 0.4s, width 0.4s, height 0.4s;
 }
 
 .fullscreen-action.active {

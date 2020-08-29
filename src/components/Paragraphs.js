@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import "./Paragraphs.css"
 
@@ -75,6 +76,17 @@ const Paragraphs = ({ paragraphs, setModal, step }) => {
                 <b>{`${idx + 1}.`}</b>
                 {` ${paragraph.content}`}
               </li>
+            </div>
+          )
+        } else if (paragraph.element === "link") {
+          return (
+            <div
+              key={`paragraph-${idx}-${step && step}`}
+              className="paragraph link link-wrap"
+            >
+              <Link to={paragraph.url} className="hover-link">
+                {paragraph.content}
+              </Link>
             </div>
           )
         }

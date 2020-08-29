@@ -4,12 +4,13 @@
   height: 100vh;
   position: relative;
   opacity: 0;
-  background: linear-gradient(
+  /*background: linear-gradient(
     180deg,
-    var(--clr-off-white) 0%,
-    var(--clr-off-white) 25%,
-    #dbcda0 100%
-  );
+    var(--clr-0) 0%,
+    var(--clr-0) 25%,
+    var(--clr-8) 100%
+  );*/
+  background: var(--clr-off-white);
 
   -webkit-animation: fadein 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s linear 1.2s forwards; /* Firefox < 16 */
@@ -78,11 +79,39 @@
   color: var(--clr-black);
 }
 
+.step-title h2:after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 1;
+  background-color: var(--clr-white);
+}
+
+.step-title h2:after {
+  width: 100%;
+  opacity: 1;
+  height: 4px;
+  /*background-color: var(--clr-primary);*/
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+}
+
+.hover-link:after {
+  right: 0%;
+}
+
 .step-content {
   position: relative;
   overflow: auto;
   padding: 0px 20px 20px;
-  width: 480px;
+  width: 640px;
   opacity: 0;
   overflow: visible;
 
@@ -193,8 +222,9 @@ TIMELINE TEXT STUFF
 }
 
 .timeline .hover-link {
-  font-family: "GTPressura";
+  font-family: Muli, Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-copy-timeline);
+  font-weight: 300;
   line-height: var(--copy-line-height);
 
   transition: all 0.2s ease-in-out;
@@ -251,8 +281,9 @@ TIMELINE TEXT STUFF
 
 @media (max-width: 1824px) {
   .timeline .hover-link {
-    font-size: var(--font-copy);
+    font-size: var(--font-copy-timeline);
     line-height: calc(1.5 * var(--font-copy));
+    font-weight: 300;
   }
 }
 
@@ -266,7 +297,7 @@ TIMELINE TEXT STUFF
   }
 
   .timeline .hover-link {
-    font-family: "GTPressura";
+    font-family: Muli, Helvetica Neue, Arial, sans-serif;
   }
 
   .step-title {

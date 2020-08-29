@@ -39,7 +39,7 @@ const HomeTextOnLanding = ({
     if (!showMoreMenu && isActionsOpen) {
       let timerMenu = setTimeout(() => {
         setVisibleMenu(true)
-      }, 4000)
+      }, 2000)
 
       return () => {
         clearTimeout(timerMenu)
@@ -74,13 +74,13 @@ const HomeTextOnLanding = ({
         {showMoreMenu && (
           <ul className="fadein">
             <li>
-              <Link to="/history">History</Link>
+              <Link to="/history">History of Life Without Parole</Link>
             </li>
             <li>
               <Link to="/archive">Full Archive</Link>
             </li>
             <li>
-              <Link to="/about">About the project</Link>
+              <Link to="/about">About</Link>
             </li>
           </ul>
         )}

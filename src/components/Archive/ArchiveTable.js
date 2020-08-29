@@ -18,7 +18,6 @@ const columnsDesktop = [
   { key: "current_age", label: "Current Age" },
   { key: "age_at_offense", label: "Age at offense" },
   { key: "offense_date", label: "Year Incarcerated" },
-  { key: "video", label: "" },
 ]
 
 const columnsMobile = [
@@ -112,14 +111,13 @@ const ArchiveTable = ({ profiles, images, setProfile }) => {
                   <p
                     style={{
                       margin: 0,
-                      fontSize: "var(--font-xsmall)",
+                      fontSize: "var(--font-normal)",
                       height: "20px",
                     }}
                   >
                     Years incarcerated:
                     <span
                       style={{
-                        color: "var(--clr-primary)",
                         whiteSpace: "pre",
                       }}
                     >{` ${current_age - age_at_offense}`}</span>
@@ -138,7 +136,7 @@ const ArchiveTable = ({ profiles, images, setProfile }) => {
                   <p>{`Year of incarceration: ${date_of_offense}`}</p>
                 </td>
                 {videos[fullName] ? (
-                  <td className="play">
+                  <td className="play" style={{ textAlign: "center" }}>
                     <Play
                       size="medium"
                       color={"white"}

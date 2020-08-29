@@ -8,6 +8,7 @@ import isNull from "lodash/isNull"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
+import IconFullScreen from "../Symbols/IconFullScreen"
 import Loading from "../Loading"
 import VideoViewedMenu from "./VideoViewedMenu"
 
@@ -321,7 +322,9 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
                 handleFullScreen.enter()
               }
             }}
-          ></div>
+          >
+            <IconFullScreen />
+          </div>
           {playerRef && playerRef.current && (
             <div className="progress-seconds">
               <span>{`${

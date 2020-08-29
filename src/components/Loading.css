@@ -1,9 +1,8 @@
-.loader,
+/*.loader,
 .loader:before,
 .loader:after {
-  /*background: var(--clr-primary);*/
-  -webkit-animation: load1 2s infinite ease-in-out;
-  animation: load1 2s infinite ease-in-out;
+  -webkit-animation: load1 2s infinite; infinite ease-in-out;
+  animation: load1 2s infinite; infinite ease-in-out;
   width: 0.25em;
   height: 1em;
 }
@@ -27,8 +26,8 @@
 }
 .loader:before {
   left: -1em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+  -webkit-animation-delay: -0.32s infinite;;
+  animation-delay: -0.32s infinite;;
 }
 .loader:after {
   left: 1em;
@@ -58,4 +57,90 @@
     box-shadow: 0 -2em;
     height: 3em;
   }
+}*/
+
+/**
+* NEW LOADER
+**/
+
+.loader {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-indent: -9999em;
+  margin: 88px auto;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.loader-cell {
+  width: 16px;
+  height: 4px;
+  background: black;
+}
+
+.loader-cell-0 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -200ms infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -200ms infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -200ms infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -200ms infinite;
+  animation: rotatingBackgroundColor 12s linear -200ms infinite;
+}
+.loader-cell-1 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -3s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -3s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -3s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -3s infinite;
+  animation: rotatingBackgroundColor 12s linear -3s infinite;
+}
+.loader-cell-2 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -100ms infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -100ms infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -100ms infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -100ms infinite;
+  animation: rotatingBackgroundColor 12s linear -100ms infinite;
+}
+.loader-cell-3 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -700ms infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -700ms infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -700ms infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -700ms infinite;
+  animation: rotatingBackgroundColor 12s linear -700ms infinite;
+}
+.loader-cell-4 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -50ms infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -50ms infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -50ms infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -50ms infinite;
+  animation: rotatingBackgroundColor 12s linear -50ms infinite;
+}
+.loader-cell-5 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -10s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -10s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -10s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -10s infinite;
+  animation: rotatingBackgroundColor 12s linear -10s infinite;
+}
+.loader-cell-6 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -2s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -2s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -2s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -2s infinite;
+  animation: rotatingBackgroundColor 12s linear -2s infinite;
+}
+.loader-cell-7 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -400ms infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -400ms infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -400ms infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -400ms infinite;
+  animation: rotatingBackgroundColor 12s linear -400ms infinite;
+}
+.loader-cell-8 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -4s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -4s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -4s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -4s infinite;
+  animation: rotatingBackgroundColor 12s linear -4s infinite;
 }

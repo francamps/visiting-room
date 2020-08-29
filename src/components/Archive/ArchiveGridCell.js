@@ -42,28 +42,6 @@ const ArchiveGridCell = ({ profile, setProfile, profileIdx, images }) => {
       <div className="cell-hover-layer">
         <div className="name">{fullName}</div>
         <div className="bottom">
-          <div>
-            <p>
-              Incarcerated since
-              <span
-                style={{
-                  whiteSpace: "pre",
-                  height: "inherit",
-                  color: "var(--clr-primary)",
-                }}
-              >
-                {` ${date_of_offense}`}
-              </span>
-            </p>
-            <p style={{ marginLeft: "0px" }}>
-              Incarcerated for
-              <span
-                style={{ color: "var(--clr-primary)", whiteSpace: "pre" }}
-              >{` ${current_age - age_at_offense} `}</span>
-              <span>years</span>
-            </p>
-            {deceased_date && <p>{`Deceased on ${deceased_date}`}</p>}
-          </div>
           {videos[fullName] ? (
             <p className="play" style={{ flex: "none" }}>
               <Play size="medium" />
@@ -71,6 +49,21 @@ const ArchiveGridCell = ({ profile, setProfile, profileIdx, images }) => {
           ) : (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
           )}
+          <div>
+            <p>
+              Incarcerated since
+              <span
+                style={{
+                  whiteSpace: "pre",
+                  height: "inherit",
+                  fontWeight: "700",
+                }}
+              >
+                {` ${date_of_offense}`}
+              </span>
+            </p>
+            {deceased_date && <p>{`Deceased on ${deceased_date}`}</p>}
+          </div>
         </div>
       </div>
     </div>

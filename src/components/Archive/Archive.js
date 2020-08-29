@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react"
+import isNull from "lodash/isNull"
 
 import Header from "../Header"
 import ArchiveGrid from "./ArchiveGrid"
@@ -62,6 +63,17 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
+  useEffect(() => {
+    if (isNull(profileId)) {
+      params.delete("profile")
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${params}`
+      )
+    }
+  }, [profileId])
+
   const profile =
     profiles &&
     profiles.find(
@@ -72,32 +84,35 @@ const Archive = ({ profiles = [], loading, images }) => {
     <div className="archive-wrap">
       {!profileId ? (
         <>
-          <Header
-            title={"Full archive"}
-            subtitle={
-              <p
-                onClick={() => {
-                  window.localStorage.setItem("showArchive", "false")
-                  setShowArchive(false)
-                }}
-              >
-                About the archive
-              </p>
-            }
-            actions={
-              <ArchiveActions
-                columns={columns}
-                setSortedAsc={setSortedAsc}
-                setSortedType={setSortedType}
-                setSearch={setSearch}
-                setShowArchive={setShowArchive}
-                sortAsc={sortAsc}
-                sortType={sortType}
-                setView={setView}
-                view={view}
-              />
-            }
-          />
+          {showArchive && (
+            <Header
+              title={"Full archive"}
+              subtitle={
+                <p
+                  onClick={() => {
+                    window.localStorage.setItem("showArchive", "false")
+                    setShowArchive(false)
+                  }}
+                >
+                  About the archive
+                </p>
+              }
+              actions={
+                <ArchiveActions
+                  columns={columns}
+                  setSortedAsc={setSortedAsc}
+                  setSortedType={setSortedType}
+                  setSearch={setSearch}
+                  setShowArchive={setShowArchive}
+                  sortAsc={sortAsc}
+                  sortType={sortType}
+                  setView={setView}
+                  view={view}
+                />
+              }
+              classes="fadein"
+            />
+          )}
           <div className="archive">
             {!showArchive && (
               <ArchiveBanner

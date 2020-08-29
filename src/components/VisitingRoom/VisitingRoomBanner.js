@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 
-import FilterAndSearch from "../FilterAndSearch"
-import IconSearch from "../Symbols/Search"
+import Loading from "../Loading"
 
 import "./VisitingRoomBanner.css"
 
@@ -21,7 +20,7 @@ const VisitingRoomBanner = ({ showGrid, fadeout, onSearchTyping }) => {
               Louisiana has nearly 5,000 people serving life without parole.
             </p>
             <p>Here are some of their stories.</p>
-            {null /*<Loading />*/}
+            <Loading />
           </div>
         )}
       </div>
