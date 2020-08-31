@@ -42,29 +42,19 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  max-height: 100%;
-  /* margin-bottom: 170px; */
   transform: translate3d(0, 0, 0);
 }
 
 .step-title {
-  position: sticky;
+  position: relative;
   top: 0;
   padding-top: 40px;
+  padding-bottom: 40px;
   width: 100%;
-  min-height: 130px;
   max-width: 640px;
   margin: 0 auto;
   z-index: 2;
   background-color: none;
-}
-
-.step-title h2 {
-  color: var(--clr-black);
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  font-family: "EB Garamond", serif;
 }
 
 .step-title h3.year-label {
@@ -77,30 +67,6 @@
   font-weight: 300;
   font-size: var(--font-copy-timeline);
   color: var(--clr-black);
-}
-
-.step-title h2:after {
-  content: "";
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  margin: 5px 0 0;
-  transition: all 0.2s ease-in-out;
-  transition-duration: 0.75s;
-  opacity: 1;
-  background-color: var(--clr-white);
-}
-
-.step-title h2:after {
-  width: 100%;
-  opacity: 1;
-  height: 4px;
-  /*background-color: var(--clr-primary);*/
-  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
-  -moz-animation: rotatingBackgroundColor 20s ease infinite;
-  -ms-animation: rotatingBackgroundColor 20s ease infinite;
-  -o-animation: rotatingBackgroundColor 20s ease infinite;
-  animation: rotatingBackgroundColor 20s ease infinite;
 }
 
 .hover-link:after {
@@ -166,7 +132,7 @@ Use a scrollbar library, this is not standardized
 
 .step-content .step-columns {
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 0;
   padding-bottom: 20px;
   justify-self: flex-start;
 }
@@ -303,6 +269,8 @@ TIMELINE TEXT STUFF
   .step-title {
     padding: 0 25px;
     box-sizing: border-box;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   .step-content {
@@ -310,7 +278,7 @@ TIMELINE TEXT STUFF
     left: 0;
     right: 0;
     width: 100%;
-    padding: 0 25px;
+    padding: 0 20px;
     box-sizing: border-box;
     margin: 0 auto;
     overflow: auto;

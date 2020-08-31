@@ -59,7 +59,7 @@ const Paragraphs = ({ paragraphs, setModal, step }) => {
             <div
               key={`paragraph-${idx}-${step && step}`}
               className="paragraph ref"
-              style={{}}
+              style={{ width: paragraph.trigger > 9 ? "24px" : "12px" }}
             >
               <span style={{ position: "absolute" }}>{paragraph.trigger}</span>
             </div>

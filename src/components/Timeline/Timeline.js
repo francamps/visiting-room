@@ -20,6 +20,8 @@ const pluginWrapper = () => {
 const SEL = "custom-section"
 const SECTION_SEL = `.${SEL}`
 
+const USE_ONE_PAGER = true
+
 const Timeline = props => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""

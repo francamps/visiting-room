@@ -154,7 +154,6 @@ const VisitingRoomintro = ({ setShowIntro }) => {
               <div
                 className="video-skip"
                 onClick={() => {
-                  console.log("clicking skip")
                   setShowIntro(false)
                 }}
               >

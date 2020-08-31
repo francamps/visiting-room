@@ -2,11 +2,12 @@ import React, { useEffect, useState, useRef } from "react"
 import { Link } from "gatsby"
 
 import Header from "../Header"
+import Paragraphs from "../Paragraphs"
+import TimelineModal from "./TimelineModal"
 import TimelineSteps from "./TimelineSteps"
 import TimelineFigureFocus from "./TimelineFigureFocus"
-import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
-import TimelineFigure from "./TimelineFigure"
+import TimelineStepTitle from "./TimelineStepTitle"
 
 import { TIMELINE } from "../../content/timeline"
 
@@ -51,11 +52,6 @@ const TimelineOnePager = props => {
     window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
   }
 
-  // When a new title is in view
-  //setStep(currentSection)
-
-  const isLastStep = step >= TIMELINE.length - 1
-
   return (
     <>
       <>
@@ -71,47 +67,10 @@ const TimelineOnePager = props => {
             {TIMELINE.map(
               (timelineStep, stepIdx) =>
                 timelineStep.sections && (
-                  <div key={stepIdx}>
-                    {timelineStep.sections.map(section => (
-                      <div className={"slide"}>
-                        <TimelineStepCopy
-                          step={stepIdx}
-                          timelineStep={timelineStep}
-                          section={section}
-                          setModal={setModal}
-                          setFigureActive={setFigureActive}
-                          isLastStep={isLastStep}
-                          setStep={step => {
-                            updateParams(+step)
-                            setStep(+step)
-                          }}
-                        />
-                      </div>
-                    ))}
-                    {timelineStep.imagePlacement && (
-                      <div className="slide">
-                        <div className="timeline-step">
-                          <div className="step-content">
-                            <div
-                              className={`step-content-figure ${
-                                stepIdx % 2 === 0 && stepIdx !== 4
-                                  ? "left"
-                                  : "right"
-                              } ${stepIdx === 4 ? "wide" : ""}`}
-                            >
-                              <TimelineFigure
-                                step={step}
-                                caption={timelineStep.caption}
-                                images={timelineStep.images}
-                                imageStyle={timelineStep.imageStyle}
-                                setFigureActive={setFigureActive}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <TimelineStepCopy
+                    timelineStep={timelineStep}
+                    stepIdx={stepIdx}
+                  />
                 )
             )}
 

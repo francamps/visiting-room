@@ -8,16 +8,21 @@
   left: 0;
   overflow: hidden;
   pointer-events: none;
+
+  background: none;
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(75%) contrast(180%) saturate(100%);
 }
 
 .fullscreen-bg.ready .fullscreen-bg__video {
-  opacity: 0;
+  /*opacity: 0;
 
-  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
-  -ms-animation: fadein 4s forwards; /* Internet Explorer */
-  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
-  animation: fadein 4s forwards;
+  -webkit-animation: fadein 4s forwards;
+  -moz-animation: fadein 4s forwards;
+  -ms-animation: fadein 4s forwards;
+  -o-animation: fadein 4s forwards;
+  animation: fadein 4s forwards;*/
 }
 
 .fullscreen-bg__video {
@@ -26,7 +31,6 @@
   left: 0;
   width: 100%;
   height: calc(100% + 40px);
-  filter: brightness(75%) contrast(180%) saturate(100%);
 }
 
 @media (min-aspect-ratio: 16/9) {

@@ -95,7 +95,8 @@ const GridCell = ({
                 <div
                   className="word"
                   style={{
-                    animationDelay: 0.2 + Math.random() * 1 + "s",
+                    // TODO: Reenable if we want blur fade in
+                    // animationDelay: 0.2 + Math.random() * 1 + "s",
                     marginRight: "6px",
                   }}
                 >

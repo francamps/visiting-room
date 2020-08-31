@@ -5,6 +5,14 @@ export const REFERENCES = [
   },
   {
     element: "li",
+    content: `Foner, Eric, Give Me Liberty! : an American History, W.W. Norton & Company, Seagull Sixth Edition (Volume 2), 2019, p. 59.`,
+  },
+  {
+    element: "li",
+    content: `Foner, Eric, Reconstruction: America’s Unfinished Revolution, 1863-1877, Harper & Row, Publishers, New York, 1988, p. 205`,
+  },
+  {
+    element: "li",
     content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 53-55.`,
   },
   {
@@ -13,11 +21,15 @@ export const REFERENCES = [
   },
   {
     element: "li",
-    content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, p. 88-90, 103.`,
+    content: `Ibid, p. 88-90, 103.`,
   },
   {
     element: "li",
-    content: `Mark T. Carleton, Politics and Punishment: The History of the Louisiana State Penal System, Louisiana State University Press, Baton Rouge, 1971, Ch. 5; "The Forgotten Men," The Angolite, May-June 1980, p. 36.`,
+    content: `Ibid, p. 108.`,
+  },
+  {
+    element: "li",
+    content: `Ibid, Chapter 5; "The Forgotten Men," The Angolite, May-June 1980, p. 36.`,
   },
   {
     element: "li",
@@ -25,11 +37,7 @@ export const REFERENCES = [
   },
   {
     element: "li",
-    content: `"The Forgotten Men," The Angolite, May-June 1980, p. 46-48, 55.`,
-  },
-  {
-    element: "li",
-    content: `"The Forgotten Men," The Angolite, May-June 1980, p. 43, 46, 55; "The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
+    content: `"The Forgotten Men," The Angolite, May-June 1980, p. 43, 46-48, 55; "The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
   },
   {
     element: "li",
@@ -41,7 +49,7 @@ export const REFERENCES = [
   },
   {
     element: "li",
-    content: `"The Forgotten Men," The Angolite, May-June 1980, p. 41, 43, 48, 54-55.`,
+    content: `Ibid, p. 41, 43, 48, 54-55.`,
   },
   {
     element: "li",
@@ -53,7 +61,7 @@ export const REFERENCES = [
   },
   {
     element: "li",
-    content: `"The Meaning of Life," The Angolite, June/July 1995, p. 21.`,
+    content: `Ibid, p. 21.`,
   },
   {
     element: "li",
@@ -69,7 +77,7 @@ export const REFERENCES = [
   },
   {
     element: "li",
-    content: `Lane Nelson and Wilbert Rideau, "Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.29.`,
+    content: `Ibid, p.29.`,
   },
   {
     element: "li",

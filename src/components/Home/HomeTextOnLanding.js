@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 import "./HomeTextOnLanding.css"
+
+import Play from "../Symbols/Play"
 
 const HomeTextOnLanding = ({
   setFadeOutLanding,
@@ -10,7 +12,6 @@ const HomeTextOnLanding = ({
 }) => {
   const [isActionsOpen, setActionsOpen] = useState(false)
   const [showMoreMenu, setVisibleMenu] = useState(false)
-  const [isHover, setHover] = useState(false)
 
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
@@ -39,7 +40,7 @@ const HomeTextOnLanding = ({
     if (!showMoreMenu && isActionsOpen) {
       let timerMenu = setTimeout(() => {
         setVisibleMenu(true)
-      }, 2000)
+      }, 500)
 
       return () => {
         clearTimeout(timerMenu)
@@ -55,24 +56,31 @@ const HomeTextOnLanding = ({
       }}
     >
       <div className="title">
-        <h1>The Visiting Room</h1>
+        <h1
+          onClick={() => {
+            if (typeof window !== "undefined")
+              window.localStorage.setItem("showIntro", "true")
+            navigate("/visiting-room")
+          }}
+        >
+          The Visiting Room
+        </h1>
       </div>
       <div className="actions">
-        <Link to="/visiting-room">
-          <button
-            onMouseEnter={() => {
-              setHover(true)
-            }}
-            onMouseLeave={() => {
-              setHover(false)
-            }}
-          >
-            Enter the visiting room
-          </button>
-        </Link>
-
         {showMoreMenu && (
           <ul className="fadein">
+            <li>
+              <Link
+                to="/visiting-room"
+                onClick={() => {
+                  if (typeof window !== "undefined")
+                    window.localStorage.setItem("showIntro", "true")
+                }}
+              >
+                <Play useCircle={false} />
+                Foreword
+              </Link>
+            </li>
             <li>
               <Link to="/history">History of Life Without Parole</Link>
             </li>

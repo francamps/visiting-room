@@ -65,8 +65,8 @@
 
 .video-container .controls .actions .play-pause-stop {
   position: absolute;
-  bottom: 20px;
-  left: 30px;
+  bottom: 10px;
+  left: 20px;
   cursor: pointer;
 }
 

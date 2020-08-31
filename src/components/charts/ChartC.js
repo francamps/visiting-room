@@ -90,7 +90,7 @@ const ChartC = () => {
       .domain([1972, 2020])
       .range([m.l, w - m.r])
 
-    const maxY = step === 2 ? 38000 : step === 1 ? 5000 : 1000
+    const maxY = step === 2 ? 38000 : step === 1 ? 5500 : 1000
     const yScale = scaleLinear()
       .domain([0, maxY])
       .range([h - m.b, m.t])

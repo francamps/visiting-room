@@ -56,6 +56,7 @@ const TimelineFigure = ({
                   >
                     <figure>
                       <ChartC />
+                      {caption && <p className="caption">{caption}</p>}
                     </figure>
                   </section>
                 )
