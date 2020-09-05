@@ -12,7 +12,6 @@ const ArchiveActions = ({
   setSortedAsc,
   setSortedType,
   setSearch,
-  setShowArchive,
   setView,
   sortAsc,
   sortType,

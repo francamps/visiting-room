@@ -4,7 +4,7 @@ import CrossClose from "../CrossClose"
 
 import "./ArchiveBanner.css"
 
-const ArchiveBanner = ({ showGrid, setShowArchive, fadeout, onClose }) => {
+const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
   return (
     <>
       <div className={`archive-banner fadeinfast ${fadeout ? "fadeout" : ""}`}>
@@ -40,8 +40,8 @@ const ArchiveBanner = ({ showGrid, setShowArchive, fadeout, onClose }) => {
             >
               <p
                 onClick={() => {
-                  window.localStorage.setItem("showArchive", "false")
-                  setShowArchive(false)
+                  window.localStorage.setItem("showBanner", "false")
+                  setShowBanner(false)
                   onClose()
                 }}
                 style={{ fontSize: "var(--font-copy)", cursor: "pointer" }}

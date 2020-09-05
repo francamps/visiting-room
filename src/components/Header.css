@@ -25,6 +25,10 @@
   cursor: pointer;
 }
 
+.header.light {
+  background: var(--clr-off-white);
+}
+
 .header.light .home-title {
   color: var(--clr-black);
 }

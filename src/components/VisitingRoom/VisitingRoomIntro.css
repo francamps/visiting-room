@@ -45,6 +45,13 @@
   right: 0;
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transition: opacity 1.2s;
+}
+
+.video-container .controls.hidden {
+  opacity: 0;
+  transition: opacity 1.2s;
 }
 
 .video-container .controls .progress-bar {
@@ -53,6 +60,10 @@
   margin: 0;
   width: calc(100% - 40px);
   cursor: pointer;
+}
+
+.vr-intro .video-container .progress-bar-played {
+  background: var(--clr-primary);
 }
 
 .video-container .controls .actions {

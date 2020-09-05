@@ -214,33 +214,51 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
             }}
           />
         )}
-        {(!isPlaying || isPaused) && (
-          <>
-            <div
-              style={{
-                position: "absolute",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Play
-                size="huge"
-                onClick={() => {
-                  setPause(false)
-                  setPlaying(true)
+        <div
+          className="control-layer"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            background: "none",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          {(!isPlaying || (isPlaying && isPaused)) && (
+            <>
+              <div
+                style={{
+                  position: "absolute",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
-              />
-            </div>
-            {videoTitle && !isPaused && (
-              <div style={{ position: "absolute", top: "20px", left: "20px" }}>
-                <h2 style={{ margin: "0px", fontSize: "var(--font-large)" }}>
-                  {videoTitle}
-                </h2>
+              >
+                <Play
+                  size="huge"
+                  onClick={() => {
+                    setPause(false)
+                    setPlaying(true)
+                  }}
+                />
               </div>
-            )}
-          </>
-        )}
+              {videoTitle && !isPaused && (
+                <div
+                  style={{ position: "absolute", top: "20px", left: "20px" }}
+                >
+                  <h2 style={{ margin: "0px", fontSize: "var(--font-large)" }}>
+                    {videoTitle}
+                  </h2>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+
         {false && (
           <VideoViewedMenu
             onClickReplay={() => {
@@ -321,6 +339,10 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
               } else {
                 handleFullScreen.enter()
               }
+            }}
+            style={{
+              transform: "scale(0.8)",
+              transformOrigin: "center center",
             }}
           >
             <IconFullScreen />

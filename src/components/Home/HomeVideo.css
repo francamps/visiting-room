@@ -64,6 +64,7 @@
   }
 
   .fullscreen-bg__video {
-    /*display: none;*/
+    top: -100px;
+    height: calc(100% + 250px) !important;
   }
 }

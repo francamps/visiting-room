@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
 
 import Play from "../Symbols/Play"
@@ -25,8 +25,25 @@ const VisitingRoomintro = ({ setShowIntro }) => {
     progress: 0,
     progressSeconds: 0,
   })
+  const [showControls, setShowControls] = useState(true)
+  const [countDownToHideControls, setCountDownToHideControls] = useState(null)
 
   const barRef = useRef()
+
+  useEffect(() => {
+    let timer
+    if (countDownToHideControls === 5000) {
+      setShowControls(true)
+      timer = setTimeout(() => {
+        setCountDownToHideControls(null)
+        setShowControls(false)
+      }, countDownToHideControls)
+    }
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [countDownToHideControls, showControls])
 
   const onSeek = e => {
     const widthOfBar = barRef.current.getBoundingClientRect().width
@@ -49,7 +66,24 @@ const VisitingRoomintro = ({ setShowIntro }) => {
         }}
       ></div>
       <div className="video-container">
-        <div className="intro">
+        <div
+          className="intro"
+          onClick={() => {
+            if (isPlaying && isPaused) {
+              setPlaying(true)
+              setPause(false)
+            } else if (isPlaying && !isPaused) {
+              setPlaying(true)
+              setPause(true)
+            }
+          }}
+          onMouseMove={() => {
+            if (isPlaying) setCountDownToHideControls(5000)
+          }}
+          onMouseLeave={() => {
+            if (isPlaying) setCountDownToHideControls(5000)
+          }}
+        >
           {isPlaying && (
             <>
               <ReactPlayer
@@ -104,22 +138,44 @@ const VisitingRoomintro = ({ setShowIntro }) => {
               )}
             </>
           )}
-          {(!isPlaying || (isPlaying && isPaused)) && (
-            <div style={{ position: "absolute" }}>
-              <Play
-                size="huge"
-                onClick={() => {
-                  if (typeof window !== "undefined")
-                    window.localStorage.setItem("showIntro", "false")
-                  setPause(false)
-                  setPlaying(true)
+          <div
+            className="control-layer"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              background: "none",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            {(!isPlaying || (isPlaying && isPaused)) && (
+              <div
+                style={{
+                  position: "absolute",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
-              />
-            </div>
-          )}
+              >
+                <Play
+                  size="huge"
+                  onClick={() => {
+                    if (typeof window !== "undefined")
+                      window.localStorage.setItem("showIntro", "false")
+                    setPause(false)
+                    setPlaying(true)
+                  }}
+                />
+              </div>
+            )}
+          </div>
         </div>
         {isPlaying && (
-          <div className="controls">
+          <div className={`controls ${!showControls ? "hidden" : ""}`}>
             <div className="progress-bar" ref={barRef} onClick={onSeek}>
               <div className="progress-bar-bg" />
               <div

@@ -33,12 +33,15 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
   }, [showIntro])
 
   useEffect(() => {
-    let timer1 = setTimeout(() => setFadeOut(true), 3000)
+    let timer1
+    if (!showIntro) {
+      timer1 = setTimeout(() => setFadeOut(true), 3000)
+    }
 
     return () => {
       clearTimeout(timer1)
     }
-  }, [])
+  }, [showIntro])
 
   useEffect(() => {
     if (fadeout) {
@@ -74,7 +77,7 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
     <div
       className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
     >
-      {!profileId ? (
+      {!profileId && !showIntro ? (
         <>
           <Header />
           {!loading && (

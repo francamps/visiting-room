@@ -26,15 +26,14 @@ const Archive = ({ profiles = [], loading, images }) => {
   )
   const [profileId, setProfile] = useState(params.get("profile"))
 
-  const [showArchive, setShowArchive] = useState(
+  const [showBanner, setShowBanner] = useState(
     // TODO: Save in localStore once viewed, and pull from there
     typeof window !== "undefined" &&
-      window.localStorage.getItem("showArchive") === "true"
-      ? true
-      : false
+      window.localStorage.getItem("showBanner") === "false"
+      ? false
+      : true
   )
   const [fadeout, setFadeOut] = useState(false)
-
   const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
@@ -53,7 +52,7 @@ const Archive = ({ profiles = [], loading, images }) => {
   useEffect(() => {
     if (fadeout) {
       let timer2 = setTimeout(() => {
-        setShowArchive(true)
+        setShowBanner(false)
         setFadeOut(false)
       }, 1200)
 
@@ -84,14 +83,14 @@ const Archive = ({ profiles = [], loading, images }) => {
     <div className="archive-wrap">
       {!profileId ? (
         <>
-          {showArchive && (
+          {!showBanner && (
             <Header
               title={"Full archive"}
               subtitle={
                 <p
                   onClick={() => {
-                    window.localStorage.setItem("showArchive", "false")
-                    setShowArchive(false)
+                    window.localStorage.setItem("showBanner", "true")
+                    setShowBanner(true)
                   }}
                 >
                   About the archive
@@ -103,7 +102,6 @@ const Archive = ({ profiles = [], loading, images }) => {
                   setSortedAsc={setSortedAsc}
                   setSortedType={setSortedType}
                   setSearch={setSearch}
-                  setShowArchive={setShowArchive}
                   sortAsc={sortAsc}
                   sortType={sortType}
                   setView={setView}
@@ -114,13 +112,13 @@ const Archive = ({ profiles = [], loading, images }) => {
             />
           )}
           <div className="archive">
-            {!showArchive && (
+            {showBanner && (
               <ArchiveBanner
                 fadeout={fadeout}
                 onClose={() => {
                   setFadeOut(true)
                 }}
-                setShowArchive={setShowArchive}
+                setShowBanner={setShowBanner}
               />
             )}
 

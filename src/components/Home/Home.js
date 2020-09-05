@@ -24,16 +24,6 @@ const Home = () => {
     }
   }, [])
 
-  useEffect(() => {
-    let timerGoOff = setTimeout(() => {
-      navigate("/visiting-room")
-    }, 300000)
-
-    return () => {
-      clearTimeout(timerGoOff)
-    }
-  }, [])
-
   return (
     <>
       <p className={`tap-hint ${isMenuExpanded ? "fadeout" : ""}`} style={{}}>

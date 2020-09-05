@@ -70,6 +70,7 @@ const TimelineOnePager = props => {
                   <TimelineStepCopy
                     timelineStep={timelineStep}
                     stepIdx={stepIdx}
+                    setModal={setModal}
                   />
                 )
             )}

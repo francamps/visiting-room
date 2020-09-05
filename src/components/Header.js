@@ -10,7 +10,9 @@ const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return (
-    <div className={`header ${theme} ${classes}`}>
+    <div
+      className={`header ${theme === "light" ? "light fadein" : ""} ${classes}`}
+    >
       {!hideTitle && (
         <div className="home-title-wrap">
           <div className="home-title">
