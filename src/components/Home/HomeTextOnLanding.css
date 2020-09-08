@@ -24,10 +24,11 @@
 
 .text-on-landing .title h1 {
   position: relative;
-  margin: 0 auto;
+  margin: 0;
+  margin-left: var(--space-around-med);
   font-family: "EB Garamond";
   font-weight: 300;
-  font-size: var(--font-title);
+  font-size: var(--font-subtitle);
   text-transform: none;
   letter-spacing: normal;
   transition: letter-spacing 1.2s;
@@ -36,32 +37,26 @@
 .text-on-landing .title h1:after {
   content: "";
   position: absolute;
-  bottom: -30px;
+  bottom: 0px;
   right: 0;
-  width: 0px;
-  height: 2px;
+  width: 100%;
+  height: 4px;
   margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
   opacity: 1;
   background-color: var(--clr-white);
+
+  -webkit-animation: rotatingBackgroundColor 10s ease infinite;
+  -moz-animation: rotatingBackgroundColor 10s ease infinite;
+  -ms-animation: rotatingBackgroundColor 10s ease infinite;
+  -o-animation: rotatingBackgroundColor 10s ease infinite;
+  animation: rotatingBackgroundColor 10s ease infinite;
 }
 
 .text-on-landing .title:hover h1 {
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   transition: letter-spacing 1.2s;
-}
-
-.text-on-landing .title:hover h1:after {
-  width: 100%;
-  opacity: 1;
-  height: 4px;
-  /*background-color: var(--clr-primary);*/
-  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
-  -moz-animation: rotatingBackgroundColor 20s ease infinite;
-  -ms-animation: rotatingBackgroundColor 20s ease infinite;
-  -o-animation: rotatingBackgroundColor 20s ease infinite;
-  animation: rotatingBackgroundColor 20s ease infinite;
 }
 
 .text-on-landing .actions {
@@ -155,21 +150,21 @@
 .text-on-landing .subtitle {
   position: fixed;
   top: var(--space-around-med);
-  right: var(--space-around-med);
+  left: var(--space-around-med);
   width: 100%;
-  max-width: 240px;
+  max-width: 600px;
   box-sizing: border-box;
 
-  line-height: 1.5rem;
-  text-align: right;
-  font-family: "EB Garamond", serif;
-  font-size: 1rem;
+  font-size: var(--font-subtitle);
+  text-align: left;
   display: flex;
   flex-direction: column;
 }
 
 .text-on-landing .subtitle p {
-  margin: 5px 0;
+  font-family: "EB Garamond", serif;
+  margin: 0;
+  margin-bottom: var(--space-around-med);
 }
 
 @media (max-width: 1824px) {
@@ -178,7 +173,8 @@
   }
 
   .text-on-landing {
-    padding-bottom: var(--space-around-med);
+    text-align: left;
+    padding-bottom: var(--space-around-lg);
   }
 }
 
@@ -188,6 +184,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: var(--space-around-med);
   }
 
   .text-on-landing .title {
@@ -199,25 +196,22 @@
     transform: translateX(0px);
   }
 
-  .text-on-landing {
-    padding-bottom: var(--space-around-small);
-  }
-
   .text-on-landing .title {
     max-height: 200px;
   }
 
   .text-on-landing .title h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     width: 100%;
-    text-align: center;
+    text-align: left;
     text-transform: none;
+    margin-left: var(--space-around-small);
   }
 
   .text-on-landing .title h1:after {
     bottom: -15px;
     right: 20px;
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
 
     -webkit-animation: rotatingBackgroundColor 20s ease infinite;
     -moz-animation: rotatingBackgroundColor 20s ease infinite;
@@ -272,18 +266,16 @@
   }
 
   .text-on-landing .subtitle {
-    position: relative;
-    width: 100%;
-    padding: 0 var(--space-around-med);
-    max-width: 640px;
-    max-height: 140px;
+    position: fixed;
+    width: auto;
+    top: var(--space-around-small);
+    right: var(--space-around-xl);
+    left: var(--space-around-small);
+    padding: 0;
     flex-direction: column;
-    margin-bottom: 40px;
-    font-size: var(--font-copy);
+    font-size: 3rem;
     font-weight: normal;
-    text-align: center;
-    right: auto;
-    bottom: auto;
+    text-align: left;
   }
 
   .text-on-landing .subtitle.hidden {

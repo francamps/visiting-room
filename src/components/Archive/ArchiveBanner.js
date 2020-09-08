@@ -46,9 +46,9 @@ const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
                 }}
                 style={{ fontSize: "var(--font-copy)", cursor: "pointer" }}
               >
+                <CrossClose onClick={onClose} primary />
                 Do not show me this again.
               </p>
-              <CrossClose onClick={onClose} primary />
             </div>
           </div>
         )}

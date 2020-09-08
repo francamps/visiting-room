@@ -5,7 +5,7 @@
 .about .copy-wrap {
   display: flex;
   flex-direction: column;
-  padding: 100px 0;
+  padding: 0;
   width: 640px;
   margin: 0 auto;
 
@@ -39,9 +39,11 @@ TODO: PUT IT IN ITS OWN FILE
 
 .react-tabs .react-tabs__tab-list {
   width: 100%;
+  padding: 60px 0;
   border-bottom: none;
   padding-left: 20px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .react-tabs__tab {
@@ -49,7 +51,7 @@ TODO: PUT IT IN ITS OWN FILE
   padding-left: 0;
   padding-right: 0px;
   margin-right: 20px;
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: "EB Garamond";
   font-size: var(--font-copy);
   font-weight: 300;
   color: var(--clr-white);

@@ -1,26 +1,12 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
-import VisitingRoom from "../components/VisitingRoom/VisitingRoom"
+import Archive from "./Archive"
 
-import useProfiles from "../utils/useProfiles"
+import useProfiles from "../../utils/useProfiles"
 
-const VisitingRoomPage = props => {
-  const { loading, profiles, images } = useProfiles(props)
-
-  return (
-    <VisitingRoom
-      loading={loading}
-      profiles={Object.values(profiles).filter(
-        p => p.show_profile_in_visiting_room
-      )}
-      images={images}
-    />
-  )
-}
-
-export const query = graphql`
-  query getProfilesVR {
+const QUERY = graphql`
+  query getArchive {
     allPrismicProfile {
       edges {
         node {
@@ -31,6 +17,7 @@ export const query = graphql`
             date_of_birth {
               text
             }
+            date_of_offense
             last_name {
               text
             }
@@ -43,7 +30,7 @@ export const query = graphql`
             quote {
               text
             }
-            show_profile_in_visiting_room
+            show_in_archive
             color
           }
         }
@@ -65,4 +52,18 @@ export const query = graphql`
   }
 `
 
-export default VisitingRoomPage
+const ArchiveData = () => {
+  const data = useStaticQuery(QUERY)
+
+  const { loading, profiles, images } = useProfiles({ data })
+
+  return (
+    <Archive
+      profiles={Object.values(profiles).filter(p => p.show_in_archive)}
+      loading={loading}
+      images={images}
+    />
+  )
+}
+
+export default ArchiveData

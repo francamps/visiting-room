@@ -17,9 +17,9 @@ const VisitingRoomBanner = ({ showGrid, fadeout, onSearchTyping }) => {
         {!showGrid && (
           <div className="visiting-room-entry-text">
             <p>
-              Louisiana has nearly 5,000 people serving life without parole.
+              All the following life-story interviews were filmed at the
+              Louisiana State Penitentiary, Angola.
             </p>
-            <p>Here are some of their stories.</p>
             <Loading />
           </div>
         )}

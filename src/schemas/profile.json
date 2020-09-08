@@ -1,0 +1,101 @@
+{
+  "Main": {
+    "full_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading4, heading5, heading6",
+        "label": "Full Name"
+      }
+    },
+    "first_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "First name"
+      }
+    },
+    "last_name": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Last name"
+      }
+    },
+    "date_of_birth": {
+      "type": "StructuredText",
+      "config": {
+        "single": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Date of birth",
+        "placeholder": "MM/DD/YYYY"
+      }
+    },
+    "date_of_offense": {
+      "type": "Date",
+      "config": {
+        "label": "Date of offense"
+      }
+    },
+    "charge": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Charge"
+      }
+    },
+    "quote": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Quote"
+      }
+    },
+    "imagepath": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "ImagePath"
+      }
+    },
+    "show_profile_in_visiting_room": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Show profile in visiting room"
+      }
+    },
+    "show_in_archive": {
+      "type": "Boolean",
+      "config": {
+        "default_value": true,
+        "label": "Show in Archive"
+      }
+    },
+    "deceased_date": {
+      "type": "Date",
+      "config": {
+        "label": "Deceased date"
+      }
+    },
+    "color": {
+      "type": "Color",
+      "config": {
+        "label": "Color"
+      }
+    },
+    "video_link": {
+      "type": "Link",
+      "config": {
+        "label": "Video link"
+      }
+    },
+    "profile_picture": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Profile picture"
+      }
+    }
+  },
+  "Profiles": {}
+}

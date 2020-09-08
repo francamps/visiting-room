@@ -15,14 +15,8 @@
   filter: brightness(75%) contrast(180%) saturate(100%);
 }
 
-.fullscreen-bg.ready .fullscreen-bg__video {
-  /*opacity: 0;
-
-  -webkit-animation: fadein 4s forwards;
-  -moz-animation: fadein 4s forwards;
-  -ms-animation: fadein 4s forwards;
-  -o-animation: fadein 4s forwards;
-  animation: fadein 4s forwards;*/
+.fullscreen-bg .gatsby-image-wrapper {
+  height: 100%;
 }
 
 .fullscreen-bg__video {

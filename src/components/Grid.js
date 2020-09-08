@@ -9,7 +9,7 @@ import { videos } from "../content/videoRegistry"
 
 const USE_PRISMIC = true
 
-const Grid = ({ searchTerm, profiles = [], images, setProfile }) => {
+const Grid = ({ searchTerm, profiles = [], images }) => {
   return (
     <div className="grid">
       {profiles
@@ -40,7 +40,6 @@ const Grid = ({ searchTerm, profiles = [], images, setProfile }) => {
               fullName={fullName}
               quote={quote}
               profile_picture={profile_picture}
-              setProfile={setProfile}
               color={color}
             />
           )

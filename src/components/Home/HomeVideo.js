@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ReactPlayer from "react-player"
+import Img from "gatsby-image"
 
 import Loading from "../Loading"
 
@@ -10,6 +11,8 @@ import background1B from "../../images/video1B.png"
 import background2A from "../../images/video2A.png"
 import background2B from "../../images/video2B.png"
 
+const imageFilenames = ["video1A", "video1B", "video2A", "video2B"]
+
 const items = [
   "https://vimeo.com/444204703",
   "https://vimeo.com/444204725",
@@ -19,7 +22,7 @@ const items = [
 
 const bgs = [background1A, background1B, background2A, background2B]
 
-const HomeVideo = ({ setMenuExpanded }) => {
+const HomeVideo = ({ images, setMenuExpanded }) => {
   const [isReady, setReady] = useState(false)
   const [videoIdx, setVideoIdx] = useState(
     Math.floor(Math.random() * items.length)
@@ -30,17 +33,27 @@ const HomeVideo = ({ setMenuExpanded }) => {
     setVideoSrcUrl(items[videoIdx])
   }, [videoIdx])
 
+  const img = images.edges.find(n => {
+    return n.node.relativePath === `${imageFilenames[videoIdx]}.png`
+  })
+
   return (
     <div
       className={`fullscreen-bg ${isReady ? "ready" : ""}`}
       onClick={() => {
-        console.log("click happening")
         setMenuExpanded(true)
       }}
       style={{
         background: `url(${bgs[videoIdx]})`,
       }}
     >
+      <Img
+        alt={"TODO: NEEDS AN ALT"}
+        fluid={img.node.childImageSharp.fluid}
+        imgStyle={{
+          objectFit: "cover",
+        }}
+      />
       <ReactPlayer
         key={`video-${videoIdx}`}
         url={videoSrcUrl}

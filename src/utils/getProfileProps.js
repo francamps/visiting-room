@@ -3,12 +3,12 @@ import moment from "moment"
 
 const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   const profile_picture = USE_PRISMIC
-    ? getValue(profile, "imagepath[0].text") || null
+    ? getValue(profile, "imagepath.text") || null
     : profile.imagePath
 
   const quote =
-    USE_PRISMIC && profile.quote ? profile.quote[0].text : profile.quote
-  const fullName = USE_PRISMIC ? profile.full_name[0].text : profile.name
+    USE_PRISMIC && profile.quote ? profile.quote.text : profile.quote
+  const fullName = USE_PRISMIC ? profile.full_name.text : profile.name
 
   const image = imageData.edges.find(n => {
     return (
@@ -23,7 +23,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     )
   })
 
-  let date_of_birth = moment(getValue(profile, "date_of_birth[0].text"))
+  let date_of_birth = moment(getValue(profile, "date_of_birth.text"))
   let date_of_offense = moment(profile.date_of_offense)
   let age_at_offense = "unknown"
 

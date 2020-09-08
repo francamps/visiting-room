@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
+import { navigate } from "gatsby"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
 import Loading from "../Loading"
 
-import "./VisitingRoomIntro.css"
+import "./Foreword.css"
 
 const videoSrcURL = "https://vimeo.com/444511449"
-const videoTitle = "Introduction: Life at Angola"
 
 const getStringTime = seconds => {
   return `${`${Math.floor(seconds / 60)}`.padStart(2, "0")}:${`${Math.floor(
@@ -16,7 +16,7 @@ const getStringTime = seconds => {
   )}`.padStart(2, "0")}s`
 }
 
-const VisitingRoomintro = ({ setShowIntro }) => {
+const Foreword = () => {
   const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
@@ -61,8 +61,8 @@ const VisitingRoomintro = ({ setShowIntro }) => {
       <div
         className="vr-intro-background"
         onClick={() => {
-          // TODO: Catch if outside of video
-          setShowIntro(false)
+          window.localStorage.setItem("showIntro", "false")
+          navigate("/visiting-room")
         }}
       ></div>
       <div className="video-container">
@@ -104,7 +104,7 @@ const VisitingRoomintro = ({ setShowIntro }) => {
                   // Do something
                   if (typeof window !== "undefined")
                     window.localStorage.setItem("showIntro", "false")
-                  setShowIntro(false)
+                  navigate("/visiting-room")
                 }}
                 onProgress={({ played, playedSeconds }) => {
                   setProgress({
@@ -210,10 +210,11 @@ const VisitingRoomintro = ({ setShowIntro }) => {
               <div
                 className="video-skip"
                 onClick={() => {
-                  setShowIntro(false)
+                  window.localStorage.setItem("showIntro", "false")
+                  navigate("/visiting-room")
                 }}
               >
-                <p>Skip introduction > </p>
+                <p>Skip foreword > </p>
               </div>
               {playerRef && playerRef.current && (
                 <div className="progress-seconds">
@@ -232,4 +233,4 @@ const VisitingRoomintro = ({ setShowIntro }) => {
   )
 }
 
-export default VisitingRoomintro
+export default Foreword

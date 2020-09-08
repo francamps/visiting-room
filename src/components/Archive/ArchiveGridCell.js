@@ -9,7 +9,7 @@ import { videos } from "../../content/archiveRegistry"
 
 const USE_PRISMIC = true
 
-const ArchiveGridCell = ({ profile, setProfile, profileIdx, images }) => {
+const ArchiveGridCell = ({ profile, profileIdx, images }) => {
   const [isHover, setHover] = useState(false)
 
   const {
@@ -34,8 +34,7 @@ const ArchiveGridCell = ({ profile, setProfile, profileIdx, images }) => {
       }}
       onClick={() => {
         const profileUri = fullName.toLowerCase().replace(/ /g, "_")
-        setProfile(profileUri)
-        videos[fullName] && navigate(`/archive/?profile=${profileUri}`)
+        videos[fullName] && navigate(`/archive/${profileUri}`)
       }}
     >
       <GridCellBackground image={image} oldImage={oldImage} isHover={isHover} />

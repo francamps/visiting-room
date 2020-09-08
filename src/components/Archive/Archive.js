@@ -7,7 +7,6 @@ import ArchiveActions from "./ArchiveActions"
 import ArchiveTable from "./ArchiveTable"
 import ArchiveBanner from "./ArchiveBanner"
 import Loading from "../Loading"
-import Video from "../Video/Video"
 
 import sortProfiles from "../../utils/sortProfiles"
 
@@ -62,92 +61,53 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
-  useEffect(() => {
-    if (isNull(profileId)) {
-      params.delete("profile")
-      window.history.replaceState(
-        {},
-        "",
-        `${window.location.pathname}?${params}`
-      )
-    }
-  }, [profileId])
-
   const profile =
     profiles &&
     profiles.find(
-      p => p.full_name[0].text.toLowerCase().replace(/ /g, "_") === profileId
+      p => p.full_name.text.toLowerCase().replace(/ /g, "_") === profileId
     )
 
   return (
     <div className="archive-wrap">
-      {!profileId ? (
-        <>
-          {!showBanner && (
-            <Header
-              title={"Full archive"}
-              subtitle={
-                <p
-                  onClick={() => {
-                    window.localStorage.setItem("showBanner", "true")
-                    setShowBanner(true)
-                  }}
-                >
-                  About the archive
-                </p>
-              }
-              actions={
-                <ArchiveActions
-                  columns={columns}
-                  setSortedAsc={setSortedAsc}
-                  setSortedType={setSortedType}
-                  setSearch={setSearch}
-                  sortAsc={sortAsc}
-                  sortType={sortType}
-                  setView={setView}
-                  view={view}
-                />
-              }
-              classes="fadein"
+      {!showBanner && (
+        <Header
+          title={"Archive"}
+          actions={
+            <ArchiveActions
+              columns={columns}
+              setSortedAsc={setSortedAsc}
+              setSortedType={setSortedType}
+              setSearch={setSearch}
+              sortAsc={sortAsc}
+              sortType={sortType}
+              setView={setView}
+              setShowBanner={setShowBanner}
+              view={view}
             />
-          )}
-          <div className="archive">
-            {showBanner && (
-              <ArchiveBanner
-                fadeout={fadeout}
-                onClose={() => {
-                  setFadeOut(true)
-                }}
-                setShowBanner={setShowBanner}
-              />
-            )}
-
-            {loading && <Loading />}
-            {!view ||
-              (view === "grid" && !loading && (
-                <ArchiveGrid
-                  profiles={profilesSorted}
-                  images={images}
-                  setProfile={setProfile}
-                />
-              ))}
-            {view === "table" && !loading && (
-              <ArchiveTable
-                profiles={profilesSorted}
-                images={images}
-                setProfile={setProfile}
-              />
-            )}
-          </div>
-        </>
-      ) : (
-        <Video
-          profileId={profileId}
-          name={profile && profile.full_name && profile.full_name[0].text}
-          onClose={() => setProfile(null)}
-          isArchive
+          }
+          classes="fadein"
         />
       )}
+      <div className="archive">
+        {showBanner && (
+          <ArchiveBanner
+            fadeout={fadeout}
+            onClose={() => {
+              setFadeOut(true)
+            }}
+            setShowBanner={setShowBanner}
+          />
+        )}
+
+        {loading && <Loading />}
+        {!view ||
+          (view === "grid" && !loading && (
+            <ArchiveGrid profiles={profilesSorted} images={images} />
+          ))}
+        {view === "table" && !loading && (
+          <ArchiveTable profiles={profilesSorted} images={images} />
+        )}
+      </div>
     </div>
   )
 }

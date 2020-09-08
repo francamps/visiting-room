@@ -5,10 +5,10 @@
  */
 
 // You can delete this file if you're not using it
-const { registerLinkResolver } = require("gatsby-source-prismic-graphql")
-const { linkResolver } = require("./src/utils/linkResolver")
+//const { registerLinkResolver } = require("gatsby-source-prismic-graphql")
+//const { linkResolver } = require("./src/utils/linkResolver")
 
-registerLinkResolver(linkResolver)
+//registerLinkResolver(linkResolver)
 
 // ES5 way
 // exports.onClientEntry = () => {

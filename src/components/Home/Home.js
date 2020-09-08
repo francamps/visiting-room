@@ -3,10 +3,11 @@ import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
 import HomeTextOnLanding from "./HomeTextOnLanding"
+import Header from "../Header"
 
 import "./Home.css"
 
-const Home = () => {
+const Home = ({ images }) => {
   const [fadeoutLanding, setFadeOutLanding] = useState(false)
   const [fadeoutMenu, setVisibleMenu] = useState(false)
 
@@ -26,9 +27,12 @@ const Home = () => {
 
   return (
     <>
-      <p className={`tap-hint ${isMenuExpanded ? "fadeout" : ""}`} style={{}}>
+      {
+        null /*<p className={`tap-hint ${isMenuExpanded ? "fadeout" : ""}`} style={{}}>
         Tap anywhere to start
-      </p>
+      </p>*/
+      }
+      <Header hideTitle />
       <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
         <div
           className="landing"
@@ -38,7 +42,7 @@ const Home = () => {
             }
           }}
         >
-          <HomeVideo setMenuExpanded={setMenuExpanded} />
+          <HomeVideo setMenuExpanded={setMenuExpanded} images={images} />
           <HomeTextOnLanding
             setFadeOutLanding={setFadeOutLanding}
             isMenuExpanded={isMenuExpanded}

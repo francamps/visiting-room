@@ -13,14 +13,16 @@
 }
 
 .header .home-title {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  font-family: "EB Garamond";
-  display: inline-block;
-  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70px;
+  margin: 0 0 0 20px;
+  position: relative;
   z-index: 12;
-  margin: -3px 0 10px 0px;
+  font-family: "EB Garamond";
+  line-height: 70px;
+  background: none;
   transition: color 0.4s;
   cursor: pointer;
 }
@@ -42,13 +44,12 @@
   transition: color 0.4s;
 }
 
-.header .title-subtitle {
+.header .breadcrumbs {
   display: flex;
-  width: 200px;
-  flex-direction: column;
-  text-align: center;
-  position: absolute;
-  left: calc(50% - 100px);
+  flex-direction: row;
+}
+
+.header .title-subtitle {
 }
 
 .header .title {
@@ -63,12 +64,10 @@
   text-align: center;
   width: 130px;
   margin: 0 auto;
-  margin-top: 10px;
   transition: font-size 0.4s;
   margin: 0 auto;
   font-size: var(--font-copy-timeline);
-  line-height: 30px;
-  margin-top: 10px;
+  line-height: 70px;
   transition: font-size 0.4s;
 }
 
@@ -97,23 +96,12 @@
   height: 100%;
 }
 
-/* THIS MAY NOT DO ANYTHING */
-
-.header-content {
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  height: 120px;
-  justify-content: space-between;
-  align-items: center;
-}
-
 /* */
 
-.home-title-wrap .home-title:after {
+.home-title .home-link:after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  top: 24px;
   width: 0;
   height: 4px;
   margin: 5px 0 0;
@@ -124,7 +112,7 @@
   right: 0%;
 }
 
-.home-title-wrap:hover .home-title:after {
+.home-title:hover .home-link:after {
   width: 100%;
   opacity: 1;
   height: 4px;
@@ -138,18 +126,17 @@
 
 @media (max-width: 767px) {
   .header .home-title {
-    font-size: 1.5em;
-    margin: 0;
-    margin-left: -9px;
-    width: 105px;
-    top: 8px;
+    margin-left: 15px;
+    box-sizing: border-box;
     line-height: 1em;
+    font-size: 1.5em;
+  }
+
+  .header .home-title h6.home-link {
+    margin: 0;
   }
 
   .archive-wrap .header .actions {
-    display: grid;
-    top: 20px;
-    grid-template-columns: 60px 30px;
-    grid-template-rows: 20px 20px;
+    /* TBD */
   }
 }

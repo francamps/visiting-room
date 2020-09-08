@@ -112,6 +112,7 @@
 
   font-family: "EB Garamond";
   font-weight: 500;
+  font-size: var(--font-normal);
   text-align: left;
   letter-spacing: normal;
   transition: letter-spacing 2s;
@@ -132,8 +133,9 @@
 
 .archive-grid .grid-cell .bottom p {
   margin: 5px;
-  font-size: var(--font-normal);
   height: 20px;
+  text-align: center;
+  font-size: var(--font-small);
 }
 
 .archive-grid .grid-cell.hovered .name {

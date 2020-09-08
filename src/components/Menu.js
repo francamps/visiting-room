@@ -46,7 +46,14 @@ const Menu = ({
         <div className="menu-option-wrap">
           <a
             onClick={() => {
-              navigate("/visiting-room")
+              setBurgerOpen(false)
+              if (typeof window !== "undefined") {
+                if (window.localStorage.getItem("showIntro") === "false") {
+                  navigate("/visiting-room")
+                } else {
+                  navigate("/foreword")
+                }
+              }
             }}
             className="hover-link"
           >
@@ -55,29 +62,50 @@ const Menu = ({
         </div>
         <div className="menu-option-wrap">
           <Link
-            to="/visiting-room"
+            to="/foreword"
             className="hover-link hover-link-intro"
             onClick={() => {
+              setBurgerOpen(false)
               if (typeof window !== "undefined")
-                window.localStorage.setItem("showIntro", "true")
+                window.localStorage.setItem("showIntro", "false")
             }}
           >
-            <Play />
-            <span style={{ marginLeft: "12px" }}>Foreword</span>
+            <span style={{ marginRight: "12px" }}>Foreword</span>
+            <div style={{ transform: "translate(0, 3px)" }}>
+              <Play />
+            </div>
           </Link>
         </div>
         <div className="menu-option-wrap">
-          <Link to="/history" className="hover-link">
+          <Link
+            to="/history"
+            className="hover-link"
+            onClick={() => {
+              setBurgerOpen(false)
+            }}
+          >
             History of Life Without Parole
           </Link>
         </div>
         <div className="menu-option-wrap">
-          <Link to="/archive" className="hover-link">
+          <Link
+            to="/archive"
+            className="hover-link"
+            onClick={() => {
+              setBurgerOpen(false)
+            }}
+          >
             Full Archive
           </Link>
         </div>
         <div className="menu-option-wrap">
-          <Link to="/about" className="hover-link">
+          <Link
+            to="/about"
+            className="hover-link"
+            onClick={() => {
+              setBurgerOpen(false)
+            }}
+          >
             About
           </Link>
         </div>

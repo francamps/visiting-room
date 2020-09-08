@@ -8,9 +8,7 @@ const FAQs = ({ faqs, params, updateParams }) => {
 
   return (
     <article className="copy" style={{ padding: "40px 0" }}>
-      {faqs.map(({ node }, idx) => {
-        const { faq, faq_title } = node
-
+      {faqs.map(({ faq, faq_title }, idx) => {
         return (
           <div
             className={`faq ${idx === +faqNumber ? "faq-active" : ""}`}
@@ -28,10 +26,11 @@ const FAQs = ({ faqs, params, updateParams }) => {
               )
             }}
           >
-            <h3>{faq_title[0].text}</h3>
-            <div className="faq-content">
-              <RichText render={faq} />
-            </div>
+            <h3>{faq_title.text}</h3>
+            <div
+              className="faq-content"
+              dangerouslySetInnerHTML={{ __html: faq.html }}
+            ></div>
           </div>
         )
       })}

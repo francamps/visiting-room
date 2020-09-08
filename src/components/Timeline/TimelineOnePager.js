@@ -55,7 +55,7 @@ const TimelineOnePager = props => {
   return (
     <>
       <>
-        <Header theme="light" />
+        <Header theme="light" title="A History of Life Without Parole" />
         <article className="timeline" ref={timelineRef}>
           <div
             className="timeline-frame"

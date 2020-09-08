@@ -5,16 +5,12 @@ import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
 import Grid from "../Grid"
 import Video from "../Video/Video"
-import VisitingRoomIntro from "./VisitingRoomIntro"
+import VisitingRoomIntro from "./Foreword"
 
 import "./VisitingRoom.css"
 import { isNull } from "lodash"
 
-const VisitingRoom = ({ loading, profiles = [], images }) => {
-  const params = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  )
-  const [profileId, setProfile] = useState(params.get("profile"))
+const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
   const [fadeout, setFadeOut] = useState(false)
@@ -56,37 +52,15 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
     }
   }, [fadeout])
 
-  useEffect(() => {
-    if (isNull(profileId)) {
-      params.delete("profile")
-      window.history.replaceState(
-        {},
-        "",
-        `${window.location.pathname}?${params}`
-      )
-    }
-  }, [profileId])
-
-  const profile =
-    profiles &&
-    profiles.find(
-      p => p.full_name[0].text.toLowerCase().replace(/ /g, "_") === profileId
-    )
-
   return (
     <div
       className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
     >
-      {!profileId && !showIntro ? (
+      {!showIntro && (
         <>
-          <Header />
+          <Header title="The Visiting Room" />
           {!loading && (
-            <Grid
-              searchTerm={search}
-              profiles={profiles}
-              images={images}
-              setProfile={setProfile}
-            />
+            <Grid searchTerm={search} profiles={profiles} images={images} />
           )}
           <VisitingRoomBanner
             fadeout={fadeout}
@@ -94,17 +68,7 @@ const VisitingRoom = ({ loading, profiles = [], images }) => {
             onSearchTyping={setSearch}
           />
         </>
-      ) : (
-        <Video
-          profileId={profileId}
-          name={profile && profile.full_name && profile.full_name[0].text}
-          color={profile && profile.color}
-          onClose={() => {
-            setProfile(null)
-          }}
-        />
       )}
-      {showIntro && <VisitingRoomIntro setShowIntro={setShowIntro} />}
     </div>
   )
 }

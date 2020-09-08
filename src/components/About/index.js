@@ -13,7 +13,7 @@ import "./About.css"
 
 import { REFERENCES } from "../../content/references"
 
-const About = ({ content, faqs, terms, title }) => {
+const About = ({ content, faqs, terms }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
@@ -26,8 +26,7 @@ const About = ({ content, faqs, terms, title }) => {
   return (
     <>
       <section className="about">
-        <Header />
-        <h2 className="title">About The Visiting Room Project</h2>
+        <Header title="About the project" />
         <Tabs
           defaultIndex={params.get("tab") || 0}
           onSelect={idx => {
@@ -46,7 +45,10 @@ const About = ({ content, faqs, terms, title }) => {
           <div className="copy-wrap">
             <TabPanel>
               <article className="copy">
-                <RichText render={content} />
+                <div
+                  className="term-content"
+                  dangerouslySetInnerHTML={{ __html: content.html }}
+                ></div>
                 <div className="map" style={{ height: "500px" }}>
                   <Map style={{ width: "100%", height: "100%" }} />
                 </div>
@@ -60,9 +62,12 @@ const About = ({ content, faqs, terms, title }) => {
             </TabPanel>
             <TabPanel>
               <article className="copy">
-                {terms.map(term => {
-                  return <RichText render={term.term1} />
-                })}
+                {terms.map(({ term1 }) => (
+                  <div
+                    className="term-content"
+                    dangerouslySetInnerHTML={{ __html: term1.html }}
+                  ></div>
+                ))}
               </article>
             </TabPanel>
             <TabPanel>Team</TabPanel>

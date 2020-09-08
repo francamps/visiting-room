@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const { linkResolver } = require("./src/utils/linkResolver")
+
 module.exports = {
   siteMetadata: {
     title: `The Visiting Room`,
@@ -9,6 +11,12 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/index.js`),
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
@@ -19,8 +27,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -33,19 +39,18 @@ module.exports = {
         //icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
-      resolve: "gatsby-source-prismic-graphql",
+      resolve: "gatsby-source-prismic",
       options: {
         repositoryName: `${process.env.PRISMIC_REPOSITORY_NAME}`, // (REQUIRED, replace with your own)
-        accessToken: `${process.env.PRISMIC_ACCESS_TOKEN}`, // (optional API access token)
-        path: "/preview", // (optional preview path. Default: /preview)
-        previews: false, // (optional, activated Previews. Default: false)
-        pages: [],
+        accessToken: `${process.env.PRISMIC_ACCESS_TOKEN}`, // (optional API access token),
+        schemas: {
+          about: require("./src/schemas/about.json"),
+          faq: require("./src/schemas/faq.json"),
+          glossary_term: require("./src/schemas/glossary_term.json"),
+          profile: require("./src/schemas/profile.json"),
+        },
       },
     },
-    //`gatsby-plugin-transition-link`,
   ],
 }

@@ -25,14 +25,7 @@ const getColor = hex => {
   }
 }
 
-const GridCell = ({
-  image,
-  profile_picture,
-  quote,
-  fullName,
-  setProfile,
-  color,
-}) => {
+const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
   const [isHover, setHover] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
   const [ref, inView, entry] = useInView({
@@ -58,8 +51,7 @@ const GridCell = ({
       }}
       onClick={() => {
         const profileUri = fullName.toLowerCase().replace(/ /g, "_")
-        setProfile(profileUri)
-        videos[fullName] && navigate(`/visiting-room/?profile=${profileUri}`)
+        videos[fullName] && navigate(`/visiting-room/${profileUri}`)
       }}
     >
       {isHover && (
