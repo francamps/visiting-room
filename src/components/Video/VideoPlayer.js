@@ -4,34 +4,36 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen"
 
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import isNull from "lodash/isNull"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
-import IconFullScreen from "../Symbols/IconFullScreen"
 import Loading from "../Loading"
 import VideoViewedMenu from "./VideoViewedMenu"
+import Video from "./Video"
+import VideoPlayerControls from "./VideoPlayerControls"
 
 import useKeyPress from "../../utils/useKeyPressed"
 
 import "./VideoPlayer.css"
 
-const getStringTime = seconds => {
-  return `${`${Math.floor(seconds / 60)}`.padStart(2, "0")}:${`${Math.floor(
-    seconds % 60
-  )}`.padStart(2, "0")}s`
-}
-
-const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
+const VideoPlayer = ({
+  videoSrcURL,
+  videoTitle,
+  autoplay,
+  name,
+  color,
+  onClose,
+  nextProfile,
+}) => {
   const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
+  const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
   const [progress, setProgress] = useState({
     progress: 0,
     progressSeconds: 0,
   })
-  const [progressLabel, setProgressLabel] = useState(null)
   const [showControls, setShowControls] = useState(true)
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
   const handleFullScreen = useFullScreenHandle()
@@ -55,54 +57,13 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
     }
   }, [countDownToHideControls, showControls])
 
-  const getProgressFromMouse = e => {
-    const widthOfBar = barRef.current.getBoundingClientRect().width
-    const leftOfBar = barRef.current.getBoundingClientRect().left
-
-    const fraction = (e.clientX - leftOfBar) / widthOfBar
-    const duration = playerRef.current.getDuration()
-
-    return { progress: fraction, progressSeconds: fraction * duration }
-  }
-
-  const onSeek = e => {
-    setPause(true)
-    const progressMouse = getProgressFromMouse(e)
-    setProgress(progressMouse)
-    playerRef.current.seekTo(progressMouse.progress)
-  }
-
-  const showEndCard = playerRef.current
-    ? playerRef.current.getDuration() - progress.progressSeconds < 15
-    : false
-
-  const getBarWidth = () => {
-    if (!barRef || !barRef.current) return 0
-
-    const widthOfBar = barRef.current.getBoundingClientRect().width
-    return `${widthOfBar * progress.progress}px`
-  }
-
-  const getLabelPositiong = () => {
-    if (!barRef || !barRef.current) return 0
-
-    const widthOfBar = barRef.current.getBoundingClientRect().width
-    const leftOfBar = barRef.current.getBoundingClientRect().left
-
-    const labelPosition = isNull(progressLabel)
-      ? 0
-      : widthOfBar * progressLabel.progress
-
-    if (isNull(progressLabel)) {
-      return widthOfBar * progress.progress > widthOfBar + leftOfBar - 45
-        ? `${widthOfBar + leftOfBar - 45}px`
-        : getBarWidth()
-    }
-
-    return labelPosition > widthOfBar + leftOfBar - 45
-      ? `${widthOfBar + leftOfBar}px`
-      : `${labelPosition}px`
-  }
+  useEffect(() => {
+    setIsLastTenSeconds(
+      playerRef.current && playerRef.current.getDuration()
+        ? playerRef.current.getDuration() - progress.progressSeconds < 15
+        : false
+    )
+  }, [progress])
 
   useEffect(() => {
     if (!isPlaying) {
@@ -259,8 +220,10 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
           )}
         </div>
 
-        {false && (
+        {isLastTenSeconds && (
           <VideoViewedMenu
+            name={name}
+            color={color}
             onClickReplay={() => {
               playerRef.current.seekTo(0)
               setPause(false)
@@ -269,95 +232,23 @@ const VideoPlayer = ({ videoSrcURL, videoTitle, autoplay, color, onClose }) => {
             onClickNext={() => {
               // Do Something
             }}
+            nextProfile={nextProfile}
           />
         )}
       </div>
 
-      <div className={`controls ${!showControls ? "hidden" : ""}`}>
-        <div className="progress-bar">
-          <div
-            className="progress-bar-bg"
-            ref={barRef}
-            onMouseMove={e => {
-              const progressMouse = getProgressFromMouse(e)
-              setProgressLabel(progressMouse)
-            }}
-            onMouseOut={() => {
-              setProgressLabel(null)
-            }}
-            onClick={onSeek}
-          />
-          <div
-            className="progress-bar-played"
-            style={{
-              width: getBarWidth(),
-              background: color || "var(--clr-primary)",
-            }}
-            onClick={onSeek}
-          />
-          <div
-            className="progress-bar-label"
-            style={{
-              left: getLabelPositiong(),
-            }}
-          >
-            {!isNull(progressLabel)
-              ? getStringTime(progressLabel.progressSeconds)
-              : progress.progressSeconds
-              ? getStringTime(progress.progressSeconds)
-              : "_:_"}
-          </div>
-        </div>
-        <div className="actions">
-          <div className="play-pause-stop">
-            {isPlaying && !isPaused ? (
-              <div className="action-wrap">
-                <Pause
-                  onClick={() => {
-                    setPause(true)
-                  }}
-                />
-              </div>
-            ) : (
-              <div className="action-wrap">
-                <Play
-                  onClick={() => {
-                    setPause(false)
-                    setPlaying(true)
-                  }}
-                />
-              </div>
-            )}
-          </div>
-          <div
-            className={`fullscreen-action ${
-              handleFullScreen.active ? "active" : ""
-            }`}
-            onClick={() => {
-              if (handleFullScreen.active) {
-                handleFullScreen.exit()
-              } else {
-                handleFullScreen.enter()
-              }
-            }}
-            style={{
-              transform: "scale(0.8)",
-              transformOrigin: "center center",
-            }}
-          >
-            <IconFullScreen />
-          </div>
-          {playerRef && playerRef.current && (
-            <div className="progress-seconds">
-              <span>{`${
-                progress.progressSeconds
-                  ? getStringTime(progress.progressSeconds)
-                  : "_:_"
-              } / ${getStringTime(playerRef.current.getDuration())}`}</span>
-            </div>
-          )}
-        </div>
-      </div>
+      <VideoPlayerControls
+        barRef={barRef}
+        color={color}
+        isPlaying={isPlaying}
+        isPaused={isPaused}
+        playerRef={playerRef}
+        progress={progress}
+        setPause={setPause}
+        setPlaying={setPlaying}
+        showControls={showControls}
+        handleFullScreen={handleFullScreen}
+      />
     </FullScreen>
   )
 }

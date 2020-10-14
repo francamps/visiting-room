@@ -155,9 +155,12 @@ export const TIMELINE = [
         ],
       },
     ],
-    images: ["angolabg.jpg"],
+    images: ["1800s.png"],
     imageStyle: "medium",
     imagePlacement: "top",
+    caption: `
+      "Convicts building a levee, Atchafalaya River, 1901." Credit: Andrew D. Lytle Collection, Mss. 893, 1254, Louisiana and Lower Mississippi Valley Collections, LSU Libraries, Baton Rouge, La.
+    `,
   },
   {
     year: "1920s",
@@ -240,8 +243,7 @@ export const TIMELINE = [
     ],
     images: ["application_crop.png"],
     imagePlacement: "bottom",
-    caption: `A copy of the 10/6 Application Form that was commonly used to 
-    commute life sentences in Louisiana for the better part of the 20th Century.`,
+    caption: `"The Forgotten Men," The Angolite, May-June 1980.`,
   },
   {
     year: "1970s",
@@ -339,9 +341,9 @@ export const TIMELINE = [
         ],
       },
     ],
-    images: ["toughoncrime.png"],
+    images: ["1970s.png"],
     imagePlacement: "top",
-    caption: ``,
+    caption: '"Politics," The Angolite, May-June 1976, p. 11.',
   },
   {
     year: "1980s",
@@ -485,7 +487,7 @@ export const TIMELINE = [
     images: ["faces.png"],
     imagePlacement: "bottom",
     caption:
-      "Many people serving life without parole in Louisiana have now served more than forty years in prison.",
+      'Many people serving life without parole in Louisiana have now served more than forty years in prison. Batt, J., Boekbinder, K. and Crabapple, M.,"The Visiting Room," narrated by Terry Pierce, Sharp as Knives and The Visiting Room Project, 2020.',
   },
 
   {

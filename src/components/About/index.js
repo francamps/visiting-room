@@ -13,7 +13,7 @@ import "./About.css"
 
 import { REFERENCES } from "../../content/references"
 
-const About = ({ content, faqs, terms }) => {
+const About = ({ content, faqs, terms, team }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
@@ -22,6 +22,8 @@ const About = ({ content, faqs, terms }) => {
     params.set(param, faqNumber)
     window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
   }
+
+  console.log(team)
 
   return (
     <>
@@ -70,7 +72,14 @@ const About = ({ content, faqs, terms }) => {
                 ))}
               </article>
             </TabPanel>
-            <TabPanel>Team</TabPanel>
+            <TabPanel>
+              <article className="copy">
+                <h3>{team.team_title[0].text}</h3>
+                <div className="term-content">
+                  <p>{team.team_text[0].text}</p>
+                </div>
+              </article>
+            </TabPanel>
             <TabPanel>
               <>
                 <h2>Resources</h2>

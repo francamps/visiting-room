@@ -49,6 +49,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   profiles.forEach(profile => {
     const profileId = profile.full_name.text.toLowerCase().replace(/ /g, "_")
+
+    const nextProfile = profiles[Math.floor(Math.random() * profiles.length)]
+
     // Create a page for each person.
 
     if (profile.show_profile_in_visiting_room) {
@@ -60,6 +63,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         context: {
           profileId,
           ...profile,
+          nextProfile,
         },
       })
     }

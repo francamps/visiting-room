@@ -26,11 +26,16 @@ const FAQs = ({ faqs, params, updateParams }) => {
               )
             }}
           >
-            <h3>{faq_title.text}</h3>
-            <div
-              className="faq-content"
-              dangerouslySetInnerHTML={{ __html: faq.html }}
-            ></div>
+            <h3>{faq_title[0].text}</h3>
+            <div className="faq-content">
+              {faq.map(paragraph => {
+                return paragraph.type === "paragraph" ? (
+                  <p>{paragraph.text}</p>
+                ) : (
+                  <div />
+                )
+              })}
+            </div>
           </div>
         )
       })}

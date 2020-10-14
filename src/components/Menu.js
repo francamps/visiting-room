@@ -48,11 +48,7 @@ const Menu = ({
             onClick={() => {
               setBurgerOpen(false)
               if (typeof window !== "undefined") {
-                if (window.localStorage.getItem("showIntro") === "false") {
-                  navigate("/visiting-room")
-                } else {
-                  navigate("/foreword")
-                }
+                navigate("/visiting-room")
               }
             }}
             className="hover-link"
@@ -60,7 +56,8 @@ const Menu = ({
             The Visiting Room
           </a>
         </div>
-        <div className="menu-option-wrap">
+        {
+          null /*<div className="menu-option-wrap">
           <Link
             to="/foreword"
             className="hover-link hover-link-intro"
@@ -75,7 +72,8 @@ const Menu = ({
               <Play />
             </div>
           </Link>
-        </div>
+        </div>*/
+        }
         <div className="menu-option-wrap">
           <Link
             to="/history"

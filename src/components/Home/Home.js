@@ -8,46 +8,66 @@ import Header from "../Header"
 import "./Home.css"
 
 const Home = ({ images }) => {
-  const [fadeoutLanding, setFadeOutLanding] = useState(false)
-  const [fadeoutMenu, setVisibleMenu] = useState(false)
+  const [isVideoReady, setVideoReady] = useState(false)
 
-  const [isMenuExpanded, setMenuExpanded] = useState(false)
+  const [isShowVideo, setShowVideo] = useState(false)
 
   useEffect(() => {
-    if (!fadeoutMenu) {
-      let timerMenu = setTimeout(() => {
-        setVisibleMenu(true)
-      }, 12000)
+    if (!isShowVideo) {
+      let timerActions = setTimeout(() => {
+        setShowVideo(true)
+      }, 5000)
 
       return () => {
-        clearTimeout(timerMenu)
+        clearTimeout(timerActions)
       }
     }
   }, [])
 
   return (
     <>
-      {
-        null /*<p className={`tap-hint ${isMenuExpanded ? "fadeout" : ""}`} style={{}}>
-        Tap anywhere to start
-      </p>*/
-      }
-      <Header hideTitle />
-      <div className={`home ${fadeoutLanding ? "fadeout" : ""}`}>
-        <div
-          className="landing"
-          onClick={() => {
-            if (!isMenuExpanded) {
-              setMenuExpanded(true)
-            }
-          }}
-        >
-          <HomeVideo setMenuExpanded={setMenuExpanded} images={images} />
-          <HomeTextOnLanding
-            setFadeOutLanding={setFadeOutLanding}
-            isMenuExpanded={isMenuExpanded}
-            setMenuExpanded={setMenuExpanded}
+      <div className={`home`}>
+        <div className={`landing ${isVideoReady ? "fadein" : ""}`}>
+          <HomeVideo
+            images={images}
+            isShowVideo={isShowVideo}
+            onVideoReady={() => {
+              setVideoReady(true)
+            }}
           />
+          <p
+            style={{
+              position: "fixed",
+              right: "40px",
+              bottom: "20px",
+              cursor: "pointer",
+              zIndex: "100",
+              color: "white",
+              fontSize: "var(--font-normal)",
+              textAlign: "right",
+            }}
+            onClick={() => {
+              navigate("/visiting-room")
+            }}
+          >
+            Skip
+          </p>
+        </div>
+        <div className={`landing fadeinfast`}>
+          <div
+            className={`subtitle ${
+              isVideoReady && isShowVideo ? "fadeout" : "fadeinfast"
+            }`}
+            style={{
+              background: "rgba(0,0,0,0.2)",
+            }}
+          >
+            <p>
+              Louisiana has nearly 5,000 people sentenced to die in prison
+              without any possibility of parole.
+            </p>
+            <p>Here are some of their stories, in their own words.</p>
+          </div>
         </div>
       </div>
     </>

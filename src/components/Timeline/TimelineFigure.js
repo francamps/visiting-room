@@ -54,9 +54,23 @@ const TimelineFigure = ({
                       inView ? "in-view" : ""
                     } `}
                   >
+                    <h3 className="title">
+                      Governor's commutations and prison population
+                    </h3>
+                    {caption && (
+                      <p
+                        className="caption"
+                        style={{
+                          textAlign: "left",
+                          marginBottom: "20px",
+                          fontSize: "var(--font-normal)",
+                        }}
+                      >
+                        {caption}
+                      </p>
+                    )}
                     <figure>
                       <ChartC />
-                      {caption && <p className="caption">{caption}</p>}
                     </figure>
                   </section>
                 )

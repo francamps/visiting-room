@@ -6,7 +6,7 @@ import Video from "../Video/Video"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ pathContext }) => {
-  const { profileId, full_name, color } = pathContext
+  const { profileId, full_name, color, nextProfile } = pathContext
 
   return (
     <div className={`visiting-room-wrap container}`}>
@@ -17,6 +17,7 @@ const VisitingRoom = ({ pathContext }) => {
         onClose={() => {
           navigate("/visiting-room")
         }}
+        nextProfile={nextProfile}
       />
     </div>
   )

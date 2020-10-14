@@ -2,9 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { Link } from "gatsby"
 
 import Header from "../Header"
-import Paragraphs from "../Paragraphs"
 import TimelineModal from "./TimelineModal"
-import TimelineSteps from "./TimelineSteps"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineStepCopy from "./TimelineStepCopy"
 import TimelineStepTitle from "./TimelineStepTitle"
@@ -21,7 +19,7 @@ const TimelineOnePager = props => {
 
   const [isFigureActive, setFigureActive] = useState(null)
   const [step, setStep] = useState(params.get("chapter") || 0)
-  const [slide, setSlide] = useState(0)
+  const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
 
@@ -55,7 +53,12 @@ const TimelineOnePager = props => {
   return (
     <>
       <>
-        <Header theme="light" title="A History of Life Without Parole" />
+        <Header
+          theme="light"
+          title={`A History of Life Without Parole ${
+            headerBreadCrumb ? "/ " + headerBreadCrumb : ""
+          }`}
+        />
         <article className="timeline" ref={timelineRef}>
           <div
             className="timeline-frame"
@@ -71,18 +74,11 @@ const TimelineOnePager = props => {
                     timelineStep={timelineStep}
                     stepIdx={stepIdx}
                     setModal={setModal}
+                    setHeaderBreadcrump={setHeaderBreadcrump}
                   />
                 )
             )}
 
-            <TimelineSteps
-              slides={TIMELINE[step]}
-              slideIdx={slide}
-              step={step}
-              /*onGoToStep={s => {
-                setStep(s)
-              }}*/
-            />
             <div className="footer">
               <div className="link-wrap">
                 <Link

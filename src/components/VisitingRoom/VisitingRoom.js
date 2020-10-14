@@ -5,7 +5,7 @@ import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
 import Grid from "../Grid"
 import Video from "../Video/Video"
-import VisitingRoomIntro from "./Foreword"
+import VisitingRoomIntro from "../Timeline/Foreword"
 
 import "./VisitingRoom.css"
 import { isNull } from "lodash"
@@ -13,62 +13,31 @@ import { isNull } from "lodash"
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
-  const [fadeout, setFadeOut] = useState(false)
-  const [showGrid, setShowGrid] = useState(false)
-
-  const [showIntro, setShowIntro] = useState(
-    typeof window !== "undefined" &&
-      window.localStorage.getItem("showIntro") === "false"
-      ? false
-      : true
-  )
+  const [showBanner, setShowBanner] = useState(true)
 
   useEffect(() => {
-    typeof window !== "undefined" &&
-      window.localStorage.setItem("showIntro", showIntro)
-  }, [showIntro])
-
-  useEffect(() => {
-    let timer1
-    if (!showIntro) {
-      timer1 = setTimeout(() => setFadeOut(true), 3000)
-    }
-
-    return () => {
-      clearTimeout(timer1)
-    }
-  }, [showIntro])
-
-  useEffect(() => {
-    if (fadeout) {
-      let timer2 = setTimeout(() => {
-        setShowGrid(true)
-        setFadeOut(false)
+    if (showBanner) {
+      let timer = setTimeout(() => {
+        setShowBanner(false)
       }, 1200)
 
       return () => {
-        clearTimeout(timer2)
+        clearTimeout(timer)
       }
     }
-  }, [fadeout])
+  }, [])
 
   return (
-    <div
-      className={`visiting-room-wrap container ${showGrid ? "uncovered" : ""}`}
-    >
-      {!showIntro && (
-        <>
-          <Header title="The Visiting Room" />
-          {!loading && (
+    <div className="visiting-room-wrap container">
+      <>
+        {!loading && !showBanner && (
+          <>
+            <Header title="The Visiting Room" />
             <Grid searchTerm={search} profiles={profiles} images={images} />
-          )}
-          <VisitingRoomBanner
-            fadeout={fadeout}
-            showGrid={showGrid}
-            onSearchTyping={setSearch}
-          />
-        </>
-      )}
+          </>
+        )}
+        <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
+      </>
     </div>
   )
 }

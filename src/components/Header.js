@@ -12,7 +12,9 @@ const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
 
   return (
     <div
-      className={`header ${theme === "light" ? "light fadein" : ""} ${classes}`}
+      className={`header fadeinfast ${
+        theme === "light" ? "light " : ""
+      } ${classes}`}
     >
       {!hideTitle && (
         <>

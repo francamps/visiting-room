@@ -1,6 +1,12 @@
 import React, { useState } from "react"
 
-const Pause = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
+const Pause = ({
+  size,
+  onClick,
+  useCircle = true,
+  doHover,
+  color = "#ffffff",
+}) => {
   const [isHover, setHover] = useState(doHover)
   let viewBox = "0 0 24 24"
   let width = "24px"
@@ -24,18 +30,20 @@ const Pause = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <circle
-        cx={cx}
-        cy={cy}
-        stroke={color}
-        fill={"none"}
-        r={r}
-        strokeWidth={2}
-        style={{
-          opacity: isHover ? 1 : 0.8,
-          transition: "opacity 0.4s",
-        }}
-      />
+      {useCircle && (
+        <circle
+          cx={cx}
+          cy={cy}
+          stroke={color}
+          fill={"none"}
+          r={r}
+          strokeWidth={2}
+          style={{
+            opacity: isHover ? 1 : 0.8,
+            transition: "opacity 0.4s",
+          }}
+        />
+      )}
       <rect
         x={cx - 5}
         y={cy - 6}

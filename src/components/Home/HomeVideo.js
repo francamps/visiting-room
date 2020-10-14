@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import ReactPlayer from "react-player"
-import Img from "gatsby-image"
+import { navigate } from "gatsby"
 
 import Loading from "../Loading"
 
@@ -22,8 +22,14 @@ const items = [
 
 const bgs = [background1A, background1B, background2A, background2B]
 
-const HomeVideo = ({ images, setMenuExpanded }) => {
+const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
+  const playerRef = useRef()
   const [isReady, setReady] = useState(false)
+  const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
+  const [progress, setProgress] = useState({
+    progress: 0,
+    progressSeconds: 0,
+  })
   const [videoIdx, setVideoIdx] = useState(
     Math.floor(Math.random() * items.length)
   )
@@ -37,50 +43,54 @@ const HomeVideo = ({ images, setMenuExpanded }) => {
     return n.node.relativePath === `${imageFilenames[videoIdx]}.png`
   })
 
+  useEffect(() => {
+    setIsLastTenSeconds(
+      (playerRef.current &&
+        playerRef.current.getDuration() &&
+        playerRef.current.getDuration() - progress.progressSeconds < 5) ||
+        false
+    )
+  }, [progress])
+
+  useEffect(() => {
+    if (isLastTenSeconds) {
+      navigate("/visiting-room")
+      /*if (
+        typeof window !== "undefined" &&
+        window.localStorage.getItem("showIntro") === "false"
+      ) {
+        navigate("/visiting-room")
+      } else {
+        navigate("/foreword")
+      }*/
+    }
+  }, [isLastTenSeconds])
+
   return (
-    <div
-      className={`fullscreen-bg ${isReady ? "ready" : ""}`}
-      onClick={() => {
-        setMenuExpanded(true)
-      }}
-      style={{
-        background: `url(${bgs[videoIdx]})`,
-      }}
-    >
-      <Img
-        alt={"TODO: NEEDS AN ALT"}
-        fluid={img.node.childImageSharp.fluid}
-        imgStyle={{
-          objectFit: "cover",
-        }}
-      />
+    <div className={`fullscreen-bg ${isReady && isShowVideo ? "ready" : ""}`}>
       <ReactPlayer
+        ref={playerRef}
         key={`video-${videoIdx}`}
         url={videoSrcUrl}
         className="react-player fullscreen-bg__video"
-        playing={true}
+        playing={isReady && isShowVideo ? true : false}
         controls={false}
-        muted={true}
         config={{
-          file: {
-            attributes: {
-              poster: "../../images/WALTER_6.jpg",
-            },
-          },
           vimeo: {
             playerOptions: {
               playsinline: 1,
-              muted: 1,
-              autoplay: 1,
             },
           },
         }}
         onReady={() => {
           setReady(true)
+          onVideoReady()
         }}
-        onEnded={() => {
-          setReady(false)
-          setVideoIdx(videoIdx === items.length - 1 ? 0 : videoIdx + 1)
+        onProgress={({ played, playedSeconds }) => {
+          setProgress({
+            progress: played,
+            progressSeconds: playedSeconds,
+          })
         }}
       />
     </div>

@@ -73,6 +73,11 @@ export const REFERENCES = [
   },
   {
     element: "li",
+    content:
+      "Nancy J. King, J.D.; Fred L. Cheesman II, Ph.D.; Brian J. Ostrom, Ph.D., Final Technical Report: Habeas Litigation in U.S. District Courts: An Empirical Study of Habeas Corpus Cases Filed by State Prisoners Under the Antiterrorism and Effective Death Penalty Act of 1996 (Executive Summary), 2007, p. 9., available at: https://www.ncjrs.gov/pdffiles1/nij/grants/219558.pdf ",
+  },
+  {
+    element: "li",
     content: `Lane Nelson and Wilbert Rideau, "Legal Spectrum: The Great Writ," The Angolite, May/June 1996, p.26-29.`,
   },
   {

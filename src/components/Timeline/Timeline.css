@@ -3,28 +3,7 @@
 .timeline {
   height: 100vh;
   position: relative;
-  opacity: 0;
-  /*background: linear-gradient(
-    180deg,
-    var(--clr-0) 0%,
-    var(--clr-0) 25%,
-    var(--clr-8) 100%
-  );*/
   background: var(--clr-off-white);
-
-  -webkit-animation: fadein 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 2s linear 1.2s forwards; /* Firefox < 16 */
-  -ms-animation: fadein 2s linear 1.2s forwards; /* Internet Explorer */
-  -o-animation: fadein 2s linear 1.2s forwards; /* Opera < 12.1 */
-  animation: fadein 2s linear 1.2s forwards;
-}
-
-.timeline.fadeout {
-  -webkit-animation: fadeout 2s linear 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeout 2s linear 1.2s forwards; /* Firefox < 16 */
-  -ms-animation: fadeout 2s linear 1.2s forwards; /* Internet Explorer */
-  -o-animation: fadeout 2s linear 1.2s forwards; /* Opera < 12.1 */
-  animation: fadeout 2s linear 1.2s forwards;
 }
 
 .timeline-frame {

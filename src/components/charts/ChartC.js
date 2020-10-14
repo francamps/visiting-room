@@ -19,7 +19,7 @@ const dataComs = [
   { year0: 1992, yearF: 1996, label: "Edwards", value: 152 },
   { year0: 1996, yearF: 2004, label: "Foster", value: 50 },
   { year0: 2004, yearF: 2008, label: "Blanco", value: 125 },
-  { year0: 2008, yearF: 2016, label: "Jindal", value: 0 },
+  { year0: 2008, yearF: 2016, label: "Jindal", value: 3 },
   { year0: 2016, yearF: 2020, label: "Edwards", value: 34 },
 ]
 
@@ -50,12 +50,14 @@ const dataLifers = [
   { yearF: 2020, value: 4693 },
 ]
 
+const years = new Array(13)
+
 // Margin
 const m = {
   t: 0,
-  l: 0,
+  l: 20,
   b: 30,
-  r: 5,
+  r: 20,
 }
 
 const HEIGHT = 500
@@ -63,17 +65,31 @@ const WIDTH = 640
 const TRANSITION_DURATION = 900
 
 const ChartC = () => {
+  const [w, setW] = useState(WIDTH)
+  const [h, setH] = useState(HEIGHT)
   const [step, setStep] = useState(0)
+  const [isRunning, setIsRunning] = useState(true)
+
   const svgRef = useRef()
   const canvasRef = useRef()
 
-  useInterval(() => {
-    setStep(step < 2 ? step + 1 : 0)
-  }, 4000)
+  useInterval(
+    () => {
+      setStep(step < 2 ? step + 1 : 0)
+    },
+    isRunning ? 4000 : null
+  )
 
   useEffect(() => {
-    const w = canvasRef.current.getBoundingClientRect().width
-    const h = (w * HEIGHT) / WIDTH
+    if (step === 2) setIsRunning(false)
+  }, [step])
+
+  useEffect(() => {
+    setW(canvasRef.current.getBoundingClientRect().width)
+    setH(canvasRef.current.getBoundingClientRect().height - 80)
+  }, [canvasRef.current])
+
+  useEffect(() => {
     const svg = select(svgRef.current)
 
     const pointsLifers = svg
@@ -90,7 +106,7 @@ const ChartC = () => {
       .domain([1972, 2020])
       .range([m.l, w - m.r])
 
-    const maxY = step === 2 ? 38000 : step === 1 ? 5500 : 1000
+    const maxY = step === 2 ? 38000 : step === 1 ? 5500 : 1100
     const yScale = scaleLinear()
       .domain([0, maxY])
       .range([h - m.b, m.t])
@@ -219,7 +235,7 @@ const ChartC = () => {
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
-      .attr("y", d => yScale(d.value) - 35)
+      .attr("y", d => yScale(d.value) - 30)
 
     /** COMMUTATIONS */
 
@@ -234,17 +250,21 @@ const ChartC = () => {
     ])
 
     svg
-      .selectAll("path.coms")
+      .selectAll("rect.coms")
       .data(dataComsLins)
-      .join("path")
+      .join("rect")
       .attr("class", d => `coms year-${d[1].year}`)
       .attr("fill", "var(--clr-chart)")
       .attr("fill-opacity", 0.7)
       .attr("stroke", "var(--clr-chart)")
+      .attr("x", d => xScale(d[0].year))
+      .attr("width", d => xScale(d[1].year) - xScale(d[0].year))
       .transition()
       .ease(easeCircleInOut)
       .duration(600)
-      .attr("d", pathComs)
+      .attr("height", d => yScale(d[0].value) - yScale(d[1].value))
+      .attr("y", d => yScale(d[1].value))
+    //.attr("d", pathComs)
 
     pointsComs
       .join("circle")
@@ -266,7 +286,7 @@ const ChartC = () => {
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
-      .attr("y", d => (!step ? yScale(d.value) - 10 : h - 20))
+      .attr("y", d => (!step ? yScale(d.value) - 15 : h - 15))
 
     svg
       .selectAll("text.labelComsValue")
@@ -278,21 +298,43 @@ const ChartC = () => {
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
-      .attr("y", d => (!step ? yScale(d.value) - 0 : h - 10))
+      //.attr("y", d => (!step ? yScale(d.value): h - 10))
+      .attr("y", d => yScale(d.value) - 5)
+      .style("opacity", step ? 0 : 1)
 
     svg
       .selectAll("text.yearComs")
-      .data(dataComs)
+      .data(years)
       .join("text")
       .attr("class", "yearComs")
       .join("text")
-      .attr("x", d => xScale(d.yearF))
-      .text(d => `${d.yearF}`)
+      .attr("x", (_, i) => xScale(1972 + 4 * i))
+      .text((_, i) => {
+        const yr = 1972 + 4 * i
+        if (yr !== 1976 && yr !== 2000 && yr !== 2012) return 1972 + 4 * i
+      })
       .transition()
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
       //.attr("y", d => (!step ? yScale(d.value) - 5 : h))
-      .attr("y", d => (!step ? h - 20 : h))
+      .attr("y", h)
+
+    svg
+      .selectAll("line.ticks")
+      .data(years)
+      .join("line")
+      .attr("class", "ticks")
+      .attr("x1", (_, i) => xScale(1972 + 4 * i))
+      .attr("x2", (_, i) => xScale(1972 + 4 * i))
+      .attr("y1", h - 30)
+      .attr("y2", h - 10)
+      .style("stroke", "black")
+      .style("stroke-dasharray", "1 3")
+      .style("opacity", (_, i) => {
+        const yr = 1972 + 4 * i
+        if (yr !== 1976 && yr !== 2000 && yr !== 2012) return 1
+        return 0
+      })
 
     svg
       .selectAll("text.text-coms-label")
@@ -308,12 +350,48 @@ const ChartC = () => {
       .attr("y", d => (!step ? yScale(d.value) - 40 : yScale(d.value) - 15))
 
     svg.attr("width", w).attr("height", h)
-  }, [step])
+  }, [step, w, h])
 
   return (
-    <div className="chart-wrap" ref={canvasRef}>
-      <svg width={WIDTH} height={HEIGHT} className="" ref={svgRef}></svg>
-      <h4 className="title">Commutations vs prison population</h4>
+    <div
+      className="chart-wrap"
+      ref={canvasRef}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <svg width={w} height={h} className="" ref={svgRef}></svg>
+      <div
+        style={{
+          display: "flex",
+          flexDiration: "row",
+          width: "100%",
+          justifyContent: "flex-end",
+          paddingTop: "10px",
+        }}
+      >
+        <button
+          onClick={() => {
+            setStep(0)
+          }}
+          style={{ marginRight: "10px" }}
+        >
+          See Governors' Commutations
+        </button>
+        <button
+          onClick={() => {
+            setStep(1)
+          }}
+          style={{ marginRight: "10px" }}
+        >
+          See Lifer's Population
+        </button>
+        <button
+          onClick={() => {
+            setStep(2)
+          }}
+        >
+          See Total Prison Population
+        </button>
+      </div>
     </div>
   )
 }

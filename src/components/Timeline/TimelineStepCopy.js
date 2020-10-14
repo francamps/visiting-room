@@ -1,7 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 
 import Paragraphs from "../Paragraphs"
+import Caret from "../Caret"
+import Foreword from "./Foreword"
 import TimelineFigure from "./TimelineFigure"
 import TimelineStepTitle from "./TimelineStepTitle"
 
@@ -14,6 +16,7 @@ const TimelineStepCopy = ({
   setAngolite,
   step,
   stepIdx,
+  setHeaderBreadcrump,
   timelineStep,
   isLastStep,
 }) => {
@@ -24,6 +27,10 @@ const TimelineStepCopy = ({
     /* Optional options */
     threshold: 0.5,
   })
+
+  useEffect(() => {
+    setHeaderBreadcrump(timelineStep.year)
+  }, [inView])
 
   return (
     <div key={stepIdx}>
@@ -87,6 +94,21 @@ const TimelineStepCopy = ({
                   />
                 </div>
               </div>
+            )}
+            {!stepIdx && (
+              <>
+                <div
+                  className=""
+                  style={{
+                    position: "relative",
+                    width: "640px",
+                    height: "420px",
+                  }}
+                >
+                  <Foreword />
+                </div>
+                <Caret />
+              </>
             )}
           </div>
         </div>

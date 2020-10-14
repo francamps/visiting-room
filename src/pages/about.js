@@ -21,6 +21,20 @@ export const query = graphql`
         }
       }
     }
+    allPrismicTeam {
+      edges {
+        node {
+          data {
+            team_title {
+              text
+            }
+            team_text {
+              text
+            }
+          }
+        }
+      }
+    }
     allPrismicGlossaryTerm {
       edges {
         node {
@@ -38,16 +52,7 @@ export const query = graphql`
     allPrismicFaq {
       edges {
         node {
-          data {
-            faq {
-              text
-              html
-            }
-            faq_title {
-              text
-              html
-            }
-          }
+          dataRaw
         }
       }
     }
@@ -70,10 +75,22 @@ const AboutPage = () => {
           ? data.allPrismicGlossaryTerm.edges[0].node.data.term
           : []
 
-        const faqs = data ? data.allPrismicFaq.edges.map(f => f.node.data) : []
+        const team = data ? data.allPrismicTeam.edges[0].node.data : []
+
+        const faqs = data
+          ? data.allPrismicFaq.edges
+              .map(f => f.node.dataRaw)
+              .sort((a, b) => a.rank - b.rank)
+          : []
 
         return (
-          <About faqs={faqs} title={title} content={content} terms={terms} />
+          <About
+            faqs={faqs}
+            title={title}
+            content={content}
+            terms={terms}
+            team={team}
+          />
         )
       }}
     />

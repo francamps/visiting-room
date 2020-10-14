@@ -1,9 +1,14 @@
 import React from "react"
 import Img from "gatsby-image"
 
-const GridCellBackground = ({ isHover, image, oldImage, opacityOnHover }) => {
+const ArchiveGridCellBackground = ({
+  isHover,
+  image,
+  oldImage,
+  opacityOnHover,
+}) => {
   return (
-    <div className={`cell-background ${isHover ? "fadeout" : "fadein"}`}>
+    <div className={`cell-background ${isHover ? "hovered" : ""}`}>
       <Img
         alt={"TODO: NEEDS AN ALT"}
         fluid={image.node.childImageSharp.fluid}
@@ -24,4 +29,4 @@ const GridCellBackground = ({ isHover, image, oldImage, opacityOnHover }) => {
   )
 }
 
-export default GridCellBackground
+export default ArchiveGridCellBackground

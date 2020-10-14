@@ -5,9 +5,9 @@ const IconFullScreen = ({ size, onClick, doHover, color = "#ffffff" }) => {
 
   return (
     <svg
-      width="23px"
-      height="23px"
-      viewBox="0 0 23 23"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
       onMouseOver={() => {
         setHover(true)
       }}
@@ -25,18 +25,18 @@ const IconFullScreen = ({ size, onClick, doHover, color = "#ffffff" }) => {
         opacity={isHover ? 1 : 0.8}
       >
         <g stroke={color} stroke-width={isHover ? 3 : 2}>
-          <path d="M0.5,0.5 L0.5,8.5 M0.5,0.5 L8.5,0.5"></path>
+          <path d="M1,1 L1,8 M1,1 L8,1"></path>
           <path
-            d="M0.5,12.5 L0.5,20.5 M0.5,12.5 L8.5,12.5"
-            transform="translate(4.500000, 16.500000) scale(1, -1) translate(-4.500000, -16.500000) "
+            d="M1,12 L1,20 M1,12 L8,12"
+            transform="translate(4, 16) scale(1, -1) translate(-4, -16) "
           ></path>
           <path
-            d="M12.5,12.5 L12.5,20.5 M12.5,12.5 L20.5,12.5"
-            transform="translate(16.500000, 16.500000) scale(-1, -1) translate(-16.500000, -16.500000) "
+            d="M12,12 L12,20 M12,12 L20,12"
+            transform="translate(16, 16) scale(-1, -1) translate(-16, -16) "
           ></path>
           <path
-            d="M12.5,0.5 L12.5,8.5 M12.5,0.5 L20.5,0.5"
-            transform="translate(16.500000, 4.500000) scale(-1, 1) translate(-16.500000, -4.500000) "
+            d="M12,1 L12,8 M12,1 L20,1"
+            transform="translate(16, 4) scale(-1, 1) translate(-16, -4) "
           ></path>
         </g>
       </g>

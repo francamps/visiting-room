@@ -16,15 +16,6 @@ const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
               who are serving life without the possibility of parole at the
               Louisiana State Penitentiary, Angola.
             </p>
-
-            <p className="fadeinfast">
-              The interviews were conducted by Professor Marcus Kondkar of
-              Loyola University New Orleans in 2017 and 2018.
-            </p>
-
-            <p className="fadeinfast">
-              The best place to start is by visiting the Visiting Room.
-            </p>
             <p className="fadeinfast">
               For more information about the project, see our About page.
             </p>
@@ -46,9 +37,9 @@ const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
                 }}
                 style={{ fontSize: "var(--font-copy)", cursor: "pointer" }}
               >
-                <CrossClose onClick={onClose} primary />
                 Do not show me this again.
               </p>
+              <CrossClose onClick={onClose} primary />
             </div>
           </div>
         )}

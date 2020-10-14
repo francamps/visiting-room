@@ -21,10 +21,11 @@
 }
 
 .video-wrap .controls .progress-bar {
-  position: relative;
+  position: absolute;
   padding: 10px 20px;
-  margin: 0;
-  width: calc(100% - 40px);
+  margin-bottom: 30px;
+  margin-left: 80px;
+  width: calc(100% - 210px);
   cursor: pointer;
 }
 
@@ -76,8 +77,8 @@
 
 .progress-seconds {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 15px;
   font-family: GTEesti;
   text-align: left;
   font-size: var(--font-small);
@@ -85,7 +86,7 @@
 
 .video-wrap .controls .actions .play-pause-stop {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 30px;
   cursor: pointer;
 }
@@ -108,7 +109,7 @@
 .action-wrap {
   margin-bottom: 3px;
   margin-left: -10px;
-  height: 12px;
+  height: 24px;
 }
 
 .video .controls .play-pause-stop:hover .pause-tick {
@@ -118,7 +119,7 @@
 /*
 WRAP
 */
-.fullscreen {
+.video .fullscreen {
   left: 0;
   right: 0;
   top: 0;
@@ -140,8 +141,4 @@ CONTROLS
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.fullscreen-action.active {
-  background: white;
 }

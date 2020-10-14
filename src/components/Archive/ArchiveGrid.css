@@ -1,5 +1,6 @@
 .archive-grid {
   position: absolute;
+  top: -70px;
   width: 100%;
   left: 0px;
   display: grid;
@@ -76,11 +77,11 @@
   .grid-cell
   .cell-background.hovered
   .gatsby-image-wrapper:last-child {
-  -webkit-animation: fadein 2s alternate infinite ease-in-out;
-  -moz-animation: fadein 2s alternate infinite ease-in-out;
-  -ms-animation: fadein 2s alternate infinite ease-in-out;
-  -o-animation: fadein 2s alternate infinite ease-in-out;
-  animation: fadein 2s alternate infinite ease-in-out;
+  -webkit-animation: fadeout 4s alternate backwards ease-in-out;
+  -moz-animation: fadeout 4s alternate backwards ease-in-out;
+  -ms-animation: fadeout 4s alternate backwards ease-in-out;
+  -o-animation: fadeout 4s alternate backwards ease-in-out;
+  animation: fadeout 4s alternate backwards ease-in-out;
 }
 
 .archive-grid .grid-cell .cell-hover-layer {
@@ -100,20 +101,15 @@
 }
 
 .archive-grid .grid-cell .name {
-  position: absolute;
-  top: 20px;
-  left: 20px;
   align-self: flex-start;
-  width: calc(100% - 40px);
-  padding-left: 20px;
-  border-left: 1px solid white;
+  padding-left: 0px;
   box-sizing: border-box;
   margin-left: 0px;
 
   font-family: "EB Garamond";
   font-weight: 500;
   font-size: var(--font-normal);
-  text-align: left;
+  text-align: center;
   letter-spacing: normal;
   transition: letter-spacing 2s;
 }

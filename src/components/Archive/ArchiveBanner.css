@@ -14,7 +14,7 @@
   box-sizing: border-box;
   padding: 50px 20px;
   transition: align-items 1.2s, width 1.2s, height 1.2s;
-  background: linear-gradient(240deg, var(--clr-black), var(--clr-dark-grey));
+  background: var(--background-gradient);
 }
 
 .archive-entry-text {

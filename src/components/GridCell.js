@@ -11,13 +11,13 @@ import "./GridCell.css"
 
 import { videos } from "../content/videoRegistry"
 
-const videosBackground = [
-  "https://vimeo.com/422151517",
-  "https://vimeo.com/422151534",
-  "https://vimeo.com/422151556",
-  "https://vimeo.com/422151586",
-  "https://vimeo.com/422151798",
-]
+const videosBackground = {
+  "Alvin Catchings": "https://vimeo.com/422151517",
+  "Archie Tyner": "https://vimeo.com/422151534",
+  "Bernell Juluke": "https://vimeo.com/422151556",
+  "Darnell Craft": "https://vimeo.com/422151586",
+  "Arthur Carter": "https://vimeo.com/422151798",
+}
 
 const getColor = hex => {
   if (hex.slice(0, 1) === "#") {
@@ -27,11 +27,13 @@ const getColor = hex => {
 
 const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
   const [isHover, setHover] = useState(false)
+  const [isVideoReady, setVideoReady] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
   const [ref, inView, entry] = useInView({
     /* Optional options */
     threshold: 0.5,
   })
+  const profileUri = fullName.toLowerCase().replace(/ /g, "_")
 
   if (!image) {
     return null
@@ -47,33 +49,33 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
         setHover(true)
       }}
       onMouseLeave={() => {
+        setVideoReady(false)
         setHover(false)
       }}
       onClick={() => {
-        const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+        console.log(videos, fullName, videos[fullName])
         videos[fullName] && navigate(`/visiting-room/${profileUri}`)
       }}
     >
       {isHover && (
         <div className="gridimage-video visible">
           <ReactPlayer
-            url={`${[
-              videosBackground[
-                Math.floor(Math.random() * videosBackground.length)
-              ],
-            ]}`}
+            url={`${videosBackground[fullName]}`}
             className="react-player"
             playing={true}
             width="130%"
             height="130%"
             muted
             loop
+            onReady={() => {
+              setVideoReady(true)
+            }}
           />
         </div>
       )}
 
       {profile_picture && (
-        <GridCellBackground isHover={isHover} image={image} />
+        <GridCellBackground isHover={isHover && isVideoReady} image={image} />
       )}
       <div className="cell-hover-layer"></div>
       {quote && (

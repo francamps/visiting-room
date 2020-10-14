@@ -9,4 +9,8 @@ export const videos = {
   "Sammie Robinson": "https://vimeo.com/430665612",
   "Alvin Catchings": "https://vimeo.com/430669725",
   "Raymond Flank": "https://vimeo.com/430663175",
+
+  // Full bleed ones
+  "Walter Reed": "https://vimeo.com/454588786",
+  "Jerome Derricks": "https://vimeo.com/454588307",
 }

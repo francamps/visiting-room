@@ -12,7 +12,13 @@
   background: none;
   background-size: cover;
   background-position: center center;
-  filter: brightness(75%) contrast(180%) saturate(100%);
+  filter: brightness(75%) contrast(180%) saturate(0%) blur(0px);
+  transition: filter 2s;
+}
+
+.fullscreen-bg.ready {
+  filter: brightness(75%) contrast(180%) saturate(100%) blur(0px);
+  transition: filter 2s;
 }
 
 .fullscreen-bg .gatsby-image-wrapper {

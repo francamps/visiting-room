@@ -23,7 +23,8 @@
   --clr-white-rgb: 255, 255, 255;
   --clr-off-white: #f7f5f0;
   --clr-off-white-rgb: 247, 245, 240;
-  --clr-black: #110808 /*#080000*/;
+  --clr-black: #110808;
+  --clr-black-blu-rgb: 0, 0, 5;
   --clr-dark-bg: #110808;
   --clr-dark-grey: #232323;
   --clr-mid-grey: #444444;
@@ -85,6 +86,12 @@
   --clr-ac4f30: #ac4f30;
   --clr-ecb372: #ecb372;
   --clr-dbcda0: #dbcda0;
+
+  --background-gradient: linear-gradient(
+    120deg,
+    var(--clr-black),
+    rgba(var(--clr-black-blu-rgb), 0.9)
+  );
 }
 
 /**
@@ -115,38 +122,6 @@ Use a scrollbar library, this is not standardized
 /* THIS ONE IS PRETTY GOOD */
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
-/*@font-face {
-  font-family: "GTPressura";
-  src: url("../fonts/GT-Pressura-Pro-Trial-Light.otf") format("opentype");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "GTPressura";
-  src: url("../fonts/GT-Pressura-Pro-Trial-Light-Italic.otf") format("opentype");
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "GTPressura";
-  src: url("../fonts/GT-Pressura-Pro-Trial-Regular.otf") format("opentype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "GTPressura-italic";
-  src: url("../fonts/GT-Pressura-Pro-Trial-Regular-Italic.otf")
-    format("opentype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "GTPressura";
-  src: url("../fonts/GT-Pressura-Pro-Trial-Bold.otf") format("opentype");
-  font-weight: 700;
-}*/
-
 @font-face {
   font-family: "GTEesti";
   src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Light.otf") format("opentype");
@@ -161,7 +136,7 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(330deg, var(--clr-black), var(--clr-dark-grey));
+  background: var(--background-gradient);
   color: var(--clr-off-white);
 }
 

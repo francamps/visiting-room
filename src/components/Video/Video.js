@@ -9,7 +9,15 @@ import { videos as archive } from "../../content/archiveRegistry"
 
 import "./Video.css"
 
-const Video = ({ name, color, onClose, profileId, setView, isArchive }) => {
+const Video = ({
+  name,
+  color,
+  onClose,
+  profileId,
+  setView,
+  isArchive,
+  nextProfile,
+}) => {
   return (
     <div className="video-wrap">
       <VideoPlayer
@@ -18,6 +26,8 @@ const Video = ({ name, color, onClose, profileId, setView, isArchive }) => {
         autoplay
         color={color}
         onClose={onClose}
+        name={name}
+        nextProfile={nextProfile}
       />
       <div
         style={{

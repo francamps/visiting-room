@@ -84,7 +84,7 @@
   padding-left: 20px;
 
   font-family: "EB Garamond", serif;
-  font-size: 1.3rem;
+  font-size: var(--font-copy);
   font-style: italic;
   font-weight: 300;
 }
@@ -98,25 +98,29 @@
 .grid-cell .cell-hover-quote .name {
   font-family: "EB Garamond", serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: var(--font-copy);
   opacity: 0;
 }
 
 .grid-cell h3 {
   position: absolute;
-  align-self: flex-start;
-  width: calc(100% - 40px);
-  padding-left: 20px;
-  border-left: 1px solid white;
+  align-self: flex-end;
+  justify-content: center;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 60px 0 20px 0;
+  margin-bottom: 0;
   box-sizing: border-box;
-  margin-left: 0px;
 
   font-family: "EB Garamond";
   font-weight: 500;
-  text-align: left;
+  font-size: var(--font-copy);
+  text-align: center;
   letter-spacing: normal;
   /*text-transform: uppercase;*/
   transition: letter-spacing 2s;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .grid-cell.hovered .name-tag {

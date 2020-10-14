@@ -1,6 +1,12 @@
 import React, { useState } from "react"
 
-const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
+const Play = ({
+  size,
+  onClick,
+  useCircle = true,
+  doHover,
+  color = "#ffffff",
+}) => {
   const [isHover, setHover] = useState(doHover)
   let viewBox = "0 0 24 24"
   let width = "24px"
@@ -9,6 +15,7 @@ const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
   let cy = 12
   let r = 10
   let points = "16 12 9 16 9 8"
+  let pointsNoCircle = "16 12 1 20 1 4"
   let transform = "none"
 
   if (size === "small") {
@@ -57,24 +64,26 @@ const Play = ({ size, onClick, useCircle, doHover, color = "#ffffff" }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <circle
-        cx={cx}
-        cy={cy}
-        stroke={color}
-        fill={"none"}
-        r={r}
-        strokeWidth={2}
-        style={{
-          opacity: isHover ? 1 : 0.9,
-          transition: "opacity 0.4s",
-        }}
-      />
+      {useCircle && (
+        <circle
+          cx={cx}
+          cy={cy}
+          stroke={color}
+          fill={"none"}
+          r={r}
+          strokeWidth={2}
+          style={{
+            opacity: isHover ? 1 : 0.9,
+            transition: "opacity 0.4s",
+          }}
+        />
+      )}
       <polygon
         strokeLinejoin="round"
         fillRule="evenodd"
         fill={color}
         stroke={color}
-        points={points}
+        points={useCircle ? points : pointsNoCircle}
         style={{
           transform,
           opacity: isHover ? 1 : 0.9,

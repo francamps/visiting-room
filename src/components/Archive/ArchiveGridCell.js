@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { navigate } from "gatsby"
 
 import Play from "../Symbols/Play"
-import GridCellBackground from "../GridCellBackground"
+import ArchiveGridCellBackground from "./ArchiveGridCellBackground"
 import getProfileProps from "../../utils/getProfileProps"
 
 import { videos } from "../../content/archiveRegistry"
@@ -37,9 +37,12 @@ const ArchiveGridCell = ({ profile, profileIdx, images }) => {
         videos[fullName] && navigate(`/archive/${profileUri}`)
       }}
     >
-      <GridCellBackground image={image} oldImage={oldImage} isHover={isHover} />
+      <ArchiveGridCellBackground
+        image={image}
+        oldImage={oldImage}
+        isHover={isHover}
+      />
       <div className="cell-hover-layer">
-        <div className="name">{fullName}</div>
         <div className="bottom">
           {videos[fullName] ? (
             <p className="play" style={{ flex: "none" }}>
@@ -49,6 +52,7 @@ const ArchiveGridCell = ({ profile, profileIdx, images }) => {
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
           )}
           <div>
+            <div className="name">{fullName}</div>
             <p>
               Incarcerated since
               <span

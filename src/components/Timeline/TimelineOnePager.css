@@ -74,6 +74,7 @@
   margin-left: -100px;
   margin-right: -100px;
   width: calc(100% + 200px);
+  height: 600px;
 }
 
 @media (max-width: 767px) {
@@ -103,11 +104,12 @@
 
   .step-content-figure.left .caption,
   .step-content-figure.right .caption {
-    padding: 0 20px;
+    padding: 0 0px;
   }
 
   .step-content-figure.wide {
     margin-left: 0;
     width: 100%;
+    height: 460px;
   }
 }

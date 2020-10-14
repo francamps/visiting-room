@@ -69,7 +69,7 @@
   flex-direction: row;
   justify-content: center;
   text-indent: -9999em;
-  margin: 88px auto;
+  margin: 10px auto;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -143,4 +143,18 @@
   -ms-animation: rotatingBackgroundColor 12s linear -4s infinite;
   -o-animation: rotatingBackgroundColor 12s linear -4s infinite;
   animation: rotatingBackgroundColor 12s linear -4s infinite;
+}
+.loader-cell-9 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -6s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -6s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -6s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -6s infinite;
+  animation: rotatingBackgroundColor 12s linear -6s infinite;
+}
+.loader-cell-10 {
+  -webkit-animation: rotatingBackgroundColor 12s linear -1.2s infinite;
+  -moz-animation: rotatingBackgroundColor 12s linear -1.2s infinite;
+  -ms-animation: rotatingBackgroundColor 12s linear -1.2s infinite;
+  -o-animation: rotatingBackgroundColor 12s linear -1.2s infinite;
+  animation: rotatingBackgroundColor 12s linear -1.2s infinite;
 }
