@@ -1,11 +1,13 @@
-import React /*, { useState }*/ from "react"
+import React, { useState } from "react"
 import { navigate } from "gatsby"
 
 import CrossClose from "../CrossClose"
 import VideoPlayer from "./VideoPlayer"
-
+import Transcript from "./Transcript"
 import { videos } from "../../content/videoRegistry"
 import { videos as archive } from "../../content/archiveRegistry"
+
+import transcriptRegistry from "../../content/transcriptRegistry"
 
 import "./Video.css"
 
@@ -18,8 +20,10 @@ const Video = ({
   isArchive,
   nextProfile,
 }) => {
+  const [showTranscript, setShowTranscript] = useState(false)
+
   return (
-    <div className="video-wrap">
+    <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
       <VideoPlayer
         videoSrcURL={isArchive ? archive[name] : videos[name]}
         videoTitle={name}
@@ -28,6 +32,8 @@ const Video = ({
         onClose={onClose}
         name={name}
         nextProfile={nextProfile}
+        showTranscript={showTranscript}
+        setShowTranscript={setShowTranscript}
       />
       <div
         style={{
@@ -41,6 +47,7 @@ const Video = ({
       >
         <CrossClose />
       </div>
+      {showTranscript && <Transcript name={name} />}
     </div>
   )
 }

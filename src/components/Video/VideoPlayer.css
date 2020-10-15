@@ -12,7 +12,12 @@
   display: flex;
   flex-direction: column;
   opacity: 1;
-  transition: opacity 1.2s;
+  transition: opacity 1.2s, right 1.2s;
+}
+
+.video-wrap.transcript .controls {
+  right: 400px;
+  transition: right 1.2s;
 }
 
 .video-wrap .controls.hidden {

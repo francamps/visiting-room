@@ -102,12 +102,15 @@ const TimelineStepCopy = ({
                   style={{
                     position: "relative",
                     width: "640px",
-                    height: "420px",
+                    marginBottom: "20px",
                   }}
                 >
                   <Foreword />
                 </div>
                 <Caret />
+                <p style={{ textAlign: "center", width: "640px" }}>
+                  Continue to the history of life without parole in Louisiana.
+                </p>
               </>
             )}
           </div>

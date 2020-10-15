@@ -2,7 +2,7 @@ import React from "react"
 
 import "./Loading.css"
 
-const Loading = () => {
+const Loading = ({ hideTitle = false }) => {
   return (
     <div
       className="loader-wrap"
@@ -13,15 +13,17 @@ const Loading = () => {
         alignItems: "center",
       }}
     >
-      <p
-        style={{
-          margin: 0,
-          fontSize: "var(--font-copy)",
-          fontFamily: "EB Garamond",
-        }}
-      >
-        The Visting Room
-      </p>
+      {!hideTitle && (
+        <p
+          style={{
+            margin: 0,
+            fontSize: "var(--font-copy)",
+            fontFamily: "EB Garamond",
+          }}
+        >
+          The Visting Room
+        </p>
+      )}
       <div className="loader">
         <div className="loader-cell loader-cell-0"></div>
         <div className="loader-cell loader-cell-1"></div>

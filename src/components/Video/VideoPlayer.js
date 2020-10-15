@@ -24,6 +24,8 @@ const VideoPlayer = ({
   color,
   onClose,
   nextProfile,
+  showTranscript,
+  setShowTranscript,
 }) => {
   const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
@@ -246,8 +248,11 @@ const VideoPlayer = ({
         progress={progress}
         setPause={setPause}
         setPlaying={setPlaying}
+        setProgress={setProgress}
         showControls={showControls}
         handleFullScreen={handleFullScreen}
+        showTranscript={showTranscript}
+        setShowTranscript={setShowTranscript}
       />
     </FullScreen>
   )

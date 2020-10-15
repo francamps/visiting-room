@@ -68,6 +68,9 @@ const VideoPlayerControls = ({
   setPlaying,
   setProgress,
   showControls,
+
+  showTranscript,
+  setShowTranscript,
 }) => {
   const [progressLabel, setProgressLabel] = useState(null)
 
@@ -102,21 +105,22 @@ const VideoPlayerControls = ({
               />
             </div>
           )}
-          {progress.progressSeconds && (
-            <span
-              style={{
-                height: "24px",
-                lineHeight: "24px",
-                marginRight: "12px",
-                marginLeft: "5px",
-                fontFamily: "GTEesti",
-                textAlign: "left",
-                fontSize: "var(--font-small)",
-              }}
-            >
-              {getStringTime(progress.progressSeconds)}
-            </span>
-          )}
+
+          <span
+            style={{
+              height: "24px",
+              lineHeight: "24px",
+              marginRight: "12px",
+              marginLeft: "5px",
+              fontFamily: "GTEesti",
+              textAlign: "left",
+              fontSize: "var(--font-small)",
+            }}
+          >
+            {progress.progressSeconds > 0
+              ? getStringTime(progress.progressSeconds)
+              : "00:00"}
+          </span>
         </div>
 
         {playerRef && playerRef.current && (
@@ -140,11 +144,29 @@ const VideoPlayerControls = ({
                 style={{
                   height: "24px",
                   lineHeight: "24px",
-                  marginRight: "12px",
+                  marginRight: "8px",
                 }}
               >
                 {getStringTime(playerRef.current.getDuration())}
               </span>
+              {setShowTranscript && (
+                <span
+                  style={{
+                    fontSize: "var(--font-copy)",
+                    cursor: "pointer",
+                    fontWeight: showTranscript ? "bold" : "light",
+                    color: showTranscript
+                      ? color || "var(--clr-primary)"
+                      : "white",
+                    paddingRight: "10px",
+                  }}
+                  onClick={() => {
+                    setShowTranscript(!showTranscript)
+                  }}
+                >
+                  T
+                </span>
+              )}
               <VideoFullScreenControl
                 active={handleFullScreen.active}
                 onEnter={handleFullScreen.enter}

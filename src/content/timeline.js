@@ -8,11 +8,6 @@ export const TIMELINE = [
           {
             element: "h2",
             content: "A History of Life Without Parole in Louisiana",
-            subcontent: `Louisiana sentences more people to life without parole 
-            per capita than any other state in the U.S.  Below is a history 
-            of the sentence in Louisiana, drawn largely from research 
-            from The Angolite, an award-winning magazine edited and 
-            published by people serving time at Angola.`,
           },
         ],
       },
