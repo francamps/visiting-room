@@ -9,7 +9,7 @@ const VisitingRoom = ({ pathContext }) => {
   const { profileId, full_name, color, nextProfile } = pathContext
 
   return (
-    <div className={`visiting-room-wrap container}`}>
+    <div className={`visiting-room-wrap container`}>
       <Video
         profileId={profileId}
         name={full_name.text}
@@ -18,6 +18,7 @@ const VisitingRoom = ({ pathContext }) => {
           navigate("/visiting-room")
         }}
         nextProfile={nextProfile}
+        useTranscript={false}
       />
     </div>
   )

@@ -35,23 +35,6 @@ const Home = ({ images }) => {
               setVideoReady(true)
             }}
           />
-          <p
-            style={{
-              position: "fixed",
-              right: "40px",
-              bottom: "20px",
-              cursor: "pointer",
-              zIndex: "100",
-              color: "white",
-              fontSize: "var(--font-normal)",
-              textAlign: "right",
-            }}
-            onClick={() => {
-              navigate("/visiting-room")
-            }}
-          >
-            Skip
-          </p>
         </div>
         <div className={`landing fadeinfast`}>
           <div
@@ -69,6 +52,23 @@ const Home = ({ images }) => {
             <p>Here are some of their stories, in their own words.</p>
           </div>
         </div>
+        <p
+          style={{
+            position: "fixed",
+            right: "40px",
+            bottom: "20px",
+            cursor: "pointer",
+            zIndex: "100",
+            color: "white",
+            fontSize: "var(--font-normal)",
+            textAlign: "right",
+          }}
+          onClick={() => {
+            navigate("/visiting-room")
+          }}
+        >
+          Skip
+        </p>
       </div>
     </>
   )

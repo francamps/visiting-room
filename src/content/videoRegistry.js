@@ -13,4 +13,5 @@ export const videos = {
   // Full bleed ones
   "Walter Reed": "https://vimeo.com/454588786",
   "Jerome Derricks": "https://vimeo.com/454588307",
+  "Jack Segura": "https://vimeo.com/454587599",
 }

@@ -2,9 +2,11 @@ import React, { useEffect, useState, useMemo } from "react"
 import isNull from "lodash/isNull"
 
 import Header from "../Header"
+import FilterAndSearch from "../FilterAndSearch"
 import ArchiveGrid from "./ArchiveGrid"
 import ArchiveActions from "./ArchiveActions"
 import ArchiveTable from "./ArchiveTable"
+import ArchiveTableSearchResults from "./ArchiveTableSearchResults"
 import ArchiveBanner from "./ArchiveBanner"
 import Loading from "../Loading"
 
@@ -20,11 +22,6 @@ const columns = [
 ]
 
 const Archive = ({ profiles = [], loading, images }) => {
-  const params = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  )
-  const [profileId, setProfile] = useState(params.get("profile"))
-
   const [showBanner, setShowBanner] = useState(
     // TODO: Save in localStore once viewed, and pull from there
     typeof window !== "undefined" &&
@@ -33,20 +30,23 @@ const Archive = ({ profiles = [], loading, images }) => {
       : true
   )
   const [fadeout, setFadeOut] = useState(false)
-  const [searchTerm, setSearch] = useState(null)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
   const [view, setView] = useState("grid")
+  const [filterTerms, setFilterTerms] = useState(null)
+  const [isSearchLoading, setLoadingSearchResults] = useState(false)
+  const [searchResults, setSearchResults] = useState([])
 
   const profilesSorted = useMemo(() => {
     return sortProfiles(profiles.slice(0), sortType, sortAsc).filter(
       profile => {
-        if (searchTerm === null || searchTerm === "") return true
-        if (profile["Full Name"].indexOf(searchTerm) > -1) return true
+        if (filterTerms === null || filterTerms === "") return true
+        if (filterTerms.includes(profile.full_name.text)) return true
+
         return false
       }
     )
-  }, [JSON.stringify(profiles), sortAsc, sortType, searchTerm])
+  }, [JSON.stringify(profiles), sortAsc, sortType, filterTerms])
 
   useEffect(() => {
     if (fadeout) {
@@ -61,29 +61,30 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
-  const profile =
-    profiles &&
-    profiles.find(
-      p => p.full_name.text.toLowerCase().replace(/ /g, "_") === profileId
-    )
-
   return (
     <div className="archive-wrap">
       {!showBanner && (
         <Header
           title={"Archive"}
           actions={
-            <ArchiveActions
-              columns={columns}
-              setSortedAsc={setSortedAsc}
-              setSortedType={setSortedType}
-              setSearch={setSearch}
-              sortAsc={sortAsc}
-              sortType={sortType}
-              setView={setView}
-              setShowBanner={setShowBanner}
-              view={view}
-            />
+            <>
+              <FilterAndSearch
+                setFilterTerms={setFilterTerms}
+                setSearchResults={setSearchResults}
+                setView={setView}
+                setLoadingSearchResults={setLoadingSearchResults}
+              />
+              <ArchiveActions
+                columns={columns}
+                setSortedAsc={setSortedAsc}
+                setSortedType={setSortedType}
+                sortAsc={sortAsc}
+                sortType={sortType}
+                setView={setView}
+                setShowBanner={setShowBanner}
+                view={view}
+              />
+            </>
           }
           classes="fadein"
         />
@@ -104,9 +105,27 @@ const Archive = ({ profiles = [], loading, images }) => {
           (view === "grid" && !loading && (
             <ArchiveGrid profiles={profilesSorted} images={images} />
           ))}
-        {view === "table" && !loading && (
-          <ArchiveTable profiles={profilesSorted} images={images} />
-        )}
+        {view === "table" &&
+          !loading &&
+          (!filterTerms || filterTerms === "") && (
+            <ArchiveTable
+              profiles={profilesSorted}
+              filterTerms={filterTerms}
+              images={images}
+              isSearchLoading={isSearchLoading}
+            />
+          )}
+        {view === "table" &&
+          !loading &&
+          (filterTerms || filterTerms !== "") && (
+            <ArchiveTableSearchResults
+              isSearchLoading={isSearchLoading}
+              profiles={profilesSorted}
+              images={images}
+              searchResults={searchResults}
+              filterTerms={filterTerms}
+            />
+          )}
       </div>
     </div>
   )

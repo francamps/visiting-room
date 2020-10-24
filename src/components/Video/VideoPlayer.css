@@ -4,6 +4,29 @@
   position: relative;
 }
 
+.video-wrap .video .loading-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-wrap .video .control-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .video-wrap .controls {
   position: absolute;
   bottom: 0px;

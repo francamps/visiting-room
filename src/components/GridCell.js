@@ -10,6 +10,7 @@ import Play from "./Symbols/Play"
 import "./GridCell.css"
 
 import { videos } from "../content/videoRegistry"
+import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
   "Alvin Catchings": "https://vimeo.com/422151517",
@@ -33,7 +34,7 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
     /* Optional options */
     threshold: 0.5,
   })
-  const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+  const profileUri = getNameUri(fullName)
 
   if (!image) {
     return null
@@ -53,7 +54,6 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
         setHover(false)
       }}
       onClick={() => {
-        console.log(videos, fullName, videos[fullName])
         videos[fullName] && navigate(`/visiting-room/${profileUri}`)
       }}
     >

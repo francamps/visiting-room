@@ -4,6 +4,7 @@ import { navigate } from "gatsby"
 import Play from "../Symbols/Play"
 import ArchiveGridCellBackground from "./ArchiveGridCellBackground"
 import getProfileProps from "../../utils/getProfileProps"
+import { getNameUri } from "../../utils/index.js"
 
 import { videos } from "../../content/archiveRegistry"
 
@@ -33,7 +34,7 @@ const ArchiveGridCell = ({ profile, profileIdx, images }) => {
         setHover(false)
       }}
       onClick={() => {
-        const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+        const profileUri = getNameUri(fullName)
         videos[fullName] && navigate(`/archive/${profileUri}`)
       }}
     >

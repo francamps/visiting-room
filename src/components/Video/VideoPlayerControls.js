@@ -68,7 +68,7 @@ const VideoPlayerControls = ({
   setPlaying,
   setProgress,
   showControls,
-
+  useTranscript,
   showTranscript,
   setShowTranscript,
 }) => {
@@ -149,7 +149,7 @@ const VideoPlayerControls = ({
               >
                 {getStringTime(playerRef.current.getDuration())}
               </span>
-              {setShowTranscript && (
+              {useTranscript && setShowTranscript && (
                 <span
                   style={{
                     fontSize: "var(--font-copy)",

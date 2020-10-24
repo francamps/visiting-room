@@ -1,124 +1,108 @@
-import React, { lazy } from "react"
-
-//const OtherComponent = React.'./OtherComponent'));
-
-const registry = {
-  aaron_brent: "./transcripts/aaron_brent.json",
-  adonis_brooks: "./transcripts/adonis_brooks.json",
-  albert_lavalais: "./transcripts/albert_lavalais.json",
-  allen_pharr: "./transcripts/allen_pharr.json",
-  alvin_catchings: "./transcripts/alvin_catchings.json",
-  anthony_bascle: "./transcripts/anthony_bascle.json",
-  anthony_hingle: "./transcripts/anthony_hingle.json",
-  archie_tyner: "./transcripts/archie_tyner.json",
-  arthur_carter: "./transcripts/arthur_carter.json",
-  chadwick_tate: "./transcripts/chadwick_tate.json",
-  charles_amos: "./transcripts/charles_amos.json",
-  chris_montague: "./transcripts/chris_montague.json",
-  chris_phillips: "./transcripts/chris_phillips.json",
-  chuck_unger: "./transcripts/chuck_unger.json",
-  cleothus_price: "./transcripts/cleothus_price.json",
-  dannie_johnson: "./transcripts/dannie_johnson.json",
-  danny_sermon: "./transcripts/danny_sermon.json",
-  darnell_craft: "./transcripts/darnell_craft.json",
-  darren_james: "./transcripts/darren_james.json",
-  darwin_willie: "./transcripts/darwin_willie.json",
-  daryl_evans: "./transcripts/daryl_evans.json",
-  daryl_waters: "./transcripts/daryl_waters.json",
-  david_chenevert: "./transcripts/david_chenevert.json",
-  donahue_smith: "./transcripts/donahue_smith.json",
-  edbert_simmons: "./transcripts/edbert_simmons.json",
-  elliott_guilbeau: "./transcripts/elliott_guilbeau.json",
-  eric_taylor: "./transcripts/eric_taylor.json",
-  ernest_mcgee: "./transcripts/ernest_mcgee.json",
-  everett_offray: "./transcripts/everett_offray.json",
-  frank_green: "./transcripts/frank_green.json",
-  george_crawford: "./transcripts/george_crawford.json",
-  gordon_newman: "./transcripts/gordon_newman.json",
-  gregory_alcindor: "./transcripts/gregory_alcindor.json",
-  hannibal_stanfield: lazy(() =>
-    import("./transcripts/hannibal_stanfield.json")
-  ),
-  hayward_jones: "./transcripts/hayward_jones.json",
-  isaiah_diggs: "./transcripts/isaiah_diggs.json",
-  jack_segura: "./transcripts/jack_segura.json",
-  james_refuge: "./transcripts/james_refuge.json",
-  jared_lanclow: "./transcripts/jared_lanclow.json",
-  jeffrey_hillburn: "./transcripts/jeffrey_hillburn.json",
-  jeffrey_nelson: "./transcripts/jeffrey_nelson.json",
-  jerome_derricks: "./transcripts/jerome_derricks.json",
-  jerry_brown: "./transcripts/jerry_brown.json",
-  jerry_lewis: "./transcripts/jerry_lewis.json",
-  jerry_williams: "./transcripts/jerry_williams.json",
-  jimmy_robinson: "./transcripts/jimmy_robinson.json",
-  jimmy_williams: "./transcripts/jimmy_williams.json",
-  john_sheehan: "./transcripts/john_sheehan.json",
-  juan_matthews: "./transcripts/juan_matthews.json",
-  julius_holden: "./transcripts/julius_holden.json",
-  keith_byes: "./transcripts/keith_byes.json",
-  kendrick_fisher: "./transcripts/kendrick_fisher.json",
-  kendrick_howard: "./transcripts/kendrick_howard.json",
-  kennedy_thompson: "./transcripts/kennedy_thompson.json",
-  kenneth_hill: "./transcripts/kenneth_hill.json",
-  kenneth_mcgee: "./transcripts/kenneth_mcgee.json",
-  kenneth_woodburn: "./transcripts/kenneth_woodburn.json",
-  kevin_king: "./transcripts/kevin_king.json",
-  kirt_hall: "./transcripts/kirt_hall.json",
-  kuantau_reedertranscription: lazy(() =>
-    import("./transcripts/kuantau_reeder.json")
-  ),
-  lawrence_kelly: "./transcripts/lawrence_kelly.json",
-  lawrence_peters: "./transcripts/lawrence_peters.json",
-  lawson_strickland: "./transcripts/lawson_strickland.json",
-  levelle_tolliver: "./transcripts/levelle_tolliver.json",
-  manuel_nelson: "./transcripts/manuel_nelson.json",
-  marcus_artis: "./transcripts/marcus_artis.json",
-  melvin_davis: "./transcripts/melvin_davis.json",
-  merlin_renard: "./transcripts/merlin_renard.json",
-  michael_doggett: "./transcripts/michael_doggett.json",
-  michael_thomas: "./transcripts/michael_thomas.json",
-  monte_white: "./transcripts/monte_white.json",
-  myron_smith: "./transcripts/myron_smith.json",
-  nadaedrick_campbell: lazy(() =>
-    import("./transcripts/nadaedrick_campbell.json")
-  ),
-  neal_spencer: "./transcripts/neal_spencer.json",
-  norman_dozier: "./transcripts/norman_dozier.json",
-  patrick_johnson: "./transcripts/patrick_johnson.json",
-  patrick_lucien: "./transcripts/patrick_lucien.json",
-  paul_mayho: "./transcripts/paul_mayho.json",
-  ralph_dawson: "./transcripts/ralph_dawson.json",
-  randy_thomas: "./transcripts/randy_thomas.json",
-  raymond_flank: "./transcripts/raymond_flank.json",
-  ricky_bennett: "./transcripts/ricky_bennett.json",
-  robert_juarbe: "./transcripts/robert_juarbe.json",
-  ron_hicks: "./transcripts/ron_hicks.json",
-  ron_wiggins: "./transcripts/ron_wiggins.json",
-  sammie_robinson: "./transcripts/sammie_robinson.json",
-  shawn_gaspard: "./transcripts/shawn_gaspard.json",
-  sherman_singleton_mix: lazy(() =>
-    import("./transcripts/sherman_singleton.json")
-  ),
-  sidney_anderson: "./transcripts/sidney_anderson.json",
-  solomon_birdsong: "./transcripts/solomon_birdsong.json",
-  steve_evans: "./transcripts/steve_evans.json",
-  steven_garner: "./transcripts/steven_garner.json",
-  surge_sherman: "./transcripts/surge_sherman.json",
-  terrence_guy: "./transcripts/terrence_guy.json",
-  terry_jones: "./transcripts/terry_jones.json",
-  terry_pierce_mix: "./transcripts/terry_pierce.json",
-  terry_west: "./transcripts/terry_west.json",
-  theortric_givens: "./transcripts/theortric_givens.json",
-  tommy_cage: "./transcripts/tommy_cage.json",
-  tommy_floyd: "./transcripts/tommy_floyd.json",
-  troy_andrews: "./transcripts/troy_andrews.json",
-  troy_west: "./transcripts/troy_west.json",
-  vashon_kelly: "./transcripts/vashon_kelly.json",
-  walter_goodwin: "./transcripts/walter_goodwin.json",
-  walter_reed: "./transcripts/walter_reed.json",
-  wilford_guy: "./transcripts/wilford_guy.json",
-  william_hall: "./transcripts/william_hall.json",
-  winfred_davenport: "./transcripts/winfred_davenport.json",
-}
-
-export default registry
+export { default as aaron_brent } from "./transcripts/aaron_brent.json"
+export { default as adonis_brooks } from "./transcripts/adonis_brooks.json"
+export { default as albert_lavalais } from "./transcripts/albert_lavalais.json"
+export { default as allen_pharr } from "./transcripts/allen_pharr.json"
+export { default as alvin_catchings } from "./transcripts/alvin_catchings.json"
+export { default as anthony_bascle } from "./transcripts/anthony_bascle.json"
+export { default as anthony_hingle } from "./transcripts/anthony_hingle.json"
+export { default as archie_tyner } from "./transcripts/archie_tyner.json"
+export { default as arthur_carter } from "./transcripts/arthur_carter.json"
+export { default as chadwick_tate } from "./transcripts/chadwick_tate.json"
+export { default as charles_amos } from "./transcripts/charles_amos.json"
+export { default as chris_montague } from "./transcripts/chris_montague.json"
+export { default as chris_phillips } from "./transcripts/chris_phillips.json"
+export { default as chuck_unger } from "./transcripts/chuck_unger.json"
+export { default as cleothus_price } from "./transcripts/cleothus_price.json"
+export { default as dannie_johnson } from "./transcripts/dannie_johnson.json"
+export { default as danny_sermon } from "./transcripts/danny_sermon.json"
+export { default as darnell_craft } from "./transcripts/darnell_craft.json"
+export { default as darren_james } from "./transcripts/darren_james.json"
+export { default as darwin_willie } from "./transcripts/darwin_willie.json"
+export { default as daryl_evans } from "./transcripts/daryl_evans.json"
+export { default as daryl_waters } from "./transcripts/daryl_waters.json"
+export { default as david_chenevert } from "./transcripts/david_chenevert.json"
+export { default as donahue_smith } from "./transcripts/donahue_smith.json"
+export { default as edbert_simmons } from "./transcripts/edbert_simmons.json"
+export { default as elliott_guilbeau } from "./transcripts/elliott_guilbeau.json"
+export { default as eric_taylor } from "./transcripts/eric_taylor.json"
+export { default as ernest_mcgee } from "./transcripts/ernest_mcgee.json"
+export { default as everett_offray } from "./transcripts/everett_offray.json"
+export { default as frank_green } from "./transcripts/frank_green.json"
+export { default as george_crawford } from "./transcripts/george_crawford.json"
+export { default as gordon_newman } from "./transcripts/gordon_newman.json"
+export { default as gregory_alcindor } from "./transcripts/gregory_alcindor.json"
+export { default as hannibal_stanfield } from "./transcripts/hannibal_stanfield.json"
+export { default as hayward_jones } from "./transcripts/hayward_jones.json"
+export { default as isaiah_diggs } from "./transcripts/isaiah_diggs.json"
+export { default as jack_segura } from "./transcripts/jack_segura.json"
+export { default as james_refuge } from "./transcripts/james_refuge.json"
+export { default as jared_lanclow } from "./transcripts/jared_lanclow.json"
+export { default as jeffrey_hillburn } from "./transcripts/jeffrey_hillburn.json"
+export { default as jeffrey_nelson } from "./transcripts/jeffrey_nelson.json"
+export { default as jerome_derricks } from "./transcripts/jerome_derricks.json"
+export { default as jerry_brown } from "./transcripts/jerry_brown.json"
+export { default as jerry_lewis } from "./transcripts/jerry_lewis.json"
+export { default as jerry_williams } from "./transcripts/jerry_williams.json"
+export { default as jimmy_robinson } from "./transcripts/jimmy_robinson.json"
+export { default as jimmy_williams } from "./transcripts/jimmy_williams.json"
+export { default as john_sheehan } from "./transcripts/john_sheehan.json"
+export { default as juan_matthews } from "./transcripts/juan_matthews.json"
+export { default as julius_holden } from "./transcripts/julius_holden.json"
+export { default as keith_byes } from "./transcripts/keith_byes.json"
+export { default as kendrick_fisher } from "./transcripts/kendrick_fisher.json"
+export { default as kendrick_howard } from "./transcripts/kendrick_howard.json"
+export { default as kennedy_thompson } from "./transcripts/kennedy_thompson.json"
+export { default as kenneth_hill } from "./transcripts/kenneth_hill.json"
+export { default as kenneth_mcgee } from "./transcripts/kenneth_mcgee.json"
+export { default as kenneth_woodburn } from "./transcripts/kenneth_woodburn.json"
+export { default as kevin_king } from "./transcripts/kevin_king.json"
+export { default as kirt_hall } from "./transcripts/kirt_hall.json"
+export { default as kuantau_reeder } from "./transcripts/kuantau_reeder.json"
+export { default as lawrence_kelly } from "./transcripts/lawrence_kelly.json"
+export { default as lawrence_peters } from "./transcripts/lawrence_peters.json"
+export { default as lawson_strickland } from "./transcripts/lawson_strickland.json"
+export { default as levelle_tolliver } from "./transcripts/levelle_tolliver.json"
+export { default as manuel_nelson } from "./transcripts/manuel_nelson.json"
+export { default as marcus_artis } from "./transcripts/marcus_artis.json"
+export { default as melvin_davis } from "./transcripts/melvin_davis.json"
+export { default as merlin_renard } from "./transcripts/merlin_renard.json"
+export { default as michael_doggett } from "./transcripts/michael_doggett.json"
+export { default as michael_thomas } from "./transcripts/michael_thomas.json"
+export { default as monte_white } from "./transcripts/monte_white.json"
+export { default as myron_smith } from "./transcripts/myron_smith.json"
+export { default as nadaedrick_campbell } from "./transcripts/nadaedrick_campbell.json"
+export { default as neal_spencer } from "./transcripts/neal_spencer.json"
+export { default as norman_dozier } from "./transcripts/norman_dozier.json"
+export { default as patrick_johnson } from "./transcripts/patrick_johnson.json"
+export { default as patrick_lucien } from "./transcripts/patrick_lucien.json"
+export { default as paul_mayho } from "./transcripts/paul_mayho.json"
+export { default as ralph_dawson } from "./transcripts/ralph_dawson.json"
+export { default as randy_thomas } from "./transcripts/randy_thomas.json"
+export { default as raymond_flank } from "./transcripts/raymond_flank.json"
+export { default as ricky_bennett } from "./transcripts/ricky_bennett.json"
+export { default as robert_juarbe } from "./transcripts/robert_juarbe.json"
+export { default as ron_hicks } from "./transcripts/ron_hicks.json"
+export { default as ron_wiggins } from "./transcripts/ron_wiggins.json"
+export { default as sammie_robinson } from "./transcripts/sammie_robinson.json"
+export { default as shawn_gaspard } from "./transcripts/shawn_gaspard.json"
+export { default as sherman_singleton } from "./transcripts/sherman_singleton.json"
+export { default as sidney_anderson } from "./transcripts/sidney_anderson.json"
+export { default as solomon_birdsong } from "./transcripts/solomon_birdsong.json"
+export { default as steve_evans } from "./transcripts/steve_evans.json"
+export { default as steven_garner } from "./transcripts/steven_garner.json"
+export { default as surge_sherman } from "./transcripts/surge_sherman.json"
+export { default as terrence_guy } from "./transcripts/terrence_guy.json"
+export { default as terry_jones } from "./transcripts/terry_jones.json"
+export { default as terry_pierce } from "./transcripts/terry_pierce.json"
+export { default as terry_west } from "./transcripts/terry_west.json"
+export { default as theortric_givens } from "./transcripts/theortric_givens.json"
+export { default as tommy_cage } from "./transcripts/tommy_cage.json"
+export { default as tommy_floyd } from "./transcripts/tommy_floyd.json"
+export { default as troy_andrews } from "./transcripts/troy_andrews.json"
+export { default as troy_west } from "./transcripts/troy_west.json"
+export { default as vashon_kelly } from "./transcripts/vashon_kelly.json"
+export { default as walter_goodwin } from "./transcripts/walter_goodwin.json"
+export { default as walter_reed } from "./transcripts/walter_reed.json"
+export { default as wilford_guy } from "./transcripts/wilford_guy.json"
+export { default as william_hall } from "./transcripts/william_hall.json"
+export { default as winfred_davenport } from "./transcripts/winfred_davenport.json"

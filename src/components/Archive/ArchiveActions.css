@@ -1,6 +1,7 @@
 .menu__surface {
   height: 20px;
   cursor: pointer;
+  font-family: Muli, Helvetica Neue, Arial, sans-serif;
 }
 
 .menu__content {

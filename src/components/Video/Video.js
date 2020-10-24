@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { navigate } from "gatsby"
 
 import CrossClose from "../CrossClose"
@@ -6,8 +6,6 @@ import VideoPlayer from "./VideoPlayer"
 import Transcript from "./Transcript"
 import { videos } from "../../content/videoRegistry"
 import { videos as archive } from "../../content/archiveRegistry"
-
-import transcriptRegistry from "../../content/transcriptRegistry"
 
 import "./Video.css"
 
@@ -19,8 +17,23 @@ const Video = ({
   setView,
   isArchive,
   nextProfile,
+  useTranscript,
 }) => {
+  const playerRef = useRef()
   const [showTranscript, setShowTranscript] = useState(false)
+  const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
+  const [progress, setProgress] = useState({
+    progress: 0,
+    progressSeconds: 0,
+  })
+
+  useEffect(() => {
+    setIsLastTenSeconds(
+      playerRef.current && playerRef.current.getDuration()
+        ? playerRef.current.getDuration() - progress.progressSeconds < 15
+        : false
+    )
+  }, [progress])
 
   return (
     <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
@@ -34,6 +47,12 @@ const Video = ({
         nextProfile={nextProfile}
         showTranscript={showTranscript}
         setShowTranscript={setShowTranscript}
+        isLastTenSeconds={isLastTenSeconds}
+        setIsLastTenSeconds={setIsLastTenSeconds}
+        progress={progress}
+        setProgress={setProgress}
+        playerRef={playerRef}
+        useTranscript={useTranscript}
       />
       <div
         style={{
@@ -47,7 +66,15 @@ const Video = ({
       >
         <CrossClose />
       </div>
-      {showTranscript && <Transcript name={name} />}
+      {useTranscript && showTranscript && (
+        <Transcript
+          name={name}
+          progress={progress}
+          setProgress={setProgress}
+          duration={playerRef.current && playerRef.current.getDuration()}
+          playerRef={playerRef}
+        />
+      )}
     </div>
   )
 }

@@ -23,8 +23,6 @@ const About = ({ content, faqs, terms, team }) => {
     window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
   }
 
-  console.log(team)
-
   return (
     <>
       <section className="about">

@@ -26,16 +26,17 @@ const VideoPlayer = ({
   nextProfile,
   showTranscript,
   setShowTranscript,
+  isLastTenSeconds,
+  setIsLastTenSeconds,
+  progress,
+  setProgress,
+  playerRef,
+  useTranscript,
 }) => {
-  const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
-  const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
-  const [progress, setProgress] = useState({
-    progress: 0,
-    progressSeconds: 0,
-  })
+
   const [showControls, setShowControls] = useState(true)
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
   const handleFullScreen = useFullScreenHandle()
@@ -58,14 +59,6 @@ const VideoPlayer = ({
       clearTimeout(timer)
     }
   }, [countDownToHideControls, showControls])
-
-  useEffect(() => {
-    setIsLastTenSeconds(
-      playerRef.current && playerRef.current.getDuration()
-        ? playerRef.current.getDuration() - progress.progressSeconds < 15
-        : false
-    )
-  }, [progress])
 
   useEffect(() => {
     if (!isPlaying) {
@@ -107,7 +100,7 @@ const VideoPlayer = ({
           <>
             <ReactPlayer
               ref={playerRef}
-              url={videoSrcURL}
+              url={videoSrcURL + "#t=50s"}
               className="react-player"
               playing={isPlaying && !isPaused}
               width="100%"
@@ -149,18 +142,7 @@ const VideoPlayer = ({
               }}
             />
             {isPlaying && isLoading && (
-              <div
-                style={{
-                  position: "fixed",
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  top: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <div className="loading-wrap">
                 <Loading />
               </div>
             )}
@@ -177,20 +159,7 @@ const VideoPlayer = ({
             }}
           />
         )}
-        <div
-          className="control-layer"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            background: "none",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-          }}
-        >
+        <div className="control-layer">
           {(!isPlaying || (isPlaying && isPaused)) && (
             <>
               <div
@@ -253,6 +222,7 @@ const VideoPlayer = ({
         handleFullScreen={handleFullScreen}
         showTranscript={showTranscript}
         setShowTranscript={setShowTranscript}
+        useTranscript={useTranscript}
       />
     </FullScreen>
   )
