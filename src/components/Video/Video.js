@@ -19,6 +19,10 @@ const Video = ({
   nextProfile,
   useTranscript,
 }) => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
+
   const playerRef = useRef()
   const [showTranscript, setShowTranscript] = useState(false)
   const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
@@ -53,6 +57,7 @@ const Video = ({
         setProgress={setProgress}
         playerRef={playerRef}
         useTranscript={useTranscript}
+        startTime={params.get("t")}
       />
       <div
         style={{

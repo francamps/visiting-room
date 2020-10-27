@@ -147,7 +147,6 @@ const FilterAndSearchResults = ({
   }
 
   useEffect(() => {
-    console.log("loading")
     setLoadingSearchResults(true)
     allTranscripts.forEach(transFile => {
       import("../content/transcripts/" + transFile + ".json").then(cont => {
@@ -159,24 +158,20 @@ const FilterAndSearchResults = ({
   useEffect(() => {
     if (files.length === allTranscripts.length) {
       searchWorker.postMessage({ msg: "LOADED", files })
-      console.log("Loaded all files", search)
       searchResultsWW()
     } else {
       setLoadingSearchResults(true)
-      console.log("loading files ...", files.length)
     }
   }, [files.length])
 
   useEffect(() => {
     if (search) {
-      console.log("Searching results for ", search)
       setLoadingSearchResults(true)
       searchResultsWW()
     }
   }, [search])
 
   useEffect(() => {
-    console.log("Search done. Setting filter terms to ", results)
     setFilterTerms(
       results.map(result =>
         Object.keys(result)[0]

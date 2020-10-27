@@ -27,11 +27,11 @@ const VideoPlayer = ({
   showTranscript,
   setShowTranscript,
   isLastTenSeconds,
-  setIsLastTenSeconds,
   progress,
   setProgress,
   playerRef,
   useTranscript,
+  startTime,
 }) => {
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
@@ -100,7 +100,7 @@ const VideoPlayer = ({
           <>
             <ReactPlayer
               ref={playerRef}
-              url={videoSrcURL + "#t=50s"}
+              url={videoSrcURL}
               className="react-player"
               playing={isPlaying && !isPaused}
               width="100%"
@@ -108,6 +108,14 @@ const VideoPlayer = ({
               onReady={() => {
                 setLoading(false)
                 if (autoplay) setPlaying(true)
+                if (startTime) {
+                  const duration = playerRef.current.getDuration()
+                  playerRef.current.seekTo(startTime)
+                  setProgress({
+                    progress: startTime / duration,
+                    progressSeconds: startTime,
+                  })
+                }
               }}
               onSeek={seconds => {
                 const duration = playerRef.current.getDuration()

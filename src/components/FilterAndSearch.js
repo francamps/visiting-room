@@ -19,6 +19,11 @@ const FilterAndSearch = ({
     <div className="header-options">
       <div className="header-option search">
         <div
+          style={{
+            height: "24px",
+            lineHeight: "32px",
+            marginRight: "10px",
+          }}
           onClick={() => {
             setSearch(searchInput)
             setTyping(true)

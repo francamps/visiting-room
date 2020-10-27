@@ -22,6 +22,7 @@ const ArchiveTableSearchResults = ({
   isSearchLoading,
 }) => {
   const [hoveredRow, setHover] = useState(null)
+  const [openRow, setOpenRow] = useState(null)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return (
@@ -29,13 +30,12 @@ const ArchiveTableSearchResults = ({
       {isSearchLoading && <Loading hideTitle />}
 
       {!isSearchLoading && (
-        <table>
+        <table className="search-results">
           <thead>
             <tr>
               <th key={`header-full_name`}>Full Name</th>
               <th key={`header-picture`}></th>
               <th key={`header-picture`}>Results</th>
-              <th className="play" />
             </tr>
           </thead>
           <tbody>
@@ -45,11 +45,14 @@ const ArchiveTableSearchResults = ({
                 images,
                 USE_PRISMIC
               )
+              const profileUri = getNameUri(fullName)
 
               const thisResults =
                 searchResults
                   .filter(d => getNameUri(fullName) === Object.keys(d)[0])
                   .map(d => Object.values(d)[0])[0] || []
+
+              const isOpen = openRow === profileIdx
 
               return (
                 <tr
@@ -60,8 +63,8 @@ const ArchiveTableSearchResults = ({
                   onMouseLeave={() => {
                     setHover(null)
                   }}
-                  className={`open ${
-                    hoveredRow === profileIdx ? "hovered" : ""
+                  className={`${hoveredRow === profileIdx ? "hovered" : ""}  ${
+                    isOpen ? "open" : ""
                   }`}
                 >
                   <td>{fullName}</td>
@@ -94,49 +97,64 @@ const ArchiveTableSearchResults = ({
                       )}
                     </div>
                   </td>
-                  {videos[fullName] ? (
-                    <td className="play">
-                      <Play
-                        size="medium"
-                        color={"white"}
-                        onClick={() => {
-                          const profileUri = getNameUri(fullName)
-                          videos[fullName] && navigate(`/archive/${profileUri}`)
-                        }}
-                      />
-                    </td>
-                  ) : (
-                    <td className="play">
-                      <p>Profile not available yet.</p>
-                    </td>
-                  )}
                   <td>
                     {thisResults.map((r, i) => {
                       if (i < 2) {
                         return (
                           <p
-                            style={{ margin: 0, cursor: "pointer" }}
+                            style={{
+                              maxHeight: isOpen ? "80px" : "40px",
+                            }}
                             onClick={() => {
-                              const profileUri = getNameUri(fullName)
-
                               navigate(
-                                `/archive/${profileUri}?s=${getSeconds(r.time)}`
+                                `/archive/${profileUri}?t=${getSeconds(r.time)}`
                               )
                             }}
                           >
-                            {r.content.substring(0, 60) + "..."}
+                            <div
+                              style={{
+                                fontSize: "var(--font-small)",
+                                display: "block",
+                                margin: 0,
+                              }}
+                            >
+                              <b style={{ marginRight: "8px" }}>{r.speaker}</b>
+                              <i style={{ marginRight: "8px" }}>{r.time}</i>
+                            </div>
+                            {isOpen
+                              ? r.content
+                              : r.content.substring(0, 120) + "..."}
                           </p>
                         )
-                      } else if (i === 2 && thisResults.length > 2) {
+                      } else if (isOpen && i > 2) {
                         return (
-                          <p style={{ margin: 0, cursor: "pointer" }}>
-                            {"More results"}
+                          <p
+                            style={{
+                              maxHeight: isOpen ? "80px" : "40px",
+                            }}
+                            onClick={() => {
+                              navigate(
+                                `/archive/${profileUri}?t=${getSeconds(r.time)}`
+                              )
+                            }}
+                          >
+                            <b style={{ marginRight: "8px" }}>{r.speaker}</b>
+                            <i style={{ marginRight: "8px" }}>{r.time}</i>
+                            {isOpen
+                              ? r.content
+                              : r.content.substring(0, 120) + "..."}
                           </p>
                         )
-                      } else {
-                        return false
                       }
                     })}
+                    <p
+                      style={{ margin: 0, cursor: "pointer" }}
+                      onClick={() => {
+                        setOpenRow(!isOpen ? profileIdx : null)
+                      }}
+                    >
+                      {"See more."}
+                    </p>
                   </td>
                 </tr>
               )

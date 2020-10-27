@@ -66,7 +66,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                 onMouseLeave={() => {
                   setHover(null)
                 }}
-                className={`open ${
+                className={`${
                   hoveredRow === profileIdx ? "hovered" : ""
                 } isCompact`}
               >
@@ -215,7 +215,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                 onMouseLeave={() => {
                   setHover(null)
                 }}
-                className={`open ${hoveredRow === profileIdx ? "hovered" : ""}`}
+                className={`${hoveredRow === profileIdx ? "hovered" : ""}`}
               >
                 <td>{fullName}</td>
                 <td style={{ display: "block" }}>
