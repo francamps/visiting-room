@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
-import { navigate } from "gatsby"
 
 import CrossClose from "../CrossClose"
+import Header from "../Header"
 import VideoPlayer from "./VideoPlayer"
 import Transcript from "./Transcript"
 import { videos } from "../../content/videoRegistry"
@@ -41,6 +41,7 @@ const Video = ({
 
   return (
     <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
+      <Header title={null} actions={null} hideMenu classes="fadein" />
       <VideoPlayer
         videoSrcURL={isArchive ? archive[name] : videos[name]}
         videoTitle={name}
@@ -62,8 +63,9 @@ const Video = ({
       <div
         style={{
           position: "fixed",
-          top: 20,
-          right: 20,
+          top: 14,
+          right: 14,
+          zIndex: 13,
         }}
         onClick={() => {
           onClose()

@@ -26,12 +26,12 @@
   -o-animation: fadein 4s; /* Opera < 12.1 */
   animation: fadein 4s;
 
-  transition: width 1.2s;
+  transition: width 0.4s;
 }
 
 .video-wrap.transcript .video {
   width: calc(100% - 400px);
-  transition: width 1.2s;
+  transition: width 0.4s;
 }
 
 .video-wrap .video.video-fullscreen {
@@ -70,7 +70,7 @@
 }
 
 .video-info .actual-label {
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-copy);
   margin: 0 0 0 10px;
   line-height: 1em;

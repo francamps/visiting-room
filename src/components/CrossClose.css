@@ -10,8 +10,9 @@
 }
 .close:hover {
   opacity: 1;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s, background-color 0.4s;
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -20,11 +21,13 @@
   height: 33px;
   width: 2px;
   background-color: #d0d0d0;
+  transition: opacity 0.4s, background-color 0.4s;
 }
 
 .close.primary:before,
 .close.primary:after {
   background-color: var(--clr-primary);
+  transition: background-color 0.4s;
 }
 
 .close:before {

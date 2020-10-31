@@ -22,6 +22,17 @@
   justify-content: center;
 }
 
+.header-options .header-option.search .icon {
+  height: 24px;
+  line-height: 32px;
+  margin-right: 10px;
+}
+
+.header-options .header-option.search .icon:hover path,
+.header-options .header-option.search .icon:hover ellipse {
+  stroke: var(--clr-primary) !important;
+}
+
 .header-content,
 .header-content .header-options {
   width: 100%;
@@ -113,7 +124,7 @@ Input
   font-size: 1.55em;
   outline: none;
   border-bottom: 1px solid var(--clr-primary);
-  font-family: "GTPressura";
+  font-family: "EB Garamond";
   font-size: var(--font-normal);
   font-weight: 100;
   color: var(--clr-white);

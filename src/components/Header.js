@@ -7,7 +7,7 @@ import Burger from "./Burger"
 
 import "./Header.css"
 
-const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
+const Header = ({ classes, title, hideTitle, hideMenu, actions, theme }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
 
   return (
@@ -50,15 +50,9 @@ const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
           </div>*/
           }
           {isTabletOrMobile ? (
-            <div className="home-title" style={{}}>
+            <div className="home-title">
               <h6
                 className="home-link"
-                style={{
-                  margin: 0,
-                  height: "20px",
-                  fontWeight: "300",
-                  marginBottom: "5px",
-                }}
                 onClick={() => {
                   navigate("/")
                 }}
@@ -70,15 +64,11 @@ const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
               </h4>
             </div>
           ) : (
-            <div className="home-title" style={{}}>
+            <div className="home-title">
               <h5
                 className="home-link"
                 style={{
-                  margin: 0,
-                  height: "20px",
                   lineHeight: "20px",
-                  fontWeight: "300",
-                  marginBottom: "5px",
                 }}
                 onClick={() => {
                   navigate("/")
@@ -96,7 +86,7 @@ const Header = ({ classes, title, hideTitle, subtitle, actions, theme }) => {
 
       <div className="actions">
         {actions && actions}
-        <Menu theme={theme} />
+        {!hideMenu && <Menu theme={theme} />}
       </div>
     </div>
   )

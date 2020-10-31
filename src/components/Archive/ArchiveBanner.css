@@ -29,7 +29,7 @@
 .archive-entry-text p {
   font-family: "EB Garamond", serif;
   transition: font-size 1.2s;
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-copy-banner);
   text-align: center;
   color: var(--clr-off-white);
 }

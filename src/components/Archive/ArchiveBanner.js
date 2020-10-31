@@ -29,17 +29,13 @@ const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
                 flexDirection: "column",
               }}
             >
-              <p
+              <CrossClose
                 onClick={() => {
                   window.localStorage.setItem("showBanner", "false")
                   setShowBanner(false)
                   onClose()
                 }}
-                style={{ fontSize: "var(--font-copy)", cursor: "pointer" }}
-              >
-                Do not show me this again.
-              </p>
-              <CrossClose onClick={onClose} primary />
+              />
             </div>
           </div>
         )}

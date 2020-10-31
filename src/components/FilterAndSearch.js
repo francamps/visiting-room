@@ -19,11 +19,7 @@ const FilterAndSearch = ({
     <div className="header-options">
       <div className="header-option search">
         <div
-          style={{
-            height: "24px",
-            lineHeight: "32px",
-            marginRight: "10px",
-          }}
+          className="icon"
           onClick={() => {
             setSearch(searchInput)
             setTyping(true)
@@ -44,7 +40,7 @@ const FilterAndSearch = ({
                 className="input__field"
                 type="text"
                 id="input-search"
-                placeholder="Type a name"
+                placeholder="Search something..."
                 onKeyUp={event => {
                   setSearchInput(event.target.value)
                 }}

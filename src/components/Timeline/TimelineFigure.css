@@ -26,7 +26,7 @@
 }
 
 .timeline-figure .title {
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   font-weight: 700;
   font-size: var(--font-normal);
   margin-bottom: 0;
@@ -35,7 +35,7 @@
 }
 
 .timeline-figure .caption {
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   color: var(--clr-black);
   font-size: var(--font-normal);
   font-weight: 100;

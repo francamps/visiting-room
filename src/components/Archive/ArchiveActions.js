@@ -132,65 +132,6 @@ const ArchiveActions = ({
       )}
     </div>
   )
-
-  return (
-    <div
-      onMouseLeave={() => {
-        setMenuOpen(false)
-      }}
-      style={{
-        position: "relative",
-      }}
-    >
-      <div
-        className="menu__surface"
-        onClick={() => {
-          setMenuOpen(!isMenuOpen)
-        }}
-      >
-        Options
-      </div>
-      <div className={`menu__content ${isMenuOpen ? "open" : ""}`}>
-        <div className="view-options"></div>
-        <div
-          className={`sorting-options ${isSortOpen ? "open" : ""}`}
-          onMouseOver={() => {
-            setSortOpen(true)
-          }}
-          onMouseLeave={() => {
-            setSortOpen(false)
-          }}
-          onClick={() => {
-            setSortOpen(!isSortOpen)
-          }}
-        >
-          <div className="surface">
-            <p>Sort</p>
-            <div className="options-menu"></div>
-          </div>
-        </div>
-        {!openSearch && (
-          <div
-            className="search-trigger"
-            onClick={() => {
-              // TODO: DO SOMETHING
-            }}
-          >
-            <IconSearch />
-          </div>
-        )}
-        {openSearch && <FilterAndSearch onSearchTyping={setSearch} />}
-        <p
-          onClick={() => {
-            window.localStorage.setItem("showBanner", "true")
-            setShowBanner(true)
-          }}
-        >
-          About the archive
-        </p>
-      </div>
-    </div>
-  )
 }
 
 export default ArchiveActions

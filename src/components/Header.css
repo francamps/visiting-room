@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   height: 70px;
-  margin: 0 0 0 20px;
+  margin: 5px 0 0 20px;
   position: relative;
   z-index: 12;
   font-family: "EB Garamond";
@@ -36,7 +36,7 @@
 }
 
 .header .home-title h2 {
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-header-title);
 }
 
 .header .home-title.open {
@@ -44,17 +44,22 @@
   transition: color 0.4s;
 }
 
+.header .home-link {
+  margin: 0;
+  height: 20px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
 .header .breadcrumbs {
   display: flex;
   flex-direction: row;
 }
 
-.header .title-subtitle {
-}
-
+/*
 .header .title {
   font-size: var(--font-copy);
-  line-height: var(--font-copy-timeline);
+  line-height: calc(var(--font-copy * 1.1));
   font-weight: 300;
   max-width: 640px;
   margin: 0 auto;
@@ -66,7 +71,7 @@
   margin: 0 auto;
   transition: font-size 0.4s;
   margin: 0 auto;
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-header-title);
   line-height: 70px;
   transition: font-size 0.4s;
 }
@@ -85,6 +90,7 @@
   color: var(--clr-primary);
   transition: color 0.4s;
 }
+*/
 
 .header .actions {
   position: absolute;

@@ -1,7 +1,13 @@
 .menu__surface {
   height: 20px;
   cursor: pointer;
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  transition: color 0.4s;
+}
+
+.menu__surface:hover {
+  color: var(--clr-primary);
+  transition: color 0.4s;
 }
 
 .menu__content {

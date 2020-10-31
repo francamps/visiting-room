@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
-import HomeTextOnLanding from "./HomeTextOnLanding"
-import Header from "../Header"
 
 import "./Home.css"
 
@@ -53,16 +51,7 @@ const Home = ({ images }) => {
           </div>
         </div>
         <p
-          style={{
-            position: "fixed",
-            right: "40px",
-            bottom: "20px",
-            cursor: "pointer",
-            zIndex: "100",
-            color: "white",
-            fontSize: "var(--font-normal)",
-            textAlign: "right",
-          }}
+          className="skip-label"
           onClick={() => {
             navigate("/visiting-room")
           }}

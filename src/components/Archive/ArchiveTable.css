@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   border-left: 1px solid var(--clr-light-grey);
   border-right: 1px solid var(--clr-light-grey);
 }
@@ -148,13 +148,13 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 .archive table.search-results tbody tr {
   height: 200px;
   background-color: rgba(var(--clr-black-rgb), 1);
-  transition: background-color 1s, height 1s;
+  transition: background-color 0.4s, height 0.4s;
 }
 
 .archive table.search-results tbody tr.open {
   height: 300px;
   background-color: rgba(var(--clr-black-rgb), 1);
-  transition: background-color 1s, height 1s;
+  transition: background-color 0.4s, height 0.4s;
 }
 
 .archive table.search-results td {

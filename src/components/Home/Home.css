@@ -25,5 +25,52 @@
   transition: letter-spacing 1.2s;
 }
 
+.home .skip-label {
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  cursor: pointer;
+  z-index: 100;
+  color: white;
+  font-size: var(--font-normal);
+  text-align: right;
+}
+
+.home .subtitle {
+  position: fixed;
+  top: 0;
+  left: var(--space-around-med);
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-size: var(--font-subtitle);
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.home .subtitle p {
+  max-width: 900px;
+  font-family: "EB Garamond", serif;
+  margin: 0;
+  margin-bottom: var(--space-around-med);
+}
+
 @media (max-width: 767px) {
+  .home .subtitle {
+    position: fixed;
+    width: auto;
+    top: var(--space-around-small);
+    right: var(--space-around-small);
+    left: var(--space-around-small);
+    padding: 0;
+    flex-direction: column;
+    font-size: 3rem;
+    font-weight: normal;
+    text-align: left;
+  }
 }

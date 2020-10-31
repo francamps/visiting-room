@@ -97,20 +97,8 @@ const TimelineStepCopy = ({
             )}
             {!stepIdx && (
               <>
-                <div
-                  className=""
-                  style={{
-                    position: "relative",
-                    width: "640px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <Foreword />
-                </div>
+                <Foreword />
                 <Caret />
-                <p style={{ textAlign: "center", width: "640px" }}>
-                  Continue to the history of life without parole in Louisiana.
-                </p>
               </>
             )}
           </div>

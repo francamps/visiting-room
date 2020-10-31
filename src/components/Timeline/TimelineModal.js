@@ -24,6 +24,7 @@ const TimelineModal = ({ content, setModal }) => {
         left: 0,
         display: "flex",
         backdropFilter: "blur(10px)",
+        background: "rgba(var(--clr-black-rgb), 0.3)",
         justifyContent: "center",
         alignItems: "center",
         boxShadow: "10px 5px 5px white",

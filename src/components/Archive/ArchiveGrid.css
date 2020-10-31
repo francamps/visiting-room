@@ -14,7 +14,7 @@
   opacity: 0;
 
   /* TODO: Use styled scrolling */
-  height: 100%;
+  height: calc(100% + 70px);
   overflow: auto;
 
   -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */

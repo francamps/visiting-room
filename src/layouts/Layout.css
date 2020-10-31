@@ -4,7 +4,9 @@
   --font-small: 0.8rem;
   --font-normal: 1.1rem;
   --font-copy: 1.35rem;
-  --font-copy-timeline: 1.5rem;
+  --font-copy-timeline: 1.2rem;
+  --font-copy-banner: 1.5rem;
+  --font-header-title: 1.35rem;
   --font-large: 2rem;
   --font-xlarge: 2.5rem;
   --font-subtitle: 3.5rem;
@@ -24,7 +26,7 @@
   --clr-off-white: #f7f5f0;
   --clr-off-white-rgb: 247, 245, 240;
   --clr-black: #110808;
-  --clr-black-blu-rgb: 0, 0, 5;
+  --clr-black-rgb: 0, 0, 5;
   --clr-dark-bg: #110808;
   --clr-dark-grey: #232323;
   --clr-mid-grey: #444444;
@@ -90,7 +92,7 @@
   --background-gradient: linear-gradient(
     120deg,
     var(--clr-black),
-    rgba(var(--clr-black-blu-rgb), 0.9)
+    rgba(var(--clr-black-rgb), 0.9)
   );
 }
 
@@ -120,7 +122,7 @@ Use a scrollbar library, this is not standardized
 @import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
 
 /* THIS ONE IS PRETTY GOOD */
-@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Archivo&display=swap");
 
 @font-face {
   font-family: "GTEesti";
@@ -197,7 +199,7 @@ a {
 }
 
 p {
-  font-family: Muli, Helvetica Neue, Arial, sans-serif;
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
 }
 
 /**

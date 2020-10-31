@@ -19,7 +19,7 @@
 .visiting-room-entry-text p {
   font-family: "EB Garamond", serif;
   transition: font-size 1.2s;
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-copy-banner);
   text-align: center;
 
   -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
@@ -32,7 +32,7 @@
 .fadeout .visiting-room-entry-text p {
   font-family: "EB Garamond", serif;
   transition: font-size 1.2s;
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-copy-banner);
   text-align: center;
 
   -webkit-animation: fadeout 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */

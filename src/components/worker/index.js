@@ -24,7 +24,9 @@ export default () => {
       event.data.files.forEach((file, idx) => {
         const transcript = Object.values(file)[0]
         const thisResults = transcript.filter(paragraph => {
-          return paragraph.content.includes(search)
+          //return paragraph.content.includes(search)
+          const re = new RegExp(search, "i")
+          return !!paragraph.content.match(re)
         })
         if (thisResults.length) {
           /* eslint-disable-next-line no-restricted-globals */

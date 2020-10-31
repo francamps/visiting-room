@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useMemo } from "react"
-import isNull from "lodash/isNull"
 
 import Header from "../Header"
 import FilterAndSearch from "../FilterAndSearch"
