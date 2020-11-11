@@ -22,9 +22,9 @@ export const profiles = [
   },
   {
     quote: `I never envisioned myself being in a position to take my own wants and needs and put them aside, and put someone else’s before my own. But it’s what I do now.`,
-    name: "Jared Lanclow",
-    imagePath: "profile_pics/JARRED.jpg",
-    imageHeadshotPath: "jared_lanclow.jpg",
+    name: "Jarrod Lanclow",
+    imagePath: "profile_pics/Jarrod.jpg",
+    imageHeadshotPath: "Jarrod_lanclow.jpg",
   },
   {
     quote: `If I have to die here, I appreciate the opportunity to be able
@@ -51,7 +51,7 @@ export const profiles = [
     quote: `I never envisioned myself being in a position to take my own wants and needs and put them aside, and put someone else’s before my own. But it’s what I do now.`,
     name: "Kauntau",
     imagePath: "profile_pics/KAUNTAU.jpg",
-    imageHeadshotPath: "jared_lanclow.jpg",
+    imageHeadshotPath: "Jarrod_lanclow.jpg",
   },
   {
     quote: `If I have to die here, I appreciate the opportunity to be able
@@ -78,6 +78,6 @@ export const profiles = [
     quote: `I never envisioned myself being in a position to take my own wants and needs and put them aside, and put someone else’s before my own. But it’s what I do now.`,
     name: "Anthony",
     imagePath: "profile_pics/ANTHONY.jpg",
-    imageHeadshotPath: "jared_lanclow.jpg",
+    imageHeadshotPath: "Jarrod_lanclow.jpg",
   },
 ]

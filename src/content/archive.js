@@ -672,8 +672,8 @@ export const archive = [
     "Notes": "http://caselaw.findlaw.com/la-court-of-appeal/1308130.html Codefendant Winfred Davenport.Granted hearing. No date."
   },
   {
-    "Full Name": "Jarred Lanclow",
-    "First Name": "Jarred",
+    "Full Name": "Jarrod Lanclow",
+    "First Name": "Jarrod",
     "Last Name": "Lanclow",
     "Charge": "Second degree",
     "Interview": "8/8/2017",

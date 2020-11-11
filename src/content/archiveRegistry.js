@@ -44,7 +44,7 @@ export const videos = {
   "Jerome Derricks": "https://vimeo.com/447326855",
   "Jeffrey Nelson": "https://vimeo.com/447319477",
   "Jeffrey Hilburn": "https://vimeo.com/447314033",
-  "Jarred Lanclow": "https://vimeo.com/447277618",
+  "Jarrod Lanclow": "https://vimeo.com/447277618",
   "James Refuge": "https://vimeo.com/447273132",
   "Jack Segura": "https://vimeo.com/447270267",
   "Isiah Diggs": "https://vimeo.com/447264071",

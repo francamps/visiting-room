@@ -179,8 +179,8 @@ export const profiles = [
   {
     quote:
       "I never envisioned myself being in a position to take my own wants and needs and put them aside, and put someone else’s before my own. But it’s what I do now.",
-    name: "Jarred Lanclow",
-    imagePath: "profile_pics/Jarred_Lanclow.jpg",
+    name: "Jarrod Lanclow",
+    imagePath: "profile_pics/Jarrod_Lanclow.jpg",
   },
   {
     quote:

@@ -47,7 +47,7 @@ const allTranscripts = [
   "james_refuge",
   "jack_segura",
   "jeffrey_hillburn",
-  "jared_lanclow",
+  "Jarrod_lanclow",
   "jerome_derricks",
   "jeffrey_nelson",
   "jerry_lewis",
