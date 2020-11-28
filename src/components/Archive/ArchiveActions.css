@@ -114,41 +114,81 @@
   }
 }
 
-/** RC MENU **/
+/** IN-HOUSE MENU **/
+.menu__wrap {
+  position: relative;
+}
 
-.rc-menu {
+.menu__menu {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  background: var(--clr-dark-grey);
+  top: 30px;
+  right: 0px;
+  width: 150px;
   position: absolute;
-  right: 0;
-  padding: 0;
-  border-radius: 0;
-  background: var(--clr-black) !important;
-  color: var(--clr-white) !important;
-  border: none;
+  box-shadow: -3px 3px var(--clr-mid-grey);
+  border-radius: 3px;
+  transform: scale(0.8);
+  transform-origin: center center;
+  pointer-events: none;
+  opacity: 0;
 }
 
-.rc-menu-vertical > .rc-menu-item,
-.rc-menu-vertical-left > .rc-menu-item,
-.rc-menu-vertical-right > .rc-menu-item,
-.rc-menu-inline > .rc-menu-item,
-.rc-menu-vertical > .rc-menu-submenu > .rc-menu-submenu-title,
-.rc-menu-vertical-left > .rc-menu-submenu > .rc-menu-submenu-title,
-.rc-menu-vertical-right > .rc-menu-submenu > .rc-menu-submenu-title,
-.rc-menu-inline > .rc-menu-submenu > .rc-menu-submenu-title {
-  padding: 10px;
-  transition: background-color 0.2s;
+.menu__menu.active {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.menu__menu .menu__item {
+  padding: 0 5px;
   cursor: pointer;
-}
-
-.rc-menu-item p,
-.rc-menu-submenu .rc-menu-submenu-title {
-  margin: 4px;
-  font-family: Muli;
-  font-size: var(--font-small);
-}
-
-.rc-menu-item-active,
-.rc-menu-submenu-active > .rc-menu-submenu-title {
-  background-color: rgba(var(--clr-off-white-rgb), 0.3) !important;
   color: var(--clr-white);
+}
+
+.menu__menu .menu__item p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu__menu .menu__item p svg {
+  margin-right: 8px;
+}
+
+.menu__menu .menu__item:hover {
+  background-color: rgba(var(--clr-off-white-rgb), 0.3) !important;
   transition: background-color 0.2s;
+}
+
+.menu__menu .submenu__surface {
+  position: relative;
+  overflow: visible;
+}
+
+.menu__menu .submenu__menu {
+  position: absolute;
+  left: -204px;
+  top: 48px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  background: var(--clr-dark-grey);
+  box-shadow: -3px 3px var(--clr-mid-grey);
+  border-radius: 3px;
+  transform: scale(0.8);
+  transform-origin: center center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.menu__menu .submenu__menu.active {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.2s, opacity 0.2s;
 }

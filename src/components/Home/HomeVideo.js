@@ -2,14 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import ReactPlayer from "react-player"
 import { navigate } from "gatsby"
 
-import Loading from "../Loading"
-
 import "./HomeVideo.css"
-
-import background1A from "../../images/video1A.png"
-import background1B from "../../images/video1B.png"
-import background2A from "../../images/video2A.png"
-import background2B from "../../images/video2B.png"
 
 const imageFilenames = ["video1A", "video1B", "video2A", "video2B"]
 
@@ -19,8 +12,6 @@ const items = [
   "https://vimeo.com/444204755",
   "https://vimeo.com/444204778",
 ]
-
-const bgs = [background1A, background1B, background2A, background2B]
 
 const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
   const playerRef = useRef()
@@ -55,14 +46,6 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
   useEffect(() => {
     if (isLastTenSeconds) {
       navigate("/visiting-room")
-      /*if (
-        typeof window !== "undefined" &&
-        window.localStorage.getItem("showIntro") === "false"
-      ) {
-        navigate("/visiting-room")
-      } else {
-        navigate("/foreword")
-      }*/
     }
   }, [isLastTenSeconds])
 

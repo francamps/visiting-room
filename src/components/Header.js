@@ -1,14 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import { navigate } from "gatsby"
 import { useMediaQuery } from "react-responsive"
 
 import Menu from "./Menu"
-import Burger from "./Burger"
 
 import "./Header.css"
 
-const Header = ({ classes, title, hideTitle, hideMenu, actions, theme }) => {
+const Header = ({
+  classes,
+  title,
+  hideTitle,
+  hideMenu,
+  actions,
+  theme,
+  setTitleHelp,
+}) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
+  const [isHoverTitle, setHoverTitle] = useState(false)
 
   return (
     <div
@@ -65,19 +73,37 @@ const Header = ({ classes, title, hideTitle, hideMenu, actions, theme }) => {
             </div>
           ) : (
             <div className="home-title">
-              <h5
-                className="home-link"
-                style={{
-                  lineHeight: "20px",
+              <span className="home-link-wrap">
+                <h5
+                  className="home-link"
+                  style={{
+                    lineHeight: "20px",
+                  }}
+                  onClick={() => {
+                    navigate("/")
+                  }}
+                >
+                  The Visiting Room Project
+                </h5>
+              </span>
+              <h2
+                style={{ margin: 0, height: "24px", lineHeight: "24px" }}
+                onMouseOver={() => {
+                  setHoverTitle(true)
                 }}
-                onClick={() => {
-                  navigate("/")
+                onMouseOut={() => {
+                  setHoverTitle(false)
                 }}
               >
-                The Visiting Room Project
-              </h5>
-              <h2 style={{ margin: 0, height: "24px", lineHeight: "24px" }}>
                 {title}
+                <span
+                  className={`title-help ${isHoverTitle ? "active" : ""}`}
+                  onClick={() => {
+                    if (setTitleHelp) setTitleHelp()
+                  }}
+                >
+                  ?
+                </span>
               </h2>
             </div>
           )}

@@ -16,7 +16,7 @@ import "./ArchiveTable.css"
 const columnsDesktop = [
   { key: "full_name", label: "Full Name" },
   { key: "picture", label: "" },
-  { key: "years", label: "" },
+  { key: "years", label: "Years incarcerated" },
   { key: "current_age", label: "Current Age" },
   { key: "age_at_offense", label: "Age at offense" },
   { key: "offense_date", label: "Year Incarcerated" },
@@ -101,41 +101,41 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                   </div>
                 </td>
                 <td>
-                  {hoveredRow === profileIdx && (
-                    <Years
-                      color={"white"}
-                      incarcerated={age_at_offense}
-                      current={current_age}
-                      deceased_date={deceased_date}
-                    />
-                  )}
-
-                  <p
+                  <div
                     style={{
-                      margin: 0,
-                      fontSize: "var(--font-normal)",
-                      height: "20px",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      height: "100%",
                     }}
                   >
-                    Years incarcerated:
-                    <span
-                      style={{
-                        whiteSpace: "pre",
-                      }}
-                    >{` ${current_age - age_at_offense}`}</span>
-                  </p>
-                  {deceased_date && (
-                    <p
-                      style={{
-                        margin: 0,
-                        fontSize: "var(--font-xsmall)",
-                        height: "20px",
-                      }}
-                    >{`Deceased on ${deceased_date}`}</p>
-                  )}
-                  <p>{`Current age: ${current_age}`}</p>
-                  <p>{`Age at offense: ${age_at_offense}`}</p>
-                  <p>{`Year of incarceration: ${date_of_offense}`}</p>
+                    <div>
+                      <p>
+                        {` ${current_age - age_at_offense} years incarcerated`}
+                      </p>
+                      {deceased_date && (
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: "var(--font-xsmall)",
+                            height: "20px",
+                          }}
+                        >{`Deceased on ${deceased_date}`}</p>
+                      )}
+                      <p>{`Current age: ${current_age}`}</p>
+                      <p>{`Age at offense: ${age_at_offense}`}</p>
+                      <p>{`Year of incarceration: ${date_of_offense}`}</p>
+                    </div>
+                    {(hoveredRow === profileIdx || !profileIdx) && (
+                      <Years
+                        color={"white"}
+                        incarcerated={age_at_offense}
+                        current={current_age}
+                        deceased_date={deceased_date}
+                      />
+                    )}
+                  </div>
                 </td>
                 {videos[fullName] ? (
                   <td className="play" style={{ textAlign: "center" }}>
@@ -171,25 +171,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
         <thead>
           <tr>
             {columnsDesktop.map(column => (
-              <th key={`header-${column.key}`}>
-                {column.label}
-                {column.key === "years" ? (
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <span>Age at incarceration</span>
-                    <span style={{ color: "var(--clr-primary)" }}>
-                      Current age
-                    </span>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </th>
+              <th key={`header-${column.key}`}>{column.label}</th>
             ))}
             <th className="play" />
           </tr>
@@ -248,39 +230,54 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                   </div>
                 </td>
                 <td>
-                  {hoveredRow === profileIdx && (
-                    <Years
-                      color={"white"}
-                      incarcerated={age_at_offense}
-                      current={current_age}
-                      deceased_date={deceased_date}
-                    />
-                  )}
-
-                  <p
+                  <div
                     style={{
-                      margin: 0,
-                      fontSize: "var(--font-xsmall)",
-                      height: "20px",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      alignItems: "center",
                     }}
                   >
-                    Years incarcerated:
-                    <span
+                    <div
                       style={{
-                        color: "var(--clr-primary)",
-                        whiteSpace: "pre",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
-                    >{` ${current_age - age_at_offense}`}</span>
-                  </p>
-                  {deceased_date && (
-                    <p
-                      style={{
-                        margin: 0,
-                        fontSize: "var(--font-xsmall)",
-                        height: "20px",
-                      }}
-                    >{`Deceased on ${deceased_date}`}</p>
-                  )}
+                    >
+                      <p
+                        style={{
+                          margin: 0,
+                        }}
+                      >
+                        <span
+                          style={{
+                            color: "var(--clr-primary)",
+                            whiteSpace: "pre",
+                          }}
+                        >{` ${current_age - age_at_offense}`}</span>
+                      </p>
+                      {deceased_date && (
+                        <p
+                          style={{
+                            margin: 0,
+                            height: "20px",
+                          }}
+                        >{`Deceased on ${deceased_date}`}</p>
+                      )}
+                    </div>
+                    {hoveredRow === profileIdx && (
+                      <Years
+                        color={"white"}
+                        incarcerated={age_at_offense}
+                        current={current_age}
+                        deceased_date={deceased_date}
+                      />
+                    )}
+                  </div>
                 </td>
                 <td>{current_age}</td>
                 <td>{age_at_offense}</td>

@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from "react"
-import getValue from "lodash/get"
-//import { useInView } from "react-intersection-observer"
+import React from "react"
 
-const TimelineStepTitle = ({ title, year, active }) => {
+const TimelineStepTitle = ({ title, year }) => {
   return (
     <div
       className="step-title"

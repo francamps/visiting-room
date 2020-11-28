@@ -5,7 +5,6 @@ import Header from "../Header"
 import TimelineModal from "./TimelineModal"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineStepCopy from "./TimelineStepCopy"
-import TimelineStepTitle from "./TimelineStepTitle"
 
 import { TIMELINE } from "../../content/timeline"
 
@@ -18,7 +17,7 @@ const TimelineOnePager = props => {
   )
 
   const [isFigureActive, setFigureActive] = useState(null)
-  const [step, setStep] = useState(params.get("chapter") || 0)
+  const [step] = useState(params.get("chapter") || 0)
   const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
@@ -44,11 +43,6 @@ const TimelineOnePager = props => {
       }
     }
   }, [fadeout])
-
-  const updateParams = step => {
-    params.set("chapter", step)
-    window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
-  }
 
   return (
     <>

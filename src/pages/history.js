@@ -1,9 +1,9 @@
 import React from "react"
 
-import TimelineOnePager from "../components/Timeline/TimelineOnePager"
+import Timeline from "../components/Timeline"
 
 const TimelinePage = () => {
-  return <TimelineOnePager />
+  return <Timeline />
 }
 
 export default TimelinePage

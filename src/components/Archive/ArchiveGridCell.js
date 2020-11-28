@@ -10,7 +10,7 @@ import { videos } from "../../content/archiveRegistry"
 
 const USE_PRISMIC = true
 
-const ArchiveGridCell = ({ profile, profileIdx, images }) => {
+const ArchiveGridCell = ({ profile, images }) => {
   const [isHover, setHover] = useState(false)
 
   const {
@@ -18,10 +18,7 @@ const ArchiveGridCell = ({ profile, profileIdx, images }) => {
     oldImage,
     fullName,
     date_of_offense,
-    age_at_offense,
-    current_age,
     deceased_date,
-    profile_picture,
   } = getProfileProps(profile, images, USE_PRISMIC)
 
   return (

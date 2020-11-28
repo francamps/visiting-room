@@ -1,6 +1,6 @@
 import React from "react"
 
-import IconFullScreen from "../Symbols/IconFullScreen"
+import IconFullScreen from "../Symbols/FullScreen"
 
 const VideoFullScreenControl = ({ active, onExit, onEnter, color }) => {
   return (
@@ -14,12 +14,10 @@ const VideoFullScreenControl = ({ active, onExit, onEnter, color }) => {
         }
       }}
       style={{
-        transform: "translate(0, -1px)",
-        transformOrigin: "center center",
-        height: "23px",
+        cursor: "pointer",
       }}
     >
-      <IconFullScreen color={active ? color : undefined} />
+      <IconFullScreen color={active ? color : undefined} enabled={active} />
     </div>
   )
 }

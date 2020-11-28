@@ -2,15 +2,12 @@ import React, { useState } from "react"
 import Img from "gatsby-image"
 import { useMediaQuery } from "react-responsive"
 import { navigate } from "gatsby"
-import get from "lodash/get"
 
 import Loading from "../Loading"
-import Play from "../Symbols/Play"
 
 import getProfileProps from "../../utils/getProfileProps"
 import { getNameUri, getSeconds } from "../../utils/index.js"
 
-import { videos } from "../../content/archiveRegistry"
 import "./ArchiveTable.css"
 
 const USE_PRISMIC = true

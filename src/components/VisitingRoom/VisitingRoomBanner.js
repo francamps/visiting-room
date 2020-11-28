@@ -4,9 +4,7 @@ import Loading from "../Loading"
 
 import "./VisitingRoomBanner.css"
 
-const VisitingRoomBanner = ({ isShow, onSearchTyping }) => {
-  const [openSearch, setOpenSearch] = useState(false)
-
+const VisitingRoomBanner = ({ isShow }) => {
   const [isHidden, setHidden] = useState(false)
 
   useEffect(() => {
@@ -29,12 +27,6 @@ const VisitingRoomBanner = ({ isShow, onSearchTyping }) => {
         }`}
       >
         <div className="visiting-room-entry-text">
-          {
-            null /*<p>
-            All interviews were filmed at the Louisiana State Penitentiary,
-            Angola.
-          </p>*/
-          }
           <Loading />
         </div>
       </div>

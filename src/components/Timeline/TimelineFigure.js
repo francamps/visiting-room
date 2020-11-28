@@ -9,15 +9,8 @@ import Map from "../charts/Map"
 
 import "./TimelineFigure.css"
 
-const TimelineFigure = ({
-  step = 1,
-  caption,
-  images,
-  imageStyle,
-  setFigureActive,
-  setAngolite,
-}) => {
-  const [ref, inView, entry] = useInView({
+const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.5,
   })

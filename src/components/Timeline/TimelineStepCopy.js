@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
 import Paragraphs from "../Paragraphs"
@@ -7,23 +7,15 @@ import Foreword from "./Foreword"
 import TimelineFigure from "./TimelineFigure"
 import TimelineStepTitle from "./TimelineStepTitle"
 
-const THRESHOLD = 0.25
-
 const TimelineStepCopy = ({
-  setStep,
   setModal,
   setFigureActive,
-  setAngolite,
   step,
   stepIdx,
   setHeaderBreadcrump,
   timelineStep,
-  isLastStep,
 }) => {
-  const imagePlacement = timelineStep.imagePlacement
-  const [active, setActive] = useState(false)
-
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.5,
   })
@@ -46,7 +38,6 @@ const TimelineStepCopy = ({
               <TimelineStepTitle
                 title={timelineStep.title}
                 year={timelineStep.year}
-                active={active}
               />
             )}
           </div>

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { navigate } from "gatsby"
 
 import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
 import Grid from "../Grid"
-import Video from "../Video/Video"
-import VisitingRoomIntro from "../Timeline/Foreword"
 
 import "./VisitingRoom.css"
-import { isNull } from "lodash"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)

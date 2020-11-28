@@ -31,7 +31,7 @@ const Archive = ({ profiles = [], loading, images }) => {
   const [fadeout, setFadeOut] = useState(false)
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
-  const [view, setView] = useState("grid")
+  const [view, setView] = useState("table")
   const [filterTerms, setFilterTerms] = useState(null)
   const [isSearchLoading, setLoadingSearchResults] = useState(false)
   const [searchResults, setSearchResults] = useState([])
@@ -65,6 +65,10 @@ const Archive = ({ profiles = [], loading, images }) => {
       {!showBanner && (
         <Header
           title={"Archive"}
+          setTitleHelp={() => {
+            window.localStorage.setItem("showBanner", "true")
+            setShowBanner(true)
+          }}
           actions={
             <>
               <FilterAndSearch
@@ -80,7 +84,6 @@ const Archive = ({ profiles = [], loading, images }) => {
                 sortAsc={sortAsc}
                 sortType={sortType}
                 setView={setView}
-                setShowBanner={setShowBanner}
                 view={view}
               />
             </>

@@ -1,20 +1,16 @@
 import React, { useEffect, useState, useRef } from "react"
-import Menu, { SubMenu, MenuItem } from "rc-menu"
-import "rc-menu/assets/index.css"
 
-import IconSearch from "../Symbols/Search"
-import FilterAndSearch from "../FilterAndSearch"
+import IconSort from "../Symbols/Sort"
+import IconViewTable from "../Symbols/ViewTable"
+import IconViewGrid from "../Symbols/ViewGrid"
 
 import "./ArchiveActions.css"
 
 const ArchiveActions = ({
   columns,
-  openSearch,
-  setOpenSearch,
   setShowBanner,
   setSortedAsc,
   setSortedType,
-  setSearch,
   setView,
   sortAsc,
   sortType,
@@ -22,16 +18,16 @@ const ArchiveActions = ({
 }) => {
   const ref = useRef()
 
-  const [isSortOpen, setSortOpen] = useState(false)
   const [isMenuOpen, setMenuOpen] = useState(false)
 
   const handleClickOutside = e => {
     if (ref.current.contains(e.target)) {
       // inside click
       return
+    } else {
+      // outside click
+      setMenuOpen(false)
     }
-    // outside click
-    setMenuOpen(false)
   }
 
   useEffect(() => {
@@ -46,91 +42,96 @@ const ArchiveActions = ({
     }
   }, [isMenuOpen])
 
+  const handleSortClick = (key, keyIdx) => {
+    if (sortType.key === key) {
+      setSortedAsc(!sortAsc)
+    } else {
+      setSortedType(columns[keyIdx])
+    }
+  }
+
   return (
-    <div ref={ref}>
-      <div
-        className="menu__surface"
+    <>
+      <p
         onClick={() => {
-          setMenuOpen(!isMenuOpen)
+          setView(view === "table" ? "grid" : "table")
+        }}
+        style={{
+          cursor: "pointer",
+          marginRight: "8px",
+          marginBottom: "14px",
         }}
       >
-        Options
-      </div>
-      {isMenuOpen && (
-        <Menu
-          triggerSubMenuAction="click"
+        {view === "table" ? (
+          <>
+            <IconViewGrid />
+          </>
+        ) : (
+          <>
+            <IconViewTable />
+          </>
+        )}
+      </p>
+      <div className="menu__wrap" ref={ref}>
+        <div
+          className="menu__surface"
+          onClick={() => {
+            setMenuOpen(!isMenuOpen)
+          }}
+        >
+          <IconSort enabled />
+        </div>
+        <div
+          className={`menu__menu ${isMenuOpen ? "active" : ""}`}
           onClick={() => {
             setMenuOpen(false)
           }}
         >
-          <MenuItem>
+          <div className="menu__item">
             <p
+              className={`${sortType.key === "full_name" ? "active" : ""}`}
               onClick={() => {
-                setView(view === "table" ? "grid" : "table")
+                handleSortClick("full_name", 1)
               }}
             >
-              {view === "table" ? "View grid" : "View table"}
+              <IconSort
+                enabled={sortType.key === "full_name"}
+                sortAsc={sortAsc}
+              />
+              Full name
             </p>
-          </MenuItem>
-          <SubMenu title="Sort">
-            <MenuItem>
-              <p
-                className={`${sortType.key === "full_name" ? "active" : ""}`}
-                onClick={() => {
-                  if (sortType.key === "full_name") {
-                    setSortedAsc(!sortAsc)
-                  } else {
-                    setSortedType(columns[1])
-                  }
-                }}
-              >
-                Full name
-              </p>
-            </MenuItem>
-            <MenuItem>
-              <p
-                className={`${
-                  sortType.key === "age_at_offense" ? "active" : ""
-                }`}
-                onClick={() => {
-                  if (sortType.key === "age_at_offense") {
-                    setSortedAsc(!sortAsc)
-                  } else {
-                    setSortedType(columns[2])
-                  }
-                }}
-              >
-                Age at offense
-              </p>
-            </MenuItem>
-            <MenuItem>
-              <p
-                className={`${sortType.key === "offense_date" ? "active" : ""}`}
-                onClick={() => {
-                  if (sortType.key === "offense_date") {
-                    setSortedAsc(!sortAsc)
-                  } else {
-                    setSortedType(columns[3])
-                  }
-                }}
-              >
-                Year of incarceration
-              </p>
-            </MenuItem>
-          </SubMenu>
-          <MenuItem>
+          </div>
+          <div className="menu__item">
             <p
+              className={`${sortType.key === "age_at_offense" ? "active" : ""}`}
               onClick={() => {
-                window.localStorage.setItem("showBanner", "true")
-                setShowBanner(true)
+                handleSortClick("age_at_offense", 2)
               }}
             >
-              About the archive
+              <IconSort
+                enabled={sortType.key === "age_at_offense"}
+                sortAsc={sortAsc}
+              />
+              Age at offense
             </p>
-          </MenuItem>
-        </Menu>
-      )}
-    </div>
+          </div>
+          <div className="menu__item">
+            <p
+              className={`${sortType.key === "offense_date" ? "active" : ""}`}
+              onClick={() => {
+                handleSortClick("offense_date", 3)
+              }}
+            >
+              <IconSort
+                enabled={sortType.key === "offense_date"}
+                sortAsc={sortAsc}
+              />
+              Year of incarceration
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

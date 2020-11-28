@@ -44,17 +44,6 @@ const Foreword = () => {
     }
   }, [countDownToHideControls, showControls])
 
-  const onSeek = e => {
-    const widthOfBar = barRef.current.getBoundingClientRect().width
-    const leftOfBar = barRef.current.getBoundingClientRect().left
-
-    const fraction = (e.clientX - leftOfBar) / widthOfBar
-    const duration = playerRef.current.duration
-
-    setProgress({ progress: fraction, progressSeconds: fraction * duration })
-    playerRef.current.seekTo(fraction)
-  }
-
   useEffect(() => {
     if (!isPlaying) {
       setPlaying(true)
@@ -73,118 +62,121 @@ const Foreword = () => {
 
   return (
     <div className="foreword-wrap">
-    <FullScreen handle={handleFullScreen}>
-      <div
-        className={`vr-intro ${
-          handleFullScreen.active ? "vr-intro-fullscreen" : ""
-        }`}
-      >
+      <FullScreen handle={handleFullScreen}>
         <div
-          className="vr-intro-background"
-          onClick={() => {
-            window.localStorage.setItem("showIntro", "false")
-            navigate("/visiting-room")
-          }}
-        ></div>
-        <div className="video-container">
+          className={`vr-intro ${
+            handleFullScreen.active ? "vr-intro-fullscreen" : ""
+          }`}
+        >
           <div
-            className="intro"
+            className="vr-intro-background"
             onClick={() => {
-              if (isPlaying && isPaused) {
-                setPlaying(true)
-                setPause(false)
-              } else if (isPlaying && !isPaused) {
-                setPlaying(true)
-                setPause(true)
-              }
+              window.localStorage.setItem("showIntro", "false")
+              navigate("/visiting-room")
             }}
-            onMouseMove={() => {
-              if (isPlaying) setCountDownToHideControls(5000)
-            }}
-            onMouseLeave={() => {
-              if (isPlaying) setCountDownToHideControls(5000)
-            }}
-          >
-            {isPlaying && (
-              <>
-                <ReactPlayer
-                  ref={playerRef}
-                  url={videoSrcURL}
-                  className="react-player"
-                  playing={isPlaying && !isPaused}
-                  width="100%"
-                  height="100%"
-                  onReady={() => {
-                    setLoading(false)
-                    setPlaying(true)
-                  }}
-                  onPause={() => {
-                    setPause(true)
-                  }}
-                  onEnded={() => {
-                    if (typeof window !== "undefined")
-                      window.localStorage.setItem("showIntro", "false")
-                    navigate("/visiting-room")
-                  }}
-                  onProgress={({ played, playedSeconds }) => {
-                    setProgress({
-                      progress: played,
-                      progressSeconds: playedSeconds,
-                    })
-                  }}
-                  config={{
-                    vimeo: {
-                      playerOptions: {
-                        playsinline: 1,
-                      },
-                    },
-                  }}
-                />
-                {isPlaying && isLoading && (
-                  <div className="loading-wrap">
-                    <Loading />
-                  </div>
-                )}
-              </>
-            )}
+          ></div>
+          <div className="video-container">
             <div
-              className="control-layer"
-              style={{
-                background: !isPlaying || isPaused ? "rgba(0,0,0,0.2)" : "none",
+              className="intro"
+              onClick={() => {
+                if (isPlaying && isPaused) {
+                  setPlaying(true)
+                  setPause(false)
+                } else if (isPlaying && !isPaused) {
+                  setPlaying(true)
+                  setPause(true)
+                }
+              }}
+              onMouseMove={() => {
+                if (isPlaying) setCountDownToHideControls(5000)
+              }}
+              onMouseLeave={() => {
+                if (isPlaying) setCountDownToHideControls(5000)
               }}
             >
-              {(!isPlaying || (isPlaying && isPaused)) && (
-                <div
-                  className="play-wrap"
-                >
-                  <Play
-                    size="huge"
-                    onClick={() => {
-                      if (typeof window !== "undefined")
-                        window.localStorage.setItem("showIntro", "false")
-                      setPause(false)
+              {isPlaying && (
+                <>
+                  <ReactPlayer
+                    ref={playerRef}
+                    url={videoSrcURL}
+                    className="react-player"
+                    playing={isPlaying && !isPaused}
+                    width="100%"
+                    height="100%"
+                    onReady={() => {
+                      setLoading(false)
                       setPlaying(true)
                     }}
+                    onPause={() => {
+                      setPause(true)
+                    }}
+                    onEnded={() => {
+                      if (typeof window !== "undefined")
+                        window.localStorage.setItem("showIntro", "false")
+                      navigate("/visiting-room")
+                    }}
+                    onProgress={({ played, playedSeconds }) => {
+                      setProgress({
+                        progress: played,
+                        progressSeconds: playedSeconds,
+                      })
+                    }}
+                    config={{
+                      vimeo: {
+                        playerOptions: {
+                          playsinline: 1,
+                        },
+                      },
+                    }}
                   />
-                </div>
+                  {isPlaying && isLoading && (
+                    <div
+                      className="loading-wrap"
+                      style={{ position: "absolute" }}
+                    >
+                      <Loading />
+                    </div>
+                  )}
+                </>
               )}
+              <div
+                className="control-layer"
+                style={{
+                  background:
+                    !isPlaying || isPaused ? "rgba(0,0,0,0.2)" : "none",
+                }}
+              >
+                {(!isPlaying || (isPlaying && isPaused)) && (
+                  <div className="play-wrap">
+                    <Play
+                      size="huge"
+                      onClick={() => {
+                        if (typeof window !== "undefined")
+                          window.localStorage.setItem("showIntro", "false")
+                        setPause(false)
+                        setPlaying(true)
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
+            <VideoPlayerControls
+              barRef={barRef}
+              isPlaying={isPlaying}
+              isPaused={isPaused}
+              playerRef={playerRef}
+              progress={progress}
+              setPause={setPause}
+              setPlaying={setPlaying}
+              setProgress={setProgress}
+              showControls={showControls}
+              handleFullScreen={handleFullScreen}
+            />
           </div>
-          <VideoPlayerControls
-            barRef={barRef}
-            isPlaying={isPlaying}
-            isPaused={isPaused}
-            playerRef={playerRef}
-            progress={progress}
-            setPause={setPause}
-            setPlaying={setPlaying}
-            setProgress={setProgress}
-            showControls={showControls}
-            handleFullScreen={handleFullScreen}
-          />
         </div>
-      </div>
-    </FullScreen></div>
+      </FullScreen>
+    </div>
   )
 }
 

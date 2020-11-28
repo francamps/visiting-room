@@ -20,7 +20,7 @@ const Menu = ({
   }, [isMenuExpanded])
 
   return (
-    <div style={{ width: "20px", marginLeft: "20px" }}>
+    <div style={{ width: "20px", marginLeft: "10px" }}>
       <div
         className={`menu
           ${theme === "light" ? "menu-light" : ""}

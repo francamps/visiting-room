@@ -1,8 +1,9 @@
-import React, { useEffect, useState, lazy } from "react"
+import React, { useState } from "react"
 
 import IconSearch from "./Symbols/Search"
+import IconClose from "./Symbols/Close"
 import FilterAndSearchResults from "./FilterAndSearchResults"
-
+import { handleKeyUp } from "../utils"
 import "./FilterAndSearch.css"
 
 const FilterAndSearch = ({
@@ -20,6 +21,11 @@ const FilterAndSearch = ({
       <div className="header-option search">
         <div
           className="icon"
+          onKeyUp={ev => {
+            handleKeyUp(ev, () => {
+              setView("table")
+            })
+          }}
           onClick={() => {
             setSearch(searchInput)
             setTyping(true)
@@ -35,6 +41,10 @@ const FilterAndSearch = ({
                 e.preventDefault()
                 setSearch(searchInput)
               }}
+              style={{
+                display: "flex",
+                position: "relative",
+              }}
             >
               <input
                 className="input__field"
@@ -45,6 +55,21 @@ const FilterAndSearch = ({
                   setSearchInput(event.target.value)
                 }}
               />
+              <div
+                className=""
+                style={{
+                  right: "0px",
+                  bottom: "5px",
+                  position: "absolute",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setTyping(false)
+                  setSearchInput(null)
+                }}
+              >
+                <IconClose noBackground />
+              </div>
             </form>
           </span>
         )}

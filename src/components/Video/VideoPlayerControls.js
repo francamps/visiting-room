@@ -3,7 +3,12 @@ import isNull from "lodash/isNull"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
+import IconTranscript from "../Symbols/Transcript"
+import IconCaption from "../Symbols/Caption"
 import VideoFullScreenControl from "./VideoFullScreenControl"
+
+import { handleKeyUp } from "../../utils"
+import { noop } from "lodash"
 
 const getStringTime = seconds => {
   return `${`${Math.floor(seconds / 60)}`.padStart(2, "0")}:${`${Math.floor(
@@ -71,6 +76,8 @@ const VideoPlayerControls = ({
   useTranscript,
   showTranscript,
   setShowTranscript,
+  showCaptions,
+  setShowCaptions,
 }) => {
   const [progressLabel, setProgressLabel] = useState(null)
 
@@ -89,6 +96,7 @@ const VideoPlayerControls = ({
             <div className="action-wrap">
               <Pause
                 useCircle={false}
+                tabIndex={0}
                 onClick={() => {
                   setPause(true)
                 }}
@@ -98,6 +106,7 @@ const VideoPlayerControls = ({
             <div className="action-wrap">
               <Play
                 useCircle={false}
+                tabIndex={0}
                 onClick={() => {
                   setPause(false)
                   setPlaying(true)
@@ -133,13 +142,6 @@ const VideoPlayerControls = ({
                 alignItems: "center",
               }}
             >
-              {
-                null /*<span>{`${
-                progress.progressSeconds
-                  ? getStringTime(progress.progressSeconds)
-                  : "_:_"
-              } / ${getStringTime(playerRef.current.getDuration())}`}</span>*/
-              }
               <span
                 style={{
                   height: "24px",
@@ -151,22 +153,48 @@ const VideoPlayerControls = ({
               </span>
               {useTranscript && setShowTranscript && (
                 <span
+                  role="button"
+                  tabIndex={2}
+                  ariaLabel={
+                    showTranscript ? "Hide transcript" : "Show transcript"
+                  }
                   style={{
-                    fontSize: "var(--font-copy)",
                     cursor: "pointer",
-                    fontWeight: showTranscript ? "bold" : "light",
-                    color: showTranscript
-                      ? color || "var(--clr-primary)"
-                      : "white",
                     paddingRight: "10px",
                   }}
+                  onKeyUp={ev =>
+                    handleKeyUp(ev, () => setShowTranscript(!showTranscript))
+                  }
                   onClick={() => {
                     setShowTranscript(!showTranscript)
                   }}
                 >
-                  T
+                  <IconTranscript
+                    color={
+                      showTranscript ? color || "var(--clr-primary)" : "white"
+                    }
+                  />
                 </span>
               )}
+              <span
+                role="button"
+                tabIndex={3}
+                ariaLabel={showCaptions ? "Hide captions" : "Show captions"}
+                style={{
+                  cursor: "pointer",
+                  paddingRight: "10px",
+                }}
+                onKeyUp={ev =>
+                  handleKeyUp(ev, () => setShowCaptions(!showCaptions))
+                }
+                onClick={() => {
+                  setShowCaptions(!showCaptions)
+                }}
+              >
+                <IconCaption
+                  color={showCaptions ? color || "var(--clr-primary)" : "white"}
+                />
+              </span>
               <VideoFullScreenControl
                 active={handleFullScreen.active}
                 onEnter={handleFullScreen.enter}
@@ -182,6 +210,8 @@ const VideoPlayerControls = ({
         <div
           className="progress-bar-bg"
           ref={barRef}
+          role="button"
+          aria-label="Seek time in video"
           onMouseMove={e => {
             const progressMouse = getProgressFromMouse(e, barRef, playerRef)
             setProgressLabel(progressMouse)
@@ -189,16 +219,23 @@ const VideoPlayerControls = ({
           onMouseOut={() => {
             setProgressLabel(progress)
           }}
+          onBlur={() => {
+            setProgressLabel(progress)
+          }}
+          onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
             onSeek(e, barRef, playerRef, setPause, setProgress)
           }}
         />
         <div
           className="progress-bar-played"
+          role="button"
+          aria-label="Seek time in past video played"
           style={{
             width: getBarWidth(barRef, progress),
             background: color || "var(--clr-primary)",
           }}
+          onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
             onSeek(e, barRef, playerRef, setPause, setProgress)
           }}

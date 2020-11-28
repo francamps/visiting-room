@@ -2,14 +2,9 @@ import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-
 import Play from "../Symbols/Play"
-import Pause from "../Symbols/Pause"
 import Loading from "../Loading"
 import VideoViewedMenu from "./VideoViewedMenu"
-import Video from "./Video"
 import VideoPlayerControls from "./VideoPlayerControls"
 
 import useKeyPress from "../../utils/useKeyPressed"
@@ -38,6 +33,8 @@ const VideoPlayer = ({
   const [isPaused, setPause] = useState(false)
 
   const [showControls, setShowControls] = useState(true)
+  const [showCaptions, setShowCaptions] = useState(false)
+
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
   const handleFullScreen = useFullScreenHandle()
   const spacePress = useKeyPress(32)
@@ -180,6 +177,7 @@ const VideoPlayer = ({
               >
                 <Play
                   size="huge"
+                  tabIndex={0}
                   onClick={() => {
                     setPause(false)
                     setPlaying(true)
@@ -230,6 +228,8 @@ const VideoPlayer = ({
         handleFullScreen={handleFullScreen}
         showTranscript={showTranscript}
         setShowTranscript={setShowTranscript}
+        showCaptions={showCaptions}
+        setShowCaptions={setShowCaptions}
         useTranscript={useTranscript}
       />
     </FullScreen>
