@@ -143,7 +143,7 @@ WRAP
 }
 
 .video-skip p {
-  font-family: "GTEesti";
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   color: var(--clr-off-white);
   transition: color 0.4s;
 }

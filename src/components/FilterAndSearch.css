@@ -93,7 +93,7 @@
 }
 
 .header-option {
-  font-family: "GTEesti";
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-small);
   display: flex;
   flex-direction: column;

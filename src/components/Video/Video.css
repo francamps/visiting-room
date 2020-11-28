@@ -63,7 +63,7 @@
 }
 
 .video-info .upper-label {
-  font-family: "GTEesti";
+  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-small);
   margin: 10px 0 0 0;
   padding: 0;

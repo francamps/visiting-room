@@ -124,6 +124,7 @@ Use a scrollbar library, this is not standardized
 /* THIS ONE IS PRETTY GOOD */
 @import url("https://fonts.googleapis.com/css?family=Archivo&display=swap");
 
+/*
 @font-face {
   font-family: "GTEesti";
   src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Light.otf") format("opentype");
@@ -133,6 +134,7 @@ Use a scrollbar library, this is not standardized
   font-family: "GTEesti";
   src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Regular.otf") format("opentype");
 }
+*/
 
 body {
   margin: 0;
