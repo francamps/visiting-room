@@ -2,7 +2,7 @@ import { get as getValue } from "lodash"
 import moment from "moment"
 
 const getProfileValue = (profile, prop) => {
-  let date_of_birth = moment(getValue(profile, "date_of_birth[0].text"))
+  let date_of_birth = moment(getValue(profile, "date_of_birth.text"))
   date_of_birth = date_of_birth.isValid() ? date_of_birth : "unknown"
 
   let date_of_offense = moment(getValue(profile, "date_of_offense"))
@@ -14,12 +14,12 @@ const getProfileValue = (profile, prop) => {
     date_of_birth !== "unknown" &&
     date_of_birth.isValid() &&
     date_of_offense.isValid()
-      ? date_of_offense.diff(date_of_birth, "years")
+      ? date_of_birth.diff(date_of_offense, "years")
       : "unknown"
 
   switch (prop.key) {
     case "full_name":
-      return getValue(profile, "full_name[0].text")
+      return getValue(profile, "full_name.text")
     case "current_age":
       if (date_of_birth === "unknown") return -Infinity
       const current_age = moment().diff(date_of_birth, "years")

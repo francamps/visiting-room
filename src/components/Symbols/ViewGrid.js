@@ -8,7 +8,7 @@ const ViewGrid = () => {
         stroke="none"
         stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Notes-Copy" transform="translate(-1100.000000, -483.000000)">
           <g id="View-Grid" transform="translate(1101.000000, 484.000000)">

@@ -16,8 +16,9 @@ import "./Archive.css"
 const columns = [
   { key: "picture", label: "" },
   { key: "full_name", label: "Full Name" },
-  { key: "age_at_offense", label: "Age" },
-  { key: "offense_date", label: "Year Incarcerated" },
+  { key: "age_at_offense", label: "Age at offense" },
+  { key: "current_age", label: "Current age" },
+  { key: "offense_date", label: "Year of incarceration" },
 ]
 
 const Archive = ({ profiles = [], loading, images }) => {

@@ -8,7 +8,7 @@ const ViewTable = () => {
         stroke="none"
         stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke-linejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1075.000000, -483.000000)">

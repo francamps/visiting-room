@@ -10,7 +10,7 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
         stroke="none"
         stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke-linejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1100.000000, -508.000000)">
@@ -85,7 +85,7 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
         stroke="none"
         stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke-linejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1075.000000, -508.000000)">

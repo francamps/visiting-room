@@ -8,7 +8,7 @@ const Sort = ({ sortAsc, enabled }) => {
         stroke="none"
         stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke-linecap="round"
         stroke-linejoin="round"
         style={{

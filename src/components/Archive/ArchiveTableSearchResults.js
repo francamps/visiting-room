@@ -32,7 +32,7 @@ const ArchiveTableSearchResults = ({
             <tr>
               <th key={`header-full_name`}>Full Name</th>
               <th key={`header-picture`}></th>
-              <th key={`header-picture`}>Results</th>
+              <th key={`header-results`}>Results</th>
             </tr>
           </thead>
           <tbody>
