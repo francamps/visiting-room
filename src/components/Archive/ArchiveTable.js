@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive"
 import { navigate } from "gatsby"
 
 import Loading from "../Loading"
-import Years from "../charts/years"
+import Years from "../charts/Years"
 import Play from "../Symbols/Play"
 
 import getProfileProps from "../../utils/getProfileProps"
