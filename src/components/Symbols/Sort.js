@@ -6,11 +6,11 @@ const Sort = ({ sortAsc, enabled }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         style={{
           opacity: enabled ? 1 : 0.2,
           transition: "opacity 0.4s",
@@ -20,7 +20,7 @@ const Sort = ({ sortAsc, enabled }) => {
           id="Notes-Copy"
           transform="translate(-1052.000000, -512.000000)"
           stroke="#FFFFFF"
-          stroke-width="2"
+          strokeWidth="2"
         >
           <g id="Group-3-Copy" transform="translate(1051.000000, 509.000000)">
             <g id="Group-4" transform="translate(1.500000, 3.500000)">

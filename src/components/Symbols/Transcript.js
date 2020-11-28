@@ -6,7 +6,7 @@ const Transcript = ({ color = "#000000" }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
       >
@@ -16,7 +16,7 @@ const Transcript = ({ color = "#000000" }) => {
               id="Rectangle"
               stroke={color}
               fill={color}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="-0.5"
               y="-0.5"
               width="22"

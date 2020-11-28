@@ -6,10 +6,10 @@ const Close = ({ noBackground }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1050.000000, -483.000000)">
           <g id="Close" transform="translate(1051.000000, 484.000000)">
@@ -29,8 +29,8 @@ const Close = ({ noBackground }) => {
               y2="10.5"
               id="Line-9-Copy"
               stroke="#FFFFFF"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               transform="translate(10.292893, 10.000000) rotate(-45.000000) translate(-10.292893, -10.000000) "
             ></line>
             <line
@@ -40,8 +40,8 @@ const Close = ({ noBackground }) => {
               y2="9.5"
               id="Line-9-Copy"
               stroke="#FFFFFF"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               transform="translate(10.292893, 10.000000) rotate(45.000000) translate(-10.292893, -10.000000) "
             ></line>
           </g>

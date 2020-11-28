@@ -6,10 +6,10 @@ const ViewTable = () => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1075.000000, -483.000000)">
           <g id="View-table" transform="translate(1076.000000, 484.000000)">
@@ -56,7 +56,7 @@ const ViewTable = () => {
               y2="4.5"
               id="Line-9-Copy-12"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="7.5"
@@ -65,7 +65,7 @@ const ViewTable = () => {
               y2="2.5"
               id="Line-9-Copy"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="7.5"
@@ -74,7 +74,7 @@ const ViewTable = () => {
               y2="10.5"
               id="Line-9-Copy-14"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="7.5"
@@ -83,7 +83,7 @@ const ViewTable = () => {
               y2="8.5"
               id="Line-9-Copy-13"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="7.5"
@@ -92,7 +92,7 @@ const ViewTable = () => {
               y2="16.5"
               id="Line-9-Copy-16"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="7.5"
@@ -101,7 +101,7 @@ const ViewTable = () => {
               y2="14.5"
               id="Line-9-Copy-15"
               stroke="#FFFFFF"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
           </g>
         </g>

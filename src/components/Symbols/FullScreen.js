@@ -8,10 +8,10 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1100.000000, -508.000000)">
           <g id="Group-3-Copy-3" transform="translate(1101.000000, 509.000000)">
@@ -28,8 +28,8 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
               id="Group-4"
               transform="translate(1.500000, 2.000000)"
               stroke="#FFFFFF"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
             >
               <line x1="1" y1="6" x2="7" y2="6" id="Line-9-Copy-5"></line>
               <line
@@ -83,10 +83,10 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1075.000000, -508.000000)">
           <g id="Group-3-Copy-2" transform="translate(1076.000000, 509.000000)">
@@ -103,8 +103,8 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
               id="Group-4"
               transform="translate(0.500000, 1.000000)"
               stroke="#FFFFFF"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
             >
               <line x1="1.5" y1="17" x2="7.5" y2="17" id="Line-9-Copy-4"></line>
               <line

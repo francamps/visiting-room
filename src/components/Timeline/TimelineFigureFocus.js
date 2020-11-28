@@ -2,7 +2,6 @@ import React from "react"
 import { useSpring, animated } from "react-spring"
 
 import CrossClose from "../CrossClose"
-import image4 from "../../images/timeline/image4.jpg"
 
 const TimelineFigureFocus = ({ image, setFigureActive }) => {
   const fadeInProps = useSpring({
@@ -55,11 +54,13 @@ const TimelineFigureFocus = ({ image, setFigureActive }) => {
             flex: 1,
           }}
         >
-          <img
+          {
+            null /*<img
             src={image4}
             alt="Angolite article The Forgotten men"
             style={{ width: "70%" }}
-          />
+          />*/
+          }
         </div>
       </div>
     </animated.div>

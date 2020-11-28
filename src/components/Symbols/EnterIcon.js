@@ -5,17 +5,17 @@ const EnterIcon = ({ isHover }) => (
     <g
       id="Typography---UI-Comp"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
       fillRule="evenodd"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <g
         id="Notes-Copy"
         transform="translate(-343.000000, -680.000000)"
         stroke={!isHover ? "var(--clr-off-white)" : "var(--clr-primary)"}
-        stroke-width="2"
+        strokeWidth="2"
       >
         <g id="Group" transform="translate(344.000000, 681.000000)">
           <line x1="0.5" y1="0.5" x2="0.5" y2="24.5" id="Line-6"></line>

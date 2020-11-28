@@ -46,6 +46,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
       {years.map((_, i) => {
         return (
           <Circle
+            key={`circle-${i}`}
             color={color}
             current={current}
             incarcerated={incarcerated}

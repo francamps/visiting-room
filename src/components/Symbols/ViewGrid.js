@@ -6,7 +6,7 @@ const ViewGrid = () => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
       >
@@ -16,7 +16,7 @@ const ViewGrid = () => {
               id="Rectangle"
               stroke="none"
               fill="none"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="-0.5"
               y="-0.5"
               width="22"
@@ -26,7 +26,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-6"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="1"
               y="2"
               width="5"
@@ -36,7 +36,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-7"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="1"
               y="11"
               width="5"
@@ -46,7 +46,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-9"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="8"
               y="2"
               width="5"
@@ -56,7 +56,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-15"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="8"
               y="11"
               width="5"
@@ -66,7 +66,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-17"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="15"
               y="2"
               width="5"
@@ -76,7 +76,7 @@ const ViewGrid = () => {
               id="Rectangle-Copy-18"
               stroke="#FFFFFF"
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               x="15"
               y="11"
               width="5"
@@ -89,7 +89,7 @@ const ViewGrid = () => {
               y2="17"
               id="Line-10-Copy-2"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="2"
@@ -98,7 +98,7 @@ const ViewGrid = () => {
               y2="15.5"
               id="Line-10-Copy-3"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="8.5"
@@ -107,7 +107,7 @@ const ViewGrid = () => {
               y2="17"
               id="Line-10-Copy-4"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="9"
@@ -116,7 +116,7 @@ const ViewGrid = () => {
               y2="15.5"
               id="Line-10-Copy-5"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="15.5"
@@ -125,7 +125,7 @@ const ViewGrid = () => {
               y2="17"
               id="Line-10-Copy-6"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="16"
@@ -134,7 +134,7 @@ const ViewGrid = () => {
               y2="15.5"
               id="Line-10-Copy-7"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="15.5"
@@ -143,7 +143,7 @@ const ViewGrid = () => {
               y2="8"
               id="Line-10-Copy-8"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="16"
@@ -152,7 +152,7 @@ const ViewGrid = () => {
               y2="6.5"
               id="Line-10-Copy-9"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="8.5"
@@ -161,7 +161,7 @@ const ViewGrid = () => {
               y2="8"
               id="Line-10-Copy-10"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="9"
@@ -170,7 +170,7 @@ const ViewGrid = () => {
               y2="6.5"
               id="Line-10-Copy-11"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="1.5"
@@ -179,7 +179,7 @@ const ViewGrid = () => {
               y2="8"
               id="Line-10-Copy-12"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <line
               x1="2"
@@ -188,7 +188,7 @@ const ViewGrid = () => {
               y2="6.5"
               id="Line-10-Copy-13"
               stroke="#000000"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
           </g>
         </g>
