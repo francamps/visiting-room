@@ -33,6 +33,7 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
         .map(props => {
           const { image, fullName, quote, profile_picture, color } = props
 
+          console.log(props)
           return (
             <GridCell
               key={fullName.replace(/ /g, "_")}

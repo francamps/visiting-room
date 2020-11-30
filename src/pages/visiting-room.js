@@ -21,7 +21,9 @@ const VisitingRoomPage = props => {
 
 export const query = graphql`
   query getProfilesVR {
-    allPrismicProfile {
+    allPrismicProfile(
+      filter: { data: { show_profile_in_visiting_room: { eq: true } } }
+    ) {
       edges {
         node {
           data {
@@ -45,6 +47,11 @@ export const query = graphql`
             }
             show_profile_in_visiting_room
             color
+            profile_picture {
+              fluid(maxWidth: 1000, maxHeight: 800) {
+                ...GatsbyPrismicImageFluid
+              }
+            }
           }
         }
       }

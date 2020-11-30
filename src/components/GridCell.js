@@ -75,7 +75,11 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
       )}
 
       {profile_picture && (
-        <GridCellBackground isHover={isHover && isVideoReady} image={image} />
+        <GridCellBackground
+          isHover={isHover && isVideoReady}
+          image={image}
+          profile_picture={profile_picture}
+        />
       )}
       <div className="cell-hover-layer"></div>
       {quote && (

@@ -32,6 +32,11 @@ const QUERY = graphql`
             }
             show_in_archive
             color
+            profile_picture {
+              fluid(maxWidth: 1000, maxHeight: 800) {
+                ...GatsbyPrismicImageFluid
+              }
+            }
           }
         }
       }

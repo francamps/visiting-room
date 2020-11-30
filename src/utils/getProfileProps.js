@@ -30,6 +30,8 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     USE_PRISMIC && profile.quote ? profile.quote.text : profile.quote
   const fullName = USE_PRISMIC ? profile.full_name.text : profile.name
 
+  const prismicPicture = getValue(profile, "profile_picture.fluid", null)
+
   const image = imageData.edges.find(n => {
     return (
       n.node.relativePath.includes(profile_picture) ||
@@ -64,7 +66,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   return {
     quote,
     fullName,
-    image,
+    image: prismicPicture,
     oldImage,
     profile_picture,
     date_of_birth,

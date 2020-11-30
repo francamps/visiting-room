@@ -1,12 +1,13 @@
 import React from "react"
 import Img from "gatsby-image"
+import { get as getValue } from "lodash"
 
-const GridCellBackground = ({ isHover, image, oldImage, opacityOnHover }) => {
+const GridCellBackground = ({ isHover, image, oldImage, profile_picture }) => {
   return (
     <div className={`cell-background ${isHover ? "fadeout" : "fadein"}`}>
       <Img
         alt={"TODO: NEEDS AN ALT"}
-        fluid={image.node.childImageSharp.fluid}
+        fluid={image}
         imgStyle={{
           objectFit: "cover",
         }}

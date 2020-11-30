@@ -7,11 +7,13 @@ const ArchiveGridCellBackground = ({
   oldImage,
   opacityOnHover,
 }) => {
+  if (!image) return null
+
   return (
     <div className={`cell-background ${isHover ? "hovered" : ""}`}>
       <Img
         alt={"TODO: NEEDS AN ALT"}
-        fluid={image.node.childImageSharp.fluid}
+        fluid={image}
         imgStyle={{
           objectFit: "cover",
         }}

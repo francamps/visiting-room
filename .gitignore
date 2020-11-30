@@ -70,7 +70,4 @@ yarn-error.log
 
 # Images and temp files
 src/fonts/
-src/images/TEMP/
 src/images/profile_pics/
-src/images/timeline/
-
