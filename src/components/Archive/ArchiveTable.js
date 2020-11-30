@@ -78,10 +78,10 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                       height: "100%",
                     }}
                   >
-                    {image && image.node && (
+                    {image && (
                       <Img
                         alt={"TODO: NEEDS AN ALT"}
-                        fluid={image.node.childImageSharp.fluid}
+                        fluid={image}
                         imgStyle={{
                           objectFit: "cover",
                           visibility: "visible",
