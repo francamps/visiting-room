@@ -37,6 +37,11 @@ const QUERY = graphql`
                 ...GatsbyPrismicImageFluid
               }
             }
+            old_picture {
+              fluid(maxWidth: 1000, maxHeight: 800) {
+                ...GatsbyPrismicImageFluid
+              }
+            }
           }
         }
       }

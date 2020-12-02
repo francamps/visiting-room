@@ -31,13 +31,14 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   const fullName = USE_PRISMIC ? profile.full_name.text : profile.name
 
   const prismicPicture = getValue(profile, "profile_picture.fluid", null)
-
   const image = imageData.edges.find(n => {
     return (
       n.node.relativePath.includes(profile_picture) ||
       n.node.relativePath === `profile_pics/${fullName.replace(/ /g, "_")}.jpg`
     )
   })
+
+  const prismicOldPicture = getValue(profile, "old_picture.fluid", null)
   const oldImage = imageData.edges.find(n => {
     return (
       n.node.relativePath ===
@@ -67,7 +68,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     quote,
     fullName,
     image: prismicPicture,
-    oldImage,
+    oldImage: prismicOldPicture,
     profile_picture,
     date_of_birth,
     date_of_offense,

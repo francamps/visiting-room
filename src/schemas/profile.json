@@ -95,6 +95,14 @@
         "thumbnails": [],
         "label": "Profile picture"
       }
+    },
+    "old_picture": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Old picture"
+      }
     }
   },
   "Profiles": {}

@@ -21,7 +21,7 @@ const ArchiveGridCellBackground = ({
       {oldImage && (
         <Img
           alt={"TODO: NEEDS AN ALT"}
-          fluid={oldImage.node.childImageSharp.fluid}
+          fluid={oldImage}
           imgStyle={{
             objectFit: "cover",
           }}
