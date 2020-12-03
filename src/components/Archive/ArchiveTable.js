@@ -70,12 +70,17 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                   hoveredRow === profileIdx ? "hovered" : ""
                 } isCompact`}
               >
-                <td style={{ display: "block" }}>
-                  <p>{fullName}</p>
+                <td
+                  style={{ display: "block", position: "relative", padding: 0 }}
+                >
                   <div
                     style={{
-                      position: "relative",
+                      position: "absolute",
                       height: "100%",
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
                     }}
                   >
                     {image && (
@@ -99,6 +104,19 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                       />
                     )}
                   </div>
+                  <p
+                    style={{
+                      position: "absolute",
+                      height: "100%",
+                      bottom: 10,
+                      left: 10,
+                      background: "none",
+                      display: "flex",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    {fullName}
+                  </p>
                 </td>
                 <td>
                   <div
@@ -106,6 +124,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
+                      alignItems: "center",
                       width: "100%",
                       height: "100%",
                     }}
@@ -127,7 +146,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                       <p>{`Age at offense: ${age_at_offense}`}</p>
                       <p>{`Year of incarceration: ${date_of_offense}`}</p>
                     </div>
-                    {(hoveredRow === profileIdx || !profileIdx) && (
+                    {hoveredRow === profileIdx && (
                       <Years
                         color={"white"}
                         incarcerated={age_at_offense}
@@ -198,6 +217,10 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                   setHover(null)
                 }}
                 className={`${hoveredRow === profileIdx ? "hovered" : ""}`}
+                onClick={() => {
+                  const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+                  videos[fullName] && navigate(`/archive/${profileUri}`)
+                }}
               >
                 <td>{fullName}</td>
                 <td style={{ display: "block" }}>
@@ -234,11 +257,22 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "space-between",
+                      justifyContent:
+                        hoveredRow === profileIdx
+                          ? "space-between"
+                          : "flex-end",
                       width: "100%",
                       alignItems: "center",
                     }}
                   >
+                    {hoveredRow === profileIdx && (
+                      <Years
+                        color={"white"}
+                        incarcerated={age_at_offense}
+                        current={current_age}
+                        deceased_date={deceased_date}
+                      />
+                    )}
                     <div
                       style={{
                         height: "100%",
@@ -269,14 +303,6 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                         >{`Deceased on ${deceased_date}`}</p>
                       )}
                     </div>
-                    {hoveredRow === profileIdx && (
-                      <Years
-                        color={"white"}
-                        incarcerated={age_at_offense}
-                        current={current_age}
-                        deceased_date={deceased_date}
-                      />
-                    )}
                   </div>
                 </td>
                 <td>{current_age}</td>
@@ -284,16 +310,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                 <td>{date_of_offense}</td>
                 {videos[fullName] ? (
                   <td className="play">
-                    <Play
-                      size="medium"
-                      color={"white"}
-                      onClick={() => {
-                        const profileUri = fullName
-                          .toLowerCase()
-                          .replace(/ /g, "_")
-                        videos[fullName] && navigate(`/archive/${profileUri}`)
-                      }}
-                    />
+                    <Play useCircle={false} color={"white"} />
                   </td>
                 ) : (
                   <td className="play">

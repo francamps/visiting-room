@@ -56,7 +56,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   }
 
   date_of_birth = date_of_birth || "unknown"
-  date_of_offense = date_of_offense ? date_of_offense.getYear() : "unknown"
+  date_of_offense = date_of_offense ? date_of_offense.getFullYear() : "unknown"
   const current_age =
     date_of_birth !== "unknown"
       ? subtractDatesInYears(new Date(), date_of_birth)

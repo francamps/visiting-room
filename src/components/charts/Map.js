@@ -9,7 +9,10 @@ const MapboxGLMap = ({ style }) => {
   const mapContainer = useRef(null)
 
   useEffect(() => {
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
+    // TODO: CHANGE THIS IN PRODUCTION!
+    // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoidGhldmlzaXRpbmdyb29tbGEiLCJhIjoiY2thdjNod2dhMWttMzMwcDA2dGNpNnZxZSJ9.hCg9svJZ1LaRtt7vfG4M1g"
 
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
