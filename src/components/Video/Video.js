@@ -17,7 +17,7 @@ const Video = ({
   setView,
   isArchive,
   nextProfile,
-  useTranscript,
+  hasTranscript,
 }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
@@ -50,15 +50,16 @@ const Video = ({
         onClose={onClose}
         name={name}
         nextProfile={nextProfile}
-        showTranscript={showTranscript}
-        setShowTranscript={setShowTranscript}
         isLastTenSeconds={isLastTenSeconds}
         setIsLastTenSeconds={setIsLastTenSeconds}
         progress={progress}
         setProgress={setProgress}
         playerRef={playerRef}
-        useTranscript={useTranscript}
         startTime={params.get("t")}
+        hasCaptions={!isArchive}
+        hasTranscript={isArchive}
+        showTranscript={showTranscript}
+        setShowTranscript={setShowTranscript}
       />
       <div
         style={{
@@ -73,7 +74,7 @@ const Video = ({
       >
         <CrossClose />
       </div>
-      {useTranscript && showTranscript && (
+      {hasTranscript && showTranscript && (
         <Transcript
           name={name}
           progress={progress}

@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 
 const Transcript = ({ color = "#000000" }) => {
+  const [isHover, setHover] = useState(false)
   return (
     <svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1">
       <g
@@ -9,6 +10,13 @@ const Transcript = ({ color = "#000000" }) => {
         strokeWidth="1"
         fill="none"
         fillRule="evenodd"
+        style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+        onMouseOver={() => {
+          setHover(true)
+        }}
+        onMouseOut={() => {
+          setHover(false)
+        }}
       >
         <g id="Notes-Copy" transform="translate(-996.000000, -510.000000)">
           <g id="Group-3" transform="translate(997.000000, 511.000000)">

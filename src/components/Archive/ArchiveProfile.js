@@ -18,7 +18,7 @@ const ArchiveProfile = ({ pathContext }) => {
           navigate("/archive")
         }}
         isArchive
-        useTranscript
+        hasTranscript
       />
     </div>
   )

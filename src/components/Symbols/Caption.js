@@ -1,8 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 
 const Caption = ({ color = "#000000" }) => {
+  const [isHover, setHover] = useState(false)
+
   return (
-    <svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1">
+    <svg
+      width="23px"
+      height="22px"
+      viewBox="0 0 23 22"
+      version="1.1"
+      style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <g
         id="Typography---UI-Comp"
         stroke="none"

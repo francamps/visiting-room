@@ -28,11 +28,6 @@
   margin-right: 10px;
 }
 
-.header-options .header-option.search .icon:hover path,
-.header-options .header-option.search .icon:hover ellipse {
-  stroke: var(--clr-primary) !important;
-}
-
 .header-content,
 .header-content .header-options {
   width: 100%;

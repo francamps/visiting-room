@@ -1,8 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 
 const IconSearch = () => {
+  const [isHover, setHover] = useState(false)
+
   return (
-    <svg width="15px" height="16px" viewBox="-1 -1 14 14">
+    <svg
+      width="15px"
+      height="16px"
+      viewBox="-1 -1 14 14"
+      style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <path
         d="M3.1875,9.36764706 L0.1875,12.8088235"
         strokeLinecap="round"

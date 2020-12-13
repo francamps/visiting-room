@@ -25,7 +25,8 @@ const VideoPlayer = ({
   progress,
   setProgress,
   playerRef,
-  useTranscript,
+  hasTranscript,
+  hasCaptions,
   startTime,
 }) => {
   const [isLoading, setLoading] = useState(true)
@@ -226,11 +227,12 @@ const VideoPlayer = ({
         setProgress={setProgress}
         showControls={showControls}
         handleFullScreen={handleFullScreen}
+        hasTranscript={hasTranscript}
         showTranscript={showTranscript}
         setShowTranscript={setShowTranscript}
+        hasCaptions={hasCaptions}
         showCaptions={showCaptions}
         setShowCaptions={setShowCaptions}
-        useTranscript={useTranscript}
       />
     </FullScreen>
   )

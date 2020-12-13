@@ -1,8 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 
 const Sort = ({ sortAsc, enabled }) => {
+  const [isHover, setHover] = useState(false)
+
   return (
-    <svg width="23px" height="22px" viewBox="-2 0 23 14" version="1.1">
+    <svg
+      width="23px"
+      height="22px"
+      viewBox="-2 0 23 14"
+      version="1.1"
+      style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <g
         id="Typography---UI-Comp"
         stroke="none"

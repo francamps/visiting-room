@@ -7,6 +7,7 @@
   background: none;
   border: none;
   outline: none;
+  transition: opacity 0.4s, background-color 0.4s;
 }
 .close:hover {
   opacity: 1;
@@ -26,8 +27,13 @@
 
 .close.primary:before,
 .close.primary:after {
-  background-color: var(--clr-primary);
-  transition: background-color 0.4s;
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+
+  transition: opacity 0.4s;
 }
 
 .close:before {

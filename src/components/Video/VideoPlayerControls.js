@@ -73,7 +73,8 @@ const VideoPlayerControls = ({
   setPlaying,
   setProgress,
   showControls,
-  useTranscript,
+  hasCaptions,
+  hasTranscript,
   showTranscript,
   setShowTranscript,
   showCaptions,
@@ -151,7 +152,7 @@ const VideoPlayerControls = ({
               >
                 {getStringTime(playerRef.current.getDuration())}
               </span>
-              {useTranscript && setShowTranscript && (
+              {hasTranscript && setShowTranscript && (
                 <span
                   role="button"
                   tabIndex={2}
@@ -176,25 +177,29 @@ const VideoPlayerControls = ({
                   />
                 </span>
               )}
-              <span
-                role="button"
-                tabIndex={3}
-                ariaLabel={showCaptions ? "Hide captions" : "Show captions"}
-                style={{
-                  cursor: "pointer",
-                  paddingRight: "10px",
-                }}
-                onKeyUp={ev =>
-                  handleKeyUp(ev, () => setShowCaptions(!showCaptions))
-                }
-                onClick={() => {
-                  setShowCaptions(!showCaptions)
-                }}
-              >
-                <IconCaption
-                  color={showCaptions ? color || "var(--clr-primary)" : "white"}
-                />
-              </span>
+              {hasCaptions && (
+                <span
+                  role="button"
+                  tabIndex={3}
+                  ariaLabel={showCaptions ? "Hide captions" : "Show captions"}
+                  style={{
+                    cursor: "pointer",
+                    paddingRight: "10px",
+                  }}
+                  onKeyUp={ev =>
+                    handleKeyUp(ev, () => setShowCaptions(!showCaptions))
+                  }
+                  onClick={() => {
+                    setShowCaptions(!showCaptions)
+                  }}
+                >
+                  <IconCaption
+                    color={
+                      showCaptions ? color || "var(--clr-primary)" : "white"
+                    }
+                  />
+                </span>
+              )}
               <VideoFullScreenControl
                 active={handleFullScreen.active}
                 onEnter={handleFullScreen.enter}

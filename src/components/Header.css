@@ -21,7 +21,6 @@
   position: relative;
   z-index: 12;
   font-family: "EB Garamond";
-  line-height: 70px;
   background: none;
   transition: color 0.4s;
   cursor: pointer;

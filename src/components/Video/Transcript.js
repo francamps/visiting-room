@@ -55,21 +55,56 @@ const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
                   )
               }}
             >
-              <b>
-                <p style={{ marginBottom: 0 }}>{paragraph.speaker}</p>
-              </b>
-              <i>
-                <p
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  margin: 0,
+                  padding: "4px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    fontFamily: "Archivo",
+                    fontSize: "var(--font-small)",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {paragraph.speaker}
+                </span>
+                <span
                   style={{
                     fontSize: "var(--font-small)",
-                    margin: 0,
-                    marginBottom: "12px",
+                    fontFamily: "Archivo",
+                    fontStyle: "italic",
                   }}
                 >
                   {paragraph.time}
-                </p>
-              </i>
-              <p style={{ marginTop: "0px" }}>{paragraph.content}</p>
+                </span>
+              </div>
+              <p
+                style={{
+                  marginTop: "0px",
+                  marginBottom: "4px",
+                  lineHeight: "1.2em",
+                }}
+              >
+                {paragraph.content}
+              </p>
+              <div
+                style={{
+                  width: "100%",
+                  borderLeft: "1px dashed black",
+                  opacity: "0.6",
+                  height: "20px",
+                  marginBottom: "4px",
+                  marginTop: "4px",
+                }}
+              ></div>
             </div>
           )
         })}

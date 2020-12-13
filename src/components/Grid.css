@@ -19,9 +19,17 @@
   animation: fadein 4s forwards;
 }
 
+.grid-cell .cell-hover-quote {
+  padding: 40px;
+}
+
 @media (min-width: 1800px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-cell .cell-hover-quote {
+    padding: 40px 80px;
   }
 }
 

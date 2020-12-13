@@ -18,7 +18,7 @@ const VisitingRoom = ({ pathContext }) => {
           navigate("/visiting-room")
         }}
         nextProfile={nextProfile}
-        useTranscript={false}
+        hasCaptions
       />
     </div>
   )

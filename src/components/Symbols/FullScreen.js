@@ -1,10 +1,22 @@
 import React, { useState } from "react"
 
-const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
-  const [isHover, setHover] = useState(doHover)
+const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
+  const [isHover, setHover] = useState(false)
 
   return enabled ? (
-    <svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1">
+    <svg
+      width="23px"
+      height="22px"
+      viewBox="0 0 23 22"
+      version="1.1"
+      style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <g
         id="Typography---UI-Comp"
         stroke="none"
@@ -79,7 +91,19 @@ const FullScreen = ({ enabled = false, doHover, color = "#ffffff" }) => {
       </g>
     </svg>
   ) : (
-    <svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1">
+    <svg
+      width="23px"
+      height="22px"
+      viewBox="0 0 23 22"
+      version="1.1"
+      style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <g
         id="Typography---UI-Comp"
         stroke="none"
