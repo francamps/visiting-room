@@ -13,7 +13,7 @@ const items = [
   "https://vimeo.com/444204778",
 ]
 
-const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
+const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
   const playerRef = useRef()
   const [isReady, setReady] = useState(false)
   const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
@@ -29,10 +29,6 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
   useEffect(() => {
     setVideoSrcUrl(items[videoIdx])
   }, [videoIdx])
-
-  const img = images.edges.find(n => {
-    return n.node.relativePath === `${imageFilenames[videoIdx]}.png`
-  })
 
   useEffect(() => {
     setIsLastTenSeconds(
@@ -74,6 +70,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady }) => {
             progress: played,
             progressSeconds: playedSeconds,
           })
+          setBarProgress(playedSeconds / (playerRef.current.getDuration() - 5))
         }}
       />
     </div>

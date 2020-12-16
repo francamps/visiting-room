@@ -25,10 +25,15 @@
   transition: letter-spacing 1.2s;
 }
 
-.home .skip-label {
+.home .skip {
   position: fixed;
   right: 40px;
   bottom: 20px;
+  display: "flex";
+  flex-direction: "column";
+}
+
+.home .skip .skip-label {
   cursor: pointer;
   z-index: 100;
   color: white;

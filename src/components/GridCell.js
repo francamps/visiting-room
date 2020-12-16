@@ -84,6 +84,13 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
       <div className="cell-hover-layer"></div>
       {quote && (
         <div className="cell-hover-quote">
+          {videos[fullName] ? (
+            <div className="play">
+              <Play size="large" />
+            </div>
+          ) : (
+            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
+          )}
           <div className={`quote ${getColor(color)}`}>
             <div className="word-wrapper">
               <div className="word">"</div>
@@ -106,11 +113,6 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
               <div className="word">"</div>
             </div>
           </div>
-          {videos[fullName] ? (
-            <Play />
-          ) : (
-            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
-          )}
         </div>
       )}
       <h3 className="name-tag">{fullName}</h3>
