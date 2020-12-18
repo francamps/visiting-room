@@ -85,7 +85,7 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
       {quote && (
         <div className="cell-hover-quote">
           {videos[fullName] ? (
-            <div className="play">
+            <div className="play-wrap">
               <Play size="large" />
             </div>
           ) : (
