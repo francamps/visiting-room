@@ -182,7 +182,7 @@ TIMELINE TEXT STUFF
 }
 
 .timeline .hover-link {
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-copy);
   font-weight: 300;
   line-height: var(--copy-line-height);
@@ -199,7 +199,7 @@ TIMELINE TEXT STUFF
   position: absolute;
   bottom: 0px;
   width: 30px;
-  height: 3px;
+  height: 2px;
   margin: 2px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
@@ -258,7 +258,7 @@ TIMELINE TEXT STUFF
   }
 
   .timeline .hover-link {
-    font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   }
 
   .timeline-step {

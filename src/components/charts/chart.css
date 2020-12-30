@@ -38,7 +38,7 @@ text.text-value,
 text.text-pops-value {
   fill: black;
   text-anchor: end;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-xsmall);
 }
@@ -46,7 +46,7 @@ text.text-pops-value {
 text.text-coms-value {
   fill: black;
   text-anchor: end;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-xsmall);
 }
@@ -54,7 +54,7 @@ text.text-coms-value {
 text.year {
   fill: black;
   text-anchor: middle;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-xsmall);
 }
@@ -62,7 +62,7 @@ text.year {
 text.yearComs {
   fill: black;
   text-anchor: middle;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-xsmall);
 }
@@ -70,7 +70,7 @@ text.yearComs {
 text.legend-label {
   fill: black;
   text-anchor: end;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   text-transform: uppercase;
   font-size: var(--font-small);
@@ -94,7 +94,7 @@ text.labelComsName,
 text.labelComsValue {
   fill: black;
   text-anchor: middle;
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   opacity: 0.75;
   font-size: var(--font-xsmall);

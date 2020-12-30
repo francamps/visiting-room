@@ -120,16 +120,13 @@ Use a scrollbar library, this is not standardized
 @import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
 
 /* THIS ONE IS PRETTY GOOD */
-@import url("https://fonts.googleapis.com/css?family=Archivo&display=swap");
+/*@import url("https://fonts.googleapis.com/css?family=Archivo&display=swap");*/
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-/* POTENTIALLY TRY THIS ONE */
-@font-face {
-  font-family: "Louize";
-  src: url("../fonts/LouizeTrial-Regular.otf") format("opentype");
-}
+/* TRY THIS ONE WHEN READY */
 /*
 @font-face {
-  font-family: "Archivo";
+  font-family: "Louize";
   src: url("../fonts/LouizeTrial-Regular.otf") format("opentype");
 }
 */
@@ -217,7 +214,7 @@ a {
 }
 
 p {
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
 }
 
 /**

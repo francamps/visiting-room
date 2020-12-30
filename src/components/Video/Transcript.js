@@ -69,7 +69,7 @@ const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
                 <span
                   style={{
                     display: "inline-block",
-                    fontFamily: "Archivo",
+                    fontFamily: "Roboto",
                     fontSize: "var(--font-small)",
                     fontWeight: "bold",
                   }}
@@ -79,7 +79,7 @@ const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
                 <span
                   style={{
                     fontSize: "var(--font-small)",
-                    fontFamily: "Archivo",
+                    fontFamily: "Roboto",
                     fontStyle: "italic",
                   }}
                 >

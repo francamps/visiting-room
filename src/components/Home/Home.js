@@ -43,7 +43,7 @@ const Home = ({ images }) => {
         <div className={`landing fadeinfast`}>
           <div
             style={{
-              fontFamily: "Louize",
+              fontFamily: "EB Garamond",
               fontSize: "var(--font-normal)",
               color: "var(--clr-white)",
               position: "fixed",

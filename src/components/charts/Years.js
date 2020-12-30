@@ -62,7 +62,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
         style={{
           fontSize: "var(--font-xsmall)",
           textAnchor: "end",
-          fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif",
+          fontFamily: "Roboto Helvetica Neue, Arial, sans-serif",
         }}
         className="fadein"
       >
@@ -75,7 +75,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
         style={{
           fontSize: "var(--font-xsmall)",
           textAnchor: "end",
-          fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif",
+          fontFamily: "Roboto Helvetica Neue, Arial, sans-serif",
         }}
         className="fadein"
       >

@@ -16,7 +16,6 @@
   transition: stroke-width 2s, stroke-dashoffset 2s, stroke-dasharray 2s;
 }
 .text {
-  /* font-family: Louize; */
   position: relative;
   line-height: 40px;
 }

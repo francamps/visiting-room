@@ -122,7 +122,7 @@ const VideoPlayerControls = ({
               lineHeight: "24px",
               marginRight: "12px",
               marginLeft: "5px",
-              fontFamily: "Archivo",
+              fontFamily: "Roboto",
               textAlign: "left",
               fontSize: "var(--font-small)",
             }}

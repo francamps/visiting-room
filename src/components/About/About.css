@@ -17,7 +17,7 @@
 }
 
 .about .copy-wrap .copy p {
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-copy);
   text-align: left;

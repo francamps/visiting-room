@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0 auto;
 
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-copy);
   line-height: var(--copy-line-height);
   color: var(--clr-black);
@@ -19,9 +19,10 @@
 .paragraph.ref {
   display: inline-block;
   color: var(--clr-black);
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
+  font-family: Roboto Helvetica Neue, Arial, sans-serif;
   font-size: var(--font-small);
-  font-weight: 300;
+  font-weight: 100;
+  opacity: 0.6;
 
   position: relative;
   width: 12px;
