@@ -19,8 +19,8 @@
 .paragraph.ref {
   display: inline-block;
   color: var(--clr-black);
-  font-family: Roboto Helvetica Neue, Arial, sans-serif;
-  font-size: var(--font-small);
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-size: var(--font-xsmall);
   font-weight: 100;
   opacity: 0.6;
 
@@ -28,7 +28,7 @@
   width: 12px;
   height: 20px;
   padding-left: 2px;
-  transform: translate(0px, -10px);
+  transform: translate(-2px, -8px);
 }
 
 .paragraph.reference {
