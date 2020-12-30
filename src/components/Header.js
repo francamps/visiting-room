@@ -26,66 +26,24 @@ const Header = ({
     >
       {!hideTitle && (
         <>
-          {
-            null /*<div className="home-title">
-            {isTabletOrMobile ? (
-              <div
-                onClick={() => {
-                  navigate("/")
-                }}
-              >
-                <h2>The</h2>
-                <h2>Visiting Room</h2>
-                <h2>Project</h2>
-              </div>
-            ) : (
-              <h2
-                onClick={() => {
-                  navigate("/")
-                }}
-              >
-                The Visiting Room Project
-              </h2>
-            )}
+          <div
+            className="home-home"
+            onClick={() => {
+              navigate("/")
+            }}
+          >
+            <span>The</span>
+            <span>Visting Room</span>
+            <span>Project</span>
           </div>
-          {title && (
-            <div className="title-subtitle">
-              <div className="title">
-                <h2>{`> ${title}`}</h2>
-              </div>
-            </div>
-          )}
-          </div>*/
-          }
           {isTabletOrMobile ? (
             <div className="home-title">
-              <h6
-                className="home-link"
-                onClick={() => {
-                  navigate("/")
-                }}
-              >
-                The Visiting Room Project
-              </h6>
               <h4 style={{ margin: 0, height: "20px", fontWeight: "300" }}>
                 {title}
               </h4>
             </div>
           ) : (
             <div className="home-title">
-              <span className="home-link-wrap">
-                <h5
-                  className="home-link"
-                  style={{
-                    lineHeight: "20px",
-                  }}
-                  onClick={() => {
-                    navigate("/")
-                  }}
-                >
-                  The Visiting Room Project
-                </h5>
-              </span>
               <h2
                 style={{ margin: 0, height: "24px", lineHeight: "24px" }}
                 onMouseOver={() => {

@@ -7,7 +7,7 @@ const FAQs = ({ faqs, params, updateParams }) => {
   const [faqNumber, setFaqNumber] = useState(params.get("faq") || 0)
 
   return (
-    <article className="copy" style={{ padding: "40px 0" }}>
+    <article className="copy">
       {faqs.map(({ faq, faq_title }, idx) => {
         return (
           <div
@@ -26,7 +26,7 @@ const FAQs = ({ faqs, params, updateParams }) => {
               )
             }}
           >
-            <h3>{faq_title[0].text}</h3>
+            <h4>{faq_title[0].text}</h4>
             <div className="faq-content">
               {faq.map(paragraph => {
                 return paragraph.type === "paragraph" ? (

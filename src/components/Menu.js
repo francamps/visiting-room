@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 
 import Burger from "./Burger"
-import Play from "./Symbols/Play"
 
 import "./Menu.css"
 
@@ -56,24 +55,6 @@ const Menu = ({
             The Visiting Room
           </a>
         </div>
-        {
-          null /*<div className="menu-option-wrap">
-          <Link
-            to="/foreword"
-            className="hover-link hover-link-intro"
-            onClick={() => {
-              setBurgerOpen(false)
-              if (typeof window !== "undefined")
-                window.localStorage.setItem("showIntro", "false")
-            }}
-          >
-            <span style={{ marginRight: "12px" }}>Foreword</span>
-            <div style={{ transform: "translate(0, 3px)" }}>
-              <Play />
-            </div>
-          </Link>
-        </div>*/
-        }
         <div className="menu-option-wrap">
           <Link
             to="/history"

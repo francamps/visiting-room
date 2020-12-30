@@ -3,16 +3,14 @@
   --font-xsmall: 0.7rem;
   --font-small: 0.8rem;
   --font-normal: 1.1rem;
-  --font-copy: 1.35rem;
-  --font-copy-timeline: 1.2rem;
+  --font-copy: 1.2rem;
+  --font-copy-label: 1.35rem;
   --font-copy-banner: 1.5rem;
   --font-header-title: 1.35rem;
   --font-large: 2rem;
   --font-xlarge: 2.5rem;
-  --font-subtitle: 3.5rem;
+  --font-subtitle: 4.5rem;
   --font-title: 6rem;
-
-  --font-size-h3: var(--font-xlarge);
 
   --copy-line-height: 1.7em;
 
@@ -124,6 +122,18 @@ Use a scrollbar library, this is not standardized
 /* THIS ONE IS PRETTY GOOD */
 @import url("https://fonts.googleapis.com/css?family=Archivo&display=swap");
 
+/* POTENTIALLY TRY THIS ONE */
+@font-face {
+  font-family: "Louize";
+  src: url("../fonts/LouizeTrial-Regular.otf") format("opentype");
+}
+/*
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/LouizeTrial-Regular.otf") format("opentype");
+}
+*/
+
 /*
 @font-face {
   font-family: "GTEesti";
@@ -174,7 +184,8 @@ html {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "EB Garamond", serif;
 }
 
@@ -192,7 +203,12 @@ h2 {
 }
 
 h3 {
+  font-size: var(--font-large);
   text-transform: none;
+}
+
+h4 {
+  font-size: var(--font-copy-label);
 }
 
 a {

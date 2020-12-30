@@ -1,3 +1,33 @@
+/** THIS IS A TEST **/
+
+.svg-wrapper {
+  position: relative;
+  top: 50%;
+  /*transform: translateY(-50%);*/
+  margin: 0 auto;
+  width: 320px;
+}
+.shape {
+  stroke-width: 0px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 440;
+  fill: transparent;
+  border-bottom: 2px solid black;
+  transition: stroke-width 2s, stroke-dashoffset 2s, stroke-dasharray 2s;
+}
+.text {
+  /* font-family: Louize; */
+  position: relative;
+  line-height: 40px;
+}
+.hovered .svg-wrapper .shape {
+  stroke-dasharray: 70 340;
+  stroke-dashoffset: -274;
+  stroke-width: 4px;
+}
+
+/** END OF THE TEST **/
+
 .grid-cell {
   display: flex;
   justify-content: center;
@@ -85,7 +115,7 @@
   padding-left: 20px;
 
   font-family: "EB Garamond", serif;
-  font-size: var(--font-copy);
+  font-size: var(--font-copy-label);
   font-style: italic;
   font-weight: 300;
 }
@@ -99,7 +129,7 @@
 .grid-cell .cell-hover-quote .name {
   font-family: "EB Garamond", serif;
   font-weight: 700;
-  font-size: var(--font-copy);
+  font-size: var(--font-copy-label);
   opacity: 0;
 }
 
@@ -110,13 +140,13 @@
   width: 100%;
   left: 0;
   right: 0;
-  padding: 60px 0 20px 0;
+  padding: 0px 0 20px 0;
   margin-bottom: 0;
   box-sizing: border-box;
 
   font-family: "EB Garamond";
   font-weight: 500;
-  font-size: var(--font-copy);
+  font-size: var(--font-copy-label);
   text-align: center;
   letter-spacing: normal;
   /*text-transform: uppercase;*/
@@ -152,7 +182,7 @@
   justify-content: center;
 
   margin-bottom: 12px;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 0.4s;
 }
 
@@ -165,7 +195,7 @@
   opacity: 1;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 4s, opacity 2s;
+  transition: transform 4s 1s, opacity 2s 1s;
 }
 
 .grid-cell.hovered .cell-hover-quote .name {
@@ -352,7 +382,7 @@
 }
 
 .grid-cell.hovered .cell-hover-quote .quote:after {
-  opacity: 1;
+  /*opacity: 1;*/
   width: 40%;
   right: 30%;
 

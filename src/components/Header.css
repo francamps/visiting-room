@@ -7,7 +7,7 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   align-items: flex-start;
   z-index: 12;
 }
@@ -17,20 +17,35 @@
   flex-direction: column;
   justify-content: center;
   height: 70px;
-  margin: 5px 0 0 20px;
+  margin: 2px 0 0 30px;
   position: relative;
-  z-index: 12;
+  z-index: 10;
   font-family: "EB Garamond";
   background: none;
   transition: color 0.4s;
   cursor: pointer;
 }
 
-.header.light {
-  background: var(--clr-off-white);
+.header .home-home {
+  color: var(--clr-off-white);
+  font-family: Louize;
+  font-size: var(--font-small);
+  position: relative;
+  top: 15px;
+  left: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
-.header.light .home-title {
+.header.light {
+  background-color: var(--clr-off-white);
+  transition: background-color 0.4s;
+}
+
+.header.light .home-title,
+.header.light .home-home {
   color: var(--clr-black);
 }
 

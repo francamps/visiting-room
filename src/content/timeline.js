@@ -1,19 +1,5 @@
 export const TIMELINE = [
   {
-    year: "",
-    title: "",
-    sections: [
-      {
-        paragraphs: [
-          {
-            element: "h2",
-            content: "A History of Life Without Parole in Louisiana",
-          },
-        ],
-      },
-    ],
-  },
-  {
     year: "Late 19th Century",
     title: "A Fifteen Year Minimum",
     sections: [
@@ -483,23 +469,5 @@ export const TIMELINE = [
     imagePlacement: "bottom",
     caption:
       'Many people serving life without parole in Louisiana have now served more than forty years in prison. Batt, J., Boekbinder, K. and Crabapple, M.,"The Visiting Room," narrated by Terry Pierce, Sharp as Knives and The Visiting Room Project, 2020.',
-  },
-
-  {
-    year: "",
-    title: "References",
-    sections: [
-      {
-        paragraphs: [
-          {
-            element: "link",
-            content: "See references",
-            url: "/about/?tab=5",
-          },
-        ],
-      },
-    ],
-    images: [],
-    caption: undefined,
   },
 ]

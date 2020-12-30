@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
+import Skip from "./Skip"
 
 import "./Home.css"
 
@@ -15,10 +15,10 @@ const Home = ({ images }) => {
     if (!isShowVideo) {
       let timerActions = setTimeout(() => {
         setShowVideo(true)
-      }, 200)
+      }, 0)
       let timerActionsWords = setTimeout(() => {
         setHideWords(true)
-      }, 4000)
+      }, 5000)
 
       return () => {
         clearTimeout(timerActions)
@@ -42,6 +42,24 @@ const Home = ({ images }) => {
         </div>
         <div className={`landing fadeinfast`}>
           <div
+            style={{
+              fontFamily: "Louize",
+              fontSize: "var(--font-normal)",
+              color: "var(--clr-white)",
+              position: "fixed",
+              top: "40px",
+              left: "40px",
+              textAlign: "center",
+            }}
+          >
+            <span>The</span>
+            <br />
+            <span>Visting Room</span>
+            <br />
+            <span>Project</span>
+            <br />
+          </div>
+          <div
             className={`subtitle ${
               isVideoReady && hideWords ? "fadeout" : "fadeinfast"
             }`}
@@ -56,40 +74,7 @@ const Home = ({ images }) => {
             <p>Here are some of their stories, in their own words.</p>
           </div>
         </div>
-        <div className="skip">
-          <div className="skip-bar" style={{ width: "30px" }}>
-            <div
-              className="skip-bar-bg"
-              role="button"
-              aria-label="Seek time in video"
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "4px",
-                background: "rgba(255, 255, 255, 0.3)",
-              }}
-            />
-            <div
-              className="skip-bar-played"
-              role="button"
-              style={{
-                position: "absolute",
-                height: "4px",
-                width: 30 * barProgress + "px",
-                transition: "width 1s linear",
-                background: "var(--clr-primary)",
-              }}
-            />
-          </div>
-          <p
-            className="skip-label"
-            onClick={() => {
-              navigate("/visiting-room")
-            }}
-          >
-            Skip
-          </p>
-        </div>
+        <Skip barProgress={barProgress} />
       </div>
     </>
   )

@@ -5,7 +5,7 @@ import "react-tabs/style/react-tabs.css"
 
 import Header from "../Header"
 import Map from "../charts/Map"
-import Footer from "./Footer"
+import Footer from "../Footer"
 import Paragraphs from "../Paragraphs"
 import FAQs from "./FAQs.js"
 
@@ -44,6 +44,7 @@ const About = ({ content, faqs, terms, team }) => {
 
           <div className="copy-wrap">
             <TabPanel>
+              <h3>About The Visiting Room Project</h3>
               <article className="copy">
                 <div
                   className="term-content"
@@ -58,9 +59,11 @@ const About = ({ content, faqs, terms, team }) => {
               <h3>The Angolite</h3>
             </TabPanel>
             <TabPanel>
+              <h3>Frequently Asked Questions (FAQs)</h3>
               <FAQs faqs={faqs} params={params} updateParams={updateParams} />
             </TabPanel>
             <TabPanel>
+              <h3>Glossary</h3>
               <article className="copy">
                 {terms.map(({ term1 }) => (
                   <div
@@ -71,8 +74,8 @@ const About = ({ content, faqs, terms, team }) => {
               </article>
             </TabPanel>
             <TabPanel>
+              <h3>{team.team_title[0].text}</h3>
               <article className="copy">
-                <h3>{team.team_title[0].text}</h3>
                 <div className="term-content">
                   <p>{team.team_text[0].text}</p>
                 </div>
@@ -80,15 +83,14 @@ const About = ({ content, faqs, terms, team }) => {
             </TabPanel>
             <TabPanel>
               <>
-                <h2>Resources</h2>
+                <h3>Resources</h3>
                 <Paragraphs paragraphs={REFERENCES} />
               </>
             </TabPanel>
           </div>
         </Tabs>
-
-        <Footer />
       </section>
+      <Footer withHistory />
     </>
   )
 }

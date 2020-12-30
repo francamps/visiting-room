@@ -177,7 +177,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   cursor: pointer;
   max-width: 800px;
   white-space: normal;
-  line-height: var(--font-copy);
+  line-height: var(--font-copy-label);
   overflow: hidden;
   margin-bottom: 10px;
   transition: color 0.4s;

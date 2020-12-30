@@ -3,6 +3,10 @@
   border-bottom: 1px solid var(--clr-off-white);
 }
 
+.copy .faq h4 {
+  margin-bottom: 0;
+}
+
 .copy .faq .faq-content {
   max-height: 0;
   overflow: hidden;

@@ -71,7 +71,7 @@
 
 .video-info .actual-label {
   font-family: Archivo, Helvetica Neue, Arial, sans-serif;
-  font-size: var(--font-copy);
+  font-size: var(--font-copy-label);
   margin: 0 0 0 10px;
   line-height: 1em;
 }

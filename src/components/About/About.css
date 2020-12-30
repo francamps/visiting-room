@@ -16,7 +16,7 @@
   animation: fadein 4s;
 }
 
-.about .copy-wrap .copy {
+.about .copy-wrap .copy p {
   font-family: Archivo, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
   font-size: var(--font-copy);
@@ -52,7 +52,7 @@ TODO: PUT IT IN ITS OWN FILE
   padding-right: 0px;
   margin-right: 20px;
   font-family: "EB Garamond";
-  font-size: var(--font-copy);
+  font-size: var(--font-copy-label);
   font-weight: 300;
   color: var(--clr-white);
   transition: all 0.75s ease-in-out;

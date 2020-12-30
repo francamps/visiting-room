@@ -61,7 +61,7 @@
   letter-spacing: normal;
   line-height: 1em;
   cursor: pointer;
-  transition: letter-spacing 0.4s, color 0.4s;
+  transition: letter-spacing 1.2s, color 0.4s;
 }
 
 .menu-options.menu-light a {
@@ -69,17 +69,8 @@
 }
 
 .menu-options a:hover {
-  /*color: var(--clr-primary);*/
   letter-spacing: 0.02em;
-  transition: letter-spacing 0.4s, color 0.4s;
-
-  /*
-  -webkit-animation: rotatingColor 20s ease infinite;
-  -moz-animation: rotatingColor 20s ease infinite;
-  -ms-animation: rotatingColor 20s ease infinite;
-  -o-animation: rotatingColor 20s ease infinite;
-  animation: rotatingColor 20s ease infinite;
-  */
+  transition: letter-spacing 1.2s, color 0.4s;
 }
 
 .menu-backdrop {
@@ -106,17 +97,6 @@
   transition: background-color 0.4s;
 }
 
-/* if backdrop support: very transparent and blurred */
-/*@supports (
-  (-webkit-backdrop-filter: blur(50px)) or (backdrop-filter: blur(50px))
-) {
-  .menu-backdrop.menu-backdrop-on {
-    background-color: rgba(0, 0, 0, 0.5);
-    -webkit-backdrop-filter: blur(50px);
-    backdrop-filter: blur(50px);
-  }
-}*/
-
 /*
 MENU LINKS
 */
@@ -130,7 +110,7 @@ MENU LINKS
 }
 
 .menu-option-wrap .hover-link {
-  transition: all 0.2s ease-in-out;
+  transition: all 1.2s ease-in-out;
   position: relative;
 }
 
@@ -143,7 +123,7 @@ MENU LINKS
 .menu-option-wrap .hover-link:after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: 0px;
   width: 0px;
   height: 2px;
   margin: 5px 0 0;
@@ -156,7 +136,7 @@ MENU LINKS
 .menu-option-wrap:hover .hover-link:after {
   width: 100%;
   opacity: 1;
-  height: 4px;
+  height: 2px;
   /*background-color: var(--clr-primary);*/
   -webkit-animation: rotatingBackgroundColor 20s ease infinite;
   -moz-animation: rotatingBackgroundColor 20s ease infinite;

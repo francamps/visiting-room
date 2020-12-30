@@ -4,7 +4,7 @@
   margin: 0 auto;
 
   font-family: Archivo, Helvetica Neue, Arial, sans-serif;
-  font-size: var(--font-copy-timeline);
+  font-size: var(--font-copy);
   line-height: var(--copy-line-height);
   color: var(--clr-black);
   font-weight: 300;
@@ -41,8 +41,8 @@
 
 @media (max-width: 1824px) {
   .paragraph {
-    font-size: var(--font-copy-timeline);
-    line-height: calc(1.6 * var(--font-copy-timeline));
+    font-size: var(--font-copy);
+    line-height: calc(1.6 * var(--font-copy));
   }
 }
 

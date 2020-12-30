@@ -115,7 +115,21 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
           </div>
         </div>
       )}
-      <h3 className="name-tag">{fullName}</h3>
+      <h3 className="name-tag border-animation">
+        <div class="svg-wrapper">
+          <svg height="40" width="180" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              className="shape"
+              height="40"
+              width="180"
+              stroke={`var(--${getColor(color)}`}
+            />
+            <foreignObject class="node" x="0" y="0" width="180" height="40">
+              <div className="text">{fullName}</div>
+            </foreignObject>
+          </svg>
+        </div>
+      </h3>
     </div>
   )
 }

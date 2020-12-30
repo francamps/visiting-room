@@ -2,8 +2,6 @@ import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
 import Paragraphs from "../Paragraphs"
-import Caret from "../Caret"
-import Foreword from "./Foreword"
 import TimelineFigure from "./TimelineFigure"
 import TimelineStepTitle from "./TimelineStepTitle"
 
@@ -13,6 +11,7 @@ const TimelineStepCopy = ({
   step,
   stepIdx,
   setHeaderBreadcrump,
+  setStepInView,
   timelineStep,
 }) => {
   const [ref, inView] = useInView({
@@ -22,6 +21,7 @@ const TimelineStepCopy = ({
 
   useEffect(() => {
     setHeaderBreadcrump(timelineStep.year)
+    if (inView) setStepInView(stepIdx)
   }, [inView])
 
   return (
@@ -64,37 +64,35 @@ const TimelineStepCopy = ({
           </div>
         </div>
       )}
-
-      {timelineStep.sections.map(section => (
-        <div className={"slide"}>
-          <div
-            key={`timeline-step-${stepIdx}`}
-            className={`timeline-step timeline-step-${stepIdx}`}
-            data-step={`step-${stepIdx}`}
-            style={{ position: "relative" }}
-          >
-            {!section.title && section.paragraphs && (
-              <div className="step-content">
-                <div className={`step-${step} step-columns`}>
-                  <Paragraphs
-                    step={step}
-                    paragraphs={
-                      section ? section.paragraphs : timelineStep.paragraphs
-                    }
-                    setModal={setModal}
-                  />
+      {timelineStep.sections.map(
+        (section, sectionIdx) =>
+          !section.title &&
+          section.paragraphs && (
+            <div
+              className={"slide"}
+              key={`timeline-step-copy-${stepIdx}-section-${sectionIdx}`}
+            >
+              <div
+                key={`timeline-step-${stepIdx}`}
+                className={`timeline-step timeline-step-${stepIdx} ${sectionIdx}`}
+                data-step={`step-${stepIdx}`}
+                style={{ position: "relative" }}
+              >
+                <div className="step-content">
+                  <div className={`step-${step} step-columns`}>
+                    <Paragraphs
+                      step={step}
+                      paragraphs={
+                        section ? section.paragraphs : timelineStep.paragraphs
+                      }
+                      setModal={setModal}
+                    />
+                  </div>
                 </div>
               </div>
-            )}
-            {!stepIdx && (
-              <>
-                <Foreword />
-                <Caret />
-              </>
-            )}
-          </div>
-        </div>
-      ))}
+            </div>
+          )
+      )}
     </div>
   )
 }

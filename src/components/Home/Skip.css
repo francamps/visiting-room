@@ -1,0 +1,17 @@
+.skip-bar {
+  width: 30px;
+}
+
+.skip-bar-bg {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: rgba(var(--clr-white-rgb), 0.3);
+}
+
+.skip-bar-played {
+  position: absolute;
+  height: 4px;
+  transition: width 1s linear;
+  background: var(--clr-primary);
+}

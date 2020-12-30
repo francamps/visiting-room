@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Link } from "gatsby"
+import { useInView } from "react-intersection-observer"
 
 import Header from "../Header"
 import TimelineModal from "./TimelineModal"
 import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineStepCopy from "./TimelineStepCopy"
+import Caret from "../Caret"
+import Foreword from "./Foreword"
+import Footer from "../Footer"
 
 import { TIMELINE } from "../../content/timeline"
 
 import "./Timeline.css"
-import "./TimelineOnePager.css"
 
-const TimelineOnePager = props => {
+const Timeline = props => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
@@ -19,10 +21,15 @@ const TimelineOnePager = props => {
   const [isFigureActive, setFigureActive] = useState(null)
   const [step] = useState(params.get("chapter") || 0)
   const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
+  const [stepInView, setStepInView] = useState(null)
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
-
   const [fadeout, setFadeOut] = useState(false)
+
+  const [ref, inView] = useInView({
+    /* Optional options */
+    threshold: 0.5,
+  })
 
   useEffect(() => {
     let timer1 = setTimeout(() => setFadeOut(true), 60000)
@@ -48,57 +55,39 @@ const TimelineOnePager = props => {
     <>
       <>
         <Header
-          theme="light"
-          title={`A History of Life Without Parole ${
-            headerBreadCrumb ? "/ " + headerBreadCrumb : ""
-          }`}
+          theme={inView ? null : "light"}
+          title={
+            inView
+              ? "A History of Life Without Parole in Louisiana"
+              : `A History of Life Without Parole ${
+                  headerBreadCrumb ? "/ " + headerBreadCrumb : ""
+                }`
+          }
         />
-        <article className="timeline" ref={timelineRef}>
-          <div
-            className="timeline-frame"
-            style={{
-              position: "relative",
-              background: "var(--clr-off-white)",
-            }}
-          >
+        <article
+          className={`timeline ${!inView ? "in-view" : ""}`}
+          ref={timelineRef}
+        >
+          <div className="timeline-frame">
+            <div ref={ref} className="timeline-cover">
+              <Foreword />
+              <Caret />
+            </div>
             {TIMELINE.map(
               (timelineStep, stepIdx) =>
                 timelineStep.sections && (
                   <TimelineStepCopy
+                    key={`timeline-step-copy-${stepIdx}`}
                     timelineStep={timelineStep}
                     stepIdx={stepIdx}
                     setModal={setModal}
                     setHeaderBreadcrump={setHeaderBreadcrump}
+                    setStepInView={setStepInView}
                   />
                 )
             )}
 
-            <div className="footer">
-              <div className="link-wrap">
-                <Link
-                  to="/visiting-room"
-                  className="hover-link"
-                  style={{ color: "var(--clr-black)" }}
-                >
-                  Enter the Visiting Room
-                </Link>
-              </div>
-              <div
-                className="link-wrap"
-                style={{
-                  marginBottom: 0,
-                  paddingBottom: "20px",
-                }}
-              >
-                <Link
-                  to="/archive"
-                  className="hover-link"
-                  style={{ color: "var(--clr-black)" }}
-                >
-                  See the full archive
-                </Link>
-              </div>
-            </div>
+            <Footer withRefs withArchive theme="light" />
           </div>
 
           {isFigureActive && (
@@ -117,4 +106,4 @@ const TimelineOnePager = props => {
   )
 }
 
-export default TimelineOnePager
+export default Timeline

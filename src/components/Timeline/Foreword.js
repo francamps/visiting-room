@@ -68,13 +68,6 @@ const Foreword = () => {
             handleFullScreen.active ? "vr-intro-fullscreen" : ""
           }`}
         >
-          <div
-            className="vr-intro-background"
-            onClick={() => {
-              window.localStorage.setItem("showIntro", "false")
-              navigate("/visiting-room")
-            }}
-          ></div>
           <div className="video-container">
             <div
               className="intro"

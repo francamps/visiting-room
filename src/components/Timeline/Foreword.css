@@ -1,22 +1,22 @@
 .foreword-wrap {
   position: relative;
-  max-width: 640px;
+  width: calc(100% - 40px);
+  height: calc(100% - 70px);
   margin-bottom: 20px;
+  margin-top: 70px;
 }
 
 .vr-intro {
-  /*position: fixed;*/
   position: relative;
-  width: 640px;
-  height: 360px;
+  width: 100%;
+  height: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 2px 6px #c4c4c4;
 }
 
-.vr-intro-fullscreen {
+.foreword-wrap .fullscreen {
   width: 100%;
   height: 100%;
 }
@@ -33,18 +33,9 @@ WRAP
   height: 100vh;
 }
 
-.vr-intro-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-}
-
-.video-container {
+.vr-intro .video-container {
   position: relative;
   width: 100%;
-  /*margin-top: 70px;
-  height: calc(100% - 70px);*/
   height: 100%;
   display: flex;
   justify-content: center;
@@ -52,17 +43,16 @@ WRAP
   background: black;
 }
 
-.video-container .intro {
+.vr-intro .video-container .intro {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  /*bottom: 50px;*/
 }
 
-.video-container .control-layer {
+.vr-intro .video-container .control-layer {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -73,14 +63,14 @@ WRAP
   cursor: pointer;
 }
 
-.video-container .control-layer .play-wrap {
+.vr-intro .video-container .control-layer .play-wrap {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.video-container .loading-wrap {
+.vr-intro .video-container .loading-wrap {
   position: fixed;
   left: 0;
   right: 0;
@@ -91,7 +81,7 @@ WRAP
   justify-content: center;
 }
 
-.video-container .controls {
+.vr-intro .video-container .controls {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -102,12 +92,12 @@ WRAP
   transition: opacity 1.2s;
 }
 
-.video-container .controls.hidden {
+.vr-intro .video-container .controls.hidden {
   opacity: 0;
   transition: opacity 1.2s;
 }
 
-.video-container .controls .progress-bar {
+.vr-intro .video-container .controls .progress-bar {
   position: absolute;
   padding: 10px 20px;
   margin-bottom: 30px;
@@ -120,7 +110,7 @@ WRAP
   background: var(--clr-primary);
 }
 
-.video-container .controls .actions {
+.vr-intro .video-container .controls .actions {
   position: relative;
   width: 100%;
   height: 30px;
@@ -128,29 +118,11 @@ WRAP
   justify-content: space-between;
 }
 
-.video-container .controls .actions .play-pause-stop {
+.vr-intro .video-container .controls .actions .play-pause-stop {
   position: absolute;
   bottom: 15px;
   left: 30px;
   cursor: pointer;
-}
-
-.video-skip {
-  position: absolute;
-  left: calc(50% - 70px);
-  bottom: 0px;
-  cursor: pointer;
-}
-
-.video-skip p {
-  font-family: Archivo, Helvetica Neue, Arial, sans-serif;
-  color: var(--clr-off-white);
-  transition: color 0.4s;
-}
-
-.video-skip:hover p {
-  color: var(--clr-primary);
-  transition: color 0.4s;
 }
 
 @media (max-width: 767px) {
@@ -168,30 +140,18 @@ WRAP
     width: 328px;
   }
 
-  .video-container {
+  .vr-intro .video-container {
     position: absolute;
     width: 100%;
     height: 184px;
   }
 
-  .video-container .controls .actions .play-pause-stop {
+  .vr-intro .video-container .controls .actions .play-pause-stop {
     bottom: 10px;
     left: 20px;
   }
 
-  .video-skip {
-    position: absolute;
-    cursor: pointer;
-    bottom: 20px;
-    left: 50px;
-  }
-
-  .video-skip p {
-    margin: 0;
-    font-size: var(--font-small);
-  }
-
-  .intro {
+  .vr-intro .intro {
     position: absolute;
     display: flex;
     justify-content: center;
