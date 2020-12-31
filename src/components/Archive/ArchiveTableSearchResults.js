@@ -24,7 +24,7 @@ const ArchiveTableSearchResults = ({
 
   return (
     <>
-      {isSearchLoading && <Loading hideTitle />}
+      {isSearchLoading && <Loading />}
 
       {!isSearchLoading && (
         <table className="search-results">

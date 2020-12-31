@@ -25,6 +25,7 @@ const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
 
   return (
     <div className="transcript-panel">
+      <h3>{name}</h3>
       {!transcript && !error && <Loading hideTitle={true} />}
       {transcript &&
         !error &&
