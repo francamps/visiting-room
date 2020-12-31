@@ -6,8 +6,8 @@ const TimelineStepTitle = ({ title, year }) => {
       className="step-title"
       style={false ? { backgroundColor: "var(--clr-off-white)" } : {}}
     >
-      <h3 className="year-label">{year}</h3>
-      <div className="title-title">{title}</div>
+      <h4 className="year-label">{year}</h4>
+      <h3 className="title-title">{title}</h3>
     </div>
   )
 }

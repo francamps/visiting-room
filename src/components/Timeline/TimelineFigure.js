@@ -12,7 +12,7 @@ import "./TimelineFigure.css"
 const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
   const [ref, inView] = useInView({
     /* Optional options */
-    threshold: 0.5,
+    threshold: 0.1,
   })
 
   return (
@@ -47,16 +47,15 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                       inView ? "in-view" : ""
                     } `}
                   >
-                    <h3 className="title">
+                    <h4 className="title">
                       Governor's commutations and prison population
-                    </h3>
+                    </h4>
                     {caption && (
                       <p
                         className="caption"
                         style={{
                           textAlign: "left",
                           marginBottom: "20px",
-                          fontSize: "var(--font-normal)",
                         }}
                       >
                         {caption}

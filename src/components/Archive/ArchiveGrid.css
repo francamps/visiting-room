@@ -64,7 +64,7 @@
   transition: filter 1.2s;
 }
 
-.archive-grid .grid-cell .cell-background .gatsby-image-wrapper {
+.archive-grid .grid-cell .cell-background .gatsby-image-wrapper:last-child {
   opacity: 0;
   transition: opacity 2s;
 }
@@ -77,11 +77,11 @@
   .grid-cell
   .cell-background.hovered
   .gatsby-image-wrapper:last-child {
-  -webkit-animation: fadeout 4s alternate backwards ease-in-out;
-  -moz-animation: fadeout 4s alternate backwards ease-in-out;
-  -ms-animation: fadeout 4s alternate backwards ease-in-out;
-  -o-animation: fadeout 4s alternate backwards ease-in-out;
-  animation: fadeout 4s alternate backwards ease-in-out;
+  -webkit-animation: fadein 4s alternate infinite ease-in-out;
+  -moz-animation: fadein 4s alternate infinite ease-in-out;
+  -ms-animation: fadein 4s alternate infinite ease-in-out;
+  -o-animation: fadein 4s alternate infinite ease-in-out;
+  animation: fadein 4s alternate infinite ease-in-out;
 }
 
 .archive-grid .grid-cell .cell-hover-layer {

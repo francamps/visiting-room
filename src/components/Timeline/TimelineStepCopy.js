@@ -49,8 +49,9 @@ const TimelineStepCopy = ({
             <div className="step-content">
               <div
                 className={`step-content-figure ${
-                  stepIdx % 2 === 0 && stepIdx !== 4 ? "left" : "right"
-                } ${stepIdx === 4 ? "wide" : ""}`}
+                  ""
+                  //stepIdx % 2 === 0 && stepIdx !== 4 ? "left" : "right"
+                } ${stepIdx === 4 || !stepIdx ? "wide" : ""}`}
               >
                 <TimelineFigure
                   step={step}

@@ -39,7 +39,7 @@
   top: 0;
   padding-top: 40px;
   padding-bottom: 40px;
-  padding-left: 40px;
+  padding-left: 0px;
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
@@ -48,30 +48,31 @@
   text-align: left;
 }
 
-.step-title h3.year-label {
+.step-title .year-label {
   width: 100%;
   margin: 0px 0 5px;
   padding-left: 0px;
   padding-bottom: 0px;
-  font-family: "EB Garamond";
+  font-family: Roboto;
   font-weight: 300;
   font-size: var(--font-copy);
   color: var(--clr-black);
 }
 
 .step-title .title-title {
-  font-size: var(--font-xlarge);
+  /*font-size: var(--font-xxlarge);*/
   color: var(--clr-black);
   font-family: "EB Garamond";
   text-align: left;
+  margin: 0;
 }
 
 .step-content {
   position: relative;
   overflow: auto;
-  padding: 0px 20px 20px;
+  padding: 0px 0px;
   width: 640px;
-  padding-left: 40px;
+  box-sizing: border-box;
   opacity: 0;
   overflow: visible;
 
@@ -86,7 +87,6 @@
   position: relative;
   width: 200%;
   max-width: 1024px;
-  margin-left: -50%;
   box-sizing: border-box;
   opacity: 0;
   z-index: -1;
@@ -327,12 +327,6 @@ TIMELINE TEXT STUFF
 /**
  THIS COMES FROM OLD FILE TimelineOnePage 
  **/
-.timeline-step-0 {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .title-wrap {
   width: 100%;
@@ -373,8 +367,7 @@ TIMELINE TEXT STUFF
 
 .step-content-figure {
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .step-content-figure .in-view {
@@ -397,8 +390,7 @@ TIMELINE TEXT STUFF
 .step-content-figure.wide {
   margin-left: -100px;
   margin-right: -100px;
-  width: calc(100% + 200px);
-  height: 600px;
+  width: 100vw;
 }
 
 @media (max-width: 767px) {
@@ -417,6 +409,10 @@ TIMELINE TEXT STUFF
     transition-duration: 2.6s;
     transition-delay: 0s;
     transition-timing-function: ease-in-out;
+  }
+
+  .step-content {
+    padding: 0 20px;
   }
 
   .step-content-figure.left,

@@ -72,7 +72,6 @@ text.legend-label {
   text-anchor: end;
   font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   font-weight: 300;
-  text-transform: uppercase;
   font-size: var(--font-small);
 }
 
