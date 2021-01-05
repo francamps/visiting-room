@@ -70,8 +70,8 @@
 .step-content {
   position: relative;
   overflow: auto;
+  width: 100%;
   padding: 0px 0px;
-  width: 640px;
   box-sizing: border-box;
   opacity: 0;
   overflow: visible;
@@ -85,7 +85,7 @@
 
 .step-content-figure {
   position: relative;
-  width: 200%;
+  width: 100%;
   max-width: 1024px;
   box-sizing: border-box;
   opacity: 0;
@@ -125,6 +125,8 @@ Use a scrollbar library, this is not standardized
 **/
 
 .step-content .step-columns {
+  width: 640px;
+  margin: 0 auto;
   box-sizing: border-box;
   padding: 0;
   padding-bottom: 20px;
@@ -366,7 +368,8 @@ TIMELINE TEXT STUFF
 }
 
 .step-content-figure {
-  width: 100%;
+  width: 640px;
+  margin: 0 auto;
   margin-bottom: 40px;
 }
 
@@ -379,17 +382,9 @@ TIMELINE TEXT STUFF
   animation: fadeindown 1.2s ease-in-out 0s forwards;
 }
 
-.step-content-figure.left {
-  margin-left: -100px;
-}
-
-.step-content-figure.right {
-  margin-left: 100px;
-}
-
 .step-content-figure.wide {
-  margin-left: -100px;
-  margin-right: -100px;
+  margin: 0 auto;
+  margin-bottom: 40px;
   width: 100vw;
 }
 

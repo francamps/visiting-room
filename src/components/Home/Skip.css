@@ -15,3 +15,11 @@
   transition: width 1s linear;
   background: var(--clr-primary);
 }
+
+.skip-label {
+  cursor: pointer;
+  z-index: 100;
+  color: white;
+  font-size: var(--font-small);
+  text-align: right;
+}

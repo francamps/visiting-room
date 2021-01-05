@@ -71,7 +71,7 @@ const Timeline = props => {
           <div className="timeline-frame">
             <div ref={ref} className="timeline-cover">
               <Foreword />
-              <Caret />
+              <Caret color="var(--clr-off-white)" />
             </div>
             {TIMELINE.map(
               (timelineStep, stepIdx) =>

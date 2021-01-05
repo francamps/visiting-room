@@ -33,14 +33,6 @@
   flex-direction: "column";
 }
 
-.home .skip .skip-label {
-  cursor: pointer;
-  z-index: 100;
-  color: white;
-  font-size: var(--font-normal);
-  text-align: right;
-}
-
 .home .subtitle {
   position: fixed;
   top: 0;

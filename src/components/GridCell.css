@@ -8,7 +8,7 @@
   width: 320px;
 }
 .shape {
-  stroke-width: 0px;
+  stroke-width: 40px;
   stroke-dashoffset: 0;
   stroke-dasharray: 440;
   fill: transparent;
@@ -18,6 +18,12 @@
 .text {
   position: relative;
   line-height: 40px;
+  color: var(--clr-black);
+  transition: color 2s;
+}
+.hovered .text {
+  color: var(--clr-white);
+  transition: color 2s;
 }
 .hovered .svg-wrapper .shape {
   stroke-dasharray: 70 340;

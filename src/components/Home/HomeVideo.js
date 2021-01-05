@@ -52,7 +52,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
         key={`video-${videoIdx}`}
         url={videoSrcUrl}
         className="react-player fullscreen-bg__video"
-        playing={isReady && isShowVideo ? true : false}
+        playing
         controls={false}
         config={{
           vimeo: {

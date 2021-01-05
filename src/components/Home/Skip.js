@@ -26,7 +26,7 @@ const Skip = ({ barProgress }) => {
           navigate("/visiting-room")
         }}
       >
-        Skip
+        Skip intro
       </p>
     </div>
   )
