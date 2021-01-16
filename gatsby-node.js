@@ -36,6 +36,11 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               show_profile_in_visiting_room
               show_in_archive
               color
+              profile_picture {
+                fluid(maxWidth: 1000, maxHeight: 800) {
+                  src
+                }
+              }
             }
           }
         }
@@ -43,18 +48,26 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   `)
 
-  const profiles = data.allPrismicProfile.edges.map(
-    profile => profile.node.data
+  const profiles = data
+    ? data.allPrismicProfile.edges.map(profile => profile.node.data)
+    : []
+
+  const visitingRoomProfiles = profiles.filter(
+    profile => profile.show_profile_in_visiting_room
   )
 
   profiles.forEach(profile => {
     const profileId = profile.full_name.text.toLowerCase().replace(/ /g, "_")
 
-    const nextProfile = profiles[Math.floor(Math.random() * profiles.length)]
+    const nextProfile =
+      visitingRoomProfiles[
+        Math.floor(Math.random() * visitingRoomProfiles.length)
+      ]
 
     // Create a page for each person.
 
     if (profile.show_profile_in_visiting_room) {
+      console.log(profile)
       createPage({
         path: `/visiting-room/${profileId}`,
         component: path.resolve(

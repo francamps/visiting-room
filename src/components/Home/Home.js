@@ -12,25 +12,28 @@ const Home = ({ images }) => {
   const [hideWords, setHideWords] = useState(false)
 
   useEffect(() => {
-    if (!isShowVideo) {
-      let timerActions = setTimeout(() => {
-        setShowVideo(true)
-      }, 0)
-      let timerActionsWords = setTimeout(() => {
-        setHideWords(true)
-      }, 5000)
+    //if (!isShowVideo) {
+    let timerActions = setTimeout(() => {
+      setShowVideo(true)
+    }, 0)
+    let timerActionsWords = setTimeout(() => {
+      setHideWords(true)
+    }, 5000)
 
-      return () => {
-        clearTimeout(timerActions)
-        clearTimeout(timerActionsWords)
-      }
+    return () => {
+      clearTimeout(timerActions)
+      clearTimeout(timerActionsWords)
     }
+    //}
   }, [])
 
   return (
     <>
       <div className={`home`}>
-        <div className={`landing ${isVideoReady ? "fadein" : ""}`}>
+        <div
+          className={`landing fadein ${isVideoReady ? "fadein" : ""}`}
+          style={{ background: "black" }}
+        >
           <HomeVideo
             images={images}
             isShowVideo={isShowVideo}
@@ -60,9 +63,7 @@ const Home = ({ images }) => {
             <br />
           </div>
           <div
-            className={`subtitle ${
-              isVideoReady && hideWords ? "fadeout" : "fadeinfast"
-            }`}
+            className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{
               background: "rgba(0,0,0,0.2)",
             }}

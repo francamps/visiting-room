@@ -6,7 +6,9 @@ import Video from "../Video/Video"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ pathContext }) => {
-  const { profileId, full_name, color, nextProfile } = pathContext
+  const { profileId, full_name, color, nextProfile, images } = pathContext
+
+  console.log(pathContext, images)
 
   return (
     <div className={`visiting-room-wrap container`}>
