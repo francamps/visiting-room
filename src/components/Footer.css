@@ -60,4 +60,8 @@
   .footer .link-wrap {
     padding: 10px 0px;
   }
+
+  .footer .link-wrap a {
+    font-size: var(--font-copy-label);
+  }
 }

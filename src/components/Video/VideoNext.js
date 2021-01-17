@@ -2,13 +2,8 @@ import React from "react"
 import { navigate } from "gatsby"
 
 import "./VideoNext.css"
-import TimeSlider from "./TimeSlider"
-import imageSrc from "../../images/profile_pics/Walter_Goodwin.jpg"
-import getProfileProps from "../../utils/getProfileProps"
 
-const VideoNext = ({ onClickReplay, onClickNext, images, nextProfile }) => {
-  console.log(nextProfile)
-
+const VideoNext = ({ nextProfile }) => {
   return (
     <div
       className="video-next fadein"

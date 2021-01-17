@@ -427,3 +427,9 @@
     filter: blur(0.3px);
   }
 }
+
+@media (min-width: 767px) and (max-width: 1224px) {
+  .grid-cell .cell-hover-quote .quote {
+    font-size: var(--font-copy);
+  }
+}

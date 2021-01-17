@@ -67,6 +67,21 @@
   margin-bottom: var(--space-around-med);
 }
 
+@media (max-width: 1224px) {
+  .home .subtitle {
+    position: fixed;
+    width: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: var(--space-around-small);
+    flex-direction: column;
+    font-size: var(--font-xxlarge);
+    font-weight: normal;
+    text-align: left;
+  }
+}
+
 @media (max-width: 767px) {
   .home .subtitle {
     position: fixed;
