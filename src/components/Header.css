@@ -132,7 +132,6 @@
 
 @media (max-width: 767px) {
   .header .home-title {
-    margin-left: 15px;
     box-sizing: border-box;
     line-height: 1em;
     font-size: 1.5em;

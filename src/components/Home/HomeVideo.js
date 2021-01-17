@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import ReactPlayer from "react-player"
 import { navigate } from "gatsby"
+import { useMediaQuery } from "react-responsive"
 
 import "./HomeVideo.css"
 
@@ -14,6 +15,8 @@ const items = [
 ]
 
 const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
+
   const playerRef = useRef()
   const [isReady, setReady] = useState(false)
   const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
@@ -72,14 +75,15 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
     <div
       className={`fullscreen-bg ready ${isReady && isShowVideo ? "ready" : ""}`}
     >
-      <iframe
-        src={items[videoIdx]}
-        width="100%"
-        height="100%"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <div className="responsive-iframe-container">
+        <iframe
+          className="responsive-iframe"
+          src={items[videoIdx]}
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
 
       {/*<ReactPlayer
         ref={playerRef}

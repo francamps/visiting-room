@@ -81,6 +81,7 @@ const Video = ({
           setProgress={setProgress}
           duration={playerRef.current && playerRef.current.getDuration()}
           playerRef={playerRef}
+          setShowTranscript={setShowTranscript}
         />
       )}
     </div>

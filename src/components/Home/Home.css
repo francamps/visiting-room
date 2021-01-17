@@ -20,6 +20,16 @@
   top: 0;
 }
 
+.home .home-title {
+  font-family: "EB Garamond";
+  font-size: var(--font-normal);
+  color: var(--clr-white);
+  position: fixed;
+  top: var(--space-around-small);
+  left: var(--space-around-small);
+  text-align: center;
+}
+
 .button:hover {
   letter-spacing: 0.02em;
   transition: letter-spacing 1.2s;
@@ -61,10 +71,10 @@
   .home .subtitle {
     position: fixed;
     width: auto;
-    top: var(--space-around-small);
-    right: var(--space-around-small);
-    left: var(--space-around-small);
-    padding: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: var(--space-around-small);
     flex-direction: column;
     font-size: 3rem;
     font-weight: normal;

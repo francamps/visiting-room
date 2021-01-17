@@ -43,6 +43,6 @@
   }
 
   .grid-cell .cell-hover-quote .quote {
-    font-size: 1.1rem;
+    font-size: var(--font-copy-label);
   }
 }

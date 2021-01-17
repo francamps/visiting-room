@@ -44,17 +44,7 @@ const Home = ({ images }) => {
           />
         </div>
         <div className={`landing fadeinfast`}>
-          <div
-            style={{
-              fontFamily: "EB Garamond",
-              fontSize: "var(--font-normal)",
-              color: "var(--clr-white)",
-              position: "fixed",
-              top: "40px",
-              left: "40px",
-              textAlign: "center",
-            }}
-          >
+          <div className="home-title">
             <span>The</span>
             <br />
             <span>Visting Room</span>

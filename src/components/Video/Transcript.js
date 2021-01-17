@@ -1,11 +1,20 @@
 import React, { useState } from "react"
-import Loading from "../Loading"
 
-import "./Transcript.css"
+import Loading from "../Loading"
+import CrossClose from "../CrossClose"
 
 import { getSeconds } from "../../utils/index.js"
 
-const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
+import "./Transcript.css"
+
+const Transcript = ({
+  name,
+  progress,
+  setProgress,
+  setShowTranscript,
+  duration,
+  playerRef,
+}) => {
   const [transcript, setTranscript] = useState()
   const [error, setError] = useState(false)
 
@@ -26,6 +35,18 @@ const Transcript = ({ name, progress, setProgress, duration, playerRef }) => {
   return (
     <div className="transcript-panel">
       <h3>{name}</h3>
+      <div
+        style={{
+          position: "absolute",
+          top: 14,
+          right: 14,
+        }}
+        onClick={() => {
+          setShowTranscript(false)
+        }}
+      >
+        <CrossClose />
+      </div>
       {!transcript && !error && <Loading hideTitle={true} />}
       {transcript &&
         !error &&
