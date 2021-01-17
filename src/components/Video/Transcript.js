@@ -45,7 +45,7 @@ const Transcript = ({
           setShowTranscript(false)
         }}
       >
-        <CrossClose />
+        <CrossClose theme="light" />
       </div>
       {!transcript && !error && <Loading hideTitle={true} />}
       {transcript &&

@@ -25,6 +25,16 @@
   transition: opacity 0.4s, background-color 0.4s;
 }
 
+.close.light:before,
+.close.light:after {
+  background-color: var(--clr-mid-grey);
+}
+
+.close.hover.light:before,
+.close.hover.light:after {
+  background-color: var(--clr-dark-grey);
+}
+
 .close.primary:before,
 .close.primary:after {
   -webkit-animation: rotatingBackgroundColor 20s ease infinite;

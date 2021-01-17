@@ -2,12 +2,14 @@ import React, { useState } from "react"
 
 import "./CrossClose.css"
 
-const CrossClose = ({ onClick }) => {
+const CrossClose = ({ onClick, theme }) => {
   const [isHover, setHover] = useState(false)
 
   return (
     <button
-      className={`close ${isHover && "primary"}`}
+      className={`close ${
+        isHover && theme !== "light" ? "primary" : isHover ? "hover" : ""
+      } ${theme === "light" ? "light" : ""}`}
       onMouseEnter={() => {
         setHover(true)
       }}
