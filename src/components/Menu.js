@@ -5,6 +5,8 @@ import Burger from "./Burger"
 
 import "./Menu.css"
 
+import { colors } from "../content/colors"
+
 const Menu = ({
   theme,
   fadein,
@@ -51,6 +53,13 @@ const Menu = ({
               }
             }}
             className="hover-link"
+            style={
+              {
+                /*backgroundColor: `var(${
+                colors[Math.floor(Math.random() * colors.length)]
+              })`,*/
+              }
+            }
           >
             The Visiting Room
           </a>
@@ -59,6 +68,13 @@ const Menu = ({
           <Link
             to="/history"
             className="hover-link"
+            style={
+              {
+                /*backgroundColor: `var(${
+                colors[Math.floor(Math.random() * colors.length)]
+              })`,*/
+              }
+            }
             onClick={() => {
               setBurgerOpen(false)
             }}
@@ -70,6 +86,13 @@ const Menu = ({
           <Link
             to="/archive"
             className="hover-link"
+            style={
+              {
+                /*backgroundColor: `var(${
+                colors[Math.floor(Math.random() * colors.length)]
+              })`,*/
+              }
+            }
             onClick={() => {
               setBurgerOpen(false)
             }}
@@ -81,6 +104,13 @@ const Menu = ({
           <Link
             to="/about"
             className="hover-link"
+            style={
+              {
+                /*backgroundColor: `var(${
+                colors[Math.floor(Math.random() * colors.length)]
+              })`,*/
+              }
+            }
             onClick={() => {
               setBurgerOpen(false)
             }}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import ReactPlayer from "react-player"
 import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
 import Grid from "../Grid"
@@ -33,6 +33,27 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
           </>
         )}
         <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
+        <ReactPlayer
+          url={"./audio/landingB.mp3"}
+          volume={0.5}
+          playing
+          controls={false}
+        />
+        {
+          null /*<audio autoPlay>
+          <source
+            src={"./audio/landingB.mp3"}
+            id="mp3Source"
+            type="audio/mpeg"
+          />
+          <source
+            src={"./audio/landingB.ogg"}
+            id="oggSource"
+            type="audio/ogg"
+          />
+          Your browser does not support the audio element.
+        </audio>*/
+        }
       </>
     </div>
   )

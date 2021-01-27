@@ -21,6 +21,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               date_of_birth {
                 text
               }
+              video_link {
+                url
+              }
               last_name {
                 text
               }
@@ -67,7 +70,6 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     // Create a page for each person.
 
     if (profile.show_profile_in_visiting_room) {
-      console.log(profile)
       createPage({
         path: `/visiting-room/${profileId}`,
         component: path.resolve(

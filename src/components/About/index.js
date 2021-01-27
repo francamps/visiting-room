@@ -12,6 +12,7 @@ import FAQs from "./FAQs.js"
 import "./About.css"
 
 import { REFERENCES } from "../../content/references"
+import { colors } from "../../content/colors"
 
 const About = ({ content, faqs, terms, team }) => {
   const params = new URLSearchParams(
@@ -34,12 +35,72 @@ const About = ({ content, faqs, terms, team }) => {
           }}
         >
           <TabList>
-            <Tab>The project</Tab>
-            <Tab>The Angolite</Tab>
-            <Tab>FAQ</Tab>
-            <Tab>Glossary</Tab>
-            <Tab>Team</Tab>
-            <Tab>Learn more</Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                The project
+              </span>
+            </Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                The Angolite
+              </span>
+            </Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                FAQ
+              </span>
+            </Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                Glossary
+              </span>
+            </Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                Team
+              </span>
+            </Tab>
+            <Tab>
+              <span
+                style={{
+                  backgroundColor: `var(${
+                    colors[Math.floor(Math.random() * colors.length)]
+                  })`,
+                }}
+              >
+                Learn more
+              </span>
+            </Tab>
           </TabList>
 
           <div className="copy-wrap">

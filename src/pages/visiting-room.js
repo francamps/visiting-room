@@ -9,13 +9,15 @@ const VisitingRoomPage = props => {
   const { loading, profiles, images } = useProfiles(props)
 
   return (
-    <VisitingRoom
-      loading={loading}
-      profiles={Object.values(profiles).filter(
-        p => p.show_profile_in_visiting_room
-      )}
-      images={images}
-    />
+    <>
+      <VisitingRoom
+        loading={loading}
+        profiles={Object.values(profiles).filter(
+          p => p.show_profile_in_visiting_room
+        )}
+        images={images}
+      />
+    </>
   )
 }
 

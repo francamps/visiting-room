@@ -112,6 +112,20 @@ MENU LINKS
 .menu-option-wrap .hover-link {
   transition: all 1.2s ease-in-out;
   position: relative;
+  padding: 10px;
+  /*color: var(--clr-black);*/
+  background-color: none;
+}
+
+.menu-option-wrap:hover .hover-link {
+  /*
+  color: var(--clr-black);
+  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
+  -moz-animation: rotatingBackgroundColor 20s ease infinite;
+  -ms-animation: rotatingBackgroundColor 20s ease infinite;
+  -o-animation: rotatingBackgroundColor 20s ease infinite;
+  animation: rotatingBackgroundColor 20s ease infinite;
+  */
 }
 
 .menu-option-wrap .hover-link-intro {

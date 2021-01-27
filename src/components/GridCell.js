@@ -57,7 +57,7 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
         videos[fullName] && navigate(`/visiting-room/${profileUri}`)
       }}
     >
-      {isHover && (
+      {videosBackground[fullName] && isHover && (
         <div className="gridimage-video visible">
           <ReactPlayer
             url={`${videosBackground[fullName]}`}

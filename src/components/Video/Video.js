@@ -18,6 +18,7 @@ const Video = ({
   isArchive,
   nextProfile,
   hasTranscript,
+  video_link,
 }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
@@ -43,7 +44,7 @@ const Video = ({
     <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
       <Header title={null} actions={null} hideMenu classes="fadein" />
       <VideoPlayer
-        videoSrcURL={isArchive ? archive[name] : videos[name]}
+        videoSrcURL={isArchive ? archive[name] : video_link || videos[name]}
         videoTitle={name}
         autoplay
         color={color}

@@ -54,10 +54,14 @@ TODO: PUT IT IN ITS OWN FILE
   font-family: "EB Garamond";
   font-size: var(--font-copy-label);
   font-weight: 300;
-  color: var(--clr-white);
+  color: var(--clr-black);
   transition: all 0.75s ease-in-out;
   letter-spacing: normal;
   transition: letter-spacing 0.4s;
+}
+
+.react-tabs__tab span {
+  padding: 0 10px;
 }
 
 .react-tabs__tab:after {

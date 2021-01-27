@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import ReactPlayer from "react-player"
 import HomeVideo from "./HomeVideo"
 import Skip from "./Skip"
 
@@ -52,6 +52,27 @@ const Home = ({ images }) => {
             <span>Project</span>
             <br />
           </div>
+          {hideWords && false && (
+            <audio autoPlay>
+              <source
+                src={"./audio/landing.mp3"}
+                id="mp3Source"
+                type="audio/mpeg"
+              />
+              <source
+                src={"./audio/landing.ogg"}
+                id="oggSource"
+                type="audio/ogg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          )}
+          <ReactPlayer
+            url={"./audio/landing.mp3"}
+            volume={0.1}
+            playing
+            controls={false}
+          />
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{

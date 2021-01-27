@@ -125,6 +125,12 @@ Use a scrollbar library, this is not standardized
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 /* TRY THIS ONE WHEN READY */
+
+@font-face {
+  font-family: "GTAmerica";
+  src: url("../fonts/GT-America-Trial-Regular.otf") format("opentype");
+}
+
 /*
 @font-face {
   font-family: "Louize";
@@ -203,6 +209,7 @@ h2 {
 h3 {
   font-size: var(--font-large);
   text-transform: none;
+  font-weight: normal;
 }
 
 h4 {

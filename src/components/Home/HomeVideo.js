@@ -5,13 +5,17 @@ import { useMediaQuery } from "react-responsive"
 
 import "./HomeVideo.css"
 
+//import landingMp3 from "../../content/audio/landing.mp3"
+//import landingOgg from "../../content/audio/landing.ogg"
+
 const imageFilenames = ["video1A", "video1B", "video2A", "video2B"]
 
 const items = [
-  "https://player.vimeo.com/video/444204703?background=1",
-  "https://player.vimeo.com/video/444204725?background=1",
-  "https://player.vimeo.com/video/444204755?background=1",
-  "https://player.vimeo.com/video/444204778?background=1",
+  "https://player.vimeo.com/video/504227135?background=1",
+  //"https://player.vimeo.com/video/503234608?background=1",
+  //"https://player.vimeo.com/video/503227022?background=1",
+  //"https://player.vimeo.com/video/444204755?background=1",
+  //"https://player.vimeo.com/video/444204778?background=1",
 ]
 
 const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
@@ -29,7 +33,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
     Math.floor(Math.random() * items.length)
   )
 
-  const VIDEO_DURATION = 15000
+  const VIDEO_DURATION = 20000
 
   /*
   const [videoSrcUrl, setVideoSrcUrl] = useState(items[videoIdx])
@@ -60,7 +64,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
   }, [])
 
   useEffect(() => {
-    if (progress > 15000) {
+    if (progress > VIDEO_DURATION) {
       navigate("/visiting-room")
     }
   }, [progress])

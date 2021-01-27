@@ -55,12 +55,12 @@
 }
 
 .grid-cell .cell-background .gatsby-image-wrapper img {
-  filter: brightness(1) saturate(60%);
+  filter: brightness(1) saturate(80%);
   transition: filter 1.2s;
 }
 
 .grid-cell.hovered .cell-background .gatsby-image-wrapper img {
-  filter: brightness(1) saturate(100%);
+  filter: brightness(1) saturate(80%);
   transition: filter 1.2s;
 }
 
@@ -119,9 +119,10 @@
 .grid-cell .cell-hover-quote .quote {
   padding-left: 20px;
 
-  font-family: "EB Garamond", serif;
-  font-size: var(--font-copy-label);
-  font-style: italic;
+  /*font-family: "EB Garamond", serif;*/
+  font-family: "GTAmerica";
+  font-size: var(--font-copy);
+  /*font-style: italic;*/
   font-weight: 300;
 }
 
