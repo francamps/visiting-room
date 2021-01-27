@@ -6,6 +6,8 @@ import Grid from "../Grid"
 
 import "./VisitingRoom.css"
 
+import audio from "../../content/audio/landingB.mp3"
+
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
@@ -33,12 +35,7 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
           </>
         )}
         <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
-        <ReactPlayer
-          url={"./audio/landingB.mp3"}
-          volume={0.5}
-          playing
-          controls={false}
-        />
+        <ReactPlayer url={audio} volume={0.5} playing controls={false} />
         {
           null /*<audio autoPlay>
           <source
