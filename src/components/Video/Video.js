@@ -4,7 +4,7 @@ import CrossClose from "../CrossClose"
 import Header from "../Header"
 import VideoPlayer from "./VideoPlayer"
 import Transcript from "./Transcript"
-import { videos } from "../../content/videoRegistry"
+
 import { videos as archive } from "../../content/archiveRegistry"
 
 import "./Video.css"
@@ -44,7 +44,7 @@ const Video = ({
     <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
       <Header title={null} actions={null} hideMenu classes="fadein" />
       <VideoPlayer
-        videoSrcURL={isArchive ? archive[name] : video_link || videos[name]}
+        videoSrcURL={isArchive ? archive[name] : video_link}
         videoTitle={name}
         autoplay
         color={color}

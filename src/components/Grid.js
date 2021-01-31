@@ -5,7 +5,6 @@ import GridCell from "./GridCell"
 import "./Grid.css"
 
 import getProfileProps from "../utils/getProfileProps"
-import { videos } from "../content/videoRegistry"
 
 const USE_PRISMIC = true
 
@@ -25,13 +24,20 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
         })
         .map((node, idx) => getProfileProps(node, images, USE_PRISMIC))
         .sort((a, b) => {
-          const aHasVideo = videos[a.fullName]
-          const bHasVideo = videos[a.fullName]
+          const aHasVideo = a.video_link && a.video_link.url
+          const bHasVideo = b.video_link && b.video_link.url
           if (aHasVideo > bHasVideo) return 1
           if (aHasVideo <= bHasVideo) return -1
         })
         .map(props => {
-          const { image, fullName, quote, profile_picture, color } = props
+          const {
+            image,
+            fullName,
+            quote,
+            profile_picture,
+            color,
+            video_link,
+          } = props
 
           return (
             <GridCell
@@ -41,6 +47,7 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
               quote={quote}
               profile_picture={profile_picture}
               color={color}
+              video_link={video_link}
             />
           )
         })}

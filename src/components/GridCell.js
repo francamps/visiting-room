@@ -9,7 +9,6 @@ import Play from "./Symbols/Play"
 
 import "./GridCell.css"
 
-import { videos } from "../content/videoRegistry"
 import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
@@ -33,7 +32,14 @@ const getColor = hex => {
   }
 }
 
-const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
+const GridCell = ({
+  image,
+  profile_picture,
+  quote,
+  fullName,
+  color,
+  video_link,
+}) => {
   const [isHover, setHover] = useState(false)
   const [isVideoReady, setVideoReady] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
@@ -61,18 +67,21 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
         setHover(false)
       }}
       onClick={() => {
-        videos[fullName] && navigate(`/visiting-room/${profileUri}`)
+        video_link && video_link.url && navigate(`/visiting-room/${profileUri}`)
       }}
     >
       {profile_picture && (
         <GridCellBackground
-          isHover={isHover /*&& isVideoReady*/}
+          isHover={isHover || (isTabletOrMobile && inView) /*&& isVideoReady*/}
           image={image}
           profile_picture={profile_picture}
         />
       )}
       {videosBackground[fullName] && (
-        <div className={`responsive-iframe-container ${isHover && "visible"}`}>
+        <div
+          className={`responsive-iframe-container ${isHover ||
+            (isTabletOrMobile && inView && "visible")}`}
+        >
           <iframe
             className="responsive-iframe"
             src={videosBackground[fullName]}
@@ -101,7 +110,7 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
       <div className="cell-hover-layer"></div>
       {quote && (
         <div className="cell-hover-quote">
-          {videos[fullName] ? (
+          {video_link && video_link.url ? (
             <div className="play-wrap">
               <Play size="large" />
             </div>

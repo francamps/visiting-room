@@ -77,7 +77,9 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
 
   return (
     <div
-      className={`fullscreen-bg ready ${isReady && isShowVideo ? "ready" : ""}`}
+      className={`fullscreen-bg ready ${
+        isReady && isShowVideo ? "fadein ready" : ""
+      }`}
     >
       <div className="responsive-iframe-container">
         <iframe
