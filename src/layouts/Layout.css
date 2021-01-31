@@ -572,6 +572,14 @@ FADE IN ANIMATIONS
   animation: fadeout 1.2s forwards;
 }
 
+.fadeoutslow {
+  -webkit-animation: fadeout 4s forwards;
+  -moz-animation: fadeout 4s forwards;
+  -ms-animation: fadeout 4s forwards;
+  -o-animation: fadeout 4s forwards;
+  animation: fadeout 4s forwards;
+}
+
 .fadeinout {
   -webkit-animation: fadein 4s alternate;
   -moz-animation: fadein 4s alternate;

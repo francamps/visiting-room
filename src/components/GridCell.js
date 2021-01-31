@@ -13,11 +13,18 @@ import { videos } from "../content/videoRegistry"
 import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
-  "Alvin Catchings": "https://vimeo.com/422151517",
-  "Archie Tyner": "https://vimeo.com/422151534",
-  "Bernell Juluke": "https://vimeo.com/422151556",
-  "Darnell Craft": "https://vimeo.com/422151586",
-  "Arthur Carter": "https://vimeo.com/422151798",
+  "Alvin Catchings": "https://player.vimeo.com/video/504667695?background=1",
+  "Lawson Strickland": "https://player.vimeo.com/video/505848783?background=1",
+  "Patrick Johnson": "https://player.vimeo.com/video/505849026?background=1",
+  "Patrick Lucien": "https://player.vimeo.com/video/505851302?background=1",
+  "Raymond Flank": "https://player.vimeo.com/video/505851528?background=1",
+  "Sammie Robinson": "https://player.vimeo.com/video/505853849?background=1",
+  "Terrence Guy": "https://player.vimeo.com/video/505856192?background=1",
+  "Terry West": "https://player.vimeo.com/video/505861255?background=1",
+  "Theortric Givens": "https://player.vimeo.com/video/505863367?background=1",
+  "Vashon Kelly": "https://player.vimeo.com/video/505863627?background=1",
+  "Walter Goodwin": "https://player.vimeo.com/video/505863920?background=1",
+  "Walter Reed": "https://player.vimeo.com/video/505866295?background=1",
 }
 
 const getColor = hex => {
@@ -57,8 +64,24 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
         videos[fullName] && navigate(`/visiting-room/${profileUri}`)
       }}
     >
-      {videosBackground[fullName] && isHover && (
-        <div className="gridimage-video visible">
+      {profile_picture && (
+        <GridCellBackground
+          isHover={isHover /*&& isVideoReady*/}
+          image={image}
+          profile_picture={profile_picture}
+        />
+      )}
+      {videosBackground[fullName] && (
+        <div className={`responsive-iframe-container ${isHover && "visible"}`}>
+          <iframe
+            className="responsive-iframe"
+            src={videosBackground[fullName]}
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          {
+            null /*<div className="gridimage-video visible">
           <ReactPlayer
             url={`${videosBackground[fullName]}`}
             className="react-player"
@@ -71,15 +94,9 @@ const GridCell = ({ image, profile_picture, quote, fullName, color }) => {
               setVideoReady(true)
             }}
           />
+        </div>*/
+          }
         </div>
-      )}
-
-      {profile_picture && (
-        <GridCellBackground
-          isHover={isHover && isVideoReady}
-          image={image}
-          profile_picture={profile_picture}
-        />
       )}
       <div className="cell-hover-layer"></div>
       {quote && (
