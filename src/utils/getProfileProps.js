@@ -29,6 +29,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   const quote =
     USE_PRISMIC && profile.quote ? profile.quote.text : profile.quote
   const fullName = USE_PRISMIC ? profile.full_name.text : profile.name
+  const video_link = getValue(profile, "video_link", null)
 
   const prismicPicture = getValue(profile, "profile_picture.fluid", null)
   const image = imageData.edges.find(n => {
@@ -76,6 +77,7 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
     current_age,
     color,
     deceased_date,
+    video_link,
   }
 }
 
