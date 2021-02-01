@@ -72,7 +72,10 @@ const GridCell = ({
     >
       {profile_picture && (
         <GridCellBackground
-          isHover={isHover || (isTabletOrMobile && inView) /*&& isVideoReady*/}
+          isHover={
+            (isHover && videosBackground[fullName]) ||
+            (isTabletOrMobile && inView && videosBackground[fullName])
+          }
           image={image}
           profile_picture={profile_picture}
         />

@@ -35,7 +35,14 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
           </>
         )}
         <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
-        <ReactPlayer url={audio} volume={0.5} playing controls={false} />
+        <ReactPlayer
+          width="1px"
+          height="1px"
+          url={audio}
+          volume={0.5}
+          playing
+          controls={false}
+        />
         {
           null /*<audio autoPlay>
           <source
