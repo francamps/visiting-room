@@ -82,8 +82,9 @@ const GridCell = ({
       )}
       {videosBackground[fullName] && (
         <div
-          className={`responsive-iframe-container ${isHover ||
-            (isTabletOrMobile && inView && "visible")}`}
+          className={`responsive-iframe-container ${(isHover ||
+            (isTabletOrMobile && inView)) &&
+            "visible"}`}
         >
           <iframe
             className="responsive-iframe"
