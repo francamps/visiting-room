@@ -12,19 +12,27 @@ import "./GridCell.css"
 import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
-  "Alvin Catchings": "https://player.vimeo.com/video/504667695?background=1",
-  "Lawson Strickland": "https://player.vimeo.com/video/505848783?background=1",
-  "Patrick Johnson": "https://player.vimeo.com/video/505849026?background=1",
-  "Patrick Lucien": "https://player.vimeo.com/video/505851302?background=1",
-  "Raymond Flank": "https://player.vimeo.com/video/505851528?background=1",
-  "Sammie Robinson": "https://player.vimeo.com/video/505853849?background=1",
-  "Terrence Guy": "https://player.vimeo.com/video/505856192?background=1",
-  "Terry West": "https://player.vimeo.com/video/505861255?background=1",
-  "Theortric Givens": "https://player.vimeo.com/video/505863367?background=1",
-  "Vashon Kelly": "https://player.vimeo.com/video/505863627?background=1",
-  "Walter Goodwin": "https://player.vimeo.com/video/505863920?background=1",
-  "Walter Reed": "https://player.vimeo.com/video/505866295?background=1",
+  "Alvin Catchings": "504667695",
+  "Lawson Strickland": "505848783",
+  "Patrick Johnson": "505849026",
+  "Patrick Lucien": "505851302",
+  "Raymond Flank": "505851528",
+  "Sammie Robinson": "505853849",
+  "Terrence Guy": "505856192",
+  "Terry West": "505861255",
+  "Theortric Givens": "505863367",
+  "Vashon Kelly": "505863627",
+  "Walter Goodwin": "505863920",
+  "Walter Reed": "505866295",
 }
+Object.entries(videosBackground).forEach(
+  ([name, id]) =>
+    (videosBackground[
+      name
+    ] = `https://player.vimeo.com/video/${id}?background=1`)
+)
+
+console.log(videosBackground)
 
 const getColor = hex => {
   if (hex.slice(0, 1) === "#") {

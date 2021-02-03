@@ -8,42 +8,24 @@ import "./Home.css"
 import audio from "../../content/audio/landing.mp3"
 
 const Home = ({ images }) => {
-  const [isVideoReady, setVideoReady] = useState(false)
   const [barProgress, setBarProgress] = useState(0)
-  const [isShowVideo, setShowVideo] = useState(false)
   const [hideWords, setHideWords] = useState(false)
 
   useEffect(() => {
-    //if (!isShowVideo) {
-    let timerActions = setTimeout(() => {
-      setShowVideo(true)
-    }, 0)
     let timerActionsWords = setTimeout(() => {
       setHideWords(true)
     }, 5000)
 
     return () => {
-      clearTimeout(timerActions)
       clearTimeout(timerActionsWords)
     }
-    //}
   }, [])
 
   return (
     <>
-      <div className={`home`}>
-        <div
-          className={`landing fadein ${isVideoReady ? "fadein" : ""}`}
-          style={{ background: "black" }}
-        >
-          <HomeVideo
-            images={images}
-            isShowVideo={isShowVideo}
-            onVideoReady={() => {
-              setVideoReady(true)
-            }}
-            setBarProgress={setBarProgress}
-          />
+      <div className="home">
+        <div className="landing" style={{ background: "black" }}>
+          <HomeVideo images={images} setBarProgress={setBarProgress} />
         </div>
         <div className={`landing fadeinfast`}>
           <div className="home-title">

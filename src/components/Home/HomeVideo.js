@@ -11,14 +11,14 @@ import "./HomeVideo.css"
 const imageFilenames = ["video1A", "video1B", "video2A", "video2B"]
 
 const items = [
-  "https://player.vimeo.com/video/504227135?background=1",
+  "https://player.vimeo.com/video/507870667?background=1",
   //"https://player.vimeo.com/video/503234608?background=1",
   //"https://player.vimeo.com/video/503227022?background=1",
   //"https://player.vimeo.com/video/444204755?background=1",
   //"https://player.vimeo.com/video/444204778?background=1",
 ]
 
-const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
+const HomeVideo = ({ setBarProgress }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
 
   const playerRef = useRef()
@@ -33,7 +33,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
     Math.floor(Math.random() * items.length)
   )
 
-  const VIDEO_DURATION = 20000
+  const VIDEO_DURATION = 14000
 
   /*
   const [videoSrcUrl, setVideoSrcUrl] = useState(items[videoIdx])
@@ -76,11 +76,7 @@ const HomeVideo = ({ images, isShowVideo, onVideoReady, setBarProgress }) => {
   }, [isLastTenSeconds])
 
   return (
-    <div
-      className={`fullscreen-bg ready ${
-        isReady && isShowVideo ? "fadein ready" : ""
-      }`}
-    >
+    <div className="fullscreen-bg ready">
       <div className="responsive-iframe-container">
         <iframe
           className="responsive-iframe"
