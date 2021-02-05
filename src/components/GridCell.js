@@ -12,13 +12,39 @@ import "./GridCell.css"
 import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
-  "Alvin Catchings": "504667695",
+  "Alvin Catchings": "504668722",
+  "Arthur Carter": "508705327",
+  "Archie Tyner": "508705053",
+  "Anthony Hingle": "508704922",
+  "Darnell Craft": "508706478",
+  "Darwin Willie": "508706826",
+  "Daryl Waters": "508706916",
+  "David Chenevert": "508707348",
+  "Donahue Smith": "508707599",
+  "Edbert Simmons": "508707735",
+  "Frank Green": "508708389",
+  "Gordon Newman": "508708572",
+  "Hannibal Stanfield": "508708762",
+  "Hayward Jones": "508709415",
+  "Bernell Juluke": "508710233",
+  "Jack Segura": "508723795",
+  "Jarred Lanclow": "508723981",
+  "Jeffrer Hillburn": "508724273",
+  "Jimmy Robinson": "508724877",
+  "Jeffrey Nelson": "508725427",
+  "Jerome Derricks": "508731944",
+  "Kenneth Woodburn": "508734399",
+  "Nadaedrick Campbell": "508737335",
+  "Kauntau Reeder": "508739814",
+  "Kendrick Fisher": "508746564",
+  "Lawson Strickland": "505848783",
   "Lawson Strickland": "505848783",
   "Patrick Johnson": "505849026",
   "Patrick Lucien": "505851302",
   "Raymond Flank": "505851528",
   "Sammie Robinson": "505853849",
   "Terrence Guy": "505856192",
+  "Terry Pierce": "505858769",
   "Terry West": "505861255",
   "Theortric Givens": "505863367",
   "Vashon Kelly": "505863627",
@@ -29,7 +55,7 @@ Object.entries(videosBackground).forEach(
   ([name, id]) =>
     (videosBackground[
       name
-    ] = `https://player.vimeo.com/video/${id}?background=1`)
+    ] = `https://player.vimeo.com/video/${id}?background=1&loop=0`)
 )
 
 console.log(videosBackground)
