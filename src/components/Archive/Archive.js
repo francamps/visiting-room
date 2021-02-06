@@ -61,6 +61,13 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
+  console.log(
+    view === "table" && !loading && (filterTerms || filterTerms !== ""),
+    view === "table",
+    !loading,
+    filterTerms && filterTerms !== ""
+  )
+
   return (
     <div className="archive-wrap">
       {!showBanner && (
@@ -118,17 +125,15 @@ const Archive = ({ profiles = [], loading, images }) => {
               isSearchLoading={isSearchLoading}
             />
           )}
-        {view === "table" &&
-          !loading &&
-          (filterTerms || filterTerms !== "") && (
-            <ArchiveTableSearchResults
-              isSearchLoading={isSearchLoading}
-              profiles={profilesSorted}
-              images={images}
-              searchResults={searchResults}
-              filterTerms={filterTerms}
-            />
-          )}
+        {view === "table" && !loading && filterTerms && filterTerms !== "" && (
+          <ArchiveTableSearchResults
+            isSearchLoading={isSearchLoading}
+            profiles={profilesSorted}
+            images={images}
+            searchResults={searchResults}
+            filterTerms={filterTerms}
+          />
+        )}
       </div>
     </div>
   )

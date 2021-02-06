@@ -115,6 +115,7 @@ Input
   padding: 0.4em 0em;
   width: 100%;
   background: transparent;
+  background-color: none !important;
   border: 0px;
   font-size: 1.55em;
   outline: none;

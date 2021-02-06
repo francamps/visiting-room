@@ -1,8 +1,9 @@
 .archive table {
   width: calc(100% - 40px);
-  margin: 0 20px 20px 20px;
+  max-width: 900px;
+  margin: 0 auto;
   box-sizing: border-box;
-  height: calc(100% - 20px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,7 +13,7 @@
 }
 
 .archive table.isCompact {
-  margin: 10px 10px 20px 10px;
+  margin: 0 auto;
   width: calc(100% - 20px);
 }
 
@@ -32,7 +33,7 @@
 .archive table tbody {
   flex: 1;
   scrollbar-width: 5px;
-  scrollbar-color: var(--clr-primary) var(--clr-white);
+  scrollbar-color: var(--clr-primary) none;
 }
 
 /**
@@ -41,7 +42,7 @@ THIS IS NOT STANDARD
 REPLACE WITH A SCROLLBAR STYLING LIBRARY
 **/
 .archive table tbody::-webkit-scrollbar {
-  width: 11px;
+  width: 5px;
 }
 .archive table tbody::-webkit-scrollbar-track {
   background: var(--clr-black);
@@ -49,7 +50,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 .archive table tbody::-webkit-scrollbar-thumb {
   background-color: var(--clr-primary);
   border-radius: 6px;
-  border: 3px solid var(--clr-white);
+  border: 0px solid var(--clr-white);
 }
 /**
 ^^^^^
@@ -74,15 +75,12 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   padding: 0 10px;
   background-color: rgba(var(--clr-black-rgb, 1));
   color: var(--clr-white);
+  font-size: var(--font-small);
 }
 
 .archive table.search-results th {
   flex: none;
   width: 120px;
-}
-
-.archive table.search-results th:last-child {
-  flex: 1;
 }
 
 .archive table thead th.play {
@@ -97,6 +95,64 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   text-transform: none;
   font-weight: normal;
   font-size: var(--font-xsmall);
+}
+
+.archive table:not(.isCompact) thead tr th:nth-child(1),
+.archive table:not(.isCompact) tbody tr td:nth-child(1) {
+  flex: 1;
+}
+
+.archive table:not(.isCompact) thead tr th:nth-child(2),
+.archive table:not(.isCompact) tbody tr td:nth-child(2) {
+  flex: 0 0 80px;
+  padding: 0;
+}
+
+.archive table:not(.isCompact) thead tr th:nth-child(3),
+.archive table:not(.isCompact) tbody tr td:nth-child(3) {
+  flex: 0 0 150px;
+}
+
+.archive table:not(.isCompact) thead tr th:nth-child(4),
+.archive table:not(.isCompact) tbody tr td:nth-child(4),
+.archive table:not(.isCompact) thead tr th:nth-child(5),
+.archive table:not(.isCompact) tbody tr td:nth-child(5),
+.archive table:not(.isCompact) thead tr th:nth-child(6),
+.archive table:not(.isCompact) tbody tr td:nth-child(6) {
+  flex: 0 0 120px;
+}
+
+.archive table:not(.isCompact) th:last-child,
+.archive table:not(.isCompact) td:last-child {
+  flex: 0 0 40px;
+  padding: 0;
+}
+
+.archive table:not(.isCompact) th:last-child {
+  padding-right: 10px;
+}
+
+.archive table.isCompact tbody tr {
+  height: 120px;
+}
+
+.archive table.isCompact thead tr th:nth-child(1),
+.archive table.isCompact tbody tr td:nth-child(1) {
+  flex: 0 0 120px;
+}
+
+.archive table:not(.isCompact).search-results th:nth-child(1),
+.archive table:not(.isCompact).search-results td:nth-child(1) {
+  flex: 0 0 120px;
+}
+.archive table:not(.isCompact).search-results th:nth-child(2),
+.archive table:not(.isCompact).search-results td:nth-child(2) {
+  flex: 0 0 120px;
+}
+.archive table:not(.isCompact).search-results th:last-child,
+.archive table:not(.isCompact).search-results td:last-child {
+  flex: 1;
+  padding: 10px;
 }
 
 .archive table tbody {
@@ -141,6 +197,10 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 .archive table tbody tr td:last-child {
   align-items: center;
 }
+.archive table tbody tr td.result-quotes {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
 .archive table tbody tr.isCompact td p {
   margin: 0;
@@ -168,10 +228,6 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   width: 120px;
 }
 
-.archive table.search-results td:last-child {
-  flex: 1;
-}
-
 .archive table.search-results td p {
   margin: 0;
   cursor: pointer;
@@ -183,7 +239,8 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   transition: color 0.4s;
 }
 
-.archive table.search-results td p:hover {
+.archive table.search-results td p:hover,
+.archive table.search-results td h6.see-more:hover {
   color: var(--clr-primary);
   transition: color 0.4s;
 }

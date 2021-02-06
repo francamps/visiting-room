@@ -23,6 +23,9 @@ const Header = ({
       className={`header fadeinfast ${
         theme === "light" ? "light " : ""
       } ${classes}`}
+      style={{
+        background: "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0))",
+      }}
     >
       {!hideTitle && (
         <>

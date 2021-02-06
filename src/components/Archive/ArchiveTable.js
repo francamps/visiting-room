@@ -108,11 +108,17 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                     style={{
                       position: "absolute",
                       height: "100%",
-                      bottom: 10,
-                      left: 10,
+                      width: "100%",
+                      paddingBottom: "10px",
+                      paddingLeft: "10px",
+                      bottom: 0,
+                      left: 0,
+                      boxSizing: "border-box",
                       background: "none",
                       display: "flex",
                       alignItems: "flex-end",
+                      background:
+                        "linear-gradient(rgba(0,0,0,0)  0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.7) 100%)",
                     }}
                   >
                     {fullName}
@@ -122,29 +128,50 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                   <div
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "space-between",
                       alignItems: "center",
                       width: "100%",
                       height: "100%",
                     }}
                   >
-                    <div>
-                      <p>
-                        {` ${current_age - age_at_offense} years incarcerated`}
-                      </p>
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        width: "100%",
+                      }}
+                    >
                       {deceased_date && (
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: "var(--font-xsmall)",
-                            height: "20px",
-                          }}
-                        >{`Deceased on ${deceased_date}`}</p>
+                        <>
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: "var(--font-xsmall)",
+                              height: "20px",
+                            }}
+                          >
+                            {"Deceased on:"}
+                          </p>
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: "var(--font-xsmall)",
+                              height: "20px",
+                            }}
+                          >
+                            {deceased_date}
+                          </p>
+                        </>
                       )}
-                      <p>{`Current age: ${current_age}`}</p>
-                      <p>{`Age at offense: ${age_at_offense}`}</p>
-                      <p>{`Year of incarceration: ${date_of_offense}`}</p>
+                      <p>{"Current age"}</p>
+                      <p>{current_age}</p>
+                      <p>{"Age at offense"}</p>
+                      <p>{age_at_offense}</p>
+                      <p>{"Year of incarceration"}</p>
+                      <p>{date_of_offense}</p>
+                      <p>{"YEARS INCARCERATED"}</p>
+                      <p>{current_age - age_at_offense}</p>
                     </div>
                     {hoveredRow === profileIdx && (
                       <Years

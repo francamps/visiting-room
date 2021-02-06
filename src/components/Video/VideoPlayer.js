@@ -152,7 +152,7 @@ const VideoPlayer = ({
             />
             {isPlaying && isLoading && (
               <div className="loading-wrap">
-                <Loading />
+                <Loading color={color} />
               </div>
             )}
           </>

@@ -55,7 +55,7 @@ Object.entries(videosBackground).forEach(
   ([name, id]) =>
     (videosBackground[
       name
-    ] = `https://player.vimeo.com/video/${id}?autoplay=1&autopause=0&muted=1&loop=1&controls=0`)
+    ] = `https://player.vimeo.com/video/${id}?background=1`)
 )
 
 const getColor = hex => {
@@ -179,10 +179,25 @@ const GridCell = ({
               <div className="name-wrap">
                 {video_link && video_link.url && (
                   <div className="name-play">
-                    <Play />
+                    <Play
+                      color={
+                        isHover || (isTabletOrMobile && inView) ? color : null
+                      }
+                    />
                   </div>
                 )}
-                <div className="text">{fullName}</div>
+                <div
+                  className="text"
+                  style={
+                    isHover || (isTabletOrMobile && inView)
+                      ? {
+                          color: `var(--${getColor(color)}`,
+                        }
+                      : {}
+                  }
+                >
+                  {fullName}
+                </div>
               </div>
             </foreignObject>
           </svg>

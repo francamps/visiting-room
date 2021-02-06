@@ -72,20 +72,20 @@ const ArchiveTableSearchResults = ({
                         height: "100%",
                       }}
                     >
-                      {image && image.node && (
+                      {image && (
                         <Img
                           alt={"TODO: NEEDS AN ALT"}
-                          fluid={image.node.childImageSharp.fluid}
+                          fluid={image}
                           imgStyle={{
                             objectFit: "cover",
                             visibility: "visible",
                           }}
                         />
                       )}
-                      {oldImage && oldImage.node && (
+                      {oldImage && (
                         <Img
                           alt={"TODO: NEEDS AN ALT"}
-                          fluid={oldImage.node.childImageSharp.fluid}
+                          fluid={oldImage}
                           imgStyle={{
                             objectFit: "cover",
                             visibility: "visible",
@@ -94,7 +94,10 @@ const ArchiveTableSearchResults = ({
                       )}
                     </div>
                   </td>
-                  <td>
+                  <td className="result-quotes">
+                    <h6 style={{ margin: 0, lineHeight: "20px" }}>
+                      {thisResults.length + " results"}
+                    </h6>
                     {thisResults.map((r, i) => {
                       if (i < 2) {
                         return (
@@ -144,14 +147,15 @@ const ArchiveTableSearchResults = ({
                         )
                       }
                     })}
-                    <p
+                    <h6
                       style={{ margin: 0, cursor: "pointer" }}
                       onClick={() => {
                         setOpenRow(!isOpen ? profileIdx : null)
                       }}
+                      className="see-more"
                     >
-                      {"See more."}
-                    </p>
+                      {"See more >"}
+                    </h6>
                   </td>
                 </tr>
               )

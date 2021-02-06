@@ -2,7 +2,7 @@ import React from "react"
 
 import "./Loading.css"
 
-const Loading = ({ hideTitle = false }) => {
+const Loading = ({ hideTitle = false, color }) => {
   return (
     <div
       className="loader-wrap"
@@ -19,7 +19,7 @@ const Loading = ({ hideTitle = false }) => {
             className="shape"
             height="40"
             width="180"
-            stroke={`var(--clr-primary)`}
+            stroke={color || "var(--clr-primary)"}
           />
           {!hideTitle && (
             <foreignObject class="node" x="0" y="0" width="180" height="40">

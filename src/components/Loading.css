@@ -22,6 +22,7 @@
   text-align: center;
   line-height: 40px;
   margin: 0;
+  animation: text 2s alternate infinite;
 }
 
 .loader-wrap .svg-wrapper .shape {
@@ -30,14 +31,23 @@
 
 @keyframes dash {
   from {
-    stroke-width: 0px;
+    stroke-width: 50px;
     stroke-dashoffset: 0;
     stroke-dasharray: 440;
   }
   to {
-    stroke-dasharray: 70 340;
+    stroke-dasharray: 0 340;
     stroke-dashoffset: -274;
     stroke-width: 4px;
+  }
+}
+
+@keyframes text {
+  from {
+    color: black;
+  }
+  to {
+    color: white;
   }
 }
 
