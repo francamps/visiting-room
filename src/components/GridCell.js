@@ -15,7 +15,7 @@ const videosBackground = {
   "Alvin Catchings": "504668722",
   "Arthur Carter": "508705327",
   "Archie Tyner": "508705053",
-  "Anthony Hingle": "508704922",
+  "Anthony Hingles": "508704922",
   "Darnell Craft": "508706478",
   "Darwin Willie": "508706826",
   "Daryl Waters": "508706916",
@@ -55,10 +55,8 @@ Object.entries(videosBackground).forEach(
   ([name, id]) =>
     (videosBackground[
       name
-    ] = `https://player.vimeo.com/video/${id}?background=1&loop=0`)
+    ] = `https://player.vimeo.com/video/${id}?autoplay=1&autopause=0&muted=1&loop=1&controls=0`)
 )
-
-console.log(videosBackground)
 
 const getColor = hex => {
   if (hex.slice(0, 1) === "#") {
@@ -127,31 +125,20 @@ const GridCell = ({
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
-          {
-            null /*<div className="gridimage-video visible">
-          <ReactPlayer
-            url={`${videosBackground[fullName]}`}
-            className="react-player"
-            playing={true}
-            width="130%"
-            height="130%"
-            muted
-            loop
-            onReady={() => {
-              setVideoReady(true)
-            }}
-          />
-        </div>*/
-          }
         </div>
       )}
       <div className="cell-hover-layer"></div>
       {quote && (
         <div className="cell-hover-quote">
           {video_link && video_link.url ? (
-            <div className="play-wrap">
-              <Play size="large" />
-            </div>
+            <>
+              <div />
+              {
+                null /*<div className="play-wrap">
+                  <Play size="large" />
+                </div>*/
+              }
+            </>
           ) : (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
           )}
@@ -181,15 +168,22 @@ const GridCell = ({
       )}
       <h3 className="name-tag border-animation">
         <div class="svg-wrapper">
-          <svg height="40" width="180" xmlns="http://www.w3.org/2000/svg">
+          <svg height="40" width="210" xmlns="http://www.w3.org/2000/svg">
             <rect
               className="shape"
               height="40"
-              width="180"
+              width="210"
               stroke={`var(--${getColor(color)}`}
             />
-            <foreignObject class="node" x="0" y="0" width="180" height="40">
-              <div className="text">{fullName}</div>
+            <foreignObject class="node" x="0" y="0" width="210" height="40">
+              <div className="name-wrap">
+                {video_link && video_link.url && (
+                  <div className="name-play">
+                    <Play />
+                  </div>
+                )}
+                <div className="text">{fullName}</div>
+              </div>
             </foreignObject>
           </svg>
         </div>

@@ -8,26 +8,54 @@
   width: 320px;
 }
 .shape {
-  stroke-width: 40px;
+  stroke-width: 50px;
   stroke-dashoffset: 0;
-  stroke-dasharray: 440;
+  stroke-dasharray: 470;
   fill: transparent;
   border-bottom: 2px solid black;
   transition: stroke-width 2s, stroke-dashoffset 2s, stroke-dasharray 2s;
 }
+
+.name-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.name-play {
+  width: 0px;
+  opacity: 0;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: width 2s, opacity 2s, padding 2s;
+}
+
 .text {
   position: relative;
   line-height: 40px;
   color: var(--clr-black);
   transition: color 2s;
 }
+
+.hovered .name-play {
+  width: 24px;
+  padding: 0 10px;
+  opacity: 1;
+  transition: width 2s, opacity 2s, padding 2s;
+}
+
 .hovered .text {
   color: var(--clr-white);
   transition: color 2s;
 }
 .hovered .svg-wrapper .shape {
-  stroke-dasharray: 70 340;
-  stroke-dashoffset: -274;
+  stroke-dasharray: 0 340;
+  stroke-dashoffset: -300;
   stroke-width: 4px;
 }
 
