@@ -50,6 +50,7 @@
 }
 
 .hovered .text {
+  color: var(--clr-white);
   transition: color 2s;
 }
 .hovered .svg-wrapper .shape {

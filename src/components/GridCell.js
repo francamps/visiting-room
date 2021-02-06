@@ -85,6 +85,10 @@ const GridCell = ({
     return null
   }
 
+  const isHoverOrInView =
+    (isHover && videosBackground[fullName]) ||
+    (isTabletOrMobile && inView && videosBackground[fullName])
+
   return (
     <div
       className={`grid-cell ${
@@ -104,15 +108,12 @@ const GridCell = ({
     >
       {profile_picture && (
         <GridCellBackground
-          isHover={
-            (isHover && videosBackground[fullName]) ||
-            (isTabletOrMobile && inView && videosBackground[fullName])
-          }
+          isHover={isHoverOrInView}
           image={image}
           profile_picture={profile_picture}
         />
       )}
-      {videosBackground[fullName] && (
+      {isHoverOrInView && (
         <div
           className={`responsive-iframe-container ${(isHover ||
             (isTabletOrMobile && inView)) &&
