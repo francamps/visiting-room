@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import isNull from "lodash/isNull"
+import { navigate } from "gatsby"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
@@ -68,6 +69,7 @@ const VideoPlayerControls = ({
   isPlaying,
   isPaused,
   playerRef,
+  profileId,
   progress,
   setPause,
   setPlaying,
@@ -80,7 +82,12 @@ const VideoPlayerControls = ({
   showCaptions,
   setShowCaptions,
 }) => {
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
+  )
   const [progressLabel, setProgressLabel] = useState(null)
+
+  console.log(showCaptions)
 
   return (
     <div className={`controls ${!showControls ? "hidden" : ""}`}>
@@ -187,15 +194,26 @@ const VideoPlayerControls = ({
                     paddingRight: "10px",
                   }}
                   onKeyUp={ev =>
-                    handleKeyUp(ev, () => setShowCaptions(!showCaptions))
+                    handleKeyUp(ev, () =>
+                      setShowCaptions(!showCaptions ? "en" : null)
+                    )
                   }
                   onClick={() => {
-                    setShowCaptions(!showCaptions)
+                    params.set("t", progress.progressSeconds)
+                    params.set("texttrack", showCaptions === "en" ? null : "en")
+                    window.history.replaceState(
+                      {},
+                      "",
+                      `${window.location.pathname}?${params}`
+                    )
+                    window.location.reload()
                   }}
                 >
                   <IconCaption
                     color={
-                      showCaptions ? color || "var(--clr-primary)" : "white"
+                      showCaptions === "en"
+                        ? color || "var(--clr-primary)"
+                        : "white"
                     }
                   />
                 </span>

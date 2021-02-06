@@ -39,7 +39,7 @@ const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
             <g
               id="Group-4"
               transform="translate(1.500000, 2.000000)"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
               strokeWidth="2"
             >
@@ -91,7 +91,117 @@ const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
       </g>
     </svg>
   ) : (
-    <svg
+    <>
+      <svg
+        width="25px"
+        height="24px"
+        viewBox="0 0 25 24"
+        version="1.1"
+        style={{ opacity: isHover ? 1 : 0.8, transition: "opacity 0.4s" }}
+        onMouseOver={() => {
+          setHover(true)
+        }}
+        onMouseOut={() => {
+          setHover(false)
+        }}
+      >
+        <g
+          id="Typography---UI-Comp"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linejoin="round"
+        >
+          <g id="Notes-Copy" transform="translate(-1074.000000, -507.000000)">
+            <g
+              id="Enable-fullscreen"
+              transform="translate(1074.000000, 508.000000)"
+            >
+              <rect
+                id="Rectangle"
+                stroke="#000000"
+                fill="#000000"
+                x="1.5"
+                y="0.5"
+                width="22"
+                height="21"
+              ></rect>
+              <g
+                id="Group-4"
+                transform="translate(0.500000, 0.000000)"
+                stroke="#FFFFFF"
+                stroke-linecap="round"
+                stroke-width="2"
+              >
+                <line
+                  x1="1.14285714"
+                  y1="0.5"
+                  x2="8.85714286"
+                  y2="0.5"
+                  id="Line-9-Copy-2"
+                ></line>
+                <line
+                  x1="-2.5"
+                  y1="4.5"
+                  x2="5.5"
+                  y2="4.5"
+                  id="Line-9-Copy-2"
+                  transform="translate(1.500000, 4.500000) rotate(90.000000) translate(-1.500000, -4.500000) "
+                ></line>
+                <line
+                  x1="-2.5"
+                  y1="17.5"
+                  x2="5.5"
+                  y2="17.5"
+                  id="Line-9-Copy-7"
+                  transform="translate(1.500000, 17.500000) rotate(90.000000) translate(-1.500000, -17.500000) "
+                ></line>
+                <line
+                  x1="1.14285714"
+                  y1="21.5"
+                  x2="8.85714286"
+                  y2="21.5"
+                  id="Line-9-Copy-4"
+                ></line>
+                <line
+                  x1="15.1428571"
+                  y1="21.5"
+                  x2="22.8571429"
+                  y2="21.5"
+                  id="Line-9-Copy-5"
+                ></line>
+                <line
+                  x1="18.5"
+                  y1="17.5"
+                  x2="26.5"
+                  y2="17.5"
+                  id="Line-9-Copy-8"
+                  transform="translate(22.500000, 17.500000) rotate(90.000000) translate(-22.500000, -17.500000) "
+                ></line>
+                <line
+                  x1="18.5"
+                  y1="4.5"
+                  x2="26.5"
+                  y2="4.5"
+                  id="Line-9-Copy-9"
+                  transform="translate(22.500000, 4.500000) rotate(90.000000) translate(-22.500000, -4.500000) "
+                ></line>
+                <line
+                  x1="15.1428571"
+                  y1="0.5"
+                  x2="22.8571429"
+                  y2="0.5"
+                  id="Line-9-Copy-6"
+                ></line>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+
+      {
+        null /*<svg
       width="23px"
       height="22px"
       viewBox="0 0 23 22"
@@ -176,7 +286,9 @@ const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
           </g>
         </g>
       </g>
-    </svg>
+    </svg>*/
+      }
+    </>
   )
 }
 

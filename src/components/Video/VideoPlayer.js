@@ -25,16 +25,18 @@ const VideoPlayer = ({
   progress,
   setProgress,
   playerRef,
+  texttrack,
   hasTranscript,
   hasCaptions,
   startTime,
+  profileId,
 }) => {
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
 
   const [showControls, setShowControls] = useState(true)
-  const [showCaptions, setShowCaptions] = useState(false)
+  const [showCaptions, setShowCaptions] = useState(texttrack)
 
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
   const handleFullScreen = useFullScreenHandle()
@@ -143,6 +145,7 @@ const VideoPlayer = ({
                 vimeo: {
                   playerOptions: {
                     playsinline: 1,
+                    texttrack: showCaptions,
                   },
                 },
               }}
@@ -221,6 +224,7 @@ const VideoPlayer = ({
         isPlaying={isPlaying}
         isPaused={isPaused}
         playerRef={playerRef}
+        profileId={profileId}
         progress={progress}
         setPause={setPause}
         setPlaying={setPlaying}

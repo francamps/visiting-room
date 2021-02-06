@@ -175,7 +175,7 @@ const GridCell = ({
               width="210"
               stroke={`var(--${getColor(color)}`}
             />
-            <foreignObject class="node" x="0" y="0" width="210" height="40">
+            <foreignObject className="node" x="0" y="0" width="210" height="40">
               <div className="name-wrap">
                 {video_link && video_link.url && (
                   <div className="name-play">
