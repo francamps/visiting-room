@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react"
-import mapboxgl from "mapbox-gl"
-import "mapbox-gl/dist/mapbox-gl.css"
+//import mapboxgl from "mapbox-gl"
+//import "mapbox-gl/dist/mapbox-gl.css"
 
-import "./Map.css"
+//import "./Map.css"
 
 const MapboxGLMap = ({ style }) => {
-  const [map, setMap] = useState(null)
+  return
+  /*const [map, setMap] = useState(null)
   const mapContainer = useRef(null)
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const MapboxGLMap = ({ style }) => {
     if (!map) initializeMap({ setMap, mapContainer })
   }, [map])
 
-  return <div ref={el => (mapContainer.current = el)} style={{ ...style }} />
+  return <div ref={el => (mapContainer.current = el)} style={{ ...style }} />*/
 }
 
 export default MapboxGLMap

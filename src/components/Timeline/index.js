@@ -3,7 +3,6 @@ import { useInView } from "react-intersection-observer"
 
 import Header from "../Header"
 import TimelineModal from "./TimelineModal"
-import TimelineFigureFocus from "./TimelineFigureFocus"
 import TimelineStepCopy from "./TimelineStepCopy"
 import Caret from "../Caret"
 import Foreword from "./Foreword"
@@ -18,7 +17,6 @@ const Timeline = props => {
     typeof window !== "undefined" ? window.location.search : ""
   )
 
-  const [isFigureActive, setFigureActive] = useState(null)
   const [step] = useState(params.get("chapter") || 0)
   const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
   const [stepInView, setStepInView] = useState(null)
@@ -89,13 +87,6 @@ const Timeline = props => {
 
             <Footer withRefs withArchive theme="light" />
           </div>
-
-          {isFigureActive && (
-            <TimelineFigureFocus
-              setFigureActive={setFigureActive}
-              image={TIMELINE[step].image}
-            />
-          )}
 
           {modalContent && (
             <TimelineModal setModal={setModal} content={modalContent} />

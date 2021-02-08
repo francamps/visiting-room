@@ -1,10 +1,9 @@
 import React from "react"
-import { RichText } from "prismic-reactjs"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
 import Header from "../Header"
-import Map from "../charts/Map"
+//import Map from "../charts/Map"
 import Footer from "../Footer"
 import Paragraphs from "../Paragraphs"
 import FAQs from "./FAQs.js"
@@ -13,6 +12,7 @@ import "./About.css"
 
 import { REFERENCES } from "../../content/references"
 import { colors } from "../../content/colors"
+import image from "../../images/cotton.png"
 
 const About = ({ content, faqs, terms, team }) => {
   const params = new URLSearchParams(
@@ -112,7 +112,20 @@ const About = ({ content, faqs, terms, team }) => {
                   dangerouslySetInnerHTML={{ __html: content.html }}
                 ></div>
                 <div className="map" style={{ height: "500px" }}>
-                  <Map style={{ width: "100%", height: "100%" }} />
+                  <img src={image} style={{ width: "100%", height: "100%" }} />
+                  <p
+                    className="caption"
+                    style={{
+                      textAlign: "left",
+                      marginBottom: "20px",
+                      marginTop: "10px",
+                      fontSize: "var(--font-small)",
+                    }}
+                  >
+                    {
+                      "LSU Libraries Special Collections / Andrew D. Lytle's Baton Rouge Photograph Collection (1900-1901, questionable)"
+                    }
+                  </p>
                 </div>
               </article>
             </TabPanel>
