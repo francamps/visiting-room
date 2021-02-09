@@ -22,7 +22,7 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
             return true
           return false
         })
-        .map((node, idx) => getProfileProps(node, images, USE_PRISMIC))
+        .map((node, idx) => getProfileProps(node, USE_PRISMIC))
         .sort((a, b) => {
           const aHasVideo = a.video_link && a.video_link.url
           const bHasVideo = b.video_link && b.video_link.url

@@ -12,14 +12,13 @@ const USE_PRISMIC = true
 
 const ArchiveGridCell = ({ profile, images }) => {
   const [isHover, setHover] = useState(false)
-
   const {
     image,
     oldImage,
     fullName,
     date_of_offense,
     deceased_date,
-  } = getProfileProps(profile, images, USE_PRISMIC)
+  } = getProfileProps(profile, USE_PRISMIC)
 
   return (
     <div

@@ -39,7 +39,6 @@ const ArchiveTableSearchResults = ({
             {profiles.map((profile, profileIdx) => {
               const { image, oldImage, fullName } = getProfileProps(
                 profile,
-                images,
                 USE_PRISMIC
               )
               const profileUri = getNameUri(fullName)

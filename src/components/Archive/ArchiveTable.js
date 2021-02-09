@@ -55,7 +55,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
               age_at_offense,
               current_age,
               deceased_date,
-            } = getProfileProps(profile, images, USE_PRISMIC)
+            } = getProfileProps(profile, USE_PRISMIC)
 
             return (
               <tr
@@ -232,7 +232,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
               age_at_offense,
               current_age,
               deceased_date,
-            } = getProfileProps(profile, images, USE_PRISMIC)
+            } = getProfileProps(profile, USE_PRISMIC)
 
             return (
               <tr
