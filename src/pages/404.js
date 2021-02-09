@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import SEO from "../components/seo"
 import Header from "../components/Header"
 
 const NotFoundPage = () => (
@@ -14,7 +13,6 @@ const NotFoundPage = () => (
       right: 0,
     }}
   >
-    <SEO title="404: Not found" />
     <Header title="Page not found" />
     <div
       style={{
