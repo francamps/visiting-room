@@ -4,15 +4,20 @@ import { navigate } from "gatsby"
 import Video from "../Video/Video"
 
 import "./VisitingRoom.css"
+import getProfileProps from "../../utils/getProfileProps"
 
 const VisitingRoom = ({ pathContext }) => {
   const { profileId, full_name, color, nextProfile, video_link } = pathContext
+
+  const { age_at_offense, current_age } = getProfileProps(pathContext)
 
   return (
     <div className={`visiting-room-wrap container`}>
       <Video
         profileId={profileId}
         name={full_name.text}
+        age_at_offense={age_at_offense}
+        current_age={current_age}
         color={color}
         onClose={() => {
           navigate("/visiting-room")

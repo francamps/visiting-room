@@ -5,7 +5,7 @@ import Skip from "./Skip"
 
 import "./Home.css"
 
-import audio from "../../content/audio/landing.mp3"
+import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 const Home = ({ images }) => {
   const [barProgress, setBarProgress] = useState(0)
@@ -51,7 +51,7 @@ const Home = ({ images }) => {
               Your browser does not support the audio element.
             </audio>
           )}
-          <ReactPlayer url={audio} volume={0.1} playing controls={false} />
+          <ReactPlayer url={audio} volume={1} playing controls={false} />
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{

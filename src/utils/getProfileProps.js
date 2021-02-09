@@ -21,7 +21,7 @@ const subtractDatesInYears = (dateB, dateA) => {
   return Math.floor((dateB.getTime() - dateA.getTime()) / (86400000 * 365))
 }
 
-const getProfileProps = (profile, imageData, USE_PRISMIC) => {
+const getProfileProps = (profile, imageData, USE_PRISMIC = true) => {
   const profile_picture = USE_PRISMIC
     ? getValue(profile, "imagepath.text") || null
     : profile.imagePath
@@ -32,21 +32,8 @@ const getProfileProps = (profile, imageData, USE_PRISMIC) => {
   const video_link = getValue(profile, "video_link", null)
 
   const prismicPicture = getValue(profile, "profile_picture.fluid", null)
-  const image = imageData.edges.find(n => {
-    return (
-      n.node.relativePath.includes(profile_picture) ||
-      n.node.relativePath === `profile_pics/${fullName.replace(/ /g, "_")}.jpg`
-    )
-  })
 
   const prismicOldPicture = getValue(profile, "old_picture.fluid", null)
-  const oldImage = imageData.edges.find(n => {
-    return (
-      n.node.relativePath ===
-      `profile_pics/old_pics/${fullName.replace(/ /g, "_")}.jpg`
-    )
-  })
-
   let date_of_birth = getDate(profile, "date_of_birth.text")
   let date_of_offense = getDate(profile, "date_of_offense")
   let age_at_offense = "unknown"

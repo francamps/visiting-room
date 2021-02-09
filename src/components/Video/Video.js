@@ -19,6 +19,8 @@ const Video = ({
   nextProfile,
   hasTranscript,
   video_link,
+  age_at_offense,
+  current_age,
 }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
@@ -50,6 +52,8 @@ const Video = ({
         color={color}
         onClose={onClose}
         name={name}
+        age_at_offense={age_at_offense}
+        current_age={current_age}
         nextProfile={nextProfile}
         isLastTenSeconds={isLastTenSeconds}
         setIsLastTenSeconds={setIsLastTenSeconds}

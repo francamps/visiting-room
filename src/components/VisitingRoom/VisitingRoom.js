@@ -6,7 +6,7 @@ import Grid from "../Grid"
 
 import "./VisitingRoom.css"
 
-import audio from "../../content/audio/landingB.mp3"
+import audio from "../../content/audio/stanfield/landingB.mp3"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
@@ -39,7 +39,7 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
           width="1px"
           height="1px"
           url={audio}
-          volume={0.5}
+          volume={1}
           playing
           controls={false}
         />

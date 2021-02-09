@@ -87,8 +87,6 @@ const VideoPlayerControls = ({
   )
   const [progressLabel, setProgressLabel] = useState(null)
 
-  console.log(showCaptions)
-
   return (
     <div className={`controls ${!showControls ? "hidden" : ""}`}>
       <div className="actions">

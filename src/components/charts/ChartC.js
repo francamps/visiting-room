@@ -85,7 +85,7 @@ const ChartC = () => {
   }, [step])
 
   useEffect(() => {
-    setW(canvasRef.current.getBoundingClientRect().width)
+    setW(canvasRef.current.getBoundingClientRect().width - 40)
     setH(canvasRef.current.getBoundingClientRect().height - 80)
   }, [canvasRef.current])
 
@@ -353,11 +353,7 @@ const ChartC = () => {
   }, [step, w, h])
 
   return (
-    <div
-      className="chart-wrap"
-      ref={canvasRef}
-      style={{ width: "100%", height: "100%" }}
-    >
+    <div className="chart-wrap" ref={canvasRef}>
       <svg width={w} height={h} className="" ref={svgRef}></svg>
       <div
         style={{

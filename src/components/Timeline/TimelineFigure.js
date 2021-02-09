@@ -43,24 +43,14 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                   <section
                     key={`figure-${step}`}
                     ref={ref}
-                    className={`child timeline-figure medium ${
+                    className={`child chart-figure timeline-figure medium ${
                       inView ? "in-view" : ""
                     } `}
                   >
                     <h4 className="title">
                       Governor's commutations and prison population
                     </h4>
-                    {caption && (
-                      <p
-                        className="caption"
-                        style={{
-                          textAlign: "left",
-                          marginBottom: "20px",
-                        }}
-                      >
-                        {caption}
-                      </p>
-                    )}
+                    {caption && <p className="caption">{caption}</p>}
                     <figure>
                       <ChartC />
                     </figure>

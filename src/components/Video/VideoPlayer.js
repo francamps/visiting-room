@@ -16,6 +16,8 @@ const VideoPlayer = ({
   videoTitle,
   autoplay,
   name,
+  age_at_offense,
+  current_age,
   color,
   onClose,
   nextProfile,
@@ -204,6 +206,8 @@ const VideoPlayer = ({
         {isLastTenSeconds && (
           <VideoViewedMenu
             name={name}
+            age_at_offense={age_at_offense}
+            current_age={current_age}
             color={color}
             onClickReplay={() => {
               playerRef.current.seekTo(0)

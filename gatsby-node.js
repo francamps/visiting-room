@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               date_of_birth {
                 text
               }
+              date_of_offense
               video_link {
                 url
               }

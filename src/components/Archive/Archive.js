@@ -61,13 +61,6 @@ const Archive = ({ profiles = [], loading, images }) => {
     }
   }, [fadeout])
 
-  console.log(
-    view === "table" && !loading && (filterTerms || filterTerms !== ""),
-    view === "table",
-    !loading,
-    filterTerms && filterTerms !== ""
-  )
-
   return (
     <div className="archive-wrap">
       {!showBanner && (
