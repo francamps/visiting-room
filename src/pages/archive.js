@@ -34,12 +34,12 @@ export const query = graphql`
             }
             profile_picture {
               fluid(maxWidth: 1000, maxHeight: 800) {
-                ...GatsbyPrismicImageFluid
+                src
               }
             }
             old_picture {
               fluid(maxWidth: 1000, maxHeight: 800) {
-                ...GatsbyPrismicImageFluid
+                src
               }
             }
             show_in_archive

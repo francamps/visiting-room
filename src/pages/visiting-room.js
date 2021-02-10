@@ -51,7 +51,7 @@ export const query = graphql`
             color
             profile_picture {
               fluid(maxWidth: 1000, maxHeight: 800) {
-                ...GatsbyPrismicImageFluid
+                src
               }
             }
             video_link {
