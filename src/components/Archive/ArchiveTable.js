@@ -6,10 +6,10 @@ import { navigate } from "gatsby"
 import Loading from "../Loading"
 import Years from "../charts/Years"
 import Play from "../Symbols/Play"
-
-import getProfileProps from "../../utils/getProfileProps"
+import ArchiveTableRow from "./ArchiveTableRow"
 
 import { videos } from "../../content/archiveRegistry"
+import getProfileProps from "../../utils/getProfileProps"
 
 import "./ArchiveTable.css"
 
@@ -19,7 +19,7 @@ const columnsDesktop = [
   { key: "years", label: "Years incarcerated" },
   { key: "current_age", label: "Current Age" },
   { key: "age_at_offense", label: "Age at offense" },
-  { key: "offense_date", label: "Year Incarcerated" },
+  { key: "offense_date", label: "Year of incarceration" },
 ]
 
 const columnsMobile = [
@@ -47,162 +47,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
         </thead>
         <tbody>
           {profiles.map((profile, profileIdx) => {
-            const {
-              image,
-              oldImage,
-              fullName,
-              date_of_offense,
-              age_at_offense,
-              current_age,
-              deceased_date,
-            } = getProfileProps(profile, USE_PRISMIC)
-
-            return (
-              <tr
-                key={`archive-table-row-${profileIdx}`}
-                onMouseEnter={() => {
-                  setHover(profileIdx)
-                }}
-                onMouseLeave={() => {
-                  setHover(null)
-                }}
-                className={`${
-                  hoveredRow === profileIdx ? "hovered" : ""
-                } isCompact`}
-              >
-                <td
-                  style={{ display: "block", position: "relative", padding: 0 }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                    }}
-                  >
-                    {image && (
-                      <Img
-                        alt={"TODO: NEEDS AN ALT"}
-                        fluid={image}
-                        imgStyle={{
-                          objectFit: "cover",
-                          visibility: "visible",
-                        }}
-                      />
-                    )}
-                    {oldImage && (
-                      <Img
-                        alt={"TODO: NEEDS AN ALT"}
-                        fluid={oldImage}
-                        imgStyle={{
-                          objectFit: "cover",
-                          visibility: "visible",
-                        }}
-                      />
-                    )}
-                  </div>
-                  <p
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      width: "100%",
-                      paddingBottom: "10px",
-                      paddingLeft: "10px",
-                      bottom: 0,
-                      left: 0,
-                      boxSizing: "border-box",
-                      background: "none",
-                      display: "flex",
-                      alignItems: "flex-end",
-                      background:
-                        "linear-gradient(rgba(0,0,0,0)  0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.7) 100%)",
-                    }}
-                  >
-                    {fullName}
-                  </p>
-                </td>
-                <td>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        width: "100%",
-                      }}
-                    >
-                      {deceased_date && (
-                        <>
-                          <p
-                            style={{
-                              margin: 0,
-                              fontSize: "var(--font-xsmall)",
-                              height: "20px",
-                            }}
-                          >
-                            {"Deceased on:"}
-                          </p>
-                          <p
-                            style={{
-                              margin: 0,
-                              fontSize: "var(--font-xsmall)",
-                              height: "20px",
-                            }}
-                          >
-                            {deceased_date}
-                          </p>
-                        </>
-                      )}
-                      <p>{"Current age"}</p>
-                      <p>{current_age}</p>
-                      <p>{"Age at offense"}</p>
-                      <p>{age_at_offense}</p>
-                      <p>{"Year of incarceration"}</p>
-                      <p>{date_of_offense}</p>
-                      <p>{"YEARS INCARCERATED"}</p>
-                      <p>{current_age - age_at_offense}</p>
-                    </div>
-                    {hoveredRow === profileIdx && (
-                      <Years
-                        color={"white"}
-                        incarcerated={age_at_offense}
-                        current={current_age}
-                        deceased_date={deceased_date}
-                      />
-                    )}
-                  </div>
-                </td>
-                {videos[fullName] ? (
-                  <td className="play" style={{ textAlign: "center" }}>
-                    <Play
-                      size="medium"
-                      color={"white"}
-                      onClick={() => {
-                        const profileUri = fullName
-                          .toLowerCase()
-                          .replace(/ /g, "_")
-                        videos[fullName] && navigate(`/archive/${profileUri}`)
-                      }}
-                    />
-                  </td>
-                ) : (
-                  <td className="play">
-                    <p>N/A</p>
-                  </td>
-                )}
-              </tr>
-            )
+            return <ArchiveTableRow profile={profile} profileIdx={profileIdx} />
           })}
         </tbody>
       </table>

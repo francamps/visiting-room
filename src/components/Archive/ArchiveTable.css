@@ -64,18 +64,25 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   flex-direction: row;
   border-top: 1px solid var(--clr-light-grey);
   border-bottom: 1px solid var(--clr-light-grey);
+  height: 60px;
 }
 
 .archive table thead tr th {
   display: flex;
   flex-direction: row;
   flex: 1;
-  text-align: left;
-  text-transform: uppercase;
-  padding: 0 10px;
+  line-height: 20px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 10px 10px 10px;
+  text-align: right;
   background-color: rgba(var(--clr-black-rgb, 1));
   color: var(--clr-white);
-  font-size: var(--font-small);
+}
+
+.archive table thead tr th:nth-child(1) {
+  text-align: left;
+  justify-content: flex-start;
 }
 
 .archive table.search-results th {
@@ -133,7 +140,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table.isCompact tbody tr {
-  height: 120px;
+  height: 150px;
 }
 
 .archive table.isCompact thead tr th:nth-child(1),
@@ -153,6 +160,38 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 .archive table:not(.isCompact).search-results td:last-child {
   flex: 1;
   padding: 10px;
+}
+
+.archive table.isCompact tbody td p.full-name {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  background: none;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.archive table.isCompact tbody td .fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.archive table.isCompact tbody td .fields svg {
+  align-self: flex-start;
+  justify-content: flex-end;
 }
 
 .archive table tbody {

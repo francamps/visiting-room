@@ -6,14 +6,20 @@ import Grid from "../Grid"
 
 import "./VisitingRoom.css"
 
-import audio from "../../content/audio/stanfield/landingB.mp3"
+//import audio from "../../content/audio/stanfield/landingB.mp3"
+import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
   const [showBanner, setShowBanner] = useState(true)
+  const [showSound, setShowSound] = useState(false)
 
   useEffect(() => {
+    let timerSound = setTimeout(() => {
+      setShowSound(true)
+    }, 2000)
+
     if (showBanner) {
       let timer = setTimeout(() => {
         setShowBanner(false)
@@ -21,6 +27,7 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
 
       return () => {
         clearTimeout(timer)
+        clearTimeout(timerSound)
       }
     }
   }, [])
@@ -35,29 +42,16 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
           </>
         )}
         <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
-        <ReactPlayer
-          width="1px"
-          height="1px"
-          url={audio}
-          volume={1}
-          playing
-          controls={false}
-        />
-        {
-          null /*<audio autoPlay>
-          <source
-            src={"./audio/landingB.mp3"}
-            id="mp3Source"
-            type="audio/mpeg"
+        {showSound && (
+          <ReactPlayer
+            width="1px"
+            height="1px"
+            url={audio}
+            volume={0.5}
+            playing
+            controls={false}
           />
-          <source
-            src={"./audio/landingB.ogg"}
-            id="oggSource"
-            type="audio/ogg"
-          />
-          Your browser does not support the audio element.
-        </audio>*/
-        }
+        )}
       </>
     </div>
   )

@@ -38,19 +38,19 @@ TODO: PUT IT IN ITS OWN FILE
 */
 
 .react-tabs .react-tabs__tab-list {
-  width: 100%;
-  padding: 60px 0;
+  width: 640px;
+  margin: 0 auto;
+  padding: 40px 0;
   border-bottom: none;
-  padding-left: 20px;
   box-sizing: border-box;
-  text-align: center;
+  text-align: left;
 }
 
 .react-tabs__tab {
   position: relative;
   padding-left: 0;
   padding-right: 0px;
-  margin-right: 20px;
+  margin: 20px 20px 0 0;
   font-family: "EB Garamond";
   font-size: var(--font-copy-label);
   font-weight: 300;

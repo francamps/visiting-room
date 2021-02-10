@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
   //const [opacity, setOpacity] = useState(0)
   const [visible, setVisible] = useState(false)
-  const x = Math.floor(i / 5) * 6 + 3
+  const x = Math.floor(i / 5) * 6 + 5
   const y = (i % 5) * 6 + 20
   const delay = (1000.0 * i) / current
   const opacity =
@@ -39,7 +39,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
   const years = new Array(120).fill(0)
 
   return (
-    <svg width="140px" height="70px">
+    <svg width="210px" height="50px">
       <filter id="blurMe">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>

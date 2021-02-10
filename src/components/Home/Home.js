@@ -36,22 +36,15 @@ const Home = ({ images }) => {
             <span>Project</span>
             <br />
           </div>
-          {hideWords && false && (
-            <audio autoPlay>
-              <source
-                src={"./audio/landing.mp3"}
-                id="mp3Source"
-                type="audio/mpeg"
-              />
-              <source
-                src={"./audio/landing.ogg"}
-                id="oggSource"
-                type="audio/ogg"
-              />
-              Your browser does not support the audio element.
-            </audio>
-          )}
-          <ReactPlayer url={audio} volume={1} playing controls={false} />
+          <ReactPlayer
+            url={audio}
+            volume={Math.max(
+              1 - (barProgress > 0.8 ? (barProgress - 0.8) / 0.2 : 0),
+              0.0
+            )}
+            playing
+            controls={false}
+          />
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{
