@@ -1,8 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
-import { get as getValue } from "lodash"
 
-const GridCellBackground = ({ isHover, image, oldImage, profile_picture }) => {
+const GridCellBackground = ({ isHover, image, oldImage }) => {
   return (
     <div className={`cell-background ${isHover ? "fadeoutslow" : "fadein"}`}>
       <Img

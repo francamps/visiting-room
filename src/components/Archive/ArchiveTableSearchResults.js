@@ -145,6 +145,7 @@ const ArchiveTableSearchResults = ({
                           </p>
                         )
                       }
+                      return null
                     })}
                     <h6
                       style={{ margin: 0, cursor: "pointer" }}

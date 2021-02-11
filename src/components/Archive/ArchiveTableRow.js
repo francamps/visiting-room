@@ -14,7 +14,7 @@ const USE_PRISMIC = true
 const ArchiveTableRow = ({ profile, profileIdx }) => {
   const [isHover, setHover] = useState(false)
 
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.5,
   })

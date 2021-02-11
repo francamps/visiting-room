@@ -1,12 +1,6 @@
 import React, { useState } from "react"
 
-const Pause = ({
-  size,
-  onClick,
-  useCircle = true,
-  doHover,
-  color = "#ffffff",
-}) => {
+const Pause = ({ onClick, useCircle = true, doHover, color = "#ffffff" }) => {
   const [isHover, setHover] = useState(doHover)
   let viewBox = "0 0 24 24"
   let width = "24px"
@@ -14,7 +8,6 @@ const Pause = ({
   let cx = 12
   let cy = 12
   let r = 10
-  let points = "16 12 9 16 9 8"
   let transform = "none"
 
   return (

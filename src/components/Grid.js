@@ -28,6 +28,7 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
           const bHasVideo = b.video_link && b.video_link.url
           if (aHasVideo > bHasVideo) return 1
           if (aHasVideo <= bHasVideo) return -1
+          return
         })
         .map(props => {
           const {

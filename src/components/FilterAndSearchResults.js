@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useReducer } from "react"
-import get from "lodash/get"
 import capitalize from "lodash/capitalize"
 import "./FilterAndSearch.css"
-import useKeyPress from "../utils/useKeyPressed"
 
 import worker from "./worker/index.js"
 import WebWorker from "./worker/workerSetup"

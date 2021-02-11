@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
-import ReactPlayer from "react-player"
 import { useInView } from "react-intersection-observer"
 import { useMediaQuery } from "react-responsive"
 
@@ -38,7 +37,6 @@ const videosBackground = {
   "Kauntau Reeder": "508739814",
   "Kendrick Fisher": "508746564",
   "Lawson Strickland": "505848783",
-  "Lawson Strickland": "505848783",
   "Patrick Johnson": "505849026",
   "Patrick Lucien": "505851302",
   "Raymond Flank": "505851528",
@@ -73,9 +71,8 @@ const GridCell = ({
   video_link,
 }) => {
   const [isHover, setHover] = useState(false)
-  const [isVideoReady, setVideoReady] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.5,
   })
@@ -99,7 +96,6 @@ const GridCell = ({
         setHover(true)
       }}
       onMouseLeave={() => {
-        setVideoReady(false)
         setHover(false)
       }}
       onClick={() => {
@@ -120,6 +116,7 @@ const GridCell = ({
             "visible"}`}
         >
           <iframe
+            title={fullName}
             className="responsive-iframe"
             src={videosBackground[fullName]}
             frameborder="0"
