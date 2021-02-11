@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
 import Header from "../Header"
-//import Map from "../charts/Map"
 import Footer from "../Footer"
 import Paragraphs from "../Paragraphs"
 import FAQs from "./FAQs.js"

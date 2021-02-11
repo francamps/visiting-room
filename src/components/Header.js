@@ -49,6 +49,12 @@ const Header = ({
             <div className="home-title">
               <h2
                 style={{ margin: 0, height: "24px", lineHeight: "24px" }}
+                onFocus={() => {
+                  setHoverTitle(true)
+                }}
+                onBlur={() => {
+                  setHoverTitle(false)
+                }}
                 onMouseOver={() => {
                   setHoverTitle(true)
                 }}

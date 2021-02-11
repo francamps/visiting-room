@@ -239,11 +239,6 @@ const ChartC = () => {
 
     /** COMMUTATIONS */
 
-    const pathComs = area()
-      .x(d => xScale(d.year))
-      .y1(d => yScale(d.value))
-      .y0(yScale(0))
-
     const dataComsLins = dataComs.map(d => [
       { year: d.year0, value: 0 },
       { year: d.yearF, value: d.value },
@@ -264,7 +259,6 @@ const ChartC = () => {
       .duration(600)
       .attr("height", d => yScale(d[0].value) - yScale(d[1].value))
       .attr("y", d => yScale(d[1].value))
-    //.attr("d", pathComs)
 
     pointsComs
       .join("circle")

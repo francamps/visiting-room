@@ -2,10 +2,8 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import Img from "gatsby-image"
-import Media from "react-media"
 
 import ChartC from "../charts/ChartC"
-import Map from "../charts/Map"
 
 import "./TimelineFigure.css"
 

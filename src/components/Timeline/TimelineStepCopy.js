@@ -11,7 +11,6 @@ const TimelineStepCopy = ({
   step,
   stepIdx,
   setHeaderBreadcrump,
-  setStepInView,
   timelineStep,
 }) => {
   const [ref, inView] = useInView({
@@ -21,7 +20,6 @@ const TimelineStepCopy = ({
 
   useEffect(() => {
     setHeaderBreadcrump(timelineStep.year)
-    if (inView) setStepInView(stepIdx)
   }, [inView])
 
   return (

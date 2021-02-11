@@ -19,7 +19,6 @@ const Timeline = props => {
 
   const [step] = useState(params.get("chapter") || 0)
   const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
-  const [stepInView, setStepInView] = useState(null)
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
   const [fadeout, setFadeOut] = useState(false)
@@ -80,7 +79,6 @@ const Timeline = props => {
                     stepIdx={stepIdx}
                     setModal={setModal}
                     setHeaderBreadcrump={setHeaderBreadcrump}
-                    setStepInView={setStepInView}
                   />
                 )
             )}
