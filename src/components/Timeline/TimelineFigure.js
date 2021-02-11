@@ -56,40 +56,12 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                     </figure>
                   </section>
                 )
-              } else if (imageName === "Map") {
-                return (
-                  <section
-                    key={`figure-${step}`}
-                    ref={ref}
-                    className={` child timeline-figure ${
-                      inView ? "in-view" : ""
-                    }`}
-                  >
-                    <figure>
-                      <Media
-                        queries={{
-                          small: "(max-width: 760px)",
-                          large: "(min-width: 761px)",
-                        }}
-                      >
-                        {matches => (
-                          <>
-                            {matches.small && (
-                              <Map style={{ height: "250px" }} />
-                            )}
-                            {matches.large && (
-                              <Map style={{ height: "500px" }} />
-                            )}
-                          </>
-                        )}
-                      </Media>
-                    </figure>
-                  </section>
-                )
               } else {
                 const image = data.images.edges.find(n => {
                   return n.node.relativePath.includes(imageName)
                 })
+
+                console.log(image)
 
                 return (
                   <section
