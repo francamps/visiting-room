@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Franc Camps Febrer <francamps@gmail.com>",
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.17",
     "d3-ease": "^2.0.0",
     "d3-scale": "^3.2.1",
     "d3-selection": "^1.4.1",

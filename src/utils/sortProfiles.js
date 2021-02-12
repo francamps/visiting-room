@@ -58,10 +58,16 @@ const getProfileValue = (profile, prop) => {
 
 const sortProfiles = (data, sortType, sortAsc) => {
   data.sort((a, b) => {
-    if (getProfileValue(a, sortType) > getProfileValue(b, sortType))
-      return sortAsc ? 1 : -1
-    if (getProfileValue(a, sortType) < getProfileValue(b, sortType))
-      return sortAsc ? -1 : 1
+    if (sortType.key === "full_name") {
+      console.log(sortType)
+      if (a.last_name.text > b.last_name.text) return sortAsc ? 1 : -1
+      if (a.last_name.text < b.last_name.text) return sortAsc ? -1 : 1
+    } else {
+      if (getProfileValue(a, sortType) > getProfileValue(b, sortType))
+        return sortAsc ? 1 : -1
+      if (getProfileValue(a, sortType) < getProfileValue(b, sortType))
+        return sortAsc ? -1 : 1
+    }
     return false
   })
 

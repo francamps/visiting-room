@@ -23,7 +23,7 @@ const columnsDesktop = [
 ]
 
 const columnsMobile = [
-  { key: "full_name", label: "Name" },
+  { key: "full_name", label: "" },
   { key: "information", label: "" },
   { key: "video", label: "" },
 ]
