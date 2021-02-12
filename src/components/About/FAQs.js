@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { RichText } from "prismic-reactjs"
 
 import "./FAQs.css"
 

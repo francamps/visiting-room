@@ -281,6 +281,7 @@ const ChartC = () => {
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
       .attr("y", d => (!step ? yScale(d.value) - 15 : h - 15))
+      .style("opacity", step ? 0 : 1)
 
     svg
       .selectAll("text.labelComsValue")
@@ -342,6 +343,7 @@ const ChartC = () => {
       .ease(easeCircleInOut)
       .duration(TRANSITION_DURATION)
       .attr("y", d => (!step ? yScale(d.value) - 40 : yScale(d.value) - 15))
+      .style("opacity", step ? 0 : 1)
 
     svg.attr("width", w).attr("height", h)
   }, [step, w, h])

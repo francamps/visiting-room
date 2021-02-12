@@ -45,9 +45,11 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                       inView ? "in-view" : ""
                     } `}
                   >
-                    <h4 className="title">
+                    {
+                      null /*<h4 className="title">
                       Governor's commutations and prison population
-                    </h4>
+                  </h4>*/
+                    }
                     {caption && <p className="caption">{caption}</p>}
                     <figure>
                       <ChartC />
@@ -58,8 +60,6 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                 const image = data.images.edges.find(n => {
                   return n.node.relativePath.includes(imageName)
                 })
-
-                console.log(image)
 
                 return (
                   <section

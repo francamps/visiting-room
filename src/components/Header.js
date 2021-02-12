@@ -24,7 +24,11 @@ const Header = ({
         theme === "light" ? "light " : ""
       } ${classes}`}
       style={{
-        background: "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0))",
+        background:
+          theme === "light"
+            ? "linear-gradient(rgba(var(--clr-white-rgb),1), rgba(var(--clr-white-rgb), 0.75) 50%, rgba(var(--clr-white-rgb), 0.5) 75%, rgba(var(--clr-white-rgb), 0) 100%)"
+            : //? "linear-gradient(rgba(var(--clr-white-rgb),1) 100%, rgba(var(--clr-white-rgb), 0.75) 50%, rgba(var(--clr-white-rgb), 0.5) 25%, rgba(var(--clr-white-rgb),0) 0%)"
+              "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0))",
       }}
     >
       {!hideTitle && (
@@ -36,14 +40,12 @@ const Header = ({
             }}
           >
             <span>The</span>
-            <span>Visting Room</span>
+            <span>Visiting Room</span>
             <span>Project</span>
           </div>
           {isTabletOrMobile ? (
             <div className="home-title">
-              <h4 style={{ margin: 0, height: "20px", fontWeight: "300" }}>
-                {title}
-              </h4>
+              <h4>{title}</h4>
             </div>
           ) : (
             <div className="home-title">

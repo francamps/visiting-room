@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react"
 
-import Header from "../Header"
-import FilterAndSearch from "../FilterAndSearch"
-import ArchiveGrid from "./ArchiveGrid"
 import ArchiveActions from "./ArchiveActions"
+import ArchiveBanner from "./ArchiveBanner"
+import ArchiveGrid from "./ArchiveGrid"
 import ArchiveTable from "./ArchiveTable"
 import ArchiveTableSearchResults from "./ArchiveTableSearchResults"
-import ArchiveBanner from "./ArchiveBanner"
+import FilterAndSearch from "../FilterAndSearch"
+import Header from "../Header"
 import Loading from "../Loading"
 
 import sortProfiles from "../../utils/sortProfiles"

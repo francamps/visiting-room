@@ -50,7 +50,7 @@ TODO: PUT IT IN ITS OWN FILE
   position: relative;
   padding-left: 0;
   padding-right: 0px;
-  margin: 20px 20px 0 0;
+  margin: 0px 20px 20px 0;
   font-family: "EB Garamond";
   font-size: var(--font-copy-label);
   font-weight: 300;
@@ -119,5 +119,11 @@ TODO: PUT IT IN ITS OWN FILE
   .about .title {
     font-size: 2.5rem;
     margin-top: 20px;
+  }
+
+  .about .react-tabs .react-tabs__tab-list {
+    width: calc(100% - 40px);
+    padding-top: 20px;
+    padding-bottom: 0;
   }
 }

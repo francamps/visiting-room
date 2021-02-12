@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react"
 import { useInView } from "react-intersection-observer"
 
+import Caret from "../Caret"
+import Footer from "../Footer"
+import Foreword from "./Foreword"
 import Header from "../Header"
 import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
-import Caret from "../Caret"
-import Foreword from "./Foreword"
-import Footer from "../Footer"
 
 import { TIMELINE } from "../../content/timeline"
 

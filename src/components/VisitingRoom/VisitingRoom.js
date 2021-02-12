@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react"
 import ReactPlayer from "react-player"
+
+import Grid from "../Grid"
 import Header from "../Header"
 import VisitingRoomBanner from "./VisitingRoomBanner"
-import Grid from "../Grid"
-
-import "./VisitingRoom.css"
 
 //import audio from "../../content/audio/stanfield/landingB.mp3"
 import audio from "../../content/audio/stanfield/landingFull.mp3"
+
+import "./VisitingRoom.css"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)

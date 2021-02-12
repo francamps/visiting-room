@@ -3,15 +3,15 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
 import Header from "../Header"
+import FAQs from "./FAQs.js"
 import Footer from "../Footer"
 import Paragraphs from "../Paragraphs"
-import FAQs from "./FAQs.js"
+
+import { colors } from "../../content/colors"
+import { REFERENCES } from "../../content/references"
+import image from "../../images/cotton.png"
 
 import "./About.css"
-
-import { REFERENCES } from "../../content/references"
-import { colors } from "../../content/colors"
-import image from "../../images/cotton.png"
 
 const About = ({ content, faqs, terms, team }) => {
   const params = new URLSearchParams(
@@ -42,7 +42,7 @@ const About = ({ content, faqs, terms, team }) => {
                   })`,
                 }}
               >
-                The project
+                The Project
               </span>
             </Tab>
             <Tab>

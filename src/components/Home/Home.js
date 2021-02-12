@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import ReactPlayer from "react-player"
+
 import HomeVideo from "./HomeVideo"
 import Skip from "./Skip"
 
-import "./Home.css"
-
 import audio from "../../content/audio/stanfield/landingFull.mp3"
+
+import "./Home.css"
 
 const Home = ({ images }) => {
   const [barProgress, setBarProgress] = useState(0)
@@ -14,7 +15,7 @@ const Home = ({ images }) => {
   useEffect(() => {
     let timerActionsWords = setTimeout(() => {
       setHideWords(true)
-    }, 5000)
+    }, 8000)
 
     return () => {
       clearTimeout(timerActionsWords)

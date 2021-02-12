@@ -135,6 +135,14 @@
     box-sizing: border-box;
     line-height: 1em;
     font-size: 1.5em;
+    width: calc(100% - 140px);
+    justify-content: center;
+  }
+
+  .header .home-title h4 {
+    margin: 0;
+    height: auto;
+    font-weight: 300;
   }
 
   .header .home-title h6.home-link {

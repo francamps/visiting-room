@@ -300,6 +300,13 @@ TIMELINE TEXT STUFF
     font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   }
 
+  .timeline .footnote-trigger .hover-link {
+    font-style: bold;
+  }
+  .timeline .footnote-trigger .hover-link:after {
+    width: 100%;
+  }
+
   .timeline-step {
     align-items: flex-start;
   }
@@ -355,7 +362,7 @@ TIMELINE TEXT STUFF
 
   .timeline .hover-link:after {
     bottom: -3px;
-    height: 3px;
+    height: 2px;
   }
 
   .title-wrap {

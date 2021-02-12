@@ -32,7 +32,7 @@ const USE_PRISMIC = true
 
 const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
   const [hoveredRow, setHover] = useState(null)
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+  const isTabletOrMobile = true //useMediaQuery({ query: "(max-width: 1224px)" })
 
   if (isTabletOrMobile) {
     return (

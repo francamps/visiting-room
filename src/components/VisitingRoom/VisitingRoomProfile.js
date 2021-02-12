@@ -3,8 +3,9 @@ import { navigate } from "gatsby"
 
 import Video from "../Video/Video"
 
-import "./VisitingRoom.css"
 import getProfileProps from "../../utils/getProfileProps"
+
+import "./VisitingRoom.css"
 
 const VisitingRoom = ({ pathContext }) => {
   const { profileId, full_name, color, nextProfile, video_link } = pathContext
