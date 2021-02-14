@@ -2,7 +2,7 @@
   "name": "the-visiting-room",
   "private": true,
   "description": "The Visiting Room",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Franc Camps Febrer <francamps@gmail.com>",
   "dependencies": {
     "d3-ease": "^2.0.0",
