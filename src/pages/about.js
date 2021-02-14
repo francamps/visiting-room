@@ -64,12 +64,7 @@ const AboutPage = () => {
     <StaticQuery
       query={`${query}`}
       render={data => {
-        const title = data
-          ? data.allPrismicAbout.edges[0].node.data.about_this_project.text
-          : ""
-        const content = data
-          ? data.allPrismicAbout.edges[0].node.data.about_content
-          : []
+        const abouts = data ? data.allPrismicAbout.edges : []
 
         const terms = data
           ? data.allPrismicGlossaryTerm.edges[0].node.data.term
@@ -83,15 +78,7 @@ const AboutPage = () => {
               .sort((a, b) => a.rank - b.rank)
           : []
 
-        return (
-          <About
-            faqs={faqs}
-            title={title}
-            content={content}
-            terms={terms}
-            team={team}
-          />
-        )
+        return <About faqs={faqs} abouts={abouts} terms={terms} team={team} />
       }}
     />
   )

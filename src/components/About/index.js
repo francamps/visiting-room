@@ -1,7 +1,9 @@
 import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
+import startCase from "lodash/startCase"
 
+import AboutCopy from "./AboutCopy"
 import Header from "../Header"
 import FAQs from "./FAQs.js"
 import Footer from "../Footer"
@@ -9,11 +11,10 @@ import Paragraphs from "../Paragraphs"
 
 import { colors } from "../../content/colors"
 import { REFERENCES } from "../../content/references"
-import image from "../../images/cotton.png"
 
 import "./About.css"
 
-const About = ({ content, faqs, terms, team }) => {
+const About = ({ abouts, faqs, terms, team }) => {
   const params = new URLSearchParams(
     typeof window !== "undefined" ? window.location.search : ""
   )
@@ -34,28 +35,23 @@ const About = ({ content, faqs, terms, team }) => {
           }}
         >
           <TabList>
-            <Tab>
-              <span
-                style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
-                }}
-              >
-                The Project
-              </span>
-            </Tab>
-            <Tab>
-              <span
-                style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
-                }}
-              >
-                The Angolite
-              </span>
-            </Tab>
+            {abouts.map(about => {
+              const title = about ? about.node.data.about_this_project.text : ""
+
+              return (
+                <Tab>
+                  <span
+                    style={{
+                      backgroundColor: `var(${
+                        colors[Math.floor(Math.random() * colors.length)]
+                      })`,
+                    }}
+                  >
+                    {startCase(title.split("About ")[1])}
+                  </span>
+                </Tab>
+              )
+            })}
             <Tab>
               <span
                 style={{
@@ -103,34 +99,11 @@ const About = ({ content, faqs, terms, team }) => {
           </TabList>
 
           <div className="copy-wrap">
-            <TabPanel>
-              <h3>About The Visiting Room Project</h3>
-              <article className="copy">
-                <div
-                  className="term-content"
-                  dangerouslySetInnerHTML={{ __html: content.html }}
-                ></div>
-                <div className="map" style={{ height: "500px" }}>
-                  <img src={image} style={{ width: "100%", height: "100%" }} />
-                  <p
-                    className="caption"
-                    style={{
-                      textAlign: "left",
-                      marginBottom: "20px",
-                      marginTop: "10px",
-                      fontSize: "var(--font-small)",
-                    }}
-                  >
-                    {
-                      "LSU Libraries Special Collections / Andrew D. Lytle's Baton Rouge Photograph Collection (1900-1901, questionable)"
-                    }
-                  </p>
-                </div>
-              </article>
-            </TabPanel>
-            <TabPanel>
-              <h3>The Angolite</h3>
-            </TabPanel>
+            {abouts.map(about => (
+              <TabPanel>
+                <AboutCopy about={about} />
+              </TabPanel>
+            ))}
             <TabPanel>
               <h3>Frequently Asked Questions (FAQs)</h3>
               <FAQs faqs={faqs} params={params} updateParams={updateParams} />
