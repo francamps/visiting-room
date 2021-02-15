@@ -165,7 +165,11 @@ const GridCell = ({
         </div>
       )}
       <h3 className="name-tag border-animation">
-        <div class="svg-wrapper">
+        <div
+          class={`svg-wrapper ${
+            isHover || (isTabletOrMobile && inView) ? "hovered" : ""
+          }`}
+        >
           <svg height="40" width="210" xmlns="http://www.w3.org/2000/svg">
             <rect
               className="shape"

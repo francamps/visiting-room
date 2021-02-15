@@ -12,7 +12,7 @@ import "./Foreword.css"
 
 const videoSrcURL = "https://vimeo.com/447172431"
 
-const Foreword = () => {
+const Foreword = ({ inView }) => {
   const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
@@ -59,6 +59,10 @@ const Foreword = () => {
       handleFullScreen.exit()
     }
   }, [escPress])
+
+  useEffect(() => {
+    if (!inView) setPlaying(false)
+  }, [inView])
 
   return (
     <div className="foreword-wrap">

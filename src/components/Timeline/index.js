@@ -69,7 +69,7 @@ const Timeline = props => {
         >
           <div className="timeline-frame">
             <div ref={ref} className="timeline-cover">
-              <Foreword />
+              <Foreword inView={inView} />
               <div
                 style={{
                   display: "flex",
