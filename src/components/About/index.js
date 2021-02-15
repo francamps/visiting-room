@@ -85,17 +85,6 @@ const About = ({ abouts, faqs, terms, team }) => {
                 Team
               </span>
             </Tab>
-            <Tab>
-              <span
-                style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
-                }}
-              >
-                Learn more
-              </span>
-            </Tab>
           </TabList>
 
           <div className="copy-wrap">
@@ -127,16 +116,10 @@ const About = ({ abouts, faqs, terms, team }) => {
                 </div>
               </article>
             </TabPanel>
-            <TabPanel>
-              <>
-                <h3>Resources</h3>
-                <Paragraphs paragraphs={REFERENCES} />
-              </>
-            </TabPanel>
           </div>
         </Tabs>
       </section>
-      <Footer withHistory />
+      {null /*<Footer withHistory />*/}
     </>
   )
 }

@@ -7,8 +7,10 @@ import Foreword from "./Foreword"
 import Header from "../Header"
 import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
+import Paragraphs from "../Paragraphs"
 
 import { TIMELINE } from "../../content/timeline"
+import { REFERENCES } from "../../content/references"
 
 import "./Timeline.css"
 
@@ -68,7 +70,26 @@ const Timeline = props => {
           <div className="timeline-frame">
             <div ref={ref} className="timeline-cover">
               <Foreword />
-              <Caret color="var(--clr-off-white)" />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginTop: "0px",
+                }}
+              >
+                <div style={{ transform: "scale(0.7)" }}>
+                  <Caret color="var(--clr-off-white)" animate />
+                </div>
+                <span
+                  style={{
+                    fontSize: "var(--font-small)",
+                    marginTop: "0px",
+                  }}
+                >
+                  Scroll
+                </span>
+              </div>
             </div>
             {TIMELINE.map(
               (timelineStep, stepIdx) =>
@@ -83,7 +104,18 @@ const Timeline = props => {
                 )
             )}
 
-            <Footer withRefs withArchive theme="light" />
+            <div className="footer link-wrap">
+              <p
+                className="hover-link"
+                onClick={() =>
+                  setModal(<Paragraphs paragraphs={REFERENCES} theme="light" />)
+                }
+                style={{ color: "var(--clr-black)", fontFamily: "EB Garamond" }}
+              >
+                See references
+              </p>
+            </div>
+            {null /*<Footer withRefs withArchive theme="light" />*/}
           </div>
 
           {modalContent && (

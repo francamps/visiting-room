@@ -10,6 +10,10 @@
   font-weight: 300;
 }
 
+.paragraph-wrap.light .paragraph.reference {
+  color: var(--clr-black);
+}
+
 .paragraph.link a {
   color: var(--clr-black);
   font-family: "EB Garamond";

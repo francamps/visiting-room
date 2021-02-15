@@ -230,7 +230,7 @@ const ChartC = () => {
       .join("text")
       .attr("class", "text-value-label legend-label")
       .style("text-anchor", "end")
-      .text(d => "Lifers population")
+      .text(d => "Life population")
       .attr("x", d => xScale(d.yearF))
       .transition()
       .ease(easeCircleInOut)

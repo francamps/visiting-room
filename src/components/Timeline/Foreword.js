@@ -98,7 +98,6 @@ const Foreword = () => {
                     height="100%"
                     onReady={() => {
                       setLoading(false)
-                      setPlaying(true)
                     }}
                     onPause={() => {
                       setPause(true)

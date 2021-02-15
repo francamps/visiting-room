@@ -133,26 +133,29 @@ MENU LINKS
 }
 
 .menu-option-wrap .hover-link:before {
+  /*
   content: "";
   position: absolute;
   bottom: -12px;
   width: 0px;
-  height: 6px;
+  height: 0px;
   margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
   background-color: var(--clr-white);
+  */
 }
 
 .menu-option-wrap:hover .hover-link:before {
+  /*
   width: 90%;
-  height: 6px;
-  /*background-color: var(--clr-primary);*/
+  height: 0px;
   -webkit-animation: rotatingBackgroundColor 20s ease infinite;
   -moz-animation: rotatingBackgroundColor 20s ease infinite;
   -ms-animation: rotatingBackgroundColor 20s ease infinite;
   -o-animation: rotatingBackgroundColor 20s ease infinite;
   animation: rotatingBackgroundColor 20s ease infinite;
+  */
 }
 
 .hover-link:before {

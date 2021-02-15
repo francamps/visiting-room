@@ -80,6 +80,12 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   color: var(--clr-white);
 }
 
+.archive table.isCompact thead tr,
+.archive table.isCompact thead tr th {
+  height: 10px;
+  border-bottom: 1px solid var(--clr-light-grey);
+}
+
 .archive table thead tr th:nth-child(1) {
   text-align: left;
   justify-content: flex-start;

@@ -1,7 +1,8 @@
-/*.animate {
-  animation: bouncingLoader 0.8s infinite alternate;
+.animate {
+  animation: bouncingLoader 1.2s infinite alternate;
 }
 
+/*
 svg polygon {
   opacity: 0.7;
   transition: opacity 0.4s;

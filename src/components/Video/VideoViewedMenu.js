@@ -23,7 +23,7 @@ const VideoViewedMenu = ({
           </div>
           <div className="" style={{ color: "var(--clr-off-white)" }}>
             {`${current_age -
-              age_at_offense} years in prision at the time of the interview.`}
+              age_at_offense} years in prison at the time of the interview.`}
           </div>
         </div>
       </div>

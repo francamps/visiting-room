@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 
 import "./Paragraphs.css"
 
-const Paragraphs = ({ paragraphs, setModal, step }) => {
+const Paragraphs = ({ paragraphs, setModal, step, theme }) => {
   return (
-    <div className="paragraph-wrap">
+    <div className={`paragraph-wrap ${theme === "light" ? "light" : ""}`}>
       {paragraphs.map((paragraph, idx) => {
         if (paragraph.element === "p") {
           return (
