@@ -20,6 +20,11 @@ const Menu = ({
     setBurgerOpen(isMenuExpanded)
   }, [isMenuExpanded])
 
+  const getColor = idx => {
+    //return colors[Math.floor(Math.random() * colors.length)]
+    return colors[idx]
+  }
+
   return (
     <div style={{ width: "20px", marginLeft: "10px" }}>
       <div
@@ -54,9 +59,7 @@ const Menu = ({
             }}
             className="hover-link"
             style={{
-              background: `var(${
-                colors[Math.floor(Math.random() * colors.length)]
-              })`,
+              background: `var(${getColor(0)})`,
             }}
           >
             The Visiting Room
@@ -67,9 +70,7 @@ const Menu = ({
             to="/history"
             className="hover-link"
             style={{
-              background: `var(${
-                colors[Math.floor(Math.random() * colors.length)]
-              })`,
+              background: `var(${getColor(1)})`,
             }}
             onClick={() => {
               setBurgerOpen(false)
@@ -83,9 +84,7 @@ const Menu = ({
             to="/archive"
             className="hover-link"
             style={{
-              background: `var(${
-                colors[Math.floor(Math.random() * colors.length)]
-              })`,
+              background: `var(${getColor(2)})`,
             }}
             onClick={() => {
               setBurgerOpen(false)
@@ -99,9 +98,7 @@ const Menu = ({
             to="/about"
             className="hover-link"
             style={{
-              background: `var(${
-                colors[Math.floor(Math.random() * colors.length)]
-              })`,
+              background: `var(${getColor(5)})`,
             }}
             onClick={() => {
               setBurgerOpen(false)

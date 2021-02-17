@@ -108,7 +108,15 @@ const Timeline = props => {
               <p
                 className="hover-link"
                 onClick={() =>
-                  setModal(<Paragraphs paragraphs={REFERENCES} theme="light" />)
+                  setModal({
+                    styling: { alignItems: "flex-start", overflow: "auto" },
+                    content: (
+                      <>
+                        <h2 style={{ marginBottom: "20px" }}>References</h2>
+                        <Paragraphs paragraphs={REFERENCES} theme="light" />
+                      </>
+                    ),
+                  })
                 }
                 style={{ color: "var(--clr-black)", fontFamily: "EB Garamond" }}
               >
@@ -119,7 +127,11 @@ const Timeline = props => {
           </div>
 
           {modalContent && (
-            <TimelineModal setModal={setModal} content={modalContent} />
+            <TimelineModal
+              setModal={setModal}
+              content={modalContent.content}
+              styling={modalContent.styling}
+            />
           )}
         </article>
       </>

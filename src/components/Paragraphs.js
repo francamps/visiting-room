@@ -23,7 +23,7 @@ const Paragraphs = ({ paragraphs, setModal, step, theme }) => {
                 className="footnote-trigger"
                 onClick={e => {
                   e.stopPropagation()
-                  setModal(paragraph.content)
+                  setModal({ content: paragraph.content })
                 }}
               >
                 {paragraph.trigger ? (

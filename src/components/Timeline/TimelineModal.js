@@ -1,24 +1,14 @@
 import React from "react"
-import { useSpring, animated } from "react-spring"
 
 import CrossClose from "../CrossClose"
 
 import "./TimelineModal.css"
 
-const TimelineModal = ({ content, setModal }) => {
-  const fadeInProps = useSpring({
-    config: { duration: 400 },
-    to: { opacity: 1 },
-    from: {
-      opacity: 0,
-    },
-  })
-
+const TimelineModal = ({ styling, content, setModal }) => {
   return (
-    <animated.div
-      className=""
+    <div
+      className="fadeinfast"
       style={{
-        ...fadeInProps,
         position: "fixed",
         top: 0,
         right: 0,
@@ -31,6 +21,7 @@ const TimelineModal = ({ content, setModal }) => {
         alignItems: "center",
         boxShadow: "10px 5px 5px white",
         zIndex: 12,
+        ...styling,
       }}
       onClick={() => {
         setModal(false)
@@ -53,7 +44,7 @@ const TimelineModal = ({ content, setModal }) => {
       <div className="modal">
         <p>{content}</p>
       </div>
-    </animated.div>
+    </div>
   )
 }
 

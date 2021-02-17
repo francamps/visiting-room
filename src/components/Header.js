@@ -44,13 +44,25 @@ const Header = ({
             <span>Project</span>
           </div>
           {isTabletOrMobile ? (
-            <div className="home-title">
+            <div
+              className="home-title"
+              style={{
+                width:
+                  title === "Full Archive"
+                    ? "calc(100% - 230px)"
+                    : "calc(100% - 140px)",
+              }}
+            >
               <h4>{title}</h4>
             </div>
           ) : (
             <div className="home-title">
               <h2
-                style={{ margin: 0, height: "24px", lineHeight: "24px" }}
+                style={{
+                  margin: 0,
+                  height: "24px",
+                  lineHeight: "24px",
+                }}
                 onFocus={() => {
                   setHoverTitle(true)
                 }}
