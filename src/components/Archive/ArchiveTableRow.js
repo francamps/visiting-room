@@ -72,14 +72,24 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
             />
           )}
         </div>
-        <p className="full-name">{fullName}</p>
+        <div className="full-name">
+          <Play
+            size="normal"
+            color={"white"}
+            onClick={() => {
+              const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+              videos[fullName] && navigate(`/archive/${profileUri}`)
+            }}
+          />
+          <p>{fullName}</p>
+        </div>
       </td>
       <td>
         <div className="fields">
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "2fr 1fr",
               gridRowGap: "8px",
               width: "100%",
             }}
@@ -106,8 +116,10 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
                 </p>
               </>
             )}
-            <p>{"Age at offense (year)"}</p>
-            <p>{`${age_at_offense} (${date_of_offense})`}</p>
+            <p>{"Incarcerated since"}</p>
+            <p>{date_of_offense}</p>
+            <p>{"Age at offense"}</p>
+            <p>{age_at_offense}</p>
             <p>{"Current age"}</p>
             <p>{current_age}</p>
             <p>{"Years incarcerated"}</p>
@@ -127,22 +139,6 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
           )}
         </div>
       </td>
-      {videos[fullName] ? (
-        <td className="play" style={{ textAlign: "center" }}>
-          <Play
-            size="medium"
-            color={"white"}
-            onClick={() => {
-              const profileUri = fullName.toLowerCase().replace(/ /g, "_")
-              videos[fullName] && navigate(`/archive/${profileUri}`)
-            }}
-          />
-        </td>
-      ) : (
-        <td className="play">
-          <p>N/A</p>
-        </td>
-      )}
     </tr>
   )
 }

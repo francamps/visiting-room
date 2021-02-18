@@ -16,7 +16,7 @@ const TimelineModal = ({ styling, content, setModal }) => {
         left: 0,
         display: "flex",
         backdropFilter: "blur(6px)",
-        background: "rgba(var(--clr-white-rgb), 0.8)",
+        background: "rgba(var(--clr-white-rgb), 0.9)",
         justifyContent: "center",
         alignItems: "center",
         boxShadow: "10px 5px 5px white",
@@ -27,21 +27,21 @@ const TimelineModal = ({ styling, content, setModal }) => {
         setModal(false)
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-        }}
-      >
-        <CrossClose
-          onClick={() => {
-            setModal(false)
+      <div className="modal" style={{ position: "relative" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "0px",
+            right: "0px",
           }}
-          theme="light"
-        />
-      </div>
-      <div className="modal">
+        >
+          <CrossClose
+            onClick={() => {
+              setModal(false)
+            }}
+            theme="light"
+          />
+        </div>
         <p>{content}</p>
       </div>
     </div>

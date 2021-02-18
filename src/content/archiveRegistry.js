@@ -82,7 +82,7 @@ export const videos = {
   "Kennedy Thompson": "https://vimeo.com/447597914",
   "Aaron Brent": "https://vimeo.com/446677069",
   "Adonis Brooks": "https://vimeo.com/446680267",
-  "Anthony Hingles": "https://vimeo.com/446698798",
+  "Anthony Hingle": "https://vimeo.com/446698798",
   "Chris Montague": "https://vimeo.com/452588728",
   "Chris Phillips": "https://vimeo.com/452598882",
   "Cleothus Price": "https://vimeo.com/452610326",

@@ -35,23 +35,9 @@ const About = ({ abouts, faqs, terms, team }) => {
           }}
         >
           <TabList>
-            {abouts.map(about => {
-              const title = about ? about.node.data.about_this_project.text : ""
-
-              return (
-                <Tab>
-                  <span
-                    style={{
-                      backgroundColor: `var(${
-                        colors[Math.floor(Math.random() * colors.length)]
-                      })`,
-                    }}
-                  >
-                    {startCase(title.split("About ")[1])}
-                  </span>
-                </Tab>
-              )
-            })}
+            <Tab>
+              <span style={{ background: `var(${colors[5]})` }}>About</span>
+            </Tab>
             <Tab>
               <span
                 style={{
@@ -88,11 +74,9 @@ const About = ({ abouts, faqs, terms, team }) => {
           </TabList>
 
           <div className="copy-wrap">
-            {abouts.map(about => (
-              <TabPanel>
-                <AboutCopy about={about} />
-              </TabPanel>
-            ))}
+            <TabPanel>
+              <AboutCopy abouts={abouts} />
+            </TabPanel>
             <TabPanel>
               <h3>Frequently Asked Questions (FAQs)</h3>
               <FAQs faqs={faqs} params={params} updateParams={updateParams} />

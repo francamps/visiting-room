@@ -374,7 +374,7 @@ const ChartC = () => {
           }}
           style={{ marginRight: "10px" }}
         >
-          See Lifer's Population
+          See Lifers Population
         </button>
         <button
           onClick={() => {

@@ -23,13 +23,6 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
           return false
         })
         .map((node, idx) => getProfileProps(node, USE_PRISMIC))
-        .sort((a, b) => {
-          const aHasVideo = a.video_link && a.video_link.url
-          const bHasVideo = b.video_link && b.video_link.url
-          if (aHasVideo > bHasVideo) return 1
-          if (aHasVideo <= bHasVideo) return -1
-          return
-        })
         .map(props => {
           const {
             image,

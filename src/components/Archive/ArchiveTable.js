@@ -32,7 +32,7 @@ const USE_PRISMIC = true
 
 const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
   const [hoveredRow, setHover] = useState(null)
-  const isTabletOrMobile = true //useMediaQuery({ query: "(max-width: 1224px)" })
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   if (isTabletOrMobile) {
     return (
@@ -42,7 +42,6 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
             {columnsMobile.map(column => (
               <th key={`header-${column.key}`}>{column.label}</th>
             ))}
-            <th className="play" />
           </tr>
         </thead>
         <tbody>
@@ -95,11 +94,17 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                 }}
               >
                 <td>{fullName}</td>
-                <td style={{ display: "block" }}>
+                <td
+                  style={{ display: "block", position: "relative", padding: 0 }}
+                >
                   <div
                     style={{
-                      position: "relative",
+                      position: "absolute",
                       height: "100%",
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
                     }}
                   >
                     {image && (
@@ -122,6 +127,19 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
                         }}
                       />
                     )}
+                  </div>
+                  <div className="full-name">
+                    <Play
+                      size="normal"
+                      color={"white"}
+                      onClick={() => {
+                        const profileUri = fullName
+                          .toLowerCase()
+                          .replace(/ /g, "_")
+                        videos[fullName] && navigate(`/archive/${profileUri}`)
+                      }}
+                    />
+                    <p>{fullName}</p>
                   </div>
                 </td>
                 <td>

@@ -104,12 +104,19 @@ const Timeline = props => {
                 )
             )}
 
-            <div className="footer link-wrap">
+            <div
+              className="footer link-wrap"
+              style={{ justifyContent: "center" }}
+            >
               <p
                 className="hover-link"
                 onClick={() =>
                   setModal({
-                    styling: { alignItems: "flex-start", overflow: "auto" },
+                    styling: {
+                      alignItems: "flex-start",
+                      overflow: "auto",
+                      paddingTop: "20px",
+                    },
                     content: (
                       <>
                         <h2 style={{ marginBottom: "20px" }}>References</h2>

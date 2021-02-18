@@ -5,6 +5,14 @@ import VisitingRoom from "../components/VisitingRoom/VisitingRoom"
 
 import useProfiles from "../utils/useProfiles"
 
+const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
 const VisitingRoomPage = props => {
   const { loading, profiles, images } = useProfiles(props)
 
@@ -12,8 +20,8 @@ const VisitingRoomPage = props => {
     <>
       <VisitingRoom
         loading={loading}
-        profiles={Object.values(profiles).filter(
-          p => p.show_profile_in_visiting_room
+        profiles={shuffleArray(
+          Object.values(profiles).filter(p => p.show_profile_in_visiting_room)
         )}
         images={images}
       />

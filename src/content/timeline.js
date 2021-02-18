@@ -360,7 +360,7 @@ export const TIMELINE = [
           },
           {
             element: "p",
-            content: ` Louisiana governors were not immune to the "tough on crime" politics 
+            content: `Louisiana governors were not immune to the "tough on crime" politics 
             that had led to stiffer sentences at the legislature, 
             and their willingness to grant commutations evaporated.`,
           },

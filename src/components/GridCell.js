@@ -14,7 +14,7 @@ const videosBackground = {
   "Alvin Catchings": "504668722",
   "Arthur Carter": "508705327",
   "Archie Tyner": "508705053",
-  "Anthony Hingles": "508704922",
+  "Anthony Hingle": "508704922",
   "Darnell Craft": "508706478",
   "Darwin Willie": "508706826",
   "Daryl Waters": "508706916",
@@ -166,9 +166,9 @@ const GridCell = ({
       )}
       <h3 className="name-tag border-animation">
         <div
-          class={`svg-wrapper ${
-            isHover || (isTabletOrMobile && inView) ? "hovered" : ""
-          }`}
+          class={`svg-wrapper ${isHover ? "hovered" : ""}
+          ${isTabletOrMobile && inView ? "static-hovered" : ""}
+          `}
         >
           <svg height="40" width="210" xmlns="http://www.w3.org/2000/svg">
             <rect
@@ -181,17 +181,13 @@ const GridCell = ({
               <div className="name-wrap">
                 {video_link && video_link.url && (
                   <div className="name-play">
-                    <Play
-                      color={
-                        isHover || (isTabletOrMobile && inView) ? color : null
-                      }
-                    />
+                    <Play color={isHover ? color : null} />
                   </div>
                 )}
                 <div
                   className="text"
                   style={
-                    isHover || (isTabletOrMobile && inView)
+                    isHover
                       ? {
                           color: `var(--${getColor(color)}`,
                         }
