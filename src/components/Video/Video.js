@@ -14,7 +14,6 @@ const Video = ({
   color,
   onClose,
   profileId,
-  setView,
   isArchive,
   nextProfile,
   hasTranscript,
@@ -27,6 +26,7 @@ const Video = ({
   )
 
   const playerRef = useRef()
+  const [duration, setDuration] = useState(null)
   const [showTranscript, setShowTranscript] = useState(false)
   const [isLastTenSeconds, setIsLastTenSeconds] = useState(false)
   const [progress, setProgress] = useState({
@@ -36,9 +36,7 @@ const Video = ({
 
   useEffect(() => {
     setIsLastTenSeconds(
-      playerRef.current && playerRef.current.getDuration()
-        ? playerRef.current.getDuration() - progress.progressSeconds < 15
-        : false
+      duration ? duration - progress.progressSeconds < 15 : false
     )
   }, [progress])
 
@@ -48,9 +46,10 @@ const Video = ({
       <VideoPlayer
         videoSrcURL={isArchive ? archive[name] : video_link}
         videoTitle={name}
-        autoplay
         color={color}
         onClose={onClose}
+        duration={duration}
+        setDuration={setDuration}
         name={name}
         age_at_offense={age_at_offense}
         current_age={current_age}

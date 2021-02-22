@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "author": "Franc Camps Febrer <francamps@gmail.com>",
   "dependencies": {
+    "@vimeo/player": "^2.15.0",
     "d3-ease": "^2.0.0",
     "d3-scale": "^3.2.1",
     "d3-selection": "^1.4.1",

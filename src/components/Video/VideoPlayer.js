@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
+import isNull from "lodash/isNull"
+import Player from "@vimeo/player"
 
 import Play from "../Symbols/Play"
 import Loading from "../Loading"
@@ -19,9 +21,11 @@ const VideoPlayer = ({
   age_at_offense,
   current_age,
   color,
+  duration,
   onClose,
   nextProfile,
   showTranscript,
+  setDuration,
   setShowTranscript,
   isLastTenSeconds,
   progress,
@@ -36,7 +40,7 @@ const VideoPlayer = ({
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
-
+  const [videoPlayer, setVideoPlayer] = useState(null)
   const [showControls, setShowControls] = useState(true)
   const [showCaptions, setShowCaptions] = useState(texttrack)
 
@@ -46,6 +50,55 @@ const VideoPlayer = ({
   const escPress = useKeyPress(27)
 
   const barRef = useRef()
+  const videoPlayerRef = useRef()
+
+  useEffect(() => {
+    if (isNull(videoPlayer) && videoPlayerRef.current) {
+      setVideoPlayer(
+        new Player(videoPlayerRef.current, {
+          autoplay: 1,
+          controls: false,
+          title: false,
+          texttrack: showCaptions,
+          muted: 1,
+        })
+      )
+    }
+  }, [videoPlayerRef.current])
+
+  useEffect(() => {
+    if (videoPlayer) {
+      videoPlayer.getDuration().then(duration => {
+        console.log(duration)
+        setDuration(duration)
+      })
+      videoPlayer.on("play", () => {
+        setLoading(false)
+        setPlaying(true)
+        setPause(false)
+      })
+      videoPlayer.on("pause", () => {
+        setPause(true)
+      })
+    }
+  }, [videoPlayer])
+
+  useEffect(() => {
+    if (videoPlayer) {
+      if (!isPlaying) {
+        videoPlayer.play()
+        if (startTime) videoPlayer.setCurrentTime(startTime)
+      }
+
+      videoPlayer.on("timeupdate", ({ percent, seconds }) => {
+        setPlaying(true)
+        setProgress({
+          progress: percent,
+          progressSeconds: seconds,
+        })
+      })
+    }
+  }, [isPlaying])
 
   useEffect(() => {
     let timer
@@ -63,12 +116,13 @@ const VideoPlayer = ({
   }, [countDownToHideControls, showControls])
 
   useEffect(() => {
-    if (!isPlaying) {
-      setPlaying(true)
-      setPause(false)
-    }
-    if (isPlaying) {
-      setPause(!isPaused)
+    if (videoPlayer) {
+      if (!isPlaying) {
+        videoPlayer.play()
+      }
+      if (isPlaying) {
+        videoPlayer.pause()
+      }
     }
   }, [spacePress])
 
@@ -78,17 +132,29 @@ const VideoPlayer = ({
     }
   }, [escPress])
 
+  useEffect(() => {
+    if (videoPlayer) {
+      if (showCaptions) {
+        videoPlayer.getTextTracks().then(tracks => {
+          videoPlayer.enableTextTrack(tracks[0].language)
+        })
+      } else {
+        videoPlayer.disableTextTrack()
+      }
+    }
+  }, [showCaptions])
+
   return (
     <FullScreen handle={handleFullScreen}>
       <div
         className={`video ${handleFullScreen.active ? "video-fullscreen" : ""}`}
         onClick={() => {
-          if (isPlaying && isPaused) {
-            setPlaying(true)
-            setPause(false)
-          } else if (isPlaying && !isPaused) {
-            setPlaying(true)
-            setPause(true)
+          if (videoPlayer) {
+            setLoading(true)
+            videoPlayer.getPaused().then(paused => {
+              if (paused) videoPlayer.play()
+              if (!paused) videoPlayer.pause()
+            })
           }
         }}
         onMouseMove={() => {
@@ -98,8 +164,28 @@ const VideoPlayer = ({
           if (isPlaying) setCountDownToHideControls(5000)
         }}
       >
+        <iframe
+          ref={videoPlayerRef}
+          tabindex="-1"
+          aria-hidden="true"
+          src={`https://player.vimeo.com/video/${
+            videoSrcURL.split("https://vimeo.com/")[1]
+          }?controls=0`}
+          width="100%"
+          height="100%"
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          texttrack={"en-US"}
+          allow="autoplay; fullscreen"
+        ></iframe>
+
         {isPlaying ? (
           <>
+            {
+              null /*
+            
             <ReactPlayer
               ref={playerRef}
               url={videoSrcURL}
@@ -109,7 +195,7 @@ const VideoPlayer = ({
               height="100%"
               onReady={() => {
                 setLoading(false)
-                if (autoplay) setPlaying(true)
+                if (autoplay || startTime) setPlaying(true)
                 if (startTime) {
                   const duration = playerRef.current.getDuration()
                   playerRef.current.seekTo(startTime)
@@ -151,7 +237,8 @@ const VideoPlayer = ({
                   },
                 },
               }}
-            />
+            />*/
+            }
             {isPlaying && isLoading && (
               <div className="loading-wrap">
                 <Loading color={color} />
@@ -185,8 +272,11 @@ const VideoPlayer = ({
                   size="huge"
                   tabIndex={0}
                   onClick={() => {
-                    setPause(false)
-                    setPlaying(true)
+                    videoPlayer.getPaused().then(paused => {
+                      if ((isPlaying && paused) || !isPlaying) {
+                        videoPlayer.play()
+                      }
+                    })
                   }}
                 />
               </div>
@@ -210,9 +300,8 @@ const VideoPlayer = ({
             current_age={current_age}
             color={color}
             onClickReplay={() => {
-              playerRef.current.seekTo(0)
-              setPause(false)
-              setPlaying(true)
+              videoPlayer.setCurrentTime(0)
+              videoPlayer.play()
             }}
             onClickNext={() => {
               // Do Something
@@ -225,13 +314,18 @@ const VideoPlayer = ({
       <VideoPlayerControls
         barRef={barRef}
         color={color}
+        duration={duration}
         isPlaying={isPlaying}
         isPaused={isPaused}
-        playerRef={playerRef}
+        videoPlayer={videoPlayer}
         profileId={profileId}
         progress={progress}
-        setPause={setPause}
-        setPlaying={setPlaying}
+        setPause={() => {
+          videoPlayer.pause()
+        }}
+        setPlaying={() => {
+          videoPlayer.play()
+        }}
         setProgress={setProgress}
         showControls={showControls}
         handleFullScreen={handleFullScreen}
@@ -241,6 +335,9 @@ const VideoPlayer = ({
         hasCaptions={hasCaptions}
         showCaptions={showCaptions}
         setShowCaptions={setShowCaptions}
+        onSeek={progressSeconds => {
+          videoPlayer.setCurrentTime(progressSeconds)
+        }}
       />
     </FullScreen>
   )

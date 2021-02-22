@@ -38,12 +38,13 @@ const getLabelPositiong = (barRef, progressLabel, progress) => {
     : `${labelPosition}px`
 }
 
-const getProgressFromMouse = (e, barRef, playerRef) => {
+const getProgressFromMouse = (e, barRef, duration) => {
+  if (!barRef || !barRef.current) return { progress: 0, progressSeconds: 0 }
+
   const widthOfBar = barRef.current.getBoundingClientRect().width
   const leftOfBar = barRef.current.getBoundingClientRect().left
 
   const fraction = (e.clientX - leftOfBar) / widthOfBar
-  const duration = playerRef.current.getDuration()
 
   return { progress: fraction, progressSeconds: fraction * duration }
 }
@@ -55,36 +56,31 @@ const getBarWidth = (barRef, progress) => {
   return `${widthOfBar * progress.progress}px`
 }
 
-const onSeek = (e, barRef, playerRef, setPause, setProgress) => {
-  setPause(true)
-  const progressMouse = getProgressFromMouse(e, barRef, playerRef)
+const onSeek = (e, barRef, duration, setProgress) => {
+  const progressMouse = getProgressFromMouse(e, barRef, duration)
   setProgress(progressMouse)
-  playerRef.current.seekTo(progressMouse.progress)
 }
 
 const VideoPlayerControls = ({
   barRef,
   color,
+  duration,
+  hasCaptions,
+  hasTranscript,
   handleFullScreen,
   isPlaying,
   isPaused,
-  playerRef,
-  profileId,
   progress,
   setPause,
   setPlaying,
   setProgress,
-  showControls,
-  hasCaptions,
-  hasTranscript,
-  showTranscript,
-  setShowTranscript,
-  showCaptions,
   setShowCaptions,
+  setShowTranscript,
+  showTranscript,
+  showControls,
+  showCaptions,
+  videoPlayer,
 }) => {
-  const params = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  )
   const [progressLabel, setProgressLabel] = useState(null)
 
   return (
@@ -104,6 +100,7 @@ const VideoPlayerControls = ({
                 useCircle={false}
                 tabIndex={0}
                 onClick={() => {
+                  videoPlayer.pause()
                   setPause(true)
                 }}
               />
@@ -114,8 +111,7 @@ const VideoPlayerControls = ({
                 useCircle={false}
                 tabIndex={0}
                 onClick={() => {
-                  setPause(false)
-                  setPlaying(true)
+                  videoPlayer.play()
                 }}
               />
             </div>
@@ -138,7 +134,7 @@ const VideoPlayerControls = ({
           </span>
         </div>
 
-        {playerRef && playerRef.current && (
+        {videoPlayer && (
           <>
             <div
               className="progress-seconds"
@@ -155,7 +151,7 @@ const VideoPlayerControls = ({
                   marginRight: "8px",
                 }}
               >
-                {getStringTime(playerRef.current.getDuration())}
+                {getStringTime(duration)}
               </span>
               {hasTranscript && setShowTranscript && (
                 <span
@@ -193,25 +189,16 @@ const VideoPlayerControls = ({
                   }}
                   onKeyUp={ev =>
                     handleKeyUp(ev, () =>
-                      setShowCaptions(!showCaptions ? "en" : null)
+                      setShowCaptions(!showCaptions ? "en-US" : null)
                     )
                   }
                   onClick={() => {
-                    params.set("t", progress.progressSeconds)
-                    params.set("texttrack", showCaptions === "en" ? null : "en")
-                    window.history.replaceState(
-                      {},
-                      "",
-                      `${window.location.pathname}?${params}`
-                    )
-                    window.location.reload()
+                    setShowCaptions(!showCaptions)
                   }}
                 >
                   <IconCaption
                     color={
-                      showCaptions === "en"
-                        ? color || "var(--clr-primary)"
-                        : "white"
+                      showCaptions ? color || "var(--clr-primary)" : "white"
                     }
                   />
                 </span>
@@ -234,7 +221,7 @@ const VideoPlayerControls = ({
           role="button"
           aria-label="Seek time in video"
           onMouseMove={e => {
-            const progressMouse = getProgressFromMouse(e, barRef, playerRef)
+            const progressMouse = getProgressFromMouse(e, barRef, duration)
             setProgressLabel(progressMouse)
           }}
           onMouseOut={() => {
@@ -245,7 +232,7 @@ const VideoPlayerControls = ({
           }}
           onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
-            onSeek(e, barRef, playerRef, setPause, setProgress)
+            onSeek(e, barRef, duration, setProgress)
           }}
         />
         <div
@@ -258,7 +245,7 @@ const VideoPlayerControls = ({
           }}
           onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
-            onSeek(e, barRef, playerRef, setPause, setProgress)
+            onSeek(e, barRef, duration, setProgress)
           }}
         />
         <div

@@ -56,8 +56,6 @@ TODO: PUT IT IN ITS OWN FILE
   font-weight: 300;
   color: var(--clr-black);
   transition: all 0.75s ease-in-out;
-  letter-spacing: normal;
-  transition: letter-spacing 0.4s;
 }
 
 .react-tabs__tab span {
@@ -76,11 +74,6 @@ TODO: PUT IT IN ITS OWN FILE
   transition-duration: 0.75s;
   opacity: 1;
   background-color: var(--clr-white);
-}
-
-.react-tabs__tab:hover {
-  letter-spacing: 0.02em;
-  transition: letter-spacing 0.4s;
 }
 
 .react-tabs__tab:hover:after {
