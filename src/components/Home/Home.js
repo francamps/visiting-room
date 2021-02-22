@@ -68,8 +68,11 @@ const Home = ({ images }) => {
               navigate("/visiting-room")
             }}
             tooltipActive
+            tooltipStyling={{
+              background: "var(--clr-black)",
+            }}
             tooltipContent={
-              <div className="skip-bar">
+              <div className="skip-bar" style={{ width: "80px" }}>
                 <div
                   className="skip-bar-bg"
                   role="button"

@@ -7,6 +7,7 @@ const MenuButton = ({
   buttonContent,
   tooltipContent,
   tooltipActive,
+  tooltipStyling,
 }) => {
   const [isTooltip, setTooltip] = useState(false)
 
@@ -14,6 +15,7 @@ const MenuButton = ({
     <div className="menu-button-tooltip">
       <div
         className={`menu-tooltip ${tooltipActive || isTooltip ? "active" : ""}`}
+        style={tooltipStyling}
       >
         {tooltipContent}
       </div>
