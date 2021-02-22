@@ -3,43 +3,19 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
-  height: 100%;
+  max-width: 480px;
+  right: 20px;
+  bottom: 20px;
   box-sizing: border-box;
-  padding: 50px 20px;
-  transition: align-items 1.2s, width 1.2s, height 1.2s;
+  padding: 20px;
   background: var(--background-gradient);
-}
-
-.visiting-room-banner.hidden {
-  display: none;
+  box-shadow: var(--box-elevation-dark);
+  border-radius: 4px;
 }
 
 .visiting-room-entry-text p {
-  font-family: "EB Garamond", serif;
-  transition: font-size 1.2s;
-  font-size: var(--font-copy-banner);
-  text-align: center;
-
-  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
-  -ms-animation: fadein 4s forwards; /* Internet Explorer */
-  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
-  animation: fadein 4s forwards;
-}
-
-.fadeout .visiting-room-entry-text p {
-  font-family: "EB Garamond", serif;
-  transition: font-size 1.2s;
-  font-size: var(--font-copy-banner);
-  text-align: center;
-
-  -webkit-animation: fadeout 1.2s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeout 1.2s forwards; /* Firefox < 16 */
-  -ms-animation: fadeout 1.2s forwards; /* Internet Explorer */
-  -o-animation: fadeout 1.2s forwards; /* Opera < 12.1 */
-  animation: fadeout 1.2s forwards;
+  line-height: var(--font-copy-banner);
 }
 
 @media (max-width: 767px) {

@@ -1,0 +1,72 @@
+/**
+ MENU BUTTONS
+**/
+
+.header .actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.menu-buttons {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+.menu-buttons .menu-button-tooltip {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.menu-buttons button.menu-button {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-black);
+  color: var(--clr-off-white);
+  border-radius: 22px;
+  box-shadow: var(--box-elevation-dark);
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: box-shadow 0.4s;
+}
+
+.menu-buttons button.menu-button:hover {
+  box-shadow: var(--box-elevation-dark-hover);
+  transition: box-shadow 0.4s;
+}
+
+.menu-buttons .menu-tooltip {
+  position: relative;
+  padding: 4px 6px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*font-family: Roboto, Helvetica Neue, Arial, sans-serif;*/
+  font-family: "EB Garamond";
+  color: var(--clr-black);
+  background: var(--clr-primary);
+  box-shadow: var(--box-elevation-dark);
+  transform: scale(0.8);
+  transform-origin: center center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.menu-buttons .menu-tooltip.active {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 0.2s, opacity 0.2s;
+}

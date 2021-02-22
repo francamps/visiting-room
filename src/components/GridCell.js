@@ -102,13 +102,7 @@ const GridCell = ({
         video_link && video_link.url && navigate(`/visiting-room/${profileUri}`)
       }}
     >
-      {profile_picture && (
-        <GridCellBackground
-          isHover={isHoverOrInView}
-          image={image}
-          profile_picture={profile_picture}
-        />
-      )}
+      {image && <GridCellBackground isHover={isHoverOrInView} image={image} />}
       {isHoverOrInView && (
         <div
           className={`responsive-iframe-container ${(isHover ||

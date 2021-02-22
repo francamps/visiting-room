@@ -12,19 +12,29 @@ const FilterAndSearch = ({
   setSearchResults,
   setLoadingSearchResults,
 }) => {
+  const [isTooltip, setTooltip] = useState(false)
   const [searchInput, setSearchInput] = useState(null)
   const [search, setSearch] = useState(null)
   const [isTyping, setTyping] = useState(false)
 
   return (
-    <div className="header-options">
-      <div className="header-option search">
-        <div
-          className="icon"
+    <>
+      <div className="menu-button-tooltip search">
+        <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>
+          Search
+        </div>
+        <button
+          className="icon menu-button"
           onKeyUp={ev => {
             handleKeyUp(ev, () => {
               setView("table")
             })
+          }}
+          onMouseEnter={() => {
+            setTooltip(true)
+          }}
+          onMouseLeave={() => {
+            setTooltip(false)
           }}
           onClick={() => {
             setSearch(searchInput)
@@ -33,7 +43,8 @@ const FilterAndSearch = ({
           }}
         >
           <IconSearch />
-        </div>
+        </button>
+
         {isTyping && (
           <span className="input">
             <form
@@ -82,7 +93,7 @@ const FilterAndSearch = ({
           setLoadingSearchResults={setLoadingSearchResults}
         />
       )}
-    </div>
+    </>
   )
 }
 

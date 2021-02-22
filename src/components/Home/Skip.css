@@ -1,5 +1,7 @@
 .skip-bar {
-  width: 30px;
+  position: relative;
+  width: 100%;
+  justify-self: flex-start;
 }
 
 .skip-bar-bg {

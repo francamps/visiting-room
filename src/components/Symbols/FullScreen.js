@@ -108,10 +108,10 @@ const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
         <g
           id="Typography---UI-Comp"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
-          stroke-linejoin="round"
+          fillRule="evenodd"
+          strokeLinejoin="round"
         >
           <g id="Notes-Copy" transform="translate(-1074.000000, -507.000000)">
             <g
@@ -131,8 +131,8 @@ const FullScreen = ({ enabled = false, color = "#ffffff" }) => {
                 id="Group-4"
                 transform="translate(0.500000, 0.000000)"
                 stroke="#FFFFFF"
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
               >
                 <line
                   x1="1.14285714"

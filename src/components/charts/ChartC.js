@@ -366,7 +366,7 @@ const ChartC = () => {
           }}
           style={{ marginRight: "10px" }}
         >
-          See Governors' Commutations
+          Governors' Commutations
         </button>
         <button
           onClick={() => {
@@ -374,14 +374,14 @@ const ChartC = () => {
           }}
           style={{ marginRight: "10px" }}
         >
-          See Lifers Population
+          Lifers Population
         </button>
         <button
           onClick={() => {
             setStep(2)
           }}
         >
-          See Total Prison Population
+          Total Prison Population
         </button>
       </div>
     </div>

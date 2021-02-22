@@ -13,7 +13,13 @@ import "./VisitingRoom.css"
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
-  const [showBanner, setShowBanner] = useState(true)
+  const [showBanner, setShowBanner] = useState(
+    // TODO: Save in localStore once viewed, and pull from there
+    typeof window !== "undefined" &&
+      window.localStorage.getItem("showVRBanner") === "false"
+      ? false
+      : true
+  )
   const [showSound, setShowSound] = useState(false)
 
   useEffect(() => {
@@ -21,28 +27,29 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
       setShowSound(true)
     }, 2000)
 
-    if (showBanner) {
-      let timer = setTimeout(() => {
-        setShowBanner(false)
-      }, 1200)
-
-      return () => {
-        clearTimeout(timer)
-        clearTimeout(timerSound)
-      }
+    return () => {
+      clearTimeout(timerSound)
     }
   }, [])
+
+  console.log(showBanner)
 
   return (
     <div className="visiting-room-wrap container">
       <>
-        {!loading && !showBanner && (
+        {!loading && (
           <>
-            <Header title="The Visiting Room" />
+            <Header
+              title="The Visiting Room"
+              setTitleHelp={() => {
+                window.localStorage.setItem("showVRBanner", "true")
+                setShowBanner(true)
+              }}
+            />
             <Grid searchTerm={search} profiles={profiles} images={images} />
           </>
         )}
-        <VisitingRoomBanner isShow={loading} onSearchTyping={setSearch} />
+        <VisitingRoomBanner isShow={showBanner} setShowBanner={setShowBanner} />
         {showSound && (
           <ReactPlayer
             width="1px"

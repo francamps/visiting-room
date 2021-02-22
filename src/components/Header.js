@@ -91,9 +91,9 @@ const Header = ({
         </>
       )}
 
-      <div className="actions">
-        {actions && actions}
+      <div className="actions menu-buttons">
         {!hideMenu && <Menu theme={theme} />}
+        {actions && actions}
       </div>
     </div>
   )

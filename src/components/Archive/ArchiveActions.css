@@ -1,3 +1,7 @@
+/**
+SORTING MENU
+**/
+
 .menu__surface {
   cursor: pointer;
   font-family: Roboto, Helvetica Neue, Arial, sans-serif;
@@ -25,8 +29,6 @@
   overflow: visible;
 }
 
-.open.menu__content .view-options,
-.open.menu__content .sorting-options,
 .open.menu__content .search-trigger {
   width: 100%;
   height: 30px;
@@ -35,66 +37,8 @@
   text-align: right;
 }
 
-.actions .view-options p,
-.actions .sorting-options p {
-  margin: 0;
-  cursor: pointer;
-  padding-bottom: 4px;
-  font-size: var(--font-small);
-  transition: color 0.4s;
-  text-align: right;
-  border-bottom: 1px solid var(--clr-white);
-}
-
-.actions .view-options {
-  width: 100%;
-  height: 20px;
-}
-
 .actions .search-trigger {
   width: 30px;
-}
-
-.actions .view-options p:hover,
-.actions .sorting-options p:hover {
-  color: var(--clr-primary);
-  transition: color 0.4s;
-}
-
-.actions .sorting-options {
-  width: 50px;
-}
-
-.actions .sorting-options .surface {
-  height: 20px;
-  overflow: hidden;
-}
-
-.actions .sorting-options.open .surface {
-  overflow: visible;
-}
-
-.actions .sorting-options .options-menu {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  visibility: hidden;
-  height: 0;
-  left: -120px;
-}
-
-.actions .sorting-options .options-menu p {
-  height: 24px;
-  width: 120px;
-  padding: 10px 0 10px 10px;
-  border-bottom: 1px solid rgba(var(--clr-white-rgb), 0.2);
-  text-align: left;
-  background-color: var(--clr-black);
-}
-
-.actions .sorting-options.open .options-menu {
-  visibility: visible;
-  height: inherit;
 }
 
 .actions p.active {
@@ -107,12 +51,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .archive.view-options {
-    display: none;
-  }
-}
-
 /** IN-HOUSE MENU **/
 .menu__wrap {
   position: relative;
@@ -122,12 +60,12 @@
   display: flex;
   flex-direction: column;
   overflow: visible;
-  background: var(--clr-black);
-  top: 30px;
-  right: 0px;
+  background: var(--clr-dark-grey);
+  top: 0px;
+  right: 50px;
   width: 200px;
   position: absolute;
-  box-shadow: -3px 3px 4px rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-elevation-dark-hover);
   border-radius: 3px;
   transform: scale(0.8);
   transform-origin: center center;

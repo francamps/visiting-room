@@ -46,7 +46,13 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
         </thead>
         <tbody>
           {profiles.map((profile, profileIdx) => {
-            return <ArchiveTableRow profile={profile} profileIdx={profileIdx} />
+            return (
+              <ArchiveTableRow
+                key={`archive-table-row-${profileIdx}`}
+                profile={profile}
+                profileIdx={profileIdx}
+              />
+            )
           })}
         </tbody>
       </table>

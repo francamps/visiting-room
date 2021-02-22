@@ -20,9 +20,9 @@ const Caption = ({ color = "#000000" }) => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Notes-Copy" transform="translate(-1125.000000, -508.000000)">
           <g id="Group-5" transform="translate(1126.000000, 509.000000)">

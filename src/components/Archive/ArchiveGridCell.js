@@ -11,7 +11,7 @@ import { videos } from "../../content/archiveRegistry"
 const USE_PRISMIC = true
 
 const ArchiveGridCell = ({ profile, images }) => {
-  const [isHover, setHover] = useState(false)
+  const [isHover, setHover] = useState(true)
   const {
     image,
     oldImage,

@@ -15,6 +15,7 @@ const Menu = ({
   hideTitle,
 }) => {
   const [isBurgerOpen, setBurgerOpen] = useState(false)
+  const [isTooltip, setTooltip] = useState(false)
 
   useEffect(() => {
     setBurgerOpen(isMenuExpanded)
@@ -26,14 +27,26 @@ const Menu = ({
   }
 
   return (
-    <div style={{ width: "20px", marginLeft: "10px" }}>
-      <div
-        className={`menu
+    <>
+      <div className="menu-button-tooltip">
+        <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>Menu</div>
+        <button
+          className={`menu menu-button 
           ${theme === "light" ? "menu-light" : ""}
           ${fadein ? "fadein" : ""}
         `}
-      >
-        <Burger isBurgerOpen={isBurgerOpen} setBurgerOpen={setBurgerOpen} />
+          onClick={() => {
+            setBurgerOpen(!isBurgerOpen)
+          }}
+          onMouseEnter={() => {
+            setTooltip(true)
+          }}
+          onMouseLeave={() => {
+            setTooltip(false)
+          }}
+        >
+          <Burger isBurgerOpen={isBurgerOpen} />
+        </button>
       </div>
       <div
         className={`menu-backdrop ${isBurgerOpen ? "menu-backdrop-on" : ""}`}
@@ -108,7 +121,7 @@ const Menu = ({
           </Link>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

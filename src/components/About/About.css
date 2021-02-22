@@ -100,7 +100,7 @@ TODO: PUT IT IN ITS OWN FILE
 }
 
 .react-tabs__tab--selected:after {
-  width: calc(100% - 20px);
+  width: 100%;
   opacity: 1;
 
   -webkit-animation: rotatingBackgroundColor 20s ease infinite;
@@ -108,6 +108,11 @@ TODO: PUT IT IN ITS OWN FILE
   -ms-animation: rotatingBackgroundColor 20s ease infinite;
   -o-animation: rotatingBackgroundColor 20s ease infinite;
   animation: rotatingBackgroundColor 20s ease infinite;
+}
+
+.react-tabs .react-tabs__tab-panel .react-tabs__tab-list {
+  padding-top: 60px;
+  padding-bottom: 0px;
 }
 
 @media (max-width: 767px) {
@@ -125,5 +130,9 @@ TODO: PUT IT IN ITS OWN FILE
     width: calc(100% - 40px);
     padding-top: 20px;
     padding-bottom: 0;
+  }
+
+  .about .react-tabs .react-tabs__tab-panel .react-tabs__tab-list {
+    width: 100%;
   }
 }

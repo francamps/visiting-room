@@ -78,7 +78,8 @@
   line-height: 20px;
   transition: opacity 0.8s, margin-left 0.4s;
   font-size: var(--font-xsmall);
-  border: 1px solid white;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  border: 2px solid white;
   border-radius: 20px;
 }
 
@@ -90,16 +91,6 @@
 }
 .header .title-help.active:hover {
   opacity: 1;
-}
-
-.header .actions {
-  position: absolute;
-  right: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
 }
 
 /* */
@@ -147,9 +138,5 @@
 
   .header .home-title h6.home-link {
     margin: 0;
-  }
-
-  .archive-wrap .header .actions {
-    /* TBD */
   }
 }

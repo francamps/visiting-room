@@ -9,9 +9,11 @@ const path = require(`path`)
 // You can delete this file if you're not using it
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const { data } = await graphql(`
+  const { data: dataVR } = await graphql(`
     query {
-      allPrismicProfile {
+      allPrismicProfile(
+        filter: { data: { show_profile_in_visiting_room: { eq: true } } }
+      ) {
         edges {
           node {
             data {
@@ -52,48 +54,87 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   `)
 
-  const profiles = data
-    ? data.allPrismicProfile.edges.map(profile => profile.node.data)
+  const profiles = dataVR
+    ? dataVR.allPrismicProfile.edges.map(profile => profile.node.data)
     : []
 
-  const visitingRoomProfiles = profiles.filter(
-    profile => profile.show_profile_in_visiting_room
-  )
+  console.log(dataVR, profiles)
 
   profiles.forEach(profile => {
     const profileId = profile.full_name.text.toLowerCase().replace(/ /g, "_")
 
-    const nextProfile =
-      visitingRoomProfiles[
-        Math.floor(Math.random() * visitingRoomProfiles.length)
-      ]
+    const nextProfile = profiles[Math.floor(Math.random() * profiles.length)]
+
+    console.log(profileId)
 
     // Create a page for each person.
+    createPage({
+      path: `/visiting-room/${profileId}`,
+      component: path.resolve(
+        "./src/components/VisitingRoom/VisitingRoomProfile.js"
+      ),
+      context: {
+        profileId,
+        ...profile,
+        nextProfile,
+      },
+    })
+  })
 
-    if (profile.show_profile_in_visiting_room) {
-      createPage({
-        path: `/visiting-room/${profileId}`,
-        component: path.resolve(
-          "./src/components/VisitingRoom/VisitingRoomProfile.js"
-        ),
-        context: {
-          profileId,
-          ...profile,
-          nextProfile,
-        },
-      })
+  const { data: dataARCH } = await graphql(`
+    query {
+      allPrismicProfile(filter: { data: { show_in_archive: { eq: true } } }) {
+        edges {
+          node {
+            data {
+              first_name {
+                text
+              }
+              date_of_birth {
+                text
+              }
+              date_of_offense
+              video_link {
+                url
+              }
+              last_name {
+                text
+              }
+              full_name {
+                text
+              }
+              imagepath {
+                text
+              }
+              quote {
+                text
+              }
+              show_profile_in_visiting_room
+              show_in_archive
+              color
+            }
+          }
+        }
+      }
     }
+  `)
 
-    if (profile.show_in_archive) {
-      createPage({
-        path: `/archive/${profileId}`,
-        component: path.resolve("./src/components/Archive/ArchiveProfile.js"),
-        context: {
-          profileId,
-          ...profile,
-        },
-      })
-    }
+  const profilesARCH = dataARCH
+    ? dataARCH.allPrismicProfile.edges.map(profile => profile.node.data)
+    : []
+
+  profilesARCH.forEach(profile => {
+    const profileId = profile.full_name.text.toLowerCase().replace(/ /g, "_")
+
+    // Create a page for each person.
+    createPage({
+      path: `/archive/${profileId}`,
+      component: path.resolve("./src/components/Archive/ArchiveProfile.js"),
+      context: {
+        profileId,
+        ...profile,
+      },
+    })
   })
 }
 

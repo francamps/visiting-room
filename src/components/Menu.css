@@ -64,10 +64,6 @@
   transition: letter-spacing 1.2s, color 0.4s;
 }
 
-.menu-options.menu-light a {
-  color: var(--clr-off-black);
-}
-
 .menu-options a:hover {
   letter-spacing: 0.02em;
   transition: letter-spacing 1.2s, color 0.4s;
@@ -163,10 +159,6 @@ MENU LINKS
 }
 
 @media (max-width: 767px) {
-  .menu {
-    top: 21px;
-  }
-
   .menu-options {
     left: 100%;
   }

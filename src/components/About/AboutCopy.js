@@ -13,9 +13,16 @@ const AboutCopy = ({ abouts }) => {
       about.node.data.about_this_project.text ===
       "About the Visiting Room Project"
   )
+  const childrenAbouts = abouts.filter(
+    about =>
+      about.node.data.about_this_project.text !==
+      "About the Visiting Room Project"
+  )
 
   const title = parentAbout ? parentAbout.node.data.about_this_project.text : ""
   const content = parentAbout ? parentAbout.node.data.about_content : []
+
+  console.log(childrenAbouts)
 
   return (
     <>
@@ -25,14 +32,14 @@ const AboutCopy = ({ abouts }) => {
           className="term-content"
           dangerouslySetInnerHTML={{ __html: content.html }}
         ></div>
-        <div className="map" style={{ height: "500px" }}>
+        <div className="map">
           <img src={vrp} style={{ width: "100%", height: "auto" }} />
         </div>
       </article>
 
       <Tabs>
         <TabList>
-          {abouts.slice(1).map(about => {
+          {childrenAbouts.map(about => {
             const title = about ? about.node.data.about_this_project.text : ""
 
             return (
@@ -44,12 +51,11 @@ const AboutCopy = ({ abouts }) => {
             )
           })}
         </TabList>
-        {abouts.slice(1).map(about => {
+        {childrenAbouts.map(about => {
           const title = about ? about.node.data.about_this_project.text : ""
           const content = about ? about.node.data.about_content : []
 
           const isAngola = title === "About Angola"
-          const isVRP = title === "About the Visiting Room Project"
 
           return (
             <TabPanel>
@@ -60,9 +66,9 @@ const AboutCopy = ({ abouts }) => {
                     className="term-content"
                     dangerouslySetInnerHTML={{ __html: content.html }}
                   ></div>
-                  <div className="map" style={{ height: "500px" }}>
+                  <div className="map">
                     <img
-                      src={isAngola ? stateFarm : isVRP ? vrp : null}
+                      src={isAngola ? stateFarm : null}
                       style={{ width: "100%", height: "auto" }}
                     />
                     <p

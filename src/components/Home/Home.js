@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
 import ReactPlayer from "react-player"
+import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
 import Skip from "./Skip"
+import MenuButton from "../MenuButton"
 
 import audio from "../../content/audio/stanfield/landingFull.mp3"
 
@@ -59,7 +61,31 @@ const Home = ({ images }) => {
             <p>Here are some of their stories, in their own words.</p>
           </div>
         </div>
-        <Skip barProgress={barProgress} />
+        <div className="menu-buttons">
+          <MenuButton
+            buttonContent={"Skip"}
+            onClick={() => {
+              navigate("/visiting-room")
+            }}
+            tooltipActive
+            tooltipContent={
+              <div className="skip-bar">
+                <div
+                  className="skip-bar-bg"
+                  role="button"
+                  aria-label="Seek time in video"
+                />
+                <div
+                  className="skip-bar-played"
+                  role="button"
+                  style={{
+                    width: 30 * barProgress + "px",
+                  }}
+                />
+              </div>
+            }
+          />
+        </div>
       </div>
     </>
   )

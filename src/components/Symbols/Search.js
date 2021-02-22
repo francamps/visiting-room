@@ -19,10 +19,10 @@ const IconSearch = () => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1125.000000, -483.000000)">
           <g id="Group-6" transform="translate(1125.722222, 484.000000)">
@@ -42,14 +42,14 @@ const IconSearch = () => {
               y2="18.5"
               id="Line"
               stroke="#FFFFFF"
-              stroke-width="2"
+              strokeWidth="2"
               fill="#D8D8D8"
-              stroke-linecap="round"
+              strokeLinecap="round"
             ></line>
             <circle
               id="Oval"
               stroke="#FFFFFF"
-              stroke-width="2"
+              strokeWidth="2"
               cx="12.2777778"
               cy="9"
               r="7"
