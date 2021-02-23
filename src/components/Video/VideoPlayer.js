@@ -180,7 +180,7 @@ const VideoPlayer = ({
           aria-hidden="true"
           src={`https://player.vimeo.com/video/${getUrl(
             videoSrcURL
-          )}?controls=0`}
+          )}?controls=0${startTime ? "#t=" + startTime : ""}`}
           width="100%"
           height="100%"
           frameBorder="0"

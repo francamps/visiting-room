@@ -112,7 +112,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
                     height: "20px",
                   }}
                 >
-                  {deceased_date}
+                  {deceased_date.getFullYear()}
                 </p>
               </>
             )}

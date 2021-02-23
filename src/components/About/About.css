@@ -23,6 +23,10 @@
   text-align: left;
 }
 
+.about .copy-wrap .copy a {
+  color: var(--clr-primary);
+}
+
 .about .title {
   width: 100%;
   margin-bottom: 20px;

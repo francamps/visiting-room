@@ -21,11 +21,6 @@ const Loading = ({ hideTitle = false, color }) => {
             width="40"
             stroke={color || "var(--clr-primary)"}
           />
-          {!hideTitle && (
-            <foreignObject class="node" x="0" y="0" width="40" height="40">
-              <p className="text">TVRP</p>
-            </foreignObject>
-          )}
         </svg>
       </div>
     </div>

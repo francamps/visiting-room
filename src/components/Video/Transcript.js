@@ -51,6 +51,8 @@ const Transcript = ({
       {transcript &&
         !error &&
         transcript.map((paragraph, idx) => {
+          if (!paragraph.speaker && !paragraph.time) return null
+
           const isActive =
             paragraph.upperBoundTime &&
             progress.progressSeconds < getSeconds(paragraph.upperBoundTime) &&

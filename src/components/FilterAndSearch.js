@@ -45,45 +45,43 @@ const FilterAndSearch = ({
           <IconSearch />
         </button>
 
-        {isTyping && (
-          <span className="input">
-            <form
-              onSubmit={e => {
-                e.preventDefault()
-                setSearch(searchInput)
+        <span className={`input ${isTyping ? "active" : ""}`}>
+          <form
+            onSubmit={e => {
+              e.preventDefault()
+              setSearch(searchInput)
+            }}
+            style={{
+              display: "flex",
+              position: "relative",
+            }}
+          >
+            <input
+              className="input__field"
+              type="text"
+              id="input-search"
+              placeholder="Search transcripts"
+              onKeyUp={event => {
+                setSearchInput(event.target.value)
               }}
+            />
+            <div
+              className=""
               style={{
-                display: "flex",
-                position: "relative",
+                right: "0px",
+                bottom: "5px",
+                position: "absolute",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setTyping(false)
+                setSearchInput(null)
               }}
             >
-              <input
-                className="input__field"
-                type="text"
-                id="input-search"
-                placeholder="Search something..."
-                onKeyUp={event => {
-                  setSearchInput(event.target.value)
-                }}
-              />
-              <div
-                className=""
-                style={{
-                  right: "0px",
-                  bottom: "5px",
-                  position: "absolute",
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  setTyping(false)
-                  setSearchInput(null)
-                }}
-              >
-                <IconClose noBackground />
-              </div>
-            </form>
-          </span>
-        )}
+              <IconClose noBackground />
+            </div>
+          </form>
+        </span>
       </div>
       {search && (
         <FilterAndSearchResults

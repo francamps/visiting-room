@@ -60,13 +60,13 @@ SORTING MENU
   display: flex;
   flex-direction: column;
   overflow: visible;
-  background: var(--clr-dark-grey);
+  background: var(--clr-black);
   top: 0px;
   right: 50px;
   width: 200px;
   position: absolute;
   box-shadow: var(--box-elevation-dark-hover);
-  border-radius: 3px;
+  border-radius: 4px;
   transform: scale(0.8);
   transform-origin: center center;
   pointer-events: none;
@@ -97,7 +97,7 @@ SORTING MENU
 }
 
 .menu__menu .menu__item:hover {
-  background-color: rgba(var(--clr-off-white-rgb), 0.3) !important;
+  background-color: var(--clr-dark-grey) !important;
   transition: background-color 0.2s;
 }
 

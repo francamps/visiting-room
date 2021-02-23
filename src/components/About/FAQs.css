@@ -5,6 +5,13 @@
 
 .copy .faq h4 {
   margin-bottom: 0;
+  transition: color 0.2s;
+}
+
+.copy .faq h4:hover,
+.copy .faq.faq-active h4 {
+  color: var(--clr-primary);
+  transition: color 0.2s;
 }
 
 .copy .faq .faq-content {
