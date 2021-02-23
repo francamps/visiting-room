@@ -145,10 +145,12 @@ const VideoPlayer = ({
   }, [showCaptions])
 
   const getUrl = videoSrcURL => {
-    try {
-      return videoSrcURL.split("https://vimeo.com/")[1]
-    } catch {
-      return videoSrcURL.split("/archive/")[1]
+    if (videoSrcURL) {
+      try {
+        return videoSrcURL.split("https://vimeo.com/")[1]
+      } catch {
+        return videoSrcURL.split("/archive/")[1]
+      }
     }
   }
 
