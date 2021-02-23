@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useMediaQuery } from "react-responsive"
 
 import "./MenuButton.css"
 
@@ -10,11 +11,14 @@ const MenuButton = ({
   tooltipStyling,
 }) => {
   const [isTooltip, setTooltip] = useState(false)
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return (
     <div className="menu-button-tooltip">
       <div
-        className={`menu-tooltip ${tooltipActive || isTooltip ? "active" : ""}`}
+        className={`menu-tooltip ${
+          tooltipActive || (isTooltip && !isTabletOrMobile) ? "active" : ""
+        }`}
         style={tooltipStyling}
       >
         {tooltipContent}

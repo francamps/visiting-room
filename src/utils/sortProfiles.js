@@ -38,8 +38,6 @@ const getProfileValue = (profile, prop) => {
       ? subtractDatesInYears(date_of_offense, date_of_birth)
       : "unknown"
 
-  console.log(date_of_offense, date_of_offense.getTime())
-
   switch (prop.key) {
     case "full_name":
       return getValue(profile, "full_name.text")
@@ -51,7 +49,7 @@ const getProfileValue = (profile, prop) => {
       if (age_at_offense === "unknown" || !age_at_offense) return -Infinity
       return age_at_offense
     case "offense_date":
-      if (date_of_offense === "unknown" || date_of_offense) return -Infinity
+      if (date_of_offense === "unknown" || !date_of_offense) return -Infinity
       return date_of_offense.getTime()
     default:
       return -Infinity
@@ -59,7 +57,6 @@ const getProfileValue = (profile, prop) => {
 }
 
 const sortProfiles = (data, sortType, sortAsc) => {
-  console.log(data, sortType, sortAsc)
   data.sort((a, b) => {
     if (sortType.key === "full_name") {
       if (a.last_name.text > b.last_name.text) return sortAsc ? 1 : -1

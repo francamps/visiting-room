@@ -42,6 +42,8 @@
 
   --box-elevation-dark: 1px 1px 6px rgba(255, 255, 255, 0.2);
   --box-elevation-dark-hover: 1px 2px 9px rgba(255, 255, 255, 0.2);
+  --box-elevation-light: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  --box-elevation-light-hover: 1px 2px 9px rgba(0, 0, 0, 0.2);
 
   /* PROFILE COLORS */
   --clr-0: #8b91cc;

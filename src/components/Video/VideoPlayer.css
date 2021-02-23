@@ -27,6 +27,13 @@
   cursor: pointer;
 }
 
+.video-wrap .video .control-layer .video-title {
+  position: absolute;
+  width: 100%;
+  top: 20px;
+  text-align: center;
+}
+
 .video-wrap .controls {
   position: absolute;
   bottom: 0px;
@@ -51,7 +58,6 @@
 .video-wrap .controls .progress-bar {
   position: absolute;
   padding: 10px 20px;
-  margin-bottom: 30px;
   margin-left: 80px;
   width: calc(100% - 220px);
   cursor: pointer;
@@ -169,4 +175,13 @@ CONTROLS
   background: none;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .video-wrap .video .control-layer .video-title {
+    position: absolute;
+    width: 100%;
+    top: 10px;
+    text-align: center;
+  }
 }

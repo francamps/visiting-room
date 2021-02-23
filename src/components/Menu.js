@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
+import { useMediaQuery } from "react-responsive"
 
 import Burger from "./Burger"
 
@@ -16,6 +17,7 @@ const Menu = ({
 }) => {
   const [isBurgerOpen, setBurgerOpen] = useState(false)
   const [isTooltip, setTooltip] = useState(false)
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   useEffect(() => {
     setBurgerOpen(isMenuExpanded)
@@ -29,7 +31,13 @@ const Menu = ({
   return (
     <>
       <div className="menu-button-tooltip">
-        <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>Menu</div>
+        <div
+          className={`menu-tooltip ${
+            isTooltip && !isTabletOrMobile ? "active" : ""
+          }`}
+        >
+          Menu
+        </div>
         <button
           className={`menu menu-button 
           ${theme === "light" ? "menu-light" : ""}

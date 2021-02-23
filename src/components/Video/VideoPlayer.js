@@ -220,10 +220,14 @@ const VideoPlayer = ({
                 />
               </div>
               {videoTitle && !isPaused && (
-                <div
-                  style={{ position: "absolute", top: "20px", left: "20px" }}
-                >
-                  <h2 style={{ margin: "0px", fontSize: "var(--font-large)" }}>
+                <div className="video-title">
+                  <h2
+                    style={{
+                      margin: "0px",
+                      fontSize: "var(--font-large)",
+                      color: color || "inherit",
+                    }}
+                  >
                     {videoTitle}
                   </h2>
                 </div>

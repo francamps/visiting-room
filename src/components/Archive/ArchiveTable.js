@@ -1,16 +1,9 @@
 import React, { useState } from "react"
-import Img from "gatsby-image"
 import { useMediaQuery } from "react-responsive"
-import { navigate } from "gatsby"
 
 import Loading from "../Loading"
-import Years from "../charts/Years"
-import Play from "../Symbols/Play"
 import ArchiveTableRow from "./ArchiveTableRow"
 import ArchiveTableRowLarge from "./ArchiveTableRowLarge"
-
-import { videos } from "../../content/archiveRegistry"
-import getProfileProps from "../../utils/getProfileProps"
 
 import "./ArchiveTable.css"
 
@@ -27,8 +20,6 @@ const columnsMobile = [
   { key: "information", label: "" },
   { key: "video", label: "" },
 ]
-
-const USE_PRISMIC = true
 
 const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
