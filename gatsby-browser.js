@@ -20,3 +20,7 @@ export const onClientEntry = () => {
     console.log(`# IntersectionObserver is polyfilled!`)
   }
 }
+
+export const onRouteUpdateDelayed = () => {
+  //console.log("loading")
+}

@@ -17,6 +17,7 @@ const Header = ({
 }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
   const [isHoverTitle, setHoverTitle] = useState(false)
+  const [isHoverHome, setHoverHome] = useState(false)
 
   return (
     <div
@@ -34,14 +35,28 @@ const Header = ({
       {!hideTitle && (
         <>
           <div
-            className="home-home"
+            className={`home-home ${isHoverHome ? "hovered" : ""}`}
             onClick={() => {
               navigate("/")
             }}
+            onFocus={() => {
+              setHoverHome(true)
+            }}
+            onBlur={() => {
+              setHoverHome(false)
+            }}
+            onMouseOver={() => {
+              setHoverHome(true)
+            }}
+            onMouseOut={() => {
+              setHoverHome(false)
+            }}
           >
-            <span>The</span>
-            <span>Visiting Room</span>
-            <span>Project</span>
+            <div className="home-home-content">
+              <span>The</span>
+              <span>Visiting Room</span>
+              <span>Project</span>
+            </div>
           </div>
           {isTabletOrMobile ? (
             <div
@@ -82,6 +97,7 @@ const Header = ({
                   onClick={() => {
                     if (setTitleHelp) setTitleHelp()
                   }}
+                  style={{ marginTop: "-4px" }}
                 >
                   ?
                 </span>

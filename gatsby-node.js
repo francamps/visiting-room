@@ -58,14 +58,10 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     ? dataVR.allPrismicProfile.edges.map(profile => profile.node.data)
     : []
 
-  console.log(dataVR, profiles)
-
   profiles.forEach(profile => {
     const profileId = profile.full_name.text.toLowerCase().replace(/ /g, "_")
 
     const nextProfile = profiles[Math.floor(Math.random() * profiles.length)]
-
-    console.log(profileId)
 
     // Create a page for each person.
     createPage({

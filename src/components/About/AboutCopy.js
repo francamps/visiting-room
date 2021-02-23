@@ -22,8 +22,6 @@ const AboutCopy = ({ abouts }) => {
   const title = parentAbout ? parentAbout.node.data.about_this_project.text : ""
   const content = parentAbout ? parentAbout.node.data.about_content : []
 
-  console.log(childrenAbouts)
-
   return (
     <>
       <h3>{title}</h3>

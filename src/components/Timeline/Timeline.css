@@ -91,7 +91,7 @@
   opacity: 0;
   z-index: -1;
   scrollbar-width: 5px;
-  scrollbar-color: var(--clr-primary) var(--clr-black);
+  scrollbar-color: var(--clr-off-white) var(--clr-black);
 
   -webkit-animation: fadeindown 2s ease-in-out 0.6s forwards; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeindown 2s ease-in-out 0.6s forwards; /* Firefox < 16 */
@@ -115,7 +115,7 @@ Use a scrollbar library, this is not standardized
   background: none;
 }
 .step-content::-webkit-scrollbar-thumb {
-  background-color: var(--clr-primary);
+  background-color: var(--clr-off-white);
   border-radius: 6px;
   border: none;
 }

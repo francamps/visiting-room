@@ -18,6 +18,14 @@
   line-height: var(--font-copy-banner);
 }
 
+.visiting-room-banner button.hover-link {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--clr-white);
+}
+
 @media (max-width: 767px) {
   .visiting-room-entry-text {
     margin: 0 40px;

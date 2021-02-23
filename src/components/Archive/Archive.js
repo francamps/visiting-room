@@ -18,7 +18,7 @@ const columns = [
   { key: "full_name", label: "Full Name" },
   { key: "age_at_offense", label: "Age at offense" },
   { key: "current_age", label: "Current age" },
-  { key: "offense_date", label: "Year of incarceration" },
+  { key: "offense_date", label: "Incarcerated since" },
 ]
 
 const Archive = ({ profiles = [], loading, images }) => {

@@ -63,12 +63,21 @@ const ArchiveTableSearchResults = ({
                     isOpen ? "open" : ""
                   }`}
                 >
-                  <td>{fullName}</td>
-                  <td style={{ display: "block" }}>
+                  <td
+                    style={{
+                      display: "block",
+                      position: "relative",
+                      padding: 0,
+                    }}
+                  >
                     <div
                       style={{
-                        position: "relative",
+                        position: "absolute",
                         height: "100%",
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
                       }}
                     >
                       {image && (
@@ -91,6 +100,17 @@ const ArchiveTableSearchResults = ({
                           }}
                         />
                       )}
+                    </div>
+                    <div className="full-name">
+                      <p
+                        style={{
+                          margin: 0,
+                          height: "20px",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        {fullName}
+                      </p>
                     </div>
                   </td>
                   <td className="result-quotes">

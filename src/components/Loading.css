@@ -14,6 +14,12 @@
   fill: transparent;
   border-bottom: 2px solid black;
   transition: stroke-width 2s, stroke-dashoffset 2s, stroke-dasharray 2s;
+
+  -webkit-animation: rotatingStokeColor 12s;
+  -moz-animation: rotatingStokeColor 12s;
+  -ms-animation: rotatingStokeColor 12s;
+  -o-animation: rotatingStokeColor 12s;
+  animation: rotatingStokeColor 12s;
 }
 
 .loader-wrap .text {
@@ -31,13 +37,13 @@
 
 @keyframes dash {
   from {
-    stroke-width: 50px;
+    stroke-width: 40px;
     stroke-dashoffset: 0;
-    stroke-dasharray: 440;
+    stroke-dasharray: 160px;
   }
   to {
-    stroke-dasharray: 0 340;
-    stroke-dashoffset: -274;
+    stroke-dasharray: 0 160;
+    stroke-dashoffset: -74;
     stroke-width: 4px;
   }
 }

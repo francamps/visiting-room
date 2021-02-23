@@ -69,7 +69,6 @@ const VideoPlayer = ({
   useEffect(() => {
     if (videoPlayer) {
       videoPlayer.getDuration().then(duration => {
-        console.log(duration)
         setDuration(duration)
       })
       videoPlayer.on("play", () => {
@@ -173,7 +172,7 @@ const VideoPlayer = ({
           }?controls=0`}
           width="100%"
           height="100%"
-          frameborder="0"
+          frameBorder="0"
           webkitallowfullscreen
           mozallowfullscreen
           allowfullscreen
@@ -181,81 +180,10 @@ const VideoPlayer = ({
           allow="autoplay; fullscreen"
         ></iframe>
 
-        {isPlaying ? (
-          <>
-            {
-              null /*
-            
-            <ReactPlayer
-              ref={playerRef}
-              url={videoSrcURL}
-              className="react-player"
-              playing={isPlaying && !isPaused}
-              width="100%"
-              height="100%"
-              onReady={() => {
-                setLoading(false)
-                if (autoplay || startTime) setPlaying(true)
-                if (startTime) {
-                  const duration = playerRef.current.getDuration()
-                  playerRef.current.seekTo(startTime)
-                  setProgress({
-                    progress: startTime / duration,
-                    progressSeconds: startTime,
-                  })
-                }
-              }}
-              onSeek={seconds => {
-                const duration = playerRef.current.getDuration()
-
-                setProgress({
-                  progress: seconds / duration,
-                  progressSeconds: seconds,
-                })
-                setPause(false)
-                setPlaying(true)
-              }}
-              onPause={() => {
-                setPause(true)
-              }}
-              onEnded={() => {
-                if (onClose) onClose()
-              }}
-              onProgress={({ played, playedSeconds }) => {
-                if (!isPaused) {
-                  setProgress({
-                    progress: played,
-                    progressSeconds: playedSeconds,
-                  })
-                }
-              }}
-              config={{
-                vimeo: {
-                  playerOptions: {
-                    playsinline: 1,
-                    texttrack: showCaptions,
-                  },
-                },
-              }}
-            />*/
-            }
-            {isPlaying && isLoading && (
-              <div className="loading-wrap">
-                <Loading color={color} />
-              </div>
-            )}
-          </>
-        ) : (
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-              display: "flex",
-              justifyContent: "center",
-              background: "black",
-            }}
-          />
+        {isPlaying && isLoading && (
+          <div className="loading-wrap">
+            <Loading color={color} />
+          </div>
         )}
         <div className="control-layer">
           {(!isPlaying || (isPlaying && isPaused)) && (
@@ -269,7 +197,7 @@ const VideoPlayer = ({
                 }}
               >
                 <Play
-                  size="huge"
+                  size="large"
                   tabIndex={0}
                   onClick={() => {
                     videoPlayer.getPaused().then(paused => {

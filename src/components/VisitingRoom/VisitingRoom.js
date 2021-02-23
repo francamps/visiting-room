@@ -32,8 +32,6 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
     }
   }, [])
 
-  console.log(showBanner)
-
   return (
     <div className="visiting-room-wrap container">
       <>

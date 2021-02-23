@@ -34,6 +34,19 @@
   color: var(--clr-off-white);
 }
 
+.archive-banner .link-wrap {
+  text-align: right;
+}
+
+.archive-banner button.hover-link {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--clr-white);
+  font-size: var(--font-copy);
+}
+
 @media (max-width: 767px) {
   .archive-entry-text {
     margin: 0 0px;

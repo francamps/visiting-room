@@ -63,16 +63,19 @@ const Home = ({ images }) => {
         </div>
         <div className="menu-buttons">
           <MenuButton
-            buttonContent={"Skip"}
+            buttonContent={
+              <span style={{ fontSize: "var(--font-xsmall)" }}>Skip intro</span>
+            }
             onClick={() => {
               navigate("/visiting-room")
             }}
             tooltipActive
             tooltipStyling={{
               background: "var(--clr-black)",
+              boxShadow: "none",
             }}
             tooltipContent={
-              <div className="skip-bar" style={{ width: "80px" }}>
+              <div className="skip-bar" style={{ width: "40px" }}>
                 <div
                   className="skip-bar-bg"
                   role="button"
@@ -82,7 +85,7 @@ const Home = ({ images }) => {
                   className="skip-bar-played"
                   role="button"
                   style={{
-                    width: 30 * barProgress + "px",
+                    width: 40 * barProgress + "px",
                   }}
                 />
               </div>

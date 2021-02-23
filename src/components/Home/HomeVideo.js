@@ -9,8 +9,6 @@ const items = ["https://player.vimeo.com/video/507870667?background=1"]
 const VIDEO_DURATION = 15000
 
 const HomeVideo = ({ setBarProgress }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
-
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -36,7 +34,7 @@ const HomeVideo = ({ setBarProgress }) => {
         <iframe
           className="responsive-iframe"
           src={items[0]}
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
         ></iframe>

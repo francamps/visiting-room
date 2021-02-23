@@ -113,7 +113,7 @@ const GridCell = ({
             title={fullName}
             className="responsive-iframe"
             src={videosBackground[fullName]}
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
@@ -122,18 +122,9 @@ const GridCell = ({
       <div className="cell-hover-layer"></div>
       {quote && (
         <div className="cell-hover-quote">
-          {video_link && video_link.url ? (
-            <>
-              <div />
-              {
-                null /*<div className="play-wrap">
-                  <Play size="large" />
-                </div>*/
-              }
-            </>
-          ) : (
+          {!video_link || !video_link.url ? (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
-          )}
+          ) : null}
           <div className={`quote ${getColor(color)}`}>
             <div className="word-wrapper">
               <div className="word">"</div>
@@ -160,7 +151,7 @@ const GridCell = ({
       )}
       <h3 className="name-tag border-animation">
         <div
-          class={`svg-wrapper ${isHover ? "hovered" : ""}
+          className={`svg-wrapper ${isHover ? "hovered" : ""}
           ${isTabletOrMobile && inView ? "static-hovered" : ""}
           `}
         >

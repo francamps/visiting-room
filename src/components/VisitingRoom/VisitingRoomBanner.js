@@ -26,12 +26,17 @@ const VisitingRoomBanner = ({ isShow, setShowBanner }) => {
             flexDirection: "column",
           }}
         >
-          <CrossClose
-            onClick={() => {
-              window.localStorage.setItem("showVRBanner", "false")
-              setShowBanner(false)
-            }}
-          />
+          <div className="link-wrap">
+            <button
+              onClick={() => {
+                window.localStorage.setItem("showVRBanner", "false")
+                setShowBanner(false)
+              }}
+              className="hover-link"
+            >
+              Ok
+            </button>
+          </div>
         </div>
       </div>
     </>

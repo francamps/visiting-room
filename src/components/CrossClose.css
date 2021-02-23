@@ -1,7 +1,7 @@
 .close {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   opacity: 0.3;
   cursor: pointer;
   background: none;
@@ -19,7 +19,7 @@
   position: absolute;
   left: 12px;
   content: " ";
-  height: 25px;
+  height: 16px;
   width: 2px;
   background-color: #d0d0d0;
   transition: opacity 0.4s, background-color 0.4s;

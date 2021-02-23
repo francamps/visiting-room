@@ -7,13 +7,13 @@
 .skip-bar-bg {
   position: absolute;
   width: 100%;
-  height: 4px;
-  background: rgba(var(--clr-white-rgb), 0.3);
+  height: 2px;
+  background: var(--clr-dark-grey);
 }
 
 .skip-bar-played {
   position: absolute;
-  height: 4px;
+  height: 2px;
   transition: width 1s linear;
   background: var(--clr-primary);
 }

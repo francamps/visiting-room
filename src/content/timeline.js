@@ -11,11 +11,6 @@ export const TIMELINE = [
         paragraphs: [
           {
             element: "p",
-            content: `Under Louisiana's brutal `,
-          },
-          {
-            element: "f",
-            trigger: "convict-leasing scheme",
             content: `In the decades before the Civil War, Louisiana courts sentenced 
             people to life in prison, but did not have state-run institutions where 
             these sentences could be served. In the 1840s, Louisiana landowners 

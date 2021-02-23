@@ -121,23 +121,22 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table:not(.isCompact) thead tr th:nth-child(2),
-.archive table:not(.isCompact) tbody tr td:nth-child(2) {
-  flex: 0 0 80px;
-  padding: 0;
-}
-
+.archive table:not(.isCompact) tbody tr td:nth-child(2),
 .archive table:not(.isCompact) thead tr th:nth-child(3),
-.archive table:not(.isCompact) tbody tr td:nth-child(3) {
-  flex: 0 0 150px;
+.archive table:not(.isCompact) tbody tr td:nth-child(3),
+.archive table:not(.isCompact) thead tr th:nth-child(4),
+.archive table:not(.isCompact) tbody tr td:nth-child(4) {
+  flex: 0 0 90px;
 }
 
-.archive table:not(.isCompact) thead tr th:nth-child(4),
-.archive table:not(.isCompact) tbody tr td:nth-child(4),
 .archive table:not(.isCompact) thead tr th:nth-child(5),
-.archive table:not(.isCompact) tbody tr td:nth-child(5),
+.archive table:not(.isCompact) tbody tr td:nth-child(5) {
+  flex: 0 0 120px;
+}
+
 .archive table:not(.isCompact) thead tr th:nth-child(6),
 .archive table:not(.isCompact) tbody tr td:nth-child(6) {
-  flex: 0 0 120px;
+  flex: 0 0 45px;
 }
 
 .archive table:not(.isCompact) th:last-child,
@@ -173,7 +172,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   padding: 10px;
 }
 
-.archive table.isCompact tbody td .full-name {
+.archive table tbody td .full-name {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -183,14 +182,20 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   box-sizing: border-box;
   background: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
   background: linear-gradient(
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.2) 60%,
     rgba(0, 0, 0, 0.7) 100%
   );
+}
+
+.archive table.isCompact tbody td .full-name {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .archive table.isCompact tbody td .fields {

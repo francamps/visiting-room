@@ -111,14 +111,9 @@ Use a scrollbar library, this is not standardized
   background-color: var(--clr-black);
 }
 :root::-webkit-scrollbar-thumb {
-  /*background-color: var(--clr-primary);*/
+  background-color: var(--clr-off-white);
   border-radius: 6px;
   border: 3px solid var(--clr-black);
-  -webkit-animation: rotatingBackgroundColor 20s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: rotatingBackgroundColor 20s; /* Firefox < 16 */
-  -ms-animation: rotatingBackgroundColor 20s; /* Internet Explorer */
-  -o-animation: rotatingBackgroundColor 20s; /* Opera < 12.1 */
-  animation: rotatingBackgroundColor 20s;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");

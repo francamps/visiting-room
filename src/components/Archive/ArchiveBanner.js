@@ -19,23 +19,17 @@ const ArchiveBanner = ({ showGrid, setShowBanner, fadeout, onClose }) => {
             <p className="fadeinfast">
               For more information about the project, see our About page.
             </p>
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-            >
-              <CrossClose
+            <div className="link-wrap">
+              <button
                 onClick={() => {
                   window.localStorage.setItem("showBanner", "false")
                   setShowBanner(false)
                   onClose()
                 }}
-              />
+                className="hover-link"
+              >
+                Ok
+              </button>
             </div>
           </div>
         )}

@@ -22,11 +22,11 @@
 .home .home-title {
   font-family: "EB Garamond";
   font-size: var(--font-normal);
-  color: var(--clr-white);
   position: fixed;
   top: var(--space-around-small);
   left: var(--space-around-small);
   text-align: center;
+  padding: 10px;
 }
 
 .button:hover {
@@ -45,7 +45,8 @@
 .home .subtitle {
   position: fixed;
   top: 0;
-  left: var(--space-around-med);
+  left: 0;
+  padding-left: var(--space-around-med);
   bottom: 0;
   width: 100%;
   box-sizing: border-box;

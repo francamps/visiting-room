@@ -70,8 +70,8 @@ const Video = ({
       <div
         style={{
           position: "fixed",
-          top: 14,
-          right: 14,
+          top: 20,
+          right: 20,
           zIndex: 13,
         }}
         onClick={() => {
