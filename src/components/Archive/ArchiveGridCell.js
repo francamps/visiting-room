@@ -37,7 +37,7 @@ const ArchiveGridCell = ({ profile, images }) => {
       <ArchiveGridCellBackground
         image={image}
         oldImage={oldImage}
-        isHover={true}
+        isHover={isHover}
       />
       <div className="cell-hover-layer">
         <div className="bottom">
