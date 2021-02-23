@@ -131,7 +131,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 
 .archive table:not(.isCompact) thead tr th:nth-child(5),
 .archive table:not(.isCompact) tbody tr td:nth-child(5) {
-  flex: 0 0 120px;
+  flex: 0 0 130px;
 }
 
 .archive table:not(.isCompact) thead tr th:nth-child(6),

@@ -48,7 +48,10 @@ const getProfileProps = (profile, USE_PRISMIC) => {
   date_of_offense = date_of_offense ? date_of_offense.getFullYear() : "unknown"
   const current_age =
     date_of_birth !== "unknown"
-      ? subtractDatesInYears(new Date(), date_of_birth)
+      ? subtractDatesInYears(
+          deceased_date ? deceased_date : new Date(),
+          date_of_birth
+        )
       : "unknown"
 
   const color = getValue(profile, "color", "var(--clr-primary)")

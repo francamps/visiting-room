@@ -55,6 +55,7 @@ export const query = graphql`
             quote {
               text
             }
+            deceased_date
             show_profile_in_visiting_room
             color
             profile_picture {

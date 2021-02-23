@@ -32,6 +32,7 @@ export const query = graphql`
             quote {
               text
             }
+            deceased_date
             profile_picture {
               fluid(maxWidth: 1000, maxHeight: 800) {
                 src

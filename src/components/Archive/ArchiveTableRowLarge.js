@@ -8,6 +8,7 @@ import Play from "../Symbols/Play"
 
 import { videos } from "../../content/archiveRegistry"
 import getProfileProps from "../../utils/getProfileProps"
+import { scaleDivergingSymlog } from "d3-scale"
 
 const USE_PRISMIC = true
 
@@ -88,9 +89,33 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           </p>
         </div>
       </td>
-      <td>{date_of_offense}</td>
+      <td>
+        <>{date_of_offense}</>
+      </td>
       <td>{age_at_offense}</td>
-      <td>{current_age}</td>
+      <td>
+        <>
+          {current_age}
+          {deceased_date && (
+            <div
+              style={{
+                margin: 0,
+                height: "20px",
+                width: "100%",
+                wordBreak: "break-all",
+                fontSize: "var(--font-small)",
+              }}
+            >
+              <p style={{ margin: 0, lineHeight: "20px", textAlign: "right" }}>
+                Deceased:
+              </p>
+              <p style={{ margin: 0, lineHeight: "20px", textAlign: "right" }}>
+                {deceased_date.getFullYear()}
+              </p>
+            </div>
+          )}
+        </>
+      </td>
       <td>
         <div
           style={{
@@ -130,14 +155,6 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
                 }}
               >{` ${current_age - age_at_offense}`}</span>
             </p>
-            {deceased_date && (
-              <p
-                style={{
-                  margin: 0,
-                  height: "20px",
-                }}
-              >{`Deceased on ${deceased_date}`}</p>
-            )}
           </div>
         </div>
       </td>
