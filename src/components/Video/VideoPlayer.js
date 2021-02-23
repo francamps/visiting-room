@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import ReactPlayer from "react-player"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 import isNull from "lodash/isNull"
+import get from "lodash/get"
 import Player from "@vimeo/player"
 
 import Play from "../Symbols/Play"
@@ -143,6 +144,14 @@ const VideoPlayer = ({
     }
   }, [showCaptions])
 
+  const getUrl = videoSrcURL => {
+    try {
+      return videoSrcURL.split("https://vimeo.com/")[1]
+    } catch {
+      return videoSrcURL.split("/archive/")[1]
+    }
+  }
+
   return (
     <FullScreen handle={handleFullScreen}>
       <div
@@ -167,9 +176,9 @@ const VideoPlayer = ({
           ref={videoPlayerRef}
           tabindex="-1"
           aria-hidden="true"
-          src={`https://player.vimeo.com/video/${
-            videoSrcURL.split("https://vimeo.com/")[1]
-          }?controls=0`}
+          src={`https://player.vimeo.com/video/${getUrl(
+            videoSrcURL
+          )}?controls=0`}
           width="100%"
           height="100%"
           frameBorder="0"
