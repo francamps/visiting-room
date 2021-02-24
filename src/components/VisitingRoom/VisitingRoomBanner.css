@@ -15,25 +15,8 @@
 }
 
 .visiting-room-banner.fadeout {
-  animation: fadeoutzindex 5s forwards;
-}
-
-@keyframes fadeoutzindex {
-  0% {
-    opacity: 1;
-    z-index: 0;
-    width: 100%;
-  }
-  99% {
-    opacity: 0;
-    z-index: 0;
-    width: 100%;
-  }
-  100% {
-    z-index: -10;
-    width: 0;
-    padding: 0;
-  }
+  visibility: hidden;
+  transition: visibility 1.2s 1.2s;
 }
 
 .visiting-room-entry-text span,
