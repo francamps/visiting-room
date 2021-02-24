@@ -24,7 +24,6 @@ export default () => {
       event.data.files.forEach((file, idx) => {
         const transcript = Object.values(file)[0]
         const thisResults = transcript.filter(paragraph => {
-          //return paragraph.content.includes(search)
           const re = new RegExp(search, "i")
           return !!paragraph.content.match(re)
         })
@@ -33,6 +32,7 @@ export default () => {
           results.push({ [Object.keys(file)[0]]: thisResults })
         }
       })
+
       /* eslint-disable-next-line no-restricted-globals */
       self.postMessage({ msg: "SEARCH_DONE", results })
     }

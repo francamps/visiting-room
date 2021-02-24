@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react"
-import ReactPlayer from "react-player"
+import Player from "@vimeo/player"
 import { navigate } from "gatsby"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
+import isNull from "lodash/isNull"
 
 import Play from "../Symbols/Play"
 import Loading from "../Loading"
@@ -17,10 +18,13 @@ const Foreword = ({ inView }) => {
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
+  const [duration, setDuration] = useState(null)
   const [progress, setProgress] = useState({
     progress: 0,
     progressSeconds: 0,
   })
+  const [videoPlayer, setVideoPlayer] = useState(null)
+
   const [showControls, setShowControls] = useState(true)
   const [countDownToHideControls, setCountDownToHideControls] = useState(null)
   const handleFullScreen = useFullScreenHandle()
@@ -28,6 +32,60 @@ const Foreword = ({ inView }) => {
   const escPress = useKeyPress(27)
 
   const barRef = useRef()
+  const videoPlayerRef = useRef()
+
+  useEffect(() => {
+    if (isNull(videoPlayer) && videoPlayerRef.current) {
+      setVideoPlayer(
+        new Player(videoPlayerRef.current, {
+          autoplay: 1,
+          controls: false,
+          title: false,
+          muted: 1,
+        })
+      )
+    }
+  }, [videoPlayerRef.current])
+
+  useEffect(() => {
+    if (videoPlayer) {
+      videoPlayer.getDuration().then(duration => {
+        setDuration(duration)
+      })
+      videoPlayer.on("play", () => {
+        setLoading(false)
+        setPlaying(true)
+        setPause(false)
+      })
+      videoPlayer.on("pause", () => {
+        setPause(true)
+      })
+      videoPlayer.on("bufferstart", () => {
+        videoPlayer.pause()
+        setLoading(true)
+      })
+      videoPlayer.on("bufferend", () => {
+        videoPlayer.play()
+        setLoading(false)
+      })
+    }
+  }, [videoPlayer])
+
+  useEffect(() => {
+    if (videoPlayer) {
+      if (!isPlaying) {
+        videoPlayer.play()
+      }
+
+      videoPlayer.on("timeupdate", ({ percent, seconds }) => {
+        setPlaying(true)
+        setProgress({
+          progress: percent,
+          progressSeconds: seconds,
+        })
+      })
+    }
+  }, [isPlaying])
 
   useEffect(() => {
     let timer
@@ -61,7 +119,9 @@ const Foreword = ({ inView }) => {
   }, [escPress])
 
   useEffect(() => {
-    if (!inView) setPlaying(false)
+    if (!inView) {
+      if (videoPlayer) videoPlayer.pause()
+    }
   }, [inView])
 
   return (
@@ -76,12 +136,11 @@ const Foreword = ({ inView }) => {
             <div
               className="intro"
               onClick={() => {
-                if (isPlaying && isPaused) {
-                  setPlaying(true)
-                  setPause(false)
-                } else if (isPlaying && !isPaused) {
-                  setPlaying(true)
-                  setPause(true)
+                if (videoPlayer) {
+                  videoPlayer.getPaused().then(paused => {
+                    if (paused) videoPlayer.play()
+                    if (!paused) videoPlayer.pause()
+                  })
                 }
               }}
               onMouseMove={() => {
@@ -91,49 +150,24 @@ const Foreword = ({ inView }) => {
                 if (isPlaying) setCountDownToHideControls(5000)
               }}
             >
-              {isPlaying && (
-                <>
-                  <ReactPlayer
-                    ref={playerRef}
-                    url={videoSrcURL}
-                    className="react-player"
-                    playing={isPlaying && !isPaused}
-                    width="100%"
-                    height="100%"
-                    onReady={() => {
-                      setLoading(false)
-                    }}
-                    onPause={() => {
-                      setPause(true)
-                    }}
-                    onEnded={() => {
-                      if (typeof window !== "undefined")
-                        window.localStorage.setItem("showIntro", "false")
-                      navigate("/visiting-room")
-                    }}
-                    onProgress={({ played, playedSeconds }) => {
-                      setProgress({
-                        progress: played,
-                        progressSeconds: playedSeconds,
-                      })
-                    }}
-                    config={{
-                      vimeo: {
-                        playerOptions: {
-                          playsinline: 1,
-                        },
-                      },
-                    }}
-                  />
-                  {isPlaying && isLoading && (
-                    <div
-                      className="loading-wrap"
-                      style={{ position: "absolute" }}
-                    >
-                      <Loading />
-                    </div>
-                  )}
-                </>
+              <iframe
+                ref={videoPlayerRef}
+                tabindex="-1"
+                aria-hidden="true"
+                src={`https://player.vimeo.com/video/447172431?controls=0`}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+                allow="autoplay; fullscreen"
+                referrerpolicy="origin"
+              ></iframe>
+              {isLoading && (
+                <div className="loading-wrap">
+                  <Loading />
+                </div>
               )}
               <div
                 className="control-layer"
@@ -145,12 +179,15 @@ const Foreword = ({ inView }) => {
                 {(!isPlaying || (isPlaying && isPaused)) && (
                   <div className="play-wrap">
                     <Play
-                      size="huge"
+                      size="large"
                       onClick={() => {
-                        if (typeof window !== "undefined")
-                          window.localStorage.setItem("showIntro", "false")
-                        setPause(false)
-                        setPlaying(true)
+                        videoPlayer.getPaused().then(paused => {
+                          if ((isPlaying && paused) || !isPlaying) {
+                            videoPlayer.play()
+                          } else {
+                            videoPlayer.pause()
+                          }
+                        })
                       }}
                     />
                   </div>
@@ -161,13 +198,21 @@ const Foreword = ({ inView }) => {
               barRef={barRef}
               isPlaying={isPlaying}
               isPaused={isPaused}
-              playerRef={playerRef}
+              videoPlayer={videoPlayer}
+              duration={duration}
               progress={progress}
-              setPause={setPause}
-              setPlaying={setPlaying}
+              setPause={() => {
+                videoPlayer.pause()
+              }}
+              setPlaying={() => {
+                videoPlayer.play()
+              }}
               setProgress={setProgress}
               showControls={showControls}
               handleFullScreen={handleFullScreen}
+              onSeek={progressSeconds => {
+                videoPlayer.setCurrentTime(progressSeconds)
+              }}
             />
           </div>
         </div>

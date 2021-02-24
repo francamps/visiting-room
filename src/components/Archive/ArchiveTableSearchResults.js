@@ -8,7 +8,7 @@ import Loading from "../Loading"
 import getProfileProps from "../../utils/getProfileProps"
 import { getNameUri, getSeconds } from "../../utils/index.js"
 
-import "./ArchiveTable.css"
+import "./ArchiveTableSearchResults.css"
 
 const USE_PRISMIC = true
 
@@ -105,8 +105,8 @@ const ArchiveTableSearchResults = ({
                       <p
                         style={{
                           margin: 0,
-                          height: "20px",
-                          lineHeight: "20px",
+                          textAlign: "center",
+                          padding: "0 4px",
                         }}
                       >
                         {fullName}
@@ -114,9 +114,7 @@ const ArchiveTableSearchResults = ({
                     </div>
                   </td>
                   <td className="result-quotes">
-                    <h6 style={{ margin: 0, lineHeight: "20px" }}>
-                      {thisResults.length + " results"}
-                    </h6>
+                    <h6 className="count">{thisResults.length + " results"}</h6>
                     {thisResults.map((r, i) => {
                       if (i < 2) {
                         return (
@@ -137,8 +135,8 @@ const ArchiveTableSearchResults = ({
                                 margin: 0,
                               }}
                             >
-                              <b style={{ marginRight: "8px" }}>{r.speaker}</b>
                               <i style={{ marginRight: "8px" }}>{r.time}</i>
+                              <b style={{ marginRight: "8px" }}>{r.speaker}</b>
                             </div>
                             {isOpen
                               ? r.content
@@ -157,11 +155,17 @@ const ArchiveTableSearchResults = ({
                               )
                             }}
                           >
-                            <b style={{ marginRight: "8px" }}>{r.speaker}</b>
-                            <i style={{ marginRight: "8px" }}>{r.time}</i>
-                            {isOpen
-                              ? r.content
-                              : r.content.substring(0, 120) + "..."}
+                            <div
+                              style={{
+                                fontSize: "var(--font-small)",
+                                display: "block",
+                                margin: 0,
+                              }}
+                            >
+                              <i style={{ marginRight: "8px" }}>{r.time}</i>
+                              <b style={{ marginRight: "8px" }}>{r.speaker}</b>
+                            </div>
+                            {r.content}
                           </p>
                         )
                       }
@@ -174,7 +178,7 @@ const ArchiveTableSearchResults = ({
                       }}
                       className="see-more"
                     >
-                      {"See more >"}
+                      {isOpen ? "See less <" : "See more >"}
                     </h6>
                   </td>
                 </tr>

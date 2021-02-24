@@ -14,8 +14,20 @@
   border-radius: 4px;
 }
 
-.visiting-room-entry-text p {
+.visiting-room-banner.fadeout {
+  z-index: -10;
+  transition-property: z-index;
+  transition-delay: 1.2s;
+}
+
+.visiting-room-entry-text span,
+.visiting-room-entry-text a {
   line-height: var(--font-copy-banner);
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+.visiting-room-entry-text a {
+  color: var(--clr-primary);
 }
 
 .visiting-room-banner button.hover-link {
@@ -24,6 +36,11 @@
   outline: none;
   cursor: pointer;
   color: var(--clr-white);
+  transition: color 0.2s;
+}
+.visiting-room-banner button.hover-link:hover {
+  color: var(--clr-primary);
+  transition: color 0.2s;
 }
 
 @media (max-width: 767px) {

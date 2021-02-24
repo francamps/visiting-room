@@ -162,6 +162,14 @@
   animation: rotatingBackgroundColor 20s ease infinite;
 }
 
+@media (max-width: 1224px) {
+  .header .home-home {
+    width: 24px;
+    height: 24px;
+    top: 28px;
+  }
+}
+
 @media (max-width: 767px) {
   .header .home-title {
     box-sizing: border-box;

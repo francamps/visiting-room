@@ -97,9 +97,6 @@ const GridCell = ({
         loop: 1,
       })
       setVideoPlayer(player)
-      player.getVolume().then(vol => {
-        console.log(vol)
-      })
       player.setVolume(0)
       player.play()
       player.setLoop(true)
@@ -171,7 +168,7 @@ const GridCell = ({
         </div>
       )}
       <h3
-        className="name-tag border-animation"
+        className="name-tag"
         onClick={() => {
           video_link &&
             video_link.url &&
@@ -179,7 +176,7 @@ const GridCell = ({
         }}
       >
         <div
-          className="svg-wrapper"
+          className={`svg-wrapper ${isHoverOrInView ? "hovered" : ""}`}
           style={{
             background: `var(--${getColor(color)}`,
           }}
@@ -230,7 +227,7 @@ const GridCell = ({
                 e.stopPropagation()
               }}
               buttonContent={<IconSound />}
-              tooltipContent={"Hold to hear"}
+              tooltipContent={"Hold to listen"}
               tooltipStyling={{
                 background: `var(--${getColor(color)}`,
                 fontSize: "var(--font-small)",

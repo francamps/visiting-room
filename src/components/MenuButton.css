@@ -14,13 +14,6 @@
   top: 20px;
 }
 
-@media (max-width: 1224px) {
-  .menu-buttons {
-    top: 10px;
-    right: 10px;
-  }
-}
-
 .menu-buttons .menu-button-tooltip {
   display: flex;
   justify-content: flex-end;
@@ -44,7 +37,7 @@
   cursor: pointer;
   position: relative;
   outline: none;
-  transition: box-shadow 0.4s;
+  transition: box-shadow 0.4s, background-color 0.4s;
 }
 
 .menu-buttons .menu-button.menu-light {
@@ -81,6 +74,11 @@
   opacity: 0;
 }
 
+.menu-buttons .menu-button-tooltip.holding button.menu-button {
+  background-color: var(--clr-light-grey);
+  transition: background-color 0.4s;
+}
+
 .menu-buttons .menu-tooltip.active {
   transform: scale(1);
   opacity: 1;
@@ -88,6 +86,11 @@
 }
 
 @media (max-width: 1224px) {
+  .menu-buttons {
+    top: 20px;
+    right: 20px;
+  }
+
   .menu-buttons button.menu-button {
     background-color: var(--clr-dark-grey);
   }

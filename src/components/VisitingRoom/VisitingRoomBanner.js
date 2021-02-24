@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Link } from "gatsby"
 import CrossClose from "../CrossClose"
 
 import "./VisitingRoomBanner.css"
@@ -12,10 +12,10 @@ const VisitingRoomBanner = ({ isShow, setShowBanner }) => {
           <h3 className="fadeinfast" style={{ margin: 0 }}>
             Visiting Room
           </h3>
-          <p>
-            {`The Visiting Room is a selection of short testimonies of 
-            interviews shot at Angola Louisiana State Penitentiary between 2017 and 2018.`}
-          </p>
+          <span>{`The Visiting Room invites you to sit with people serving life without parole to hear them tell some of their own stories, in their own words. 
+These short videos are drawn from longer interviews, which are available in the `}</span>
+          <Link to="/archive">Full Archive</Link>
+          <span>.</span>
         </div>
         <div
           style={{

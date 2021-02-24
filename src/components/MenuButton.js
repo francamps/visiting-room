@@ -15,10 +15,11 @@ const MenuButton = ({
   tooltipStyling,
 }) => {
   const [isTooltip, setTooltip] = useState(false)
+  const [isHolding, setHolding] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return (
-    <div className="menu-button-tooltip">
+    <div className={`menu-button-tooltip ${isHolding ? "holding" : ""}`}>
       <div
         className={`menu-tooltip ${
           tooltipActive || (isTooltip && !isTabletOrMobile) ? "active" : ""
@@ -30,15 +31,38 @@ const MenuButton = ({
       <button
         className="menu-button"
         onClick={onClick}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        onMouseDown={e => {
+          if (onMouseDown) {
+            setHolding(true)
+            setTooltip(false)
+            onMouseDown(e)
+          }
+        }}
+        onMouseUp={e => {
+          if (onMouseUp) {
+            setHolding(false)
+            onMouseUp(e)
+          }
+        }}
+        onTouchStart={e => {
+          if (onTouchStart) {
+            setHolding(true)
+            setTooltip(false)
+            onTouchStart(e)
+          }
+        }}
+        onTouchEnd={e => {
+          if (onTouchEnd) {
+            setHolding(false)
+            onTouchEnd(e)
+          }
+        }}
         onMouseEnter={() => {
           setTooltip(true)
         }}
-        onMouseLeave={() => {
+        onMouseLeave={e => {
           setTooltip(false)
+          if (onMouseUp) onMouseUp(e)
         }}
       >
         {buttonContent}

@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
-import ReactPlayer from "react-player"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 import isNull from "lodash/isNull"
-import get from "lodash/get"
 import Player from "@vimeo/player"
 
 import Play from "../Symbols/Play"
@@ -38,7 +36,7 @@ const VideoPlayer = ({
   startTime,
   profileId,
 }) => {
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [videoPlayer, setVideoPlayer] = useState(null)
@@ -79,6 +77,14 @@ const VideoPlayer = ({
       })
       videoPlayer.on("pause", () => {
         setPause(true)
+      })
+      videoPlayer.on("bufferstart", () => {
+        videoPlayer.pause()
+        setLoading(true)
+      })
+      videoPlayer.on("bufferend", () => {
+        videoPlayer.play()
+        setLoading(false)
       })
     }
   }, [videoPlayer])
@@ -160,7 +166,6 @@ const VideoPlayer = ({
         className={`video ${handleFullScreen.active ? "video-fullscreen" : ""}`}
         onClick={() => {
           if (videoPlayer) {
-            setLoading(true)
             videoPlayer.getPaused().then(paused => {
               if (paused) videoPlayer.play()
               if (!paused) videoPlayer.pause()
@@ -192,7 +197,7 @@ const VideoPlayer = ({
           referrerpolicy="origin"
         ></iframe>
 
-        {isPlaying && isLoading && (
+        {isLoading && (
           <div className="loading-wrap">
             <Loading color={color} />
           </div>

@@ -137,11 +137,13 @@ const FilterAndSearchResults = ({
   }
 
   const searchResultsWW = () => {
-    searchWorker.postMessage({
-      msg: "SEARCH",
-      search,
-      files,
-    })
+    if (files.length) {
+      searchWorker.postMessage({
+        msg: "SEARCH",
+        search,
+        files,
+      })
+    }
   }
 
   useEffect(() => {

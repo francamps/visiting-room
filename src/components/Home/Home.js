@@ -15,14 +15,10 @@ const Home = ({ images }) => {
   const [hideWords, setHideWords] = useState(false)
 
   useEffect(() => {
-    let timerActionsWords = setTimeout(() => {
+    if (barProgress > 0.5) {
       setHideWords(true)
-    }, 8000)
-
-    return () => {
-      clearTimeout(timerActionsWords)
     }
-  }, [])
+  }, [barProgress])
 
   return (
     <>
@@ -64,7 +60,7 @@ const Home = ({ images }) => {
         <div className="menu-buttons">
           <MenuButton
             buttonContent={
-              <span style={{ fontSize: "var(--font-xsmall)" }}>Skip intro</span>
+              <span style={{ fontSize: "var(--font-xsmall)" }}>Skip</span>
             }
             onClick={() => {
               navigate("/visiting-room")

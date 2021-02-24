@@ -1,0 +1,61 @@
+.archive table.search-results th {
+  flex: none;
+  width: 120px;
+}
+
+.archive table:not(.isCompact).search-results th:nth-child(1),
+.archive table:not(.isCompact).search-results td:nth-child(1) {
+  flex: 0 0 120px;
+}
+.archive table:not(.isCompact).search-results th:nth-child(2),
+.archive table:not(.isCompact).search-results td:nth-child(2) {
+  flex: 0 0 120px;
+}
+.archive table:not(.isCompact).search-results th:last-child,
+.archive table:not(.isCompact).search-results td:last-child {
+  flex: 1;
+  padding: 10px;
+}
+
+.archive table.search-results tbody tr {
+  height: 200px;
+  max-height: 200px;
+  background-color: rgba(var(--clr-black-rgb), 1);
+  transition: background-color 0.4s, max-height 0.4s;
+}
+
+.archive table.search-results tbody tr.open {
+  height: auto;
+  max-height: 2000px;
+  background-color: rgba(var(--clr-black-rgb), 1);
+  transition: background-color 0.4s, max-height 0.4s;
+}
+
+.archive table.search-results td {
+  flex: none;
+  width: 120px;
+}
+
+.archive table.search-results td p {
+  margin: 0;
+  cursor: pointer;
+  max-width: 800px;
+  white-space: normal;
+  line-height: var(--font-copy-label);
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: color 0.4s;
+}
+
+.archive table.search-results td p:hover,
+.archive table.search-results td h6.see-more:hover {
+  color: var(--clr-primary);
+  transition: color 0.4s;
+}
+
+.archive table.search-results td h6.count {
+  margin: 0;
+  line-height: 20px;
+  width: 100%;
+  text-align: right;
+}

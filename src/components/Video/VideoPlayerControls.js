@@ -56,9 +56,10 @@ const getBarWidth = (barRef, progress) => {
   return `${widthOfBar * progress.progress}px`
 }
 
-const onSeek = (e, barRef, duration, setProgress) => {
+const onSeekInBar = (e, barRef, duration, setProgress, onSeek) => {
   const progressMouse = getProgressFromMouse(e, barRef, duration)
   setProgress(progressMouse)
+  onSeek(progressMouse.progressSeconds)
 }
 
 const VideoPlayerControls = ({
@@ -70,6 +71,7 @@ const VideoPlayerControls = ({
   handleFullScreen,
   isPlaying,
   isPaused,
+  onSeek,
   progress,
   setPause,
   setPlaying,
@@ -232,7 +234,7 @@ const VideoPlayerControls = ({
           }}
           onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
-            onSeek(e, barRef, duration, setProgress)
+            onSeekInBar(e, barRef, duration, setProgress, onSeek)
           }}
         />
         <div
@@ -245,7 +247,7 @@ const VideoPlayerControls = ({
           }}
           onKeyUp={ev => handleKeyUp(ev, noop)}
           onClick={e => {
-            onSeek(e, barRef, duration, setProgress)
+            onSeekInBar(e, barRef, duration, setProgress, onSeek)
           }}
         />
         <div
