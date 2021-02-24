@@ -37,6 +37,7 @@ const HomeVideo = ({ setBarProgress }) => {
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
+          referrerpolicy="origin"
         ></iframe>
       </div>
     </div>
