@@ -79,11 +79,9 @@ const VideoPlayer = ({
         setPause(true)
       })
       videoPlayer.on("bufferstart", () => {
-        videoPlayer.pause()
         setLoading(true)
       })
       videoPlayer.on("bufferend", () => {
-        videoPlayer.play()
         setLoading(false)
       })
     }
@@ -166,6 +164,7 @@ const VideoPlayer = ({
         className={`video ${handleFullScreen.active ? "video-fullscreen" : ""}`}
         onClick={() => {
           if (videoPlayer) {
+            console.log("click all")
             videoPlayer.getPaused().then(paused => {
               if (paused) videoPlayer.play()
               if (!paused) videoPlayer.pause()
@@ -203,7 +202,7 @@ const VideoPlayer = ({
           </div>
         )}
         <div className="control-layer">
-          {(!isPlaying || (isPlaying && isPaused)) && (
+          {(!isPlaying || isPaused) && (
             <>
               <div
                 style={{
@@ -213,31 +212,8 @@ const VideoPlayer = ({
                   alignItems: "center",
                 }}
               >
-                <Play
-                  size="large"
-                  tabIndex={0}
-                  onClick={() => {
-                    videoPlayer.getPaused().then(paused => {
-                      if ((isPlaying && paused) || !isPlaying) {
-                        videoPlayer.play()
-                      }
-                    })
-                  }}
-                />
+                <Play size="large" tabIndex={0} />
               </div>
-              {videoTitle && !isPaused && (
-                <div className="video-title">
-                  <h2
-                    style={{
-                      margin: "0px",
-                      fontSize: "var(--font-large)",
-                      color: color || "inherit",
-                    }}
-                  >
-                    {videoTitle}
-                  </h2>
-                </div>
-              )}
             </>
           )}
         </div>
