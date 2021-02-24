@@ -15,9 +15,25 @@
 }
 
 .visiting-room-banner.fadeout {
-  z-index: -10;
-  transition-property: z-index;
-  transition-delay: 1.2s;
+  animation: fadeoutzindex 5s forwards;
+}
+
+@keyframes fadeoutzindex {
+  0% {
+    opacity: 1;
+    z-index: 0;
+    width: 100%;
+  }
+  99% {
+    opacity: 0;
+    z-index: 0;
+    width: 100%;
+  }
+  100% {
+    z-index: -10;
+    width: 0;
+    padding: 0;
+  }
 }
 
 .visiting-room-entry-text span,
@@ -44,7 +60,11 @@
 }
 
 @media (max-width: 767px) {
+  .visiting-room-banner {
+    max-width: calc(100% - 40px);
+  }
+
   .visiting-room-entry-text {
-    margin: 0 40px;
+    margin: 0 20px;
   }
 }
