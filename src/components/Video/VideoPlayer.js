@@ -189,6 +189,7 @@ const VideoPlayer = ({
           allowfullscreen
           texttrack={"en-US"}
           allow="autoplay; fullscreen"
+          referrerpolicy="no-referrer"
         ></iframe>
 
         {isPlaying && isLoading && (
