@@ -88,7 +88,7 @@ const GridCell = ({
     (isTabletOrMobile && inView && videosBackground[fullName])
 
   useEffect(() => {
-    if (isHoverOrInView) {
+    if (isHoverOrInView && !videoPlayer) {
       const player = new Player(videoPlayerRef.current, {
         autoplay: 1,
         controls: false,
@@ -97,11 +97,19 @@ const GridCell = ({
         loop: 1,
       })
       setVideoPlayer(player)
-      player.setVolume(0)
-      player.play()
-      player.setLoop(true)
+    } else if (!isHoverOrInView && videoPlayer) {
+      videoPlayer.destroy()
+      setVideoPlayer(null)
     }
   }, [isHoverOrInView])
+
+  useEffect(() => {
+    if (videoPlayer) {
+      videoPlayer.setVolume(0)
+      videoPlayer.play()
+      videoPlayer.setLoop(true)
+    }
+  }, [videoPlayer])
 
   useEffect(() => {
     if (isHoverOrInView) {
