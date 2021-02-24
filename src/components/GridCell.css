@@ -5,15 +5,7 @@
   top: 50%;
   /*transform: translateY(-50%);*/
   margin: 0 auto;
-  width: 320px;
-}
-.shape {
-  stroke-width: 50px;
-  stroke-dashoffset: 0;
-  stroke-dasharray: 470;
-  fill: transparent;
-  border-bottom: 2px solid black;
-  transition: stroke-width 2s, stroke-dashoffset 2s, stroke-dasharray 2s;
+  width: 240px;
 }
 
 .name-wrap {
@@ -25,21 +17,14 @@
 }
 
 .name-play {
-  width: 0px;
+  position: absolute;
+  left: 10px;
   opacity: 0;
   height: 40px;
   padding: 0;
   display: flex;
   align-items: center;
-  opacity: 0;
   transition: width 2s, opacity 2s, padding 2s;
-}
-
-.text {
-  position: relative;
-  line-height: 40px;
-  color: var(--clr-black);
-  transition: color 2s;
 }
 
 .svg-wrapper.hovered .name-play {
@@ -77,6 +62,13 @@
   overflow: hidden;
 }
 
+.grid-cell .text {
+  position: relative;
+  line-height: 40px;
+  color: var(--clr-black);
+  transition: color 2s;
+}
+
 .grid-cell .cell-background .gatsby-image-wrapper {
   height: 100%;
 }
@@ -89,6 +81,10 @@
 .grid-cell.hovered .cell-background .gatsby-image-wrapper img {
   filter: brightness(1) saturate(80%);
   transition: filter 1.2s;
+}
+
+.grid-cell .menu-buttons .menu-button-tooltip {
+  margin-bottom: 0;
 }
 
 .grid-cell .gridimage-video,
@@ -206,14 +202,6 @@
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
-/*
-.grid-cell.hovered .name-tag {
-  letter-spacing: 0.03em;
-  opacity: 0;
-  transition: opacity 1.2s;
-}
-*/
-
 .grid-cell.hovered .cell-hover-layer {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(0px);
@@ -276,28 +264,6 @@
   -ms-animation: fadeinscale 2s forwards;
   -o-animation: fadeinscale 2s forwards;
   animation: fadeinscale 2s forwards;*/
-}
-
-.grid-cell .cell-hover-quote .word-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.grid-cell.hovered .cell-hover-quote .quote .word {
-  opacity: 1;
-
-  /*-webkit-animation: fadeinblur 2s forwards;
-  -moz-animation: fadeinblur 2s forwards;
-  -ms-animation: fadeinblur 2s forwards;
-  -o-animation: fadeinblur 2s forwards;
-  animation: fadeinblur 2s forwards;
-  */
-
-  /*-webkit-animation: fadein 2s forwards;
-  -moz-animation: fadein 2s forwards;
-  -ms-animation: fadein 2s forwards;
-  -o-animation: fadein 2s forwards;
-  animation: fadein 2s forwards;*/
 }
 
 /* UNDERLINE */

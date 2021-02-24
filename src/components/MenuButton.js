@@ -5,6 +5,10 @@ import "./MenuButton.css"
 
 const MenuButton = ({
   onClick,
+  onMouseDown,
+  onMouseUp,
+  onTouchStart,
+  onTouchEnd,
   buttonContent,
   tooltipContent,
   tooltipActive,
@@ -26,6 +30,10 @@ const MenuButton = ({
       <button
         className="menu-button"
         onClick={onClick}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
         onMouseEnter={() => {
           setTooltip(true)
         }}

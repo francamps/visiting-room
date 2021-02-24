@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { navigate } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import { useMediaQuery } from "react-responsive"
+import Player from "@vimeo/player"
 
 import GridCellBackground from "./GridCellBackground"
+import IconSound from "./Symbols/Sound"
 import Play from "./Symbols/Play"
+import MenuButton from "./MenuButton"
 
 import "./GridCell.css"
 
@@ -51,9 +54,7 @@ const videosBackground = {
 }
 Object.entries(videosBackground).forEach(
   ([name, id]) =>
-    (videosBackground[
-      name
-    ] = `https://player.vimeo.com/video/${id}?background=1`)
+    (videosBackground[name] = `https://player.vimeo.com/video/${id}?controls=0`)
 )
 
 const getColor = hex => {
@@ -71,20 +72,60 @@ const GridCell = ({
   video_link,
 }) => {
   const [isHover, setHover] = useState(false)
+  const [isSound, setSound] = useState(0)
+  const [videoPlayer, setVideoPlayer] = useState(null)
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
   const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.5,
   })
   const profileUri = getNameUri(fullName)
-
-  if (!image) {
-    return null
-  }
+  const videoPlayerRef = useRef()
 
   const isHoverOrInView =
     (isHover && videosBackground[fullName]) ||
     (isTabletOrMobile && inView && videosBackground[fullName])
+
+  useEffect(() => {
+    if (isHoverOrInView) {
+      const player = new Player(videoPlayerRef.current, {
+        autoplay: 1,
+        controls: false,
+        title: false,
+        muted: 1,
+        loop: 1,
+      })
+      setVideoPlayer(player)
+      player.getVolume().then(vol => {
+        console.log(vol)
+      })
+      player.setVolume(0)
+      player.play()
+      player.setLoop(true)
+    }
+  }, [isHoverOrInView])
+
+  useEffect(() => {
+    if (isHoverOrInView) {
+      const videoVolume = setInterval(() => {
+        videoPlayer.getVolume().then(vol => {
+          if (isSound && vol < 1) {
+            videoPlayer.setVolume(vol + 0.1)
+          }
+          if (!isSound && vol > 0) {
+            videoPlayer.setVolume(vol - 0.1)
+          }
+        })
+      }, 100)
+
+      return () => clearInterval(videoVolume)
+    }
+  }, [isSound])
+
+  if (!image) {
+    return null
+  }
 
   return (
     <div
@@ -98,9 +139,6 @@ const GridCell = ({
       onMouseLeave={() => {
         setHover(false)
       }}
-      onClick={() => {
-        video_link && video_link.url && navigate(`/visiting-room/${profileUri}`)
-      }}
     >
       {image && <GridCellBackground isHover={isHoverOrInView} image={image} />}
       {isHoverOrInView && (
@@ -110,6 +148,7 @@ const GridCell = ({
             "visible"}`}
         >
           <iframe
+            ref={videoPlayerRef}
             title={fullName}
             className="responsive-iframe"
             src={videosBackground[fullName]}
@@ -126,65 +165,78 @@ const GridCell = ({
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
           ) : null}
           <div className={`quote ${getColor(color)}`}>
-            <div className="word-wrapper">
-              <div className="word">"</div>
-            </div>
-            {quote.split(" ").map((word, i) => (
-              <div className="word-wrapper" key={`word-${i}`}>
-                <div
-                  className="word"
-                  style={{
-                    // TODO: Reenable if we want blur fade in
-                    // animationDelay: 0.2 + Math.random() * 1 + "s",
-                    marginRight: "6px",
-                  }}
-                >
-                  {word}
-                </div>
-              </div>
-            ))}
-            <div className="word-wrapper">
-              <div className="word">"</div>
-            </div>
+            <span>{`"${quote}"`}</span>
           </div>
         </div>
       )}
-      <h3 className="name-tag border-animation">
+      <h3
+        className="name-tag border-animation"
+        onClick={() => {
+          video_link &&
+            video_link.url &&
+            navigate(`/visiting-room/${profileUri}`)
+        }}
+      >
         <div
-          className={`svg-wrapper ${isHover ? "hovered" : ""}
-          ${isTabletOrMobile && inView ? "static-hovered" : ""}
-          `}
+          className="svg-wrapper"
+          style={{
+            background: `var(--${getColor(color)}`,
+          }}
         >
-          <svg height="40" width="210" xmlns="http://www.w3.org/2000/svg">
-            <rect
-              className="shape"
-              height="40"
-              width="210"
-              stroke={`var(--${getColor(color)}`}
-            />
-            <foreignObject className="node" x="0" y="0" width="210" height="40">
-              <div className="name-wrap">
-                {video_link && video_link.url && (
-                  <div className="name-play">
-                    <Play color={isHover ? color : null} />
-                  </div>
-                )}
-                <div
-                  className="text"
-                  style={
-                    isHover
-                      ? {
-                          color: `var(--${getColor(color)}`,
-                        }
-                      : {}
-                  }
-                >
-                  {fullName}
-                </div>
+          <div className="name-wrap">
+            {video_link && video_link.url && (
+              <div
+                className="name-play"
+                style={{
+                  width: "auto",
+                  opacity: isHoverOrInView ? 1 : 0,
+                  transition: "opacity 1.2s",
+                }}
+              >
+                <Play color={"var(--clr-black)"} />
               </div>
-            </foreignObject>
-          </svg>
+            )}
+            <div className="text">{fullName}</div>
+          </div>
         </div>
+        {
+          <div
+            className={`menu-buttons ${isHoverOrInView ? "fadein" : ""}`}
+            style={{
+              position: "absolute",
+              bottom: 0,
+              opacity: 0,
+            }}
+          >
+            <MenuButton
+              onMouseDown={e => {
+                e.stopPropagation()
+                setSound(1)
+              }}
+              onMouseUp={e => {
+                e.stopPropagation()
+                setSound(0)
+              }}
+              onTouchStart={e => {
+                e.stopPropagation()
+                setSound(1)
+              }}
+              onTouchEnd={e => {
+                e.stopPropagation()
+                setSound(0)
+              }}
+              onClick={e => {
+                e.stopPropagation()
+              }}
+              buttonContent={<IconSound />}
+              tooltipContent={"Hold to hear"}
+              tooltipStyling={{
+                background: `var(--${getColor(color)}`,
+                fontSize: "var(--font-small)",
+              }}
+            />
+          </div>
+        }
       </h3>
     </div>
   )
