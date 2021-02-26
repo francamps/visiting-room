@@ -18,8 +18,7 @@
 }
 
 .archive table.search-results tbody tr {
-  height: 200px;
-  max-height: 200px;
+  height: auto;
   background-color: rgba(var(--clr-black-rgb), 1);
   transition: background-color 0.4s, max-height 0.4s;
 }
@@ -36,7 +35,7 @@
   width: 120px;
 }
 
-.archive table.search-results td p {
+.archive table.search-results td p.quote {
   margin: 0;
   cursor: pointer;
   max-width: 800px;
@@ -47,15 +46,15 @@
   transition: color 0.4s;
 }
 
+.archive table.search-results tbody tr .result-quotes {
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
 .archive table.search-results td p:hover,
 .archive table.search-results td h6.see-more:hover {
   color: var(--clr-primary);
   transition: color 0.4s;
-}
-
-.archive table.search-results td h6.count {
-  margin: 0;
-  line-height: 20px;
-  width: 100%;
-  text-align: right;
 }

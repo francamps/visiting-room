@@ -10,6 +10,7 @@ const FilterAndSearch = ({
   setFilterTerms,
   setView,
   setSearchResults,
+  setSearchWords,
   setLoadingSearchResults,
 }) => {
   const [isTooltip, setTooltip] = useState(false)
@@ -21,7 +22,7 @@ const FilterAndSearch = ({
     <>
       <div className="menu-button-tooltip search">
         <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>
-          Search
+          Search all interview transcripts for terms and mentions.
         </div>
         <button
           className="icon menu-button"
@@ -50,6 +51,7 @@ const FilterAndSearch = ({
             onSubmit={e => {
               e.preventDefault()
               setSearch(searchInput)
+              setSearchWords(searchInput)
             }}
             style={{
               display: "flex",
@@ -76,6 +78,7 @@ const FilterAndSearch = ({
               onClick={() => {
                 setTyping(false)
                 setSearchInput(null)
+                setFilterTerms(null)
               }}
             >
               <IconClose noBackground />

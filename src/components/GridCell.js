@@ -14,10 +14,10 @@ import "./GridCell.css"
 import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
-  "Alvin Catchings": "504668722",
-  "Arthur Carter": "508705327",
-  "Archie Tyner": "508705053",
-  "Anthony Hingle": "508704922",
+  "Alvin Catchings": "516108298",
+  "Arthur Carter": "516109009",
+  "Archie Tyner": "516108593",
+  "Anthony Hingle": "516108451",
   "Darnell Craft": "508706478",
   "Darwin Willie": "508706826",
   "Daryl Waters": "508706916",
@@ -28,7 +28,7 @@ const videosBackground = {
   "Gordon Newman": "508708572",
   "Hannibal Stanfield": "508708762",
   "Hayward Jones": "508709415",
-  "Bernell Juluke": "508710233",
+  "Bernell Juluke": "516109257",
   "Jack Segura": "508723795",
   "Jarred Lanclow": "508723981",
   "Jeffrer Hillburn": "508724273",
@@ -98,30 +98,36 @@ const GridCell = ({
       })
       setVideoPlayer(player)
     } else if (!isHoverOrInView && videoPlayer) {
-      videoPlayer.destroy()
+      //      videoPlayer.destroy()
       setVideoPlayer(null)
     }
   }, [isHoverOrInView])
 
   useEffect(() => {
-    if (videoPlayer) {
-      videoPlayer.setVolume(0)
-      videoPlayer.play()
-      videoPlayer.setLoop(true)
+    if (videoPlayer && videoPlayer.setVolume) {
+      try {
+        videoPlayer.setVolume(0)
+        videoPlayer.play()
+        videoPlayer.setLoop(true)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }, [videoPlayer])
 
   useEffect(() => {
-    if (isHoverOrInView) {
+    if (isHoverOrInView && videoPlayer) {
       const videoVolume = setInterval(() => {
-        videoPlayer.getVolume().then(vol => {
-          if (isSound && vol < 1) {
-            videoPlayer.setVolume(vol + 0.1)
-          }
-          if (!isSound && vol > 0) {
-            videoPlayer.setVolume(vol - 0.1)
-          }
-        })
+        if (videoPlayer) {
+          videoPlayer.getVolume().then(vol => {
+            if (isSound && vol < 1) {
+              videoPlayer.setVolume(vol + 0.1)
+            }
+            if (!isSound && vol > 0) {
+              videoPlayer.setVolume(vol - 0.1)
+            }
+          })
+        }
       }, 100)
 
       return () => clearInterval(videoVolume)
@@ -159,8 +165,8 @@ const GridCell = ({
             src={videosBackground[fullName]}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            referrerpolicy="origin"
+            allowFullScreen
+            referrerPolicy="origin"
           ></iframe>
         </div>
       )}

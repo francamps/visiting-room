@@ -17,7 +17,7 @@ const columns = [
   { key: "picture", label: "" },
   { key: "full_name", label: "Full Name" },
   { key: "age_at_offense", label: "Age at offense" },
-  { key: "current_age", label: "Current age" },
+  { key: "current_age", label: "Age" },
   { key: "offense_date", label: "Incarcerated since" },
 ]
 
@@ -34,6 +34,7 @@ const Archive = ({ profiles = [], loading, images }) => {
   const [sortType, setSortedType] = useState(columns[1])
   const [view, setView] = useState("table")
   const [filterTerms, setFilterTerms] = useState(null)
+  const [searchWords, setSearchWords] = useState(null)
   const [isSearchLoading, setLoadingSearchResults] = useState(false)
   const [searchResults, setSearchResults] = useState([])
 
@@ -66,15 +67,13 @@ const Archive = ({ profiles = [], loading, images }) => {
       {!showBanner && (
         <Header
           title={"Full Archive"}
-          setTitleHelp={() => {
-            window.localStorage.setItem("showBanner", "true")
-            setShowBanner(true)
-          }}
+          banner="ARCHIVE"
           actions={
             <>
               <FilterAndSearch
                 setFilterTerms={setFilterTerms}
                 setSearchResults={setSearchResults}
+                setSearchWords={setSearchWords}
                 setView={setView}
                 setLoadingSearchResults={setLoadingSearchResults}
               />
@@ -93,16 +92,6 @@ const Archive = ({ profiles = [], loading, images }) => {
         />
       )}
       <div className="archive">
-        {showBanner && (
-          <ArchiveBanner
-            fadeout={fadeout}
-            onClose={() => {
-              setFadeOut(true)
-            }}
-            setShowBanner={setShowBanner}
-          />
-        )}
-
         {loading && <Loading />}
         {!view ||
           (view === "grid" && !loading && (
@@ -124,7 +113,7 @@ const Archive = ({ profiles = [], loading, images }) => {
             profiles={profilesSorted}
             images={images}
             searchResults={searchResults}
-            filterTerms={filterTerms}
+            searchWords={searchWords}
           />
         )}
       </div>

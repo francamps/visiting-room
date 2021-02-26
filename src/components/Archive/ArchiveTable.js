@@ -11,7 +11,7 @@ const columnsDesktop = [
   { key: "full_name", label: "Full Name" },
   { key: "offense_date", label: "Incarcerated since" },
   { key: "age_at_offense", label: "Age at offense" },
-  { key: "current_age", label: "Current Age" },
+  { key: "current_age", label: "Age" },
   { key: "years", label: "Years incarcerated" },
 ]
 
@@ -28,10 +28,17 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
     return (
       <table className="isCompact">
         <thead>
-          <tr>
-            {columnsMobile.map(column => (
-              <th key={`header-${column.key}`}>{column.label}</th>
-            ))}
+          <tr style={{ height: "40px" }}>
+            <th
+              style={{
+                padding: "0 10px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              All information corresponding to the time of the interview, 2017
+              and 2018.
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -55,11 +62,16 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
 
       <table>
         <thead>
+          <tr style={{ height: "30px" }}>
+            <th style={{ padding: "0 10px", lineHeight: "30px" }}>
+              All information corresponding to the time of the interview, 2017
+              and 2018.
+            </th>
+          </tr>
           <tr>
             {columnsDesktop.map(column => (
               <th key={`header-${column.key}`}>{column.label}</th>
             ))}
-            <th className="play" />
           </tr>
         </thead>
         <tbody>

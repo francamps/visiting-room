@@ -1,23 +1,56 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import { useMediaQuery } from "react-responsive"
 
 import Menu from "./Menu"
 
+import HeaderBanner from "./HeaderBanner"
+import useDocumentScrollThrottled from "../utils/useDocumentScroll"
+
 import "./Header.css"
 
 const Header = ({
+  banner,
   classes,
   title,
   hideTitle,
   hideMenu,
   actions,
   theme,
-  setTitleHelp,
 }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
   const [isHoverTitle, setHoverTitle] = useState(false)
   const [isHoverHome, setHoverHome] = useState(false)
+  const [showBanner, setShowBanner] = useState(
+    true
+    // TODO: Save in localStore once viewed, and pull from there
+    //typeof window !== "undefined" &&
+    //  window.localStorage.getItem("showVRBanner") === "false"
+    //  ? false
+    //  : true
+  )
+  const [isShrinkHeader, setShrinkHeader] = useState(false)
+
+  const MINIMUM_SCROLL = 80
+  const TIMEOUT_DELAY = 200
+
+  useDocumentScrollThrottled(callbackData => {
+    const { previousScrollTop, currentScrollTop } = callbackData
+    const isScrolledDown = previousScrollTop < currentScrollTop
+    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
+
+    setTimeout(() => {
+      if (isScrolledDown && isMinimumScrolled) setShrinkHeader(true)
+    }, TIMEOUT_DELAY)
+  })
+
+  useEffect(() => {
+    setShowBanner(!isShrinkHeader)
+  }, [isShrinkHeader])
+
+  //const headerStyle = isTallHeader ? 'tall' : 'short';
+
+  console.log(showBanner)
 
   return (
     <div
@@ -28,8 +61,7 @@ const Header = ({
         background:
           theme === "light"
             ? "linear-gradient(rgba(var(--clr-white-rgb),1), rgba(var(--clr-white-rgb), 0.75) 50%, rgba(var(--clr-white-rgb), 0.5) 75%, rgba(var(--clr-white-rgb), 0) 100%)"
-            : //? "linear-gradient(rgba(var(--clr-white-rgb),1) 100%, rgba(var(--clr-white-rgb), 0.75) 50%, rgba(var(--clr-white-rgb), 0.5) 25%, rgba(var(--clr-white-rgb),0) 0%)"
-              "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0))",
+            : "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0))",
       }}
     >
       {!hideTitle && (
@@ -71,7 +103,11 @@ const Header = ({
               <h4>{title}</h4>
             </div>
           ) : (
-            <div className="home-title">
+            <div
+              className={`home-title ${
+                isHoverTitle || (!isShrinkHeader && showBanner) ? "active" : ""
+              }`}
+            >
               <h2
                 style={{
                   margin: 0,
@@ -93,15 +129,23 @@ const Header = ({
               >
                 {title}
                 <span
-                  className={`title-help ${isHoverTitle ? "active" : ""}`}
+                  className="title-help"
                   onClick={() => {
-                    if (setTitleHelp) setTitleHelp()
+                    window.localStorage.setItem("showVRBanner", "true")
+                    setShowBanner(true)
                   }}
                   style={{ marginTop: "-4px" }}
                 >
                   ?
                 </span>
               </h2>
+              {banner && (
+                <HeaderBanner
+                  banner={banner}
+                  isShow={showBanner}
+                  setShowBanner={setShowBanner}
+                />
+              )}
             </div>
           )}
         </>

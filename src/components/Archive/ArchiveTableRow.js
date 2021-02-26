@@ -53,7 +53,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
         >
           {image && (
             <Img
-              alt={"TODO: NEEDS AN ALT"}
+              alt={"Picture at the time of the interview"}
               fluid={image}
               imgStyle={{
                 objectFit: "cover",
@@ -63,10 +63,10 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
           )}
           {oldImage && (
             <Img
-              alt={"TODO: NEEDS AN ALT"}
+              alt={"Picture at the time of detention."}
               fluid={oldImage}
               imgStyle={{
-                objectFit: "cover",
+                objectFit: "contain !important",
                 visibility: "visible",
               }}
             />
@@ -120,7 +120,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
             <p>{date_of_offense}</p>
             <p>{"Age at offense"}</p>
             <p>{age_at_offense}</p>
-            <p>{"Current age"}</p>
+            <p>{"Age"}</p>
             <p>{current_age}</p>
             <p>{"Years incarcerated"}</p>
             <p>

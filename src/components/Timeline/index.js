@@ -54,6 +54,7 @@ const Timeline = props => {
     <>
       <>
         <Header
+          banner="TIMELINE"
           theme={inView ? null : "light"}
           title={
             inView

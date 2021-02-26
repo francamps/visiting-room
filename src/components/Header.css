@@ -12,18 +12,9 @@
   z-index: 12;
 }
 
-.header .home-title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 70px;
-  margin: 5px 0 0 30px;
-  position: relative;
-  font-family: "EB Garamond";
-  background: none;
-  transition: color 0.4s;
-  cursor: pointer;
-}
+/**
+Rotating home square
+**/
 
 .header .home-home {
   color: var(--clr-off-white);
@@ -72,35 +63,39 @@
   transition: width 0.8s, opacity 0.8s;
 }
 
-.header.light {
-  background-color: var(--clr-off-white);
-  transition: background-color 0.4s;
-}
+/**
+Heaver each page title
+**/
 
-.header.light .home-title,
-.header.light .home-home {
-  color: var(--clr-black);
+.header .home-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70px;
+  margin: 5px 0 0 30px;
+  position: relative;
+  font-family: "EB Garamond";
+  background: none;
+  transition: color 0.4s;
+  cursor: pointer;
 }
 
 .header .home-title h2 {
   font-size: var(--font-header-title);
+  transition: background 0.4s, padding 0.4s;
 }
 
-.header .home-title.open {
-  color: var(--clr-off-white);
-  transition: color 0.4s;
-}
+/**
+Heaer title help + banner
+**/
 
-.header .home-link {
-  margin: 0;
-  height: 20px;
-  font-weight: 300;
-  margin-bottom: 5px;
-}
-
-.header .breadcrumbs {
-  display: flex;
-  flex-direction: row;
+.header .home-title.active h2 {
+  padding: 10px;
+  box-shadow: var(--box-elevation-dark);
+  background: var(--clr-black);
+  border-radius: 4px;
+  transition: background 0.4s, padding 0.4s;
 }
 
 .header .title-help {
@@ -119,47 +114,27 @@
   border-radius: 20px;
 }
 
-.header .title-help.active {
+.header .home-title.active .title-help {
   color: var(--clr-off-white);
-  box-shadow: var(--box-elevation-dark);
-  background: var(--clr-black);
   opacity: 1;
   margin-left: 10px;
   transition: opacity 0.8s, margin-left 0.4s;
   cursor: pointer;
 }
-.header .title-help.active:hover {
+.header .home-title.active .title-help:hover {
   opacity: 1;
   box-shadow: var(--box-elevation-dark-hover);
   transition: box-shadow 0.4s;
 }
 
-/* */
-
-.home-link-wrap .home-link:after {
-  content: "";
-  position: absolute;
-  top: 24px;
-  width: 0;
-  height: 4px;
-  margin: 5px 0 0;
-  transition: all 0.2s ease-in-out;
-  transition-duration: 1.2s;
-  opacity: 1;
-  background-color: var(--clr-white);
-  right: 0%;
+.header.light {
+  background-color: var(--clr-off-white);
+  transition: background-color 0.4s;
 }
 
-.home-link-wrap:hover .home-link:after {
-  width: 100%;
-  opacity: 1;
-  height: 4px;
-  /*background-color: var(--clr-primary);*/
-  -webkit-animation: rotatingBackgroundColor 20s ease infinite;
-  -moz-animation: rotatingBackgroundColor 20s ease infinite;
-  -ms-animation: rotatingBackgroundColor 20s ease infinite;
-  -o-animation: rotatingBackgroundColor 20s ease infinite;
-  animation: rotatingBackgroundColor 20s ease infinite;
+.header.light .home-title,
+.header.light .home-home {
+  color: var(--clr-black);
 }
 
 @media (max-width: 1224px) {
@@ -183,9 +158,5 @@
     margin: 0;
     height: auto;
     font-weight: 300;
-  }
-
-  .header .home-title h6.home-link {
-    margin: 0;
   }
 }

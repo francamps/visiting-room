@@ -51,14 +51,16 @@
 }
 
 .menu-buttons button.menu-button:hover {
+  background-color: var(--clr-dark-grey);
   box-shadow: var(--box-elevation-dark-hover);
-  transition: box-shadow 0.4s;
+  transition: box-shadow 0.4s, background-color 0.4s;
 }
 
 .menu-buttons .menu-tooltip {
   position: relative;
+  max-width: 140px;
   padding: 4px 6px;
-  height: 20px;
+  min-height: 20px;
   margin-right: 8px;
   border-radius: 4px;
   display: flex;

@@ -4,29 +4,41 @@ import Player from "@vimeo/player"
 
 import "./HomeVideo.css"
 
-const items = ["https://player.vimeo.com/video/507870667?background=1"]
+const items = [
+  "https://player.vimeo.com/video/507870667?background=1",
+  "https://player.vimeo.com/video/516540255?background=1",
+  "https://player.vimeo.com/video/516543730?background=1",
+  "https://player.vimeo.com/video/516547387?background=1",
+]
 
 const HomeVideo = ({ setBarProgress }) => {
   const [progress, setProgress] = useState(0)
+  const [videoSrc, setVideoSrc] = useState(
+    items[Math.floor(items.length * Math.random())]
+  )
   const [videoPlayer, setVideoPlayer] = useState(null)
   const videoPlayerRef = useRef()
 
   useEffect(() => {
     if (videoPlayerRef && videoPlayerRef.current) {
-      const player = new Player(videoPlayerRef.current, {
-        autoplay: 1,
-        controls: false,
-        title: false,
-        muted: 1,
-      })
+      try {
+        const player = new Player(videoPlayerRef.current, {
+          autoplay: 1,
+          controls: false,
+          title: false,
+          muted: 1,
+        })
 
-      player.on("timeupdate", ({ percent, seconds }) => {
-        setProgress(seconds)
-        setBarProgress(percent)
+        player.on("timeupdate", ({ percent, seconds }) => {
+          setProgress(seconds)
+          setBarProgress(percent)
 
-        if (percent > 0.9) navigate("/visiting-room")
-      })
-      setVideoPlayer(videoPlayer)
+          if (percent > 0.9) navigate("/visiting-room")
+        })
+        setVideoPlayer(videoPlayer)
+      } catch (e) {
+        console.log(e, videoPlayerRef, videoSrc)
+      }
     }
   }, [videoPlayerRef.current])
 
@@ -36,11 +48,11 @@ const HomeVideo = ({ setBarProgress }) => {
         <iframe
           ref={videoPlayerRef}
           className="responsive-iframe"
-          src={items[0]}
+          src={videoSrc}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
-          referrerpolicy="origin"
+          referrerPolicy="origin"
         ></iframe>
       </div>
     </div>

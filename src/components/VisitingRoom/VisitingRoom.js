@@ -3,7 +3,7 @@ import ReactPlayer from "react-player"
 
 import Grid from "../Grid"
 import Header from "../Header"
-import VisitingRoomBanner from "./VisitingRoomBanner"
+import VisitingRoomBanner from "../HeaderBanner"
 
 //import audio from "../../content/audio/stanfield/landingB.mp3"
 import audio from "../../content/audio/stanfield/landingFull.mp3"
@@ -13,13 +13,6 @@ import "./VisitingRoom.css"
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [search, setSearch] = useState(null)
 
-  const [showBanner, setShowBanner] = useState(
-    // TODO: Save in localStore once viewed, and pull from there
-    typeof window !== "undefined" &&
-      window.localStorage.getItem("showVRBanner") === "false"
-      ? false
-      : true
-  )
   const [showSound, setShowSound] = useState(false)
 
   useEffect(() => {
@@ -37,17 +30,10 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
       <>
         {!loading && (
           <>
-            <Header
-              title="The Visiting Room"
-              setTitleHelp={() => {
-                window.localStorage.setItem("showVRBanner", "true")
-                setShowBanner(true)
-              }}
-            />
+            <Header title="The Visiting Room" banner />
             <Grid searchTerm={search} profiles={profiles} images={images} />
           </>
         )}
-        <VisitingRoomBanner isShow={showBanner} setShowBanner={setShowBanner} />
         {showSound && (
           <ReactPlayer
             width="1px"

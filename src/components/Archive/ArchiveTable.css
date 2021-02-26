@@ -1,9 +1,10 @@
 .archive table {
   width: calc(100% - 40px);
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   box-sizing: border-box;
   height: 100%;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -18,7 +19,7 @@
 }
 
 .archive table tr {
-  height: 40px;
+  height: 4 0px;
   line-height: 40px;
   background-color: rgba(var(--clr-black-rgb), 0);
   transition: background-color 0.4s, height 1s;
@@ -85,10 +86,37 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   justify-content: flex-start;
 }
 
-.archive table thead th.play {
-  flex: none;
-  width: 50px;
-  padding: 0 30px 0 20px;
+.archive table tbody {
+  overflow: auto;
+  height: 100%;
+}
+
+.archive table tbody tr {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--clr-light-grey);
+  height: 160px;
+  background-color: rgba(var(--clr-black-rgb), 1);
+  transition: background-color 1s, height 1s;
+}
+
+.archive table tbody tr.hovered {
+  background-color: rgba(var(--clr-white-rgb), 0.01);
+  transition: background-color 1s;
+}
+
+.archive table tbody tr td {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+  border-right: 1px solid var(--clr-light-grey);
+  text-overflow: ellipsis;
+  color: var(--clr-white);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .archive table thead tr th span {
@@ -101,11 +129,13 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 
 .archive table.isCompact thead tr {
   height: 4px;
-  background: var(--clr-light-grey);
 }
+
 .archive table.isCompact thead tr th {
-  background: var(--clr-light-grey);
+  background: var(--clr-white);
+  color: var(--clr-black);
 }
+
 .archive table.isCompact thead th.play {
   padding: 0 10px 10px 10px;
 }
@@ -129,17 +159,6 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   flex: 0 0 130px;
 }
 
-.archive table:not(.isCompact) thead tr th:nth-child(6),
-.archive table:not(.isCompact) tbody tr td:nth-child(6) {
-  flex: 0 0 45px;
-}
-
-.archive table:not(.isCompact) th:last-child,
-.archive table:not(.isCompact) td:last-child {
-  flex: 0 0 40px;
-  padding: 0;
-}
-
 .archive table:not(.isCompact) th:last-child {
   padding-right: 10px;
 }
@@ -148,7 +167,6 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   height: 170px;
 }
 
-.archive table.isCompact thead tr th:nth-child(1),
 .archive table.isCompact tbody tr td:nth-child(1) {
   flex: 0 0 120px;
 }
@@ -192,51 +210,12 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   justify-content: flex-end;
 }
 
-.archive table tbody {
-  overflow: auto;
-  height: 100%;
-}
-
-.archive table tbody tr {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid var(--clr-light-grey);
-}
-
-.archive table tbody tr {
-  height: 120px;
-  background-color: rgba(var(--clr-black-rgb), 1);
-  transition: background-color 1s, height 1s;
-}
-
-.archive table tbody tr.hovered {
-  background-color: rgba(var(--clr-white-rgb), 0.01);
-  transition: background-color 1s;
-}
-
-.archive table tbody tr td {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 10px;
-  border-right: 1px solid var(--clr-light-grey);
-  text-overflow: ellipsis;
-  color: var(--clr-white);
-  overflow: hidden;
-  white-space: nowrap;
-}
 .archive table tbody tr td:first-child {
   align-items: flex-start;
 }
 
 .archive table tbody tr td:last-child {
   align-items: center;
-}
-.archive table tbody tr td.result-quotes {
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .archive table tbody tr.isCompact td p {
@@ -271,6 +250,15 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   left: 0 !important;
   right: 0 !important;
   height: 100%;
+  background-color: var(--clr-black);
+}
+
+.archive table tbody tr td .gatsby-image-wrapper:first-child picture img {
+  object-fit: cover !important;
+}
+
+.archive table tbody tr td .gatsby-image-wrapper picture img {
+  object-fit: contain !important;
 }
 
 .archive table tbody tr.isCompact td .gatsby-image-wrapper {

@@ -78,6 +78,14 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           )}
         </div>
         <div className="full-name">
+          <Play
+            size="normal"
+            color={"white"}
+            onClick={() => {
+              const profileUri = fullName.toLowerCase().replace(/ /g, "_")
+              videos[fullName] && navigate(`/archive/${profileUri}`)
+            }}
+          />
           <p
             style={{
               margin: 0,
@@ -158,16 +166,6 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           </div>
         </div>
       </td>
-
-      {videos[fullName] ? (
-        <td className="play">
-          <Play useCircle={true} size="normal" color={"white"} />
-        </td>
-      ) : (
-        <td className="play">
-          <p>Profile not available yet.</p>
-        </td>
-      )}
     </tr>
   )
 }
