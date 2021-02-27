@@ -30,7 +30,7 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
       <>
         {!loading && (
           <>
-            <Header title="The Visiting Room" banner />
+            <Header title="The Visiting Room" banner="VISITING-ROOM" />
             <Grid searchTerm={search} profiles={profiles} images={images} />
           </>
         )}

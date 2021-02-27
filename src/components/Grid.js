@@ -6,14 +6,12 @@ import "./Grid.css"
 
 import getProfileProps from "../utils/getProfileProps"
 
-const USE_PRISMIC = true
-
 const Grid = ({ searchTerm, profiles = [], images }) => {
   return (
     <div className="grid">
       {profiles
         .filter(node => {
-          const profile = USE_PRISMIC ? node.node : node
+          const profile = node.node
           if (searchTerm === null || searchTerm === "") return true
           if (
             profile.full_name &&
@@ -22,7 +20,7 @@ const Grid = ({ searchTerm, profiles = [], images }) => {
             return true
           return false
         })
-        .map((node, idx) => getProfileProps(node, USE_PRISMIC))
+        .map((node, idx) => getProfileProps(node))
         .map(props => {
           const {
             image,

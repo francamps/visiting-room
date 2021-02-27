@@ -106,11 +106,10 @@ const Timeline = props => {
             )}
 
             <div
-              className="footer link-wrap"
+              className="footer light link-wrap"
               style={{ justifyContent: "center" }}
             >
-              <p
-                className="hover-link"
+              <button
                 onClick={() =>
                   setModal({
                     styling: {
@@ -126,10 +125,9 @@ const Timeline = props => {
                     ),
                   })
                 }
-                style={{ color: "var(--clr-black)", fontFamily: "EB Garamond" }}
               >
                 See references
-              </p>
+              </button>
             </div>
             {null /*<Footer withRefs withArchive theme="light" />*/}
           </div>

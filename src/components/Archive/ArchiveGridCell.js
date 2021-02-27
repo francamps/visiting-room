@@ -8,8 +8,6 @@ import { getNameUri } from "../../utils/index.js"
 
 import { videos } from "../../content/archiveRegistry"
 
-const USE_PRISMIC = true
-
 const ArchiveGridCell = ({ profile, images }) => {
   const [isHover, setHover] = useState(false)
   const {
@@ -18,7 +16,7 @@ const ArchiveGridCell = ({ profile, images }) => {
     fullName,
     date_of_offense,
     deceased_date,
-  } = getProfileProps(profile, USE_PRISMIC)
+  } = getProfileProps(profile)
 
   return (
     <div

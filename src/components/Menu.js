@@ -8,13 +8,7 @@ import "./Menu.css"
 
 import { colors } from "../content/colors"
 
-const Menu = ({
-  theme,
-  fadein,
-  isMenuExpanded = false,
-  setMenuExpanded,
-  hideTitle,
-}) => {
+const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
   const [isBurgerOpen, setBurgerOpen] = useState(false)
   const [isTooltip, setTooltip] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })

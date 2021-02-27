@@ -34,7 +34,10 @@ export default () => {
       })
 
       /* eslint-disable-next-line no-restricted-globals */
-      self.postMessage({ msg: "SEARCH_DONE", results })
+      self.postMessage({
+        msg: "SEARCH_DONE",
+        results,
+      })
     }
   }
 }

@@ -46,12 +46,12 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   width: 5px;
 }
 .archive table tbody::-webkit-scrollbar-track {
-  background: var(--clr-black);
+  background: var(--clr-off-white);
 }
 .archive table tbody::-webkit-scrollbar-thumb {
   background-color: var(--clr-primary);
   border-radius: 6px;
-  border: 0px solid var(--clr-white);
+  border: 0px solid var(--clr-off-white);
 }
 /**
 ^^^^^
@@ -77,8 +77,9 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   justify-content: flex-end;
   padding: 0 10px 10px 10px;
   text-align: right;
-  background-color: rgba(var(--clr-black-rgb, 1));
-  color: var(--clr-white);
+  /*background-color: rgba(var(--clr-black-rgb, 1));*/
+  background-color: rgba(var(--clr-off-white-rgb, 1));
+  color: var(--clr-black);
 }
 
 .archive table thead tr th:nth-child(1) {
@@ -96,7 +97,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   flex-direction: row;
   border-bottom: 1px solid var(--clr-light-grey);
   height: 160px;
-  background-color: rgba(var(--clr-black-rgb), 1);
+  background-color: rgba(var(--clr-off-white-rgb), 1);
   transition: background-color 1s, height 1s;
 }
 
@@ -114,7 +115,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   padding: 10px;
   border-right: 1px solid var(--clr-light-grey);
   text-overflow: ellipsis;
-  color: var(--clr-white);
+  color: var(--clr-black);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -173,17 +174,18 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 
 .archive table tbody td .full-name {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
   padding-bottom: 10px;
-  bottom: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   box-sizing: border-box;
   background: none;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--clr-off-white);
   background: linear-gradient(
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.2) 60%,
@@ -249,7 +251,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   bottom: 10px !important;
   left: 0 !important;
   right: 0 !important;
-  height: 100%;
+  height: calc(100% - 20px);
   background-color: var(--clr-black);
 }
 

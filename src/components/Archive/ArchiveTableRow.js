@@ -9,8 +9,6 @@ import Play from "../Symbols/Play"
 import { videos } from "../../content/archiveRegistry"
 import getProfileProps from "../../utils/getProfileProps"
 
-const USE_PRISMIC = true
-
 const ArchiveTableRow = ({ profile, profileIdx }) => {
   const [isHover, setHover] = useState(false)
 
@@ -26,7 +24,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
     age_at_offense,
     current_age,
     deceased_date,
-  } = getProfileProps(profile, USE_PRISMIC)
+  } = getProfileProps(profile)
 
   return (
     <tr
@@ -131,7 +129,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
           </div>
           {inView && (
             <Years
-              color={"white"}
+              color={"black"}
               incarcerated={age_at_offense}
               current={current_age}
               deceased_date={deceased_date}

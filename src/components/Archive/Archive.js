@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react"
 
 import ArchiveActions from "./ArchiveActions"
-import ArchiveBanner from "./ArchiveBanner"
 import ArchiveGrid from "./ArchiveGrid"
 import ArchiveTable from "./ArchiveTable"
 import ArchiveTableSearchResults from "./ArchiveTableSearchResults"
@@ -22,19 +21,20 @@ const columns = [
 ]
 
 const Archive = ({ profiles = [], loading, images }) => {
-  const [showBanner, setShowBanner] = useState(
-    // TODO: Save in localStore once viewed, and pull from there
-    typeof window !== "undefined" &&
-      window.localStorage.getItem("showBanner") === "false"
-      ? false
-      : true
+  const params = new URLSearchParams(
+    typeof window !== "undefined" ? window.location.search : ""
   )
-  const [fadeout, setFadeOut] = useState(false)
+
+  const updateSearchParam = searchWords => {
+    params.set("search", searchWords)
+    window.history.replaceState({}, "", `${window.location.pathname}?${params}`)
+  }
+
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
   const [view, setView] = useState("table")
   const [filterTerms, setFilterTerms] = useState(null)
-  const [searchWords, setSearchWords] = useState(null)
+  const [searchWords, setSearchWords] = useState(params.get("search") || null)
   const [isSearchLoading, setLoadingSearchResults] = useState(false)
   const [searchResults, setSearchResults] = useState([])
 
@@ -49,48 +49,37 @@ const Archive = ({ profiles = [], loading, images }) => {
     )
   }, [JSON.stringify(profiles), sortAsc, sortType, filterTerms])
 
-  useEffect(() => {
-    if (fadeout) {
-      let timer2 = setTimeout(() => {
-        setShowBanner(false)
-        setFadeOut(false)
-      }, 1200)
-
-      return () => {
-        clearTimeout(timer2)
-      }
-    }
-  }, [fadeout])
-
   return (
     <div className="archive-wrap">
-      {!showBanner && (
-        <Header
-          title={"Full Archive"}
-          banner="ARCHIVE"
-          actions={
-            <>
-              <FilterAndSearch
-                setFilterTerms={setFilterTerms}
-                setSearchResults={setSearchResults}
-                setSearchWords={setSearchWords}
-                setView={setView}
-                setLoadingSearchResults={setLoadingSearchResults}
-              />
-              <ArchiveActions
-                columns={columns}
-                setSortedAsc={setSortedAsc}
-                setSortedType={setSortedType}
-                sortAsc={sortAsc}
-                sortType={sortType}
-                setView={setView}
-                view={view}
-              />
-            </>
-          }
-          classes="fadein"
-        />
-      )}
+      <Header
+        title={"Full Archive"}
+        theme="light"
+        banner="ARCHIVE"
+        actions={
+          <>
+            <FilterAndSearch
+              searchWords={searchWords}
+              setFilterTerms={setFilterTerms}
+              setSearchResults={setSearchResults}
+              setSearchWords={setSearchWords}
+              setView={setView}
+              setLoadingSearchResults={setLoadingSearchResults}
+              updateSearchParam={updateSearchParam}
+              theme="light"
+            />
+            <ArchiveActions
+              columns={columns}
+              setSortedAsc={setSortedAsc}
+              setSortedType={setSortedType}
+              sortAsc={sortAsc}
+              sortType={sortType}
+              setView={setView}
+              view={view}
+              theme="light"
+            />
+          </>
+        }
+      />
       <div className="archive">
         {loading && <Loading />}
         {!view ||

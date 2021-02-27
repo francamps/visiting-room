@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 
-const Sort = ({ sortAsc, enabled }) => {
+const Sort = ({ sortAsc, enabled, theme }) => {
   const [isHover, setHover] = useState(false)
+  const color = theme === "light" ? "var(--clr-dark-grey)" : "var(--clr-white)"
 
   return (
     <svg
@@ -33,7 +34,7 @@ const Sort = ({ sortAsc, enabled }) => {
         <g
           id="Notes-Copy"
           transform="translate(-1052.000000, -512.000000)"
-          stroke="#FFFFFF"
+          stroke={color}
           strokeWidth="2"
         >
           <g id="Group-3-Copy" transform="translate(1051.000000, 509.000000)">

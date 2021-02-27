@@ -15,6 +15,7 @@ const ArchiveActions = ({
   setView,
   sortAsc,
   sortType,
+  theme,
   view,
 }) => {
   const ref = useRef()
@@ -54,17 +55,18 @@ const ArchiveActions = ({
   return (
     <>
       <MenuButton
+        theme={theme}
         onClick={() => {
           setView(view === "table" ? "grid" : "table")
         }}
         buttonContent={
           view === "table" ? (
             <>
-              <IconViewGrid />
+              <IconViewGrid theme="light" />
             </>
           ) : (
             <>
-              <IconViewTable />
+              <IconViewTable theme="light" />
             </>
           )
         }
@@ -72,15 +74,18 @@ const ArchiveActions = ({
       />
       <div className="menu-button-tooltip">
         <MenuButton
+          theme={theme}
           buttonContent={
             <div className="menu__wrap" ref={ref}>
               <button
-                className="menu-button menu__surface"
+                className={`menu-button menu__surface ${
+                  theme === "light" ? "menu-light" : ""
+                }`}
                 onClick={() => {
                   setMenuOpen(!isMenuOpen)
                 }}
               >
-                <IconSort enabled />
+                <IconSort enabled theme="light" />
               </button>
               <div
                 className={`menu__menu ${isMenuOpen ? "active" : ""}`}
@@ -100,6 +105,7 @@ const ArchiveActions = ({
                     <IconSort
                       enabled={sortType.key === "full_name"}
                       sortAsc={sortAsc}
+                      theme="light"
                     />
                     Full name
                   </p>
@@ -116,6 +122,7 @@ const ArchiveActions = ({
                     <IconSort
                       enabled={sortType.key === "age_at_offense"}
                       sortAsc={sortAsc}
+                      theme="light"
                     />
                     Age at offense
                   </p>
@@ -132,6 +139,7 @@ const ArchiveActions = ({
                     <IconSort
                       enabled={sortType.key === "offense_date"}
                       sortAsc={sortAsc}
+                      theme="light"
                     />
                     Year of incarceration
                   </p>
@@ -148,6 +156,7 @@ const ArchiveActions = ({
                     <IconSort
                       enabled={sortType.key === "current_age"}
                       sortAsc={sortAsc}
+                      theme="light"
                     />
                     Current age
                   </p>

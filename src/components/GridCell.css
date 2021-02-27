@@ -96,8 +96,13 @@
   right: 0;
   bottom: 0;
   top: 0;
-  transition: opacity 1s 1s;
+  opacity: 0;
+  transition: opacity 1s;
   cursor: pointer;
+}
+
+.archive .grid-cell .cell-hover-layer {
+  opacity: 1;
 }
 
 .grid-cell .cell-hover-quote {
@@ -197,9 +202,8 @@
     rgba(0, 0, 0, 0) 40%,
     rgba(0, 0, 0, 0.8) 100%
   );
-  backdrop-filter: blur(0px);
-  transition: backdrop-filter 1.2s, background-color 1.2s;
-  transition-delay: 0.4s;
+  opacity: 1;
+  transition: opacity 1.2s;
 }
 
 .grid-cell .cell-hover-quote {

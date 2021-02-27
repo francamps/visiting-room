@@ -180,7 +180,7 @@ const VideoPlayer = ({
       >
         <iframe
           ref={videoPlayerRef}
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
           src={`https://player.vimeo.com/video/${getUrl(
             videoSrcURL

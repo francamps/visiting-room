@@ -13,7 +13,7 @@ const Loading = ({ hideTitle = false, color }) => {
         alignItems: "center",
       }}
     >
-      <div class="svg-wrapper">
+      <div className="svg-wrapper">
         <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
           <rect
             className="shape"

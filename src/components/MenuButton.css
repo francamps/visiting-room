@@ -47,6 +47,7 @@
 }
 
 .menu-buttons .menu-button.menu-light:hover {
+  background-color: var(--clr-off-white);
   box-shadow: var(--box-elevation-light-hover);
 }
 

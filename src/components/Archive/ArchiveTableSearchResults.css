@@ -19,14 +19,14 @@
 
 .archive table.search-results tbody tr {
   height: auto;
-  background-color: rgba(var(--clr-black-rgb), 1);
+  background-color: rgba(var(--clr-off-white-rgb), 1);
   transition: background-color 0.4s, max-height 0.4s;
 }
 
 .archive table.search-results tbody tr.open {
   height: auto;
   max-height: 2000px;
-  background-color: rgba(var(--clr-black-rgb), 1);
+  background-color: rgba(var(--clr-off-white-rgb), 1);
   transition: background-color 0.4s, max-height 0.4s;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .archive table.search-results tbody tr .result-quotes {
-  padding: 10px;
+  padding: 0 10px 10px 0;
   justify-content: flex-start;
   align-items: flex-start;
   align-self: flex-start;

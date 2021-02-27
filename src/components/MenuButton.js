@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive"
 import "./MenuButton.css"
 
 const MenuButton = ({
+  theme,
   onClick,
   onMouseDown,
   onMouseUp,
@@ -29,7 +30,7 @@ const MenuButton = ({
         {tooltipContent}
       </div>
       <button
-        className="menu-button"
+        className={`menu-button ${theme === "light" ? "menu-light" : ""}`}
         onClick={onClick}
         onMouseDown={e => {
           if (onMouseDown) {

@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 
-const ViewTable = () => {
+const ViewTable = ({ theme }) => {
   const [isHover, setHover] = useState(false)
+
+  const color = theme === "light" ? "var(--clr-dark-grey)" : "var(--clr-white)"
 
   return (
     <svg
@@ -38,8 +40,8 @@ const ViewTable = () => {
             ></rect>
             <rect
               id="Rectangle"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               x="2"
               y="2"
               width="4"
@@ -47,8 +49,8 @@ const ViewTable = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-3"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               x="2"
               y="8"
               width="4"
@@ -56,8 +58,8 @@ const ViewTable = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-4"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               x="2"
               y="14"
               width="4"
@@ -69,7 +71,7 @@ const ViewTable = () => {
               x2="19.5"
               y2="4.5"
               id="Line-9-Copy-12"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
             <line
@@ -78,7 +80,7 @@ const ViewTable = () => {
               x2="16.5"
               y2="2.5"
               id="Line-9-Copy"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
             <line
@@ -96,7 +98,7 @@ const ViewTable = () => {
               x2="18.5"
               y2="8.5"
               id="Line-9-Copy-13"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
             <line
@@ -105,7 +107,7 @@ const ViewTable = () => {
               x2="19.5"
               y2="16.5"
               id="Line-9-Copy-16"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
             <line
@@ -114,7 +116,7 @@ const ViewTable = () => {
               x2="14.5"
               y2="14.5"
               id="Line-9-Copy-15"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
           </g>

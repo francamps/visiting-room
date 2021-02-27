@@ -76,7 +76,7 @@
     left: 0;
     padding: var(--space-around-small);
     flex-direction: column;
-    font-size: var(--font-xxlarge);
+    font-size: var(--font-subtitle-mobile);
     font-weight: normal;
     text-align: left;
   }

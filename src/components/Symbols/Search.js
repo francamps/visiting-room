@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 
-const IconSearch = () => {
+const IconSearch = ({ theme }) => {
   const [isHover, setHover] = useState(false)
+
+  const color = theme === "light" ? "var(--clr-dark-grey)" : "var(--clr-white)"
 
   return (
     <svg
@@ -41,14 +43,14 @@ const IconSearch = () => {
               x2="2.27777778"
               y2="18.5"
               id="Line"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeWidth="2"
               fill="#D8D8D8"
               strokeLinecap="round"
             ></line>
             <circle
               id="Oval"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeWidth="2"
               cx="12.2777778"
               cy="9"

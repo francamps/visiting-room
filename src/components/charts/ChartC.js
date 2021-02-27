@@ -331,25 +331,11 @@ const ChartC = () => {
         return 0
       })
 
-    svg
-      .selectAll("text.text-coms-label")
-      .data([dataComs[dataComs.length - 1]])
-      .join("text")
-      .attr("class", "text-coms-label legend-label")
-      .style("text-anchor", "end")
-      .text(d => "Commutations")
-      .attr("x", d => xScale(d.yearF))
-      .transition()
-      .ease(easeCircleInOut)
-      .duration(TRANSITION_DURATION)
-      .attr("y", d => (!step ? yScale(d.value) - 40 : yScale(d.value) - 15))
-      .style("opacity", step ? 0 : 1)
-
     svg.attr("width", w).attr("height", h)
   }, [step, w, h])
 
   return (
-    <div className="chart-wrap" ref={canvasRef}>
+    <div className="chart-wrap light" ref={canvasRef}>
       <svg width={w} height={h} className="" ref={svgRef}></svg>
       <div
         style={{

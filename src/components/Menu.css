@@ -54,7 +54,7 @@
   margin: 10px 0;
 
   font-family: "EB Garamond";
-  font-size: var(--font-large);
+  font-size: var(--font-copy-label);
   font-weight: 300;
   text-align: left;
   color: var(--clr-white);

@@ -10,8 +10,6 @@ import { videos } from "../../content/archiveRegistry"
 import getProfileProps from "../../utils/getProfileProps"
 import { scaleDivergingSymlog } from "d3-scale"
 
-const USE_PRISMIC = true
-
 const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
   const [isHover, setHover] = useState(false)
 
@@ -27,7 +25,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
     age_at_offense,
     current_age,
     deceased_date,
-  } = getProfileProps(profile, USE_PRISMIC)
+  } = getProfileProps(profile)
 
   return (
     <tr
@@ -50,10 +48,10 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           style={{
             position: "absolute",
             height: "100%",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
+            top: "10px",
+            bottom: "10px",
+            left: "10px",
+            right: "10px",
           }}
         >
           {image && (
@@ -136,7 +134,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
         >
           {inView && (
             <Years
-              color={"white"}
+              color={"black"}
               incarcerated={age_at_offense}
               current={current_age}
               deceased_date={deceased_date}

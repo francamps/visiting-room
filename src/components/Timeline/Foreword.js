@@ -152,19 +152,19 @@ const Foreword = ({ inView }) => {
             >
               <iframe
                 ref={videoPlayerRef}
-                tabindex="-1"
+                tabIndex="-1"
                 aria-hidden="true"
                 src={`https://player.vimeo.com/video/447172431?controls=0`}
                 width="100%"
                 height="100%"
                 frameBorder="0"
-                webkitallowfullscreen
-                mozallowfullscreen
-                allowfullscreen
+                webkitallowfullscreen="true"
+                mozallowfullscreen="true"
+                allowFullScreen
                 allow="autoplay; fullscreen"
-                referrerpolicy="origin"
+                referrerPolicy="origin"
               ></iframe>
-              {isLoading && (
+              {isLoading && inView && (
                 <div className="loading-wrap">
                   <Loading />
                 </div>

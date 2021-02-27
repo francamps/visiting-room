@@ -5,13 +5,12 @@
   --font-normal: 1.1rem;
   --font-copy: 1.2rem;
   --font-copy-label: 1.35rem;
-  --font-copy-banner: 1.5rem;
   --font-header-title: 1.35rem;
+  --font-copy-banner: 1.5rem;
   --font-large: 2rem;
   --font-xlarge: 2.5rem;
-  --font-xxlarge: 3.5rem;
+  --font-subtitle-mobile: 3.5rem;
   --font-subtitle: 4.5rem;
-  --font-title: 6rem;
 
   --copy-line-height: 1.7em;
 
@@ -133,25 +132,6 @@ Use a scrollbar library, this is not standardized
   src: url("../fonts/GT-America-Trial-Regular.otf") format("opentype");
 }
 
-/*
-@font-face {
-  font-family: "Louize";
-  src: url("../fonts/LouizeTrial-Regular.otf") format("opentype");
-}
-*/
-
-/*
-@font-face {
-  font-family: "GTEesti";
-  src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "GTEesti";
-  src: url("../fonts/GT-Pressura-Pro-Mono-Trial-Regular.otf") format("opentype");
-}
-*/
-
 body {
   margin: 0;
   width: 100%;
@@ -225,6 +205,36 @@ a {
 
 p {
   font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+button {
+  background: var(--clr-primary);
+  color: var(--clr-black);
+  padding: 4px 6px;
+  min-height: 20px;
+  height: 33px;
+  border-radius: 4px;
+  border: 0;
+  font-family: "EB Garamond";
+  font-size: var(--font-copy);
+  cursor: pointer;
+  box-shadow: var(--box-elevation-dark);
+  transition: box-shadow 0.2s;
+}
+
+button:hover {
+  box-shadow: var(--box-elevation-dark-hover);
+  transition: box-shadow 0.2s;
+}
+
+.light button {
+  box-shadow: var(--box-elevation-light);
+  transition: box-shadow 0.2s;
+}
+
+.light > button:hover {
+  box-shadow: var(--box-elevation-light-hover);
+  transition: box-shadow 0.2s;
 }
 
 /**
@@ -575,11 +585,11 @@ FADE IN ANIMATIONS
 }
 
 .fadeoutslow {
-  -webkit-animation: fadeout 4s forwards;
-  -moz-animation: fadeout 4s forwards;
-  -ms-animation: fadeout 4s forwards;
-  -o-animation: fadeout 4s forwards;
-  animation: fadeout 4s forwards;
+  -webkit-animation: fadeout 2s forwards 1.2s;
+  -moz-animation: fadeout 2s forwards 1.2s;
+  -ms-animation: fadeout 2s forwards 1.2s;
+  -o-animation: fadeout 2s forwards 1.2s;
+  animation: fadeout 2s forwards 1.2s;
 }
 
 .fadeinout {

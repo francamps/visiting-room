@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 
 const GridCellBackground = ({ isHover, image, oldImage }) => {
   return (
-    <div className={`cell-background ${isHover ? "fadeout" : "fadein"}`}>
+    <div className={`cell-background ${isHover ? "fadeoutslow" : ""}`}>
       <Img
         alt={"TODO: NEEDS AN ALT"}
         fluid={image}

@@ -7,25 +7,30 @@ import { handleKeyUp } from "../utils"
 import "./FilterAndSearch.css"
 
 const FilterAndSearch = ({
+  searchWords,
   setFilterTerms,
   setView,
   setSearchResults,
   setSearchWords,
   setLoadingSearchResults,
+  theme,
+  updateSearchParam,
 }) => {
   const [isTooltip, setTooltip] = useState(false)
-  const [searchInput, setSearchInput] = useState(null)
-  const [search, setSearch] = useState(null)
+  const [searchInput, setSearchInput] = useState(searchWords || null)
+  const [search, setSearch] = useState(searchWords || null)
   const [isTyping, setTyping] = useState(false)
 
   return (
     <>
       <div className="menu-button-tooltip search">
         <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>
-          Search all interview transcripts for terms and mentions.
+          Search interviews for key words
         </div>
         <button
-          className="icon menu-button"
+          className={`icon menu-button ${
+            theme === "light" ? "menu-light" : ""
+          }`}
           onKeyUp={ev => {
             handleKeyUp(ev, () => {
               setView("table")
@@ -43,7 +48,7 @@ const FilterAndSearch = ({
             setView("table")
           }}
         >
-          <IconSearch />
+          <IconSearch theme="light" />
         </button>
 
         <span className={`input ${isTyping ? "active" : ""}`}>
@@ -52,6 +57,7 @@ const FilterAndSearch = ({
               e.preventDefault()
               setSearch(searchInput)
               setSearchWords(searchInput)
+              updateSearchParam(searchInput)
             }}
             style={{
               display: "flex",
@@ -65,7 +71,9 @@ const FilterAndSearch = ({
               placeholder="Search transcripts"
               onKeyUp={event => {
                 setSearchInput(event.target.value)
+                updateSearchParam(null)
               }}
+              value={searchInput || null}
             />
             <div
               className=""

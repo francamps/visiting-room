@@ -21,14 +21,11 @@ const subtractDatesInYears = (dateB, dateA) => {
   return Math.floor((dateB.getTime() - dateA.getTime()) / (86400000 * 365))
 }
 
-const getProfileProps = (profile, USE_PRISMIC) => {
-  const profile_picture = USE_PRISMIC
-    ? getValue(profile, "imagepath.text") || null
-    : profile.imagePath
+const getProfileProps = profile => {
+  const profile_picture = getValue(profile, "imagepath.text") || null
 
-  const quote =
-    USE_PRISMIC && profile.quote ? profile.quote.text : profile.quote
-  const fullName = USE_PRISMIC ? profile.full_name.text : profile.name
+  const quote = profile.quote ? profile.quote.text : profile.quote
+  const fullName = profile.full_name.text
   const video_link = getValue(profile, "video_link", null)
 
   const prismicPicture = getValue(profile, "profile_picture.fluid", null)

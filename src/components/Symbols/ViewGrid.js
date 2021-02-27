@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 
-const ViewGrid = () => {
+const ViewGrid = ({ theme }) => {
   const [isHover, setHover] = useState(false)
+  const color = theme === "light" ? "var(--clr-dark-grey)" : "var(--clr-white)"
+  const colorNegative =
+    theme === "light" ? "var(--clr-off-white)" : "var(--clr-dark-grey)"
 
   return (
     <svg
@@ -38,8 +41,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-6"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="1"
               y="2"
@@ -48,8 +51,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-7"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="1"
               y="11"
@@ -58,8 +61,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-9"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="8"
               y="2"
@@ -68,8 +71,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-15"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="8"
               y="11"
@@ -78,8 +81,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-17"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="15"
               y="2"
@@ -88,8 +91,8 @@ const ViewGrid = () => {
             ></rect>
             <rect
               id="Rectangle-Copy-18"
-              stroke="#FFFFFF"
-              fill="#FFFFFF"
+              stroke={color}
+              fill={color}
               strokeLinejoin="round"
               x="15"
               y="11"
@@ -102,7 +105,7 @@ const ViewGrid = () => {
               x2="5.5"
               y2="17"
               id="Line-10-Copy-2"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -111,7 +114,7 @@ const ViewGrid = () => {
               x2="4"
               y2="15.5"
               id="Line-10-Copy-3"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -120,7 +123,7 @@ const ViewGrid = () => {
               x2="12.5"
               y2="17"
               id="Line-10-Copy-4"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -129,7 +132,7 @@ const ViewGrid = () => {
               x2="11"
               y2="15.5"
               id="Line-10-Copy-5"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -138,7 +141,7 @@ const ViewGrid = () => {
               x2="19.5"
               y2="17"
               id="Line-10-Copy-6"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -147,7 +150,7 @@ const ViewGrid = () => {
               x2="18"
               y2="15.5"
               id="Line-10-Copy-7"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -156,7 +159,7 @@ const ViewGrid = () => {
               x2="19.5"
               y2="8"
               id="Line-10-Copy-8"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -165,7 +168,7 @@ const ViewGrid = () => {
               x2="18"
               y2="6.5"
               id="Line-10-Copy-9"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -174,7 +177,7 @@ const ViewGrid = () => {
               x2="12.5"
               y2="8"
               id="Line-10-Copy-10"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -183,7 +186,7 @@ const ViewGrid = () => {
               x2="11"
               y2="6.5"
               id="Line-10-Copy-11"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -192,7 +195,7 @@ const ViewGrid = () => {
               x2="5.5"
               y2="8"
               id="Line-10-Copy-12"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
             <line
@@ -201,7 +204,7 @@ const ViewGrid = () => {
               x2="4"
               y2="6.5"
               id="Line-10-Copy-13"
-              stroke="#000000"
+              stroke={colorNegative}
               strokeLinecap="round"
             ></line>
           </g>
