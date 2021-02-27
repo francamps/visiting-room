@@ -193,9 +193,9 @@ const ArchiveTableSearchResults = ({
                                     }}
                                   />
                                   <i style={{ margin: "0 8px" }}>{r.time}</i>
-                                  <b style={{ marginRight: "8px" }}>
-                                    {r.speaker}
-                                  </b>
+                                  <span style={{ marginRight: "8px" }}>
+                                    [{r.speaker}]
+                                  </span>
                                 </div>
 
                                 {isOpen
@@ -206,15 +206,15 @@ const ArchiveTableSearchResults = ({
                           }
                           return null
                         })}
-                        <h6
+                        <p
                           style={{ margin: 0, cursor: "pointer" }}
                           onClick={() => {
                             setOpenRow(!isOpen ? profileIdx : null)
                           }}
                           className="see-more"
                         >
-                          {isOpen ? "See less <" : "See more >"}
-                        </h6>
+                          {isOpen ? "See less -" : "See more +"}
+                        </p>
                       </div>
                     </td>
                   </tr>

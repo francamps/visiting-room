@@ -17,8 +17,9 @@ const Header = ({ banner, classes, title, hideMenu, actions, theme }) => {
   const [isHoverTitle, setHoverTitle] = useState(false)
   const [isHoverHome, setHoverHome] = useState(false)
   const [showBanner, setShowBanner] = useState(
-    typeof window !== "undefined" &&
-      window.localStorage.getItem(`showBanner__${banner}`) === "false"
+    (typeof window !== "undefined" &&
+      window.localStorage.getItem(`showBanner__${banner}`) === "false") ||
+      !banner
       ? false
       : true
   )

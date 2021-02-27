@@ -172,7 +172,14 @@ const GridCell = ({
       )}
       <div className="cell-hover-layer"></div>
       {quote && (
-        <div className="cell-hover-quote">
+        <div
+          className="cell-hover-quote"
+          onClick={() => {
+            video_link &&
+              video_link.url &&
+              navigate(`/visiting-room/${profileUri}`)
+          }}
+        >
           {!video_link || !video_link.url ? (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
           ) : null}

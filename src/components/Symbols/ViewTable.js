@@ -89,7 +89,7 @@ const ViewTable = ({ theme }) => {
               x2="17.5"
               y2="10.5"
               id="Line-9-Copy-14"
-              stroke="#FFFFFF"
+              stroke={color}
               strokeLinecap="round"
             ></line>
             <line

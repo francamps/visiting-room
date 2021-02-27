@@ -124,7 +124,7 @@ const ArchiveActions = ({
                       sortAsc={sortAsc}
                       theme="light"
                     />
-                    Age at offense
+                    Age
                   </p>
                 </div>
                 <div className="menu__item">

@@ -74,6 +74,7 @@ SORTING MENU
 }
 
 .menu__menu.active {
+  font-size: var(--font-normal);
   transform: scale(1);
   opacity: 1;
   pointer-events: auto;
@@ -90,6 +91,7 @@ SORTING MENU
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: left;
 }
 
 .menu__menu .menu__item p svg {

@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: flex-start;
   font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-size: var(--font-normal);
   border-left: 1px solid var(--clr-light-grey);
   border-right: 1px solid var(--clr-light-grey);
 }

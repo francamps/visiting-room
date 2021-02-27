@@ -47,14 +47,20 @@
 }
 
 .archive table.search-results tbody tr .result-quotes {
+  height: 100%;
   padding: 0 10px 10px 0;
-  justify-content: flex-start;
+  box-sizing: border-box;
   align-items: flex-start;
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
-.archive table.search-results td p:hover,
-.archive table.search-results td h6.see-more:hover {
+.archive table.search-results td p.see-more {
+  align-self: center;
+}
+
+.archive table.search-results td p.quote:hover,
+.archive table.search-results td p.see-more:hover {
   color: var(--clr-primary);
   transition: color 0.4s;
 }
