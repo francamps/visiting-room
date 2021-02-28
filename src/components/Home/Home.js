@@ -35,15 +35,17 @@ const Home = ({ images }) => {
             <span>Project</span>
             <br />
           </div>
-          <ReactPlayer
-            url={audio}
-            volume={Math.max(
-              1 - (barProgress > 0.8 ? (barProgress - 0.8) / 0.2 : 0),
-              0.0
-            )}
-            playing
-            controls={false}
-          />
+          {null && (
+            <ReactPlayer
+              url={audio}
+              volume={Math.max(
+                1 - (barProgress > 0.8 ? (barProgress - 0.8) / 0.2 : 0),
+                0.0
+              )}
+              playing
+              controls={false}
+            />
+          )}
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{

@@ -34,7 +34,7 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
             <Grid searchTerm={search} profiles={profiles} images={images} />
           </>
         )}
-        {showSound && (
+        {showSound && null && (
           <ReactPlayer
             width="1px"
             height="1px"
