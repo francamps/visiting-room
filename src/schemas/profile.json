@@ -35,6 +35,20 @@
         "label": "Date of offense"
       }
     },
+    "time_served": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Time served"
+      }
+    },
+    "age_at_interview": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Age at interview"
+      }
+    },
     "charge": {
       "type": "StructuredText",
       "config": {
@@ -102,6 +116,14 @@
         "constraint": {},
         "thumbnails": [],
         "label": "Old picture"
+      }
+    },
+    "archive_picture": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Archive picture"
       }
     }
   },

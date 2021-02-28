@@ -24,6 +24,8 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
     age_at_offense,
     current_age,
     deceased_date,
+    time_served,
+    age_at_interview,
   } = getProfileProps(profile)
 
   return (
@@ -42,11 +44,11 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
         <div
           style={{
             position: "absolute",
-            height: "100%",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
+            height: "calc(100% - 20px)",
+            top: "10px",
+            bottom: "10px",
+            left: "10px",
+            right: "10px",
           }}
         >
           {image && (
@@ -119,19 +121,17 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
             <p>{"Age at offense"}</p>
             <p>{age_at_offense}</p>
             <p>{"Age"}</p>
-            <p>{current_age}</p>
+            <p>{age_at_interview}</p>
             <p>{"Years incarcerated"}</p>
             <p>
-              <b style={{ color: "var(--clr-primary)" }}>
-                {current_age - age_at_offense}
-              </b>
+              <b style={{ color: "var(--clr-primary)" }}>{time_served}</b>
             </p>
           </div>
           {inView && (
             <Years
               color={"black"}
               incarcerated={age_at_offense}
-              current={current_age}
+              current={age_at_interview}
               deceased_date={deceased_date}
             />
           )}

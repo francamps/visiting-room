@@ -19,6 +19,12 @@ export const query = graphql`
             date_of_birth {
               text
             }
+            time_served {
+              text
+            }
+            age_at_interview {
+              text
+            }
             date_of_offense
             last_name {
               text

@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { useMediaQuery } from "react-responsive"
 
 import Loading from "../Loading"
 import ArchiveTableRow from "./ArchiveTableRow"
 import ArchiveTableRowLarge from "./ArchiveTableRowLarge"
+
+import sortProfiles from "../../utils/sortProfiles"
 
 import "./ArchiveTable.css"
 
@@ -21,8 +23,16 @@ const columnsMobile = [
   { key: "video", label: "" },
 ]
 
-const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
+const ArchiveTable = ({ profiles, images, sortType, sortAsc }) => {
+  const [isLoading, setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+
+  const profilesSorted = useMemo(() => {
+    setLoading(true)
+    const newProfiles = sortProfiles(profiles.slice(0), sortType, sortAsc)
+    setLoading(false)
+    return newProfiles
+  }, [JSON.stringify(profiles), sortAsc, sortType])
 
   if (isTabletOrMobile) {
     return (
@@ -42,7 +52,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
           </tr>
         </thead>
         <tbody>
-          {profiles.map((profile, profileIdx) => {
+          {profilesSorted.map((profile, profileIdx) => {
             return (
               <ArchiveTableRow
                 key={`archive-table-row-${profileIdx}`}
@@ -58,7 +68,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
 
   return (
     <>
-      {isSearchLoading && <Loading />}
+      {isLoading && <Loading />}
 
       <table>
         <thead>
@@ -75,7 +85,7 @@ const ArchiveTable = ({ profiles, images, isSearchLoading }) => {
           </tr>
         </thead>
         <tbody>
-          {profiles.map((profile, profileIdx) => {
+          {profilesSorted.map((profile, profileIdx) => {
             return (
               <ArchiveTableRowLarge
                 key={`archive-table-row-${profileIdx}`}

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
-import { useMediaQuery } from "react-responsive"
 import { navigate } from "gatsby"
 
 import Loading from "../Loading"
@@ -20,16 +19,22 @@ const getProfileResults = (fullName, searchResults) => {
 
 const ArchiveTableSearchResults = ({
   profiles,
-  images,
   searchResults,
   searchWords,
   isSearchLoading,
 }) => {
   const [hoveredRow, setHover] = useState(null)
   const [openRow, setOpenRow] = useState(null)
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   const sortedProfiles = profiles
+    .filter(profile => {
+      const profileUri = getNameUri(profile.full_name.text)
+      return (
+        searchResults.findIndex(
+          result => Object.keys(result)[0] === profileUri
+        ) > -1
+      )
+    })
     .map(profile => {
       const { image, oldImage, fullName } = getProfileProps(profile)
       const profileResults = getProfileResults(fullName, searchResults)

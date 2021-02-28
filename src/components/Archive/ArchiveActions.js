@@ -124,7 +124,24 @@ const ArchiveActions = ({
                       sortAsc={sortAsc}
                       theme="light"
                     />
-                    Age
+                    Age at offense
+                  </p>
+                </div>
+                <div className="menu__item">
+                  <p
+                    className={`${
+                      sortType.key === "age_at_interview" ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      handleSortClick("age_at_interview", 3)
+                    }}
+                  >
+                    <IconSort
+                      enabled={sortType.key === "age_at_interview"}
+                      sortAsc={sortAsc}
+                      theme="light"
+                    />
+                    Age at interview
                   </p>
                 </div>
                 <div className="menu__item">
@@ -142,23 +159,6 @@ const ArchiveActions = ({
                       theme="light"
                     />
                     Year of incarceration
-                  </p>
-                </div>
-                <div className="menu__item">
-                  <p
-                    className={`${
-                      sortType.key === "current_age" ? "active" : ""
-                    }`}
-                    onClick={() => {
-                      handleSortClick("current_age", 3)
-                    }}
-                  >
-                    <IconSort
-                      enabled={sortType.key === "current_age"}
-                      sortAsc={sortAsc}
-                      theme="light"
-                    />
-                    Current age
                   </p>
                 </div>
               </div>

@@ -25,6 +25,8 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
     age_at_offense,
     current_age,
     deceased_date,
+    time_served,
+    age_at_interview,
   } = getProfileProps(profile)
 
   return (
@@ -101,7 +103,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
       <td>{age_at_offense}</td>
       <td>
         <>
-          {current_age}
+          {age_at_interview}
           {deceased_date && (
             <div
               style={{
@@ -136,7 +138,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
             <Years
               color={"black"}
               incarcerated={age_at_offense}
-              current={current_age}
+              current={age_at_interview}
               deceased_date={deceased_date}
             />
           )}
@@ -159,7 +161,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
                   color: "var(--clr-primary)",
                   whiteSpace: "pre",
                 }}
-              >{` ${current_age - age_at_offense}`}</span>
+              >{` ${time_served}`}</span>
             </p>
           </div>
         </div>

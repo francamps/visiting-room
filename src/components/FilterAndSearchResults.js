@@ -117,8 +117,7 @@ const allTranscripts = [
 ]
 
 const FilterAndSearchResults = ({
-  search,
-  setFilterTerms,
+  searchWords,
   setLoadingSearchResults,
   setSearchResults,
 }) => {
@@ -140,7 +139,7 @@ const FilterAndSearchResults = ({
     if (files.length) {
       searchWorker.postMessage({
         msg: "SEARCH",
-        search,
+        search: searchWords,
         files,
       })
     }
@@ -165,21 +164,13 @@ const FilterAndSearchResults = ({
   }, [files.length])
 
   useEffect(() => {
-    if (search) {
+    if (searchWords) {
       setLoadingSearchResults(true)
       searchResultsWW()
     }
-  }, [search])
+  }, [searchWords])
 
   useEffect(() => {
-    setFilterTerms(
-      results.map(result =>
-        Object.keys(result)[0]
-          .split("_")
-          .map(w => capitalize(w))
-          .join(" ")
-      )
-    )
     setSearchResults(results)
   }, [results.length])
 

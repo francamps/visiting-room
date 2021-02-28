@@ -37,6 +37,9 @@ const getProfileProps = profile => {
   let age_at_offense = "unknown"
   let deceased_date = getDate(profile, "deceased_date")
 
+  const time_served = getValue(profile, "time_served.text", "unknown")
+  const age_at_interview = getValue(profile, "age_at_interview.text", "unknown")
+
   if (date_of_birth && date_of_offense) {
     age_at_offense = subtractDatesInYears(date_of_offense, date_of_birth)
   }
@@ -61,6 +64,8 @@ const getProfileProps = profile => {
     profile_picture,
     date_of_birth,
     date_of_offense,
+    time_served,
+    age_at_interview,
     age_at_offense,
     current_age,
     color,

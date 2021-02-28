@@ -8,7 +8,7 @@ import "./FilterAndSearch.css"
 
 const FilterAndSearch = ({
   searchWords,
-  setFilterTerms,
+  searchResults,
   setView,
   setSearchResults,
   setSearchWords,
@@ -18,7 +18,6 @@ const FilterAndSearch = ({
 }) => {
   const [isTooltip, setTooltip] = useState(false)
   const [searchInput, setSearchInput] = useState(searchWords || null)
-  const [search, setSearch] = useState(searchWords || null)
   const [isTyping, setTyping] = useState(false)
 
   return (
@@ -31,11 +30,6 @@ const FilterAndSearch = ({
           className={`icon menu-button ${
             theme === "light" ? "menu-light" : ""
           }`}
-          onKeyUp={ev => {
-            handleKeyUp(ev, () => {
-              setView("table")
-            })
-          }}
           onMouseEnter={() => {
             setTooltip(true)
           }}
@@ -43,9 +37,7 @@ const FilterAndSearch = ({
             setTooltip(false)
           }}
           onClick={() => {
-            setSearch(searchInput)
             setTyping(true)
-            setView("table")
           }}
         >
           <IconSearch theme="light" />
@@ -55,9 +47,9 @@ const FilterAndSearch = ({
           <form
             onSubmit={e => {
               e.preventDefault()
-              setSearch(searchInput)
               setSearchWords(searchInput)
               updateSearchParam(searchInput)
+              setView("search")
             }}
             style={{
               display: "flex",
@@ -70,10 +62,10 @@ const FilterAndSearch = ({
               id="input-search"
               placeholder="Search transcripts"
               onKeyUp={event => {
+                console.log(event.target.value)
                 setSearchInput(event.target.value)
-                updateSearchParam(null)
+                updateSearchParam(event.target.value)
               }}
-              value={searchInput || null}
             />
             <div
               className=""
@@ -86,7 +78,7 @@ const FilterAndSearch = ({
               onClick={() => {
                 setTyping(false)
                 setSearchInput(null)
-                setFilterTerms(null)
+                setView("table")
               }}
             >
               <IconClose noBackground />
@@ -94,11 +86,10 @@ const FilterAndSearch = ({
           </form>
         </span>
       </div>
-      {search && (
+      {searchWords && (
         <FilterAndSearchResults
-          search={search}
+          searchWords={searchWords}
           setSearchResults={setSearchResults}
-          setFilterTerms={setFilterTerms}
           setLoadingSearchResults={setLoadingSearchResults}
         />
       )}

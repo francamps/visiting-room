@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useMemo } from "react"
+import React, { useEffect, useState } from "react"
+import capitalize from "lodash/capitalize"
+import isNull from "lodash/isNull"
 
 import ArchiveActions from "./ArchiveActions"
 import ArchiveGrid from "./ArchiveGrid"
@@ -8,15 +10,13 @@ import FilterAndSearch from "../FilterAndSearch"
 import Header from "../Header"
 import Loading from "../Loading"
 
-import sortProfiles from "../../utils/sortProfiles"
-
 import "./Archive.css"
 
 const columns = [
   { key: "picture", label: "" },
   { key: "full_name", label: "Full Name" },
   { key: "age_at_offense", label: "Age at offense" },
-  { key: "current_age", label: "Age" },
+  { key: "age_at_interview", label: "Age" },
   { key: "offense_date", label: "Incarcerated since" },
 ]
 
@@ -32,22 +32,10 @@ const Archive = ({ profiles = [], loading, images }) => {
 
   const [sortAsc, setSortedAsc] = useState(true)
   const [sortType, setSortedType] = useState(columns[1])
-  const [view, setView] = useState("table")
-  const [filterTerms, setFilterTerms] = useState(null)
+  const [view, setView] = useState(params.get("search") ? "search" : "table")
   const [searchWords, setSearchWords] = useState(params.get("search") || null)
   const [isSearchLoading, setLoadingSearchResults] = useState(false)
   const [searchResults, setSearchResults] = useState([])
-
-  const profilesSorted = useMemo(() => {
-    return sortProfiles(profiles.slice(0), sortType, sortAsc).filter(
-      profile => {
-        if (filterTerms === null || filterTerms === "") return true
-        if (filterTerms.includes(profile.full_name.text)) return true
-
-        return false
-      }
-    )
-  }, [JSON.stringify(profiles), sortAsc, sortType, filterTerms])
 
   return (
     <div className="archive-wrap">
@@ -59,13 +47,12 @@ const Archive = ({ profiles = [], loading, images }) => {
           <>
             <FilterAndSearch
               searchWords={searchWords}
-              setFilterTerms={setFilterTerms}
+              setLoadingSearchResults={setLoadingSearchResults}
               setSearchResults={setSearchResults}
               setSearchWords={setSearchWords}
               setView={setView}
-              setLoadingSearchResults={setLoadingSearchResults}
-              updateSearchParam={updateSearchParam}
               theme="light"
+              updateSearchParam={updateSearchParam}
             />
             <ArchiveActions
               columns={columns}
@@ -84,25 +71,30 @@ const Archive = ({ profiles = [], loading, images }) => {
         {loading && <Loading />}
         {!view ||
           (view === "grid" && !loading && (
-            <ArchiveGrid profiles={profilesSorted} images={images} />
-          ))}
-        {view === "table" &&
-          !loading &&
-          (!filterTerms || filterTerms === "") && (
-            <ArchiveTable
-              profiles={profilesSorted}
-              filterTerms={filterTerms}
+            <ArchiveGrid
+              profiles={profiles}
               images={images}
-              isSearchLoading={isSearchLoading}
+              sortType={sortType}
+              sortAsc={sortAsc}
             />
-          )}
-        {view === "table" && !loading && filterTerms && filterTerms !== "" && (
-          <ArchiveTableSearchResults
-            isSearchLoading={isSearchLoading}
-            profiles={profilesSorted}
+          ))}
+        {view === "table" && !loading && (
+          <ArchiveTable
             images={images}
+            profiles={profiles}
+            sortType={sortType}
+            sortAsc={sortAsc}
+          />
+        )}
+        {view === "search" && !loading && (
+          <ArchiveTableSearchResults
+            images={images}
+            isSearchLoading={isSearchLoading}
+            profiles={profiles}
             searchResults={searchResults}
             searchWords={searchWords}
+            sortType={sortType}
+            sortAsc={sortAsc}
           />
         )}
       </div>

@@ -28,6 +28,7 @@ const getProfileValue = (profile, prop) => {
 
   let date_of_offense = getDate(profile, "date_of_offense")
   date_of_offense = date_of_offense || "unknown"
+  let age_at_interview = getValue(profile, "age_at_interview.text", "unknown")
 
   let age_at_offense = "unknown"
   age_at_offense =
@@ -41,6 +42,9 @@ const getProfileValue = (profile, prop) => {
   switch (prop.key) {
     case "full_name":
       return getValue(profile, "full_name.text")
+    case "age_at_interview":
+      if (age_at_interview === "unknown" || !age_at_interview) return -Infinity
+      return +age_at_interview
     case "current_age":
       if (date_of_birth === "unknown" || !date_of_birth) return -Infinity
       const current_age = subtractDatesInYears(new Date(), date_of_birth)
