@@ -425,7 +425,7 @@ export const TIMELINE = [
     ],
     images: ["chartC"],
     imagePlacement: "top",
-    caption: `The number of commutations by Louisiana governors has declined as 
+    caption: `Graph: The number of commutations by Louisiana governors has declined as 
     life without parole sentences and the size of the prison population have skyrocketed.`,
   },
   {

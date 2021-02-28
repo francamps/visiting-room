@@ -5,6 +5,7 @@ import { line, area } from "d3-shape"
 import { curveMonotoneX } from "d3-shape"
 import { easeCircleInOut } from "d3-ease"
 import "d3-transition"
+import { useInView } from "react-intersection-observer"
 
 import { useInterval } from "../../utils/useInterval"
 
@@ -63,25 +64,44 @@ const m = {
 const HEIGHT = 500
 const WIDTH = 640
 const TRANSITION_DURATION = 900
+const STEP_FREQUENCY = 2500
 
 const ChartC = () => {
   const [w, setW] = useState(WIDTH)
   const [h, setH] = useState(HEIGHT)
   const [step, setStep] = useState(0)
-  const [isRunning, setIsRunning] = useState(true)
+  const [isRunning, setIsRunning] = useState(inView)
+  const [ref, inView] = useInView({
+    /* Optional options */
+    threshold: 0.75,
+  })
 
   const svgRef = useRef()
   const canvasRef = useRef()
+
+  useEffect(() => {
+    if (inView) {
+      setStep(0)
+      setIsRunning(true)
+    }
+  }, [inView])
 
   useInterval(
     () => {
       setStep(step < 2 ? step + 1 : 0)
     },
-    isRunning ? 4000 : null
+    isRunning && inView ? STEP_FREQUENCY : null,
+    [inView]
   )
 
   useEffect(() => {
-    if (step === 2) setIsRunning(false)
+    if (step === 2 && isRunning) {
+      console.log("loop and end")
+      setIsRunning(false)
+      setTimeout(() => {
+        setStep(0)
+      }, STEP_FREQUENCY)
+    }
   }, [step])
 
   useEffect(() => {
@@ -106,7 +126,7 @@ const ChartC = () => {
       .domain([1972, 2020])
       .range([m.l, w - m.r])
 
-    const maxY = step === 2 ? 38000 : step === 1 ? 5500 : 1100
+    const maxY = step === 2 ? 38000 : step === 1 ? 6000 : 1100
     const yScale = scaleLinear()
       .domain([0, maxY])
       .range([h - m.b, m.t])
@@ -338,6 +358,7 @@ const ChartC = () => {
     <div className="chart-wrap light" ref={canvasRef}>
       <svg width={w} height={h} className="" ref={svgRef}></svg>
       <div
+        ref={ref}
         style={{
           display: "flex",
           flexDiration: "row",
@@ -350,7 +371,10 @@ const ChartC = () => {
           onClick={() => {
             setStep(0)
           }}
-          style={{ marginRight: "10px" }}
+          style={{
+            marginRight: "10px",
+            boxShadow: step === 0 ? "none" : "var(--box-elevation-light)",
+          }}
         >
           Governors' Commutations
         </button>
@@ -358,11 +382,17 @@ const ChartC = () => {
           onClick={() => {
             setStep(1)
           }}
-          style={{ marginRight: "10px" }}
+          style={{
+            marginRight: "10px",
+            boxShadow: step === 1 ? "none" : "var(--box-elevation-light)",
+          }}
         >
-          Lifers Population
+          Life Population
         </button>
         <button
+          style={{
+            boxShadow: step === 2 ? "none" : "var(--box-elevation-light)",
+          }}
           onClick={() => {
             setStep(2)
           }}
