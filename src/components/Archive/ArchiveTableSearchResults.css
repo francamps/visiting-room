@@ -25,7 +25,7 @@
 
 .archive table.search-results tbody tr.open {
   height: auto;
-  max-height: 2000px;
+  max-height: 4000px;
   background-color: rgba(var(--clr-off-white-rgb), 1);
   transition: background-color 0.4s, max-height 0.4s;
 }
