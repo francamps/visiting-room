@@ -19,10 +19,10 @@ const IconSound = () => {
       <g
         id="Typography---UI-Comp"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="Notes-Copy" transform="translate(-1154.000000, -508.000000)">
           <g id="Group-6-Copy-2" transform="translate(1155.000000, 509.000000)">
@@ -52,15 +52,15 @@ const IconSound = () => {
             d="M1171.01396,516 C1171.01396,516 1173.01396,518.994946 1171.01396,521.994946"
             id="Path-3"
             stroke="#FFFFFF"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           ></path>
           <path
             d="M1173.01396,513.994946 C1173.01396,513.994946 1176.12173,518.994946 1173.01396,523.994946"
             id="Path-3"
             stroke="#FFFFFF"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           ></path>
         </g>
       </g>

@@ -37,6 +37,9 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
           ${theme === "light" ? "menu-light" : ""}
           ${fadein ? "fadein" : ""}
         `}
+          style={{
+            padding: "10px 14px",
+          }}
           onClick={() => {
             setBurgerOpen(!isBurgerOpen)
           }}

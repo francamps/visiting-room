@@ -91,7 +91,9 @@ Input
   margin: 0 0 0 8px;
   padding: 2px 10px;
   width: 100%;
-  height: auto;
+  height: 44px;
+  display: flex;
+  justify-content: center;
   transition: width 0.4s, padding 0.4s, margin 0.4s, height 0.4s;
 }
 

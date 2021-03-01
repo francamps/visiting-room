@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 420px;
+  overflow: visible;
+  width: 44px;
 }
 
 .menu-buttons {

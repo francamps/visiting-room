@@ -22,8 +22,17 @@ const FilterAndSearch = ({
 
   return (
     <>
-      <div className="menu-button-tooltip search">
-        <div className={`menu-tooltip ${isTooltip ? "active" : ""}`}>
+      <div
+        className="menu-button-tooltip search"
+        style={{
+          width: "240px",
+          marginLeft: "-196px",
+        }}
+      >
+        <div
+          className={`menu-tooltip ${!isTyping && isTooltip ? "active" : ""}`}
+          style={{ width: isTyping ? 0 : "140px" }}
+        >
           Search interviews for key words
         </div>
         <button
