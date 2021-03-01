@@ -70,11 +70,11 @@ const ChartC = () => {
   const [w, setW] = useState(WIDTH)
   const [h, setH] = useState(HEIGHT)
   const [step, setStep] = useState(0)
-  const [isRunning, setIsRunning] = useState(inView)
   const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.75,
   })
+  const [isRunning, setIsRunning] = useState(inView)
 
   const svgRef = useRef()
   const canvasRef = useRef()
