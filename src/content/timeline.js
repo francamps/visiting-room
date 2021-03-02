@@ -250,7 +250,7 @@ export const TIMELINE = [
         paragraphs: [
           {
             element: "p",
-            content: `n 1972, the U.S. Supreme Court temporarily struck down the `,
+            content: `In 1972, the U.S. Supreme Court temporarily struck down the `,
           },
           {
             element: "f",

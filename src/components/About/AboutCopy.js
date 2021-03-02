@@ -13,11 +13,18 @@ const AboutCopy = ({ abouts }) => {
       about.node.data.about_this_project.text ===
       "About the Visiting Room Project"
   )
-  const childrenAbouts = abouts.filter(
-    about =>
-      about.node.data.about_this_project.text !==
-      "About the Visiting Room Project"
-  )
+  const childrenAbouts = abouts
+    .filter(
+      about =>
+        about.node.data.about_this_project.text !==
+        "About the Visiting Room Project"
+    )
+    .sort((a, b) => {
+      if (a.node.data.about_this_project.text === "About Life Without Parole")
+        return -1
+      if (a.node.data.about_this_project.text === "About Angola") return 0
+      if (a.node.data.about_this_project.text === "About The Angolite") return 1
+    })
 
   const title = parentAbout ? parentAbout.node.data.about_this_project.text : ""
   const content = parentAbout ? parentAbout.node.data.about_content : []
