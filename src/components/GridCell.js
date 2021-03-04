@@ -36,8 +36,8 @@ const videosBackground = {
   "Jeffrey Nelson": "518011651",
   "Jerome Derricks": "518010053",
   "Kenneth Woodburn": "518494582",
+  "Kuantau Reeder": "518016879",
   "Nadaedrick Campbell": "518495701",
-  "Kauntau Reeder": "518016879",
   "Kendrick Fisher": "518493892",
   "Lawson Strickland": "518495160",
   "Patrick Johnson": "518495860",
@@ -78,7 +78,7 @@ const GridCell = ({
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
   const [ref, inView] = useInView({
     /* Optional options */
-    threshold: 0.5,
+    threshold: isTabletOrMobile ? 0.1 : 0.4,
   })
   const profileUri = getNameUri(fullName)
   const videoPlayerRef = useRef()
@@ -88,20 +88,28 @@ const GridCell = ({
     (isTabletOrMobile && inView && videosBackground[fullName])
 
   useEffect(() => {
-    if (isHoverOrInView && !videoPlayer) {
-      const player = new Player(videoPlayerRef.current, {
-        autoplay: 1,
-        controls: false,
-        title: false,
-        muted: 1,
-        loop: 1,
-      })
-      setVideoPlayer(player)
-    } else if (!isHoverOrInView && videoPlayer) {
-      //      videoPlayer.destroy()
-      setVideoPlayer(null)
+    if (inView && !videoPlayer) {
+      try {
+        const player = new Player(videoPlayerRef.current, {
+          autoplay: 1,
+          controls: false,
+          title: false,
+          muted: 1,
+          loop: 1,
+        })
+        setVideoPlayer(player)
+      } catch (e) {
+        console.warn("Video not available")
+      }
+    } else if (!inView && videoPlayer) {
+      try {
+        videoPlayer.destroy()
+        setVideoPlayer(null)
+      } catch (e) {
+        console.warn("Video not available")
+      }
     }
-  }, [isHoverOrInView])
+  }, [inView])
 
   useEffect(() => {
     if (videoPlayer && videoPlayer.setVolume) {
@@ -116,17 +124,21 @@ const GridCell = ({
   }, [videoPlayer])
 
   useEffect(() => {
-    if (isHoverOrInView && videoPlayer) {
+    if (inView && videoPlayer) {
       const videoVolume = setInterval(() => {
-        if (videoPlayer) {
-          videoPlayer.getVolume().then(vol => {
-            if (isSound && vol < 1) {
-              videoPlayer.setVolume(vol + 0.1)
-            }
-            if (!isSound && vol > 0) {
-              videoPlayer.setVolume(vol - 0.1)
-            }
-          })
+        try {
+          if (videoPlayer) {
+            videoPlayer.getVolume().then(vol => {
+              if (isSound && vol < 1) {
+                videoPlayer.setVolume(vol + 0.1)
+              }
+              if (!isSound && vol > 0) {
+                videoPlayer.setVolume(vol - 0.1)
+              }
+            })
+          }
+        } catch (e) {
+          console.warn("Player is not available.")
         }
       }, 100)
 
@@ -152,10 +164,10 @@ const GridCell = ({
       }}
     >
       {image && <GridCellBackground isHover={isHoverOrInView} image={image} />}
-      {isHoverOrInView && (
+      {inView && (
         <div
           className={`responsive-iframe-container ${(isHover ||
-            (isTabletOrMobile && inView)) &&
+            isTabletOrMobile) &&
             "visible"}`}
         >
           <iframe

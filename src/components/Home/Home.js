@@ -3,7 +3,7 @@ import ReactPlayer from "react-player"
 import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
-import Skip from "./Skip"
+import Loading from "../Loading"
 import MenuButton from "../MenuButton"
 
 import audio from "../../content/audio/stanfield/landingFull.mp3"
@@ -11,10 +11,14 @@ import audio from "../../content/audio/stanfield/landingFull.mp3"
 import "./Home.css"
 
 const Home = ({ images }) => {
+  const [isLoading, setLoading] = useState(true)
   const [barProgress, setBarProgress] = useState(0)
   const [hideWords, setHideWords] = useState(false)
 
   useEffect(() => {
+    if (barProgress > 0.01) {
+      setLoading(false)
+    }
     if (barProgress > 0.5) {
       setHideWords(true)
     }
@@ -59,37 +63,58 @@ const Home = ({ images }) => {
             <p>Here are some of their stories, in their own words.</p>
           </div>
         </div>
-        <div className="menu-buttons">
-          <MenuButton
-            buttonContent={
-              <span style={{ fontSize: "var(--font-xsmall)" }}>Skip</span>
-            }
-            onClick={() => {
-              navigate("/visiting-room")
+        {isLoading ? (
+          <div
+            style={{
+              position: "fixed",
+              top: "var(--space-around-small)",
+              right: "var(--space-around-small)",
+              transform: "scale(0.4) translate(0, -20px)",
+              transformOrigin: "center center",
             }}
-            tooltipActive
-            tooltipStyling={{
-              background: "var(--clr-black)",
-              boxShadow: "none",
-            }}
-            tooltipContent={
-              <div className="skip-bar" style={{ width: "40px" }}>
-                <div
-                  className="skip-bar-bg"
-                  role="button"
-                  aria-label="Seek time in video"
-                />
-                <div
-                  className="skip-bar-played"
-                  role="button"
+          >
+            <Loading />
+          </div>
+        ) : (
+          <div className="menu-buttons fadeinfast">
+            <MenuButton
+              buttonContent={
+                <span
                   style={{
-                    width: 40 * barProgress + "px",
+                    fontSize: "var(--font-xsmall)",
+                    fontFamily: "Roboto, Helvetica Neue, Arial, sans-serif",
                   }}
-                />
-              </div>
-            }
-          />
-        </div>
+                >
+                  Skip
+                </span>
+              }
+              onClick={() => {
+                navigate("/visiting-room")
+              }}
+              tooltipActive
+              tooltipStyling={{
+                background: "var(--clr-black)",
+                boxShadow: "none",
+              }}
+              tooltipContent={
+                <div className="skip-bar" style={{ width: "40px" }}>
+                  <div
+                    className="skip-bar-bg"
+                    role="button"
+                    aria-label="Seek time in video"
+                  />
+                  <div
+                    className="skip-bar-played"
+                    role="button"
+                    style={{
+                      width: 40 * barProgress + "px",
+                    }}
+                  />
+                </div>
+              }
+            />
+          </div>
+        )}
       </div>
     </>
   )

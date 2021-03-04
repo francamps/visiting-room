@@ -14,6 +14,12 @@
   position: fixed;
   right: 20px;
   top: 20px;
+
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .menu-buttons .menu-button-tooltip {

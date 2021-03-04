@@ -23,10 +23,9 @@
   font-family: "EB Garamond";
   font-size: var(--font-normal);
   position: fixed;
-  top: var(--space-around-small);
-  left: var(--space-around-small);
+  top: var(--space-around-xsmall);
+  left: var(--space-around-xsmall);
   text-align: center;
-  padding: 10px;
 }
 
 .button:hover {
