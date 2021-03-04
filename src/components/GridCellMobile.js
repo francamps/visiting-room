@@ -30,7 +30,7 @@ const GridCellMobile = ({
   const [isSound, setSound] = useState(0)
   const [videoPlayer, setVideoPlayer] = useState(null)
 
-  const [ref, inView] = useInView({
+  const [ref, inView, entry] = useInView({
     /* Optional options */
     threshold: 0.1,
   })

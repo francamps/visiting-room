@@ -57,17 +57,14 @@ const ArchiveBanner = ({ setShowBanner }) => {
 const TimelineBanner = ({ setShowBanner }) => {
   return (
     <>
-      <span>{`Louisiana sentences more people to life without parole per capita 
-      than any other state in the U.S. Below is a history of the sentence 
-      drawn largely from research by The Angolite, an award-winning 
-      magazine edited and published by people serving time at Angola.`}</span>
-      <br />
-      <br />
-      <span>{`This short animation about life without parole in Louisiana 
-      includes first-hand narration from Terry Pierce, who is currently 
-      incarcerated at Angola serving a sentence of life without parole. 
-      The video explains how the punishment has changed over time and why such a 
-      high number of people who are incarcerated in Louisiana is serving this permanent sentence.`}</span>
+      <span>{`Louisiana sentences more people to life without parole 
+      per capita than any other state in the U.S. Below is an original 
+      animation about the sentence in this state, featuring narration 
+      by Terry Pierce, who is currently serving life without parole. 
+      Below the video is a written history of life in Louisiana, 
+      which was drawn largely from research by The Angolite, 
+      an award-winning magazine that is edited and published by people serving time at Angola.
+      `}</span>
       <div className="button-wrap">
         <button
           onClick={() => {
