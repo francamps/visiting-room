@@ -4,6 +4,8 @@ import { useInView } from "react-intersection-observer"
 import { useMediaQuery } from "react-responsive"
 import Player from "@vimeo/player"
 
+import GridCellDesktop from "./GridCellDesktop"
+import GridCellMobile from "./GridCellMobile"
 import GridCellBackground from "./GridCellBackground"
 import IconSound from "./Symbols/Sound"
 import Play from "./Symbols/Play"
@@ -57,219 +59,27 @@ Object.entries(videosBackground).forEach(
     (videosBackground[name] = `https://player.vimeo.com/video/${id}?controls=0`)
 )
 
-const getColor = hex => {
-  if (hex.slice(0, 1) === "#") {
-    return `clr-${hex.slice(1)}`
-  }
-}
-
-const GridCell = ({
-  image,
-  profile_picture,
-  quote,
-  fullName,
-  color,
-  video_link,
-}) => {
-  const [isHover, setHover] = useState(false)
-  const [isSound, setSound] = useState(0)
-  const [videoPlayer, setVideoPlayer] = useState(null)
-
+const GridCell = ({ image, quote, fullName, color, video_link }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
-  const [ref, inView] = useInView({
-    /* Optional options */
-    threshold: isTabletOrMobile ? 0.1 : 0.4,
-  })
-  const profileUri = getNameUri(fullName)
-  const videoPlayerRef = useRef()
 
-  const isHoverOrInView =
-    (isHover && videosBackground[fullName]) ||
-    (isTabletOrMobile && inView && videosBackground[fullName])
-
-  useEffect(() => {
-    if (inView && !videoPlayer) {
-      try {
-        const player = new Player(videoPlayerRef.current, {
-          autoplay: 1,
-          controls: false,
-          title: false,
-          muted: 1,
-          loop: 1,
-        })
-        setVideoPlayer(player)
-      } catch (e) {
-        console.warn("Video not available")
-      }
-    } else if (!inView && videoPlayer) {
-      try {
-        videoPlayer.destroy()
-        setVideoPlayer(null)
-      } catch (e) {
-        console.warn("Video not available")
-      }
-    }
-  }, [inView])
-
-  useEffect(() => {
-    if (videoPlayer && videoPlayer.setVolume) {
-      try {
-        videoPlayer.setVolume(0)
-        videoPlayer.play()
-        videoPlayer.setLoop(true)
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  }, [videoPlayer])
-
-  useEffect(() => {
-    if (inView && videoPlayer) {
-      const videoVolume = setInterval(() => {
-        try {
-          if (videoPlayer) {
-            videoPlayer.getVolume().then(vol => {
-              if (isSound && vol < 1) {
-                videoPlayer.setVolume(vol + 0.1)
-              }
-              if (!isSound && vol > 0) {
-                videoPlayer.setVolume(vol - 0.1)
-              }
-            })
-          }
-        } catch (e) {
-          console.warn("Player is not available.")
-        }
-      }, 100)
-
-      return () => clearInterval(videoVolume)
-    }
-  }, [isSound])
-
-  if (!image) {
-    return null
-  }
-
-  return (
-    <div
-      className={`grid-cell ${
-        isHover || (isTabletOrMobile && inView) ? "hovered" : ""
-      }`}
-      ref={ref}
-      onMouseEnter={() => {
-        setHover(true)
-      }}
-      onMouseLeave={() => {
-        setHover(false)
-      }}
-    >
-      {image && <GridCellBackground isHover={isHoverOrInView} image={image} />}
-      {inView && (
-        <div
-          className={`responsive-iframe-container ${(isHover ||
-            isTabletOrMobile) &&
-            "visible"}`}
-        >
-          <iframe
-            ref={videoPlayerRef}
-            title={fullName}
-            className="responsive-iframe"
-            src={videosBackground[fullName]}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            referrerPolicy="origin"
-          ></iframe>
-        </div>
-      )}
-      <div className="cell-hover-layer"></div>
-      {quote && (
-        <div
-          className="cell-hover-quote"
-          onClick={() => {
-            video_link &&
-              video_link.url &&
-              navigate(`/visiting-room/${profileUri}`)
-          }}
-        >
-          {!video_link || !video_link.url ? (
-            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
-          ) : null}
-          <div className={`quote ${getColor(color)}`}>
-            <span>{`"${quote}"`}</span>
-          </div>
-        </div>
-      )}
-      <h3
-        className="name-tag"
-        onClick={() => {
-          video_link &&
-            video_link.url &&
-            navigate(`/visiting-room/${profileUri}`)
-        }}
-      >
-        <div
-          className={`svg-wrapper ${isHoverOrInView ? "hovered" : ""}`}
-          style={{
-            background: `var(--${getColor(color)}`,
-          }}
-        >
-          <div className="name-wrap">
-            {video_link && video_link.url && (
-              <div
-                className="name-play"
-                style={{
-                  width: "auto",
-                  opacity: isHoverOrInView ? 1 : 0,
-                  transition: "opacity 1.2s",
-                }}
-              >
-                <Play color={"var(--clr-black)"} />
-              </div>
-            )}
-            <div className="text">{fullName}</div>
-          </div>
-        </div>
-        {
-          <div
-            className={`menu-buttons ${isHoverOrInView ? "fadein" : ""}`}
-            style={{
-              position: "absolute",
-              bottom: 0,
-              opacity: 0,
-            }}
-          >
-            <MenuButton
-              onMouseDown={e => {
-                e.stopPropagation()
-                setSound(1)
-              }}
-              onMouseUp={e => {
-                e.stopPropagation()
-                setSound(0)
-              }}
-              onTouchStart={e => {
-                e.stopPropagation()
-                setSound(1)
-              }}
-              onTouchEnd={e => {
-                e.stopPropagation()
-                setSound(0)
-              }}
-              onClick={e => {
-                e.stopPropagation()
-              }}
-              buttonContent={<IconSound />}
-              tooltipContent={"Hold to listen"}
-              tooltipStyling={{
-                background: `var(--${getColor(color)}`,
-                fontSize: "var(--font-small)",
-              }}
-            />
-          </div>
-        }
-      </h3>
-    </div>
+  return isTabletOrMobile ? (
+    <GridCellMobile
+      image={image}
+      quote={quote}
+      fullName={fullName}
+      color={color}
+      video_link={video_link}
+      videosBackground={videosBackground}
+    />
+  ) : (
+    <GridCellDesktop
+      image={image}
+      quote={quote}
+      fullName={fullName}
+      color={color}
+      video_link={video_link}
+      videosBackground={videosBackground}
+    />
   )
 }
 
