@@ -66,7 +66,6 @@ const Foreword = ({ inView }) => {
       })
       videoPlayer.on("bufferend", () => {
         videoPlayer.play()
-        setLoading(false)
       })
     }
   }, [videoPlayer])
@@ -78,6 +77,7 @@ const Foreword = ({ inView }) => {
       }
 
       videoPlayer.on("timeupdate", ({ percent, seconds }) => {
+        setLoading(false)
         setPlaying(true)
         setProgress({
           progress: percent,
