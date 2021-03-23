@@ -88,7 +88,7 @@ const Header = ({ banner, classes, title, hideMenu, actions, theme }) => {
             }}
             style={{
               width:
-                title === "Full Archive"
+                title === "Archive"
                   ? "calc(100% - 230px)"
                   : "calc(100% - 140px)",
             }}

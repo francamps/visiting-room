@@ -40,7 +40,7 @@ const Archive = ({ profiles = [], loading, images }) => {
   return (
     <div className="archive-wrap">
       <Header
-        title={"Full Archive"}
+        title={"Archive"}
         theme="light"
         banner="ARCHIVE"
         actions={

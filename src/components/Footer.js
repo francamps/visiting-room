@@ -28,7 +28,7 @@ const Footer = ({ withRefs, withArchive, withHistory, theme }) => {
       {withArchive && (
         <div className="link-wrap">
           <Link to="/archive" className="hover-link">
-            See the full archive
+            See the archive
           </Link>
         </div>
       )}

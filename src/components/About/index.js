@@ -84,12 +84,22 @@ const About = ({ abouts, faqs, terms, team }) => {
             <TabPanel>
               <h3>Glossary</h3>
               <article className="copy">
-                {terms.map(({ term1 }) => (
-                  <div
-                    className="term-content"
-                    dangerouslySetInnerHTML={{ __html: term1.html }}
-                  ></div>
-                ))}
+                {terms.map(({ term1, ...props }) => {
+                  const defined = term1.text.split(" – ")[0]
+                  const definition = term1.text.split(" – ")[1]
+
+                  console.log(term1.text.split(" – "), props)
+                  return (
+                    <div className="term-content">
+                      <p>
+                        <strong style={{ color: "var(--clr-primary)" }}>
+                          {defined}
+                        </strong>{" "}
+                        - {definition}
+                      </p>
+                    </div>
+                  )
+                })}
               </article>
             </TabPanel>
             <TabPanel>

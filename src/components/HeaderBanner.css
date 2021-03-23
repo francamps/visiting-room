@@ -34,6 +34,11 @@
   max-width: 640px;
 }
 
+.header-entry-text.auto {
+  max-width: inherit;
+  width: inherit;
+}
+
 .header-entry-text span,
 .header-entry-text a {
   font-size: var(--font-copy-label);
@@ -51,6 +56,48 @@
   cursor: pointer;
   color: var(--clr-white);
   transition: color 0.2s;
+}
+
+.header-banner .intro-banner {
+  position: relative;
+  width: 240px;
+  height: 80px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--clr-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.header-banner .intro-banner .bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  filter: brightness(0.8);
+  background-size: cover;
+  background-position: center center;
+  transition: filter 0.4s;
+}
+
+.header-banner .intro-banner:hover .bg {
+  filter: brightness(0.4);
+  transition: filter 0.4s;
+}
+
+.header-banner .intro-banner .labels {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: var(--space-around-small);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .light .header-banner button.hover-link {

@@ -1,18 +1,58 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import Play from "./Symbols/Play.js"
 import "./HeaderBanner.css"
+import vrp from "../images/vrp.png"
 
 const VisitingRoomBanner = ({ setShowBanner }) => {
   return (
     <>
-      <span>{`The Visiting Room invites you to sit with people serving 
+      <div
+        className=""
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "calc(100% - 160px)",
+        }}
+      >
+        <div className="" style={{ flex: 1 }}>
+          <span>{`The Visiting Room invites you to sit with people serving 
 life without parole to hear them tell some of their own stories, in their own words.`}</span>
-      <br />
-      <br />
-      <span>{`These short videos are drawn from longer interviews, which are available in the `}</span>
-      <Link to="/archive">Full Archive</Link>
-      <span>.</span>
+          <br />
+          <br />
+          <span>{`These short videos are drawn from longer interviews, which are available in the `}</span>
+          <Link to="/archive">Archive</Link>
+          <span>.</span>
+        </div>
+        <div onClick={() => {}} className="intro-banner">
+          <div
+            className="bg"
+            style={{
+              backgroundImage: `url(${vrp})`,
+            }}
+          ></div>
+          <div className="labels">
+            <p style={{ margin: 0, fontSize: "var(--font-small)" }}>
+              By Terry West
+            </p>
+            <p
+              style={{
+                margin: 0,
+                fontFamily: "EB Garamond",
+                fontSize: "var(--font-copy)",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Play size="normal" />
+              Introduction
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="button-wrap">
         <button
           onClick={() => {
@@ -83,7 +123,7 @@ const HeaderBanner = ({ banner, isShow, setShowBanner }) => {
     case "VISITING-ROOM":
       return (
         <div className={`header-banner ${isShow ? "fadeinfast" : "fadeout"}`}>
-          <div className="header-entry-text">
+          <div className="header-entry-text auto">
             <VisitingRoomBanner setShowBanner={setShowBanner} />
           </div>
         </div>
