@@ -70,7 +70,6 @@ const Timeline = props => {
         >
           <div className="timeline-frame">
             <div ref={ref} className="timeline-cover">
-              <Foreword inView={inView} />
               <div
                 style={{
                   display: "flex",
@@ -79,6 +78,9 @@ const Timeline = props => {
                   marginTop: "0px",
                 }}
               >
+                <h2 style={{ textAlign: "center" }}>
+                  A History of Life Without Parole
+                </h2>
                 <div style={{ transform: "scale(0.7)" }}>
                   <Caret color="var(--clr-off-white)" animate />
                 </div>
@@ -112,6 +114,7 @@ const Timeline = props => {
               <button
                 onClick={() =>
                   setModal({
+                    stickOnClick: true,
                     styling: {
                       alignItems: "flex-start",
                       overflow: "auto",
@@ -137,6 +140,7 @@ const Timeline = props => {
               setModal={setModal}
               content={modalContent.content}
               styling={modalContent.styling}
+              stickOnClick={modalContent.stickOnClick}
             />
           )}
         </article>

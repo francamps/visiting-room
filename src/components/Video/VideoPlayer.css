@@ -118,6 +118,11 @@
   font-size: var(--font-small);
 }
 
+.progress-seconds span {
+  font-family: Archive, Helvetica Neue, Arial, sans-serif;
+  font-size: var(--font-small);
+}
+
 .video-wrap .controls .actions .play-pause-stop {
   position: absolute;
   bottom: 15px;

@@ -37,9 +37,11 @@ const AboutCopy = ({ abouts }) => {
           className="term-content"
           dangerouslySetInnerHTML={{ __html: content.html }}
         ></div>
-        <div className="map">
+        {
+          null /*<div className="map">
           <img src={vrp} style={{ width: "100%", height: "auto" }} />
-        </div>
+          </div>*/
+        }
       </article>
 
       <Tabs>

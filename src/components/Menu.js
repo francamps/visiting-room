@@ -108,7 +108,7 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
               setBurgerOpen(false)
             }}
           >
-            Full Archive
+            Archive
           </Link>
         </div>
         <div className="menu-option-wrap">

@@ -1,19 +1,25 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useMediaQuery } from "react-responsive"
 
 import Play from "./Symbols/Play.js"
+import Foreword from "./Timeline/Foreword.js"
+
 import "./HeaderBanner.css"
+
 import vrp from "../images/vrp.png"
 
 const VisitingRoomBanner = ({ setShowBanner }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
+
   return (
     <>
       <div
-        className=""
+        className="vr-banner"
         style={{
           display: "flex",
-          flexDirection: "row",
-          width: "calc(100% - 160px)",
+          flexDirection: isTabletOrMobile ? "column" : "row",
+          width: isTabletOrMobile ? "calc(100% - 80px)" : "calc(100% - 160px)",
         }}
       >
         <div className="" style={{ flex: 1 }}>
@@ -26,15 +32,10 @@ life without parole to hear them tell some of their own stories, in their own wo
           <span>.</span>
         </div>
         <div onClick={() => {}} className="intro-banner">
-          <div
-            className="bg"
-            style={{
-              backgroundImage: `url(${vrp})`,
-            }}
-          ></div>
+          <Foreword inView={true} />
           <div className="labels">
             <p style={{ margin: 0, fontSize: "var(--font-small)" }}>
-              By Terry West
+              Narrated by Terry Pierce
             </p>
             <p
               style={{
@@ -46,7 +47,6 @@ life without parole to hear them tell some of their own stories, in their own wo
                 alignItems: "center",
               }}
             >
-              <Play size="normal" />
               Introduction
             </p>
           </div>
@@ -55,6 +55,7 @@ life without parole to hear them tell some of their own stories, in their own wo
 
       <div className="button-wrap">
         <button
+          className="secondary"
           onClick={() => {
             setShowBanner(false)
           }}
@@ -101,9 +102,8 @@ const TimelineBanner = ({ setShowBanner }) => {
       per capita than any other state in the U.S. Below is an original 
       animation about the sentence in this state, featuring narration 
       by Terry Pierce, who is currently serving life without parole. 
-      Below the video is a written history of life in Louisiana, 
-      which was drawn largely from research by The Angolite, 
-      an award-winning magazine that is edited and published by people serving time at Angola.
+      The video is a written history of life in Louisiana, 
+      which was drawn largely from research by The Angolite.
       `}</span>
       <div className="button-wrap">
         <button

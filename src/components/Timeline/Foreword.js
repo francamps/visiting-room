@@ -61,11 +61,10 @@ const Foreword = ({ inView }) => {
         setPause(true)
       })
       videoPlayer.on("bufferstart", () => {
-        videoPlayer.pause()
-        setLoading(true)
+        if (isPlaying) setLoading(true)
       })
       videoPlayer.on("bufferend", () => {
-        videoPlayer.play()
+        setLoading(false)
       })
     }
   }, [videoPlayer])
@@ -77,7 +76,6 @@ const Foreword = ({ inView }) => {
       }
 
       videoPlayer.on("timeupdate", ({ percent, seconds }) => {
-        setLoading(false)
         setPlaying(true)
         setProgress({
           progress: percent,
@@ -176,20 +174,9 @@ const Foreword = ({ inView }) => {
                     !isPlaying || isPaused ? "rgba(0,0,0,0.2)" : "none",
                 }}
               >
-                {(!isPlaying || (isPlaying && isPaused)) && (
+                {(!isPlaying || isPaused) && (
                   <div className="play-wrap">
-                    <Play
-                      size="large"
-                      onClick={() => {
-                        videoPlayer.getPaused().then(paused => {
-                          if ((isPlaying && paused) || !isPlaying) {
-                            videoPlayer.play()
-                          } else {
-                            videoPlayer.pause()
-                          }
-                        })
-                      }}
-                    />
+                    <Play size="large" />
                   </div>
                 )}
               </div>

@@ -9,6 +9,7 @@ import MenuButton from "../MenuButton"
 import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 import "./Home.css"
+import "./Skip.css"
 
 const Home = ({ images }) => {
   const [isLoading, setLoading] = useState(true)
@@ -31,6 +32,7 @@ const Home = ({ images }) => {
           <HomeVideo images={images} setBarProgress={setBarProgress} />
         </div>
         <div className={`landing fadeinfast`}>
+          <div className="home-title-accent"></div>
           <div className="home-title">
             <span>The</span>
             <br />

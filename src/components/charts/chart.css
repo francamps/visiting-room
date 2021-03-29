@@ -98,3 +98,8 @@ text.labelComsValue {
   opacity: 0.75;
   font-size: var(--font-xsmall);
 }
+
+.chart-wrap button {
+  font-size: var(--font-normal);
+  line-height: var(--font-normal);
+}

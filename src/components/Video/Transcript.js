@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import Loading from "../Loading"
 import CrossClose from "../CrossClose"
@@ -31,6 +31,11 @@ const Transcript = ({
       /* Error handling */
       setError(true)
     })
+
+  useEffect(() => {
+    const activeElement = document.querySelector(".transcript-paragraph.active")
+    if (activeElement) activeElement.scrollIntoView()
+  }, [transcript])
 
   return (
     <div className="transcript-panel">
@@ -132,7 +137,7 @@ const Transcript = ({
             </div>
           )
         })}
-      {error && <p>Something went error loading the transcript.</p>}
+      {error && <p>Something went wrong loading the transcript.</p>}
     </div>
   )
 }

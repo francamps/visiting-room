@@ -1,9 +1,9 @@
 .foreword-wrap {
   position: relative;
-  width: calc(100% - 40px);
-  height: calc(100% - 70px);
-  margin-bottom: 20px;
-  margin-top: 70px;
+  width: 100%; /*calc(100% - 40px);*/
+  height: 100%; /*calc(100% - 70px);*/
+  margin-bottom: 0; /*20px;*/
+  margin-top: 0; /*70px;*/
 }
 
 .vr-intro {
@@ -71,7 +71,7 @@ WRAP
 }
 
 .vr-intro .video-container .loading-wrap {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;

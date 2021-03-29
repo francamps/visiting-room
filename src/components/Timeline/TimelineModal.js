@@ -4,7 +4,7 @@ import CrossClose from "../CrossClose"
 
 import "./TimelineModal.css"
 
-const TimelineModal = ({ styling, content, setModal }) => {
+const TimelineModal = ({ styling, content, setModal, stickOnClick }) => {
   return (
     <div
       className="fadeinfast"
@@ -24,7 +24,7 @@ const TimelineModal = ({ styling, content, setModal }) => {
         ...styling,
       }}
       onClick={() => {
-        setModal(false)
+        if (!stickOnClick) setModal(false)
       }}
     >
       <div className="modal" style={{ position: "relative" }}>

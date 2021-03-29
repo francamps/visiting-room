@@ -227,6 +227,11 @@ button:hover {
   transition: box-shadow 0.2s;
 }
 
+button.secondary {
+  color: var(--clr-white);
+  background: var(--clr-dark-grey);
+}
+
 .light button {
   box-shadow: var(--box-elevation-light);
   transition: box-shadow 0.2s;

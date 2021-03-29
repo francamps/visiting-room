@@ -21,11 +21,25 @@
 
 .home .home-title {
   font-family: "EB Garamond";
-  font-size: var(--font-normal);
+  font-size: var(--font-small);
   position: fixed;
-  top: var(--space-around-xsmall);
-  left: var(--space-around-xsmall);
+  top: var(--space-around-med);
+  left: var(--space-around-med);
   text-align: center;
+}
+
+.home .home-title-accent {
+  top: var(--space-around-small);
+  left: var(--space-around-small);
+  position: fixed;
+  width: 20px;
+  height: 20px;
+
+  -webkit-animation: rotatingBackgroundColor 20s infinite;
+  -moz-animation: rotatingBackgroundColor 20s infinite;
+  -ms-animation: rotatingBackgroundColor 20s infinite;
+  -o-animation: rotatingBackgroundColor 20s infinite;
+  animation: rotatingBackgroundColor 20s infinite;
 }
 
 .button:hover {

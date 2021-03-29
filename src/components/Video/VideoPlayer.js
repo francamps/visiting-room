@@ -164,7 +164,6 @@ const VideoPlayer = ({
         className={`video ${handleFullScreen.active ? "video-fullscreen" : ""}`}
         onClick={() => {
           if (videoPlayer) {
-            console.log("click all")
             videoPlayer.getPaused().then(paused => {
               if (paused) videoPlayer.play()
               if (!paused) videoPlayer.pause()
