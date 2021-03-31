@@ -2,7 +2,7 @@ import React from "react"
 
 import "./Loading.css"
 
-const Loading = ({ hideTitle = false, color }) => {
+const Loading = ({ color, hideTitle = false, size }) => {
   return (
     <div
       className="loader-wrap"
@@ -11,6 +11,11 @@ const Loading = ({ hideTitle = false, color }) => {
         flexDirection: "column",
         height: "60px",
         alignItems: "center",
+        ...{
+          transform:
+            size === "small" ? "scale(0.4) translate(0, -20px)" : "none",
+          transformOrigin: "center center",
+        },
       }}
     >
       <div className="svg-wrapper">

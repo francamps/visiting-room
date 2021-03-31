@@ -65,20 +65,20 @@
 
   flex: 1.5;
   padding: 10px;
-  border: 1px solid var(--clr-white);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   cursor: pointer;
 }
 
 .header-banner .intro-banner .foreword-wrap {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  width: 465px;
+  border: 1px solid var(--clr-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header-banner .intro-banner .bg {

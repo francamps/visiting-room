@@ -96,7 +96,6 @@ const ChartC = () => {
 
   useEffect(() => {
     if (step === 2 && isRunning) {
-      console.log("loop and end")
       setIsRunning(false)
       setTimeout(() => {
         setStep(0)

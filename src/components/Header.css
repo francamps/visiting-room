@@ -40,7 +40,9 @@ Rotating home square
   height: 40px;
   width: 40px;
   transition: width 0.4s, height 0.4s;
+}
 
+.header .home-home:not(.static) {
   -webkit-animation: rotatingBackgroundColor 20s infinite;
   -moz-animation: rotatingBackgroundColor 20s infinite;
   -ms-animation: rotatingBackgroundColor 20s infinite;
@@ -134,11 +136,14 @@ Heaer title help + banner
   transition: opacity 0.8s, margin-left 0.4s;
   cursor: pointer;
 }
+
 .header .home-title.active .title-help:hover {
   opacity: 1;
 }
 
 .header.light .home-title,
+.header.light .home-title .title-help,
+.header.light .home-title.active .title-help,
 .header.light .home-home {
   color: var(--clr-black);
 }

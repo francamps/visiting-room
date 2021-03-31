@@ -61,7 +61,7 @@ const Foreword = ({ inView }) => {
         setPause(true)
       })
       videoPlayer.on("bufferstart", () => {
-        if (isPlaying) setLoading(true)
+        if (!isPlaying && !isPaused) setLoading(true)
       })
       videoPlayer.on("bufferend", () => {
         setLoading(false)
@@ -101,12 +101,13 @@ const Foreword = ({ inView }) => {
   }, [countDownToHideControls, showControls])
 
   useEffect(() => {
-    if (!isPlaying) {
-      setPlaying(true)
-      setPause(false)
-    }
-    if (isPlaying) {
-      setPause(!isPaused)
+    if (videoPlayer) {
+      if (!isPlaying) {
+        videoPlayer.play()
+      }
+      if (isPlaying) {
+        videoPlayer.pause()
+      }
     }
   }, [spacePress])
 
@@ -116,11 +117,15 @@ const Foreword = ({ inView }) => {
     }
   }, [escPress])
 
+  /*
   useEffect(() => {
     if (!inView) {
       if (videoPlayer) videoPlayer.pause()
     }
   }, [inView])
+  */
+
+  console.log(isLoading)
 
   return (
     <div className="foreword-wrap">
@@ -164,7 +169,7 @@ const Foreword = ({ inView }) => {
               ></iframe>
               {isLoading && inView && (
                 <div className="loading-wrap">
-                  <Loading />
+                  <Loading size="small" />
                 </div>
               )}
               <div

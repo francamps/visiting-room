@@ -33,23 +33,6 @@ life without parole to hear them tell some of their own stories, in their own wo
         </div>
         <div onClick={() => {}} className="intro-banner">
           <Foreword inView={true} />
-          <div className="labels">
-            <p style={{ margin: 0, fontSize: "var(--font-small)" }}>
-              Narrated by Terry Pierce
-            </p>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: "EB Garamond",
-                fontSize: "var(--font-copy)",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              Introduction
-            </p>
-          </div>
         </div>
       </div>
 

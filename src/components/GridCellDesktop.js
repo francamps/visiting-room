@@ -81,7 +81,6 @@ const GridCellDesktop = ({
         console.log(e)
       }
     }
-    console.log(fullName, inView, isHover, videoPlayer)
   }, [isHover])
 
   useEffect(() => {

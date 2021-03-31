@@ -1,3 +1,18 @@
+.modal-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  backdrop-filter: blur(6px);
+  background: rgba(var(--clr-white-rgb), 0.95);
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 5px 5px white;
+  z-index: 12;
+}
+
 .modal {
   width: 600px;
   height: auto;

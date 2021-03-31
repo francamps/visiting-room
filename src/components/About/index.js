@@ -27,7 +27,7 @@ const About = ({ abouts, faqs, terms, team }) => {
   return (
     <>
       <section className="about">
-        <Header title="About the project" />
+        <Header title="About the Project" />
         <Tabs
           defaultIndex={params.get("tab") || 0}
           onSelect={idx => {
@@ -88,7 +88,6 @@ const About = ({ abouts, faqs, terms, team }) => {
                   const defined = term1.text.split(" – ")[0]
                   const definition = term1.text.split(" – ")[1]
 
-                  console.log(term1.text.split(" – "), props)
                   return (
                     <div className="term-content">
                       <p>

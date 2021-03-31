@@ -71,11 +71,9 @@ const Home = ({ images }) => {
               position: "fixed",
               top: "var(--space-around-small)",
               right: "var(--space-around-small)",
-              transform: "scale(0.4) translate(0, -20px)",
-              transformOrigin: "center center",
             }}
           >
-            <Loading />
+            <Loading size="small" />
           </div>
         ) : (
           <div className="menu-buttons fadeinfast">

@@ -12,7 +12,15 @@ import "./Header.css"
 const MINIMUM_SCROLL = 80
 const TIMEOUT_DELAY = 200
 
-const Header = ({ banner, classes, title, hideMenu, actions, theme }) => {
+const Header = ({
+  banner,
+  classes,
+  color,
+  title,
+  hideMenu,
+  actions,
+  theme,
+}) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
   const [isHoverTitle, setHoverTitle] = useState(false)
   const [isHoverHome, setHoverHome] = useState(false)
@@ -55,7 +63,14 @@ const Header = ({ banner, classes, title, hideMenu, actions, theme }) => {
     >
       <>
         <div
-          className={`home-home ${isHoverHome ? "hovered" : ""}`}
+          className={`home-home ${isHoverHome ? "hovered" : ""} ${
+            color ? "static" : ""
+          }`}
+          style={
+            color && {
+              background: color,
+            }
+          }
           onClick={() => {
             navigate("/")
           }}
@@ -82,7 +97,7 @@ const Header = ({ banner, classes, title, hideMenu, actions, theme }) => {
           <div
             className={`home-title ${
               isHoverTitle && !showBanner ? "active" : ""
-            }`}
+            } ${color ? "static" : ""}`}
             onClick={() => {
               if (!showBanner) setShowBanner(true)
             }}

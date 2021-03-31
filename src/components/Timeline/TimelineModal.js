@@ -7,20 +7,8 @@ import "./TimelineModal.css"
 const TimelineModal = ({ styling, content, setModal, stickOnClick }) => {
   return (
     <div
-      className="fadeinfast"
+      className="modal-wrap fadeinfast"
       style={{
-        position: "fixed",
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        display: "flex",
-        backdropFilter: "blur(6px)",
-        background: "rgba(var(--clr-white-rgb), 0.9)",
-        justifyContent: "center",
-        alignItems: "center",
-        boxShadow: "10px 5px 5px white",
-        zIndex: 12,
         ...styling,
       }}
       onClick={() => {

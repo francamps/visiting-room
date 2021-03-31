@@ -71,7 +71,6 @@ const FilterAndSearch = ({
               id="input-search"
               placeholder="Search transcripts"
               onKeyUp={event => {
-                console.log(event.target.value)
                 setSearchInput(event.target.value)
                 updateSearchParam(event.target.value)
               }}

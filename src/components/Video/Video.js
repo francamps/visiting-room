@@ -42,7 +42,13 @@ const Video = ({
 
   return (
     <div className={`video-wrap ${showTranscript ? "transcript" : ""}`}>
-      <Header title={name} actions={null} hideMenu classes="fadein" />
+      <Header
+        title={name}
+        actions={null}
+        hideMenu
+        classes="fadein"
+        color={color}
+      />
       <VideoPlayer
         videoSrcURL={isArchive ? archive[name] : video_link}
         videoTitle={null}
