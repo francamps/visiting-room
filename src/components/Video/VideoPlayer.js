@@ -197,7 +197,14 @@ const VideoPlayer = ({
 
         {isLoading && (
           <div className="loading-wrap">
-            <Loading color={color} />
+            <div
+              style={{
+                transform: "translate(0, 80px)",
+                transformOrigin: "center center",
+              }}
+            >
+              <Loading color={color} />
+            </div>
           </div>
         )}
         <div className="control-layer">

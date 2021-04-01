@@ -169,7 +169,14 @@ const Foreword = ({ inView }) => {
               ></iframe>
               {isLoading && inView && (
                 <div className="loading-wrap">
-                  <Loading size="small" />
+                  <div
+                    style={{
+                      transform: "translate(0, 60px)",
+                      transformOrigin: "center center",
+                    }}
+                  >
+                    <Loading size="small" />
+                  </div>
                 </div>
               )}
               <div
