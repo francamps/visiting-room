@@ -93,7 +93,7 @@ const Home = ({ images }) => {
               }}
               tooltipActive
               tooltipStyling={{
-                background: "var(--clr-black)",
+                background: "none",
                 boxShadow: "none",
               }}
               tooltipContent={

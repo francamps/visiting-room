@@ -18,8 +18,7 @@ const VisitingRoomBanner = ({ setShowBanner }) => {
         className="vr-banner"
         style={{
           display: "flex",
-          flexDirection: isTabletOrMobile ? "column" : "row",
-          width: isTabletOrMobile ? "calc(100% - 80px)" : "calc(100% - 160px)",
+          flexDirection: "column",
         }}
       >
         <div className="" style={{ flex: 1 }}>
@@ -90,6 +89,7 @@ const TimelineBanner = ({ setShowBanner }) => {
       `}</span>
       <div className="button-wrap">
         <button
+          className="secondary"
           onClick={() => {
             setShowBanner(false)
           }}

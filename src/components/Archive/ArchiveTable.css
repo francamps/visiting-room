@@ -17,6 +17,7 @@
 .archive table.isCompact {
   margin: 0 auto;
   width: calc(100% - 40px);
+  border-top: 1px solid var(--clr-light-grey);
 }
 
 .archive table tr {

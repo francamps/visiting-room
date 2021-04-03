@@ -29,11 +29,10 @@ const HomeVideo = ({ setBarProgress }) => {
           muted: 1,
         })
 
-        console.log(player)
         player.on("timeupdate", ({ percent, seconds }) => {
           setProgress(seconds)
           setBarProgress(percent)
-          console.log(percent, seconds)
+
           if (percent > 0.9) navigate("/visiting-room")
         })
         setVideoPlayer(videoPlayer)

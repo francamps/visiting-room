@@ -23,14 +23,14 @@
   font-family: "EB Garamond";
   font-size: var(--font-small);
   position: fixed;
-  top: var(--space-around-med);
-  left: var(--space-around-med);
+  top: var(--space-around-small);
+  left: var(--space-around-small);
   text-align: center;
 }
 
 .home .home-title-accent {
-  top: var(--space-around-small);
-  left: var(--space-around-small);
+  top: var(--space-around-xsmall);
+  left: var(--space-around-xsmall);
   position: fixed;
   width: 20px;
   height: 20px;

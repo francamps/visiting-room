@@ -229,7 +229,7 @@ button:hover {
 
 button.secondary {
   color: var(--clr-white);
-  background: var(--clr-dark-grey);
+  background: var(--clr-black);
 }
 
 .light button {
