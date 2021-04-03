@@ -49,10 +49,12 @@ const HomeVideo = ({ setBarProgress }) => {
           ref={videoPlayerRef}
           className="responsive-iframe"
           src={videoSrc}
+          data-src={videoSrc}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           referrerPolicy="origin"
+          referrer-policy="origin"
         ></iframe>
       </div>
     </div>
