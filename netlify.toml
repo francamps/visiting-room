@@ -10,4 +10,4 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
-    Referrer-policy = "origin"
+    Referrer-policy = "origin-when-cross-origin"
