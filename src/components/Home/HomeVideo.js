@@ -29,6 +29,7 @@ const HomeVideo = ({ setBarProgress }) => {
           muted: 1,
         })
 
+        console.log(player)
         player.on("timeupdate", ({ percent, seconds }) => {
           setProgress(seconds)
           setBarProgress(percent)
