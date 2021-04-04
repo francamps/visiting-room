@@ -175,18 +175,9 @@ const GridCellDesktop = ({
           }}
         >
           <div className="name-wrap">
-            {video_link && video_link.url && (
-              <div
-                className="name-play"
-                style={{
-                  width: "auto",
-                  opacity: isHover,
-                  transition: "opacity 1.2s",
-                }}
-              >
-                <Play color={"var(--clr-black)"} />
-              </div>
-            )}
+            <div className="name-play">
+              <Play color={"var(--clr-black)"} />
+            </div>
             <div className="text">{fullName}</div>
           </div>
         </div>

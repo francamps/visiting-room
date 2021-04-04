@@ -71,20 +71,21 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table thead tr th {
+  padding: 0 20px 10px 20px;
   display: flex;
   flex-direction: row;
   flex: 1;
   line-height: 20px;
   align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0 10px 10px 10px;
-  text-align: right;
-  /*background-color: rgba(var(--clr-black-rgb, 1));*/
+  justify-content: flex-start;
+  text-align: left;
   background-color: rgba(var(--clr-off-white-rgb, 1));
   color: var(--clr-black);
+  font-family: "EB Garamond";
 }
 
 .archive table thead tr th:nth-child(1) {
+  padding: 0 10px 10px 10px;
   text-align: left;
   justify-content: flex-start;
 }
@@ -112,7 +113,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   display: flex;
   flex: 1;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   padding: 10px;
   border-right: 1px solid var(--clr-light-grey);
@@ -128,6 +129,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   text-transform: none;
   font-weight: normal;
   font-size: var(--font-xsmall);
+  font-family: "EB Garamond";
 }
 
 .archive table.isCompact thead tr {
@@ -139,31 +141,31 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
   color: var(--clr-black);
 }
 
-.archive table.isCompact thead th.play {
-  padding: 0 10px 10px 10px;
-}
-
 .archive table:not(.isCompact) thead tr th:nth-child(1),
 .archive table:not(.isCompact) tbody tr td:nth-child(1) {
   flex: 1;
 }
-
 .archive table:not(.isCompact) thead tr th:nth-child(2),
-.archive table:not(.isCompact) tbody tr td:nth-child(2),
 .archive table:not(.isCompact) thead tr th:nth-child(3),
-.archive table:not(.isCompact) tbody tr td:nth-child(3),
-.archive table:not(.isCompact) thead tr th:nth-child(4),
-.archive table:not(.isCompact) tbody tr td:nth-child(4) {
-  flex: 0 0 90px;
+.archive table:not(.isCompact) thead tr th:nth-child(4) {
+  flex: 0 0 70px;
+  text-align: center;
 }
 
-.archive table:not(.isCompact) thead tr th:nth-child(5),
+.archive table:not(.isCompact) tbody tr td:nth-child(2),
+.archive table:not(.isCompact) tbody tr td:nth-child(3),
+.archive table:not(.isCompact) tbody tr td:nth-child(4) {
+  flex: 0 0 91px;
+  text-align: center;
+}
+
+.archive table:not(.isCompact) thead tr th:nth-child(5) {
+  flex: 0 0 118px;
+  text-align: center;
+}
+
 .archive table:not(.isCompact) tbody tr td:nth-child(5) {
   flex: 0 0 130px;
-}
-
-.archive table:not(.isCompact) th:last-child {
-  padding-right: 10px;
 }
 
 .archive table.isCompact tbody tr {
@@ -171,7 +173,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table.isCompact tbody tr td:nth-child(1) {
-  flex: 0 0 120px;
+  flex: 0 0 130px;
 }
 
 .archive table tbody td .full-name {

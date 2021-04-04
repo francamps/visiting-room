@@ -141,12 +141,8 @@
 }
 
 .grid-cell h3 {
-  position: absolute;
   align-self: flex-end;
   justify-content: center;
-  width: 100%;
-  left: 0;
-  right: 0;
   bottom: 0;
   padding: 20px 0 0 0;
   margin-bottom: 0;
@@ -164,16 +160,13 @@
 
 .svg-wrapper {
   position: relative;
-  top: 50%;
-  /*transform: translateY(-50%);*/
   margin: 0 auto;
-  width: 240px;
   margin-bottom: 20px;
+  padding: 0 20px;
   transition: width 0.4s;
 }
 
 .svg-wrapper.hovered {
-  width: 260px;
   transition: width 0.4s;
 }
 
@@ -186,14 +179,21 @@
 }
 
 .name-play {
-  position: absolute;
-  left: 10px;
+  width: 0;
   opacity: 0;
   height: 40px;
   padding: 0;
   display: flex;
   align-items: center;
-  transition: width 2s, opacity 2s, padding 2s;
+  margin: 0;
+  transition: width 0.4s, opacity 0.4s, margin 0.4s;
+}
+
+.svg-wrapper.hovered .name-play {
+  width: 20px;
+  opacity: 1;
+  margin-right: 10px;
+  transition: width 0.4s, opacity 0.4s, margin 0.4s;
 }
 
 .grid-cell.hovered .cell-hover-layer {
