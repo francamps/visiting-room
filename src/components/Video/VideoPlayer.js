@@ -226,7 +226,7 @@ const VideoPlayer = ({
 
         {// We no longer want to final updated card
         // to be visible, we'll go with the one in the video
-        null && isLastTenSeconds && (
+        isLastTenSeconds && (
           <VideoViewedMenu
             name={name}
             age_at_offense={age_at_offense}
