@@ -11,6 +11,7 @@ import MenuButton from "./MenuButton"
 import "./GridCell.css"
 
 import { getNameUri } from "../utils/index.js"
+import { handleKeyUp } from "../utils"
 
 const getColor = hex => {
   if (hex.slice(0, 1) === "#") {
@@ -151,6 +152,15 @@ const GridCellDesktop = ({
               video_link.url &&
               navigate(`/visiting-room/${profileUri}`)
           }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              video_link &&
+                video_link.url &&
+                navigate(`/visiting-room/${profileUri}`)
+            })
+          }
+          role="link"
+          tabIndex={0}
         >
           {!video_link || !video_link.url ? (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
@@ -167,6 +177,14 @@ const GridCellDesktop = ({
             video_link.url &&
             navigate(`/visiting-room/${profileUri}`)
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            video_link &&
+              video_link.url &&
+              navigate(`/visiting-room/${profileUri}`)
+          })
+        }
+        role="link"
       >
         <div
           className={`svg-wrapper ${isHover && "hovered"}`}
@@ -181,36 +199,43 @@ const GridCellDesktop = ({
             <div className="text">{fullName}</div>
           </div>
         </div>
-        {
-          <div
-            className={`menu-buttons ${isHover && "fadein"}`}
-            style={{
-              position: "absolute",
-              bottom: 0,
-              opacity: 0,
+        <div
+          className={`menu-buttons ${isHover && "fadein"}`}
+          style={{
+            position: "absolute",
+            top: "auto",
+            bottom: "20px",
+            opacity: 0,
+          }}
+        >
+          <MenuButton
+            onTouchStart={e => {
+              e.stopPropagation()
+              setSound(1)
             }}
-          >
-            <MenuButton
-              onMouseDown={e => {
-                e.stopPropagation()
-                setSound(1)
-              }}
-              onMouseUp={e => {
-                e.stopPropagation()
-                setSound(0)
-              }}
-              onClick={e => {
-                e.stopPropagation()
-              }}
-              buttonContent={<IconSound />}
-              tooltipContent={"Hold to listen"}
-              tooltipStyling={{
-                background: `var(--${getColor(color)}`,
-                fontSize: "var(--font-small)",
-              }}
-            />
-          </div>
-        }
+            onMouseDown={e => {
+              e.stopPropagation()
+              setSound(1)
+            }}
+            onMouseUp={e => {
+              e.stopPropagation()
+              setSound(0)
+            }}
+            onTouchEnd={e => {
+              e.stopPropagation()
+              setSound(0)
+            }}
+            onClick={e => {
+              e.stopPropagation()
+            }}
+            buttonContent={<IconSound />}
+            tooltipContent={"Hold to listen"}
+            tooltipStyling={{
+              background: `var(--${getColor(color)}`,
+              fontSize: "var(--font-small)",
+            }}
+          />
+        </div>
       </h3>
     </div>
   )

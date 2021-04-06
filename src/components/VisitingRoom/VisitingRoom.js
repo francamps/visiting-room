@@ -3,15 +3,13 @@ import ReactPlayer from "react-player"
 
 import Grid from "../Grid"
 import Header from "../Header"
-import VisitingRoomBanner from "../HeaderBanner"
 
-//import audio from "../../content/audio/stanfield/landingB.mp3"
 import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
-  const [search, setSearch] = useState(null)
+  const [search] = useState(null)
 
   const [showSound, setShowSound] = useState(false)
 

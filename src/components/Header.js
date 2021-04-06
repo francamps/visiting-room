@@ -7,6 +7,8 @@ import Menu from "./Menu"
 import HeaderBanner from "./HeaderBanner"
 import useDocumentScrollThrottled from "../utils/useDocumentScroll"
 
+import { handleKeyUp } from "../utils"
+
 import "./Header.css"
 
 const MINIMUM_SCROLL = 80
@@ -86,6 +88,13 @@ const Header = ({
           onMouseOut={() => {
             setHoverHome(false)
           }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              navigate("/")
+            })
+          }
+          role="link"
+          tabIndex={0}
         >
           <div className="home-home-content">
             <span>The</span>
@@ -101,6 +110,13 @@ const Header = ({
             onClick={() => {
               if (!showBanner) setShowBanner(true)
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                if (!showBanner) setShowBanner(true)
+              })
+            }
+            role="button"
+            tabIndex={0}
             style={{
               width:
                 title === "Archive"
@@ -125,6 +141,12 @@ const Header = ({
             onClick={() => {
               if (!showBanner) setShowBanner(true)
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                if (!showBanner) setShowBanner(true)
+              })
+            }
+            role="button"
           >
             <h2
               style={{

@@ -1,20 +1,18 @@
 import React, { useEffect, useState, useRef } from "react"
 import Player from "@vimeo/player"
-import { navigate } from "gatsby"
 import { FullScreen, useFullScreenHandle } from "react-full-screen"
 import isNull from "lodash/isNull"
 
 import Play from "../Symbols/Play"
 import Loading from "../Loading"
 import VideoPlayerControls from "../Video/VideoPlayerControls"
+
 import useKeyPress from "../../utils/useKeyPressed"
+import { handleKeyUp } from "../../utils"
 
 import "./Foreword.css"
 
-const videoSrcURL = "https://vimeo.com/447172431"
-
 const Foreword = ({ inView }) => {
-  const playerRef = useRef()
   const [isLoading, setLoading] = useState(true)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
@@ -117,16 +115,6 @@ const Foreword = ({ inView }) => {
     }
   }, [escPress])
 
-  /*
-  useEffect(() => {
-    if (!inView) {
-      if (videoPlayer) videoPlayer.pause()
-    }
-  }, [inView])
-  */
-
-  console.log(isLoading)
-
   return (
     <div className="foreword-wrap">
       <FullScreen handle={handleFullScreen}>
@@ -152,8 +140,21 @@ const Foreword = ({ inView }) => {
               onMouseLeave={() => {
                 if (isPlaying) setCountDownToHideControls(5000)
               }}
+              onKeyUp={ev =>
+                handleKeyUp(ev, () => {
+                  if (videoPlayer) {
+                    videoPlayer.getPaused().then(paused => {
+                      if (paused) videoPlayer.play()
+                      if (!paused) videoPlayer.pause()
+                    })
+                  }
+                })
+              }
+              role="button"
+              tabIndex={0}
             >
               <iframe
+                title="foreword-iframe"
                 ref={videoPlayerRef}
                 tabIndex="-1"
                 aria-hidden="true"

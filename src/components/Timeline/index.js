@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from "react"
 import { useInView } from "react-intersection-observer"
 
 import Caret from "../Caret"
-import Footer from "../Footer"
-import Foreword from "./Foreword"
 import Header from "../Header"
 import TimelineModal from "./TimelineModal"
 import TimelineStepCopy from "./TimelineStepCopy"
@@ -12,14 +10,11 @@ import Paragraphs from "../Paragraphs"
 import { TIMELINE } from "../../content/timeline"
 import { REFERENCES } from "../../content/references"
 
+import image from "../../images/timeline/1800s.png"
+
 import "./Timeline.css"
 
-const Timeline = props => {
-  const params = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  )
-
-  const [step] = useState(params.get("chapter") || 0)
+const Timeline = () => {
   const [headerBreadCrumb, setHeaderBreadcrump] = useState("")
   const timelineRef = useRef()
   const [modalContent, setModal] = useState(false)
@@ -58,7 +53,7 @@ const Timeline = props => {
           theme={inView ? null : "light"}
           title={
             inView
-              ? "A History of Life Without Parole in Louisiana"
+              ? ""
               : `A History of Life Without Parole ${
                   headerBreadCrumb ? "/ " + headerBreadCrumb : ""
                 }`
@@ -69,29 +64,55 @@ const Timeline = props => {
           ref={timelineRef}
         >
           <div className="timeline-frame">
-            <div ref={ref} className="timeline-cover">
+            <div
+              ref={ref}
+              className="timeline-cover"
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+            >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   marginTop: "0px",
+                  color: "var(--clr-black)",
                 }}
               >
-                <h2 style={{ textAlign: "center" }}>
-                  A History of Life Without Parole
-                </h2>
-                <div style={{ transform: "scale(0.7)" }}>
-                  <Caret color="var(--clr-off-white)" animate />
-                </div>
-                <span
+                <h2
                   style={{
-                    fontSize: "var(--font-small)",
-                    marginTop: "0px",
+                    textAlign: "center",
+                    fontSize: "var(--font-subtitle)",
                   }}
                 >
-                  Scroll
-                </span>
+                  A History of Life Without Parole
+                </h2>
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "var(--space-around-med)",
+                  }}
+                >
+                  <div
+                    style={{
+                      transform: "scale(0.7)",
+                      transformOrigin: "center center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Caret color="var(--clr-black)" animate />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "Roboto, Helvetica Neue, Arial, sans-serif",
+                      fontSize: "var(--font-small)",
+                      marginTop: "0px",
+                    }}
+                  >
+                    SCROLL
+                  </span>
+                </div>
               </div>
             </div>
             {TIMELINE.map(

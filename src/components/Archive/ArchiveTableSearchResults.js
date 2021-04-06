@@ -4,8 +4,10 @@ import { navigate } from "gatsby"
 
 import Loading from "../Loading"
 import Play from "../Symbols/Play"
+
 import getProfileProps from "../../utils/getProfileProps"
 import { getNameUri, getSeconds } from "../../utils/index.js"
+import { handleKeyUp } from "../../utils"
 
 import "./ArchiveTableSearchResults.css"
 
@@ -88,7 +90,6 @@ const ArchiveTableSearchResults = ({
                   >
                     <td
                       style={{
-                        display: "block",
                         position: "relative",
                         padding: 0,
                         display: "grid",
@@ -176,6 +177,15 @@ const ArchiveTableSearchResults = ({
                                     )}`
                                   )
                                 }}
+                                onKeyUp={ev =>
+                                  handleKeyUp(ev, () => {
+                                    navigate(
+                                      `/archive/${profileUri}?t=${getSeconds(
+                                        r.time
+                                      )}`
+                                    )
+                                  })
+                                }
                               >
                                 <div
                                   style={{
@@ -216,6 +226,11 @@ const ArchiveTableSearchResults = ({
                           onClick={() => {
                             setOpenRow(!isOpen ? profileIdx : null)
                           }}
+                          onKeyUp={ev =>
+                            handleKeyUp(ev, () => {
+                              setOpenRow(!isOpen ? profileIdx : null)
+                            })
+                          }
                           className="see-more"
                         >
                           {isOpen ? "See less -" : "See more +"}

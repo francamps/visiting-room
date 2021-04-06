@@ -48,6 +48,12 @@ const FilterAndSearch = ({
           onClick={() => {
             setTyping(true)
           }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              setTyping(true)
+            })
+          }
+          aria-label="Open search input field"
         >
           <IconSearch theme="light" />
         </button>
@@ -88,6 +94,16 @@ const FilterAndSearch = ({
                 setSearchInput(null)
                 setView("table")
               }}
+              onKeyUp={ev =>
+                handleKeyUp(ev, () => {
+                  setTyping(false)
+                  setSearchInput(null)
+                  setView("table")
+                })
+              }
+              role="button"
+              tabIndex="0"
+              aria-label="Clear search"
             >
               <IconClose noBackground />
             </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { navigate } from "gatsby"
 import { useInView } from "react-intersection-observer"
-import { useMediaQuery } from "react-responsive"
 import Player from "@vimeo/player"
 
 import GridCellBackground from "./GridCellBackground"
@@ -12,6 +11,7 @@ import MenuButton from "./MenuButton"
 import "./GridCell.css"
 
 import { getNameUri } from "../utils/index.js"
+import { handleKeyUp } from "../utils"
 
 const getColor = hex => {
   if (hex.slice(0, 1) === "#") {
@@ -30,7 +30,7 @@ const GridCellMobile = ({
   const [isSound, setSound] = useState(0)
   const [videoPlayer, setVideoPlayer] = useState(null)
 
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.1,
   })
@@ -137,6 +137,13 @@ const GridCellMobile = ({
               video_link.url &&
               navigate(`/visiting-room/${profileUri}`)
           }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              video_link &&
+                video_link.url &&
+                navigate(`/visiting-room/${profileUri}`)
+            })
+          }
         >
           {!video_link || !video_link.url ? (
             <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
@@ -153,6 +160,13 @@ const GridCellMobile = ({
             video_link.url &&
             navigate(`/visiting-room/${profileUri}`)
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            video_link &&
+              video_link.url &&
+              navigate(`/visiting-room/${profileUri}`)
+          })
+        }
       >
         <div
           className={`svg-wrapper ${inView && "hovered"}`}

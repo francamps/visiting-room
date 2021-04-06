@@ -8,7 +8,6 @@ import Play from "../Symbols/Play"
 
 import { videos } from "../../content/archiveRegistry"
 import getProfileProps from "../../utils/getProfileProps"
-import { scaleDivergingSymlog } from "d3-scale"
 
 const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
   const [isHover, setHover] = useState(false)
@@ -23,7 +22,6 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
     fullName,
     date_of_offense,
     age_at_offense,
-    current_age,
     deceased_date,
     time_served,
     age_at_interview,

@@ -4,6 +4,8 @@ import { useMediaQuery } from "react-responsive"
 
 import Burger from "./Burger"
 
+import { handleKeyUp } from "../utils"
+
 import "./Menu.css"
 
 import { colors } from "../content/colors"
@@ -43,6 +45,11 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
           onClick={() => {
             setBurgerOpen(!isBurgerOpen)
           }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              setBurgerOpen(!isBurgerOpen)
+            })
+          }
           onMouseEnter={() => {
             setTooltip(true)
           }}
@@ -58,6 +65,14 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
         onClick={() => {
           setBurgerOpen(false)
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            setBurgerOpen(false)
+          })
+        }
+        role="button"
+        aria-label="Close menu"
+        tabIndex="0"
       />
       <div
         className={`menu-options ${isBurgerOpen ? "open" : ""} ${
@@ -66,6 +81,13 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
         onClick={() => {
           setBurgerOpen(false)
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            setBurgerOpen(false)
+          })
+        }
+        role="button"
+        tabIndex="0"
       >
         <div className="menu-option-wrap">
           <a
@@ -75,10 +97,20 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
                 navigate("/visiting-room")
               }
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                setBurgerOpen(false)
+                if (typeof window !== "undefined") {
+                  navigate("/visiting-room")
+                }
+              })
+            }
             className="hover-link"
             style={{
               background: `var(${getColor(0)})`,
             }}
+            role="link"
+            tabIndex={0}
           >
             The Visiting Room
           </a>
@@ -93,6 +125,11 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
             onClick={() => {
               setBurgerOpen(false)
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                setBurgerOpen(false)
+              })
+            }
           >
             History of Life Without Parole
           </Link>
@@ -102,11 +139,16 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
             to="/archive"
             className="hover-link"
             style={{
-              background: `var(${getColor(2)})`,
+              background: `var(${getColor(17)})`,
             }}
             onClick={() => {
               setBurgerOpen(false)
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                setBurgerOpen(false)
+              })
+            }
           >
             Archive
           </Link>
@@ -116,11 +158,16 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
             to="/about"
             className="hover-link"
             style={{
-              background: `var(${getColor(5)})`,
+              background: `var(${getColor(23)})`,
             }}
             onClick={() => {
               setBurgerOpen(false)
             }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                setBurgerOpen(false)
+              })
+            }
           >
             About
           </Link>

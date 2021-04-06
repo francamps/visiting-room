@@ -12,10 +12,7 @@ const items = [
 ]
 
 const HomeVideo = ({ setBarProgress }) => {
-  const [progress, setProgress] = useState(0)
-  const [videoSrc, setVideoSrc] = useState(
-    items[Math.floor(items.length * Math.random())]
-  )
+  const [videoSrc] = useState(items[Math.floor(items.length * Math.random())])
   const [videoPlayer, setVideoPlayer] = useState(null)
   const videoPlayerRef = useRef()
 
@@ -30,7 +27,6 @@ const HomeVideo = ({ setBarProgress }) => {
         })
 
         player.on("timeupdate", ({ percent, seconds }) => {
-          setProgress(seconds)
           setBarProgress(percent)
 
           if (percent > 0.9) navigate("/visiting-room")
@@ -46,6 +42,7 @@ const HomeVideo = ({ setBarProgress }) => {
     <div className="fullscreen-bg ready">
       <div className="responsive-iframe-container">
         <iframe
+          title="homevideo-iframe"
           ref={videoPlayerRef}
           className="responsive-iframe"
           src={videoSrc}

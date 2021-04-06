@@ -22,7 +22,6 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
     fullName,
     date_of_offense,
     age_at_offense,
-    current_age,
     deceased_date,
     time_served,
     age_at_interview,

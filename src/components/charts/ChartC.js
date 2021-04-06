@@ -101,12 +101,12 @@ const ChartC = () => {
         setStep(0)
       }, STEP_FREQUENCY)
     }
-  }, [step])
+  }, [step, isRunning])
 
   useEffect(() => {
     setW(canvasRef.current.getBoundingClientRect().width - 40)
     setH(canvasRef.current.getBoundingClientRect().height - 80)
-  }, [canvasRef.current])
+  }, [])
 
   useEffect(() => {
     const svg = select(svgRef.current)

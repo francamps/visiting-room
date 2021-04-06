@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useReducer } from "react"
-import capitalize from "lodash/capitalize"
 import "./FilterAndSearch.css"
 
 import worker from "./worker/index.js"

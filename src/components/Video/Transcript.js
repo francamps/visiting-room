@@ -4,6 +4,7 @@ import Loading from "../Loading"
 import CrossClose from "../CrossClose"
 
 import { getSeconds } from "../../utils/index.js"
+import { handleKeyUp } from "../../utils"
 
 import "./Transcript.css"
 
@@ -49,6 +50,13 @@ const Transcript = ({
         onClick={() => {
           setShowTranscript(false)
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            setShowTranscript(false)
+          })
+        }
+        role="button"
+        tabIndex={0}
       >
         <CrossClose theme="light" />
       </div>
@@ -83,6 +91,20 @@ const Transcript = ({
                     getSeconds(paragraph.time) / duration
                   )
               }}
+              onKeyUp={ev =>
+                handleKeyUp(ev, () => {
+                  setProgress({
+                    progress: getSeconds(paragraph.time) / duration,
+                    progressSeconds: +getSeconds(paragraph.time),
+                  })
+                  if (playerRef.current)
+                    playerRef.current.seekTo(
+                      getSeconds(paragraph.time) / duration
+                    )
+                })
+              }
+              role="button"
+              tabIndex={0}
             >
               <div
                 style={{

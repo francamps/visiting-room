@@ -5,6 +5,8 @@ import IconViewTable from "../Symbols/ViewTable"
 import IconViewGrid from "../Symbols/ViewGrid"
 import MenuButton from "../MenuButton"
 
+import { handleKeyUp } from "../../utils"
+
 import "./ArchiveActions.css"
 
 const ArchiveActions = ({
@@ -59,6 +61,11 @@ const ArchiveActions = ({
         onClick={() => {
           setView(view === "table" ? "grid" : "table")
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            setView(view === "table" ? "grid" : "table")
+          })
+        }
         buttonContent={
           view === "table" ? (
             <>
@@ -84,6 +91,11 @@ const ArchiveActions = ({
                 onClick={() => {
                   setMenuOpen(!isMenuOpen)
                 }}
+                onKeyUp={ev =>
+                  handleKeyUp(ev, () => {
+                    setMenuOpen(!isMenuOpen)
+                  })
+                }
               >
                 <IconSort enabled theme="light" />
               </button>
@@ -92,6 +104,12 @@ const ArchiveActions = ({
                 onClick={() => {
                   setMenuOpen(false)
                 }}
+                onKeyUp={ev =>
+                  handleKeyUp(ev, () => {
+                    setMenuOpen(false)
+                  })
+                }
+                role="button"
               >
                 <div className="menu__item">
                   <p
@@ -101,6 +119,11 @@ const ArchiveActions = ({
                     onClick={() => {
                       handleSortClick("full_name", 1)
                     }}
+                    onKeyUp={ev =>
+                      handleKeyUp(ev, () => {
+                        handleSortClick("full_name", 1)
+                      })
+                    }
                   >
                     <IconSort
                       enabled={sortType.key === "full_name"}
@@ -118,6 +141,11 @@ const ArchiveActions = ({
                     onClick={() => {
                       handleSortClick("age_at_offense", 2)
                     }}
+                    onKeyUp={ev =>
+                      handleKeyUp(ev, () => {
+                        handleSortClick("age_at_offense", 2)
+                      })
+                    }
                   >
                     <IconSort
                       enabled={sortType.key === "age_at_offense"}
@@ -135,6 +163,11 @@ const ArchiveActions = ({
                     onClick={() => {
                       handleSortClick("age_at_interview", 3)
                     }}
+                    onKeyUp={ev =>
+                      handleKeyUp(ev, () => {
+                        handleSortClick("age_at_interview", 3)
+                      })
+                    }
                   >
                     <IconSort
                       enabled={sortType.key === "age_at_interview"}
@@ -152,6 +185,11 @@ const ArchiveActions = ({
                     onClick={() => {
                       handleSortClick("offense_date", 4)
                     }}
+                    onKeyUp={ev =>
+                      handleKeyUp(ev, () => {
+                        handleSortClick("offense_date", 4)
+                      })
+                    }
                   >
                     <IconSort
                       enabled={sortType.key === "offense_date"}

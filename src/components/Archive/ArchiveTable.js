@@ -17,13 +17,7 @@ const columnsDesktop = [
   { key: "years", label: "Years incarcerated" },
 ]
 
-const columnsMobile = [
-  { key: "full_name", label: "" },
-  { key: "information", label: "" },
-  { key: "video", label: "" },
-]
-
-const ArchiveTable = ({ profiles, images, sortType, sortAsc }) => {
+const ArchiveTable = ({ profiles, sortType, sortAsc }) => {
   const [isLoading, setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 

@@ -1,19 +1,10 @@
-import React, { useEffect, useRef, useState } from "react"
-import { navigate } from "gatsby"
-import { useInView } from "react-intersection-observer"
+import React from "react"
 import { useMediaQuery } from "react-responsive"
-import Player from "@vimeo/player"
 
 import GridCellDesktop from "./GridCellDesktop"
 import GridCellMobile from "./GridCellMobile"
-import GridCellBackground from "./GridCellBackground"
-import IconSound from "./Symbols/Sound"
-import Play from "./Symbols/Play"
-import MenuButton from "./MenuButton"
 
 import "./GridCell.css"
-
-import { getNameUri } from "../utils/index.js"
 
 const videosBackground = {
   "Alvin Catchings": "516108298",

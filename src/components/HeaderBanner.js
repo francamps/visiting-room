@@ -1,17 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import { useMediaQuery } from "react-responsive"
 
-import Play from "./Symbols/Play.js"
 import Foreword from "./Timeline/Foreword.js"
 
 import "./HeaderBanner.css"
 
-import vrp from "../images/vrp.png"
-
 const VisitingRoomBanner = ({ setShowBanner }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
-
   return (
     <>
       <div
@@ -30,7 +24,7 @@ life without parole to hear them tell some of their own stories, in their own wo
           <Link to="/archive">Archive</Link>
           <span>.</span>
         </div>
-        <div onClick={() => {}} className="intro-banner">
+        <div className="intro-banner">
           <Foreword inView={true} />
         </div>
       </div>
@@ -81,10 +75,8 @@ const TimelineBanner = ({ setShowBanner }) => {
   return (
     <>
       <span>{`Louisiana sentences more people to life without parole 
-      per capita than any other state in the U.S. Below is an original 
-      animation about the sentence in this state, featuring narration 
-      by Terry Pierce, who is currently serving life without parole. 
-      The video is a written history of life in Louisiana, 
+      per capita than any other state in the U.S. Below is a written history 
+      of life sentencing in Louisiana, 
       which was drawn largely from research by The Angolite.
       `}</span>
       <div className="button-wrap">
@@ -127,8 +119,9 @@ const HeaderBanner = ({ banner, isShow, setShowBanner }) => {
           </div>
         </div>
       )
+    default:
+      return null
   }
-  return null
 }
 
 export default HeaderBanner

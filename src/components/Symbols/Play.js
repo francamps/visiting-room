@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+import { handleKeyUp } from "../../utils"
+
 const Play = ({
   size,
   onClick,
@@ -63,6 +65,7 @@ const Play = ({
       onClick={onClick}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onKeyUp={ev => handleKeyUp(ev, onClick)}
     >
       {useCircle && (
         <circle

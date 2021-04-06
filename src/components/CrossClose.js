@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+import { handleKeyUp } from "../utils"
+
 import "./CrossClose.css"
 
 const CrossClose = ({ onClick, theme }) => {
@@ -17,6 +19,8 @@ const CrossClose = ({ onClick, theme }) => {
         setHover(false)
       }}
       onClick={onClick}
+      onKeyUp={ev => handleKeyUp(ev, onClick)}
+      aria-label="Close"
     ></button>
   )
 }

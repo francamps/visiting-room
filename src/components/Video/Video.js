@@ -7,6 +7,8 @@ import Transcript from "./Transcript"
 
 import { videos as archive } from "../../content/archiveRegistry"
 
+import { handleKeyUp } from "../../utils"
+
 import "./Video.css"
 
 const Video = ({
@@ -83,6 +85,13 @@ const Video = ({
         onClick={() => {
           onClose()
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            onClose()
+          })
+        }
+        role="button"
+        tabIndex={0}
       >
         <CrossClose />
       </div>

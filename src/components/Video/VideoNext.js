@@ -1,6 +1,8 @@
 import React from "react"
 import { navigate } from "gatsby"
 
+import { handleKeyUp } from "../../utils"
+
 import "./VideoNext.css"
 
 const VideoNext = ({ nextProfile }) => {
@@ -13,6 +15,16 @@ const VideoNext = ({ nextProfile }) => {
           .replace(/ /g, "_")
         navigate(`/visiting-room/${profileUri}`)
       }}
+      onKeyUp={ev =>
+        handleKeyUp(ev, () => {
+          const profileUri = nextProfile.full_name.text
+            .toLowerCase()
+            .replace(/ /g, "_")
+          navigate(`/visiting-room/${profileUri}`)
+        })
+      }
+      role="link"
+      tabIndex={0}
       style={{
         backgroundImage: `url(${nextProfile.profile_picture.fluid.src})`,
         backgroundSize: "cover",

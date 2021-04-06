@@ -9,6 +9,7 @@ import VideoViewedMenu from "./VideoViewedMenu"
 import VideoPlayerControls from "./VideoPlayerControls"
 
 import useKeyPress from "../../utils/useKeyPressed"
+import { handleKeyUp } from "../../utils"
 
 import "./VideoPlayer.css"
 
@@ -170,14 +171,27 @@ const VideoPlayer = ({
             })
           }
         }}
+        onKeyUp={ev =>
+          handleKeyUp(ev, () => {
+            if (videoPlayer) {
+              videoPlayer.getPaused().then(paused => {
+                if (paused) videoPlayer.play()
+                if (!paused) videoPlayer.pause()
+              })
+            }
+          })
+        }
         onMouseMove={() => {
           if (isPlaying) setCountDownToHideControls(5000)
         }}
         onMouseLeave={() => {
           if (isPlaying) setCountDownToHideControls(5000)
         }}
+        role="button"
+        tabIndex="0"
       >
         <iframe
+          title="main-videoplayer-iframe"
           ref={videoPlayerRef}
           tabIndex="-1"
           aria-hidden="true"

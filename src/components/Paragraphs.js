@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { handleKeyUp } from "../utils"
+
 import "./Paragraphs.css"
 
 const Paragraphs = ({ paragraphs, setModal, step, theme }) => {
@@ -25,6 +27,14 @@ const Paragraphs = ({ paragraphs, setModal, step, theme }) => {
                   e.stopPropagation()
                   setModal({ content: paragraph.content })
                 }}
+                onKeyUp={ev =>
+                  handleKeyUp(ev, () => {
+                    ev.stopPropagation()
+                    setModal({ content: paragraph.content })
+                  })
+                }
+                role="button"
+                tabIndex={0}
               >
                 {paragraph.trigger ? (
                   <div className="link-wrap">

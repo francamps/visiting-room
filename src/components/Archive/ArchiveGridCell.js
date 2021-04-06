@@ -5,7 +5,7 @@ import Play from "../Symbols/Play"
 import ArchiveGridCellBackground from "./ArchiveGridCellBackground"
 import getProfileProps from "../../utils/getProfileProps"
 import { getNameUri } from "../../utils/index.js"
-
+import { handleKeyUp } from "../../utils"
 import { videos } from "../../content/archiveRegistry"
 
 const ArchiveGridCell = ({ profile, images }) => {
@@ -31,6 +31,14 @@ const ArchiveGridCell = ({ profile, images }) => {
         const profileUri = getNameUri(fullName)
         videos[fullName] && navigate(`/archive/${profileUri}`)
       }}
+      onKeyUp={ev =>
+        handleKeyUp(ev, () => {
+          const profileUri = getNameUri(fullName)
+          videos[fullName] && navigate(`/archive/${profileUri}`)
+        })
+      }
+      role="link"
+      tabIndex={0}
     >
       <ArchiveGridCellBackground
         image={image}

@@ -17,7 +17,7 @@ const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
     setTimeout(() => {
       setVisible(true)
     }, delay)
-  }, [])
+  }, [delay])
 
   return (
     <circle

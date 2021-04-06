@@ -161,9 +161,9 @@ export const TIMELINE = [
         ],
       },
     ],
-    images: ["1800s.png"],
+    images: [],
     imageStyle: "medium",
-    imagePlacement: "top",
+    imagePlacement: null,
     caption: `
       "Convicts building a levee, Atchafalaya River, 1901." 
       Andrew D. Lytle Collection, Mss. 893, 1254, 

@@ -4,7 +4,6 @@ import "react-tabs/style/react-tabs.css"
 import startCase from "lodash/startCase"
 
 import stateFarm from "../../images/stateFarm.png"
-import vrp from "../../images/vrp.png"
 import { colors } from "../../content/colors"
 
 const AboutCopy = ({ abouts }) => {
@@ -24,6 +23,7 @@ const AboutCopy = ({ abouts }) => {
         return -1
       if (a.node.data.about_this_project.text === "About Angola") return 0
       if (a.node.data.about_this_project.text === "About The Angolite") return 1
+      return null
     })
 
   const title = parentAbout ? parentAbout.node.data.about_this_project.text : ""
@@ -37,11 +37,6 @@ const AboutCopy = ({ abouts }) => {
           className="term-content"
           dangerouslySetInnerHTML={{ __html: content.html }}
         ></div>
-        {
-          null /*<div className="map">
-          <img src={vrp} style={{ width: "100%", height: "auto" }} />
-          </div>*/
-        }
       </article>
 
       <Tabs>
@@ -51,7 +46,7 @@ const AboutCopy = ({ abouts }) => {
 
             return (
               <Tab>
-                <span style={{ background: `var(${colors[5]})` }}>
+                <span style={{ background: `var(${colors[0]})` }}>
                   {startCase(title.split("About ")[1])}
                 </span>
               </Tab>
@@ -77,6 +72,11 @@ const AboutCopy = ({ abouts }) => {
                     <img
                       src={isAngola ? stateFarm : null}
                       style={{ width: "100%", height: "auto" }}
+                      alt={
+                        isAngola
+                          ? "An image of Angola as a state farm in the year 1900"
+                          : ""
+                      }
                     />
                     <p
                       className="caption"

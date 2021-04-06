@@ -1,16 +1,12 @@
 import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
-import startCase from "lodash/startCase"
 
 import AboutCopy from "./AboutCopy"
 import Header from "../Header"
 import FAQs from "./FAQs.js"
-import Footer from "../Footer"
-import Paragraphs from "../Paragraphs"
 
 import { colors } from "../../content/colors"
-import { REFERENCES } from "../../content/references"
 
 import "./About.css"
 
@@ -36,14 +32,12 @@ const About = ({ abouts, faqs, terms, team }) => {
         >
           <TabList>
             <Tab>
-              <span style={{ background: `var(${colors[5]})` }}>About</span>
+              <span style={{ background: `var(${colors[0]})` }}>About</span>
             </Tab>
             <Tab>
               <span
                 style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
+                  backgroundColor: `var(${colors[1]})`,
                 }}
               >
                 FAQ
@@ -52,9 +46,7 @@ const About = ({ abouts, faqs, terms, team }) => {
             <Tab>
               <span
                 style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
+                  backgroundColor: `var(${colors[17]})`,
                 }}
               >
                 Glossary
@@ -63,9 +55,7 @@ const About = ({ abouts, faqs, terms, team }) => {
             <Tab>
               <span
                 style={{
-                  backgroundColor: `var(${
-                    colors[Math.floor(Math.random() * colors.length)]
-                  })`,
+                  backgroundColor: `var(${colors[23]})`,
                 }}
               >
                 Team

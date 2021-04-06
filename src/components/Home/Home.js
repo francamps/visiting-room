@@ -106,6 +106,7 @@ const Home = ({ images }) => {
                   <div
                     className="skip-bar-played"
                     role="button"
+                    aria-label="Seek time in video"
                     style={{
                       width: 40 * barProgress + "px",
                     }}

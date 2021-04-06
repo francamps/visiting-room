@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import isNull from "lodash/isNull"
-import { navigate } from "gatsby"
 
 import Play from "../Symbols/Play"
 import Pause from "../Symbols/Pause"
@@ -158,7 +157,7 @@ const VideoPlayerControls = ({
               {hasTranscript && setShowTranscript && (
                 <span
                   role="button"
-                  tabIndex={2}
+                  tabIndex={0}
                   ariaLabel={
                     showTranscript ? "Hide transcript" : "Show transcript"
                   }
@@ -183,7 +182,7 @@ const VideoPlayerControls = ({
               {hasCaptions && (
                 <span
                   role="button"
-                  tabIndex={3}
+                  tabIndex={0}
                   ariaLabel={showCaptions ? "Hide captions" : "Show captions"}
                   style={{
                     cursor: "pointer",
@@ -221,6 +220,7 @@ const VideoPlayerControls = ({
           className="progress-bar-bg"
           ref={barRef}
           role="button"
+          tabIndex={0}
           aria-label="Seek time in video"
           onMouseMove={e => {
             const progressMouse = getProgressFromMouse(e, barRef, duration)
@@ -240,6 +240,7 @@ const VideoPlayerControls = ({
         <div
           className="progress-bar-played"
           role="button"
+          tabIndex={0}
           aria-label="Seek time in past video played"
           style={{
             width: getBarWidth(barRef, progress),

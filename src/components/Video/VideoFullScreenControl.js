@@ -1,6 +1,7 @@
 import React from "react"
 
 import IconFullScreen from "../Symbols/FullScreen"
+import { handleKeyUp } from "../../utils"
 
 const VideoFullScreenControl = ({ active, onExit, onEnter, color }) => {
   return (
@@ -13,6 +14,17 @@ const VideoFullScreenControl = ({ active, onExit, onEnter, color }) => {
           onEnter()
         }
       }}
+      onKeyUp={ev =>
+        handleKeyUp(ev, () => {
+          if (active) {
+            onExit()
+          } else {
+            onEnter()
+          }
+        })
+      }
+      role="button"
+      tabIndex={0}
       style={{
         cursor: "pointer",
       }}
