@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 
 const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
-  //const [opacity, setOpacity] = useState(0)
   const [visible, setVisible] = useState(false)
   const x = Math.floor(i / 5) * 6 + 5
   const y = (i % 5) * 6 + 20
@@ -28,7 +27,6 @@ const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
       fill={i < +incarcerated ? color : "var(--clr-primary)"}
       style={{
         opacity,
-        //transition: `opacity ${(2 * current) / 120}s ease-in`,
         visibility: visible ? "visible" : "hidden",
       }}
     />

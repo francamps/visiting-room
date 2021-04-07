@@ -105,13 +105,17 @@ const GridCellDesktop = ({
 
       return () => clearInterval(videoVolume)
     }
-  }, [isSound])
+  }, [inView, videoPlayer, isSound])
 
-  useEffect(() => {
-    return () => {
-      if (videoPlayer && videoPlayer.destroy) videoPlayer.destroy()
-    }
-  }, [])
+  useEffect(
+    () => {
+      return () => {
+        if (videoPlayer && videoPlayer.destroy) videoPlayer.destroy()
+      }
+    },
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+    []
+  )
 
   if (!image) {
     return null

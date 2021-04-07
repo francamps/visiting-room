@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react"
 import ReactPlayer from "react-player"
-import { navigate } from "gatsby"
 
 import HomeVideo from "./HomeVideo"
+import Skip from "./Skip"
 import Loading from "../Loading"
-import MenuButton from "../MenuButton"
 
 import audio from "../../content/audio/stanfield/landingFull.mp3"
 
@@ -76,45 +75,7 @@ const Home = ({ images }) => {
             <Loading size="small" />
           </div>
         ) : (
-          <div className="menu-buttons fadeinfast">
-            <MenuButton
-              buttonContent={
-                <span
-                  style={{
-                    fontSize: "var(--font-xsmall)",
-                    fontFamily: "Roboto, Helvetica Neue, Arial, sans-serif",
-                  }}
-                >
-                  Skip
-                </span>
-              }
-              onClick={() => {
-                navigate("/visiting-room")
-              }}
-              tooltipActive
-              tooltipStyling={{
-                background: "none",
-                boxShadow: "none",
-              }}
-              tooltipContent={
-                <div className="skip-bar" style={{ width: "40px" }}>
-                  <div
-                    className="skip-bar-bg"
-                    role="button"
-                    aria-label="Seek time in video"
-                  />
-                  <div
-                    className="skip-bar-played"
-                    role="button"
-                    aria-label="Seek time in video"
-                    style={{
-                      width: 40 * barProgress + "px",
-                    }}
-                  />
-                </div>
-              }
-            />
-          </div>
+          <Skip barProgress={barProgress} />
         )}
       </div>
     </>

@@ -45,11 +45,6 @@ const TimelineFigure = ({ step = 1, caption, images, setFigureActive }) => {
                       inView ? "in-view" : ""
                     } `}
                   >
-                    {
-                      null /*<h4 className="title">
-                      Governor's commutations and prison population
-                  </h4>*/
-                    }
                     {caption && <p className="caption">{caption}</p>}
                     <figure>
                       <ChartC />

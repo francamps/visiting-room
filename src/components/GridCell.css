@@ -62,12 +62,7 @@
   left: 50%;
   min-height: 100%;
   min-width: 100%;
-  /*transform: translate(-50%, -50%);*/
   position: absolute;
-  /*
-    top: 50%;
-    width: 177.77777778vh;
-    */
 }
 
 .grid-cell .gridimage-video.visible,
@@ -436,6 +431,12 @@
     transform: scale(1);
     transform-origin: center center;
     filter: blur(0.3px);
+  }
+}
+
+@media (min-width: 2400px) {
+  .grid-cell .responsive-iframe-container .responsive-iframe {
+    min-height: 110%;
   }
 }
 

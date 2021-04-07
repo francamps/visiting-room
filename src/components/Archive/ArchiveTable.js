@@ -21,12 +21,16 @@ const ArchiveTable = ({ profiles, sortType, sortAsc }) => {
   const [isLoading, setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
-  const profilesSorted = useMemo(() => {
-    setLoading(true)
-    const newProfiles = sortProfiles(profiles.slice(0), sortType, sortAsc)
-    setLoading(false)
-    return newProfiles
-  }, [JSON.stringify(profiles), sortAsc, sortType])
+  const profilesSorted = useMemo(
+    () => {
+      setLoading(true)
+      const newProfiles = sortProfiles(profiles.slice(0), sortType, sortAsc)
+      setLoading(false)
+      return newProfiles
+    },
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+    [JSON.stringify(profiles), sortAsc, sortType]
+  )
 
   if (isTabletOrMobile) {
     return (

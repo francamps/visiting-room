@@ -32,3 +32,41 @@
   opacity: 0.8;
   transition: opacity 0.4s;
 }
+
+.transcript-panel .transcript-paragraph .block {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.transcript-panel .transcript-paragraph span.speaker {
+  display: inline-block;
+  font-family: Roboto;
+  font-size: var(--font-small);
+  font-weight: bold;
+}
+
+.transcript-panel .transcript-paragraph span.time {
+  font-size: var(--font-small);
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-style: italic;
+}
+
+.transcript-panel .transcript-paragraph span.content {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  line-height: 1.2em;
+}
+
+.transcript-panel .transcript-paragraph .separator {
+  width: 100%;
+  border-left: 1px dashed black;
+  opacity: 0.6;
+  height: 20px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}

@@ -106,56 +106,12 @@ const Transcript = ({
               role="button"
               tabIndex={0}
             >
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  margin: 0,
-                  padding: "4px 0",
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "Roboto",
-                    fontSize: "var(--font-small)",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {paragraph.speaker}
-                </span>
-                <span
-                  style={{
-                    fontSize: "var(--font-small)",
-                    fontFamily: "Roboto",
-                    fontStyle: "italic",
-                  }}
-                >
-                  {paragraph.time}
-                </span>
+              <div className="block">
+                <span className="speaker">{paragraph.speaker}</span>
+                <span className="time">{paragraph.time}</span>
               </div>
-              <p
-                style={{
-                  marginTop: "0px",
-                  marginBottom: "4px",
-                  lineHeight: "1.2em",
-                }}
-              >
-                {paragraph.content}
-              </p>
-              <div
-                style={{
-                  width: "100%",
-                  borderLeft: "1px dashed black",
-                  opacity: "0.6",
-                  height: "20px",
-                  marginBottom: "4px",
-                  marginTop: "4px",
-                }}
-              ></div>
+              <p className="content">{paragraph.content}</p>
+              <div className="separator"></div>
             </div>
           )
         })}

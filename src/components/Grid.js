@@ -6,7 +6,7 @@ import "./Grid.css"
 
 import getProfileProps from "../utils/getProfileProps"
 
-const Grid = ({ searchTerm, profiles = [], images }) => {
+const Grid = ({ searchTerm, profiles = [] }) => {
   return (
     <div className="grid">
       {profiles

@@ -15,14 +15,11 @@ import "./VideoPlayer.css"
 
 const VideoPlayer = ({
   videoSrcURL,
-  videoTitle,
-  autoplay,
   name,
   age_at_offense,
   current_age,
   color,
   duration,
-  onClose,
   nextProfile,
   showTranscript,
   setDuration,
@@ -30,7 +27,6 @@ const VideoPlayer = ({
   isLastTenSeconds,
   progress,
   setProgress,
-  playerRef,
   texttrack,
   hasTranscript,
   hasCaptions,

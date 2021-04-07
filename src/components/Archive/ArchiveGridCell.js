@@ -52,7 +52,7 @@ const ArchiveGridCell = ({ profile, images }) => {
               <Play size="medium" />
             </p>
           ) : (
-            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
+            <p style={{ opacity: 0.8 }}>Interview not available.</p>
           )}
           <div>
             <div className="name">{fullName}</div>

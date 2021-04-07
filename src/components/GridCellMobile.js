@@ -146,7 +146,7 @@ const GridCellMobile = ({
           }
         >
           {!video_link || !video_link.url ? (
-            <p style={{ opacity: 0.8 }}>Profile not available yet.</p>
+            <p style={{ opacity: 0.8 }}>Interview not available.</p>
           ) : null}
           <div className={`quote ${getColor(color)}`}>
             <span>{`"${quote}"`}</span>
@@ -190,44 +190,42 @@ const GridCellMobile = ({
             <div className="text">{fullName}</div>
           </div>
         </div>
-        {
-          <div
-            className={`menu-buttons ${inView && "fadein"}`}
-            style={{
-              position: "absolute",
-              bottom: 0,
-              opacity: 0,
+        <div
+          className={`menu-buttons ${inView && "fadein"}`}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            opacity: 0,
+          }}
+        >
+          <MenuButton
+            onMouseDown={e => {
+              e.stopPropagation()
+              setSound(1)
             }}
-          >
-            <MenuButton
-              onMouseDown={e => {
-                e.stopPropagation()
-                setSound(1)
-              }}
-              onMouseUp={e => {
-                e.stopPropagation()
-                setSound(0)
-              }}
-              onTouchStart={e => {
-                e.stopPropagation()
-                setSound(1)
-              }}
-              onTouchEnd={e => {
-                e.stopPropagation()
-                setSound(0)
-              }}
-              onClick={e => {
-                e.stopPropagation()
-              }}
-              buttonContent={<IconSound />}
-              tooltipContent={"Hold to listen"}
-              tooltipStyling={{
-                background: `var(--${getColor(color)}`,
-                fontSize: "var(--font-small)",
-              }}
-            />
-          </div>
-        }
+            onMouseUp={e => {
+              e.stopPropagation()
+              setSound(0)
+            }}
+            onTouchStart={e => {
+              e.stopPropagation()
+              setSound(1)
+            }}
+            onTouchEnd={e => {
+              e.stopPropagation()
+              setSound(0)
+            }}
+            onClick={e => {
+              e.stopPropagation()
+            }}
+            buttonContent={<IconSound />}
+            tooltipContent={"Hold to listen"}
+            tooltipStyling={{
+              background: `var(--${getColor(color)}`,
+              fontSize: "var(--font-small)",
+            }}
+          />
+        </div>
       </h3>
     </div>
   )
