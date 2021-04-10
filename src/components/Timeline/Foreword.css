@@ -68,6 +68,14 @@ WRAP
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: scale(1);
+  transition: transform 0.4s;
+}
+
+.vr-intro .video-container .control-layer:hover .play-wrap {
+  transform: scale(1.2);
+  transform-origin: center center;
+  transition: transform 0.4s;
 }
 
 .vr-intro .video-container .loading-wrap {

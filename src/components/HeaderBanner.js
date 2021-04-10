@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import Foreword from "./Timeline/Foreword.js"
 
 import "./HeaderBanner.css"
+import { handleKeyUp } from "../utils"
 
 const VisitingRoomBanner = ({ setShowBanner }) => {
   return (
@@ -35,6 +36,12 @@ life without parole to hear them tell some of their own stories, in their own wo
           onClick={() => {
             setShowBanner(false)
           }}
+          onKeyUp={ev => {
+            ev.stopPropagation()
+            handleKeyUp(ev, () => {
+              setShowBanner(false)
+            })
+          }}
         >
           Ok
         </button>
@@ -63,6 +70,12 @@ const ArchiveBanner = ({ setShowBanner }) => {
           onClick={() => {
             setShowBanner(false)
           }}
+          onKeyUp={ev => {
+            ev.stopPropagation()
+            handleKeyUp(ev, () => {
+              setShowBanner(false)
+            })
+          }}
         >
           Ok
         </button>
@@ -84,6 +97,12 @@ const TimelineBanner = ({ setShowBanner }) => {
           className="secondary"
           onClick={() => {
             setShowBanner(false)
+          }}
+          onKeyUp={ev => {
+            ev.stopPropagation()
+            handleKeyUp(ev, () => {
+              setShowBanner(false)
+            })
           }}
         >
           Ok

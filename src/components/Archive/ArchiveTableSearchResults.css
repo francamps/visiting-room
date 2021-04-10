@@ -33,6 +33,40 @@
 .archive table.search-results td {
   flex: none;
   width: 120px;
+
+  position: relative;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-column-gap: 10px;
+  grid-template-rows: 60px 1fr;
+}
+
+.archive table.search-results td p.profile-header {
+  display: flex;
+  align-items: center;
+  font-family: "EB Garamond";
+  font-size: var(--font-copy);
+  padding-left: 10px;
+}
+.archive table.search-results td p.count {
+  display: flex;
+  align-items: center;
+}
+.archive table.search-results td .profile-image-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 10px;
+  align-self: flex-start;
+}
+.archive table.search-results td .profile-image-wrap .profile-image {
+  position: absolute;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .archive table.search-results td p.quote {

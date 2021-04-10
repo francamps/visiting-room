@@ -1,48 +1,28 @@
 import React from "react"
+import chunk from "lodash/chunk"
+import { useMediaQuery } from "react-responsive"
 
-import GridCell from "./GridCell"
+import GridChunk from "./GridChunk"
 
 import "./Grid.css"
 
-import getProfileProps from "../utils/getProfileProps"
+const Grid = ({ profiles = [], isLoadBackgrounds }) => {
+  // These media queries are aligned with the css break points
+  const isLargeScreen = useMediaQuery({ query: "(min-width: 1800px)" })
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" })
 
-const Grid = ({ searchTerm, profiles = [] }) => {
+  const profileChunks = chunk(profiles, isLargeScreen ? 9 : isMobile ? 2 : 4)
+
   return (
-    <div className="grid">
-      {profiles
-        .filter(node => {
-          const profile = node.node
-          if (searchTerm === null || searchTerm === "") return true
-          if (
-            profile.full_name &&
-            profile.full_name[0].text.indexOf(searchTerm) > -1
-          )
-            return true
-          return false
-        })
-        .map((node, idx) => getProfileProps(node))
-        .map(props => {
-          const {
-            image,
-            fullName,
-            quote,
-            profile_picture,
-            color,
-            video_link,
-          } = props
-
-          return (
-            <GridCell
-              key={fullName.replace(/ /g, "_")}
-              image={image}
-              fullName={fullName}
-              quote={quote}
-              profile_picture={profile_picture}
-              color={color}
-              video_link={video_link}
-            />
-          )
-        })}
+    <div className="outer-grid" dir="ltr">
+      {profileChunks.map(profileChunk => {
+        return (
+          <GridChunk
+            profileChunk={profileChunk}
+            isLoadBackgrounds={isLoadBackgrounds}
+          />
+        )
+      })}
     </div>
   )
 }

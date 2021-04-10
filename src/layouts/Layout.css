@@ -242,6 +242,11 @@ button.secondary {
   transition: box-shadow 0.2s;
 }
 
+* {
+  outline-width: 1px;
+  outline-color: rgba(236, 182, 81, 0.6);
+}
+
 /**
 COPY
 **/

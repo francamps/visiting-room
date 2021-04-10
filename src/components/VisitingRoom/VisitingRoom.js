@@ -9,7 +9,9 @@ import audio from "../../content/audio/stanfield/landingFull.mp3"
 import "./VisitingRoom.css"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
-  const [search] = useState(null)
+  const [isShowBanner, setShowBanner] = useState(
+    window.localStorage.getItem("showBanner__VISITING-ROOM") === "true"
+  )
 
   const [showSound, setShowSound] = useState(false)
 
@@ -28,8 +30,16 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
       <>
         {!loading && (
           <>
-            <Header title="The Visiting Room" banner="VISITING-ROOM" />
-            <Grid searchTerm={search} profiles={profiles} images={images} />
+            <Header
+              title="The Visiting Room"
+              banner="VISITING-ROOM"
+              onSetShowBanner={setShowBanner}
+            />
+            <Grid
+              profiles={profiles}
+              images={images}
+              isLoadBackgrounds={!isShowBanner}
+            />
           </>
         )}
         {showSound && null && (

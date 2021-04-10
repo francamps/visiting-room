@@ -43,7 +43,7 @@ const Timeline = () => {
       <>
         <Header
           banner="TIMELINE"
-          theme={inView ? null : "light"}
+          theme="light"
           title={
             inView
               ? ""
@@ -52,10 +52,7 @@ const Timeline = () => {
                 }`
           }
         />
-        <article
-          className={`timeline ${!inView ? "in-view" : ""}`}
-          ref={timelineRef}
-        >
+        <article className="timeline" ref={timelineRef}>
           <div className="timeline-frame">
             <TimelineCover setInView={setInView} />
             {TIMELINE.map(

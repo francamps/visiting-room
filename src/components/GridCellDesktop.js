@@ -26,6 +26,7 @@ const GridCellDesktop = ({
   color,
   video_link,
   videosBackground,
+  isLoadBackgrounds,
 }) => {
   const [isHover, setHover] = useState(false)
   const [isSound, setSound] = useState(0)
@@ -123,7 +124,7 @@ const GridCellDesktop = ({
 
   return (
     <div
-      className={`grid-cell ${isHover ? "hovered" : ""}`}
+      className={`grid-cell fadeinfast ${isHover ? "hovered" : ""}`}
       ref={ref}
       onMouseEnter={() => {
         setHover(true)
@@ -133,7 +134,7 @@ const GridCellDesktop = ({
       }}
     >
       {image && <GridCellBackground isHover={isHover} image={image} />}
-      {inView && (
+      {inView && isLoadBackgrounds && (
         <div className={`responsive-iframe-container ${isHover && "visible"}`}>
           <iframe
             ref={videoPlayerRef}

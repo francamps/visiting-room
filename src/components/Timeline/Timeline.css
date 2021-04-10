@@ -2,11 +2,6 @@
 
 .timeline {
   position: relative;
-  background-color: var(--clr-black);
-  transition: background-color 0.4s;
-}
-
-.timeline.in-view {
   background-color: var(--clr-off-white);
   transition: background-color 0.4s;
 }

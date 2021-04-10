@@ -186,7 +186,7 @@ const VideoPlayerControls = ({
                   ariaLabel={showCaptions ? "Hide captions" : "Show captions"}
                   style={{
                     cursor: "pointer",
-                    paddingRight: "10px",
+                    marginRight: "10px",
                   }}
                   onKeyUp={ev =>
                     handleKeyUp(ev, () =>

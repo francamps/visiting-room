@@ -13,7 +13,7 @@ import { handleKeyUp } from "../../utils"
 import "./Foreword.css"
 
 const Foreword = ({ inView }) => {
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(false)
   const [isPlaying, setPlaying] = useState(false)
   const [isPaused, setPause] = useState(false)
   const [duration, setDuration] = useState(null)
@@ -59,7 +59,8 @@ const Foreword = ({ inView }) => {
         setPause(true)
       })
       videoPlayer.on("bufferstart", () => {
-        if (!isPlaying && !isPaused) setLoading(true)
+        console.log("buffering")
+        setLoading(true)
       })
       videoPlayer.on("bufferend", () => {
         setLoading(false)
@@ -129,6 +130,7 @@ const Foreword = ({ inView }) => {
               onClick={() => {
                 if (videoPlayer) {
                   videoPlayer.getPaused().then(paused => {
+                    console.log(paused)
                     if (paused) videoPlayer.play()
                     if (!paused) videoPlayer.pause()
                   })
@@ -168,7 +170,7 @@ const Foreword = ({ inView }) => {
                 allow="autoplay; fullscreen"
                 referrerPolicy="origin"
               ></iframe>
-              {isLoading && inView && (
+              {isLoading && (
                 <div className="loading-wrap">
                   <div
                     style={{

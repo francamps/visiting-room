@@ -88,55 +88,13 @@ const ArchiveTableSearchResults = ({
                       hoveredRow === profileIdx ? "hovered" : ""
                     }  ${isOpen ? "open" : ""}`}
                   >
-                    <td
-                      style={{
-                        position: "relative",
-                        padding: 0,
-                        display: "grid",
-                        gridTemplateColumns: "180px 1fr",
-                        gridColumnGap: "10px",
-                        gridTemplateRows: "60px 1fr",
-                      }}
-                    >
-                      <p
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          fontFamily: "EB Garamond",
-                          fontSize: "var(--font-copy)",
-                          paddingLeft: "10px",
-                        }}
-                      >
-                        {fullName}
-                      </p>
-                      <p
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                        className="count"
-                      >
+                    <td>
+                      <p className="profile-header">{fullName}</p>
+                      <p className="count">
                         {profileResults.length + " results"}
                       </p>
-                      <div
-                        style={{
-                          position: "relative",
-                          width: "160px",
-                          height: "160px",
-                          margin: "0 10px",
-                          alignSelf: "flex-start",
-                        }}
-                      >
-                        <div
-                          style={{
-                            position: "absolute",
-                            height: "auto",
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                          }}
-                        >
+                      <div className="profile-image-wrap">
+                        <div className="profile-image">
                           {image && (
                             <Img
                               alt={"TODO: NEEDS AN ALT"}

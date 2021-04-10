@@ -14,10 +14,10 @@
 
 .header.light {
   background: linear-gradient(
-    rgba(var(--clr-white-rgb), 1),
-    rgba(var(--clr-white-rgb), 0.75) 50%,
-    rgba(var(--clr-white-rgb), 0.5) 75%,
-    rgba(var(--clr-white-rgb), 0) 100%
+    rgba(var(--clr-off-white-rgb), 1),
+    rgba(var(--clr-off-white-rgb), 0.75) 50%,
+    rgba(var(--clr-off-white-rgb), 0.5) 75%,
+    rgba(var(--clr-off-white-rgb), 0) 100%
   );
 }
 
@@ -117,24 +117,32 @@ Heaer title help + banner
   position: relative;
   opacity: 0;
   margin-left: -10px;
-  padding: 10px;
+  padding: 10px 14px;
   line-height: 14px;
   text-align: center;
   box-sizing: border-box;
   width: 34px;
   height: 34px;
-  transition: opacity 0.8s, margin-left 0.4s, box-shadow 0.4s;
   font-size: var(--font-small);
   font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   border-radius: 20px;
+  transition: opacity 0.8s, margin-left 0.4s, box-shadow 0.4s;
+  box-shadow: none;
+}
+
+.header .home-title h2 {
+  display: flex;
+  align-items: center;
 }
 
 .header .home-title.active .title-help {
+  background: var(--clr-black);
   color: var(--clr-off-white);
   opacity: 1;
   margin-left: 10px;
-  transition: opacity 0.8s, margin-left 0.4s;
   cursor: pointer;
+  box-shadow: var(--box-elevation-dark-hover);
+  transition: opacity 0.8s, margin-left 0.4s, box-shadow 0.4s;
 }
 
 .header .home-title.active .title-help:hover {
@@ -146,6 +154,11 @@ Heaer title help + banner
 .header.light .home-title.active .title-help,
 .header.light .home-home {
   color: var(--clr-black);
+}
+
+.header.light .home-title.active .title-help {
+  background: var(--clr-off-white);
+  box-shadow: var(--box-elevation-light-hover);
 }
 
 @media (max-width: 1224px) {

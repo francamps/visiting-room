@@ -76,6 +76,7 @@ const VideoPlayer = ({
         setPause(true)
       })
       videoPlayer.on("bufferstart", () => {
+        console.log("buffering")
         setLoading(true)
       })
       videoPlayer.on("bufferend", () => {
@@ -220,14 +221,7 @@ const VideoPlayer = ({
         <div className="control-layer">
           {(!isPlaying || isPaused) && (
             <>
-              <div
-                style={{
-                  position: "absolute",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
+              <div className="play-wrap">
                 <Play size="large" tabIndex={0} />
               </div>
             </>

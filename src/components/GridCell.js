@@ -50,7 +50,14 @@ Object.entries(videosBackground).forEach(
     (videosBackground[name] = `https://player.vimeo.com/video/${id}?controls=0`)
 )
 
-const GridCell = ({ image, quote, fullName, color, video_link }) => {
+const GridCell = ({
+  image,
+  quote,
+  fullName,
+  color,
+  video_link,
+  isLoadBackgrounds,
+}) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return isTabletOrMobile ? (
@@ -70,6 +77,7 @@ const GridCell = ({ image, quote, fullName, color, video_link }) => {
       color={color}
       video_link={video_link}
       videosBackground={videosBackground}
+      isLoadBackgrounds={isLoadBackgrounds}
     />
   )
 }

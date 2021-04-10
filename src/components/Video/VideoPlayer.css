@@ -27,11 +27,19 @@
   cursor: pointer;
 }
 
-.video-wrap .video .control-layer .video-title {
+.video-wrap .video .control-layer .play-wrap {
   position: absolute;
-  width: 100%;
-  top: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(1);
+  transition: transform 0.4s;
+}
+
+.video-wrap .video .control-layer:hover .play-wrap {
+  transform: scale(1.2);
+  transform-origin: center center;
+  transition: transform 0.4s;
 }
 
 .video-wrap .controls {
@@ -180,13 +188,4 @@ CONTROLS
   background: none;
   border: none;
   cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  .video-wrap .video .control-layer .video-title {
-    position: absolute;
-    width: 100%;
-    top: 10px;
-    text-align: center;
-  }
 }

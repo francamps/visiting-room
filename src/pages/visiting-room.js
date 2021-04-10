@@ -20,9 +20,12 @@ const VisitingRoomPage = props => {
     <>
       <VisitingRoom
         loading={loading}
-        profiles={shuffleArray(
+        profiles={
           Object.values(profiles).filter(p => p.show_profile_in_visiting_room)
-        )}
+          /*shuffleArray(
+          Object.values(profiles).filter(p => p.show_profile_in_visiting_room)
+          )*/
+        }
         images={images}
       />
     </>

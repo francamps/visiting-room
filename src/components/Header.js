@@ -22,6 +22,7 @@ const Header = ({
   hideMenu,
   actions,
   theme,
+  onSetShowBanner,
 }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 992px)" })
   const [isHoverTitle, setHoverTitle] = useState(false)
@@ -49,8 +50,10 @@ const Header = ({
   useEffect(() => {
     if (showBanner) {
       window.localStorage.setItem(`showBanner__${banner}`, "true")
+      if (onSetShowBanner) onSetShowBanner(true)
     } else {
       window.localStorage.setItem(`showBanner__${banner}`, "false")
+      if (onSetShowBanner) onSetShowBanner(false)
     }
   }, [showBanner])
 
@@ -169,9 +172,7 @@ const Header = ({
               className={showBanner ? "banner-active" : ""}
             >
               {title}
-              <span className="title-help" style={{ marginTop: "-4px" }}>
-                ?
-              </span>
+              <span className="title-help">?</span>
             </h2>
             {banner && (
               <HeaderBanner
