@@ -10,7 +10,8 @@ import "./VisitingRoom.css"
 
 const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
   const [isShowBanner, setShowBanner] = useState(
-    window.localStorage.getItem("showBanner__VISITING-ROOM") === "true"
+    typeof window !== "undefined" &&
+      window.localStorage.getItem("showBanner__VISITING-ROOM") === "true"
   )
 
   const [showSound, setShowSound] = useState(false)
