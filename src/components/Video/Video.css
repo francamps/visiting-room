@@ -6,7 +6,7 @@
   position: absolute;
   height: 100vh;
 
-  background: var(--clr-black);
+  background: var(--clr-real-black);
 }
 
 .video-wrap .video {

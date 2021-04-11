@@ -6,6 +6,7 @@ import "./MenuButton.css"
 const MenuButton = ({
   theme,
   onClick,
+  onKeyUp,
   onMouseDown,
   onMouseUp,
   onTouchStart,
@@ -32,6 +33,7 @@ const MenuButton = ({
       <button
         className={`menu-button ${theme === "light" ? "menu-light" : ""}`}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         onMouseDown={e => {
           if (onMouseDown) {
             setHolding(true)

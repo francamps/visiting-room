@@ -4,7 +4,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  transform: translate3d(0, 0, 0);
+  background: var(--clr-real-black);
 }
 
 .grid-cell .cell-background {
@@ -27,16 +27,6 @@
   height: 100%;
 }
 
-.grid-cell .cell-background .gatsby-image-wrapper img {
-  filter: brightness(1) saturate(80%);
-  transition: filter 1.2s;
-}
-
-.grid-cell.hovered .cell-background .gatsby-image-wrapper img {
-  filter: brightness(1) saturate(80%);
-  transition: filter 1.2s;
-}
-
 .grid-cell .menu-buttons .menu-button-tooltip {
   margin-bottom: 0;
 }
@@ -49,11 +39,11 @@
   overflow: hidden;
   position: absolute;
 
-  -webkit-animation: fadeout 4s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadeout 4s forwards; /* Firefox < 16 */
-  -ms-animation: fadeout 4s forwards; /* Internet Explorer */
-  -o-animation: fadeout 4s forwards; /* Opera < 12.1 */
-  animation: fadeout 4s forwards;
+  /*-webkit-animation: fadeout 4s forwards;*/
+  /*-moz-animation: fadeout 4s forwards;*/
+  /*-ms-animation: fadeout 4s forwards;*/
+  /*-o-animation: fadeout 4s forwards;*/
+  /*animation: fadeout 4s forwards;*/
 }
 
 .grid-cell .responsive-iframe-container .responsive-iframe {
@@ -67,10 +57,10 @@
 
 .grid-cell .gridimage-video.visible,
 .grid-cell .responsive-iframe-container.visible {
-  -webkit-animation: fadein 4s forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 4s forwards; /* Firefox < 16 */
-  -ms-animation: fadein 4s forwards; /* Internet Explorer */
-  -o-animation: fadein 4s forwards; /* Opera < 12.1 */
+  -webkit-animation: fadein 4s forwards;
+  -moz-animation: fadein 4s forwards;
+  -ms-animation: fadein 4s forwards;
+  -o-animation: fadein 4s forwards;
   animation: fadein 4s forwards;
 }
 

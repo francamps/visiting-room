@@ -1,15 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
 import GridCell from "./GridCell"
 
 import getProfileProps from "../utils/getProfileProps"
 
-const GridChunk = ({ profileChunk }) => {
+const GridChunk = ({ profileChunk, setCurrentChunk }) => {
   const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.1,
   })
+
+  useEffect(() => {
+    if (inView) {
+      setCurrentChunk()
+    }
+  }, [inView])
 
   return (
     <div ref={ref} className={`grid ${inView ? "" : "fadeout"}`}>

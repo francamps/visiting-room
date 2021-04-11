@@ -77,28 +77,28 @@ const ArchiveActions = ({
             </>
           )
         }
-        tooltipContent={`View ${view === "table" ? "grid" : "table"}`}
+        tooltipContent={
+          <div style={{ width: view === "table" ? "60px" : "70px" }}>{`View ${
+            view === "table" ? "grid" : "table"
+          }`}</div>
+        }
       />
       <div className="menu-button-tooltip">
         <MenuButton
           theme={theme}
+          onClick={() => {
+            setMenuOpen(!isMenuOpen)
+          }}
+          onKeyUp={ev =>
+            handleKeyUp(ev, () => {
+              setMenuOpen(!isMenuOpen)
+            })
+          }
           buttonContent={
             <div className="menu__wrap" ref={ref}>
-              <button
-                className={`menu-button menu__surface ${
-                  theme === "light" ? "menu-light" : ""
-                }`}
-                onClick={() => {
-                  setMenuOpen(!isMenuOpen)
-                }}
-                onKeyUp={ev =>
-                  handleKeyUp(ev, () => {
-                    setMenuOpen(!isMenuOpen)
-                  })
-                }
-              >
+              <div className={"menu__surface menu-light"}>
                 <IconSort enabled theme="light" />
-              </button>
+              </div>
               <div
                 className={`menu__menu ${isMenuOpen ? "active" : ""}`}
                 onClick={() => {

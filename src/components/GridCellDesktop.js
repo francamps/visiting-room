@@ -118,6 +118,10 @@ const GridCellDesktop = ({
     []
   )
 
+  useEffect(() => {
+    if (!inView && videoPlayer && videoPlayer.destroy) videoPlayer.destroy()
+  }, [inView])
+
   if (!image) {
     return null
   }
