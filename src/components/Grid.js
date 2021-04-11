@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import chunk from "lodash/chunk"
 import { useMediaQuery } from "react-responsive"
+import { isSafari } from "react-device-detect"
 
 import GridChunk from "./GridChunk"
 
@@ -17,7 +18,11 @@ const Grid = ({ profiles = [], isLoadBackgrounds }) => {
   const profileChunks = chunk(profiles, chunks)
 
   return (
-    <div className="outer-grid" dir="ltr">
+    <div
+      className="outer-grid"
+      dir="ltr"
+      style={isSafari ? { scrollSnapType: "none" } : {}}
+    >
       {profileChunks.map((profileChunk, chunkIdx) => {
         return (
           <GridChunk
