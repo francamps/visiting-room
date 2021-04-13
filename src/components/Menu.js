@@ -106,9 +106,6 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
               })
             }
             className="hover-link"
-            style={{
-              background: `var(${getColor(0)})`,
-            }}
             role="link"
             tabIndex={0}
           >
@@ -119,9 +116,6 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
           <Link
             to="/history"
             className="hover-link"
-            style={{
-              background: `var(${getColor(1)})`,
-            }}
             onClick={() => {
               setBurgerOpen(false)
             }}
@@ -131,16 +125,13 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
               })
             }
           >
-            History of Life Without Parole
+            A History of Life Without Parole
           </Link>
         </div>
         <div className="menu-option-wrap">
           <Link
             to="/archive"
             className="hover-link"
-            style={{
-              background: `var(${getColor(17)})`,
-            }}
             onClick={() => {
               setBurgerOpen(false)
             }}
@@ -157,9 +148,6 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
           <Link
             to="/about"
             className="hover-link"
-            style={{
-              background: `var(${getColor(23)})`,
-            }}
             onClick={() => {
               setBurgerOpen(false)
             }}

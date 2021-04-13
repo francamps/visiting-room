@@ -54,19 +54,20 @@
   margin: 10px 0;
 
   font-family: "EB Garamond";
-  font-size: var(--font-copy-label);
+  font-size: var(--font-xlarge);
   font-weight: 300;
   text-align: left;
   color: var(--clr-white);
   letter-spacing: normal;
   line-height: 1em;
   cursor: pointer;
-  transition: letter-spacing 0.2s;
+  transition: letter-spacing 0.4s;
 }
 
 .menu-options a:hover {
+  color: var(--clr-primary);
   letter-spacing: 0.02em;
-  transition: letter-spacing 0.2s;
+  transition: letter-spacing 0.4s, color 0.4s;
 }
 
 .menu-backdrop {
@@ -108,8 +109,8 @@ MENU LINKS
 .menu-option-wrap .hover-link {
   position: relative;
   padding: 10px;
-  color: var(--clr-black);
-  transition: letter-spacing 0.2s;
+  color: var(--clr-white);
+  transition: letter-spacing 0.4s;
 }
 
 .menu-option-wrap .hover-link-intro {
