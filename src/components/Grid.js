@@ -35,25 +35,18 @@ const Grid = ({ profiles = [], isLoadBackgrounds }) => {
         )
       })}
       <div
+        className="chunk-thumbnails"
         style={{
-          position: "fixed",
-          bottom: "20px",
-          left: "20px",
           width: isLargeScreen ? "18px" : "10px",
           height: isLargeScreen ? "60px" : "90px",
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          gridAutoRows: "1fr",
-          gridGap: "2px",
         }}
       >
         {profileChunks.map((p, idx) => {
           return (
             <div
+              className="chunk-single-thumbnail"
               style={{
-                display: "grid",
                 gridTemplateColumns: `repeat(${chunkWidth}, 1fr)`,
-                gridGap: "2px",
               }}
             >
               {profileChunks[0].map(_ => {
