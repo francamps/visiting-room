@@ -76,6 +76,13 @@
   line-height: 1em;
 }
 
+.video-wrap .close-video {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 13;
+}
+
 @media (max-width: 767px) {
   .video-wrap .video {
     width: 100%;
@@ -87,5 +94,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .video-wrap .close-video {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 13;
   }
 }

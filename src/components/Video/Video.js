@@ -76,12 +76,7 @@ const Video = ({
         setShowTranscript={setShowTranscript}
       />
       <div
-        style={{
-          position: "fixed",
-          top: 20,
-          right: 20,
-          zIndex: 13,
-        }}
+        className="close-video"
         onClick={() => {
           onClose()
         }}

@@ -165,7 +165,11 @@ Heaer title help + banner
   .header .home-home {
     width: 24px;
     height: 24px;
-    top: 28px;
+    top: 20px;
+  }
+
+  .header .home-title {
+    height: 60px;
   }
 }
 
@@ -176,6 +180,7 @@ Heaer title help + banner
     font-size: var(--font-copy-banner);
     width: calc(100% - 140px);
     justify-content: center;
+    height: 60px;
   }
 
   .header .home-title h4 {

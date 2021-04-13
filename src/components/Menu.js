@@ -36,8 +36,9 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
         </div>
         <button
           className={`menu menu-button 
-          ${theme === "light" ? "menu-light" : ""}
-          ${fadein ? "fadein" : ""}
+          ${theme === "light" ? " menu-light" : ""}
+          ${fadein ? " fadein" : ""}
+          ${isTooltip ? " hovered" : ""}
         `}
           style={{
             padding: "10px 14px",

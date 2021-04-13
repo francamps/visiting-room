@@ -7,32 +7,33 @@
 
 .burger .burger-inner {
   top: 50%;
+  left: -30%;
   display: block;
   margin-top: -2px;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   transition-duration: 75ms;
+  transition: left 75ms ease 0.12s, background-color 0.4s;
 }
 
 .burger .burger-inner:before {
   top: -6px;
-  transition: top 75ms ease 0.12s, opacity 75ms ease;
+  left: 40%;
+  transition: left 75ms ease 0.12s, opacity 75ms ease, background-color 0.4s;
   display: block;
   content: "";
 }
 
-.burger:not(.is-active):hover .burger-inner:before {
-  top: -4px;
-  transition: top 0.2s;
-}
-
-.burger:not(.is-active):hover .burger-inner:after {
-  bottom: -4px;
-  transition: bottom 0.2s;
+button.hovered .burger:not(.is-active) .burger-inner,
+button.hovered .burger:not(.is-active) .burger-inner:before,
+button.hovered .burger:not(.is-active) .burger-inner:after {
+  left: 0;
+  transition: left 75ms ease 0.12s, background-color 0.4s;
 }
 
 .burger .burger-inner:after {
   bottom: -6px;
-  transition: top 75ms ease 0.12s, opacity 75ms ease;
+  left: 40%;
+  transition: left 75ms ease 0.12s, opacity 75ms ease, background-color 0.4s;
   display: block;
   content: "";
 }
@@ -48,22 +49,20 @@
   transition-property: transform;
   border-radius: 4px;
   background-color: var(--clr-white);
+  transition: background-color 0.4s;
 }
 
-.burger:hover .burger-inner,
-.burger:hover .burger-inner:before,
-.burger:hover .burger-inner:after {
-  /*background-color: var(--clr-primary);*/
-  -webkit-animation: rotatingBackgroundColor 20s;
-  -moz-animation: rotatingBackgroundColor 20s;
-  -ms-animation: rotatingBackgroundColor 20s;
-  -o-animation: rotatingBackgroundColor 20s;
-  animation: rotatingBackgroundColor 20s;
+button.hovered .burger .burger-inner,
+button.hovered .burger .burger-inner:before,
+button.hovered .burger .burger-inner:after {
+  background-color: var(--clr-primary);
+  transition: background-color 0.4s;
 }
 
 .burger.is-active .burger-inner,
 .burger.is-active .burger-inner:before,
 .burger.is-active .burger-inner:after {
+  left: 0%;
   background-color: var(--clr-white);
 }
 
