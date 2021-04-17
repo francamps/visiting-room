@@ -68,25 +68,12 @@ export const query = graphql`
             show_profile_in_visiting_room
             color
             profile_picture {
-              fluid(maxWidth: 1000, maxHeight: 800) {
+              fluid(maxWidth: 1920, maxHeight: 1080) {
                 src
               }
             }
             video_link {
               url
-            }
-          }
-        }
-      }
-    }
-    images: allFile {
-      edges {
-        node {
-          relativePath
-          name
-          childImageSharp {
-            fluid(maxWidth: 800, quality: 100) {
-              ...GatsbyImageSharpFluid_noBase64
             }
           }
         }
