@@ -29,19 +29,6 @@ const query = `
         }
       }
     }
-    images: allFile {
-      edges {
-        node {
-          relativePath
-          name
-          childImageSharp {
-            fluid(maxWidth: 800, quality: 100) {
-              ...GatsbyImageSharpFluid_noBase64
-            }
-          }
-        }
-      }
-    }
   }
 `
 

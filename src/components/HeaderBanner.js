@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useInView } from "react-intersection-observer"
 
 import Foreword from "./Timeline/Foreword.js"
 
@@ -7,6 +8,11 @@ import "./HeaderBanner.css"
 import { handleKeyUp } from "../utils"
 
 const VisitingRoomBanner = ({ setShowBanner }) => {
+  const [ref, inView] = useInView({
+    /* Optional options */
+    threshold: 0.1,
+  })
+
   return (
     <>
       <div
@@ -25,8 +31,8 @@ life without parole to hear them tell some of their own stories, in their own wo
           <Link to="/archive">Archive</Link>
           <span>.</span>
         </div>
-        <div className="intro-banner">
-          <Foreword inView={true} />
+        <div ref={ref} className="intro-banner">
+          {inView && <Foreword inView={true} />}
         </div>
       </div>
 
