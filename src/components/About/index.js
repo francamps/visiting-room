@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 
 import AboutCopy from "./AboutCopy"
+import Glossary from "./Glossary"
 import Header from "../Header"
 import FAQs from "./FAQs.js"
 
@@ -65,31 +66,24 @@ const About = ({ abouts, faqs, terms, team }) => {
 
           <div className="copy-wrap">
             <TabPanel>
-              <AboutCopy abouts={abouts} />
+              <h3>About</h3>
+              <AboutCopy
+                abouts={abouts}
+                params={params}
+                updateParams={updateParams}
+              />
             </TabPanel>
             <TabPanel>
-              <h3>Frequently Asked Questions (FAQs)</h3>
+              <h3>Frequently Asked Questions</h3>
               <FAQs faqs={faqs} params={params} updateParams={updateParams} />
             </TabPanel>
             <TabPanel>
               <h3>Glossary</h3>
-              <article className="copy">
-                {terms.map(({ term1, ...props }) => {
-                  const defined = term1.text.split(" – ")[0]
-                  const definition = term1.text.split(" – ")[1]
-
-                  return (
-                    <div className="term-content">
-                      <p>
-                        <strong style={{ color: "var(--clr-primary)" }}>
-                          {defined}
-                        </strong>{" "}
-                        - {definition}
-                      </p>
-                    </div>
-                  )
-                })}
-              </article>
+              <Glossary
+                terms={terms}
+                params={params}
+                updateParams={updateParams}
+              />
             </TabPanel>
             <TabPanel>
               <h3>{team.team_title[0].text}</h3>

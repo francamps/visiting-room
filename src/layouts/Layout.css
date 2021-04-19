@@ -197,6 +197,7 @@ h3 {
 
 h4 {
   font-size: var(--font-copy-label);
+  font-weight: normal;
 }
 
 a {

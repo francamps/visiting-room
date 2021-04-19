@@ -1,32 +1,33 @@
-.copy .faq {
+.copy .about {
+  padding: 0px 0;
   cursor: pointer;
   border-bottom: 1px solid var(--clr-mid-grey);
 }
 
-.copy .faq h4 {
-  margin-bottom: 10;
+.copy .about h4 {
+  margin-bottom: 10px;
   transition: letter-spacing 0.4s, color 0.4s;
 }
 
-.copy .faq h4:hover,
-.copy .faq.faq-active h4 {
+.copy .about h4:hover,
+.copy .about.about-active h4 {
   color: var(--clr-primary);
   letter-spacing: 0.02em;
   transition: letter-spacing 0.4s, color 0.4s;
 }
 
-.copy .faq .faq-content {
+.copy .about .about-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 1.2s ease-in-out;
   font-weight: 300;
 }
 
-.copy .faq .faq-content li {
+.copy .about .about-content li {
   line-height: var(--copy-line-height);
 }
 
-.copy .faq.faq-active .faq-content {
-  max-height: 1200px;
+.copy .about.about-active .about-content {
+  max-height: 2400px;
   transition: max-height 1.2s ease-in-out;
 }
