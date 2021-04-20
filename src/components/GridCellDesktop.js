@@ -40,7 +40,7 @@ const GridCellDesktop = ({
   const videoPlayerRef = useRef()
 
   useEffect(() => {
-    if (inView && !videoPlayer) {
+    if (isHover && inView && !videoPlayer) {
       try {
         const player = new Player(videoPlayerRef.current, {
           autoplay: 1,
@@ -71,8 +71,9 @@ const GridCellDesktop = ({
         console.warn("Video not available")
       }
     }
-  }, [inView, videoPlayer])
+  }, [inView, isHover, videoPlayer])
 
+  /*
   useEffect(() => {
     if (inView && isHover && videoPlayer && videoPlayer.setVolume) {
       try {
@@ -84,6 +85,7 @@ const GridCellDesktop = ({
       }
     }
   }, [isHover])
+  */
 
   useEffect(() => {
     if (inView && videoPlayer) {
@@ -119,8 +121,9 @@ const GridCellDesktop = ({
   )
 
   useEffect(() => {
-    if (!inView && videoPlayer && videoPlayer.destroy) videoPlayer.destroy()
-  }, [inView])
+    if (!isHover && !inView && videoPlayer && videoPlayer.destroy)
+      videoPlayer.destroy()
+  }, [inView, isHover])
 
   if (!image) {
     return null
@@ -138,7 +141,7 @@ const GridCellDesktop = ({
       }}
     >
       {image && <GridCellBackground isHover={isHover} image={image} />}
-      {inView && isLoadBackgrounds && (
+      {isHover && inView && isLoadBackgrounds && (
         <div className={`responsive-iframe-container ${isHover && "visible"}`}>
           <iframe
             ref={videoPlayerRef}
