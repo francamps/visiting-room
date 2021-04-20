@@ -68,7 +68,6 @@ const ArchiveGridCell = ({ profile, images }) => {
                 {` ${date_of_offense}`}
               </span>
             </p>
-            {deceased_date && <p>{`Deceased on ${deceased_date}`}</p>}
           </div>
         </div>
       </div>

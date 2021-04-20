@@ -70,7 +70,10 @@ const Timeline = () => {
 
             <div
               className="footer light link-wrap"
-              style={{ justifyContent: "center" }}
+              style={{
+                justifyContent: "center",
+                paddingBottom: "var(--space-around-med)",
+              }}
             >
               <button
                 onClick={() =>

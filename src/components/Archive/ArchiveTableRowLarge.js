@@ -100,27 +100,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
       </td>
       <td>{age_at_offense}</td>
       <td>
-        <>
-          {age_at_interview}
-          {deceased_date && (
-            <div
-              style={{
-                margin: 0,
-                height: "20px",
-                width: "100%",
-                wordBreak: "break-all",
-                fontSize: "var(--font-small)",
-              }}
-            >
-              <p style={{ margin: 0, lineHeight: "20px", textAlign: "right" }}>
-                Deceased:
-              </p>
-              <p style={{ margin: 0, lineHeight: "20px", textAlign: "right" }}>
-                {deceased_date.getFullYear()}
-              </p>
-            </div>
-          )}
-        </>
+        <>{age_at_interview}</>
       </td>
       <td>
         <div

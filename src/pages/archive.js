@@ -40,12 +40,12 @@ export const query = graphql`
             }
             deceased_date
             profile_picture {
-              fluid(maxWidth: 1000, maxHeight: 800) {
+              fluid(maxWidth: 640, maxHeight: 480) {
                 src
               }
             }
             old_picture {
-              fluid(maxWidth: 1000, maxHeight: 800) {
+              fluid(maxWidth: 640, maxHeight: 480) {
                 src
               }
             }

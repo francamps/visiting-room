@@ -12,11 +12,13 @@ const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
       ? 1
       : -0.6 + (120 - i) / (120 - current)
 
+  /*
   useEffect(() => {
     setTimeout(() => {
       setVisible(true)
     }, delay)
   }, [delay])
+  */
 
   return (
     <circle
@@ -27,7 +29,7 @@ const Circle = ({ color, current, incarcerated, deceased_date, i }) => {
       fill={i < +incarcerated ? color : "var(--clr-primary)"}
       style={{
         opacity,
-        visibility: visible ? "visible" : "hidden",
+        visibility: "visible", //visible ? "visible" : "hidden",
       }}
     />
   )
@@ -37,7 +39,7 @@ const Years = ({ color, incarcerated, current, deceased_date }) => {
   const years = new Array(120).fill(0)
 
   return (
-    <svg width="210px" height="50px">
+    <svg width="210px" height="50px" className="fadein">
       <filter id="blurMe">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>
