@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react"
-import ReactPlayer from "react-player"
 
 import Grid from "../Grid"
 import Header from "../Header"
-
-import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 import "./VisitingRoom.css"
 
@@ -42,16 +39,6 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
               isLoadBackgrounds={!isShowBanner}
             />
           </>
-        )}
-        {showSound && null && (
-          <ReactPlayer
-            width="1px"
-            height="1px"
-            url={audio}
-            volume={0.5}
-            playing
-            controls={false}
-          />
         )}
       </>
     </div>

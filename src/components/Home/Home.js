@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
-import ReactPlayer from "react-player"
 
 import HomeVideo from "./HomeVideo"
 import Skip from "./Skip"
 import Loading from "../Loading"
 
-import audio from "../../content/audio/stanfield/landingFull.mp3"
+//import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 import "./Home.css"
 import "./Skip.css"
@@ -40,17 +39,6 @@ const Home = ({ images }) => {
             <span>Project</span>
             <br />
           </div>
-          {null && (
-            <ReactPlayer
-              url={audio}
-              volume={Math.max(
-                1 - (barProgress > 0.8 ? (barProgress - 0.8) / 0.2 : 0),
-                0.0
-              )}
-              playing
-              controls={false}
-            />
-          )}
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{
