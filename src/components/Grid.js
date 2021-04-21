@@ -18,11 +18,7 @@ const Grid = ({ profiles = [], isLoadBackgrounds }) => {
   const profileChunks = chunk(profiles, chunks)
 
   return (
-    <div
-      className="outer-grid"
-      dir="ltr"
-      style={isSafari ? { scrollSnapType: "none" } : {}}
-    >
+    <div className="outer-grid" dir="ltr">
       {profileChunks.map((profileChunk, chunkIdx) => {
         return (
           <GridChunk

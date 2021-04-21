@@ -5,9 +5,6 @@
   width: 100%;
   overflow-y: scroll;
   background: var(--clr-real-black);
-  scroll-snap-type: mandatory; /* for older browsers */
-  scroll-snap-points-y: repeat(100vh); /* for older browsers */
-  scroll-snap-type: y mandatory;
 }
 
 .grid {
@@ -24,8 +21,6 @@
   box-sizing: border-box;
   background: var(--clr-real-black);
   opacity: 1;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 }
 
 .outer-grid .chunk-thumbnails {
