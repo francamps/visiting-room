@@ -3,6 +3,7 @@ import { Link, navigate } from "gatsby"
 import { useMediaQuery } from "react-responsive"
 
 import Burger from "./Burger"
+import Play from "./Symbols/Play"
 
 import { handleKeyUp } from "../utils"
 
@@ -112,6 +113,22 @@ const Menu = ({ theme, fadein, isMenuExpanded = false, setMenuExpanded }) => {
           >
             The Visiting Room
           </a>
+        </div>
+        <div className="menu-option-wrap">
+          <Link
+            to="/foreword"
+            className="hover-link"
+            onClick={() => {
+              setBurgerOpen(false)
+            }}
+            onKeyUp={ev =>
+              handleKeyUp(ev, () => {
+                setBurgerOpen(false)
+              })
+            }
+          >
+            Introduction <Play />
+          </Link>
         </div>
         <div className="menu-option-wrap">
           <Link

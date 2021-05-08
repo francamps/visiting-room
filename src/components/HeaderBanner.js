@@ -67,7 +67,7 @@ const ArchiveBanner = ({ setShowBanner }) => {
       <br />
       <br />
       <span className="fadeinfast">
-        {`For more information about the project, see our `}
+        {`For more information about the project, see `}
       </span>
       <Link to="/about">About</Link>
       <span>.</span>

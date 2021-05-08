@@ -1,10 +1,7 @@
 import React, { useState } from "react"
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
-import startCase from "lodash/startCase"
 
 import stateFarm from "../../images/stateFarm.png"
-import { colors } from "../../content/colors"
 import "./AboutCopy.css"
 import { handleKeyUp } from "../../utils"
 
@@ -123,68 +120,6 @@ const AboutCopy = ({ abouts, params, updateParams }) => {
           )
         })}
       </article>
-
-      {
-        null /*<Tabs>
-        <TabList>
-          {childrenAbouts.map(about => {
-            const title = about ? about.node.data.about_this_project.text : ""
-
-            return (
-              <Tab>
-                <span style={{ background: `var(${colors[0]})` }}>
-                  {startCase(title.split("About ")[1])}
-                </span>
-              </Tab>
-            )
-          })}
-        </TabList>
-        {childrenAbouts.map(about => {
-          const title = about ? about.node.data.about_this_project.text : ""
-          const content = about ? about.node.data.about_content : []
-
-          const isAngola = title === "About Angola"
-
-          return (
-            <TabPanel>
-              <>
-                <h3>{title}</h3>
-                <article className="copy">
-                  <div
-                    className="term-content"
-                    dangerouslySetInnerHTML={{ __html: content.html }}
-                  ></div>
-                  <div className="map">
-                    <img
-                      src={isAngola ? stateFarm : null}
-                      style={{ width: "100%", height: "auto" }}
-                      alt={
-                        isAngola
-                          ? "An image of Angola as a state farm in the year 1900"
-                          : ""
-                      }
-                    />
-                    <p
-                      className="caption"
-                      style={{
-                        textAlign: "left",
-                        marginBottom: "20px",
-                        marginTop: "10px",
-                        fontSize: "var(--font-small)",
-                      }}
-                    >
-                      {isAngola
-                        ? "LSU Libraries Special Collections / Andrew D. Lytle's Baton Rouge Photograph Collection (1900-1901, questionable)"
-                        : ""}
-                    </p>
-                  </div>
-                </article>
-              </>
-            </TabPanel>
-          )
-        })}
-      </Tabs>*/
-      }
     </>
   )
 }

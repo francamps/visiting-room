@@ -25,6 +25,11 @@ const Glossary = ({ terms, params, updateParams }) => {
 
   return (
     <article className="copy">
+      <p>
+        Some of the terms used to describe aspects of incarcerated life or the
+        legal system in The Visiting Room interviews may be unfamiliar to a
+        general audience. For reference, definitions are below.
+      </p>
       {terms.map(({ term1, ...props }, idx) => {
         const defined = term1.text.split(" – ")[0]
         const definition = term1.text.split(" – ")[1]

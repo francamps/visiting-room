@@ -39,7 +39,7 @@ const TimelineCover = ({ setInView }) => {
             fontSize: "var(--font-subtitle)",
           }}
         >
-          A History of Life Without Parole
+          A History of Life Without Parole in Louisiana
         </h2>
         <div
           style={{

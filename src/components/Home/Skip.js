@@ -7,7 +7,7 @@ import "./Skip.css"
 
 const Skip = ({ barProgress }) => {
   return (
-    <div className="menu-buttons fadeinfast">
+    <div className="menu-buttons fadeinfast" style={{ zIndex: 12 }}>
       <MenuButton
         buttonContent={
           <span

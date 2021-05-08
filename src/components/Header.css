@@ -92,9 +92,17 @@ Heaver each page title
   cursor: pointer;
 }
 
+.header.center .home-title {
+  width: calc(100% - 230px);
+  margin-left: 70px;
+}
+
 .header .home-title h2 {
   font-size: var(--font-header-title);
   transition: background 0.4s, padding 0.4s, font-size 0.4s;
+}
+.header.center .home-title h2 {
+  justify-content: center;
 }
 
 /**

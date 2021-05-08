@@ -22,9 +22,9 @@
 .home .home-title {
   font-family: "EB Garamond";
   font-size: var(--font-small);
-  position: fixed;
-  top: var(--space-around-small);
-  left: var(--space-around-small);
+  /* position: fixed; */
+  /* top: var(--space-around-small); */
+  /* left: var(--space-around-small); */
   text-align: center;
 }
 

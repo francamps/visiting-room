@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react"
 import HomeVideo from "./HomeVideo"
 import Skip from "./Skip"
 import Loading from "../Loading"
-
+import Header from "../Header"
 //import audio from "../../content/audio/stanfield/landingFull.mp3"
 
 import "./Home.css"
+import "../Header.css"
 import "./Skip.css"
 
 const Home = ({ images }) => {
@@ -29,7 +30,10 @@ const Home = ({ images }) => {
         <div className="landing" style={{ background: "black" }}>
           <HomeVideo images={images} setBarProgress={setBarProgress} />
         </div>
+        <Header title={"The Visiting Room Project"} classes="center" hideMenu />
         <div className={`landing fadeinfast`}>
+          {
+            null /*
           <div className="home-title-accent"></div>
           <div className="home-title">
             <span>The</span>
@@ -38,7 +42,8 @@ const Home = ({ images }) => {
             <br />
             <span>Project</span>
             <br />
-          </div>
+          </div> */
+          }
           <div
             className={`subtitle ${hideWords ? "fadeout" : "fadeinfast"}`}
             style={{
@@ -58,6 +63,7 @@ const Home = ({ images }) => {
               position: "fixed",
               top: "var(--space-around-small)",
               right: "var(--space-around-small)",
+              transform: "translate(30px, 0)",
             }}
           >
             <Loading size="small" />

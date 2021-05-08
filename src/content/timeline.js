@@ -429,11 +429,11 @@ export const TIMELINE = [
     life without parole sentences and the size of the prison population have skyrocketed.`,
   },
   {
-    year: "1990’s",
+    year: "1990s",
     title: "Limiting Access to the Courts",
     sections: [
       {
-        year: "1990’s",
+        year: "1990s",
         title: "Limiting Access to the Courts",
       },
       {
