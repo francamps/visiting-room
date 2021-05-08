@@ -55,6 +55,7 @@ const GridCell = ({
   quote,
   fullName,
   color,
+  isSoundEnabled,
   video_link,
   isLoadBackgrounds,
 }) => {
@@ -76,6 +77,7 @@ const GridCell = ({
       fullName={fullName}
       color={color}
       video_link={video_link}
+      isSoundEnabled={isSoundEnabled}
       videosBackground={videosBackground}
       isLoadBackgrounds={isLoadBackgrounds}
     />

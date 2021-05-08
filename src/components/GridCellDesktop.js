@@ -65,6 +65,7 @@ const GridCellDesktop = ({
   fullName,
   color,
   video_link,
+  isSoundEnabled,
   videosBackground,
   isLoadBackgrounds,
 }) => {
@@ -87,11 +88,10 @@ const GridCellDesktop = ({
           autopause: false,
           controls: false,
           title: false,
-          muted: 1,
           loop: 1,
         })
         setVideoPlayer(player)
-        player.setVolume(0)
+        if (!isSoundEnabled) player.setVolume(0)
         player.setAutopause(false)
         player.setLoop(true)
         player

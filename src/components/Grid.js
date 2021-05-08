@@ -7,7 +7,7 @@ import GridChunk from "./GridChunk"
 
 import "./Grid.css"
 
-const Grid = ({ profiles = [], isLoadBackgrounds }) => {
+const Grid = ({ profiles = [], isSoundEnabled, isLoadBackgrounds }) => {
   const [currentChunk, setCurrentChunk] = useState(0)
   // These media queries are aligned with the css break points
   const isLargeScreen = useMediaQuery({ query: "(min-width: 1800px)" })
@@ -23,6 +23,7 @@ const Grid = ({ profiles = [], isLoadBackgrounds }) => {
         return (
           <GridChunk
             profileChunk={profileChunk}
+            isSoundEnabled={isSoundEnabled}
             isLoadBackgrounds={isLoadBackgrounds}
             setCurrentChunk={() => {
               setCurrentChunk(chunkIdx)

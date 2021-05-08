@@ -5,7 +5,7 @@ import GridCell from "./GridCell"
 
 import getProfileProps from "../utils/getProfileProps"
 
-const GridChunk = ({ profileChunk, setCurrentChunk }) => {
+const GridChunk = ({ profileChunk, isSoundEnabled, setCurrentChunk }) => {
   const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0.1,
@@ -38,6 +38,7 @@ const GridChunk = ({ profileChunk, setCurrentChunk }) => {
                 image={image}
                 fullName={fullName}
                 quote={quote}
+                isSoundEnabled={isSoundEnabled}
                 profile_picture={profile_picture}
                 color={color}
                 video_link={video_link}

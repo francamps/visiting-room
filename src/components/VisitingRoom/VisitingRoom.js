@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react"
 
 import Grid from "../Grid"
 import Header from "../Header"
+import MenuButton from "../MenuButton"
+import IconSound from "../Symbols/Sound"
+import { handleKeyUp } from "../../utils"
 
 import "./VisitingRoom.css"
 
@@ -11,11 +14,11 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
       window.localStorage.getItem("showBanner__VISITING-ROOM") === "true"
   )
 
-  const [showSound, setShowSound] = useState(false)
+  const [isSoundEnabled, setSoundEnabled] = useState(true)
 
   useEffect(() => {
     let timerSound = setTimeout(() => {
-      setShowSound(true)
+      setSoundEnabled(true)
     }, 2000)
 
     return () => {
@@ -32,11 +35,30 @@ const VisitingRoom = ({ loading, profiles = [], images, ...props }) => {
               title="The Visiting Room"
               banner="VISITING-ROOM"
               onSetShowBanner={setShowBanner}
+              actions={
+                <MenuButton
+                  onClick={() => {
+                    setSoundEnabled(!isSoundEnabled)
+                  }}
+                  onKeyUp={ev =>
+                    handleKeyUp(ev, () => {
+                      setSoundEnabled(!isSoundEnabled)
+                    })
+                  }
+                  buttonContent={<IconSound />}
+                  tooltipContent={
+                    <div style={{ width: isSoundEnabled ? "90px" : "85px" }}>
+                      {isSoundEnabled ? "Disable sound" : "Enable sound"}
+                    </div>
+                  }
+                />
+              }
             />
             <Grid
               profiles={profiles}
               images={images}
               isLoadBackgrounds={!isShowBanner}
+              isSoundEnabled={isSoundEnabled}
             />
           </>
         )}
