@@ -246,7 +246,7 @@ const GridCellDesktop = ({
           </div>
         </div>
         <div
-          className={`menu-buttons ${isHover && "fadein"}`}
+          className={`menu-buttons ${isHover && !isSoundEnabled && "fadein"}`}
           style={{
             position: "absolute",
             top: "auto",

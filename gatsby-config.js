@@ -44,6 +44,7 @@ module.exports = {
           about: require("./src/schemas/about.json"),
           faq: require("./src/schemas/faq.json"),
           glossary_term: require("./src/schemas/glossary_term.json"),
+          team: require("./src/schemas/team.json"),
           profile: require("./src/schemas/profile.json"),
         },
       },

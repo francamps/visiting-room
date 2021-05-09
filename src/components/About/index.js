@@ -86,10 +86,14 @@ const About = ({ abouts, faqs, terms, team }) => {
               />
             </TabPanel>
             <TabPanel>
-              <h3>{team.team_title[0].text}</h3>
+              <h3>{team.team_title.text}</h3>
               <article className="copy">
                 <div className="term-content">
-                  <p>{team.team_text[0].text}</p>
+                  <p>{team.team_text.text}</p>
+                  <div
+                    className="term-content"
+                    dangerouslySetInnerHTML={{ __html: team.team_text.html }}
+                  ></div>
                 </div>
               </article>
             </TabPanel>

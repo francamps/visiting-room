@@ -29,7 +29,7 @@ export const query = graphql`
               text
             }
             team_text {
-              text
+              html
             }
           }
         }
