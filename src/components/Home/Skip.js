@@ -22,10 +22,14 @@ const Skip = ({ barProgress }) => {
         onClick={() => {
           navigate("/visiting-room")
         }}
+        styling={{
+          flexDirection: "column-reverse",
+        }}
         tooltipActive
         tooltipStyling={{
           background: "none",
           boxShadow: "none",
+          marginRight: 0,
         }}
         tooltipContent={
           <div className="skip-bar" style={{ width: "40px" }}>

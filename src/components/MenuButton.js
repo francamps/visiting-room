@@ -12,6 +12,7 @@ const MenuButton = ({
   onTouchStart,
   onTouchEnd,
   buttonContent,
+  styling,
   tooltipContent,
   tooltipActive,
   tooltipStyling,
@@ -21,7 +22,10 @@ const MenuButton = ({
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" })
 
   return (
-    <div className={`menu-button-tooltip ${isHolding ? "holding" : ""}`}>
+    <div
+      className={`menu-button-tooltip ${isHolding ? "holding" : ""}`}
+      style={styling || { flexDirection: "row" }}
+    >
       <div
         className={`menu-tooltip ${
           tooltipActive || (isTooltip && !isTabletOrMobile) ? "active" : ""

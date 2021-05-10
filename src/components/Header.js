@@ -120,12 +120,6 @@ const Header = ({
             }
             role="button"
             tabIndex={0}
-            style={{
-              width:
-                title === "Archive"
-                  ? "calc(100% - 230px)"
-                  : "calc(100% - 140px)",
-            }}
           >
             <h4 className={showBanner ? "banner-active" : ""}>{title}</h4>
             {banner && (

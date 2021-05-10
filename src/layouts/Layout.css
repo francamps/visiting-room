@@ -551,7 +551,7 @@ FADE IN ANIMATIONS
 
 @keyframes rotatingColor {
   0% {
-    color: var(--clr-0);
+    color: var(--clr-1);
   }
   10% {
     color: var(--clr-1);

@@ -61,11 +61,15 @@
   letter-spacing: normal;
   line-height: 1em;
   cursor: pointer;
-  transition: letter-spacing 0.4s;
+  transition: letter-spacing 0.4s, color 0.4s;
 }
 
 .menu-options a:hover {
-  color: var(--clr-primary);
+  -webkit-animation: rotatingColor 20s infinite;
+  -moz-animation: rotatingColor 20s infinite;
+  -ms-animation: rotatingColor 20s infinite;
+  -o-animation: rotatingColor 20s infinite;
+  animation: rotatingColor 20s infinite;
   letter-spacing: 0.02em;
   transition: letter-spacing 0.4s, color 0.4s;
 }

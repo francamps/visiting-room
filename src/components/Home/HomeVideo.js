@@ -29,7 +29,7 @@ const HomeVideo = ({ setBarProgress }) => {
         player.on("timeupdate", ({ percent, seconds }) => {
           setBarProgress(percent)
 
-          if (percent > 0.9) navigate("/visiting-room")
+          //if (percent > 0.9) navigate("/visiting-room")
         })
         setVideoPlayer(videoPlayer)
       } catch (e) {

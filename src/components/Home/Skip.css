@@ -15,7 +15,12 @@
   position: absolute;
   height: 2px;
   transition: width 1s linear;
-  background: var(--clr-primary);
+
+  -webkit-animation: rotatingBackgroundColor 20s infinite;
+  -moz-animation: rotatingBackgroundColor 20s infinite;
+  -ms-animation: rotatingBackgroundColor 20s infinite;
+  -o-animation: rotatingBackgroundColor 20s infinite;
+  animation: rotatingBackgroundColor 20s infinite;
 }
 
 .skip-label {

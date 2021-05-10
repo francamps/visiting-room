@@ -191,6 +191,11 @@ Heaer title help + banner
     height: 60px;
   }
 
+  .header.center .home-title {
+    width: calc(100% - 200px);
+    margin-left: 70px;
+  }
+
   .header .home-title h4 {
     margin: 0;
     height: auto;

@@ -31,6 +31,9 @@ const TimelineCover = ({ setInView }) => {
           alignItems: "center",
           marginTop: "0px",
           color: "var(--clr-black)",
+          height: "100vh",
+          justifyContent: "center",
+          background: "rgba(255, 255, 255, 0.4)",
         }}
       >
         <h2
