@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer"
 
 import Caret from "../Caret"
 
+import "./TimelineCover.css"
 import image from "../../images/timeline/1800s.png"
 
 const TimelineCover = ({ setInView }) => {
@@ -21,53 +22,15 @@ const TimelineCover = ({ setInView }) => {
       className="timeline-cover"
       style={{
         backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginTop: "0px",
-          color: "var(--clr-black)",
-          height: "100vh",
-          justifyContent: "center",
-          background: "rgba(255, 255, 255, 0.4)",
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-            fontSize: "var(--font-subtitle)",
-          }}
-        >
-          A History of Life Without Parole in Louisiana
-        </h2>
-        <div
-          style={{
-            position: "absolute",
-            bottom: "var(--space-around-med)",
-          }}
-        >
-          <div
-            style={{
-              transform: "scale(0.7)",
-              transformOrigin: "center center",
-              textAlign: "center",
-            }}
-          >
+      <div className="cover-backdrop">
+        <h2>A History of Life Without Parole in Louisiana</h2>
+        <div className="scroll">
+          <div className="caret">
             <Caret color="var(--clr-black)" animate />
           </div>
-          <span
-            style={{
-              fontFamily: "Roboto, Helvetica Neue, Arial, sans-serif",
-              fontSize: "var(--font-small)",
-              marginTop: "0px",
-            }}
-          >
-            SCROLL
-          </span>
+          <span className="label">SCROLL</span>
         </div>
       </div>
     </div>

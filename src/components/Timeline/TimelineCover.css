@@ -1,0 +1,37 @@
+.timeline-cover {
+  background-size: cover;
+}
+
+.cover-backdrop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  color: var(--clr-black);
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.cover-backdrop h2 {
+  text-align: center;
+  font-size: var(--font-subtitle);
+}
+
+.cover-backdrop .scroll {
+  position: absolute;
+  bottom: var(--space-around-med);
+}
+
+.cover-backdrop .scroll .caret {
+  transform: scale(0.7);
+  transform-origin: center center;
+  text-align: center;
+}
+
+.cover-backdrop .scroll .label {
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-size: var(--font-small);
+  margin-top: 0px;
+}
