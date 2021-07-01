@@ -3,28 +3,28 @@
     "full_name": {
       "type": "StructuredText",
       "config": {
-        "single": "heading1, heading2, heading4, heading5, heading6",
+        "single": "heading1,heading2,heading4,heading5,heading6",
         "label": "Full Name"
       }
     },
     "first_name": {
       "type": "StructuredText",
       "config": {
-        "single": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "single": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "First name"
       }
     },
     "last_name": {
       "type": "StructuredText",
       "config": {
-        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "Last name"
       }
     },
     "date_of_birth": {
       "type": "StructuredText",
       "config": {
-        "single": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "single": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "Date of birth",
         "placeholder": "MM/DD/YYYY"
       }
@@ -35,38 +35,45 @@
         "label": "Date of offense"
       }
     },
+    "gist": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label": "gist"
+      }
+    },
     "time_served": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
         "label": "Time served"
       }
     },
     "age_at_interview": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
         "label": "Age at interview"
       }
     },
     "charge": {
       "type": "StructuredText",
       "config": {
-        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "Charge"
       }
     },
     "quote": {
       "type": "StructuredText",
       "config": {
-        "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "Quote"
       }
     },
     "imagepath": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
         "label": "ImagePath"
       }
     },
@@ -99,7 +106,8 @@
     "video_link": {
       "type": "Link",
       "config": {
-        "label": "Video link"
+        "label": "Video link",
+        "select": null
       }
     },
     "profile_picture": {

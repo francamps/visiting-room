@@ -19,6 +19,7 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
   const {
     image,
     oldImage,
+    gist,
     fullName,
     date_of_offense,
     age_at_offense,
@@ -134,6 +135,14 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
               deceased_date={deceased_date}
             />
           )}
+          <p
+            style={{
+              wordBreak: "breakWord",
+              whiteSpace: "normal",
+            }}
+          >
+            {gist}
+          </p>
         </div>
       </td>
     </tr>

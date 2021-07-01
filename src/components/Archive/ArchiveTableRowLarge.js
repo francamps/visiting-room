@@ -18,6 +18,7 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
   })
   const {
     image,
+    gist,
     oldImage,
     fullName,
     date_of_offense,
@@ -95,55 +96,77 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           </p>
         </div>
       </td>
-      <td>
-        <>{date_of_offense}</>
-      </td>
-      <td>{age_at_offense}</td>
-      <td>
-        <>{age_at_interview}</>
-      </td>
-      <td>
-        <div
+      {isHover ? (
+        <td
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: isHover ? "space-between" : "flex-end",
-            width: "100%",
-            alignItems: "center",
+            flex: "0 0 466px",
           }}
         >
-          {inView && (
-            <Years
-              color={"black"}
-              incarcerated={age_at_offense}
-              current={age_at_interview}
-              deceased_date={deceased_date}
-            />
-          )}
-          <div
+          <p
             style={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
+              wordBreak: "breakWord",
+              whiteSpace: "normal",
+              textAlign: "left",
+              lineHeight: "var(--font-copy)",
+              fontSize: "var(--font-normal)",
             }}
           >
-            <p
+            {gist}
+          </p>
+        </td>
+      ) : (
+        <>
+          <td>
+            <>{date_of_offense}</>
+          </td>
+          <td>{age_at_offense}</td>
+          <td>
+            <>{age_at_interview}</>
+          </td>
+          <td>
+            <div
               style={{
-                margin: 0,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: isHover ? "space-between" : "flex-end",
+                width: "100%",
+                alignItems: "center",
               }}
             >
-              <span
+              {inView && (
+                <Years
+                  color={"black"}
+                  incarcerated={age_at_offense}
+                  current={age_at_interview}
+                  deceased_date={deceased_date}
+                />
+              )}
+              <div
                 style={{
-                  color: "var(--clr-primary)",
-                  whiteSpace: "pre",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              >{` ${time_served}`}</span>
-            </p>
-          </div>
-        </div>
-      </td>
+              >
+                <p
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "var(--clr-primary)",
+                      whiteSpace: "pre",
+                    }}
+                  >{` ${time_served}`}</span>
+                </p>
+              </div>
+            </div>
+          </td>
+        </>
+      )}
     </tr>
   )
 }

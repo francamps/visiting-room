@@ -169,7 +169,7 @@ REPLACE WITH A SCROLLBAR STYLING LIBRARY
 }
 
 .archive table.isCompact tbody tr {
-  height: 170px;
+  height: 200px;
 }
 
 .archive table.isCompact tbody tr td:nth-child(1) {

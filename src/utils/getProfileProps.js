@@ -27,6 +27,7 @@ const getProfileProps = profile => {
   const quote = profile.quote ? profile.quote.text : profile.quote
   const fullName = profile.full_name.text
   const video_link = getValue(profile, "video_link", null)
+  const gist = getValue(profile, "gist.text", null)
 
   const prismicPicture = getValue(profile, "profile_picture.fluid", null)
 
@@ -65,6 +66,7 @@ const getProfileProps = profile => {
     date_of_birth,
     date_of_offense,
     time_served,
+    gist,
     age_at_interview,
     age_at_offense,
     current_age,
