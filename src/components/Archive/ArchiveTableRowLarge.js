@@ -96,7 +96,8 @@ const ArchiveTableRowLarge = ({ profile, profileIdx }) => {
           </p>
         </div>
       </td>
-      {isHover ? (
+      {/** Hiding for now while sharing */
+      false && isHover ? (
         <td
           style={{
             flex: "0 0 466px",

@@ -135,14 +135,17 @@ const ArchiveTableRow = ({ profile, profileIdx }) => {
               deceased_date={deceased_date}
             />
           )}
-          <p
-            style={{
-              wordBreak: "breakWord",
-              whiteSpace: "normal",
-            }}
-          >
-            {gist}
-          </p>
+          {/** Hiding for now while sharing */
+          false && (
+            <p
+              style={{
+                wordBreak: "breakWord",
+                whiteSpace: "normal",
+              }}
+            >
+              {gist}
+            </p>
+          )}
         </div>
       </td>
     </tr>
